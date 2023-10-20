@@ -15,27 +15,11 @@ Create a new wallet and return the authentication token and wallet information a
 
 {{ proto_sample_start() }}
     === "C#"
+        <!--codeinclude-->
         ```csharp
-        using Trinsic;
-        using Trinsic.Services.UniversalWallet.V1;
-
-        var trinsic = new TrinsicService();
-
-        var request = new CreateWalletRequest {
-            EcosystemId = "acme-corp",
-            Description = "user123"
-        };
-        var response = await trinsic.Wallet.CreateWalletAsync(request);
-
-        // Response: {
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
-        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
-        //     "wallet": {
-        //         "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
-        //         "publicDid": "did:key:123456"
-        //     }
-        // }
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createWallet
         ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
 
@@ -50,37 +34,27 @@ This may be needed if the user is logging in on a different device, have lost ac
 The process for adding external identity is based on confirming an OTP code that will be sent to the user's email address or phone number. To do this, you should call the
 services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
-#### `AddExternalIdentityInit`
+#### AddExternalIdentityInit
 
 {{ proto_sample_start() }}
     === "C#"
+        <!--codeinclude-->
         ```csharp
-        using Trinsic;
-        using Trinsic.Services.UniversalWallet.V1;
-
-        // these endpoints require authenticated user context
-        var options = new TrinsicOptions { AuthToken = "<auth token>" };
-        var trinsic = new TrinsicService(options);
-
-        // step 1 - initiate identity challenge
-        var requestInit = new AddExternalIdentityInitRequest {
-            Identity = "user123@acme-corp.org",
-            Provider = IdentityProvider.Email
-        };
-        var responseInit = await trinsic.Wallet.AddExternalIdentityInitAsync(requestInit);
-
-        // step 2 - confirm challenge response
-        var requestConfirm = new AddExternalIdentityConfirmRequest {
-            Challenge = responseInit.Challenge,
-            Response = "123456" // OTP code
-        };
-        await trinsic.Wallet.AddExternalIdentityConfirmAsync(requestConfirm);
-
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:addExternalIdentityInit
         ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit") }}
 
-#### `AddExternalIdentityConfirm`
+#### AddExternalIdentityConfirm
+
+{{ proto_sample_start() }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:addExternalIdentityConfirm
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm") }}
 
@@ -90,13 +64,21 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
 Removes an external identity from the associated identities of the authenticated wallet.
 
+{{ proto_sample_start() }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:removeExternalIdentity
+        ```
+        <!--/codeinclude-->
+
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity") }}
 
 ---
 
 ## Authenticate
 
-Authenticate and return an auth token for an existing wallet using one of the associated external identities.
+Authenticate and return an auth token for an    existing wallet using one of the associated external identities.
 This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
 
 Once a token is obtained, it can be reused for future sessions -- users don't need to authenticate if they already have a valid token.
@@ -108,44 +90,27 @@ You can store the auth token in secure enclaves on the users device, browser, et
     - Users want to log in to a different device using their email or phone number
     - Returning users that have lost their previous session and require new auth token
 
-#### `AuthenticateInit`
+#### AuthenticateInit
 
 {{ proto_sample_start() }}
     === "C#"
+        <!--codeinclude-->
         ```csharp
-        using Trinsic;
-        using Trinsic.Services.UniversalWallet.V1;
-
-        var trinsic = new TrinsicService();
-
-        // step 1 - initiate auth challenge
-        var requestInit = new AuthenticateInitRequest {
-            Identity = "user123@acme-corp.org",
-            Provider = IdentityProvider.Email,
-            EcosystemId = "acme-corp" // short name or full ecosystem ID
-        };
-        var responseInit = await trinsic.Wallet.AuthenticateInit(requestInit);
-
-        // step 2 - confirm auth response
-        var requestConfirm = new AuthenticateConfirmRequest {
-            Challenge = responseInit.Challenge,
-            Response = "123456" // OTP code
-        };
-        var responseConfirm = await trinsic.Wallet.AuthenticateConfirm(requestConfirm);
-
-        // Response:
-        // {
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
-        // }
-
-        // use the new token to make authenticated calls
-        var options = new TrinsicOptions { AuthToken = responseConfirm.AuthToken };
-        trinsic = new TrinsicService(options);
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateInit
         ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
 
-#### `AuthenticateConfirm`
+#### AuthenticateConfirm
+
+{{ proto_sample_start() }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateConfirm
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateConfirm") }}
 
@@ -206,7 +171,7 @@ Stores a credential (or any other JSON object) in a wallet.
 
 ## Get Item
 
-Retrieves an item by its ID.
+Retrieves an item of the wallet by its ID.
 
 {{ proto_sample_start() }}
 
@@ -249,9 +214,100 @@ Retrieves an item by its ID.
 
 ---
 
+## Get Wallet
+
+Retrieves information about wallets in the ecosystem. These endpoints can only be called by a Provider.
+
+### GetWalletInfo
+
+Retrieves information about a wallet by its ID.
+
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:getWalletInfo()
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo()
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:getWalletInfo()
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:getWalletInfo()
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletInfo()
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.GetWalletInfo") }}
+
+### GetWalletFromExternalIdentity
+
+Retrieves information about a wallet by its External Identity (email or phone number).
+
+{{ proto_sample_start() }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:getWalletFromExternalIdentity()
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletFromExternalIdentity()
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:getWalletFromExternalIdentity()
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:getWalletFromExternalIdentity()
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletFromExternalIdentity()
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity") }}
+
+
+---
+
 ## Delete Item
 
-Deletes an item.
+Deletes an item of the wallet by its ID.
 
 {{ proto_sample_start() }}
 
@@ -293,7 +349,6 @@ Deletes an item.
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.DeleteItem") }}
 
 ---
-
 
 ## Delete Wallet
 
