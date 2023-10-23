@@ -532,7 +532,7 @@ public class Tests
         var createWalletRequest = new CreateWalletRequest {
             EcosystemId = "test-ecosystem",
             Description = "user123",
-            Identity = new ExternalIdentity {
+            Identity = new CreateWalletRequest.Types.ExternalIdentity {
                 Id = "test@trinsic.id",
                 Provider = IdentityProvider.Email
             }
@@ -590,7 +590,7 @@ public class Tests
             Provider = IdentityProvider.Email,
             EcosystemId = "test-ecosystem" // short name or full ecosystem ID
         };
-        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInit(authenticateInitRequest);
+        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInitAsync(authenticateInitRequest);
         // }
 
         // authenticateConfirm() {
@@ -599,7 +599,7 @@ public class Tests
             Challenge = authenticateInitResponse.Challenge,
             Response = "123456" // OTP code
         };
-        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirm(authenticateConfirmRequest);
+        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirmAsync(authenticateConfirmRequest);
 
         // Response:
         //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="

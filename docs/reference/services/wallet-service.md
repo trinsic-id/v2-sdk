@@ -25,6 +25,46 @@ Create a new wallet and return the authentication token and wallet information a
 
 ---
 
+## Authenticate
+
+Authenticate and return an auth token for an    existing wallet using one of the associated external identities.
+This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
+
+Once a token is obtained, it can be reused for future sessions -- users don't need to authenticate if they already have a valid token.
+You can store the auth token in secure enclaves on the users device, browser, etc.
+
+!!! question "When should users authenticate?"
+
+    - If your integration solution doesn't manage the wallet tokens, users may need to re-authenticate on their device to get a new auth token
+    - Users want to log in to a different device using their email or phone number
+    - Returning users that have lost their previous session and require new auth token
+
+### AuthenticateInit
+
+{{ proto_sample_start() }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateInit
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
+
+### AuthenticateConfirm
+
+{{ proto_sample_start() }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateConfirm
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateConfirm") }}
+
+---
+
 ## Add External Identity
 
 This service is used to attach external identity, such as email or phone number, to a wallet. The purpose of this process is to allow
@@ -73,46 +113,6 @@ Removes an external identity from the associated identities of the authenticated
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity") }}
-
----
-
-## Authenticate
-
-Authenticate and return an auth token for an    existing wallet using one of the associated external identities.
-This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
-
-Once a token is obtained, it can be reused for future sessions -- users don't need to authenticate if they already have a valid token.
-You can store the auth token in secure enclaves on the users device, browser, etc.
-
-!!! question "When should users authenticate?"
-
-    - If your integration solution doesn't manage the wallet tokens, users may need to re-authenticate on their device to get a new auth token
-    - Users want to log in to a different device using their email or phone number
-    - Returning users that have lost their previous session and require new auth token
-
-### AuthenticateInit
-
-{{ proto_sample_start() }}
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateInit
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
-
-### AuthenticateConfirm
-
-{{ proto_sample_start() }}
-    === "C#"
-        <!--codeinclude-->
-        ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateConfirm
-        ```
-        <!--/codeinclude-->
-
-{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateConfirm") }}
 
 ---
 
