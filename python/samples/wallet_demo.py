@@ -59,6 +59,8 @@ async def wallet_demo():
     # }
 
     # getWalletInfo() {
+    trinsic.set_auth_token(trinsic.provider.options.auth_token)
+
     get_wallet_info_response = await trinsic.wallet.get_wallet_info(
         request=GetWalletInfoRequest(
             wallet_id=create_wallet_response.wallet.wallet_id
@@ -67,6 +69,7 @@ async def wallet_demo():
     # }
 
     # getWalletFromExternalIdentity() {
+    trinsic.set_auth_token(trinsic.provider.options.auth_token)
     get_wallet_from_external_identity_response = await trinsic.wallet.get_wallet_from_external_identity(
         request=GetWalletFromExternalIdentityRequest(
             identity={
@@ -76,6 +79,8 @@ async def wallet_demo():
         )
     )
     # }
+
+    trinsic.set_auth_token(create_wallet_response.auth_token)
 
     # searchWalletBasic() {
     wallet_items = await trinsic.wallet.search_wallet()

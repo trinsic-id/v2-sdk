@@ -226,35 +226,36 @@ Retrieves information about a wallet by its ID.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:getWalletInfo
+        [getWalletInfo](../../../web/test/WalletService.test.ts) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo
+        [getWalletInfo](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
+
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:getWalletInfo
+        [getWalletInfo](../../../python/samples/wallet_demo.py) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:getWalletInfo
+        [getWalletInfo](../../../go/services/wallet_service_test.go) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletInfo
+        [getWalletInfo](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
 
@@ -268,40 +269,39 @@ Retrieves information about a wallet by its External Identity (email or phone nu
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:getWalletFromExternalIdentity
+        [getWalletFromExternalIdentity](../../../web/test/WalletService.test.ts) inside_block:getWalletFromExternalIdentity
         ```
         <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletFromExternalIdentity
+        [getWalletFromExternalIdentity](../../../dotnet/Tests/Tests.cs) inside_block:getWalletFromExternalIdentity
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:getWalletFromExternalIdentity
+        [getWalletFromExternalIdentity](../../../python/samples/wallet_demo.py) inside_block:getWalletFromExternalIdentity
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:getWalletFromExternalIdentity
+        [getWalletFromExternalIdentity](../../../go/services/wallet_service_test.go) inside_block:getWalletFromExternalIdentity
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletFromExternalIdentity
+        [getWalletFromExternalIdentity](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:getWalletFromExternalIdentity
         ```
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity") }}
-
 
 ---
 
