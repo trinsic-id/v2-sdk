@@ -61,7 +61,7 @@ async def wallet_demo():
     # getWalletInfo() {
     get_wallet_info_response = await trinsic.wallet.get_wallet_info(
         request=GetWalletInfoRequest(
-            wallet_id=create_wallet_response.wallet.walletId
+            wallet_id=create_wallet_response.wallet.wallet_id
         )
     )
     # }
