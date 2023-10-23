@@ -533,7 +533,7 @@ public class Tests
             EcosystemId = "test-ecosystem",
             Description = "user123",
             Identity = new CreateWalletRequest.Types.ExternalIdentity {
-                Id = "test@trinsic.id",
+                Identity = "test@trinsic.id",
                 Provider = IdentityProvider.Email
             }
         };
@@ -581,6 +581,14 @@ public class Tests
         };
 
         var getWalletFromExternalIdentityResponse = await trinsic.Wallet.GetWalletFromExternalIdentityAsync(getWalletFromExternalIdentityRequest);
+        // }
+
+        // getWalletInfo() {
+        var getWalletInfoResponse = await trinsic.Wallet.GetWalletInfoAsync(
+            new GetWalletInfoRequest {
+                WalletId = createWalletResponse.walletId
+            }
+        );
         // }
 
         // authenticateInit() {

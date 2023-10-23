@@ -292,8 +292,7 @@ describe("WalletService Unit Tests", () => {
             });
 
         // getWalletInfo() {
-        //trinsic.options.authToken = trinsic.provider().options.authToken;
-        trinsic.options.authToken = root.authToken;
+        trinsic.options.authToken = trinsic.provider().options.authToken;
 
         let getWalletInfoResponse = await trinsic.wallet().getWalletInfo(
             GetWalletInfoRequest.fromPartial({

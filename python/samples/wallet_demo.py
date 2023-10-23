@@ -27,12 +27,12 @@ async def wallet_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem_create = await trinsic.provider.create_ecosystem()
-    wallet_response = await trinsic.wallet.create_wallet(
+    create_wallet_response = await trinsic.wallet.create_wallet(
         request=CreateWalletRequest(ecosystem_id=ecosystem_create.ecosystem.id)
     )
-    trinsic.set_auth_token(wallet_response.auth_token)
+    trinsic.set_auth_token(create_wallet_response.auth_token)
 
-    wallet_id = wallet_response.wallet.wallet_id
+    wallet_id = create_wallet_response.wallet.wallet_id
 
     credential = json.dumps(
         {
@@ -54,6 +54,25 @@ async def wallet_demo():
 
     # getItem() {
     item = await trinsic.wallet.get_item(request=GetItemRequest(item_id))
+    # }
+
+    # getWalletInfo() {
+    get_wallet_info_response = await trinsic.wallet.get_wallet_info(
+        request=GetWalletInfoRequest(
+            wallet_id=create_wallet_response.wallet.walletId
+        )
+    )
+    # }
+
+    # getWalletFromExternalIdentity() {
+    get_wallet_from_external_identity_response = await trinsic.wallet.get_wallet_from_external_identity(
+        request=GetWalletFromExternalIdentityRequest(
+            identity={
+                "id": "test@trinsic.id",
+                "provider": 1
+            }
+        )
+    )
     # }
 
     # searchWalletBasic() {

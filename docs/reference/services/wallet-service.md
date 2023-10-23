@@ -216,7 +216,7 @@ Retrieves an item of the wallet by its ID.
 
 ## Get Wallet
 
-Retrieves information about wallets in the ecosystem. These endpoints can only be called by a Provider.
+Retrieves information about wallets in the ecosystem. These endpoints can only be called by a Provider, so make sure you authenticate as it before calling them.
 
 ### GetWalletInfo
 
