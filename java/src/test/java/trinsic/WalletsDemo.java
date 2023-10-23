@@ -59,7 +59,7 @@ public class WalletsDemo {
 	// getWalletFromExternalIdentity() {
     var getWalletFromExternalIdentityResponse = trinsic.Wallet().getWalletFromExternalIdentity(
         GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
-            WalletExternalIdentity.newBuilder().
+            WalletExternalIdentity.newBuilder()
                 .setId("test@trinsic.id")
                 .setProvider(1)
                 .build())
