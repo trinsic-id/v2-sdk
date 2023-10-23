@@ -64,7 +64,7 @@ public class WalletsDemo {
             WalletExternalIdentity.newBuilder()
                 .setId("test@trinsic.id")
                 .setProvider(IdentityProvider.Email)
-                .build())
+                .build()).build()
     ).get();
 	// }
 

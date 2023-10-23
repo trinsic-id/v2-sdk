@@ -65,10 +65,9 @@ func TestWalletService(t *testing.T) {
 		&wallet.GetWalletFromExternalIdentityRequest{
 			Identity: &provider.WalletExternalIdentity{
 				Id:       "test@trinsic.id",
-				Provider: &provider.IdentityProvider{
-					Name: provider.Identity_Email,
-				},
+				Provider: &provider.IdentityProvider.Email,
 			},
+		},
 	)
 	// }
 

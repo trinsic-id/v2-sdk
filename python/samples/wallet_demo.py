@@ -10,9 +10,9 @@ from trinsic.proto.services.universalwallet.v1 import (
     SearchRequest,
     CreateWalletRequest,
     GetWalletInfoRequest,
-    GetWalletFromExternalIdentityRequest,
-    IdentityProvider
+    GetWalletFromExternalIdentityRequest
 )
+from trinsic.proto.services.provider.v1 import IdentityProvider
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
