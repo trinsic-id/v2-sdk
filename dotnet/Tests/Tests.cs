@@ -530,7 +530,7 @@ public class Tests
 
         // createWallet() {
         var createWalletRequest = new CreateWalletRequest {
-            EcosystemId = "test-ecosystem",
+            EcosystemId = ecosystem.id,
             Description = "user123",
             Identity = new CreateWalletRequest.Types.ExternalIdentity {
                 Identity = "test@trinsic.id",
