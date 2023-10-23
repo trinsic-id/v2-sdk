@@ -10,7 +10,8 @@ from trinsic.proto.services.universalwallet.v1 import (
     SearchRequest,
     CreateWalletRequest,
     GetWalletInfoRequest,
-    GetWalletFromExternalIdentityRequest
+    GetWalletFromExternalIdentityRequest,
+    IdentityProvider
 )
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
@@ -72,7 +73,7 @@ async def wallet_demo():
         request=GetWalletFromExternalIdentityRequest(
             identity={
                 "id": "test@trinsic.id",
-                "provider": 1
+                "provider": IdentityProvider.Email
             }
         )
     )

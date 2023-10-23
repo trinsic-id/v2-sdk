@@ -7,6 +7,7 @@ import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.*;
 import trinsic.services.provider.v1.WalletExternalIdentity;
+import trinsic.services.provider.v1.IdentityProvider;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -62,7 +63,7 @@ public class WalletsDemo {
         GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
             WalletExternalIdentity.newBuilder()
                 .setId("test@trinsic.id")
-                .setProvider(1)
+                .setProvider(IdentityProvider.Email)
                 .build())
     ).get();
 	// }

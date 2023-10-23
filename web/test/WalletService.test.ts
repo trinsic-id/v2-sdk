@@ -8,6 +8,7 @@ import {
     FieldType,
     GetWalletFromExternalIdentityRequest,
     GetWalletInfoRequest,
+    IdentityProvider,
     InsertItemRequest,
     RejectCredentialRequest,
     SearchRequest,
@@ -287,7 +288,7 @@ describe("WalletService Unit Tests", () => {
                 ecosystemId: ecosystemId,
                 identity: {
                     identity: "test@trinsic.id",
-                    provider: 1,
+                    provider: IdentityProvider.Email,
                 }
             });
 
@@ -310,7 +311,7 @@ describe("WalletService Unit Tests", () => {
             GetWalletFromExternalIdentityRequest.fromPartial({
                 identity: {
                     id: "test@trinsic.id",
-                    provider: 1,
+                    provider: IdentityProvider.Email,
                 }
             }),
         );

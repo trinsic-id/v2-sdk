@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
+	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -62,11 +63,12 @@ func TestWalletService(t *testing.T) {
 	// getWalletFromExternalIdentity() {
 	getWalletFromExternalIdentityResponse, err := trinsic.Wallet().GetWalletFromExternalIdentity(context.Background(),
 		&wallet.GetWalletFromExternalIdentityRequest{
-			Identity: &wallet.GetWalletFromExternalIdentityRequest_WalletExternalIdentity{
+			Identity: &provider.WalletExternalIdentity{
 				Id:       "test@trinsic.id",
-				Provider: 1,
+				Provider: &provider.IdentityProvider{
+					Name: provider.Identity_Email,
+				},
 			},
-		},
 	)
 	// }
 
