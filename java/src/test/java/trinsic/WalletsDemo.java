@@ -57,7 +57,7 @@ public class WalletsDemo {
 	// }
 
 	// getWalletFromExternalIdentity() {
-    var getWalletFromExternalIdentityResponse = trinsic.Wallet().getWalletFromExternalIdentity(
+    var getWalletFromExternalIdentityResponse = trinsic.wallet().getWalletFromExternalIdentity(
         GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
             WalletExternalIdentity.newBuilder()
                 .setId("test@trinsic.id")
