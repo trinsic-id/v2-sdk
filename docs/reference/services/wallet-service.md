@@ -45,7 +45,13 @@ You can store the auth token in secure enclaves on the users device, browser, et
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateInit
+        // Step 1 - initiate authentication challenge
+        var authenticateInitRequest = new AuthenticateInitRequest {
+            Identity = "test@trinsic.id",
+            Provider = IdentityProvider.Email,
+            EcosystemId = "test-ecosystem" // short name or full ecosystem ID
+        };
+        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInitAsync(authenticateInitRequest);
         ```
         <!--/codeinclude-->
 
@@ -57,7 +63,19 @@ You can store the auth token in secure enclaves on the users device, browser, et
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:authenticateConfirm
+        // Step 2 - confirm authentication response
+        var authenticateConfirmRequest = new AuthenticateConfirmRequest {
+            Challenge = authenticateInitResponse.Challenge,
+            Response = "123456" // OTP code
+        };
+        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirmAsync(authenticateConfirmRequest);
+
+        // Response:
+        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
+
+        // use the new token to make authenticated calls
+        // var options = new TrinsicOptions { AuthToken = AuthenticateConfirmResponse.AuthToken };
+        // trinsic = new TrinsicService(options);
         ```
         <!--/codeinclude-->
 
@@ -80,7 +98,16 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:addExternalIdentityInit
+        // the two endpoints below require authenticated user context
+        // var options = new TrinsicOptions { AuthToken = "<auth token>" };
+        // var trinsic = new TrinsicService(options);
+
+        // Step 1 - initiate identity challenge
+        var addExternalIdentityInitRequest = new AddExternalIdentityInitRequest {
+            Identity = "test@trinsic.id",
+            Provider = IdentityProvider.Email
+        };
+        var addExternalIdentityInitResponse = await trinsic.Wallet.AddExternalIdentityInitAsync(addExternalIdentityInitRequest);
         ```
         <!--/codeinclude-->
 
@@ -92,7 +119,12 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:addExternalIdentityConfirm
+        // Step 2 - confirm challenge response
+        var addExternalIdentityConfirmRequest = new AddExternalIdentityConfirmRequest {
+            Challenge = addExternalIdentityInitResponse.Challenge,
+            Response = "123456" // OTP code
+        };
+        var addExternalIdentityConfirmResponse = await trinsic.Wallet.AddExternalIdentityConfirmAsync(addExternalIdentityConfirmRequest);
         ```
         <!--/codeinclude-->
 
@@ -108,7 +140,14 @@ Removes an external identity from the associated identities of the authenticated
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:removeExternalIdentity
+        // this endpoint require authenticated user context
+        // var options = new TrinsicOptions { AuthToken = "<auth token>" };
+        // var trinsic = new TrinsicService(options);
+
+        var removeExternalIdentityRequest = new RemoveExternalIdentityRequest {
+            Identity = "test@trinsic.id",
+        };
+        var removeExternalIdentityResponse = await trinsic.Wallet.RemoveExternalIdentityAsync(removeExternalIdentityRequest);
         ```
         <!--/codeinclude-->
 
@@ -233,10 +272,25 @@ Retrieves information about a wallet by its ID.
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [getWalletInfo](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo
+        var createWalletRequest = new CreateWalletRequest {
+            EcosystemId = ecosystem.Id,
+            Description = "user123",
+            Identity = new CreateWalletRequest.Types.ExternalIdentity {
+                Identity = "testemail@trinsic.id",
+                Provider = IdentityProvider.Email
+            }
+        };
+
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
+
+        // Response:
+        //   "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
+        //   "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
+        //   "wallet":
+        //       "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
+        //       "publicDid": "did:key:123456"
         ```
         <!--/codeinclude-->
-
 
     === "Python"
         <!--codeinclude-->
@@ -276,7 +330,14 @@ Retrieves information about a wallet by its External Identity (email or phone nu
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [getWalletFromExternalIdentity](../../../dotnet/Tests/Tests.cs) inside_block:getWalletFromExternalIdentity
+        var getWalletFromExternalIdentityRequest = new GetWalletFromExternalIdentityRequest {
+            Identity = new WalletExternalIdentity() {
+                Id = "test@trinsic.id",
+                Provider = IdentityProvider.Email
+            }
+        };
+
+        var getWalletFromExternalIdentityResponse = await trinsic.Wallet.GetWalletFromExternalIdentityAsync(getWalletFromExternalIdentityRequest);
         ```
         <!--/codeinclude-->
 

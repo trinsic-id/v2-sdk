@@ -523,65 +523,11 @@ public class Tests
 
     [Fact(DisplayName = "Demo: Wallet Service samples")]
     public async Task DemoWalletServiceMethods() {
+        // Most part of this service's samples are directly in the wallet-service.md file because it complains on creating/removing duplicate identities/wallets 
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
-
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystem.Id });
         trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
-
-        // createWallet() {
-        var createWalletRequest = new CreateWalletRequest {
-            EcosystemId = ecosystem.Id,
-            Description = "user123",
-            Identity = new CreateWalletRequest.Types.ExternalIdentity {
-                Identity = "test@trinsic.id",
-                Provider = IdentityProvider.Email
-            }
-        };
-
-        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
-
-        // Response:
-        //   "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
-        //   "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
-        //   "wallet":
-        //       "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
-        //       "publicDid": "did:key:123456"
-
-        // }
-
-
-        // addExternalIdentityInit() {
-        // the two endpoints below require authenticated user context
-        // var options = new TrinsicOptions { AuthToken = "<auth token>" };
-        // var trinsic = new TrinsicService(options);
-
-        // Step 1 - initiate identity challenge
-        var addExternalIdentityInitRequest = new AddExternalIdentityInitRequest {
-            Identity = "test@trinsic.id",
-            Provider = IdentityProvider.Email
-        };
-        var addExternalIdentityInitResponse = await trinsic.Wallet.AddExternalIdentityInitAsync(addExternalIdentityInitRequest);
-        // }
-
-        // addExternalIdentityConfirm() {
-        // Step 2 - confirm challenge response
-        var addExternalIdentityConfirmRequest = new AddExternalIdentityConfirmRequest {
-            Challenge = addExternalIdentityInitResponse.Challenge,
-            Response = "123456" // OTP code
-        };
-        var addExternalIdentityConfirmResponse = await trinsic.Wallet.AddExternalIdentityConfirmAsync(addExternalIdentityConfirmRequest);
-        // }
-
-        // getWalletFromExternalIdentity() {
-        var getWalletFromExternalIdentityRequest = new GetWalletFromExternalIdentityRequest {
-            Identity = new WalletExternalIdentity() {
-                Id = "test@trinsic.id",
-                Provider = IdentityProvider.Email
-            }
-        };
-
-        var getWalletFromExternalIdentityResponse = await trinsic.Wallet.GetWalletFromExternalIdentityAsync(getWalletFromExternalIdentityRequest);
-        // }
 
         // getWalletInfo() {
         var getWalletInfoResponse = await trinsic.Wallet.GetWalletInfoAsync(
@@ -590,43 +536,4 @@ public class Tests
             }
         );
         // }
-
-        // authenticateInit() {
-        // Step 1 - initiate authentication challenge
-        var authenticateInitRequest = new AuthenticateInitRequest {
-            Identity = "test@trinsic.id",
-            Provider = IdentityProvider.Email,
-            EcosystemId = "test-ecosystem" // short name or full ecosystem ID
-        };
-        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInitAsync(authenticateInitRequest);
-        // }
-
-        // authenticateConfirm() {
-        // Step 2 - confirm authentication response
-        var authenticateConfirmRequest = new AuthenticateConfirmRequest {
-            Challenge = authenticateInitResponse.Challenge,
-            Response = "123456" // OTP code
-        };
-        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirmAsync(authenticateConfirmRequest);
-
-        // Response:
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
-
-        // use the new token to make authenticated calls
-        // var options = new TrinsicOptions { AuthToken = AuthenticateConfirmResponse.AuthToken };
-        // trinsic = new TrinsicService(options);
-        // }
-
-        // removeExternalIdentity() {
-
-        // this endpoint require authenticated user context
-        // var options = new TrinsicOptions { AuthToken = "<auth token>" };
-        // var trinsic = new TrinsicService(options);
-
-        var removeExternalIdentityRequest = new RemoveExternalIdentityRequest {
-            Identity = "test@trinsic.id",
-        };
-        var removeExternalIdentityResponse = await trinsic.Wallet.RemoveExternalIdentityAsync(removeExternalIdentityRequest);
-        // }
-    }
 }
