@@ -586,7 +586,7 @@ public class Tests
         // getWalletInfo() {
         var getWalletInfoResponse = await trinsic.Wallet.GetWalletInfoAsync(
             new GetWalletInfoRequest {
-                WalletId = createWalletResponse.walletId
+                WalletId = createWalletResponse.Wallet.WalletId
             }
         );
         // }

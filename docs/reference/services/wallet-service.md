@@ -233,7 +233,7 @@ Retrieves information about a wallet by its ID.
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo()
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo
         ```
         <!--/codeinclude-->
 
