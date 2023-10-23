@@ -533,7 +533,7 @@ public class Tests
             EcosystemId = "test-ecosystem",
             Description = "user123",
             Identity = new ExternalIdentity {
-                Identity = "test@trinsic.id",
+                Id = "test@trinsic.id",
                 Provider = IdentityProvider.Email
             }
         };
@@ -556,20 +556,20 @@ public class Tests
         // var trinsic = new TrinsicService(options);
 
         // Step 1 - initiate identity challenge
-        var addExternalIdentityInitRequest = new AddExternalIdentityConfirmRequest {
+        var addExternalIdentityInitRequest = new AddExternalIdentityInitRequest {
             Identity = "test@trinsic.id",
             Provider = IdentityProvider.Email
         };
-        var addExternalIdentityInitResponse = await trinsic.Wallet.AddExternalIdentityInitAsync(AddExternalIdentityInitRequest);
+        var addExternalIdentityInitResponse = await trinsic.Wallet.AddExternalIdentityInitAsync(addExternalIdentityInitRequest);
         // }
 
         // addExternalIdentityConfirm() {
         // Step 2 - confirm challenge response
         var addExternalIdentityConfirmRequest = new AddExternalIdentityConfirmRequest {
-            Challenge = AddExternalIdentityInitResponse.Challenge,
+            Challenge = addExternalIdentityInitResponse.Challenge,
             Response = "123456" // OTP code
         };
-        var addExternalIdentityConfirmResponse = await trinsic.Wallet.AddExternalIdentityConfirmAsync(AddExternalIdentityConfirmRequest);
+        var addExternalIdentityConfirmResponse = await trinsic.Wallet.AddExternalIdentityConfirmAsync(addExternalIdentityConfirmRequest);
         // }
 
         // getWalletFromExternalIdentity() {
@@ -590,16 +590,16 @@ public class Tests
             Provider = IdentityProvider.Email,
             EcosystemId = "test-ecosystem" // short name or full ecosystem ID
         };
-        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInit(AuthenticateInitRequest);
+        var authenticateInitResponse = await trinsic.Wallet.AuthenticateInit(authenticateInitRequest);
         // }
 
         // authenticateConfirm() {
         // Step 2 - confirm authentication response
         var authenticateConfirmRequest = new AuthenticateConfirmRequest {
-            Challenge = AuthenticateInitResponse.Challenge,
+            Challenge = authenticateInitResponse.Challenge,
             Response = "123456" // OTP code
         };
-        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirm(AuthenticateConfirmRequest);
+        var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirm(authenticateConfirmRequest);
 
         // Response:
         //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
