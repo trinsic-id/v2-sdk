@@ -16,13 +16,13 @@ func TestWalletService(t *testing.T) {
 	assert2.Nil(err)
 
 	// Create a new account in the ecosystem
-	createResponse, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
+	createWalletResponse, err := trinsic.Wallet().CreateWallet(context.Background(), &wallet.CreateWalletRequest{
 		EcosystemId: ecosystem.Id,
 		Description: nil,
 	})
 	assert2.Nil(err)
 
-	walletId := createResponse.Wallet.WalletId
+	walletId := createWalletResponse.Wallet.WalletId
 
 	valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})
 	credentialJson := string(valuesBytes)
@@ -47,6 +47,31 @@ func TestWalletService(t *testing.T) {
 
 	assert2.Nil(err)
 	assert2.NotNil(getResponse)
+
+	// getWalletInfo() {
+	getWalletInfoResponse, err := trinsic.Wallet().GetWalletInfo(context.Background(),
+		&wallet.GetWalletInfoRequest{
+			WalletId: createWalletResponse.Wallet.WalletId,
+		},
+	)
+	// }
+
+	assert2.Nil(err)
+	assert2.NotNil(getWalletInfoResponse)
+
+	// getWalletFromExternalIdentity() {
+	getWalletFromExternalIdentityResponse, err := trinsic.Wallet().GetWalletFromExternalIdentity(context.Background(),
+		&wallet.GetWalletFromExternalIdentityRequest{
+			Identity: &wallet.GetWalletFromExternalIdentityRequest_WalletExternalIdentity{
+				Id:       "test@trinsic.id",
+				Provider: 1,
+			},
+		},
+	)
+	// }
+
+	assert2.Nil(err)
+	assert2.NotNil(getWalletFromExternalIdentityResponse)
 
 	// deleteItem() {
 	deleteResponse, err := trinsic.Wallet().DeleteItem(context.Background(),

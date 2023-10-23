@@ -50,6 +50,22 @@ public class WalletsDemo {
         trinsic.wallet().getItem(GetItemRequest.newBuilder().setItemId(itemId).build()).get();
     // }
 
+    // getWalletInfo() {
+	var getWalletInfoResponse = trinsic.wallet().getWalletInfo(
+        GetWalletInfoRequest.newBuilder().setWalletId(walletId).build()
+    ).get();
+	// }
+
+	// getWalletFromExternalIdentity() {
+    var getWalletFromExternalIdentityResponse = trinsic.Wallet().getWalletFromExternalIdentity(
+        GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
+            WalletExternalIdentity.newBuilder().
+                .setId("test@trinsic.id")
+                .setProvider(1)
+                .build())
+    ).get();
+	// }
+
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
