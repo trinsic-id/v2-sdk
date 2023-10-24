@@ -16,7 +16,25 @@ Create a new wallet and return the authentication token and wallet information a
 {{ proto_sample_start() }}
     === "C#"
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createWallet
+        var createWalletRequest = new CreateWalletRequest {
+            EcosystemId = ecosystem.Id,
+            Description = "user123",
+            Identity = new CreateWalletRequest.Types.ExternalIdentity {
+                Identity = "testemail@trinsic.id",
+                Provider = IdentityProvider.Email
+            }
+        };
+
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
+
+        // Response: {
+        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
+        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
+        //     "wallet": {
+        //          "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
+        //          "publicDid": "did:key:123456"
+        //     }
+        // }
         ```
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
@@ -65,8 +83,9 @@ You can store the auth token in secure enclaves on the users device, browser, et
         };
         var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirmAsync(authenticateConfirmRequest);
 
-        // Response:
+        // Response: {
         //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
+        // }
 
         // use the new token to make authenticated calls
         // var options = new TrinsicOptions { AuthToken = AuthenticateConfirmResponse.AuthToken };
@@ -259,23 +278,7 @@ Retrieves information about a wallet by its ID.
 
     === "C#"
         ```csharp
-        var createWalletRequest = new CreateWalletRequest {
-            EcosystemId = ecosystem.Id,
-            Description = "user123",
-            Identity = new CreateWalletRequest.Types.ExternalIdentity {
-                Identity = "testemail@trinsic.id",
-                Provider = IdentityProvider.Email
-            }
-        };
-
-        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
-
-        // Response:
-        //   "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
-        //   "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
-        //   "wallet":
-        //       "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
-        //       "publicDid": "did:key:123456"
+        [getWalletInfo](../../../dotnet/Tests/Tests.cs) inside_block:getWalletInfo
         ```
 
     === "Python"
