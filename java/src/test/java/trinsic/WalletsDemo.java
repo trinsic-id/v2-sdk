@@ -2,6 +2,8 @@ package trinsic;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+
+import io.grpc.StatusRuntimeException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
@@ -52,22 +54,31 @@ public class WalletsDemo {
         trinsic.wallet().getItem(GetItemRequest.newBuilder().setItemId(itemId).build()).get();
     // }
 
+    trinsic.setAuthToken(ecosystemResponse.getProfile());
     // getWalletInfo() {
 	var getWalletInfoResponse = trinsic.wallet().getWalletInfo(
         GetWalletInfoRequest.newBuilder().setWalletId(walletId).build()
     ).get();
 	// }
 
-	// getWalletFromExternalIdentity() {
-    var getWalletFromExternalIdentityResponse = trinsic.wallet().getWalletFromExternalIdentity(
-        GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
-            WalletExternalIdentity.newBuilder()
-                .setId("test@trinsic.id")
-                .setProvider(IdentityProvider.Email)
-                .build()).build()
-    ).get();
-	// }
-
+      try {
+          // getWalletFromExternalIdentity() {
+          var getWalletFromExternalIdentityResponse = trinsic.wallet().getWalletFromExternalIdentity(
+              GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
+                  WalletExternalIdentity.newBuilder()
+                      .setId("test@trinsic.id")
+                      .setProvider(IdentityProvider.Email)
+                      .build()).build()
+          ).get();
+          // }
+      } catch (ExecutionException ee) {
+          if (ee.getCause() instanceof StatusRuntimeException) {
+              // This is expected
+          } else {
+              throw ee;
+          }
+      }
+      trinsic.setAuthToken(account.getAuthToken());
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
