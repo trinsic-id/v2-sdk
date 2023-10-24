@@ -44,7 +44,7 @@ Create a new wallet and return the authentication token and wallet information a
 ## Authenticate
 
 Authenticate and return an auth token for an    existing wallet using one of the associated external identities.
-This endpoint requires that the wallet user has previously added at least one external identity using the above endpoints.
+This endpoint requires that the wallet user has previously added at least one external identity using the `AddExternalIdentity` calls.
 
 Once a token is obtained, it can be reused for future sessions -- users don't need to authenticate if they already have a valid token.
 You can store the auth token in secure enclaves on the users device, browser, etc.
