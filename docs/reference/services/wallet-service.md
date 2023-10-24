@@ -98,7 +98,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
 
 ## Add External Identity
 
-This service is used to attach external identity, such as email or phone number, to a wallet. The purpose of this process is to allow
+This service is used to attach an external identity, such as an email or a phone number, to a wallet. The purpose of this process is to allow
 the user to authenticate to their existing wallet (using the `Authenticate` endpoint) to get an auth token.
 This may be needed if the user is logging in on a different device, have lost access to the initial auth token, etc.
 
