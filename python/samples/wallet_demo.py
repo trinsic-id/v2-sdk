@@ -2,6 +2,8 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
+from grpclib import GRPCError
+
 from trinsic.proto.services.universalwallet.v1 import (
     DeleteItemRequest,
     DeleteWalletRequest,
@@ -10,9 +12,9 @@ from trinsic.proto.services.universalwallet.v1 import (
     SearchRequest,
     CreateWalletRequest,
     GetWalletInfoRequest,
-    GetWalletFromExternalIdentityRequest
+    GetWalletFromExternalIdentityRequest,
 )
-from trinsic.proto.services.provider.v1 import IdentityProvider
+from trinsic.proto.services.provider.v1 import IdentityProvider, WalletExternalIdentity
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -59,25 +61,28 @@ async def wallet_demo():
     item = await trinsic.wallet.get_item(request=GetItemRequest(item_id))
     # }
 
-    trinsic.set_auth_token(ecosystem_create.profile.auth_token)
+    trinsic.set_auth_token(ecosystem_create.profile)
     # getWalletInfo() {
     get_wallet_info_response = await trinsic.wallet.get_wallet_info(
-        request=GetWalletInfoRequest(
-            wallet_id=create_wallet_response.wallet.wallet_id
-        )
+        request=GetWalletInfoRequest(wallet_id=create_wallet_response.wallet.wallet_id)
     )
     # }
 
-    # getWalletFromExternalIdentity() {
-    get_wallet_from_external_identity_response = await trinsic.wallet.get_wallet_from_external_identity(
-        request=GetWalletFromExternalIdentityRequest(
-            identity={
-                "id": "test@trinsic.id",
-                "provider": IdentityProvider.Email
-            }
+    try:
+        # getWalletFromExternalIdentity() {
+        get_wallet_from_external_identity_response = (
+            await trinsic.wallet.get_wallet_from_external_identity(
+                request=GetWalletFromExternalIdentityRequest(
+                    identity=WalletExternalIdentity(
+                        id="test@trinsic.id", provider=IdentityProvider.Email
+                    )
+                )
+            )
         )
-    )
-    # }
+        # }
+    except GRPCError as e:
+        # We expect a wallet not found
+        pass
 
     trinsic.set_auth_token(create_wallet_response.auth_token)
 
