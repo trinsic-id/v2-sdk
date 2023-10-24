@@ -26,15 +26,6 @@ Create a new wallet and return the authentication token and wallet information a
         };
 
         var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(createWalletRequest);
-
-        // Response: {
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo=",
-        //     "tokenId": "0b4f42cb-4d44-4629-89dd-47b814229ffe",
-        //     "wallet": {
-        //          "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
-        //          "publicDid": "did:key:123456"
-        //     }
-        // }
         ```
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
@@ -82,11 +73,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
             Response = "123456" // OTP code
         };
         var authenticateConfirmResponse = await trinsic.Wallet.AuthenticateConfirmAsync(authenticateConfirmRequest);
-
-        // Response: {
-        //     "authToken": "dGhpcyBpcyBhbiBleGFtcGxlIGF1dGhlbmNpdGlvbiB0b2tlbgo="
-        // }
-
+        
         // use the new token to make authenticated calls
         // var options = new TrinsicOptions { AuthToken = authenticateConfirmResponse.AuthToken };
         // trinsic = new TrinsicService(options);

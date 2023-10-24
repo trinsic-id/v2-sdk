@@ -27,11 +27,11 @@ import { TrinsicService } from "@trinsic/trinsic";
 
 // instantiate the service without parameters
 let trinsic = new TrinsicService();
-const walletResponse = await trinsic.wallet().createWallet({ ecosystemId: "acme-corp" });
+const walletResponse = await trinsic.wallet().createWallet({ ecosystemId: "<ecosystem_id>" });
 
 // instantiate the service with 'authToken' from the response
 trinsic = new TrinsicService({ authToken: walletResponse.authToken });
-const infoResponse = await trinsic.wallet().getMyInfo({});
+const infoResponse = await trinsic.wallet().getMyInfo();
 
 console.log(infoResponse);
 ```
