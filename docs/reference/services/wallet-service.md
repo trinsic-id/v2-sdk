@@ -88,7 +88,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
         // }
 
         // use the new token to make authenticated calls
-        // var options = new TrinsicOptions { AuthToken = AuthenticateConfirmResponse.AuthToken };
+        // var options = new TrinsicOptions { AuthToken = authenticateConfirmResponse.AuthToken };
         // trinsic = new TrinsicService(options);
         ```
 
