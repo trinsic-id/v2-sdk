@@ -3,8 +3,8 @@ package services
 import (
 	"context"
 	"encoding/json"
-	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -65,14 +65,15 @@ func TestWalletService(t *testing.T) {
 		&wallet.GetWalletFromExternalIdentityRequest{
 			Identity: &provider.WalletExternalIdentity{
 				Id:       "test@trinsic.id",
-				Provider: &provider.IdentityProvider.Email,
+				Provider: provider.IdentityProvider_Email,
 			},
 		},
 	)
 	// }
 
-	assert2.Nil(err)
-	assert2.NotNil(getWalletFromExternalIdentityResponse)
+	assert2.NotNil(err)
+	assert2.Contains(err.Error(), "Wallet attached to the provided External Identity was not found")
+	assert2.Nil(getWalletFromExternalIdentityResponse)
 
 	// deleteItem() {
 	deleteResponse, err := trinsic.Wallet().DeleteItem(context.Background(),
