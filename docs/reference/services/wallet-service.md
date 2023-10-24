@@ -15,11 +15,9 @@ Create a new wallet and return the authentication token and wallet information a
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createWallet
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.CreateWallet") }}
 
@@ -43,7 +41,6 @@ You can store the auth token in secure enclaves on the users device, browser, et
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         // Step 1 - initiate authentication challenge
         var authenticateInitRequest = new AuthenticateInitRequest {
@@ -53,7 +50,6 @@ You can store the auth token in secure enclaves on the users device, browser, et
         };
         var authenticateInitResponse = await trinsic.Wallet.AuthenticateInitAsync(authenticateInitRequest);
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateInit") }}
 
@@ -61,7 +57,6 @@ You can store the auth token in secure enclaves on the users device, browser, et
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         // Step 2 - confirm authentication response
         var authenticateConfirmRequest = new AuthenticateConfirmRequest {
@@ -77,7 +72,6 @@ You can store the auth token in secure enclaves on the users device, browser, et
         // var options = new TrinsicOptions { AuthToken = AuthenticateConfirmResponse.AuthToken };
         // trinsic = new TrinsicService(options);
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AuthenticateConfirm") }}
 
@@ -96,7 +90,6 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         // the two endpoints below require authenticated user context
         // var options = new TrinsicOptions { AuthToken = "<auth token>" };
@@ -109,7 +102,6 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
         };
         var addExternalIdentityInitResponse = await trinsic.Wallet.AddExternalIdentityInitAsync(addExternalIdentityInitRequest);
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit") }}
 
@@ -117,7 +109,6 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         // Step 2 - confirm challenge response
         var addExternalIdentityConfirmRequest = new AddExternalIdentityConfirmRequest {
@@ -126,7 +117,6 @@ services `AddExternalIdentityInit` and `AddExternalIdentityConfirm`.
         };
         var addExternalIdentityConfirmResponse = await trinsic.Wallet.AddExternalIdentityConfirmAsync(addExternalIdentityConfirmRequest);
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm") }}
 
@@ -138,7 +128,6 @@ Removes an external identity from the associated identities of the authenticated
 
 {{ proto_sample_start() }}
     === "C#"
-        <!--codeinclude-->
         ```csharp
         // this endpoint require authenticated user context
         // var options = new TrinsicOptions { AuthToken = "<auth token>" };
@@ -149,7 +138,6 @@ Removes an external identity from the associated identities of the authenticated
         };
         var removeExternalIdentityResponse = await trinsic.Wallet.RemoveExternalIdentityAsync(removeExternalIdentityRequest);
         ```
-        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity") }}
 
@@ -163,35 +151,35 @@ Stores a credential (or any other JSON object) in a wallet.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
+        [insertItemWallet](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
+        [insertItemWallet](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
+        [insertItemWallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:insertItemWallet
+        [insertItemWallet](../../../go/services/wallet_service_test.go) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
+        [insertItemWallet](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
@@ -270,7 +258,6 @@ Retrieves information about a wallet by its ID.
         <!--/codeinclude-->
 
     === "C#"
-        <!--codeinclude-->
         ```csharp
         var createWalletRequest = new CreateWalletRequest {
             EcosystemId = ecosystem.Id,
@@ -290,7 +277,6 @@ Retrieves information about a wallet by its ID.
         //       "walletId": "urn:trinsic:wallets:z7438uW5X4gZ1rZsiZaBdxX",
         //       "publicDid": "did:key:123456"
         ```
-        <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
@@ -328,7 +314,6 @@ Retrieves information about a wallet by its External Identity (email or phone nu
         <!--/codeinclude-->
 
     === "C#"
-        <!--codeinclude-->
         ```csharp
         var getWalletFromExternalIdentityRequest = new GetWalletFromExternalIdentityRequest {
             Identity = new WalletExternalIdentity() {
@@ -339,7 +324,6 @@ Retrieves information about a wallet by its External Identity (email or phone nu
 
         var getWalletFromExternalIdentityResponse = await trinsic.Wallet.GetWalletFromExternalIdentityAsync(getWalletFromExternalIdentityRequest);
         ```
-        <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
