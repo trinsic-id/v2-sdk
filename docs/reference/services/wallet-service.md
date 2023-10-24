@@ -52,7 +52,7 @@ You can store the auth token in secure enclaves on the users device, browser, et
 !!! question "When should users authenticate?"
 
     - If your integration solution doesn't manage the wallet tokens, users may need to re-authenticate on their device to get a new auth token
-    - Users want to log in to a different device using their email or phone number
+    - Users that want to log in to a different device using their email or phone number
     - Returning users that have lost their previous session and require a new auth token
 
 ### AuthenticateInit
