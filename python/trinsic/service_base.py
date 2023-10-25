@@ -1,6 +1,7 @@
 """
 Base class and helper methods for the Service wrappers
 """
+import base64
 from abc import ABC
 from typing import Dict
 
@@ -9,6 +10,7 @@ from grpclib.client import Channel
 
 import trinsic
 from trinsic.proto.sdk.options.v1 import TrinsicOptions
+from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.trinsic_util import trinsic_config, create_channel
 
@@ -51,7 +53,11 @@ class ServiceBase(ABC):
                 # If the event loop is closed, NBD.
                 pass
 
-    def set_auth_token(self, auth_token: str) -> None:
+    def set_auth_token(self, auth_token: str | bytes | AccountProfile) -> None:
+        if type(auth_token) is AccountProfile:
+            auth_token = base64.urlsafe_b64encode(bytes(auth_token)).decode("utf8")
+        if type(auth_token) is bytes:
+            auth_token = base64.urlsafe_b64encode(auth_token).decode("utf-8")
         self.service_options.auth_token = auth_token
 
     def build_metadata(self, request: Message = None) -> Dict[str, str]:

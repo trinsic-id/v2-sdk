@@ -2,6 +2,8 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
+from grpclib import GRPCError
+
 from trinsic.proto.services.universalwallet.v1 import (
     DeleteItemRequest,
     DeleteWalletRequest,
@@ -9,7 +11,10 @@ from trinsic.proto.services.universalwallet.v1 import (
     InsertItemRequest,
     SearchRequest,
     CreateWalletRequest,
+    GetWalletInfoRequest,
+    GetWalletFromExternalIdentityRequest,
 )
+from trinsic.proto.services.provider.v1 import IdentityProvider, WalletExternalIdentity
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
@@ -27,12 +32,12 @@ async def wallet_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem_create = await trinsic.provider.create_ecosystem()
-    wallet_response = await trinsic.wallet.create_wallet(
+    create_wallet_response = await trinsic.wallet.create_wallet(
         request=CreateWalletRequest(ecosystem_id=ecosystem_create.ecosystem.id)
     )
-    trinsic.set_auth_token(wallet_response.auth_token)
+    trinsic.set_auth_token(create_wallet_response.auth_token)
 
-    wallet_id = wallet_response.wallet.wallet_id
+    wallet_id = create_wallet_response.wallet.wallet_id
 
     credential = json.dumps(
         {
@@ -55,6 +60,31 @@ async def wallet_demo():
     # getItem() {
     item = await trinsic.wallet.get_item(request=GetItemRequest(item_id))
     # }
+
+    trinsic.set_auth_token(ecosystem_create.profile)
+    # getWalletInfo() {
+    get_wallet_info_response = await trinsic.wallet.get_wallet_info(
+        request=GetWalletInfoRequest(wallet_id=create_wallet_response.wallet.wallet_id)
+    )
+    # }
+
+    try:
+        # getWalletFromExternalIdentity() {
+        get_wallet_from_external_identity_response = (
+            await trinsic.wallet.get_wallet_from_external_identity(
+                request=GetWalletFromExternalIdentityRequest(
+                    identity=WalletExternalIdentity(
+                        id="test@trinsic.id", provider=IdentityProvider.Email
+                    )
+                )
+            )
+        )
+        # }
+    except GRPCError as e:
+        # We expect a wallet not found
+        pass
+
+    trinsic.set_auth_token(create_wallet_response.auth_token)
 
     # searchWalletBasic() {
     wallet_items = await trinsic.wallet.search_wallet()

@@ -126,8 +126,9 @@ public class Tests
         // STORE CREDENTIAL
         trinsic = new TrinsicService(_options.CloneWithAuthToken(allison.AuthToken));
 
-        var insertItemResponse =
-            await trinsic.Wallet.InsertItemAsync(new() { ItemJson = issueResponse.DocumentJson });
+        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() {
+            ItemJson = issueResponse.DocumentJson
+        });
         var itemId = insertItemResponse.ItemId;
 
         // getItem() {
@@ -518,5 +519,22 @@ public class Tests
         var actual = Base64Url.Decode(encoded);
 
         actual.Should().NotBeEmpty();
+    }
+
+    [Fact(DisplayName = "Demo: Wallet Service samples")]
+    public async Task DemoWalletServiceMethods() {
+        // Most part of this service's samples are directly in the wallet-service.md file because it complains on creating/removing duplicate identities/wallets 
+        var trinsic = new TrinsicService(_options.Clone());
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+        var createWalletResponse = await trinsic.Wallet.CreateWalletAsync(new() { EcosystemId = ecosystem.Id });
+        trinsic = new TrinsicService(_options.CloneWithAuthToken(authToken));
+
+        // getWalletInfo() {
+        var getWalletInfoResponse = await trinsic.Wallet.GetWalletInfoAsync(
+            new GetWalletInfoRequest {
+                WalletId = createWalletResponse.Wallet.WalletId
+            }
+        );
+        // }
     }
 }

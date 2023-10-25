@@ -6,6 +6,9 @@ import {
     CreateEcosystemRequest,
     CreateProofRequest,
     FieldType,
+    GetWalletFromExternalIdentityRequest,
+    GetWalletInfoRequest,
+    IdentityProvider,
     InsertItemRequest,
     RejectCredentialRequest,
     SearchRequest,
@@ -276,6 +279,43 @@ describe("WalletService Unit Tests", () => {
         expect(jsonDocument).not.toBeNull();
         expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
         expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
+    });
+
+    it("Demo: get wallet methods", async () => {
+        let createWalletResponse = await trinsic
+            .wallet()
+            .createWallet({
+                ecosystemId: ecosystemId,
+                identity: {
+                    identity: "test@trinsic.id",
+                    provider: IdentityProvider.Email,
+                }
+            });
+
+        trinsic.options.authToken = root.authToken;
+
+        // getWalletInfo() {
+        //trinsic.options.authToken = trinsic.provider().options.authToken;
+
+        let getWalletInfoResponse = await trinsic.wallet().getWalletInfo(
+            GetWalletInfoRequest.fromPartial({
+                walletId: createWalletResponse.wallet?.walletId,
+            }),
+        );
+        // }
+
+        // getWalletFromExternalIdentity() {
+        //trinsic.options.authToken = trinsic.provider().options.authToken;
+
+        let getWalletFromExternalIdentityResponse = await trinsic.wallet().getWalletFromExternalIdentity(
+            GetWalletFromExternalIdentityRequest.fromPartial({
+                identity: {
+                    id: "test@trinsic.id",
+                    provider: IdentityProvider.Email,
+                }
+            }),
+        );
+        // }
     });
 
     it("Delete wallet functions", async () => {
