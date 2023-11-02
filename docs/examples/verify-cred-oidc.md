@@ -62,8 +62,8 @@ Let's configure Express to create an endpoint for verification served at `/api/v
 ```js
 app.post('/api/verify', async (req, res) => {
 
-    const verificationResponse = await trinsic.verifier().verifyCredential({
-        credential: JSON.stringify(req.body),
+    const verificationResponse = await trinsic.credential().verifyProof({
+        proofDocumentJson: JSON.stringify(req.body),
     });
 
     res.send(verificationResponse);
