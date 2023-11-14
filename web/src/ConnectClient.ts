@@ -1,7 +1,7 @@
 import {
-    WebStorageStateStore,
     OidcClient,
     OidcClientSettings,
+    WebStorageStateStore,
 } from "oidc-client-ts";
 
 export interface MobileDetect {
@@ -240,18 +240,23 @@ import MicroModal from "micromodal";
 
 export class ConnectClient {
     public baseUrl: string;
+    public redirectUri?: string;
 
     public oidcConfig: OidcClientSettings;
     oidcClient?: OidcClient;
     popupWindow?: Window | null;
 
-    constructor(connectUrl: string = "https://connect.trinsic.cloud") {
+    constructor(
+        connectUrl: string = "https://connect.trinsic.cloud",
+        redirectUri?: string
+    ) {
         this.baseUrl = connectUrl;
+        this.redirectUri = redirectUri;
 
         this.oidcConfig = {
             authority: this.baseUrl,
             client_id: "http://localhost:8080/",
-            redirect_uri: "http://localhost:8080/",
+            redirect_uri: this.redirectUri ?? "http://localhost:8080/",
 
             response_type: "code",
             scope: "openid",
@@ -331,7 +336,15 @@ export class ConnectClient {
         const iframe = document.createElement("iframe");
         iframe.className = "h-full w-full bg-transparent";
         iframe.allow = "camera *; microphone *; display-capture *";
-        iframe.src = `${this.baseUrl}/connect/verify?clientToken=${clientToken}`;
+
+        let redirectUri = "";
+        if (this.redirectUri) {
+            redirectUri = `&redirect_uri=${encodeURIComponent(
+                this.redirectUri
+            )}`;
+        }
+
+        iframe.src = `${this.baseUrl}/connect/verify?clientToken=${clientToken}${redirectUri}`;
 
         modalContainer.append(iframe);
         bgOverlay.append(modalContainer);
