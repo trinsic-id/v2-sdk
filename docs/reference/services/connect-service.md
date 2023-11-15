@@ -15,7 +15,7 @@ performed previously on the platform, reducing the number of full verification f
 
 Create an identity verification session.
 
-Populate {{ field_ref("CreateSessionRequest", "verifications") }} with a single `RequestedVerification` object, with a {{ field_ref("CreateSessionRequest", "verifications[i].type") }} of {{ field_ref("CreateSessionRequest", "verifications[i].type.GOVERNMENT_ID") }}. In future, multiple verification types 
+Populate {{ field_ref("CreateSessionRequest", "verifications") }} with a single `RequestedVerification` object, with a {{ field_ref("CreateSessionRequest", "verifications[i].type") }} of {{ field_ref("CreateSessionRequest", "verifications[i].type.GOVERNMENT_ID") }}. In future, multiple verification types
 will be supported in a single session.
 
 In the returned `session` object, handle the following values appropriately:
@@ -63,7 +63,9 @@ See [Get Verification Results](#get-verification-results) to understand how to f
 
 Fetch an identity verification session by its ID.
 
-If the Session has been completed successfully, the results will be available in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field.
+If the Session has been completed successfully, the results will be available in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field. 
+
+Additionally, you can access the {{ field_ref("GetSessionResponse", "session.verifications") }} field and look into the verifications associated with the session. If one of the verifications performed is of type `GOVERNMENT_ID` and it is successful, you can find the subject normalized data in that verification's `normalized_government_id_data` field.
 
 If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the {{ field_ref("GetSessionResponse", "session.fail_code") }} field.
 
@@ -135,7 +137,7 @@ Once a Session has been [created](#create-session), the verification flow must b
     const connectClient = new ConnectClient();
 
     // The identityVerification() function opens the Trinsic Connect flow in an
-    // iframe on your page, and returns a Promise that resolves or rejects 
+    // iframe on your page, and returns a Promise that resolves or rejects
     // when the flow is completed successfully or unsuccessfully.
     connectClient.identityVerification(clientToken).finally(() => {
         // Session has been completed; ping your backend to fetch the results
@@ -155,11 +157,11 @@ Once a Session has been [created](#create-session), the verification flow must b
 
 ## Get Verification Results
 
-If a verification is successful, its {{ field_ref("GetSessionResponse", "session.state") }}  will be {{ field_ref("GetSessionResponse", "session.state.IDV_SUCCESS") }}, and the resultant data will be available as a JSON string in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field. 
+If a verification is successful, its {{ field_ref("GetSessionResponse", "session.state") }}  will be {{ field_ref("GetSessionResponse", "session.state.IDV_SUCCESS") }}, and the resultant data will be available as a JSON string in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field.
 
 Use the [Get Session](#get-session) call to get the current Session object, including its {{ field_ref("GetSessionResponse", "session.state") }} and {{ field_ref("GetSessionResponse", "session.result_vp") }}.
 
-The verification data is in the form of a [Verifiable Presentation <small>:material-open-in-new:</small>](https://www.w3.org/TR/vc-data-model/#presentations){target=_blank}, 
+The verification data is in the form of a [Verifiable Presentation <small>:material-open-in-new:</small>](https://www.w3.org/TR/vc-data-model/#presentations){target=_blank},
 which will contain one [Verifiable Credential <small>:material-open-in-new:</small>](/learn/concepts/credentials){target=_blank} for each Verification requested during [Session Creation](#create-session).
 
 Below is an example JSON document representing the structure of the output of a Session created with a single Verification of type `GOVERNMENT_ID`:
