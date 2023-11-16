@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7+insiders-4.42.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8+insiders-4.43.0">
     
     
       
@@ -2974,9 +2974,11 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">getWalletInfoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">getWalletInfo</span><span class="p">(</span>
-<span class="w">        </span><span class="n">GetWalletInfoRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">).</span><span class="na">build</span><span class="p">()</span>
-<span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getWalletInfoResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">wallet</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">getWalletInfo</span><span class="p">(</span><span class="n">GetWalletInfoRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -3046,13 +3048,18 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getWalletFromExternalIdentityResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">getWalletFromExternalIdentity</span><span class="p">(</span>
-<span class="w">    </span><span class="n">GetWalletFromExternalIdentityRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setIdentity</span><span class="p">(</span>
-<span class="w">        </span><span class="n">WalletExternalIdentity</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="s">&quot;test@trinsic.id&quot;</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">setProvider</span><span class="p">(</span><span class="n">IdentityProvider</span><span class="p">.</span><span class="na">Email</span><span class="p">)</span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">build</span><span class="p">()</span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getWalletFromExternalIdentityResponse</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">trinsic</span>
+<span class="w">        </span><span class="p">.</span><span class="na">wallet</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">getWalletFromExternalIdentity</span><span class="p">(</span>
+<span class="w">            </span><span class="n">GetWalletFromExternalIdentityRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">setIdentity</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">WalletExternalIdentity</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="s">&quot;test@trinsic.id&quot;</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">setProvider</span><span class="p">(</span><span class="n">IdentityProvider</span><span class="p">.</span><span class="na">Email</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
 </div>
@@ -3270,6 +3277,12 @@ Examples and detailed description on working with grouped results <a href="https
 
 
 
+
+
+
+
+
+
   
 
 
@@ -3466,7 +3479,7 @@ Examples and detailed description on working with grouped results <a href="https
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.59e7e423.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5ca32a6.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
