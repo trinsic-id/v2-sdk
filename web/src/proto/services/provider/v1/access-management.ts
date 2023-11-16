@@ -684,7 +684,7 @@ export const AccessManagementDefinition = {
       requestStream: false,
       responseType: ListAvailableRolesResponse,
       responseStream: false,
-      options: { _unknownFields: { 480010: [new Uint8Array([6, 16, 1, 34, 2, 8, 1])] } },
+      options: { _unknownFields: { 480010: [new Uint8Array([4, 34, 2, 8, 1]), new Uint8Array([2, 16, 1])] } },
     },
   },
 } as const;

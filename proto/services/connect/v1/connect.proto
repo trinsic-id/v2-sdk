@@ -148,8 +148,13 @@ message Verification {
   // by the user -- or `0` if not yet begun.
   fixed64 begun = 6;
 
-  // The unix timestamp, in seconds, when this verification last changed state -- o
+  // The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
+  // begun.
   fixed64 updated = 7;
+  
+  // The Government ID options for this Verification.
+  // Only set if this Verification is of type `GOVERNMENT_ID`.
+  optional GovernmentIDOptions government_id_options = 8;
 }
 
 // Request to create an Identity Verification Session
@@ -162,6 +167,45 @@ message CreateSessionRequest {
 message RequestedVerification {
   // The type of verification to perform
   VerificationType type = 1;
+  
+  oneof options {
+    // Options for a Verification of type `GOVERNMENT_ID`
+    GovernmentIDOptions government_id_options = 2;
+  }
+}
+
+// Options for a Verification of type `GOVERNMENT_ID`
+message GovernmentIDOptions {
+  // The fields to retrieve from the Government ID.
+  // If this object is not set, all fields will be retrieved.
+  GovernmentIDFields fields = 1;
+}
+
+// Selection of fields to retrieve from a Government ID. All fields default to `false` unless explicitly set to `true`.
+message GovernmentIDFields {
+  // ID number of the underlying identity document
+  bool id_number = 1;
+  
+  // Given ("first") name of the document holder
+  bool given_name = 2;
+  
+  // Family ("last") name of the document holder
+  bool family_name = 3;
+  
+  // Full address of the document holder
+  bool address = 4;
+  
+  // Date of birth of the document holder
+  bool date_of_birth = 5;
+  
+  // ISO3 country code of the document
+  bool country = 6;
+  
+  // Issuance date of the document
+  bool issue_date = 7;
+  
+  // Expiration date date of the document
+  bool expiration_date = 8;
 }
 
 // Response to `CreateIDVSessionRequest`

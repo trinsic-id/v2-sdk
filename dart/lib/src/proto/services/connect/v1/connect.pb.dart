@@ -225,6 +225,7 @@ class Verification extends $pb.GeneratedMessage {
     $core.bool? reused,
     $fixnum.Int64? begun,
     $fixnum.Int64? updated,
+    GovernmentIDOptions? governmentIdOptions,
   }) {
     final $result = create();
     if (id != null) {
@@ -247,6 +248,9 @@ class Verification extends $pb.GeneratedMessage {
     }
     if (updated != null) {
       $result.updated = updated;
+    }
+    if (governmentIdOptions != null) {
+      $result.governmentIdOptions = governmentIdOptions;
     }
     return $result;
   }
@@ -283,6 +287,8 @@ class Verification extends $pb.GeneratedMessage {
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOM<GovernmentIDOptions>(8, _omitFieldNames ? '' : 'governmentIdOptions',
+        subBuilder: GovernmentIDOptions.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -389,7 +395,8 @@ class Verification extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   void clearBegun() => clearField(6);
 
-  /// The unix timestamp, in seconds, when this verification last changed state -- o
+  /// The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
+  /// begun.
   @$pb.TagNumber(7)
   $fixnum.Int64 get updated => $_getI64(6);
   @$pb.TagNumber(7)
@@ -401,6 +408,22 @@ class Verification extends $pb.GeneratedMessage {
   $core.bool hasUpdated() => $_has(6);
   @$pb.TagNumber(7)
   void clearUpdated() => clearField(7);
+
+  /// The Government ID options for this Verification.
+  /// Only set if this Verification is of type `GOVERNMENT_ID`.
+  @$pb.TagNumber(8)
+  GovernmentIDOptions get governmentIdOptions => $_getN(7);
+  @$pb.TagNumber(8)
+  set governmentIdOptions(GovernmentIDOptions v) {
+    setField(8, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasGovernmentIdOptions() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearGovernmentIdOptions() => clearField(8);
+  @$pb.TagNumber(8)
+  GovernmentIDOptions ensureGovernmentIdOptions() => $_ensure(7);
 }
 
 /// Request to create an Identity Verification Session
@@ -461,14 +484,20 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
   $core.List<RequestedVerification> get verifications => $_getList(0);
 }
 
+enum RequestedVerification_Options { governmentIdOptions, notSet }
+
 /// A verification to perform in an IDV flow
 class RequestedVerification extends $pb.GeneratedMessage {
   factory RequestedVerification({
     VerificationType? type,
+    GovernmentIDOptions? governmentIdOptions,
   }) {
     final $result = create();
     if (type != null) {
       $result.type = type;
+    }
+    if (governmentIdOptions != null) {
+      $result.governmentIdOptions = governmentIdOptions;
     }
     return $result;
   }
@@ -480,15 +509,23 @@ class RequestedVerification extends $pb.GeneratedMessage {
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
 
+  static const $core.Map<$core.int, RequestedVerification_Options>
+      _RequestedVerification_OptionsByTag = {
+    2: RequestedVerification_Options.governmentIdOptions,
+    0: RequestedVerification_Options.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       _omitMessageNames ? '' : 'RequestedVerification',
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
+    ..oo(0, [2])
     ..e<VerificationType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE,
         defaultOrMaker: VerificationType.GOVERNMENT_ID,
         valueOf: VerificationType.valueOf,
         enumValues: VerificationType.values)
+    ..aOM<GovernmentIDOptions>(2, _omitFieldNames ? '' : 'governmentIdOptions',
+        subBuilder: GovernmentIDOptions.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -516,6 +553,10 @@ class RequestedVerification extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<RequestedVerification>(create);
   static RequestedVerification? _defaultInstance;
 
+  RequestedVerification_Options whichOptions() =>
+      _RequestedVerification_OptionsByTag[$_whichOneof(0)]!;
+  void clearOptions() => clearField($_whichOneof(0));
+
   /// The type of verification to perform
   @$pb.TagNumber(1)
   VerificationType get type => $_getN(0);
@@ -528,6 +569,279 @@ class RequestedVerification extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
   void clearType() => clearField(1);
+
+  /// Options for a Verification of type `GOVERNMENT_ID`
+  @$pb.TagNumber(2)
+  GovernmentIDOptions get governmentIdOptions => $_getN(1);
+  @$pb.TagNumber(2)
+  set governmentIdOptions(GovernmentIDOptions v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasGovernmentIdOptions() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGovernmentIdOptions() => clearField(2);
+  @$pb.TagNumber(2)
+  GovernmentIDOptions ensureGovernmentIdOptions() => $_ensure(1);
+}
+
+/// Options for a Verification of type `GOVERNMENT_ID`
+class GovernmentIDOptions extends $pb.GeneratedMessage {
+  factory GovernmentIDOptions({
+    GovernmentIDFields? fields,
+  }) {
+    final $result = create();
+    if (fields != null) {
+      $result.fields = fields;
+    }
+    return $result;
+  }
+  GovernmentIDOptions._() : super();
+  factory GovernmentIDOptions.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GovernmentIDOptions.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GovernmentIDOptions',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOM<GovernmentIDFields>(1, _omitFieldNames ? '' : 'fields',
+        subBuilder: GovernmentIDFields.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GovernmentIDOptions clone() => GovernmentIDOptions()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GovernmentIDOptions copyWith(void Function(GovernmentIDOptions) updates) =>
+      super.copyWith((message) => updates(message as GovernmentIDOptions))
+          as GovernmentIDOptions;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GovernmentIDOptions create() => GovernmentIDOptions._();
+  GovernmentIDOptions createEmptyInstance() => create();
+  static $pb.PbList<GovernmentIDOptions> createRepeated() =>
+      $pb.PbList<GovernmentIDOptions>();
+  @$core.pragma('dart2js:noInline')
+  static GovernmentIDOptions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GovernmentIDOptions>(create);
+  static GovernmentIDOptions? _defaultInstance;
+
+  /// The fields to retrieve from the Government ID.
+  /// If this object is not set, all fields will be retrieved.
+  @$pb.TagNumber(1)
+  GovernmentIDFields get fields => $_getN(0);
+  @$pb.TagNumber(1)
+  set fields(GovernmentIDFields v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasFields() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearFields() => clearField(1);
+  @$pb.TagNumber(1)
+  GovernmentIDFields ensureFields() => $_ensure(0);
+}
+
+/// Selection of fields to retrieve from a Government ID. All fields default to `false` unless explicitly set to `true`.
+class GovernmentIDFields extends $pb.GeneratedMessage {
+  factory GovernmentIDFields({
+    $core.bool? idNumber,
+    $core.bool? givenName,
+    $core.bool? familyName,
+    $core.bool? address,
+    $core.bool? dateOfBirth,
+    $core.bool? country,
+    $core.bool? issueDate,
+    $core.bool? expirationDate,
+  }) {
+    final $result = create();
+    if (idNumber != null) {
+      $result.idNumber = idNumber;
+    }
+    if (givenName != null) {
+      $result.givenName = givenName;
+    }
+    if (familyName != null) {
+      $result.familyName = familyName;
+    }
+    if (address != null) {
+      $result.address = address;
+    }
+    if (dateOfBirth != null) {
+      $result.dateOfBirth = dateOfBirth;
+    }
+    if (country != null) {
+      $result.country = country;
+    }
+    if (issueDate != null) {
+      $result.issueDate = issueDate;
+    }
+    if (expirationDate != null) {
+      $result.expirationDate = expirationDate;
+    }
+    return $result;
+  }
+  GovernmentIDFields._() : super();
+  factory GovernmentIDFields.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GovernmentIDFields.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'GovernmentIDFields',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'idNumber')
+    ..aOB(2, _omitFieldNames ? '' : 'givenName')
+    ..aOB(3, _omitFieldNames ? '' : 'familyName')
+    ..aOB(4, _omitFieldNames ? '' : 'address')
+    ..aOB(5, _omitFieldNames ? '' : 'dateOfBirth')
+    ..aOB(6, _omitFieldNames ? '' : 'country')
+    ..aOB(7, _omitFieldNames ? '' : 'issueDate')
+    ..aOB(8, _omitFieldNames ? '' : 'expirationDate')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GovernmentIDFields clone() => GovernmentIDFields()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GovernmentIDFields copyWith(void Function(GovernmentIDFields) updates) =>
+      super.copyWith((message) => updates(message as GovernmentIDFields))
+          as GovernmentIDFields;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static GovernmentIDFields create() => GovernmentIDFields._();
+  GovernmentIDFields createEmptyInstance() => create();
+  static $pb.PbList<GovernmentIDFields> createRepeated() =>
+      $pb.PbList<GovernmentIDFields>();
+  @$core.pragma('dart2js:noInline')
+  static GovernmentIDFields getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GovernmentIDFields>(create);
+  static GovernmentIDFields? _defaultInstance;
+
+  /// ID number of the underlying identity document
+  @$pb.TagNumber(1)
+  $core.bool get idNumber => $_getBF(0);
+  @$pb.TagNumber(1)
+  set idNumber($core.bool v) {
+    $_setBool(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIdNumber() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdNumber() => clearField(1);
+
+  /// Given ("first") name of the document holder
+  @$pb.TagNumber(2)
+  $core.bool get givenName => $_getBF(1);
+  @$pb.TagNumber(2)
+  set givenName($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasGivenName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGivenName() => clearField(2);
+
+  /// Family ("last") name of the document holder
+  @$pb.TagNumber(3)
+  $core.bool get familyName => $_getBF(2);
+  @$pb.TagNumber(3)
+  set familyName($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFamilyName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFamilyName() => clearField(3);
+
+  /// Full address of the document holder
+  @$pb.TagNumber(4)
+  $core.bool get address => $_getBF(3);
+  @$pb.TagNumber(4)
+  set address($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasAddress() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAddress() => clearField(4);
+
+  /// Date of birth of the document holder
+  @$pb.TagNumber(5)
+  $core.bool get dateOfBirth => $_getBF(4);
+  @$pb.TagNumber(5)
+  set dateOfBirth($core.bool v) {
+    $_setBool(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDateOfBirth() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDateOfBirth() => clearField(5);
+
+  /// ISO3 country code of the document
+  @$pb.TagNumber(6)
+  $core.bool get country => $_getBF(5);
+  @$pb.TagNumber(6)
+  set country($core.bool v) {
+    $_setBool(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasCountry() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCountry() => clearField(6);
+
+  /// Issuance date of the document
+  @$pb.TagNumber(7)
+  $core.bool get issueDate => $_getBF(6);
+  @$pb.TagNumber(7)
+  set issueDate($core.bool v) {
+    $_setBool(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasIssueDate() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearIssueDate() => clearField(7);
+
+  /// Expiration date date of the document
+  @$pb.TagNumber(8)
+  $core.bool get expirationDate => $_getBF(7);
+  @$pb.TagNumber(8)
+  set expirationDate($core.bool v) {
+    $_setBool(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasExpirationDate() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearExpirationDate() => clearField(8);
 }
 
 /// Response to `CreateIDVSessionRequest`

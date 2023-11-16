@@ -33,6 +33,14 @@ public final class ConnectOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_RequestedVerification_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_GovernmentIDOptions_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_GovernmentIDOptions_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_GovernmentIDFields_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_GovernmentIDFields_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_connect_v1_CreateSessionResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable;
@@ -87,7 +95,7 @@ public final class ConnectOuterClass {
           + "\003key\030\001 \001(\t\0220\n"
           + "\005value\030\002 \001(\0132!.services.connect.v1.Verification:\0028\001B\014\n\n"
           + "_fail_codeB\014\n\n"
-          + "_result_vp\"\207\002\n"
+          + "_result_vp\"\357\002\n"
           + "\014Verification\022\n\n"
           + "\002id\030\001 \001(\t\0223\n"
           + "\004type\030\002 \001(\0162%.services.connect.v1.VerificationType\0225\n"
@@ -96,12 +104,30 @@ public final class ConnectOuterClass {
           + " \001(\0162).services.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
           + "\006reused\030\005 \001(\010\022\r\n"
           + "\005begun\030\006 \001(\006\022\017\n"
-          + "\007updated\030\007 \001(\006B\014\n\n"
-          + "_fail_code\"Y\n"
+          + "\007updated\030\007 \001(\006\022L\n"
+          + "\025government_id_options\030\010"
+          + " \001(\0132(.services.connect.v1.GovernmentIDOptionsH\001\210\001\001B\014\n\n"
+          + "_fail_codeB\030\n"
+          + "\026_government_id_options\"Y\n"
           + "\024CreateSessionRequest\022A\n\r"
-          + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\"L\n"
+          + "verifications\030\001 \003(\013"
+          + "2*.services.connect.v1.RequestedVerification\"\242\001\n"
           + "\025RequestedVerification\0223\n"
-          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\"I\n"
+          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\022I\n"
+          + "\025government_id_options\030\002"
+          + " \001(\0132(.services.connect.v1.GovernmentIDOptionsH\000B\t\n"
+          + "\007options\"N\n"
+          + "\023GovernmentIDOptions\0227\n"
+          + "\006fields\030\001 \001(\0132\'.services.connect.v1.GovernmentIDFields\"\266\001\n"
+          + "\022GovernmentIDFields\022\021\n"
+          + "\tid_number\030\001 \001(\010\022\022\n\n"
+          + "given_name\030\002 \001(\010\022\023\n"
+          + "\013family_name\030\003 \001(\010\022\017\n"
+          + "\007address\030\004 \001(\010\022\025\n\r"
+          + "date_of_birth\030\005 \001(\010\022\017\n"
+          + "\007country\030\006 \001(\010\022\022\n\n"
+          + "issue_date\030\007 \001(\010\022\027\n"
+          + "\017expiration_date\030\010 \001(\010\"I\n"
           + "\025CreateSessionResponse\0220\n"
           + "\007session\030\001 \001(\0132\037.services.connect.v1.IDVSession\".\n"
           + "\024CancelSessionRequest\022\026\n"
@@ -116,8 +142,7 @@ public final class ConnectOuterClass {
           + "\010order_by\030\001 \001(\0162$.services.connect.v1.SessionOrdering\022;\n"
           + "\017order_direction\030\002 \001(\0162\".services.common.v1.OrderDirection\022\026\n"
           + "\tpage_size\030\003 \001(\005H\000\210\001\001\022\021\n"
-          + "\004page\030\004 \001(\005H\001\210\001\001B\014\n"
-          + "\n"
+          + "\004page\030\004 \001(\005H\001\210\001\001B\014\n\n"
           + "_page_sizeB\007\n"
           + "\005_page\"f\n"
           + "\024ListSessionsResponse\0221\n"
@@ -158,16 +183,16 @@ public final class ConnectOuterClass {
           + "\007UPDATED\020\001\022\t\n"
           + "\005STATE\020\0022\235\003\n"
           + "\007Connect\022f\n\r"
-          + "CreateSession\022).services.connect.v1.CreateSe"
-          + "ssionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
-          + "CancelSession\022).services.connect.v1.CancelSessionRequest\032*.s"
-          + "ervices.connect.v1.CancelSessionResponse\022]\n\n"
-          + "GetSession\022&.services.connect.v1.Get"
-          + "SessionRequest\032\'.services.connect.v1.GetSessionResponse\022c\n"
-          + "\014ListSessions\022(.servic"
-          + "es.connect.v1.ListSessionsRequest\032).services.connect.v1.ListSessionsResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001Z\033services/"
-          + "connect/v1/connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
+          + "CreateSession\022).services.con"
+          + "nect.v1.CreateSessionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
+          + "CancelSession\022).services.connect.v1.CancelSe"
+          + "ssionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
+          + "GetSession\022&.service"
+          + "s.connect.v1.GetSessionRequest\032\'.services.connect.v1.GetSessionResponse\022c\n"
+          + "\014ListSessions\022(.services.connect.v1.ListSessio"
+          + "nsRequest\032).services.connect.v1.ListSessionsResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002\033Tri"
+          + "nsic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -206,7 +231,16 @@ public final class ConnectOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_Verification_descriptor,
             new java.lang.String[] {
-              "Id", "Type", "State", "FailCode", "Reused", "Begun", "Updated", "FailCode",
+              "Id",
+              "Type",
+              "State",
+              "FailCode",
+              "Reused",
+              "Begun",
+              "Updated",
+              "GovernmentIdOptions",
+              "FailCode",
+              "GovernmentIdOptions",
             });
     internal_static_services_connect_v1_CreateSessionRequest_descriptor =
         getDescriptor().getMessageTypes().get(2);
@@ -222,10 +256,33 @@ public final class ConnectOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_RequestedVerification_descriptor,
             new java.lang.String[] {
-              "Type",
+              "Type", "GovernmentIdOptions", "Options",
+            });
+    internal_static_services_connect_v1_GovernmentIDOptions_descriptor =
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_services_connect_v1_GovernmentIDOptions_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_GovernmentIDOptions_descriptor,
+            new java.lang.String[] {
+              "Fields",
+            });
+    internal_static_services_connect_v1_GovernmentIDFields_descriptor =
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_services_connect_v1_GovernmentIDFields_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_GovernmentIDFields_descriptor,
+            new java.lang.String[] {
+              "IdNumber",
+              "GivenName",
+              "FamilyName",
+              "Address",
+              "DateOfBirth",
+              "Country",
+              "IssueDate",
+              "ExpirationDate",
             });
     internal_static_services_connect_v1_CreateSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(4);
+        getDescriptor().getMessageTypes().get(6);
     internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CreateSessionResponse_descriptor,
@@ -233,7 +290,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_CancelSessionRequest_descriptor =
-        getDescriptor().getMessageTypes().get(5);
+        getDescriptor().getMessageTypes().get(7);
     internal_static_services_connect_v1_CancelSessionRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CancelSessionRequest_descriptor,
@@ -241,7 +298,7 @@ public final class ConnectOuterClass {
               "IdvSessionId",
             });
     internal_static_services_connect_v1_CancelSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(6);
+        getDescriptor().getMessageTypes().get(8);
     internal_static_services_connect_v1_CancelSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CancelSessionResponse_descriptor,
@@ -249,7 +306,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_GetSessionRequest_descriptor =
-        getDescriptor().getMessageTypes().get(7);
+        getDescriptor().getMessageTypes().get(9);
     internal_static_services_connect_v1_GetSessionRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GetSessionRequest_descriptor,
@@ -257,7 +314,7 @@ public final class ConnectOuterClass {
               "IdvSessionId",
             });
     internal_static_services_connect_v1_GetSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(8);
+        getDescriptor().getMessageTypes().get(10);
     internal_static_services_connect_v1_GetSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GetSessionResponse_descriptor,
@@ -265,7 +322,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_ListSessionsRequest_descriptor =
-        getDescriptor().getMessageTypes().get(9);
+        getDescriptor().getMessageTypes().get(11);
     internal_static_services_connect_v1_ListSessionsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_ListSessionsRequest_descriptor,
@@ -273,7 +330,7 @@ public final class ConnectOuterClass {
               "OrderBy", "OrderDirection", "PageSize", "Page", "PageSize", "Page",
             });
     internal_static_services_connect_v1_ListSessionsResponse_descriptor =
-        getDescriptor().getMessageTypes().get(10);
+        getDescriptor().getMessageTypes().get(12);
     internal_static_services_connect_v1_ListSessionsResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_ListSessionsResponse_descriptor,

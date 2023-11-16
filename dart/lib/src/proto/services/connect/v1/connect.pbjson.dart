@@ -232,9 +232,20 @@ const Verification$json = {
     {'1': 'reused', '3': 5, '4': 1, '5': 8, '10': 'reused'},
     {'1': 'begun', '3': 6, '4': 1, '5': 6, '10': 'begun'},
     {'1': 'updated', '3': 7, '4': 1, '5': 6, '10': 'updated'},
+    {
+      '1': 'government_id_options',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.GovernmentIDOptions',
+      '9': 1,
+      '10': 'governmentIdOptions',
+      '17': true
+    },
   ],
   '8': [
     {'1': '_fail_code'},
+    {'1': '_government_id_options'},
   ],
 };
 
@@ -245,7 +256,9 @@ final $typed_data.Uint8List verificationDescriptor = $convert.base64Decode(
     'aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblN0YXRlUgVzdGF0ZRJLCglmYWlsX2NvZGUYBC'
     'ABKA4yKS5zZXJ2aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvbkZhaWxDb2RlSABSCGZhaWxD'
     'b2RliAEBEhYKBnJldXNlZBgFIAEoCFIGcmV1c2VkEhQKBWJlZ3VuGAYgASgGUgViZWd1bhIYCg'
-    'd1cGRhdGVkGAcgASgGUgd1cGRhdGVkQgwKCl9mYWlsX2NvZGU=');
+    'd1cGRhdGVkGAcgASgGUgd1cGRhdGVkEmEKFWdvdmVybm1lbnRfaWRfb3B0aW9ucxgIIAEoCzIo'
+    'LnNlcnZpY2VzLmNvbm5lY3QudjEuR292ZXJubWVudElET3B0aW9uc0gBUhNnb3Zlcm5tZW50SW'
+    'RPcHRpb25ziAEBQgwKCl9mYWlsX2NvZGVCGAoWX2dvdmVybm1lbnRfaWRfb3B0aW9ucw==');
 
 @$core.Deprecated('Use createSessionRequestDescriptor instead')
 const CreateSessionRequest$json = {
@@ -279,13 +292,70 @@ const RequestedVerification$json = {
       '6': '.services.connect.v1.VerificationType',
       '10': 'type'
     },
+    {
+      '1': 'government_id_options',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.GovernmentIDOptions',
+      '9': 0,
+      '10': 'governmentIdOptions'
+    },
+  ],
+  '8': [
+    {'1': 'options'},
   ],
 };
 
 /// Descriptor for `RequestedVerification`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List requestedVerificationDescriptor = $convert.base64Decode(
     'ChVSZXF1ZXN0ZWRWZXJpZmljYXRpb24SOQoEdHlwZRgBIAEoDjIlLnNlcnZpY2VzLmNvbm5lY3'
-    'QudjEuVmVyaWZpY2F0aW9uVHlwZVIEdHlwZQ==');
+    'QudjEuVmVyaWZpY2F0aW9uVHlwZVIEdHlwZRJeChVnb3Zlcm5tZW50X2lkX29wdGlvbnMYAiAB'
+    'KAsyKC5zZXJ2aWNlcy5jb25uZWN0LnYxLkdvdmVybm1lbnRJRE9wdGlvbnNIAFITZ292ZXJubW'
+    'VudElkT3B0aW9uc0IJCgdvcHRpb25z');
+
+@$core.Deprecated('Use governmentIDOptionsDescriptor instead')
+const GovernmentIDOptions$json = {
+  '1': 'GovernmentIDOptions',
+  '2': [
+    {
+      '1': 'fields',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.GovernmentIDFields',
+      '10': 'fields'
+    },
+  ],
+};
+
+/// Descriptor for `GovernmentIDOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List governmentIDOptionsDescriptor = $convert.base64Decode(
+    'ChNHb3Zlcm5tZW50SURPcHRpb25zEj8KBmZpZWxkcxgBIAEoCzInLnNlcnZpY2VzLmNvbm5lY3'
+    'QudjEuR292ZXJubWVudElERmllbGRzUgZmaWVsZHM=');
+
+@$core.Deprecated('Use governmentIDFieldsDescriptor instead')
+const GovernmentIDFields$json = {
+  '1': 'GovernmentIDFields',
+  '2': [
+    {'1': 'id_number', '3': 1, '4': 1, '5': 8, '10': 'idNumber'},
+    {'1': 'given_name', '3': 2, '4': 1, '5': 8, '10': 'givenName'},
+    {'1': 'family_name', '3': 3, '4': 1, '5': 8, '10': 'familyName'},
+    {'1': 'address', '3': 4, '4': 1, '5': 8, '10': 'address'},
+    {'1': 'date_of_birth', '3': 5, '4': 1, '5': 8, '10': 'dateOfBirth'},
+    {'1': 'country', '3': 6, '4': 1, '5': 8, '10': 'country'},
+    {'1': 'issue_date', '3': 7, '4': 1, '5': 8, '10': 'issueDate'},
+    {'1': 'expiration_date', '3': 8, '4': 1, '5': 8, '10': 'expirationDate'},
+  ],
+};
+
+/// Descriptor for `GovernmentIDFields`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List governmentIDFieldsDescriptor = $convert.base64Decode(
+    'ChJHb3Zlcm5tZW50SURGaWVsZHMSGwoJaWRfbnVtYmVyGAEgASgIUghpZE51bWJlchIdCgpnaX'
+    'Zlbl9uYW1lGAIgASgIUglnaXZlbk5hbWUSHwoLZmFtaWx5X25hbWUYAyABKAhSCmZhbWlseU5h'
+    'bWUSGAoHYWRkcmVzcxgEIAEoCFIHYWRkcmVzcxIiCg1kYXRlX29mX2JpcnRoGAUgASgIUgtkYX'
+    'RlT2ZCaXJ0aBIYCgdjb3VudHJ5GAYgASgIUgdjb3VudHJ5Eh0KCmlzc3VlX2RhdGUYByABKAhS'
+    'CWlzc3VlRGF0ZRInCg9leHBpcmF0aW9uX2RhdGUYCCABKAhSDmV4cGlyYXRpb25EYXRl');
 
 @$core.Deprecated('Use createSessionResponseDescriptor instead')
 const CreateSessionResponse$json = {
