@@ -63,9 +63,9 @@ See [Get Verification Results](#get-verification-results) to understand how to f
 
 Fetch an identity verification session by its ID.
 
-If the Session has been completed successfully, the results will be available in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field. 
+If the Session has been completed successfully, the results will be available in the {{ field_ref("GetSessionResponse", "session.result_vp") }} field of the returned Session. See [Get Verification Results](#get-verification-results) for information on parsing this field.
 
-Additionally, you can access the {{ field_ref("GetSessionResponse", "session.verifications") }} field and look into the verifications associated with the session. If one of the verifications performed is of type `GOVERNMENT_ID` and it is successful, you can find the subject normalized data in that verification's `normalized_government_id_data` field.
+Additionally, you can access the {{ field_ref("GetSessionResponse", "session.verifications") }} field and look into the verifications associated with the session. If one of the verifications's {{ field_ref("GetSessionResponse", "session.verifications[key].type") }} is `GOVERNMENT_ID` and it is successful, you can find the subject normalized data in that verification's {{ field_ref("GetSessionResponse", "session.verifications[key].normalized_government_id_data") }} field.
 
 If the Session failed for any reason (cancellation, identity verification failure, expiration, etc.), the failure reason will be given by the {{ field_ref("GetSessionResponse", "session.fail_code") }} field.
 
