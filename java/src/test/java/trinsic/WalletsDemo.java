@@ -1,15 +1,14 @@
 package trinsic;
 
+import io.grpc.StatusRuntimeException;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-
-import io.grpc.StatusRuntimeException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.universalwallet.v1.*;
-import trinsic.services.provider.v1.WalletExternalIdentity;
 import trinsic.services.provider.v1.IdentityProvider;
+import trinsic.services.provider.v1.WalletExternalIdentity;
+import trinsic.services.universalwallet.v1.*;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -56,29 +55,36 @@ public class WalletsDemo {
 
     trinsic.setAuthToken(ecosystemResponse.getProfile());
     // getWalletInfo() {
-	var getWalletInfoResponse = trinsic.wallet().getWalletInfo(
-        GetWalletInfoRequest.newBuilder().setWalletId(walletId).build()
-    ).get();
-	// }
+    var getWalletInfoResponse =
+        trinsic
+            .wallet()
+            .getWalletInfo(GetWalletInfoRequest.newBuilder().setWalletId(walletId).build())
+            .get();
+    // }
 
-      try {
-          // getWalletFromExternalIdentity() {
-          var getWalletFromExternalIdentityResponse = trinsic.wallet().getWalletFromExternalIdentity(
-              GetWalletFromExternalIdentityRequest.newBuilder().setIdentity(
-                  WalletExternalIdentity.newBuilder()
-                      .setId("test@trinsic.id")
-                      .setProvider(IdentityProvider.Email)
-                      .build()).build()
-          ).get();
-          // }
-      } catch (ExecutionException ee) {
-          if (ee.getCause() instanceof StatusRuntimeException) {
-              // This is expected
-          } else {
-              throw ee;
-          }
+    try {
+      // getWalletFromExternalIdentity() {
+      var getWalletFromExternalIdentityResponse =
+          trinsic
+              .wallet()
+              .getWalletFromExternalIdentity(
+                  GetWalletFromExternalIdentityRequest.newBuilder()
+                      .setIdentity(
+                          WalletExternalIdentity.newBuilder()
+                              .setId("test@trinsic.id")
+                              .setProvider(IdentityProvider.Email)
+                              .build())
+                      .build())
+              .get();
+      // }
+    } catch (ExecutionException ee) {
+      if (ee.getCause() instanceof StatusRuntimeException) {
+        // This is expected
+      } else {
+        throw ee;
       }
-      trinsic.setAuthToken(account.getAuthToken());
+    }
+    trinsic.setAuthToken(account.getAuthToken());
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {

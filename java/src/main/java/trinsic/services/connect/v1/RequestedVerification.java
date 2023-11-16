@@ -52,6 +52,50 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
             trinsic.services.connect.v1.RequestedVerification.Builder.class);
   }
 
+  private int optionsCase_ = 0;
+  private java.lang.Object options_;
+
+  public enum OptionsCase
+      implements
+          com.google.protobuf.Internal.EnumLite,
+          com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+    GOVERNMENT_ID_OPTIONS(2),
+    OPTIONS_NOT_SET(0);
+    private final int value;
+
+    private OptionsCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @param value The number of the enum to look for.
+     * @return The enum associated with the given number.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static OptionsCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static OptionsCase forNumber(int value) {
+      switch (value) {
+        case 2:
+          return GOVERNMENT_ID_OPTIONS;
+        case 0:
+          return OPTIONS_NOT_SET;
+        default:
+          return null;
+      }
+    }
+
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public OptionsCase getOptionsCase() {
+    return OptionsCase.forNumber(optionsCase_);
+  }
+
   public static final int TYPE_FIELD_NUMBER = 1;
   private int type_;
   /**
@@ -88,6 +132,58 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
     return result == null ? trinsic.services.connect.v1.VerificationType.UNRECOGNIZED : result;
   }
 
+  public static final int GOVERNMENT_ID_OPTIONS_FIELD_NUMBER = 2;
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   *
+   * @return Whether the governmentIdOptions field is set.
+   */
+  @java.lang.Override
+  public boolean hasGovernmentIdOptions() {
+    return optionsCase_ == 2;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   *
+   * @return The governmentIdOptions.
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.GovernmentIDOptions getGovernmentIdOptions() {
+    if (optionsCase_ == 2) {
+      return (trinsic.services.connect.v1.GovernmentIDOptions) options_;
+    }
+    return trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder
+      getGovernmentIdOptionsOrBuilder() {
+    if (optionsCase_ == 2) {
+      return (trinsic.services.connect.v1.GovernmentIDOptions) options_;
+    }
+    return trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -105,6 +201,9 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
     if (type_ != trinsic.services.connect.v1.VerificationType.GOVERNMENT_ID.getNumber()) {
       output.writeEnum(1, type_);
     }
+    if (optionsCase_ == 2) {
+      output.writeMessage(2, (trinsic.services.connect.v1.GovernmentIDOptions) options_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -116,6 +215,11 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
     size = 0;
     if (type_ != trinsic.services.connect.v1.VerificationType.GOVERNMENT_ID.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, type_);
+    }
+    if (optionsCase_ == 2) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              2, (trinsic.services.connect.v1.GovernmentIDOptions) options_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -134,6 +238,14 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
         (trinsic.services.connect.v1.RequestedVerification) obj;
 
     if (type_ != other.type_) return false;
+    if (!getOptionsCase().equals(other.getOptionsCase())) return false;
+    switch (optionsCase_) {
+      case 2:
+        if (!getGovernmentIdOptions().equals(other.getGovernmentIdOptions())) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -147,6 +259,14 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + type_;
+    switch (optionsCase_) {
+      case 2:
+        hash = (37 * hash) + GOVERNMENT_ID_OPTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getGovernmentIdOptions().hashCode();
+        break;
+      case 0:
+      default:
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -287,6 +407,11 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
       super.clear();
       type_ = 0;
 
+      if (governmentIdOptionsBuilder_ != null) {
+        governmentIdOptionsBuilder_.clear();
+      }
+      optionsCase_ = 0;
+      options_ = null;
       return this;
     }
 
@@ -315,6 +440,14 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
       trinsic.services.connect.v1.RequestedVerification result =
           new trinsic.services.connect.v1.RequestedVerification(this);
       result.type_ = type_;
+      if (optionsCase_ == 2) {
+        if (governmentIdOptionsBuilder_ == null) {
+          result.options_ = options_;
+        } else {
+          result.options_ = governmentIdOptionsBuilder_.build();
+        }
+      }
+      result.optionsCase_ = optionsCase_;
       onBuilt();
       return result;
     }
@@ -368,6 +501,17 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
       if (other.type_ != 0) {
         setTypeValue(other.getTypeValue());
       }
+      switch (other.getOptionsCase()) {
+        case GOVERNMENT_ID_OPTIONS:
+          {
+            mergeGovernmentIdOptions(other.getGovernmentIdOptions());
+            break;
+          }
+        case OPTIONS_NOT_SET:
+          {
+            break;
+          }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -400,6 +544,13 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
 
                 break;
               } // case 8
+            case 18:
+              {
+                input.readMessage(
+                    getGovernmentIdOptionsFieldBuilder().getBuilder(), extensionRegistry);
+                optionsCase_ = 2;
+                break;
+              } // case 18
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -414,6 +565,20 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+
+    private int optionsCase_ = 0;
+    private java.lang.Object options_;
+
+    public OptionsCase getOptionsCase() {
+      return OptionsCase.forNumber(optionsCase_);
+    }
+
+    public Builder clearOptions() {
+      optionsCase_ = 0;
+      options_ = null;
+      onChanged();
       return this;
     }
 
@@ -506,6 +671,217 @@ public final class RequestedVerification extends com.google.protobuf.GeneratedMe
       type_ = 0;
       onChanged();
       return this;
+    }
+
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.GovernmentIDOptions,
+            trinsic.services.connect.v1.GovernmentIDOptions.Builder,
+            trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder>
+        governmentIdOptionsBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     *
+     * @return Whether the governmentIdOptions field is set.
+     */
+    @java.lang.Override
+    public boolean hasGovernmentIdOptions() {
+      return optionsCase_ == 2;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     *
+     * @return The governmentIdOptions.
+     */
+    @java.lang.Override
+    public trinsic.services.connect.v1.GovernmentIDOptions getGovernmentIdOptions() {
+      if (governmentIdOptionsBuilder_ == null) {
+        if (optionsCase_ == 2) {
+          return (trinsic.services.connect.v1.GovernmentIDOptions) options_;
+        }
+        return trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+      } else {
+        if (optionsCase_ == 2) {
+          return governmentIdOptionsBuilder_.getMessage();
+        }
+        return trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    public Builder setGovernmentIdOptions(trinsic.services.connect.v1.GovernmentIDOptions value) {
+      if (governmentIdOptionsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        options_ = value;
+        onChanged();
+      } else {
+        governmentIdOptionsBuilder_.setMessage(value);
+      }
+      optionsCase_ = 2;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    public Builder setGovernmentIdOptions(
+        trinsic.services.connect.v1.GovernmentIDOptions.Builder builderForValue) {
+      if (governmentIdOptionsBuilder_ == null) {
+        options_ = builderForValue.build();
+        onChanged();
+      } else {
+        governmentIdOptionsBuilder_.setMessage(builderForValue.build());
+      }
+      optionsCase_ = 2;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    public Builder mergeGovernmentIdOptions(trinsic.services.connect.v1.GovernmentIDOptions value) {
+      if (governmentIdOptionsBuilder_ == null) {
+        if (optionsCase_ == 2
+            && options_ != trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance()) {
+          options_ =
+              trinsic.services.connect.v1.GovernmentIDOptions.newBuilder(
+                      (trinsic.services.connect.v1.GovernmentIDOptions) options_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          options_ = value;
+        }
+        onChanged();
+      } else {
+        if (optionsCase_ == 2) {
+          governmentIdOptionsBuilder_.mergeFrom(value);
+        } else {
+          governmentIdOptionsBuilder_.setMessage(value);
+        }
+      }
+      optionsCase_ = 2;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    public Builder clearGovernmentIdOptions() {
+      if (governmentIdOptionsBuilder_ == null) {
+        if (optionsCase_ == 2) {
+          optionsCase_ = 0;
+          options_ = null;
+          onChanged();
+        }
+      } else {
+        if (optionsCase_ == 2) {
+          optionsCase_ = 0;
+          options_ = null;
+        }
+        governmentIdOptionsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    public trinsic.services.connect.v1.GovernmentIDOptions.Builder getGovernmentIdOptionsBuilder() {
+      return getGovernmentIdOptionsFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder
+        getGovernmentIdOptionsOrBuilder() {
+      if ((optionsCase_ == 2) && (governmentIdOptionsBuilder_ != null)) {
+        return governmentIdOptionsBuilder_.getMessageOrBuilder();
+      } else {
+        if (optionsCase_ == 2) {
+          return (trinsic.services.connect.v1.GovernmentIDOptions) options_;
+        }
+        return trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options for a Verification of type `GOVERNMENT_ID`
+     * </pre>
+     *
+     * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.GovernmentIDOptions,
+            trinsic.services.connect.v1.GovernmentIDOptions.Builder,
+            trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder>
+        getGovernmentIdOptionsFieldBuilder() {
+      if (governmentIdOptionsBuilder_ == null) {
+        if (!(optionsCase_ == 2)) {
+          options_ = trinsic.services.connect.v1.GovernmentIDOptions.getDefaultInstance();
+        }
+        governmentIdOptionsBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.connect.v1.GovernmentIDOptions,
+                trinsic.services.connect.v1.GovernmentIDOptions.Builder,
+                trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder>(
+                (trinsic.services.connect.v1.GovernmentIDOptions) options_,
+                getParentForChildren(),
+                isClean());
+        options_ = null;
+      }
+      optionsCase_ = 2;
+      onChanged();
+      ;
+      return governmentIdOptionsBuilder_;
     }
 
     @java.lang.Override

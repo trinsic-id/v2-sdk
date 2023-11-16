@@ -32,4 +32,41 @@ public interface RequestedVerificationOrBuilder
    * @return The type.
    */
   trinsic.services.connect.v1.VerificationType getType();
+
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   *
+   * @return Whether the governmentIdOptions field is set.
+   */
+  boolean hasGovernmentIdOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   *
+   * @return The governmentIdOptions.
+   */
+  trinsic.services.connect.v1.GovernmentIDOptions getGovernmentIdOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options for a Verification of type `GOVERNMENT_ID`
+   * </pre>
+   *
+   * <code>.services.connect.v1.GovernmentIDOptions government_id_options = 2;</code>
+   */
+  trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder getGovernmentIdOptionsOrBuilder();
+
+  public trinsic.services.connect.v1.RequestedVerification.OptionsCase getOptionsCase();
 }

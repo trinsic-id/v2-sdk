@@ -155,7 +155,8 @@ public interface VerificationOrBuilder
    *
    *
    * <pre>
-   * The unix timestamp, in seconds, when this verification last changed state -- o
+   * The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
+   * begun.
    * </pre>
    *
    * <code>fixed64 updated = 7;</code>
@@ -163,4 +164,42 @@ public interface VerificationOrBuilder
    * @return The updated.
    */
   long getUpdated();
+
+  /**
+   *
+   *
+   * <pre>
+   * The Government ID options for this Verification.
+   * Only set if this Verification is of type `GOVERNMENT_ID`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.GovernmentIDOptions government_id_options = 8;</code>
+   *
+   * @return Whether the governmentIdOptions field is set.
+   */
+  boolean hasGovernmentIdOptions();
+  /**
+   *
+   *
+   * <pre>
+   * The Government ID options for this Verification.
+   * Only set if this Verification is of type `GOVERNMENT_ID`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.GovernmentIDOptions government_id_options = 8;</code>
+   *
+   * @return The governmentIdOptions.
+   */
+  trinsic.services.connect.v1.GovernmentIDOptions getGovernmentIdOptions();
+  /**
+   *
+   *
+   * <pre>
+   * The Government ID options for this Verification.
+   * Only set if this Verification is of type `GOVERNMENT_ID`.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.GovernmentIDOptions government_id_options = 8;</code>
+   */
+  trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder getGovernmentIdOptionsOrBuilder();
 }
