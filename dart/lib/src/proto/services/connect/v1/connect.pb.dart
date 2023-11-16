@@ -226,6 +226,7 @@ class Verification extends $pb.GeneratedMessage {
     $fixnum.Int64? begun,
     $fixnum.Int64? updated,
     GovernmentIDOptions? governmentIdOptions,
+    NormalizedGovernmentIdData? normalizedGovernmentIdData,
   }) {
     final $result = create();
     if (id != null) {
@@ -251,6 +252,9 @@ class Verification extends $pb.GeneratedMessage {
     }
     if (governmentIdOptions != null) {
       $result.governmentIdOptions = governmentIdOptions;
+    }
+    if (normalizedGovernmentIdData != null) {
+      $result.normalizedGovernmentIdData = normalizedGovernmentIdData;
     }
     return $result;
   }
@@ -289,6 +293,9 @@ class Verification extends $pb.GeneratedMessage {
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOM<GovernmentIDOptions>(8, _omitFieldNames ? '' : 'governmentIdOptions',
         subBuilder: GovernmentIDOptions.create)
+    ..aOM<NormalizedGovernmentIdData>(
+        9, _omitFieldNames ? '' : 'normalizedGovernmentIdData',
+        subBuilder: NormalizedGovernmentIdData.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -424,6 +431,214 @@ class Verification extends $pb.GeneratedMessage {
   void clearGovernmentIdOptions() => clearField(8);
   @$pb.TagNumber(8)
   GovernmentIDOptions ensureGovernmentIdOptions() => $_ensure(7);
+
+  /// Normalized output for manual parsing and usage for this verification
+  /// Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+  @$pb.TagNumber(9)
+  NormalizedGovernmentIdData get normalizedGovernmentIdData => $_getN(8);
+  @$pb.TagNumber(9)
+  set normalizedGovernmentIdData(NormalizedGovernmentIdData v) {
+    setField(9, v);
+  }
+
+  @$pb.TagNumber(9)
+  $core.bool hasNormalizedGovernmentIdData() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearNormalizedGovernmentIdData() => clearField(9);
+  @$pb.TagNumber(9)
+  NormalizedGovernmentIdData ensureNormalizedGovernmentIdData() => $_ensure(8);
+}
+
+class NormalizedGovernmentIdData extends $pb.GeneratedMessage {
+  factory NormalizedGovernmentIdData({
+    $core.String? idNumber,
+    $core.String? givenName,
+    $core.String? familyName,
+    $core.String? address,
+    $core.String? dateOfBirth,
+    $core.String? country,
+    $core.String? issueDate,
+    $core.String? expirationDate,
+  }) {
+    final $result = create();
+    if (idNumber != null) {
+      $result.idNumber = idNumber;
+    }
+    if (givenName != null) {
+      $result.givenName = givenName;
+    }
+    if (familyName != null) {
+      $result.familyName = familyName;
+    }
+    if (address != null) {
+      $result.address = address;
+    }
+    if (dateOfBirth != null) {
+      $result.dateOfBirth = dateOfBirth;
+    }
+    if (country != null) {
+      $result.country = country;
+    }
+    if (issueDate != null) {
+      $result.issueDate = issueDate;
+    }
+    if (expirationDate != null) {
+      $result.expirationDate = expirationDate;
+    }
+    return $result;
+  }
+  NormalizedGovernmentIdData._() : super();
+  factory NormalizedGovernmentIdData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory NormalizedGovernmentIdData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'NormalizedGovernmentIdData',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'idNumber')
+    ..aOS(2, _omitFieldNames ? '' : 'givenName')
+    ..aOS(3, _omitFieldNames ? '' : 'familyName')
+    ..aOS(4, _omitFieldNames ? '' : 'address')
+    ..aOS(5, _omitFieldNames ? '' : 'dateOfBirth')
+    ..aOS(6, _omitFieldNames ? '' : 'country')
+    ..aOS(7, _omitFieldNames ? '' : 'issueDate')
+    ..aOS(8, _omitFieldNames ? '' : 'expirationDate')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  NormalizedGovernmentIdData clone() =>
+      NormalizedGovernmentIdData()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  NormalizedGovernmentIdData copyWith(
+          void Function(NormalizedGovernmentIdData) updates) =>
+      super.copyWith(
+              (message) => updates(message as NormalizedGovernmentIdData))
+          as NormalizedGovernmentIdData;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NormalizedGovernmentIdData create() => NormalizedGovernmentIdData._();
+  NormalizedGovernmentIdData createEmptyInstance() => create();
+  static $pb.PbList<NormalizedGovernmentIdData> createRepeated() =>
+      $pb.PbList<NormalizedGovernmentIdData>();
+  @$core.pragma('dart2js:noInline')
+  static NormalizedGovernmentIdData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<NormalizedGovernmentIdData>(create);
+  static NormalizedGovernmentIdData? _defaultInstance;
+
+  /// The ID number of the underlying identity document
+  @$pb.TagNumber(1)
+  $core.String get idNumber => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set idNumber($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIdNumber() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdNumber() => clearField(1);
+
+  /// Given ("first") name of the document holder
+  @$pb.TagNumber(2)
+  $core.String get givenName => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set givenName($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasGivenName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearGivenName() => clearField(2);
+
+  /// Family ("last") name of the document holder
+  @$pb.TagNumber(3)
+  $core.String get familyName => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set familyName($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasFamilyName() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFamilyName() => clearField(3);
+
+  /// Full address of the document holder
+  @$pb.TagNumber(4)
+  $core.String get address => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set address($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasAddress() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAddress() => clearField(4);
+
+  /// Date of birth of the document holder
+  @$pb.TagNumber(5)
+  $core.String get dateOfBirth => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set dateOfBirth($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDateOfBirth() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDateOfBirth() => clearField(5);
+
+  /// ISO3 country code of the document
+  @$pb.TagNumber(6)
+  $core.String get country => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set country($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasCountry() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCountry() => clearField(6);
+
+  /// Issuance date of the document
+  @$pb.TagNumber(7)
+  $core.String get issueDate => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set issueDate($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasIssueDate() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearIssueDate() => clearField(7);
+
+  /// Expiration date date of the document
+  @$pb.TagNumber(8)
+  $core.String get expirationDate => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set expirationDate($core.String v) {
+    $_setString(7, v);
+  }
+
+  @$pb.TagNumber(8)
+  $core.bool hasExpirationDate() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearExpirationDate() => clearField(8);
 }
 
 /// Request to create an Identity Verification Session

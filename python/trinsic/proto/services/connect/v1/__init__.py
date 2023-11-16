@@ -250,6 +250,59 @@ class Verification(betterproto.Message):
     Verification is of type `GOVERNMENT_ID`.
     """
 
+    normalized_government_id_data: Optional[
+        "NormalizedGovernmentIdData"
+    ] = betterproto.message_field(
+        9, optional=True, group="_normalized_government_id_data"
+    )
+    """
+    Normalized output for manual parsing and usage for this verification Only
+    set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class NormalizedGovernmentIdData(betterproto.Message):
+    id_number: Optional[str] = betterproto.string_field(
+        1, optional=True, group="_id_number"
+    )
+    """The ID number of the underlying identity document"""
+
+    given_name: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_given_name"
+    )
+    """Given ("first") name of the document holder"""
+
+    family_name: Optional[str] = betterproto.string_field(
+        3, optional=True, group="_family_name"
+    )
+    """Family ("last") name of the document holder"""
+
+    address: Optional[str] = betterproto.string_field(
+        4, optional=True, group="_address"
+    )
+    """Full address of the document holder"""
+
+    date_of_birth: Optional[str] = betterproto.string_field(
+        5, optional=True, group="_date_of_birth"
+    )
+    """Date of birth of the document holder"""
+
+    country: Optional[str] = betterproto.string_field(
+        6, optional=True, group="_country"
+    )
+    """ISO3 country code of the document"""
+
+    issue_date: Optional[str] = betterproto.string_field(
+        7, optional=True, group="_issue_date"
+    )
+    """Issuance date of the document"""
+
+    expiration_date: Optional[str] = betterproto.string_field(
+        8, optional=True, group="_expiration_date"
+    )
+    """Expiration date date of the document"""
+
 
 @dataclass(eq=False, repr=False)
 class CreateSessionRequest(betterproto.Message):
@@ -376,9 +429,7 @@ class ListSessionsRequest(betterproto.Message):
     """
 
     page: Optional[int] = betterproto.int32_field(4, optional=True, group="_page")
-    """
-    The page index of results to return. Starts at `1`.  Defaults to `1`.
-    """
+    """The page index of results to return. Starts at `1`. Defaults to `1`."""
 
 
 @dataclass(eq=False, repr=False)

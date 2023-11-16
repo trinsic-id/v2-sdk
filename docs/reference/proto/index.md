@@ -1027,6 +1027,28 @@ Response to `ListIDVSessionsRequest`
 
 
 
+<a name="services-connect-v1-NormalizedGovernmentIdData"></a>
+
+### NormalizedGovernmentIdData
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id_number | [string](/reference/proto#string) | The ID number of the underlying identity document |
+| given_name | [string](/reference/proto#string) | Given ("first") name of the document holder |
+| family_name | [string](/reference/proto#string) | Family ("last") name of the document holder |
+| address | [string](/reference/proto#string) | Full address of the document holder |
+| date_of_birth | [string](/reference/proto#string) | Date of birth of the document holder |
+| country | [string](/reference/proto#string) | ISO3 country code of the document |
+| issue_date | [string](/reference/proto#string) | Issuance date of the document |
+| expiration_date | [string](/reference/proto#string) | Expiration date date of the document |
+
+
+
+
+
+
 <a name="services-connect-v1-RequestedVerification"></a>
 
 ### RequestedVerification
@@ -1059,6 +1081,7 @@ A Verification that is part of an IDVSession
 | begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
 | updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet begun. |
 | government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | The Government ID options for this Verification. Only set if this Verification is of type `GOVERNMENT_ID`. |
+| normalized_government_id_data | [NormalizedGovernmentIdData](/reference/proto#services-connect-v1-NormalizedGovernmentIdData) | Normalized output for manual parsing and usage for this verification Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded. |
 
 
 
