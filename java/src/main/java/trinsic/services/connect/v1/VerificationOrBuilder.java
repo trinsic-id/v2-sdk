@@ -202,4 +202,49 @@ public interface VerificationOrBuilder
    * <code>optional .services.connect.v1.GovernmentIDOptions government_id_options = 8;</code>
    */
   trinsic.services.connect.v1.GovernmentIDOptionsOrBuilder getGovernmentIdOptionsOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   *
+   * @return Whether the normalizedGovernmentIdData field is set.
+   */
+  boolean hasNormalizedGovernmentIdData();
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   *
+   * @return The normalizedGovernmentIdData.
+   */
+  trinsic.services.connect.v1.NormalizedGovernmentIdData getNormalizedGovernmentIdData();
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   */
+  trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder
+      getNormalizedGovernmentIdDataOrBuilder();
 }

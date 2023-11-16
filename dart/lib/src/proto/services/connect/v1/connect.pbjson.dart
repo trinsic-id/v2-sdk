@@ -242,10 +242,21 @@ const Verification$json = {
       '10': 'governmentIdOptions',
       '17': true
     },
+    {
+      '1': 'normalized_government_id_data',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.NormalizedGovernmentIdData',
+      '9': 2,
+      '10': 'normalizedGovernmentIdData',
+      '17': true
+    },
   ],
   '8': [
     {'1': '_fail_code'},
     {'1': '_government_id_options'},
+    {'1': '_normalized_government_id_data'},
   ],
 };
 
@@ -258,7 +269,110 @@ final $typed_data.Uint8List verificationDescriptor = $convert.base64Decode(
     'b2RliAEBEhYKBnJldXNlZBgFIAEoCFIGcmV1c2VkEhQKBWJlZ3VuGAYgASgGUgViZWd1bhIYCg'
     'd1cGRhdGVkGAcgASgGUgd1cGRhdGVkEmEKFWdvdmVybm1lbnRfaWRfb3B0aW9ucxgIIAEoCzIo'
     'LnNlcnZpY2VzLmNvbm5lY3QudjEuR292ZXJubWVudElET3B0aW9uc0gBUhNnb3Zlcm5tZW50SW'
-    'RPcHRpb25ziAEBQgwKCl9mYWlsX2NvZGVCGAoWX2dvdmVybm1lbnRfaWRfb3B0aW9ucw==');
+    'RPcHRpb25ziAEBEncKHW5vcm1hbGl6ZWRfZ292ZXJubWVudF9pZF9kYXRhGAkgASgLMi8uc2Vy'
+    'dmljZXMuY29ubmVjdC52MS5Ob3JtYWxpemVkR292ZXJubWVudElkRGF0YUgCUhpub3JtYWxpem'
+    'VkR292ZXJubWVudElkRGF0YYgBAUIMCgpfZmFpbF9jb2RlQhgKFl9nb3Zlcm5tZW50X2lkX29w'
+    'dGlvbnNCIAoeX25vcm1hbGl6ZWRfZ292ZXJubWVudF9pZF9kYXRh');
+
+@$core.Deprecated('Use normalizedGovernmentIdDataDescriptor instead')
+const NormalizedGovernmentIdData$json = {
+  '1': 'NormalizedGovernmentIdData',
+  '2': [
+    {
+      '1': 'id_number',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '9': 0,
+      '10': 'idNumber',
+      '17': true
+    },
+    {
+      '1': 'given_name',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '9': 1,
+      '10': 'givenName',
+      '17': true
+    },
+    {
+      '1': 'family_name',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '9': 2,
+      '10': 'familyName',
+      '17': true
+    },
+    {
+      '1': 'address',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '9': 3,
+      '10': 'address',
+      '17': true
+    },
+    {
+      '1': 'date_of_birth',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '9': 4,
+      '10': 'dateOfBirth',
+      '17': true
+    },
+    {
+      '1': 'country',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '9': 5,
+      '10': 'country',
+      '17': true
+    },
+    {
+      '1': 'issue_date',
+      '3': 7,
+      '4': 1,
+      '5': 9,
+      '9': 6,
+      '10': 'issueDate',
+      '17': true
+    },
+    {
+      '1': 'expiration_date',
+      '3': 8,
+      '4': 1,
+      '5': 9,
+      '9': 7,
+      '10': 'expirationDate',
+      '17': true
+    },
+  ],
+  '8': [
+    {'1': '_id_number'},
+    {'1': '_given_name'},
+    {'1': '_family_name'},
+    {'1': '_address'},
+    {'1': '_date_of_birth'},
+    {'1': '_country'},
+    {'1': '_issue_date'},
+    {'1': '_expiration_date'},
+  ],
+};
+
+/// Descriptor for `NormalizedGovernmentIdData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List normalizedGovernmentIdDataDescriptor = $convert.base64Decode(
+    'ChpOb3JtYWxpemVkR292ZXJubWVudElkRGF0YRIgCglpZF9udW1iZXIYASABKAlIAFIIaWROdW'
+    '1iZXKIAQESIgoKZ2l2ZW5fbmFtZRgCIAEoCUgBUglnaXZlbk5hbWWIAQESJAoLZmFtaWx5X25h'
+    'bWUYAyABKAlIAlIKZmFtaWx5TmFtZYgBARIdCgdhZGRyZXNzGAQgASgJSANSB2FkZHJlc3OIAQ'
+    'ESJwoNZGF0ZV9vZl9iaXJ0aBgFIAEoCUgEUgtkYXRlT2ZCaXJ0aIgBARIdCgdjb3VudHJ5GAYg'
+    'ASgJSAVSB2NvdW50cnmIAQESIgoKaXNzdWVfZGF0ZRgHIAEoCUgGUglpc3N1ZURhdGWIAQESLA'
+    'oPZXhwaXJhdGlvbl9kYXRlGAggASgJSAdSDmV4cGlyYXRpb25EYXRliAEBQgwKCl9pZF9udW1i'
+    'ZXJCDQoLX2dpdmVuX25hbWVCDgoMX2ZhbWlseV9uYW1lQgoKCF9hZGRyZXNzQhAKDl9kYXRlX2'
+    '9mX2JpcnRoQgoKCF9jb3VudHJ5Qg0KC19pc3N1ZV9kYXRlQhIKEF9leHBpcmF0aW9uX2RhdGU=');
 
 @$core.Deprecated('Use createSessionRequestDescriptor instead')
 const CreateSessionRequest$json = {

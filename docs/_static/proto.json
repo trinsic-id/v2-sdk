@@ -630,6 +630,60 @@
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.ListSessionsResponse"
     },
+    "services.connect.v1.NormalizedGovernmentIdData": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.address": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.country": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.date_of_birth": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.expiration_date": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.family_name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.given_name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.id_number": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.issue_date": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.NormalizedGovernmentIdData"
+    },
     "services.connect.v1.RequestedVerification": {
       "type": "message",
       "collection": "messages",
@@ -745,6 +799,12 @@
       "parent": "services.connect.v1.Verification"
     },
     "services.connect.v1.Verification.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.Verification"
+    },
+    "services.connect.v1.Verification.normalized_government_id_data": {
       "type": "field",
       "collection": "fields",
       "file": "services/connect/v1/connect.proto",
@@ -4455,6 +4515,7 @@
         "services.connect.v1.IDVSession",
         "services.connect.v1.IDVSession.VerificationsEntry",
         "services.connect.v1.Verification",
+        "services.connect.v1.NormalizedGovernmentIdData",
         "services.connect.v1.CreateSessionRequest",
         "services.connect.v1.RequestedVerification",
         "services.connect.v1.GovernmentIDOptions",
@@ -4486,6 +4547,15 @@
         "services.connect.v1.Verification.begun",
         "services.connect.v1.Verification.updated",
         "services.connect.v1.Verification.government_id_options",
+        "services.connect.v1.Verification.normalized_government_id_data",
+        "services.connect.v1.NormalizedGovernmentIdData.id_number",
+        "services.connect.v1.NormalizedGovernmentIdData.given_name",
+        "services.connect.v1.NormalizedGovernmentIdData.family_name",
+        "services.connect.v1.NormalizedGovernmentIdData.address",
+        "services.connect.v1.NormalizedGovernmentIdData.date_of_birth",
+        "services.connect.v1.NormalizedGovernmentIdData.country",
+        "services.connect.v1.NormalizedGovernmentIdData.issue_date",
+        "services.connect.v1.NormalizedGovernmentIdData.expiration_date",
         "services.connect.v1.CreateSessionRequest.verifications",
         "services.connect.v1.RequestedVerification.type",
         "services.connect.v1.RequestedVerification.government_id_options",
@@ -6093,6 +6163,23 @@
       "messages": [],
       "enums": []
     },
+    "services.connect.v1.NormalizedGovernmentIdData": {
+      "name": "NormalizedGovernmentIdData",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData",
+      "description": "",
+      "fields": [
+        "services.connect.v1.NormalizedGovernmentIdData.id_number",
+        "services.connect.v1.NormalizedGovernmentIdData.given_name",
+        "services.connect.v1.NormalizedGovernmentIdData.family_name",
+        "services.connect.v1.NormalizedGovernmentIdData.address",
+        "services.connect.v1.NormalizedGovernmentIdData.date_of_birth",
+        "services.connect.v1.NormalizedGovernmentIdData.country",
+        "services.connect.v1.NormalizedGovernmentIdData.issue_date",
+        "services.connect.v1.NormalizedGovernmentIdData.expiration_date"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.connect.v1.RequestedVerification": {
       "name": "RequestedVerification",
       "full_name": "services.connect.v1.RequestedVerification",
@@ -6116,7 +6203,8 @@
         "services.connect.v1.Verification.reused",
         "services.connect.v1.Verification.begun",
         "services.connect.v1.Verification.updated",
-        "services.connect.v1.Verification.government_id_options"
+        "services.connect.v1.Verification.government_id_options",
+        "services.connect.v1.Verification.normalized_government_id_data"
       ],
       "messages": [],
       "enums": []
@@ -8226,7 +8314,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "int32",
       "full_type": "int32",
-      "description": "The page index of results to return.\nStarts at `1`. \nDefaults to `1`."
+      "description": "The page index of results to return.\nStarts at `1`.\nDefaults to `1`."
     },
     "services.connect.v1.ListSessionsRequest.page_size": {
       "name": "page_size",
@@ -8259,6 +8347,70 @@
       "type": "int32",
       "full_type": "int32",
       "description": "The total number of sessions you've created"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.address": {
+      "name": "address",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.address",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Full address of the document holder"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.country": {
+      "name": "country",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.country",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ISO3 country code of the document"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.date_of_birth": {
+      "name": "date_of_birth",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.date_of_birth",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Date of birth of the document holder"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.expiration_date": {
+      "name": "expiration_date",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.expiration_date",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Expiration date date of the document"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.family_name": {
+      "name": "family_name",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.family_name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Family (\"last\") name of the document holder"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.given_name": {
+      "name": "given_name",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.given_name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Given (\"first\") name of the document holder"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.id_number": {
+      "name": "id_number",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.id_number",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ID number of the underlying identity document"
+    },
+    "services.connect.v1.NormalizedGovernmentIdData.issue_date": {
+      "name": "issue_date",
+      "full_name": "services.connect.v1.NormalizedGovernmentIdData.issue_date",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Issuance date of the document"
     },
     "services.connect.v1.RequestedVerification.government_id_options": {
       "name": "government_id_options",
@@ -8307,6 +8459,14 @@
       "type": "string",
       "full_type": "string",
       "description": "The ID of the verification"
+    },
+    "services.connect.v1.Verification.normalized_government_id_data": {
+      "name": "normalized_government_id_data",
+      "full_name": "services.connect.v1.Verification.normalized_government_id_data",
+      "label": "LABEL_OPTIONAL",
+      "type": "NormalizedGovernmentIdData",
+      "full_type": "services.connect.v1.NormalizedGovernmentIdData",
+      "description": "Normalized output for manual parsing and usage for this verification\nOnly set if this Verification is of type `GOVERNMENT_ID` and has succeeded."
     },
     "services.connect.v1.Verification.reused": {
       "name": "reused",

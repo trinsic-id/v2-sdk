@@ -428,7 +428,47 @@ export interface Verification {
    * The Government ID options for this Verification.
    * Only set if this Verification is of type `GOVERNMENT_ID`.
    */
-  governmentIdOptions?: GovernmentIDOptions | undefined;
+  governmentIdOptions?:
+    | GovernmentIDOptions
+    | undefined;
+  /**
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   */
+  normalizedGovernmentIdData?: NormalizedGovernmentIdData | undefined;
+}
+
+export interface NormalizedGovernmentIdData {
+  /** The ID number of the underlying identity document */
+  idNumber?:
+    | string
+    | undefined;
+  /** Given ("first") name of the document holder */
+  givenName?:
+    | string
+    | undefined;
+  /** Family ("last") name of the document holder */
+  familyName?:
+    | string
+    | undefined;
+  /** Full address of the document holder */
+  address?:
+    | string
+    | undefined;
+  /** Date of birth of the document holder */
+  dateOfBirth?:
+    | string
+    | undefined;
+  /** ISO3 country code of the document */
+  country?:
+    | string
+    | undefined;
+  /** Issuance date of the document */
+  issueDate?:
+    | string
+    | undefined;
+  /** Expiration date date of the document */
+  expirationDate?: string | undefined;
 }
 
 /** Request to create an Identity Verification Session */
@@ -844,6 +884,7 @@ function createBaseVerification(): Verification {
     begun: 0,
     updated: 0,
     governmentIdOptions: undefined,
+    normalizedGovernmentIdData: undefined,
   };
 }
 
@@ -872,6 +913,9 @@ export const Verification = {
     }
     if (message.governmentIdOptions !== undefined) {
       GovernmentIDOptions.encode(message.governmentIdOptions, writer.uint32(66).fork()).ldelim();
+    }
+    if (message.normalizedGovernmentIdData !== undefined) {
+      NormalizedGovernmentIdData.encode(message.normalizedGovernmentIdData, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
@@ -939,6 +983,13 @@ export const Verification = {
 
           message.governmentIdOptions = GovernmentIDOptions.decode(reader, reader.uint32());
           continue;
+        case 9:
+          if (tag !== 74) {
+            break;
+          }
+
+          message.normalizedGovernmentIdData = NormalizedGovernmentIdData.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -959,6 +1010,9 @@ export const Verification = {
       updated: isSet(object.updated) ? Number(object.updated) : 0,
       governmentIdOptions: isSet(object.governmentIdOptions)
         ? GovernmentIDOptions.fromJSON(object.governmentIdOptions)
+        : undefined,
+      normalizedGovernmentIdData: isSet(object.normalizedGovernmentIdData)
+        ? NormalizedGovernmentIdData.fromJSON(object.normalizedGovernmentIdData)
         : undefined,
     };
   },
@@ -989,6 +1043,9 @@ export const Verification = {
     if (message.governmentIdOptions !== undefined) {
       obj.governmentIdOptions = GovernmentIDOptions.toJSON(message.governmentIdOptions);
     }
+    if (message.normalizedGovernmentIdData !== undefined) {
+      obj.normalizedGovernmentIdData = NormalizedGovernmentIdData.toJSON(message.normalizedGovernmentIdData);
+    }
     return obj;
   },
 
@@ -1007,6 +1064,183 @@ export const Verification = {
     message.governmentIdOptions = (object.governmentIdOptions !== undefined && object.governmentIdOptions !== null)
       ? GovernmentIDOptions.fromPartial(object.governmentIdOptions)
       : undefined;
+    message.normalizedGovernmentIdData =
+      (object.normalizedGovernmentIdData !== undefined && object.normalizedGovernmentIdData !== null)
+        ? NormalizedGovernmentIdData.fromPartial(object.normalizedGovernmentIdData)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseNormalizedGovernmentIdData(): NormalizedGovernmentIdData {
+  return {
+    idNumber: undefined,
+    givenName: undefined,
+    familyName: undefined,
+    address: undefined,
+    dateOfBirth: undefined,
+    country: undefined,
+    issueDate: undefined,
+    expirationDate: undefined,
+  };
+}
+
+export const NormalizedGovernmentIdData = {
+  encode(message: NormalizedGovernmentIdData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.idNumber !== undefined) {
+      writer.uint32(10).string(message.idNumber);
+    }
+    if (message.givenName !== undefined) {
+      writer.uint32(18).string(message.givenName);
+    }
+    if (message.familyName !== undefined) {
+      writer.uint32(26).string(message.familyName);
+    }
+    if (message.address !== undefined) {
+      writer.uint32(34).string(message.address);
+    }
+    if (message.dateOfBirth !== undefined) {
+      writer.uint32(42).string(message.dateOfBirth);
+    }
+    if (message.country !== undefined) {
+      writer.uint32(50).string(message.country);
+    }
+    if (message.issueDate !== undefined) {
+      writer.uint32(58).string(message.issueDate);
+    }
+    if (message.expirationDate !== undefined) {
+      writer.uint32(66).string(message.expirationDate);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): NormalizedGovernmentIdData {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseNormalizedGovernmentIdData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.idNumber = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.givenName = reader.string();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.familyName = reader.string();
+          continue;
+        case 4:
+          if (tag !== 34) {
+            break;
+          }
+
+          message.address = reader.string();
+          continue;
+        case 5:
+          if (tag !== 42) {
+            break;
+          }
+
+          message.dateOfBirth = reader.string();
+          continue;
+        case 6:
+          if (tag !== 50) {
+            break;
+          }
+
+          message.country = reader.string();
+          continue;
+        case 7:
+          if (tag !== 58) {
+            break;
+          }
+
+          message.issueDate = reader.string();
+          continue;
+        case 8:
+          if (tag !== 66) {
+            break;
+          }
+
+          message.expirationDate = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): NormalizedGovernmentIdData {
+    return {
+      idNumber: isSet(object.idNumber) ? String(object.idNumber) : undefined,
+      givenName: isSet(object.givenName) ? String(object.givenName) : undefined,
+      familyName: isSet(object.familyName) ? String(object.familyName) : undefined,
+      address: isSet(object.address) ? String(object.address) : undefined,
+      dateOfBirth: isSet(object.dateOfBirth) ? String(object.dateOfBirth) : undefined,
+      country: isSet(object.country) ? String(object.country) : undefined,
+      issueDate: isSet(object.issueDate) ? String(object.issueDate) : undefined,
+      expirationDate: isSet(object.expirationDate) ? String(object.expirationDate) : undefined,
+    };
+  },
+
+  toJSON(message: NormalizedGovernmentIdData): unknown {
+    const obj: any = {};
+    if (message.idNumber !== undefined) {
+      obj.idNumber = message.idNumber;
+    }
+    if (message.givenName !== undefined) {
+      obj.givenName = message.givenName;
+    }
+    if (message.familyName !== undefined) {
+      obj.familyName = message.familyName;
+    }
+    if (message.address !== undefined) {
+      obj.address = message.address;
+    }
+    if (message.dateOfBirth !== undefined) {
+      obj.dateOfBirth = message.dateOfBirth;
+    }
+    if (message.country !== undefined) {
+      obj.country = message.country;
+    }
+    if (message.issueDate !== undefined) {
+      obj.issueDate = message.issueDate;
+    }
+    if (message.expirationDate !== undefined) {
+      obj.expirationDate = message.expirationDate;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<NormalizedGovernmentIdData>): NormalizedGovernmentIdData {
+    return NormalizedGovernmentIdData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<NormalizedGovernmentIdData>): NormalizedGovernmentIdData {
+    const message = createBaseNormalizedGovernmentIdData();
+    message.idNumber = object.idNumber ?? undefined;
+    message.givenName = object.givenName ?? undefined;
+    message.familyName = object.familyName ?? undefined;
+    message.address = object.address ?? undefined;
+    message.dateOfBirth = object.dateOfBirth ?? undefined;
+    message.country = object.country ?? undefined;
+    message.issueDate = object.issueDate ?? undefined;
+    message.expirationDate = object.expirationDate ?? undefined;
     return message;
   },
 };

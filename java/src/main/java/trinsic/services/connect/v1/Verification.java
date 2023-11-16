@@ -342,6 +342,66 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
         : governmentIdOptions_;
   }
 
+  public static final int NORMALIZED_GOVERNMENT_ID_DATA_FIELD_NUMBER = 9;
+  private trinsic.services.connect.v1.NormalizedGovernmentIdData normalizedGovernmentIdData_;
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   *
+   * @return Whether the normalizedGovernmentIdData field is set.
+   */
+  @java.lang.Override
+  public boolean hasNormalizedGovernmentIdData() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   *
+   * @return The normalizedGovernmentIdData.
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.NormalizedGovernmentIdData getNormalizedGovernmentIdData() {
+    return normalizedGovernmentIdData_ == null
+        ? trinsic.services.connect.v1.NormalizedGovernmentIdData.getDefaultInstance()
+        : normalizedGovernmentIdData_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Normalized output for manual parsing and usage for this verification
+   * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+   * </pre>
+   *
+   * <code>
+   * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+   * </code>
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder
+      getNormalizedGovernmentIdDataOrBuilder() {
+    return normalizedGovernmentIdData_ == null
+        ? trinsic.services.connect.v1.NormalizedGovernmentIdData.getDefaultInstance()
+        : normalizedGovernmentIdData_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -380,6 +440,9 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(8, getGovernmentIdOptions());
     }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      output.writeMessage(9, getNormalizedGovernmentIdData());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -413,6 +476,11 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getGovernmentIdOptions());
     }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(
+              9, getNormalizedGovernmentIdData());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -441,6 +509,11 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (hasGovernmentIdOptions() != other.hasGovernmentIdOptions()) return false;
     if (hasGovernmentIdOptions()) {
       if (!getGovernmentIdOptions().equals(other.getGovernmentIdOptions())) return false;
+    }
+    if (hasNormalizedGovernmentIdData() != other.hasNormalizedGovernmentIdData()) return false;
+    if (hasNormalizedGovernmentIdData()) {
+      if (!getNormalizedGovernmentIdData().equals(other.getNormalizedGovernmentIdData()))
+        return false;
     }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
@@ -472,6 +545,10 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (hasGovernmentIdOptions()) {
       hash = (37 * hash) + GOVERNMENT_ID_OPTIONS_FIELD_NUMBER;
       hash = (53 * hash) + getGovernmentIdOptions().hashCode();
+    }
+    if (hasNormalizedGovernmentIdData()) {
+      hash = (37 * hash) + NORMALIZED_GOVERNMENT_ID_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getNormalizedGovernmentIdData().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -614,6 +691,7 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
         getGovernmentIdOptionsFieldBuilder();
+        getNormalizedGovernmentIdDataFieldBuilder();
       }
     }
 
@@ -640,6 +718,12 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
         governmentIdOptionsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000002);
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        normalizedGovernmentIdData_ = null;
+      } else {
+        normalizedGovernmentIdDataBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -686,6 +770,14 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
           result.governmentIdOptions_ = governmentIdOptionsBuilder_.build();
         }
         to_bitField0_ |= 0x00000002;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        if (normalizedGovernmentIdDataBuilder_ == null) {
+          result.normalizedGovernmentIdData_ = normalizedGovernmentIdData_;
+        } else {
+          result.normalizedGovernmentIdData_ = normalizedGovernmentIdDataBuilder_.build();
+        }
+        to_bitField0_ |= 0x00000004;
       }
       result.bitField0_ = to_bitField0_;
       onBuilt();
@@ -762,6 +854,9 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       if (other.hasGovernmentIdOptions()) {
         mergeGovernmentIdOptions(other.getGovernmentIdOptions());
       }
+      if (other.hasNormalizedGovernmentIdData()) {
+        mergeNormalizedGovernmentIdData(other.getNormalizedGovernmentIdData());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -837,6 +932,13 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
                 bitField0_ |= 0x00000002;
                 break;
               } // case 66
+            case 74:
+              {
+                input.readMessage(
+                    getNormalizedGovernmentIdDataFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 74
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1619,6 +1721,226 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
         governmentIdOptions_ = null;
       }
       return governmentIdOptionsBuilder_;
+    }
+
+    private trinsic.services.connect.v1.NormalizedGovernmentIdData normalizedGovernmentIdData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.NormalizedGovernmentIdData,
+            trinsic.services.connect.v1.NormalizedGovernmentIdData.Builder,
+            trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder>
+        normalizedGovernmentIdDataBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     *
+     * @return Whether the normalizedGovernmentIdData field is set.
+     */
+    public boolean hasNormalizedGovernmentIdData() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     *
+     * @return The normalizedGovernmentIdData.
+     */
+    public trinsic.services.connect.v1.NormalizedGovernmentIdData getNormalizedGovernmentIdData() {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        return normalizedGovernmentIdData_ == null
+            ? trinsic.services.connect.v1.NormalizedGovernmentIdData.getDefaultInstance()
+            : normalizedGovernmentIdData_;
+      } else {
+        return normalizedGovernmentIdDataBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public Builder setNormalizedGovernmentIdData(
+        trinsic.services.connect.v1.NormalizedGovernmentIdData value) {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        normalizedGovernmentIdData_ = value;
+        onChanged();
+      } else {
+        normalizedGovernmentIdDataBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public Builder setNormalizedGovernmentIdData(
+        trinsic.services.connect.v1.NormalizedGovernmentIdData.Builder builderForValue) {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        normalizedGovernmentIdData_ = builderForValue.build();
+        onChanged();
+      } else {
+        normalizedGovernmentIdDataBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public Builder mergeNormalizedGovernmentIdData(
+        trinsic.services.connect.v1.NormalizedGovernmentIdData value) {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) != 0)
+            && normalizedGovernmentIdData_ != null
+            && normalizedGovernmentIdData_
+                != trinsic.services.connect.v1.NormalizedGovernmentIdData.getDefaultInstance()) {
+          normalizedGovernmentIdData_ =
+              trinsic.services.connect.v1.NormalizedGovernmentIdData.newBuilder(
+                      normalizedGovernmentIdData_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          normalizedGovernmentIdData_ = value;
+        }
+        onChanged();
+      } else {
+        normalizedGovernmentIdDataBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public Builder clearNormalizedGovernmentIdData() {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        normalizedGovernmentIdData_ = null;
+        onChanged();
+      } else {
+        normalizedGovernmentIdDataBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public trinsic.services.connect.v1.NormalizedGovernmentIdData.Builder
+        getNormalizedGovernmentIdDataBuilder() {
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return getNormalizedGovernmentIdDataFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    public trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder
+        getNormalizedGovernmentIdDataOrBuilder() {
+      if (normalizedGovernmentIdDataBuilder_ != null) {
+        return normalizedGovernmentIdDataBuilder_.getMessageOrBuilder();
+      } else {
+        return normalizedGovernmentIdData_ == null
+            ? trinsic.services.connect.v1.NormalizedGovernmentIdData.getDefaultInstance()
+            : normalizedGovernmentIdData_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Normalized output for manual parsing and usage for this verification
+     * Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+     * </pre>
+     *
+     * <code>
+     * optional .services.connect.v1.NormalizedGovernmentIdData normalized_government_id_data = 9;
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.NormalizedGovernmentIdData,
+            trinsic.services.connect.v1.NormalizedGovernmentIdData.Builder,
+            trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder>
+        getNormalizedGovernmentIdDataFieldBuilder() {
+      if (normalizedGovernmentIdDataBuilder_ == null) {
+        normalizedGovernmentIdDataBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.connect.v1.NormalizedGovernmentIdData,
+                trinsic.services.connect.v1.NormalizedGovernmentIdData.Builder,
+                trinsic.services.connect.v1.NormalizedGovernmentIdDataOrBuilder>(
+                getNormalizedGovernmentIdData(), getParentForChildren(), isClean());
+        normalizedGovernmentIdData_ = null;
+      }
+      return normalizedGovernmentIdDataBuilder_;
     }
 
     @java.lang.Override
