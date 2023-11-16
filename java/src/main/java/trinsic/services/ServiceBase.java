@@ -1,20 +1,19 @@
 package trinsic.services;
 
+import static trinsic.TrinsicUtilities.getSdkVersion;
+import static trinsic.TrinsicUtilities.getTrinsicTrinsicOptions;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
+import java.util.Base64;
+import java.util.concurrent.TimeUnit;
 import trinsic.TrinsicUtilities;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountProfile;
-
-import java.util.Base64;
-import java.util.concurrent.TimeUnit;
-
-import static trinsic.TrinsicUtilities.getSdkVersion;
-import static trinsic.TrinsicUtilities.getTrinsicTrinsicOptions;
 
 public abstract class ServiceBase {
   private final Channel channel;
@@ -64,8 +63,8 @@ public abstract class ServiceBase {
   }
 
   public void setAuthToken(AccountProfile profile) {
-      var token = Base64.getUrlEncoder().encodeToString(profile.toByteArray());
-      this.setAuthToken(token);
+    var token = Base64.getUrlEncoder().encodeToString(profile.toByteArray());
+    this.setAuthToken(token);
   }
 
   public Options.TrinsicOptions.Builder getOptionsBuilder() {

@@ -239,8 +239,69 @@ class Verification(betterproto.Message):
     updated: int = betterproto.fixed64_field(7)
     """
     The unix timestamp, in seconds, when this verification last changed state
-    -- o
+    -- or `0` if it has not yet begun.
     """
+
+    government_id_options: Optional["GovernmentIdOptions"] = betterproto.message_field(
+        8, optional=True, group="_government_id_options"
+    )
+    """
+    The Government ID options for this Verification. Only set if this
+    Verification is of type `GOVERNMENT_ID`.
+    """
+
+    normalized_government_id_data: Optional[
+        "NormalizedGovernmentIdData"
+    ] = betterproto.message_field(
+        9, optional=True, group="_normalized_government_id_data"
+    )
+    """
+    Normalized output for manual parsing and usage for this verification Only
+    set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class NormalizedGovernmentIdData(betterproto.Message):
+    id_number: Optional[str] = betterproto.string_field(
+        1, optional=True, group="_id_number"
+    )
+    """The ID number of the underlying identity document"""
+
+    given_name: Optional[str] = betterproto.string_field(
+        2, optional=True, group="_given_name"
+    )
+    """Given ("first") name of the document holder"""
+
+    family_name: Optional[str] = betterproto.string_field(
+        3, optional=True, group="_family_name"
+    )
+    """Family ("last") name of the document holder"""
+
+    address: Optional[str] = betterproto.string_field(
+        4, optional=True, group="_address"
+    )
+    """Full address of the document holder"""
+
+    date_of_birth: Optional[str] = betterproto.string_field(
+        5, optional=True, group="_date_of_birth"
+    )
+    """Date of birth of the document holder"""
+
+    country: Optional[str] = betterproto.string_field(
+        6, optional=True, group="_country"
+    )
+    """ISO3 country code of the document"""
+
+    issue_date: Optional[str] = betterproto.string_field(
+        7, optional=True, group="_issue_date"
+    )
+    """Issuance date of the document"""
+
+    expiration_date: Optional[str] = betterproto.string_field(
+        8, optional=True, group="_expiration_date"
+    )
+    """Expiration date date of the document"""
 
 
 @dataclass(eq=False, repr=False)
@@ -257,6 +318,54 @@ class RequestedVerification(betterproto.Message):
 
     type: "VerificationType" = betterproto.enum_field(1)
     """The type of verification to perform"""
+
+    government_id_options: "GovernmentIdOptions" = betterproto.message_field(
+        2, group="options"
+    )
+    """Options for a Verification of type `GOVERNMENT_ID`"""
+
+
+@dataclass(eq=False, repr=False)
+class GovernmentIdOptions(betterproto.Message):
+    """Options for a Verification of type `GOVERNMENT_ID`"""
+
+    fields: "GovernmentIdFields" = betterproto.message_field(1)
+    """
+    The fields to retrieve from the Government ID. If this object is not set,
+    all fields will be retrieved.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class GovernmentIdFields(betterproto.Message):
+    """
+    Selection of fields to retrieve from a Government ID. All fields default to
+    `false` unless explicitly set to `true`.
+    """
+
+    id_number: bool = betterproto.bool_field(1)
+    """ID number of the underlying identity document"""
+
+    given_name: bool = betterproto.bool_field(2)
+    """Given ("first") name of the document holder"""
+
+    family_name: bool = betterproto.bool_field(3)
+    """Family ("last") name of the document holder"""
+
+    address: bool = betterproto.bool_field(4)
+    """Full address of the document holder"""
+
+    date_of_birth: bool = betterproto.bool_field(5)
+    """Date of birth of the document holder"""
+
+    country: bool = betterproto.bool_field(6)
+    """ISO3 country code of the document"""
+
+    issue_date: bool = betterproto.bool_field(7)
+    """Issuance date of the document"""
+
+    expiration_date: bool = betterproto.bool_field(8)
+    """Expiration date date of the document"""
 
 
 @dataclass(eq=False, repr=False)
@@ -320,9 +429,7 @@ class ListSessionsRequest(betterproto.Message):
     """
 
     page: Optional[int] = betterproto.int32_field(4, optional=True, group="_page")
-    """
-    The page index of results to return. Starts at `1`.  Defaults to `1`.
-    """
+    """The page index of results to return. Starts at `1`. Defaults to `1`."""
 
 
 @dataclass(eq=False, repr=False)

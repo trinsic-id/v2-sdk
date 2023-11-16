@@ -148,8 +148,43 @@ message Verification {
   // by the user -- or `0` if not yet begun.
   fixed64 begun = 6;
 
-  // The unix timestamp, in seconds, when this verification last changed state -- o
+  // The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
+  // begun.
   fixed64 updated = 7;
+
+  // The Government ID options for this Verification.
+  // Only set if this Verification is of type `GOVERNMENT_ID`.
+  optional GovernmentIDOptions government_id_options = 8;
+
+  // Normalized output for manual parsing and usage for this verification
+  // Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
+  optional NormalizedGovernmentIdData normalized_government_id_data = 9;
+}
+
+message NormalizedGovernmentIdData {
+  // The ID number of the underlying identity document
+  optional string id_number = 1 [json_name = "idNumber"];
+
+  // Given ("first") name of the document holder
+  optional string given_name = 2 [json_name = "givenName"];
+
+  // Family ("last") name of the document holder
+  optional string family_name = 3 [json_name = "familyName"];
+
+  // Full address of the document holder
+  optional string address = 4 [json_name = "address"];
+
+  // Date of birth of the document holder
+  optional string date_of_birth = 5 [json_name = "dateOfBirth"];
+
+  // ISO3 country code of the document
+  optional string country = 6 [json_name = "country"];
+
+  // Issuance date of the document
+  optional string issue_date = 7 [json_name = "issueDate"];
+
+  // Expiration date date of the document
+  optional string expiration_date = 8 [json_name = "expirationDate"];
 }
 
 // Request to create an Identity Verification Session
@@ -162,6 +197,45 @@ message CreateSessionRequest {
 message RequestedVerification {
   // The type of verification to perform
   VerificationType type = 1;
+
+  oneof options {
+    // Options for a Verification of type `GOVERNMENT_ID`
+    GovernmentIDOptions government_id_options = 2;
+  }
+}
+
+// Options for a Verification of type `GOVERNMENT_ID`
+message GovernmentIDOptions {
+  // The fields to retrieve from the Government ID.
+  // If this object is not set, all fields will be retrieved.
+  GovernmentIDFields fields = 1;
+}
+
+// Selection of fields to retrieve from a Government ID. All fields default to `false` unless explicitly set to `true`.
+message GovernmentIDFields {
+  // ID number of the underlying identity document
+  bool id_number = 1;
+
+  // Given ("first") name of the document holder
+  bool given_name = 2;
+
+  // Family ("last") name of the document holder
+  bool family_name = 3;
+
+  // Full address of the document holder
+  bool address = 4;
+
+  // Date of birth of the document holder
+  bool date_of_birth = 5;
+
+  // ISO3 country code of the document
+  bool country = 6;
+
+  // Issuance date of the document
+  bool issue_date = 7;
+
+  // Expiration date date of the document
+  bool expiration_date = 8;
 }
 
 // Response to `CreateIDVSessionRequest`
@@ -209,7 +283,7 @@ message ListSessionsRequest {
   optional int32 page_size = 3;
 
   // The page index of results to return.
-  // Starts at `1`. 
+  // Starts at `1`.
   // Defaults to `1`.
   optional int32 page = 4;
 }
@@ -231,10 +305,10 @@ message ListSessionsResponse {
 enum SessionOrdering {
   // Order sessions according to when they were created
   CREATED = 0;
-  
+
   // Order sessions according to when they last changed state
   UPDATED = 1;
-  
+
   // Order sessions according to their numerical state
   STATE = 2;
 }
@@ -249,7 +323,7 @@ service Connect {
 
   // Get an IDVSession
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
-  
+
   // List IDVSessions created by the calling wallet
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
 }
