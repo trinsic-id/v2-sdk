@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: trinsic-id/set-version@v0.1
+      - uses: trinsic-id/set-version@main
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
