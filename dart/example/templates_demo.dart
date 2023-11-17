@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:trinsic_dart/src/proto/services/universal-wallet/v1/universal-wallet.pb.dart';
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/templates/v1/templates.pbgrpc.dart';
-import 'package:trinsic_dart/src/proto/services/verifiable-credentials/v1/verifiable-credentials.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
