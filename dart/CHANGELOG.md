@@ -1,4 +1,9 @@
 ## 1.12.0
+**Release Notes:** https://github.com/trinsic-id/sdk/releases/tag/v1.13.0
+
+**Full Changelog:** https://github.com/trinsic-id/sdk/compare/v1.12.0...v1.13.0
+
+## 1.12.0
 **Release Notes:** https://github.com/trinsic-id/sdk/releases/tag/v1.12.0
 
 **Full Changelog:** https://github.com/trinsic-id/sdk/compare/v1.11.0...v1.12.0
