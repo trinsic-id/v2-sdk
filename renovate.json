@@ -1,24 +1,12 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
     "branchPrefix": "mewmba/renovate/",
-    "username": "mewmba-renovate",
     "gitAuthor": "mewmba Renovate Bot <mewmba@trinsic.id>",
-    "onboarding": false,
-    "platform": "github",
-    "forkProcessing": "disabled",
-    "packageRules": [
-        {
-            "matchPackageNames": ["*"],
-            "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
-            "groupName": "{{dep.manager}}",
-            "groupNameTemplate": "${dep.manager}",
-            "enabled": true
-        }
-    ],
-    "additionalBranchPrefix": "{{parentDir}}-",
-    "automergeType": "pr",
-    "assignees": ["janpieterz"],
-    "reviewers": ["janpieterz"],
-    "separateMajorMinor": false
+    "repositories": ["trinsic-id/server"],
+    "additionalBranchPrefix": "{{manager}}-",
+    "groupName": "all {{manager}} dependencies",
+    "groupSlug": "all",
+    "assignees": ["fundthmcalculus"],
+    "reviewers": ["fundthmcalculus"],
+    "prHourlyLimit": 0
 }
