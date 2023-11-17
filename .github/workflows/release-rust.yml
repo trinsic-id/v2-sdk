@@ -69,7 +69,7 @@ jobs:
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
           sed -i 's/version: 1.0.0/version: ${{ steps.setversion.outputs.packageVersion }}/g' src/cli.yaml
 
-          cargo deb
+          cargo deb --deb-revision=""
         working-directory: cli
 
       - name: Upload Artifact
