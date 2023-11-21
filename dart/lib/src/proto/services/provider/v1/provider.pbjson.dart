@@ -21,13 +21,14 @@ const IdentityProvider$json = {
     {'1': 'Email', '2': 1},
     {'1': 'Phone', '2': 2},
     {'1': 'Passkey', '2': 3},
+    {'1': 'TrinsicAuthenticator', '2': 4},
   ],
 };
 
 /// Descriptor for `IdentityProvider`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List identityProviderDescriptor = $convert.base64Decode(
     'ChBJZGVudGl0eVByb3ZpZGVyEgsKB1Vua25vd24QABIJCgVFbWFpbBABEgkKBVBob25lEAISCw'
-    'oHUGFzc2tleRAD');
+    'oHUGFzc2tleRADEhgKFFRyaW5zaWNBdXRoZW50aWNhdG9yEAQ=');
 
 @$core.Deprecated('Use ecosystemDescriptor instead')
 const Ecosystem$json = {

@@ -45,6 +45,16 @@ public enum IdentityProvider implements com.google.protobuf.ProtocolMessageEnum 
    * <code>Passkey = 3;</code>
    */
   Passkey(3),
+  /**
+   *
+   *
+   * <pre>
+   * Identity provider is passkey using Trinsic Authenticator for mobile phones
+   * </pre>
+   *
+   * <code>TrinsicAuthenticator = 4;</code>
+   */
+  TrinsicAuthenticator(4),
   UNRECOGNIZED(-1),
   ;
 
@@ -88,6 +98,16 @@ public enum IdentityProvider implements com.google.protobuf.ProtocolMessageEnum 
    * <code>Passkey = 3;</code>
    */
   public static final int Passkey_VALUE = 3;
+  /**
+   *
+   *
+   * <pre>
+   * Identity provider is passkey using Trinsic Authenticator for mobile phones
+   * </pre>
+   *
+   * <code>TrinsicAuthenticator = 4;</code>
+   */
+  public static final int TrinsicAuthenticator_VALUE = 4;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -121,6 +141,8 @@ public enum IdentityProvider implements com.google.protobuf.ProtocolMessageEnum 
         return Phone;
       case 3:
         return Passkey;
+      case 4:
+        return TrinsicAuthenticator;
       default:
         return null;
     }

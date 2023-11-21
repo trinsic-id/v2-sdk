@@ -19,6 +19,8 @@ export enum IdentityProvider {
   Phone = 2,
   /** Passkey - Identity provider is passkey (WebAuthn) -- for Trinsic internal use only */
   Passkey = 3,
+  /** TrinsicAuthenticator - Identity provider is passkey using Trinsic Authenticator for mobile phones */
+  TrinsicAuthenticator = 4,
   UNRECOGNIZED = -1,
 }
 
@@ -36,6 +38,9 @@ export function identityProviderFromJSON(object: any): IdentityProvider {
     case 3:
     case "Passkey":
       return IdentityProvider.Passkey;
+    case 4:
+    case "TrinsicAuthenticator":
+      return IdentityProvider.TrinsicAuthenticator;
     case -1:
     case "UNRECOGNIZED":
     default:
@@ -53,6 +58,8 @@ export function identityProviderToJSON(object: IdentityProvider): string {
       return "Phone";
     case IdentityProvider.Passkey:
       return "Passkey";
+    case IdentityProvider.TrinsicAuthenticator:
+      return "TrinsicAuthenticator";
     case IdentityProvider.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";

@@ -13,8 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../provider/v1/provider.pb.dart' as $2;
-import '../../provider/v1/provider.pbenum.dart' as $2;
+import '../../provider/v1/provider.pb.dart' as $1;
+import '../../provider/v1/provider.pbenum.dart' as $1;
 
 /// Request to search items in wallet
 class SearchRequest extends $pb.GeneratedMessage {
@@ -875,7 +875,7 @@ class DeleteWalletResponse extends $pb.GeneratedMessage {
 class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
   factory CreateWalletRequest_ExternalIdentity({
     $core.String? identity,
-    $2.IdentityProvider? provider,
+    $1.IdentityProvider? provider,
   }) {
     final $result = create();
     if (identity != null) {
@@ -901,11 +901,11 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$2.IdentityProvider>(
+    ..e<$1.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $2.IdentityProvider.Unknown,
-        valueOf: $2.IdentityProvider.valueOf,
-        enumValues: $2.IdentityProvider.values)
+        defaultOrMaker: $1.IdentityProvider.Unknown,
+        valueOf: $1.IdentityProvider.valueOf,
+        enumValues: $1.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -952,9 +952,9 @@ class CreateWalletRequest_ExternalIdentity extends $pb.GeneratedMessage {
 
   /// The type of identity provider, like EMAIL or PHONE
   @$pb.TagNumber(2)
-  $2.IdentityProvider get provider => $_getN(1);
+  $1.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($2.IdentityProvider v) {
+  set provider($1.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -1076,7 +1076,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   factory CreateWalletResponse({
     $core.String? authToken,
     $core.String? tokenId,
-    $2.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final $result = create();
     if (authToken != null) {
@@ -1105,8 +1105,8 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(2, _omitFieldNames ? '' : 'authToken')
     ..aOS(3, _omitFieldNames ? '' : 'tokenId')
-    ..aOM<$2.WalletConfiguration>(4, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $2.WalletConfiguration.create)
+    ..aOM<$1.WalletConfiguration>(4, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1161,9 +1161,9 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
 
   /// Wallet configuration
   @$pb.TagNumber(4)
-  $2.WalletConfiguration get wallet => $_getN(2);
+  $1.WalletConfiguration get wallet => $_getN(2);
   @$pb.TagNumber(4)
-  set wallet($2.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(4, v);
   }
 
@@ -1172,7 +1172,7 @@ class CreateWalletResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearWallet() => clearField(4);
   @$pb.TagNumber(4)
-  $2.WalletConfiguration ensureWallet() => $_ensure(2);
+  $1.WalletConfiguration ensureWallet() => $_ensure(2);
 }
 
 class GenerateAuthTokenRequest extends $pb.GeneratedMessage {
@@ -1405,7 +1405,7 @@ class GetWalletInfoRequest extends $pb.GeneratedMessage {
 /// Response to `GetWalletInfoRequest`
 class GetWalletInfoResponse extends $pb.GeneratedMessage {
   factory GetWalletInfoResponse({
-    $2.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final $result = create();
     if (wallet != null) {
@@ -1426,8 +1426,8 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $2.WalletConfiguration.create)
+    ..aOM<$1.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1457,9 +1457,9 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
 
   /// Wallet configuration
   @$pb.TagNumber(1)
-  $2.WalletConfiguration get wallet => $_getN(0);
+  $1.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($2.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1468,7 +1468,7 @@ class GetWalletInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $2.WalletConfiguration ensureWallet() => $_ensure(0);
+  $1.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 /// Request to retrieve wallet information about the currently authenticated wallet
@@ -1516,7 +1516,7 @@ class GetMyInfoRequest extends $pb.GeneratedMessage {
 /// Response to `GetMyInfoRequest`
 class GetMyInfoResponse extends $pb.GeneratedMessage {
   factory GetMyInfoResponse({
-    $2.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final $result = create();
     if (wallet != null) {
@@ -1537,8 +1537,8 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $2.WalletConfiguration.create)
+    ..aOM<$1.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1566,9 +1566,9 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
 
   /// Wallet configuration
   @$pb.TagNumber(1)
-  $2.WalletConfiguration get wallet => $_getN(0);
+  $1.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($2.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1577,7 +1577,7 @@ class GetMyInfoResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $2.WalletConfiguration ensureWallet() => $_ensure(0);
+  $1.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 /// Request to revoke a previously issued auth token
@@ -1771,7 +1771,7 @@ class ListWalletsRequest extends $pb.GeneratedMessage {
 
 class ListWalletsResponse extends $pb.GeneratedMessage {
   factory ListWalletsResponse({
-    $core.Iterable<$2.WalletConfiguration>? wallets,
+    $core.Iterable<$1.WalletConfiguration>? wallets,
   }) {
     final $result = create();
     if (wallets != null) {
@@ -1792,9 +1792,9 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..pc<$2.WalletConfiguration>(
+    ..pc<$1.WalletConfiguration>(
         1, _omitFieldNames ? '' : 'wallets', $pb.PbFieldType.PM,
-        subBuilder: $2.WalletConfiguration.create)
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1821,12 +1821,12 @@ class ListWalletsResponse extends $pb.GeneratedMessage {
   static ListWalletsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$2.WalletConfiguration> get wallets => $_getList(0);
+  $core.List<$1.WalletConfiguration> get wallets => $_getList(0);
 }
 
 class GetWalletFromExternalIdentityRequest extends $pb.GeneratedMessage {
   factory GetWalletFromExternalIdentityRequest({
-    $2.WalletExternalIdentity? identity,
+    $1.WalletExternalIdentity? identity,
   }) {
     final $result = create();
     if (identity != null) {
@@ -1848,8 +1848,8 @@ class GetWalletFromExternalIdentityRequest extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.WalletExternalIdentity>(1, _omitFieldNames ? '' : 'identity',
-        subBuilder: $2.WalletExternalIdentity.create)
+    ..aOM<$1.WalletExternalIdentity>(1, _omitFieldNames ? '' : 'identity',
+        subBuilder: $1.WalletExternalIdentity.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1881,9 +1881,9 @@ class GetWalletFromExternalIdentityRequest extends $pb.GeneratedMessage {
   static GetWalletFromExternalIdentityRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.WalletExternalIdentity get identity => $_getN(0);
+  $1.WalletExternalIdentity get identity => $_getN(0);
   @$pb.TagNumber(1)
-  set identity($2.WalletExternalIdentity v) {
+  set identity($1.WalletExternalIdentity v) {
     setField(1, v);
   }
 
@@ -1892,13 +1892,13 @@ class GetWalletFromExternalIdentityRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
   @$pb.TagNumber(1)
-  $2.WalletExternalIdentity ensureIdentity() => $_ensure(0);
+  $1.WalletExternalIdentity ensureIdentity() => $_ensure(0);
 }
 
 /// Response to `GetWalletFromExternalIdentityRequest`
 class GetWalletFromExternalIdentityResponse extends $pb.GeneratedMessage {
   factory GetWalletFromExternalIdentityResponse({
-    $2.WalletConfiguration? wallet,
+    $1.WalletConfiguration? wallet,
   }) {
     final $result = create();
     if (wallet != null) {
@@ -1920,8 +1920,8 @@ class GetWalletFromExternalIdentityResponse extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
-        subBuilder: $2.WalletConfiguration.create)
+    ..aOM<$1.WalletConfiguration>(1, _omitFieldNames ? '' : 'wallet',
+        subBuilder: $1.WalletConfiguration.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1954,9 +1954,9 @@ class GetWalletFromExternalIdentityResponse extends $pb.GeneratedMessage {
 
   /// Wallet configuration
   @$pb.TagNumber(1)
-  $2.WalletConfiguration get wallet => $_getN(0);
+  $1.WalletConfiguration get wallet => $_getN(0);
   @$pb.TagNumber(1)
-  set wallet($2.WalletConfiguration v) {
+  set wallet($1.WalletConfiguration v) {
     setField(1, v);
   }
 
@@ -1965,13 +1965,13 @@ class GetWalletFromExternalIdentityResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearWallet() => clearField(1);
   @$pb.TagNumber(1)
-  $2.WalletConfiguration ensureWallet() => $_ensure(0);
+  $1.WalletConfiguration ensureWallet() => $_ensure(0);
 }
 
 class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
   factory AddExternalIdentityInitRequest({
     $core.String? identity,
-    $2.IdentityProvider? provider,
+    $1.IdentityProvider? provider,
   }) {
     final $result = create();
     if (identity != null) {
@@ -1996,11 +1996,11 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$2.IdentityProvider>(
+    ..e<$1.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $2.IdentityProvider.Unknown,
-        valueOf: $2.IdentityProvider.valueOf,
-        enumValues: $2.IdentityProvider.values)
+        defaultOrMaker: $1.IdentityProvider.Unknown,
+        valueOf: $1.IdentityProvider.valueOf,
+        enumValues: $1.IdentityProvider.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -2046,9 +2046,9 @@ class AddExternalIdentityInitRequest extends $pb.GeneratedMessage {
 
   /// The type of identity provider, like EMAIL or PHONE
   @$pb.TagNumber(2)
-  $2.IdentityProvider get provider => $_getN(1);
+  $1.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($2.IdentityProvider v) {
+  set provider($1.IdentityProvider v) {
     setField(2, v);
   }
 
@@ -2375,7 +2375,7 @@ class RemoveExternalIdentityResponse extends $pb.GeneratedMessage {
 class AuthenticateInitRequest extends $pb.GeneratedMessage {
   factory AuthenticateInitRequest({
     $core.String? identity,
-    $2.IdentityProvider? provider,
+    $1.IdentityProvider? provider,
     $core.String? ecosystemId,
   }) {
     final $result = create();
@@ -2404,11 +2404,11 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
           _omitMessageNames ? '' : 'services.universalwallet.v1'),
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'identity')
-    ..e<$2.IdentityProvider>(
+    ..e<$1.IdentityProvider>(
         2, _omitFieldNames ? '' : 'provider', $pb.PbFieldType.OE,
-        defaultOrMaker: $2.IdentityProvider.Unknown,
-        valueOf: $2.IdentityProvider.valueOf,
-        enumValues: $2.IdentityProvider.values)
+        defaultOrMaker: $1.IdentityProvider.Unknown,
+        valueOf: $1.IdentityProvider.valueOf,
+        enumValues: $1.IdentityProvider.values)
     ..aOS(3, _omitFieldNames ? '' : 'ecosystemId')
     ..hasRequiredFields = false;
 
@@ -2452,9 +2452,9 @@ class AuthenticateInitRequest extends $pb.GeneratedMessage {
 
   /// Identity provider
   @$pb.TagNumber(2)
-  $2.IdentityProvider get provider => $_getN(1);
+  $1.IdentityProvider get provider => $_getN(1);
   @$pb.TagNumber(2)
-  set provider($2.IdentityProvider v) {
+  set provider($1.IdentityProvider v) {
     setField(2, v);
   }
 

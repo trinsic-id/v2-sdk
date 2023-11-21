@@ -1404,6 +1404,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.IdentityProvider"
     },
+    "services.provider.v1.IdentityProvider.TrinsicAuthenticator": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IdentityProvider"
+    },
     "services.provider.v1.IdentityProvider.Unknown": {
       "type": "enum_value",
       "collection": "enum_values",
@@ -4826,7 +4832,8 @@
         "services.provider.v1.IdentityProvider.Unknown",
         "services.provider.v1.IdentityProvider.Email",
         "services.provider.v1.IdentityProvider.Phone",
-        "services.provider.v1.IdentityProvider.Passkey"
+        "services.provider.v1.IdentityProvider.Passkey",
+        "services.provider.v1.IdentityProvider.TrinsicAuthenticator"
       ]
     },
     "services/trust-registry/v1/trust-registry.proto": {
@@ -11289,7 +11296,8 @@
         "services.provider.v1.IdentityProvider.Unknown",
         "services.provider.v1.IdentityProvider.Email",
         "services.provider.v1.IdentityProvider.Phone",
-        "services.provider.v1.IdentityProvider.Passkey"
+        "services.provider.v1.IdentityProvider.Passkey",
+        "services.provider.v1.IdentityProvider.TrinsicAuthenticator"
       ]
     },
     "services.provider.v1.IndyOptions.IndyNetwork": {
@@ -11647,6 +11655,12 @@
       "full_name": "services.provider.v1.IdentityProvider.Phone",
       "description": "Identity provider is phone",
       "value": 2
+    },
+    "services.provider.v1.IdentityProvider.TrinsicAuthenticator": {
+      "name": "TrinsicAuthenticator",
+      "full_name": "services.provider.v1.IdentityProvider.TrinsicAuthenticator",
+      "description": "Identity provider is passkey using Trinsic Authenticator for mobile phones",
+      "value": 4
     },
     "services.provider.v1.IdentityProvider.Unknown": {
       "name": "Unknown",
