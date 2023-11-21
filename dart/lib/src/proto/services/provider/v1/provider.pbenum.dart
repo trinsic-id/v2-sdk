@@ -22,12 +22,15 @@ class IdentityProvider extends $pb.ProtobufEnum {
       IdentityProvider._(2, _omitEnumNames ? '' : 'Phone');
   static const IdentityProvider Passkey =
       IdentityProvider._(3, _omitEnumNames ? '' : 'Passkey');
+  static const IdentityProvider TrinsicAuthenticator =
+      IdentityProvider._(4, _omitEnumNames ? '' : 'TrinsicAuthenticator');
 
   static const $core.List<IdentityProvider> values = <IdentityProvider>[
     Unknown,
     Email,
     Phone,
     Passkey,
+    TrinsicAuthenticator,
   ];
 
   static final $core.Map<$core.int, IdentityProvider> _byValue =
