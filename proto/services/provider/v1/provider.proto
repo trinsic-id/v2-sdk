@@ -143,6 +143,8 @@ enum IdentityProvider {
   Phone = 2;
   // Identity provider is passkey (WebAuthn) -- for Trinsic internal use only
   Passkey = 3;
+  // Identity provider is passkey using Trinsic Authenticator for mobile phones
+  TrinsicAuthenticator = 4;
 }
 
 // Options for creation of DID on the ION network
