@@ -7,6 +7,7 @@ option java_package = "trinsic.services.connect.v1";
 option java_multiple_files = true;
 
 import "services/common/v1/common.proto";
+import "services/universal-wallet/v1/universal-wallet.proto";
 
 // The type of verification to perform
 enum VerificationType {
@@ -301,6 +302,26 @@ message ListSessionsResponse {
   bool more = 3;
 }
 
+// Request to preemptively check if an identity has a valid reusable credential
+message HasValidCredentialRequest {
+  // The the identity used to find a credential for
+  universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 1;
+
+  // The criteria used to find a valid credential
+  CredentialRequestData credential_request_data = 2;
+}
+
+// Response to `HasValidCredentialRequest`
+message HasValidCredentialResponse {
+  // Whether the identity has a valid credential
+  bool has_valid_credential = 1;
+}
+
+message CredentialRequestData {
+  // The type of verification which the credential can be used for
+  VerificationType type = 1;
+}
+
 // Controls how sessions are ordered in `ListSessions`
 enum SessionOrdering {
   // Order sessions according to when they were created
@@ -326,4 +347,7 @@ service Connect {
 
   // List IDVSessions created by the calling wallet
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
+
+  // Checks if the identity provided in the request has a wallet containing a valid reusable credential
+  rpc HasValidCredential(HasValidCredentialRequest) returns (HasValidCredentialResponse);
 }
