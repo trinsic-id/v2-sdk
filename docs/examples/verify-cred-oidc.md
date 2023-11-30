@@ -94,7 +94,7 @@ app.listen(PORT, () => {
 Create a new file named `index.html` at the root of the repo and reference Trinsic's SDK.
 
 ```html
-<script src="https://unpkg.com/@trinsic/trinsic@1.11.3-pre.13/dist/trinsic.min.js"></script>
+<script src="https://unpkg.com/@trinsic/trinsic@1.13.0/dist/trinsic.min.js"></script>
 ```
 
 Let's add additional script to register a button click event that will start the process of requesting a Verifiable Credential from the holder.
