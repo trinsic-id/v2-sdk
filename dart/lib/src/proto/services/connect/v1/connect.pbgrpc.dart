@@ -45,6 +45,12 @@ class ConnectClient extends $grpc.Client {
           ($3.ListSessionsRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $3.ListSessionsResponse.fromBuffer(value));
+  static final _$hasValidCredential = $grpc.ClientMethod<
+          $3.HasValidCredentialRequest, $3.HasValidCredentialResponse>(
+      '/services.connect.v1.Connect/HasValidCredential',
+      ($3.HasValidCredentialRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $3.HasValidCredentialResponse.fromBuffer(value));
 
   ConnectClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -73,6 +79,12 @@ class ConnectClient extends $grpc.Client {
       $3.ListSessionsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listSessions, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.HasValidCredentialResponse> hasValidCredential(
+      $3.HasValidCredentialRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$hasValidCredential, request, options: options);
   }
 }
 
@@ -115,6 +127,15 @@ abstract class ConnectServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $3.ListSessionsRequest.fromBuffer(value),
             ($3.ListSessionsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.HasValidCredentialRequest,
+            $3.HasValidCredentialResponse>(
+        'HasValidCredential',
+        hasValidCredential_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $3.HasValidCredentialRequest.fromBuffer(value),
+        ($3.HasValidCredentialResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$3.CreateSessionResponse> createSession_Pre(
@@ -140,6 +161,12 @@ abstract class ConnectServiceBase extends $grpc.Service {
     return listSessions(call, await request);
   }
 
+  $async.Future<$3.HasValidCredentialResponse> hasValidCredential_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$3.HasValidCredentialRequest> request) async {
+    return hasValidCredential(call, await request);
+  }
+
   $async.Future<$3.CreateSessionResponse> createSession(
       $grpc.ServiceCall call, $3.CreateSessionRequest request);
   $async.Future<$3.CancelSessionResponse> cancelSession(
@@ -148,4 +175,6 @@ abstract class ConnectServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $3.GetSessionRequest request);
   $async.Future<$3.ListSessionsResponse> listSessions(
       $grpc.ServiceCall call, $3.ListSessionsRequest request);
+  $async.Future<$3.HasValidCredentialResponse> hasValidCredential(
+      $grpc.ServiceCall call, $3.HasValidCredentialRequest request);
 }

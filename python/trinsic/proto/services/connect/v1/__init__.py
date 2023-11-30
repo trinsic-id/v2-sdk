@@ -14,6 +14,7 @@ import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
 
 from ...common import v1 as __common_v1__
+from ...universalwallet import v1 as __universalwallet_v1__
 
 
 if TYPE_CHECKING:
@@ -449,6 +450,36 @@ class ListSessionsResponse(betterproto.Message):
     """
 
 
+@dataclass(eq=False, repr=False)
+class HasValidCredentialRequest(betterproto.Message):
+    """
+    Request to preemptively check if an identity has a valid reusable
+    credential
+    """
+
+    identity: "__universalwallet_v1__.CreateWalletRequestExternalIdentity" = (
+        betterproto.message_field(1)
+    )
+    """The the identity used to find a credential for"""
+
+    credential_request_data: "CredentialRequestData" = betterproto.message_field(2)
+    """The criteria used to find a valid credential"""
+
+
+@dataclass(eq=False, repr=False)
+class HasValidCredentialResponse(betterproto.Message):
+    """Response to `HasValidCredentialRequest`"""
+
+    has_valid_credential: bool = betterproto.bool_field(1)
+    """Whether the identity has a valid credential"""
+
+
+@dataclass(eq=False, repr=False)
+class CredentialRequestData(betterproto.Message):
+    type: "VerificationType" = betterproto.enum_field(1)
+    """The type of verification which the credential can be used for"""
+
+
 class ConnectStub(betterproto.ServiceStub):
     async def create_session(
         self,
@@ -514,6 +545,22 @@ class ConnectStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def has_valid_credential(
+        self,
+        has_valid_credential_request: "HasValidCredentialRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "HasValidCredentialResponse":
+        return await self._unary_unary(
+            "/services.connect.v1.Connect/HasValidCredential",
+            has_valid_credential_request,
+            HasValidCredentialResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class ConnectBase(ServiceBase):
     async def create_session(
@@ -536,6 +583,11 @@ class ConnectBase(ServiceBase):
     ) -> "ListSessionsResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def has_valid_credential(
+        self, has_valid_credential_request: "HasValidCredentialRequest"
+    ) -> "HasValidCredentialResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_create_session(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create_session(request)
@@ -554,6 +606,11 @@ class ConnectBase(ServiceBase):
     async def __rpc_list_sessions(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.list_sessions(request)
+        await stream.send_message(response)
+
+    async def __rpc_has_valid_credential(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.has_valid_credential(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -581,5 +638,11 @@ class ConnectBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListSessionsRequest,
                 ListSessionsResponse,
+            ),
+            "/services.connect.v1.Connect/HasValidCredential": grpclib.const.Handler(
+                self.__rpc_has_valid_credential,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                HasValidCredentialRequest,
+                HasValidCredentialResponse,
             ),
         }

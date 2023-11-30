@@ -1159,6 +1159,7 @@ The Connect service provides access to Trinsic Connect, a reusable identity veri
 | CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
 | GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
 | ListSessions | [ListSessionsRequest](/reference/proto#services-connect-v1-ListSessionsRequest) | [ListSessionsResponse](/reference/proto#services-connect-v1-ListSessionsResponse) | List IDVSessions created by the calling wallet |
+| HasValidCredential | [HasValidCredentialRequest](/reference/proto#services-connect-v1-HasValidCredentialRequest) | [HasValidCredentialResponse](/reference/proto#services-connect-v1-HasValidCredentialResponse) | Checks if the identity provided in the request has a wallet containing a valid reusable credential |
 
  <!-- end services -->
 
@@ -1217,6 +1218,21 @@ Response to `CreateIDVSessionRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-CredentialRequestData"></a>
+
+### CredentialRequestData
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification which the credential can be used for |
 
 
 
@@ -1284,6 +1300,37 @@ Options for a Verification of type `GOVERNMENT_ID`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | fields | [GovernmentIDFields](/reference/proto#services-connect-v1-GovernmentIDFields) | The fields to retrieve from the Government ID. If this object is not set, all fields will be retrieved. |
+
+
+
+
+
+
+<a name="services-connect-v1-HasValidCredentialRequest"></a>
+
+### HasValidCredentialRequest
+Request to preemptively check if an identity has a valid reusable credential
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [services.universalwallet.v1.CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | The the identity used to find a credential for |
+| credential_request_data | [CredentialRequestData](/reference/proto#services-connect-v1-CredentialRequestData) | The criteria used to find a valid credential |
+
+
+
+
+
+
+<a name="services-connect-v1-HasValidCredentialResponse"></a>
+
+### HasValidCredentialResponse
+Response to `HasValidCredentialRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| has_valid_credential | [bool](/reference/proto#bool) | Whether the identity has a valid credential |
 
 
 

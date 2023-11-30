@@ -624,3 +624,73 @@ final $typed_data.Uint8List listSessionsResponseDescriptor = $convert.base64Deco
     'ChRMaXN0U2Vzc2lvbnNSZXNwb25zZRI7CghzZXNzaW9ucxgBIAMoCzIfLnNlcnZpY2VzLmNvbm'
     '5lY3QudjEuSURWU2Vzc2lvblIIc2Vzc2lvbnMSFAoFdG90YWwYAiABKAVSBXRvdGFsEhIKBG1v'
     'cmUYAyABKAhSBG1vcmU=');
+
+@$core.Deprecated('Use hasValidCredentialRequestDescriptor instead')
+const HasValidCredentialRequest$json = {
+  '1': 'HasValidCredentialRequest',
+  '2': [
+    {
+      '1': 'identity',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity',
+      '10': 'identity'
+    },
+    {
+      '1': 'credential_request_data',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.CredentialRequestData',
+      '10': 'credentialRequestData'
+    },
+  ],
+};
+
+/// Descriptor for `HasValidCredentialRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List hasValidCredentialRequestDescriptor = $convert.base64Decode(
+    'ChlIYXNWYWxpZENyZWRlbnRpYWxSZXF1ZXN0El0KCGlkZW50aXR5GAEgASgLMkEuc2VydmljZX'
+    'MudW5pdmVyc2Fsd2FsbGV0LnYxLkNyZWF0ZVdhbGxldFJlcXVlc3QuRXh0ZXJuYWxJZGVudGl0'
+    'eVIIaWRlbnRpdHkSYgoXY3JlZGVudGlhbF9yZXF1ZXN0X2RhdGEYAiABKAsyKi5zZXJ2aWNlcy'
+    '5jb25uZWN0LnYxLkNyZWRlbnRpYWxSZXF1ZXN0RGF0YVIVY3JlZGVudGlhbFJlcXVlc3REYXRh');
+
+@$core.Deprecated('Use hasValidCredentialResponseDescriptor instead')
+const HasValidCredentialResponse$json = {
+  '1': 'HasValidCredentialResponse',
+  '2': [
+    {
+      '1': 'has_valid_credential',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'hasValidCredential'
+    },
+  ],
+};
+
+/// Descriptor for `HasValidCredentialResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List hasValidCredentialResponseDescriptor =
+    $convert.base64Decode(
+        'ChpIYXNWYWxpZENyZWRlbnRpYWxSZXNwb25zZRIwChRoYXNfdmFsaWRfY3JlZGVudGlhbBgBIA'
+        'EoCFISaGFzVmFsaWRDcmVkZW50aWFs');
+
+@$core.Deprecated('Use credentialRequestDataDescriptor instead')
+const CredentialRequestData$json = {
+  '1': 'CredentialRequestData',
+  '2': [
+    {
+      '1': 'type',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.services.connect.v1.VerificationType',
+      '10': 'type'
+    },
+  ],
+};
+
+/// Descriptor for `CredentialRequestData`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List credentialRequestDataDescriptor = $convert.base64Decode(
+    'ChVDcmVkZW50aWFsUmVxdWVzdERhdGESOQoEdHlwZRgBIAEoDjIlLnNlcnZpY2VzLmNvbm5lY3'
+    'QudjEuVmVyaWZpY2F0aW9uVHlwZVIEdHlwZQ==');

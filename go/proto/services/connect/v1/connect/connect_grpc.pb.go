@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Connect_CreateSession_FullMethodName = "/services.connect.v1.Connect/CreateSession"
-	Connect_CancelSession_FullMethodName = "/services.connect.v1.Connect/CancelSession"
-	Connect_GetSession_FullMethodName    = "/services.connect.v1.Connect/GetSession"
-	Connect_ListSessions_FullMethodName  = "/services.connect.v1.Connect/ListSessions"
+	Connect_CreateSession_FullMethodName      = "/services.connect.v1.Connect/CreateSession"
+	Connect_CancelSession_FullMethodName      = "/services.connect.v1.Connect/CancelSession"
+	Connect_GetSession_FullMethodName         = "/services.connect.v1.Connect/GetSession"
+	Connect_ListSessions_FullMethodName       = "/services.connect.v1.Connect/ListSessions"
+	Connect_HasValidCredential_FullMethodName = "/services.connect.v1.Connect/HasValidCredential"
 )
 
 // ConnectClient is the client API for Connect service.
@@ -37,6 +38,8 @@ type ConnectClient interface {
 	GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
 	// List IDVSessions created by the calling wallet
 	ListSessions(ctx context.Context, in *ListSessionsRequest, opts ...grpc.CallOption) (*ListSessionsResponse, error)
+	// Checks if the identity provided in the request has a wallet containing a valid reusable credential
+	HasValidCredential(ctx context.Context, in *HasValidCredentialRequest, opts ...grpc.CallOption) (*HasValidCredentialResponse, error)
 }
 
 type connectClient struct {
@@ -83,6 +86,15 @@ func (c *connectClient) ListSessions(ctx context.Context, in *ListSessionsReques
 	return out, nil
 }
 
+func (c *connectClient) HasValidCredential(ctx context.Context, in *HasValidCredentialRequest, opts ...grpc.CallOption) (*HasValidCredentialResponse, error) {
+	out := new(HasValidCredentialResponse)
+	err := c.cc.Invoke(ctx, Connect_HasValidCredential_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ConnectServer is the server API for Connect service.
 // All implementations must embed UnimplementedConnectServer
 // for forward compatibility
@@ -95,6 +107,8 @@ type ConnectServer interface {
 	GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
 	// List IDVSessions created by the calling wallet
 	ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error)
+	// Checks if the identity provided in the request has a wallet containing a valid reusable credential
+	HasValidCredential(context.Context, *HasValidCredentialRequest) (*HasValidCredentialResponse, error)
 	mustEmbedUnimplementedConnectServer()
 }
 
@@ -113,6 +127,9 @@ func (UnimplementedConnectServer) GetSession(context.Context, *GetSessionRequest
 }
 func (UnimplementedConnectServer) ListSessions(context.Context, *ListSessionsRequest) (*ListSessionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListSessions not implemented")
+}
+func (UnimplementedConnectServer) HasValidCredential(context.Context, *HasValidCredentialRequest) (*HasValidCredentialResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HasValidCredential not implemented")
 }
 func (UnimplementedConnectServer) mustEmbedUnimplementedConnectServer() {}
 
@@ -199,6 +216,24 @@ func _Connect_ListSessions_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Connect_HasValidCredential_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HasValidCredentialRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ConnectServer).HasValidCredential(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Connect_HasValidCredential_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ConnectServer).HasValidCredential(ctx, req.(*HasValidCredentialRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Connect_ServiceDesc is the grpc.ServiceDesc for Connect service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -221,6 +256,10 @@ var Connect_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListSessions",
 			Handler:    _Connect_ListSessions_Handler,
+		},
+		{
+			MethodName: "HasValidCredential",
+			Handler:    _Connect_HasValidCredential_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
