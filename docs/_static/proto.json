@@ -342,6 +342,12 @@
       "file": "services/connect/v1/connect.proto",
       "parent": ""
     },
+    "services.connect.v1.Connect.HasValidCredential": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
     "services.connect.v1.Connect.ListSessions": {
       "type": "method",
       "collection": "methods",
@@ -371,6 +377,18 @@
       "collection": "fields",
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.CreateSessionResponse"
+    },
+    "services.connect.v1.CredentialRequestData": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.CredentialRequestData.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CredentialRequestData"
     },
     "services.connect.v1.GetSessionRequest": {
       "type": "message",
@@ -461,6 +479,36 @@
       "collection": "fields",
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.GovernmentIDOptions"
+    },
+    "services.connect.v1.HasValidCredentialRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.HasValidCredentialRequest.credential_request_data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.HasValidCredentialRequest"
+    },
+    "services.connect.v1.HasValidCredentialRequest.identity": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.HasValidCredentialRequest"
+    },
+    "services.connect.v1.HasValidCredentialResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.HasValidCredentialResponse.has_valid_credential": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.HasValidCredentialResponse"
     },
     "services.connect.v1.IDVSession": {
       "type": "message",
@@ -4515,7 +4563,8 @@
         "services.connect.v1.Connect.CreateSession",
         "services.connect.v1.Connect.CancelSession",
         "services.connect.v1.Connect.GetSession",
-        "services.connect.v1.Connect.ListSessions"
+        "services.connect.v1.Connect.ListSessions",
+        "services.connect.v1.Connect.HasValidCredential"
       ],
       "messages": [
         "services.connect.v1.IDVSession",
@@ -4532,7 +4581,10 @@
         "services.connect.v1.GetSessionRequest",
         "services.connect.v1.GetSessionResponse",
         "services.connect.v1.ListSessionsRequest",
-        "services.connect.v1.ListSessionsResponse"
+        "services.connect.v1.ListSessionsResponse",
+        "services.connect.v1.HasValidCredentialRequest",
+        "services.connect.v1.HasValidCredentialResponse",
+        "services.connect.v1.CredentialRequestData"
       ],
       "fields": [
         "services.connect.v1.IDVSession.id",
@@ -4585,7 +4637,11 @@
         "services.connect.v1.ListSessionsRequest.page",
         "services.connect.v1.ListSessionsResponse.sessions",
         "services.connect.v1.ListSessionsResponse.total",
-        "services.connect.v1.ListSessionsResponse.more"
+        "services.connect.v1.ListSessionsResponse.more",
+        "services.connect.v1.HasValidCredentialRequest.identity",
+        "services.connect.v1.HasValidCredentialRequest.credential_request_data",
+        "services.connect.v1.HasValidCredentialResponse.has_valid_credential",
+        "services.connect.v1.CredentialRequestData.type"
       ],
       "enums": [
         "services.connect.v1.VerificationType",
@@ -5343,7 +5399,8 @@
         "services.connect.v1.Connect.CreateSession",
         "services.connect.v1.Connect.CancelSession",
         "services.connect.v1.Connect.GetSession",
-        "services.connect.v1.Connect.ListSessions"
+        "services.connect.v1.Connect.ListSessions",
+        "services.connect.v1.Connect.HasValidCredential"
       ]
     },
     "services.filemanagement.v1.FileManagement": {
@@ -5475,6 +5532,13 @@
       "input_type": "services.connect.v1.GetSessionRequest",
       "output_type": "services.connect.v1.GetSessionResponse",
       "description": "Get an IDVSession"
+    },
+    "services.connect.v1.Connect.HasValidCredential": {
+      "name": "HasValidCredential",
+      "full_name": "services.connect.v1.Connect.HasValidCredential",
+      "input_type": "services.connect.v1.HasValidCredentialRequest",
+      "output_type": "services.connect.v1.HasValidCredentialResponse",
+      "description": "Checks if the identity provided in the request has a wallet containing a valid reusable credential"
     },
     "services.connect.v1.Connect.ListSessions": {
       "name": "ListSessions",
@@ -6067,6 +6131,16 @@
       "messages": [],
       "enums": []
     },
+    "services.connect.v1.CredentialRequestData": {
+      "name": "CredentialRequestData",
+      "full_name": "services.connect.v1.CredentialRequestData",
+      "description": "",
+      "fields": [
+        "services.connect.v1.CredentialRequestData.type"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.connect.v1.GetSessionRequest": {
       "name": "GetSessionRequest",
       "full_name": "services.connect.v1.GetSessionRequest",
@@ -6110,6 +6184,27 @@
       "description": "Options for a Verification of type `GOVERNMENT_ID`",
       "fields": [
         "services.connect.v1.GovernmentIDOptions.fields"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.HasValidCredentialRequest": {
+      "name": "HasValidCredentialRequest",
+      "full_name": "services.connect.v1.HasValidCredentialRequest",
+      "description": "Request to preemptively check if an identity has a valid reusable credential",
+      "fields": [
+        "services.connect.v1.HasValidCredentialRequest.identity",
+        "services.connect.v1.HasValidCredentialRequest.credential_request_data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.HasValidCredentialResponse": {
+      "name": "HasValidCredentialResponse",
+      "full_name": "services.connect.v1.HasValidCredentialResponse",
+      "description": "Response to `HasValidCredentialRequest`",
+      "fields": [
+        "services.connect.v1.HasValidCredentialResponse.has_valid_credential"
       ],
       "messages": [],
       "enums": []
@@ -8131,6 +8226,14 @@
       "full_type": "services.connect.v1.IDVSession",
       "description": "The created IDVSession"
     },
+    "services.connect.v1.CredentialRequestData.type": {
+      "name": "type",
+      "full_name": "services.connect.v1.CredentialRequestData.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "VerificationType",
+      "full_type": "services.connect.v1.VerificationType",
+      "description": "The type of verification which the credential can be used for"
+    },
     "services.connect.v1.GetSessionRequest.idv_session_id": {
       "name": "idv_session_id",
       "full_name": "services.connect.v1.GetSessionRequest.idv_session_id",
@@ -8218,6 +8321,30 @@
       "type": "GovernmentIDFields",
       "full_type": "services.connect.v1.GovernmentIDFields",
       "description": "The fields to retrieve from the Government ID.\nIf this object is not set, all fields will be retrieved."
+    },
+    "services.connect.v1.HasValidCredentialRequest.credential_request_data": {
+      "name": "credential_request_data",
+      "full_name": "services.connect.v1.HasValidCredentialRequest.credential_request_data",
+      "label": "LABEL_OPTIONAL",
+      "type": "CredentialRequestData",
+      "full_type": "services.connect.v1.CredentialRequestData",
+      "description": "The criteria used to find a valid credential"
+    },
+    "services.connect.v1.HasValidCredentialRequest.identity": {
+      "name": "identity",
+      "full_name": "services.connect.v1.HasValidCredentialRequest.identity",
+      "label": "LABEL_OPTIONAL",
+      "type": "ExternalIdentity",
+      "full_type": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
+      "description": "The the identity used to find a credential for"
+    },
+    "services.connect.v1.HasValidCredentialResponse.has_valid_credential": {
+      "name": "has_valid_credential",
+      "full_name": "services.connect.v1.HasValidCredentialResponse.has_valid_credential",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether the identity has a valid credential"
     },
     "services.connect.v1.IDVSession.VerificationsEntry.key": {
       "name": "key",

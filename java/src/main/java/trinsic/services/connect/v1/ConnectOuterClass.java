@@ -72,6 +72,18 @@ public final class ConnectOuterClass {
       internal_static_services_connect_v1_ListSessionsResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_ListSessionsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_HasValidCredentialRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_HasValidCredentialRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_HasValidCredentialResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_HasValidCredentialResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_CredentialRequestData_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_CredentialRequestData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -83,13 +95,14 @@ public final class ConnectOuterClass {
     java.lang.String[] descriptorData = {
       "\n"
           + "!services/connect/v1/connect.proto\022\023ser"
-          + "vices.connect.v1\032\037services/common/v1/common.proto\"\233\003\n\n"
+          + "vices.connect.v1\032\037services/common/v1/com"
+          + "mon.proto\0323services/universal-wallet/v1/universal-wallet.proto\"\233\003\n\n"
           + "IDVSession\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014client_token\030\002 \001(\t\0223\n"
           + "\005state\030\003 \001(\0162$.services.connect.v1.IDVSessionState\022I\n\r"
-          + "verifications\030\004"
-          + " \003(\01322.services.connect.v1.IDVSession.VerificationsEntry\022<\n"
+          + "verifications\030\004 \003(\01322.services.c"
+          + "onnect.v1.IDVSession.VerificationsEntry\022<\n"
           + "\tfail_code\030\005"
           + " \001(\0162$.services.connect.v1.SessionFailCodeH\000\210\001\001\022\026\n"
           + "\tresult_vp\030\006 \001(\tH\001\210\001\001\022\017\n"
@@ -104,15 +117,15 @@ public final class ConnectOuterClass {
           + "\002id\030\001 \001(\t\0223\n"
           + "\004type\030\002 \001(\0162%.services.connect.v1.VerificationType\0225\n"
           + "\005state\030\003 \001(\0162&.services.connect.v1.VerificationState\022A\n"
-          + "\tfail_code\030\004"
-          + " \001(\0162).services.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
+          + "\tfail_code\030\004 \001(\0162).servi"
+          + "ces.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
           + "\006reused\030\005 \001(\010\022\r\n"
           + "\005begun\030\006 \001(\006\022\017\n"
           + "\007updated\030\007 \001(\006\022L\n"
-          + "\025government_id_options\030\010"
-          + " \001(\0132(.services.connect.v1.GovernmentIDOptionsH\001\210\001\001\022[\n"
-          + "\035normalized_government_id_data\030\t \001(\0132/.servi"
-          + "ces.connect.v1.NormalizedGovernmentIdDataH\002\210\001\001B\014\n\n"
+          + "\025government_id_options\030\010 \001(\0132"
+          + "(.services.connect.v1.GovernmentIDOptionsH\001\210\001\001\022[\n"
+          + "\035normalized_government_id_data\030\t"
+          + " \001(\0132/.services.connect.v1.NormalizedGovernmentIdDataH\002\210\001\001B\014\n\n"
           + "_fail_codeB\030\n"
           + "\026_government_id_optionsB \n"
           + "\036_normalized_government_id_data\"\273\003\n"
@@ -145,7 +158,8 @@ public final class ConnectOuterClass {
           + "\023GovernmentIDOptions\0227\n"
           + "\006fields\030\001 \001(\0132\'.services.connect.v1.GovernmentIDFields\"\266\001\n"
           + "\022GovernmentIDFields\022\021\n"
-          + "\tid_number\030\001 \001(\010\022\022\n\n"
+          + "\tid_number\030\001 \001(\010\022\022\n"
+          + "\n"
           + "given_name\030\002 \001(\010\022\023\n"
           + "\013family_name\030\003 \001(\010\022\017\n"
           + "\007address\030\004 \001(\010\022\025\n\r"
@@ -173,7 +187,16 @@ public final class ConnectOuterClass {
           + "\024ListSessionsResponse\0221\n"
           + "\010sessions\030\001 \003(\0132\037.services.connect.v1.IDVSession\022\r\n"
           + "\005total\030\002 \001(\005\022\014\n"
-          + "\004more\030\003 \001(\010*%\n"
+          + "\004more\030\003 \001(\010\"\275\001\n"
+          + "\031HasValidCredentialRequest\022S\n"
+          + "\010identity\030\001 \001(\0132A.services.universalwalle"
+          + "t.v1.CreateWalletRequest.ExternalIdentity\022K\n"
+          + "\027credential_request_data\030\002 \001(\0132*.ser"
+          + "vices.connect.v1.CredentialRequestData\":\n"
+          + "\032HasValidCredentialResponse\022\034\n"
+          + "\024has_valid_credential\030\001 \001(\010\"L\n"
+          + "\025CredentialRequestData\0223\n"
+          + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType*%\n"
           + "\020VerificationType\022\021\n\r"
           + "GOVERNMENT_ID\020\000*\203\001\n"
           + "\017IDVSessionState\022\017\n"
@@ -206,24 +229,27 @@ public final class ConnectOuterClass {
           + "\017SessionOrdering\022\013\n"
           + "\007CREATED\020\000\022\013\n"
           + "\007UPDATED\020\001\022\t\n"
-          + "\005STATE\020\0022\235\003\n"
+          + "\005STATE\020\0022\224\004\n"
           + "\007Connect\022f\n\r"
-          + "CreateSession\022).services.connect.v1.CreateSessionReques"
-          + "t\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
-          + "CancelSession\022).services.connec"
-          + "t.v1.CancelSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
-          + "GetSession\022&.services.connect.v1.GetSessionRequ"
-          + "est\032\'.services.connect.v1.GetSessionResponse\022c\n"
-          + "\014ListSessions\022(.services.connect."
-          + "v1.ListSessionsRequest\032).services.connect.v1.ListSessionsResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/"
-          + "connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
+          + "CreateSession\022).services.connect"
+          + ".v1.CreateSessionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
+          + "CancelSession\022).services.connect.v1.CancelSessio"
+          + "nRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
+          + "GetSession\022&.services.co"
+          + "nnect.v1.GetSessionRequest\032\'.services.connect.v1.GetSessionResponse\022c\n"
+          + "\014ListSessions\022(.services.connect.v1.ListSessionsRe"
+          + "quest\032).services.connect.v1.ListSessionsResponse\022u\n"
+          + "\022HasValidCredential\022..services.connect.v1.HasValidCredentialRequest\032/"
+          + ".services.connect.v1.HasValidCredentialResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001"
+          + "Z\033services/connect/v1/connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
             descriptorData,
             new com.google.protobuf.Descriptors.FileDescriptor[] {
               trinsic.services.common.v1.Common.getDescriptor(),
+              trinsic.services.universalwallet.v1.UniversalWalletOuterClass.getDescriptor(),
             });
     internal_static_services_connect_v1_IDVSession_descriptor =
         getDescriptor().getMessageTypes().get(0);
@@ -387,7 +413,32 @@ public final class ConnectOuterClass {
             new java.lang.String[] {
               "Sessions", "Total", "More",
             });
+    internal_static_services_connect_v1_HasValidCredentialRequest_descriptor =
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_connect_v1_HasValidCredentialRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_HasValidCredentialRequest_descriptor,
+            new java.lang.String[] {
+              "Identity", "CredentialRequestData",
+            });
+    internal_static_services_connect_v1_HasValidCredentialResponse_descriptor =
+        getDescriptor().getMessageTypes().get(15);
+    internal_static_services_connect_v1_HasValidCredentialResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_HasValidCredentialResponse_descriptor,
+            new java.lang.String[] {
+              "HasValidCredential",
+            });
+    internal_static_services_connect_v1_CredentialRequestData_descriptor =
+        getDescriptor().getMessageTypes().get(16);
+    internal_static_services_connect_v1_CredentialRequestData_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_CredentialRequestData_descriptor,
+            new java.lang.String[] {
+              "Type",
+            });
     trinsic.services.common.v1.Common.getDescriptor();
+    trinsic.services.universalwallet.v1.UniversalWalletOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

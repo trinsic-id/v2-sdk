@@ -201,6 +201,53 @@ public final class ConnectGrpc {
     return getListSessionsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.connect.v1.HasValidCredentialRequest,
+          trinsic.services.connect.v1.HasValidCredentialResponse>
+      getHasValidCredentialMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HasValidCredential",
+      requestType = trinsic.services.connect.v1.HasValidCredentialRequest.class,
+      responseType = trinsic.services.connect.v1.HasValidCredentialResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.connect.v1.HasValidCredentialRequest,
+          trinsic.services.connect.v1.HasValidCredentialResponse>
+      getHasValidCredentialMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.connect.v1.HasValidCredentialRequest,
+            trinsic.services.connect.v1.HasValidCredentialResponse>
+        getHasValidCredentialMethod;
+    if ((getHasValidCredentialMethod = ConnectGrpc.getHasValidCredentialMethod) == null) {
+      synchronized (ConnectGrpc.class) {
+        if ((getHasValidCredentialMethod = ConnectGrpc.getHasValidCredentialMethod) == null) {
+          ConnectGrpc.getHasValidCredentialMethod =
+              getHasValidCredentialMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.connect.v1.HasValidCredentialRequest,
+                          trinsic.services.connect.v1.HasValidCredentialResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HasValidCredential"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.connect.v1.HasValidCredentialRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.connect.v1.HasValidCredentialResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ConnectMethodDescriptorSupplier("HasValidCredential"))
+                      .build();
+        }
+      }
+    }
+    return getHasValidCredentialMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static ConnectStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<ConnectStub> factory =
@@ -309,6 +356,21 @@ public final class ConnectGrpc {
           getListSessionsMethod(), responseObserver);
     }
 
+    /**
+     *
+     *
+     * <pre>
+     * Checks if the identity provided in the request has a wallet containing a valid reusable credential
+     * </pre>
+     */
+    public void hasValidCredential(
+        trinsic.services.connect.v1.HasValidCredentialRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.HasValidCredentialResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getHasValidCredentialMethod(), responseObserver);
+    }
+
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -339,6 +401,13 @@ public final class ConnectGrpc {
                       trinsic.services.connect.v1.ListSessionsRequest,
                       trinsic.services.connect.v1.ListSessionsResponse>(
                       this, METHODID_LIST_SESSIONS)))
+          .addMethod(
+              getHasValidCredentialMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.connect.v1.HasValidCredentialRequest,
+                      trinsic.services.connect.v1.HasValidCredentialResponse>(
+                      this, METHODID_HAS_VALID_CREDENTIAL)))
           .build();
     }
   }
@@ -425,6 +494,23 @@ public final class ConnectGrpc {
           request,
           responseObserver);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Checks if the identity provided in the request has a wallet containing a valid reusable credential
+     * </pre>
+     */
+    public void hasValidCredential(
+        trinsic.services.connect.v1.HasValidCredentialRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.connect.v1.HasValidCredentialResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getHasValidCredentialMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
   }
 
   /**
@@ -495,6 +581,19 @@ public final class ConnectGrpc {
         trinsic.services.connect.v1.ListSessionsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListSessionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Checks if the identity provided in the request has a wallet containing a valid reusable credential
+     * </pre>
+     */
+    public trinsic.services.connect.v1.HasValidCredentialResponse hasValidCredential(
+        trinsic.services.connect.v1.HasValidCredentialRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getHasValidCredentialMethod(), getCallOptions(), request);
     }
   }
 
@@ -571,12 +670,27 @@ public final class ConnectGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListSessionsMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Checks if the identity provided in the request has a wallet containing a valid reusable credential
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.connect.v1.HasValidCredentialResponse>
+        hasValidCredential(trinsic.services.connect.v1.HasValidCredentialRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getHasValidCredentialMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_SESSION = 0;
   private static final int METHODID_CANCEL_SESSION = 1;
   private static final int METHODID_GET_SESSION = 2;
   private static final int METHODID_LIST_SESSIONS = 3;
+  private static final int METHODID_HAS_VALID_CREDENTIAL = 4;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -617,6 +731,12 @@ public final class ConnectGrpc {
           serviceImpl.listSessions(
               (trinsic.services.connect.v1.ListSessionsRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.ListSessionsResponse>)
+                  responseObserver);
+          break;
+        case METHODID_HAS_VALID_CREDENTIAL:
+          serviceImpl.hasValidCredential(
+              (trinsic.services.connect.v1.HasValidCredentialRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.connect.v1.HasValidCredentialResponse>)
                   responseObserver);
           break;
         default:
@@ -685,6 +805,7 @@ public final class ConnectGrpc {
                       .addMethod(getCancelSessionMethod())
                       .addMethod(getGetSessionMethod())
                       .addMethod(getListSessionsMethod())
+                      .addMethod(getHasValidCredentialMethod())
                       .build();
         }
       }

@@ -15,6 +15,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../common/v1/common.pbenum.dart' as $9;
+import '../../universal-wallet/v1/universal-wallet.pb.dart' as $2;
 import 'connect.pbenum.dart';
 
 export 'connect.pbenum.dart';
@@ -1615,6 +1616,233 @@ class ListSessionsResponse extends $pb.GeneratedMessage {
   $core.bool hasMore() => $_has(2);
   @$pb.TagNumber(3)
   void clearMore() => clearField(3);
+}
+
+/// Request to preemptively check if an identity has a valid reusable credential
+class HasValidCredentialRequest extends $pb.GeneratedMessage {
+  factory HasValidCredentialRequest({
+    $2.CreateWalletRequest_ExternalIdentity? identity,
+    CredentialRequestData? credentialRequestData,
+  }) {
+    final $result = create();
+    if (identity != null) {
+      $result.identity = identity;
+    }
+    if (credentialRequestData != null) {
+      $result.credentialRequestData = credentialRequestData;
+    }
+    return $result;
+  }
+  HasValidCredentialRequest._() : super();
+  factory HasValidCredentialRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory HasValidCredentialRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'HasValidCredentialRequest',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOM<$2.CreateWalletRequest_ExternalIdentity>(
+        1, _omitFieldNames ? '' : 'identity',
+        subBuilder: $2.CreateWalletRequest_ExternalIdentity.create)
+    ..aOM<CredentialRequestData>(
+        2, _omitFieldNames ? '' : 'credentialRequestData',
+        subBuilder: CredentialRequestData.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  HasValidCredentialRequest clone() =>
+      HasValidCredentialRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  HasValidCredentialRequest copyWith(
+          void Function(HasValidCredentialRequest) updates) =>
+      super.copyWith((message) => updates(message as HasValidCredentialRequest))
+          as HasValidCredentialRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static HasValidCredentialRequest create() => HasValidCredentialRequest._();
+  HasValidCredentialRequest createEmptyInstance() => create();
+  static $pb.PbList<HasValidCredentialRequest> createRepeated() =>
+      $pb.PbList<HasValidCredentialRequest>();
+  @$core.pragma('dart2js:noInline')
+  static HasValidCredentialRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<HasValidCredentialRequest>(create);
+  static HasValidCredentialRequest? _defaultInstance;
+
+  /// The the identity used to find a credential for
+  @$pb.TagNumber(1)
+  $2.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
+  @$pb.TagNumber(1)
+  set identity($2.CreateWalletRequest_ExternalIdentity v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasIdentity() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearIdentity() => clearField(1);
+  @$pb.TagNumber(1)
+  $2.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
+
+  /// The criteria used to find a valid credential
+  @$pb.TagNumber(2)
+  CredentialRequestData get credentialRequestData => $_getN(1);
+  @$pb.TagNumber(2)
+  set credentialRequestData(CredentialRequestData v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasCredentialRequestData() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCredentialRequestData() => clearField(2);
+  @$pb.TagNumber(2)
+  CredentialRequestData ensureCredentialRequestData() => $_ensure(1);
+}
+
+/// Response to `HasValidCredentialRequest`
+class HasValidCredentialResponse extends $pb.GeneratedMessage {
+  factory HasValidCredentialResponse({
+    $core.bool? hasValidCredential,
+  }) {
+    final $result = create();
+    if (hasValidCredential != null) {
+      $result.hasValidCredential = hasValidCredential;
+    }
+    return $result;
+  }
+  HasValidCredentialResponse._() : super();
+  factory HasValidCredentialResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory HasValidCredentialResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'HasValidCredentialResponse',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'hasValidCredential')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  HasValidCredentialResponse clone() =>
+      HasValidCredentialResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  HasValidCredentialResponse copyWith(
+          void Function(HasValidCredentialResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as HasValidCredentialResponse))
+          as HasValidCredentialResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static HasValidCredentialResponse create() => HasValidCredentialResponse._();
+  HasValidCredentialResponse createEmptyInstance() => create();
+  static $pb.PbList<HasValidCredentialResponse> createRepeated() =>
+      $pb.PbList<HasValidCredentialResponse>();
+  @$core.pragma('dart2js:noInline')
+  static HasValidCredentialResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<HasValidCredentialResponse>(create);
+  static HasValidCredentialResponse? _defaultInstance;
+
+  /// Whether the identity has a valid credential
+  @$pb.TagNumber(1)
+  $core.bool get hasValidCredential => $_getBF(0);
+  @$pb.TagNumber(1)
+  set hasValidCredential($core.bool v) {
+    $_setBool(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasHasValidCredential() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearHasValidCredential() => clearField(1);
+}
+
+class CredentialRequestData extends $pb.GeneratedMessage {
+  factory CredentialRequestData({
+    VerificationType? type,
+  }) {
+    final $result = create();
+    if (type != null) {
+      $result.type = type;
+    }
+    return $result;
+  }
+  CredentialRequestData._() : super();
+  factory CredentialRequestData.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory CredentialRequestData.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CredentialRequestData',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..e<VerificationType>(1, _omitFieldNames ? '' : 'type', $pb.PbFieldType.OE,
+        defaultOrMaker: VerificationType.GOVERNMENT_ID,
+        valueOf: VerificationType.valueOf,
+        enumValues: VerificationType.values)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  CredentialRequestData clone() =>
+      CredentialRequestData()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  CredentialRequestData copyWith(
+          void Function(CredentialRequestData) updates) =>
+      super.copyWith((message) => updates(message as CredentialRequestData))
+          as CredentialRequestData;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CredentialRequestData create() => CredentialRequestData._();
+  CredentialRequestData createEmptyInstance() => create();
+  static $pb.PbList<CredentialRequestData> createRepeated() =>
+      $pb.PbList<CredentialRequestData>();
+  @$core.pragma('dart2js:noInline')
+  static CredentialRequestData getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CredentialRequestData>(create);
+  static CredentialRequestData? _defaultInstance;
+
+  /// The type of verification which the credential can be used for
+  @$pb.TagNumber(1)
+  VerificationType get type => $_getN(0);
+  @$pb.TagNumber(1)
+  set type(VerificationType v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearType() => clearField(1);
 }
 
 const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');

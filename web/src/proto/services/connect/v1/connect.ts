@@ -2,6 +2,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { OrderDirection, orderDirectionFromJSON, orderDirectionToJSON } from "../../common/v1/common";
+import { CreateWalletRequest_ExternalIdentity } from "../../universal-wallet/v1/universal-wallet";
 
 /** The type of verification to perform */
 export enum VerificationType {
@@ -601,6 +602,27 @@ export interface ListSessionsResponse {
    * If `false`, this is the last page of results.
    */
   more?: boolean | undefined;
+}
+
+/** Request to preemptively check if an identity has a valid reusable credential */
+export interface HasValidCredentialRequest {
+  /** The the identity used to find a credential for */
+  identity?:
+    | CreateWalletRequest_ExternalIdentity
+    | undefined;
+  /** The criteria used to find a valid credential */
+  credentialRequestData?: CredentialRequestData | undefined;
+}
+
+/** Response to `HasValidCredentialRequest` */
+export interface HasValidCredentialResponse {
+  /** Whether the identity has a valid credential */
+  hasValidCredential?: boolean | undefined;
+}
+
+export interface CredentialRequestData {
+  /** The type of verification which the credential can be used for */
+  type?: VerificationType | undefined;
 }
 
 function createBaseIDVSession(): IDVSession {
@@ -2104,6 +2126,201 @@ export const ListSessionsResponse = {
   },
 };
 
+function createBaseHasValidCredentialRequest(): HasValidCredentialRequest {
+  return { identity: undefined, credentialRequestData: undefined };
+}
+
+export const HasValidCredentialRequest = {
+  encode(message: HasValidCredentialRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.identity !== undefined) {
+      CreateWalletRequest_ExternalIdentity.encode(message.identity, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.credentialRequestData !== undefined) {
+      CredentialRequestData.encode(message.credentialRequestData, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): HasValidCredentialRequest {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseHasValidCredentialRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.identity = CreateWalletRequest_ExternalIdentity.decode(reader, reader.uint32());
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.credentialRequestData = CredentialRequestData.decode(reader, reader.uint32());
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): HasValidCredentialRequest {
+    return {
+      identity: isSet(object.identity) ? CreateWalletRequest_ExternalIdentity.fromJSON(object.identity) : undefined,
+      credentialRequestData: isSet(object.credentialRequestData)
+        ? CredentialRequestData.fromJSON(object.credentialRequestData)
+        : undefined,
+    };
+  },
+
+  toJSON(message: HasValidCredentialRequest): unknown {
+    const obj: any = {};
+    if (message.identity !== undefined) {
+      obj.identity = CreateWalletRequest_ExternalIdentity.toJSON(message.identity);
+    }
+    if (message.credentialRequestData !== undefined) {
+      obj.credentialRequestData = CredentialRequestData.toJSON(message.credentialRequestData);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<HasValidCredentialRequest>): HasValidCredentialRequest {
+    return HasValidCredentialRequest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<HasValidCredentialRequest>): HasValidCredentialRequest {
+    const message = createBaseHasValidCredentialRequest();
+    message.identity = (object.identity !== undefined && object.identity !== null)
+      ? CreateWalletRequest_ExternalIdentity.fromPartial(object.identity)
+      : undefined;
+    message.credentialRequestData =
+      (object.credentialRequestData !== undefined && object.credentialRequestData !== null)
+        ? CredentialRequestData.fromPartial(object.credentialRequestData)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseHasValidCredentialResponse(): HasValidCredentialResponse {
+  return { hasValidCredential: false };
+}
+
+export const HasValidCredentialResponse = {
+  encode(message: HasValidCredentialResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.hasValidCredential === true) {
+      writer.uint32(8).bool(message.hasValidCredential);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): HasValidCredentialResponse {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseHasValidCredentialResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.hasValidCredential = reader.bool();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): HasValidCredentialResponse {
+    return { hasValidCredential: isSet(object.hasValidCredential) ? Boolean(object.hasValidCredential) : false };
+  },
+
+  toJSON(message: HasValidCredentialResponse): unknown {
+    const obj: any = {};
+    if (message.hasValidCredential === true) {
+      obj.hasValidCredential = message.hasValidCredential;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<HasValidCredentialResponse>): HasValidCredentialResponse {
+    return HasValidCredentialResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<HasValidCredentialResponse>): HasValidCredentialResponse {
+    const message = createBaseHasValidCredentialResponse();
+    message.hasValidCredential = object.hasValidCredential ?? false;
+    return message;
+  },
+};
+
+function createBaseCredentialRequestData(): CredentialRequestData {
+  return { type: 0 };
+}
+
+export const CredentialRequestData = {
+  encode(message: CredentialRequestData, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.type !== undefined && message.type !== 0) {
+      writer.uint32(8).int32(message.type);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CredentialRequestData {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCredentialRequestData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 8) {
+            break;
+          }
+
+          message.type = reader.int32() as any;
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CredentialRequestData {
+    return { type: isSet(object.type) ? verificationTypeFromJSON(object.type) : 0 };
+  },
+
+  toJSON(message: CredentialRequestData): unknown {
+    const obj: any = {};
+    if (message.type !== undefined && message.type !== 0) {
+      obj.type = verificationTypeToJSON(message.type);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CredentialRequestData>): CredentialRequestData {
+    return CredentialRequestData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CredentialRequestData>): CredentialRequestData {
+    const message = createBaseCredentialRequestData();
+    message.type = object.type ?? 0;
+    return message;
+  },
+};
+
 /** The Connect service provides access to Trinsic Connect, a reusable identity verification service. */
 export type ConnectDefinition = typeof ConnectDefinition;
 export const ConnectDefinition = {
@@ -2143,6 +2360,15 @@ export const ConnectDefinition = {
       requestType: ListSessionsRequest,
       requestStream: false,
       responseType: ListSessionsResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Checks if the identity provided in the request has a wallet containing a valid reusable credential */
+    hasValidCredential: {
+      name: "HasValidCredential",
+      requestType: HasValidCredentialRequest,
+      requestStream: false,
+      responseType: HasValidCredentialResponse,
       responseStream: false,
       options: {},
     },
