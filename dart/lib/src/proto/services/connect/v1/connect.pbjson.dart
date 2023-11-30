@@ -386,13 +386,36 @@ const CreateSessionRequest$json = {
       '6': '.services.connect.v1.RequestedVerification',
       '10': 'verifications'
     },
+    {
+      '1': 'debug_information',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.services.connect.v1.CreateSessionRequest.DebugInformationEntry',
+      '10': 'debugInformation'
+    },
   ],
+  '3': [CreateSessionRequest_DebugInformationEntry$json],
+};
+
+@$core.Deprecated('Use createSessionRequestDescriptor instead')
+const CreateSessionRequest_DebugInformationEntry$json = {
+  '1': 'DebugInformationEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': {'7': true},
 };
 
 /// Descriptor for `CreateSessionRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createSessionRequestDescriptor = $convert.base64Decode(
     'ChRDcmVhdGVTZXNzaW9uUmVxdWVzdBJQCg12ZXJpZmljYXRpb25zGAEgAygLMiouc2VydmljZX'
-    'MuY29ubmVjdC52MS5SZXF1ZXN0ZWRWZXJpZmljYXRpb25SDXZlcmlmaWNhdGlvbnM=');
+    'MuY29ubmVjdC52MS5SZXF1ZXN0ZWRWZXJpZmljYXRpb25SDXZlcmlmaWNhdGlvbnMSbAoRZGVi'
+    'dWdfaW5mb3JtYXRpb24YAiADKAsyPy5zZXJ2aWNlcy5jb25uZWN0LnYxLkNyZWF0ZVNlc3Npb2'
+    '5SZXF1ZXN0LkRlYnVnSW5mb3JtYXRpb25FbnRyeVIQZGVidWdJbmZvcm1hdGlvbhpDChVEZWJ1'
+    'Z0luZm9ybWF0aW9uRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbH'
+    'VlOgI4AQ==');
 
 @$core.Deprecated('Use requestedVerificationDescriptor instead')
 const RequestedVerification$json = {

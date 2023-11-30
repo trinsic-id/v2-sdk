@@ -475,7 +475,16 @@ export interface NormalizedGovernmentIdData {
 /** Request to create an Identity Verification Session */
 export interface CreateSessionRequest {
   /** Array of verifications to perform */
-  verifications?: RequestedVerification[] | undefined;
+  verifications?:
+    | RequestedVerification[]
+    | undefined;
+  /** Debugging information used to help diagnose issues */
+  debugInformation?: { [key: string]: string } | undefined;
+}
+
+export interface CreateSessionRequest_DebugInformationEntry {
+  key: string;
+  value: string;
 }
 
 /** A verification to perform in an IDV flow */
@@ -1268,7 +1277,7 @@ export const NormalizedGovernmentIdData = {
 };
 
 function createBaseCreateSessionRequest(): CreateSessionRequest {
-  return { verifications: [] };
+  return { verifications: [], debugInformation: {} };
 }
 
 export const CreateSessionRequest = {
@@ -1278,6 +1287,9 @@ export const CreateSessionRequest = {
         RequestedVerification.encode(v!, writer.uint32(10).fork()).ldelim();
       }
     }
+    Object.entries(message.debugInformation || {}).forEach(([key, value]) => {
+      CreateSessionRequest_DebugInformationEntry.encode({ key: key as any, value }, writer.uint32(18).fork()).ldelim();
+    });
     return writer;
   },
 
@@ -1295,6 +1307,16 @@ export const CreateSessionRequest = {
 
           message.verifications!.push(RequestedVerification.decode(reader, reader.uint32()));
           continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          const entry2 = CreateSessionRequest_DebugInformationEntry.decode(reader, reader.uint32());
+          if (entry2.value !== undefined) {
+            message.debugInformation![entry2.key] = entry2.value;
+          }
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -1309,6 +1331,12 @@ export const CreateSessionRequest = {
       verifications: Array.isArray(object?.verifications)
         ? object.verifications.map((e: any) => RequestedVerification.fromJSON(e))
         : [],
+      debugInformation: isObject(object.debugInformation)
+        ? Object.entries(object.debugInformation).reduce<{ [key: string]: string }>((acc, [key, value]) => {
+          acc[key] = String(value);
+          return acc;
+        }, {})
+        : {},
     };
   },
 
@@ -1316,6 +1344,15 @@ export const CreateSessionRequest = {
     const obj: any = {};
     if (message.verifications?.length) {
       obj.verifications = message.verifications.map((e) => RequestedVerification.toJSON(e));
+    }
+    if (message.debugInformation) {
+      const entries = Object.entries(message.debugInformation);
+      if (entries.length > 0) {
+        obj.debugInformation = {};
+        entries.forEach(([k, v]) => {
+          obj.debugInformation[k] = v;
+        });
+      }
     }
     return obj;
   },
@@ -1326,6 +1363,88 @@ export const CreateSessionRequest = {
   fromPartial(object: DeepPartial<CreateSessionRequest>): CreateSessionRequest {
     const message = createBaseCreateSessionRequest();
     message.verifications = object.verifications?.map((e) => RequestedVerification.fromPartial(e)) || [];
+    message.debugInformation = Object.entries(object.debugInformation ?? {}).reduce<{ [key: string]: string }>(
+      (acc, [key, value]) => {
+        if (value !== undefined) {
+          acc[key] = String(value);
+        }
+        return acc;
+      },
+      {},
+    );
+    return message;
+  },
+};
+
+function createBaseCreateSessionRequest_DebugInformationEntry(): CreateSessionRequest_DebugInformationEntry {
+  return { key: "", value: "" };
+}
+
+export const CreateSessionRequest_DebugInformationEntry = {
+  encode(message: CreateSessionRequest_DebugInformationEntry, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== "") {
+      writer.uint32(18).string(message.value);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CreateSessionRequest_DebugInformationEntry {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCreateSessionRequest_DebugInformationEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.value = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CreateSessionRequest_DebugInformationEntry {
+    return { key: isSet(object.key) ? String(object.key) : "", value: isSet(object.value) ? String(object.value) : "" };
+  },
+
+  toJSON(message: CreateSessionRequest_DebugInformationEntry): unknown {
+    const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== "") {
+      obj.value = message.value;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CreateSessionRequest_DebugInformationEntry>): CreateSessionRequest_DebugInformationEntry {
+    return CreateSessionRequest_DebugInformationEntry.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CreateSessionRequest_DebugInformationEntry>,
+  ): CreateSessionRequest_DebugInformationEntry {
+    const message = createBaseCreateSessionRequest_DebugInformationEntry();
+    message.key = object.key ?? "";
+    message.value = object.value ?? "";
     return message;
   },
 };

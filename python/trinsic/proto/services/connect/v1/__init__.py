@@ -312,6 +312,11 @@ class CreateSessionRequest(betterproto.Message):
     verifications: List["RequestedVerification"] = betterproto.message_field(1)
     """Array of verifications to perform"""
 
+    debug_information: Dict[str, str] = betterproto.map_field(
+        2, betterproto.TYPE_STRING, betterproto.TYPE_STRING
+    )
+    """Debugging information used to help diagnose issues"""
+
 
 @dataclass(eq=False, repr=False)
 class RequestedVerification(betterproto.Message):

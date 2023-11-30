@@ -33,6 +33,10 @@ public final class ConnectOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_CreateSessionRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_connect_v1_RequestedVerification_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_RequestedVerification_fieldAccessorTable;
@@ -146,10 +150,14 @@ public final class ConnectOuterClass {
           + "\016_date_of_birthB\n\n"
           + "\010_countryB\r\n"
           + "\013_issue_dateB\022\n"
-          + "\020_expiration_date\"Y\n"
+          + "\020_expiration_date\"\200\002\n"
           + "\024CreateSessionRequest\022A\n\r"
-          + "verifications\030\001"
-          + " \003(\0132*.services.connect.v1.RequestedVerification\"\242\001\n"
+          + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\022l\n"
+          + "\021debug_information\030\002 \003(\0132?.services.connect.v1"
+          + ".CreateSessionRequest.DebugInformationEntryR\020debugInformation\0327\n"
+          + "\025DebugInformationEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022\r\n"
+          + "\005value\030\002 \001(\t:\0028\001\"\242\001\n"
           + "\025RequestedVerification\0223\n"
           + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\022I\n"
           + "\025government_id_options\030\002"
@@ -158,8 +166,7 @@ public final class ConnectOuterClass {
           + "\023GovernmentIDOptions\0227\n"
           + "\006fields\030\001 \001(\0132\'.services.connect.v1.GovernmentIDFields\"\266\001\n"
           + "\022GovernmentIDFields\022\021\n"
-          + "\tid_number\030\001 \001(\010\022\022\n"
-          + "\n"
+          + "\tid_number\030\001 \001(\010\022\022\n\n"
           + "given_name\030\002 \001(\010\022\023\n"
           + "\013family_name\030\003 \001(\010\022\017\n"
           + "\007address\030\004 \001(\010\022\025\n\r"
@@ -189,10 +196,10 @@ public final class ConnectOuterClass {
           + "\005total\030\002 \001(\005\022\014\n"
           + "\004more\030\003 \001(\010\"\275\001\n"
           + "\031HasValidCredentialRequest\022S\n"
-          + "\010identity\030\001 \001(\0132A.services.universalwalle"
-          + "t.v1.CreateWalletRequest.ExternalIdentity\022K\n"
-          + "\027credential_request_data\030\002 \001(\0132*.ser"
-          + "vices.connect.v1.CredentialRequestData\":\n"
+          + "\010identity\030\001 \001(\0132A.services.univer"
+          + "salwallet.v1.CreateWalletRequest.ExternalIdentity\022K\n"
+          + "\027credential_request_data\030\002 \001"
+          + "(\0132*.services.connect.v1.CredentialRequestData\":\n"
           + "\032HasValidCredentialResponse\022\034\n"
           + "\024has_valid_credential\030\001 \001(\010\"L\n"
           + "\025CredentialRequestData\0223\n"
@@ -231,18 +238,18 @@ public final class ConnectOuterClass {
           + "\007UPDATED\020\001\022\t\n"
           + "\005STATE\020\0022\224\004\n"
           + "\007Connect\022f\n\r"
-          + "CreateSession\022).services.connect"
-          + ".v1.CreateSessionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
-          + "CancelSession\022).services.connect.v1.CancelSessio"
-          + "nRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
-          + "GetSession\022&.services.co"
-          + "nnect.v1.GetSessionRequest\032\'.services.connect.v1.GetSessionResponse\022c\n"
-          + "\014ListSessions\022(.services.connect.v1.ListSessionsRe"
-          + "quest\032).services.connect.v1.ListSessionsResponse\022u\n"
-          + "\022HasValidCredential\022..services.connect.v1.HasValidCredentialRequest\032/"
-          + ".services.connect.v1.HasValidCredentialResponseBZ\n"
-          + "\033trinsic.services.connect.v1P\001"
-          + "Z\033services/connect/v1/connect\252\002\033Trinsic.Services.Connect.V1b\006proto3"
+          + "CreateSession\022).services"
+          + ".connect.v1.CreateSessionRequest\032*.services.connect.v1.CreateSessionResponse\022f\n\r"
+          + "CancelSession\022).services.connect.v1.Canc"
+          + "elSessionRequest\032*.services.connect.v1.CancelSessionResponse\022]\n\n"
+          + "GetSession\022&.ser"
+          + "vices.connect.v1.GetSessionRequest\032\'.services.connect.v1.GetSessionResponse\022c\n"
+          + "\014ListSessions\022(.services.connect.v1.ListSe"
+          + "ssionsRequest\032).services.connect.v1.ListSessionsResponse\022u\n"
+          + "\022HasValidCredential\022..services.connect.v1.HasValidCredentialR"
+          + "equest\032/.services.connect.v1.HasValidCredentialResponseBZ\n"
+          + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002\033"
+          + "Trinsic.Services.Connect.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -324,7 +331,15 @@ public final class ConnectOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CreateSessionRequest_descriptor,
             new java.lang.String[] {
-              "Verifications",
+              "Verifications", "DebugInformation",
+            });
+    internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_descriptor =
+        internal_static_services_connect_v1_CreateSessionRequest_descriptor.getNestedTypes().get(0);
+    internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
             });
     internal_static_services_connect_v1_RequestedVerification_descriptor =
         getDescriptor().getMessageTypes().get(4);

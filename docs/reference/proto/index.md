@@ -1203,6 +1203,23 @@ Request to create an Identity Verification Session
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
+| debug_information | [CreateSessionRequest.DebugInformationEntry](/reference/proto#services-connect-v1-CreateSessionRequest-DebugInformationEntry)[] | Debugging information used to help diagnose issues |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionRequest-DebugInformationEntry"></a>
+
+### CreateSessionRequest.DebugInformationEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [string](/reference/proto#string) |  |
 
 
 

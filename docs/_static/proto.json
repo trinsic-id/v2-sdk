@@ -360,6 +360,30 @@
       "file": "services/connect/v1/connect.proto",
       "parent": ""
     },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest"
+    },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest.DebugInformationEntry"
+    },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest.DebugInformationEntry"
+    },
+    "services.connect.v1.CreateSessionRequest.debug_information": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest"
+    },
     "services.connect.v1.CreateSessionRequest.verifications": {
       "type": "field",
       "collection": "fields",
@@ -4572,6 +4596,7 @@
         "services.connect.v1.Verification",
         "services.connect.v1.NormalizedGovernmentIdData",
         "services.connect.v1.CreateSessionRequest",
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry",
         "services.connect.v1.RequestedVerification",
         "services.connect.v1.GovernmentIDOptions",
         "services.connect.v1.GovernmentIDFields",
@@ -4615,6 +4640,9 @@
         "services.connect.v1.NormalizedGovernmentIdData.issue_date",
         "services.connect.v1.NormalizedGovernmentIdData.expiration_date",
         "services.connect.v1.CreateSessionRequest.verifications",
+        "services.connect.v1.CreateSessionRequest.debug_information",
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key",
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value",
         "services.connect.v1.RequestedVerification.type",
         "services.connect.v1.RequestedVerification.government_id_options",
         "services.connect.v1.GovernmentIDOptions.fields",
@@ -6116,7 +6144,22 @@
       "full_name": "services.connect.v1.CreateSessionRequest",
       "description": "Request to create an Identity Verification Session",
       "fields": [
-        "services.connect.v1.CreateSessionRequest.verifications"
+        "services.connect.v1.CreateSessionRequest.verifications",
+        "services.connect.v1.CreateSessionRequest.debug_information"
+      ],
+      "messages": [
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry"
+      ],
+      "enums": []
+    },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry": {
+      "name": "DebugInformationEntry",
+      "full_name": "services.connect.v1.CreateSessionRequest.DebugInformationEntry",
+      "description": "",
+      "is_map_entry": true,
+      "fields": [
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key",
+        "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value"
       ],
       "messages": [],
       "enums": []
@@ -8209,6 +8252,30 @@
       "type": "IDVSession",
       "full_type": "services.connect.v1.IDVSession",
       "description": "The IDVSession in its current state after cancellation"
+    },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key": {
+      "name": "key",
+      "full_name": "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value": {
+      "name": "value",
+      "full_name": "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.connect.v1.CreateSessionRequest.debug_information": {
+      "name": "debug_information",
+      "full_name": "services.connect.v1.CreateSessionRequest.debug_information",
+      "label": "LABEL_REPEATED",
+      "type": "DebugInformationEntry",
+      "full_type": "services.connect.v1.CreateSessionRequest.DebugInformationEntry",
+      "description": "Debugging information used to help diagnose issues"
     },
     "services.connect.v1.CreateSessionRequest.verifications": {
       "name": "verifications",
