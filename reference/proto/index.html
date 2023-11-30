@@ -3086,6 +3086,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#credentialrequestdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CredentialRequestData
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#getsessionrequest" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3123,6 +3134,28 @@
     <span class="md-ellipsis">
       
         GovernmentIDOptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hasvalidcredentialrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HasValidCredentialRequest
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hasvalidcredentialresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HasValidCredentialResponse
       
     </span>
   </a>
@@ -6371,6 +6404,12 @@ This information should be stored securely</p>
 <td><a href="/reference/proto#services-connect-v1-ListSessionsResponse">ListSessionsResponse</a></td>
 <td>List IDVSessions created by the calling wallet</td>
 </tr>
+<tr>
+<td>HasValidCredential</td>
+<td><a href="/reference/proto#services-connect-v1-HasValidCredentialRequest">HasValidCredentialRequest</a></td>
+<td><a href="/reference/proto#services-connect-v1-HasValidCredentialResponse">HasValidCredentialResponse</a></td>
+<td>Checks if the identity provided in the request has a wallet containing a valid reusable credential</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -6448,6 +6487,24 @@ This information should be stored securely</p>
 <td>session</td>
 <td><a href="/reference/proto#services-connect-v1-IDVSession">IDVSession</a></td>
 <td>The created IDVSession</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-CredentialRequestData"></a></p>
+<h3 id="credentialrequestdata">CredentialRequestData<a class="headerlink" href="#credentialrequestdata" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="/reference/proto#services-connect-v1-VerificationType">VerificationType</a></td>
+<td>The type of verification which the credential can be used for</td>
 </tr>
 </tbody>
 </table>
@@ -6559,6 +6616,49 @@ This information should be stored securely</p>
 <td>fields</td>
 <td><a href="/reference/proto#services-connect-v1-GovernmentIDFields">GovernmentIDFields</a></td>
 <td>The fields to retrieve from the Government ID. If this object is not set, all fields will be retrieved.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-HasValidCredentialRequest"></a></p>
+<h3 id="hasvalidcredentialrequest">HasValidCredentialRequest<a class="headerlink" href="#hasvalidcredentialrequest" title="Permanent link">&para;</a></h3>
+<p>Request to preemptively check if an identity has a valid reusable credential</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td><a href="/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity">services.universalwallet.v1.CreateWalletRequest.ExternalIdentity</a></td>
+<td>The the identity used to find a credential for</td>
+</tr>
+<tr>
+<td>credential_request_data</td>
+<td><a href="/reference/proto#services-connect-v1-CredentialRequestData">CredentialRequestData</a></td>
+<td>The criteria used to find a valid credential</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-connect-v1-HasValidCredentialResponse"></a></p>
+<h3 id="hasvalidcredentialresponse">HasValidCredentialResponse<a class="headerlink" href="#hasvalidcredentialresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>HasValidCredentialRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>has_valid_credential</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Whether the identity has a valid credential</td>
 </tr>
 </tbody>
 </table>
