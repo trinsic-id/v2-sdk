@@ -59,4 +59,63 @@ public interface CreateSessionRequestOrBuilder
    * <code>repeated .services.connect.v1.RequestedVerification verifications = 1;</code>
    */
   trinsic.services.connect.v1.RequestedVerificationOrBuilder getVerificationsOrBuilder(int index);
+
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  int getDebugInformationCount();
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  boolean containsDebugInformation(java.lang.String key);
+  /** Use {@link #getDebugInformationMap()} instead. */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, java.lang.String> getDebugInformation();
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  java.util.Map<java.lang.String, java.lang.String> getDebugInformationMap();
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+
+  /* nullable */
+  java.lang.String getDebugInformationOrDefault(
+      java.lang.String key,
+      /* nullable */
+      java.lang.String defaultValue);
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  java.lang.String getDebugInformationOrThrow(java.lang.String key);
 }

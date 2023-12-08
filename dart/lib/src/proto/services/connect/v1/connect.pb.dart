@@ -646,10 +646,14 @@ class NormalizedGovernmentIdData extends $pb.GeneratedMessage {
 class CreateSessionRequest extends $pb.GeneratedMessage {
   factory CreateSessionRequest({
     $core.Iterable<RequestedVerification>? verifications,
+    $core.Map<$core.String, $core.String>? debugInformation,
   }) {
     final $result = create();
     if (verifications != null) {
       $result.verifications.addAll(verifications);
+    }
+    if (debugInformation != null) {
+      $result.debugInformation.addAll(debugInformation);
     }
     return $result;
   }
@@ -669,6 +673,12 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
     ..pc<RequestedVerification>(
         1, _omitFieldNames ? '' : 'verifications', $pb.PbFieldType.PM,
         subBuilder: RequestedVerification.create)
+    ..m<$core.String, $core.String>(
+        2, _omitFieldNames ? '' : 'debugInformation',
+        entryClassName: 'CreateSessionRequest.DebugInformationEntry',
+        keyFieldType: $pb.PbFieldType.OS,
+        valueFieldType: $pb.PbFieldType.OS,
+        packageName: const $pb.PackageName('services.connect.v1'))
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -698,6 +708,10 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
   /// Array of verifications to perform
   @$pb.TagNumber(1)
   $core.List<RequestedVerification> get verifications => $_getList(0);
+
+  /// Debugging information used to help diagnose issues
+  @$pb.TagNumber(2)
+  $core.Map<$core.String, $core.String> get debugInformation => $_getMap(1);
 }
 
 enum RequestedVerification_Options { governmentIdOptions, notSet }

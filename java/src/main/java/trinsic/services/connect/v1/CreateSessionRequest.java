@@ -42,6 +42,17 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         .internal_static_services_connect_v1_CreateSessionRequest_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(int number) {
+    switch (number) {
+      case 2:
+        return internalGetDebugInformation();
+      default:
+        throw new RuntimeException("Invalid map field number: " + number);
+    }
+  }
+
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -122,6 +133,107 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     return verifications_.get(index);
   }
 
+  public static final int DEBUG_INFORMATION_FIELD_NUMBER = 2;
+
+  private static final class DebugInformationDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<java.lang.String, java.lang.String> defaultEntry =
+        com.google.protobuf.MapEntry.<java.lang.String, java.lang.String>newDefaultInstance(
+            trinsic.services.connect.v1.ConnectOuterClass
+                .internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_descriptor,
+            com.google.protobuf.WireFormat.FieldType.STRING,
+            "",
+            com.google.protobuf.WireFormat.FieldType.STRING,
+            "");
+  }
+
+  private com.google.protobuf.MapField<java.lang.String, java.lang.String> debugInformation_;
+
+  private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetDebugInformation() {
+    if (debugInformation_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          DebugInformationDefaultEntryHolder.defaultEntry);
+    }
+    return debugInformation_;
+  }
+
+  public int getDebugInformationCount() {
+    return internalGetDebugInformation().getMap().size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  @java.lang.Override
+  public boolean containsDebugInformation(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    return internalGetDebugInformation().getMap().containsKey(key);
+  }
+  /** Use {@link #getDebugInformationMap()} instead. */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, java.lang.String> getDebugInformation() {
+    return getDebugInformationMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  @java.lang.Override
+  public java.util.Map<java.lang.String, java.lang.String> getDebugInformationMap() {
+    return internalGetDebugInformation().getMap();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  @java.lang.Override
+  public java.lang.String getDebugInformationOrDefault(
+      java.lang.String key, java.lang.String defaultValue) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<java.lang.String, java.lang.String> map = internalGetDebugInformation().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Debugging information used to help diagnose issues
+   * </pre>
+   *
+   * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
+   */
+  @java.lang.Override
+  public java.lang.String getDebugInformationOrThrow(java.lang.String key) {
+    if (key == null) {
+      throw new NullPointerException("map key");
+    }
+    java.util.Map<java.lang.String, java.lang.String> map = internalGetDebugInformation().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -139,6 +251,8 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     for (int i = 0; i < verifications_.size(); i++) {
       output.writeMessage(1, verifications_.get(i));
     }
+    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+        output, internalGetDebugInformation(), DebugInformationDefaultEntryHolder.defaultEntry, 2);
     getUnknownFields().writeTo(output);
   }
 
@@ -150,6 +264,16 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     size = 0;
     for (int i = 0; i < verifications_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, verifications_.get(i));
+    }
+    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry :
+        internalGetDebugInformation().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, java.lang.String> debugInformation__ =
+          DebugInformationDefaultEntryHolder.defaultEntry
+              .newBuilderForType()
+              .setKey(entry.getKey())
+              .setValue(entry.getValue())
+              .build();
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, debugInformation__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -168,6 +292,7 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         (trinsic.services.connect.v1.CreateSessionRequest) obj;
 
     if (!getVerificationsList().equals(other.getVerificationsList())) return false;
+    if (!internalGetDebugInformation().equals(other.internalGetDebugInformation())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -182,6 +307,10 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     if (getVerificationsCount() > 0) {
       hash = (37 * hash) + VERIFICATIONS_FIELD_NUMBER;
       hash = (53 * hash) + getVerificationsList().hashCode();
+    }
+    if (!internalGetDebugInformation().getMap().isEmpty()) {
+      hash = (37 * hash) + DEBUG_INFORMATION_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetDebugInformation().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -301,6 +430,26 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
           .internal_static_services_connect_v1_CreateSessionRequest_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
+      switch (number) {
+        case 2:
+          return internalGetDebugInformation();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
+      switch (number) {
+        case 2:
+          return internalGetMutableDebugInformation();
+        default:
+          throw new RuntimeException("Invalid map field number: " + number);
+      }
+    }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -328,6 +477,7 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         verificationsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
+      internalGetMutableDebugInformation().clear();
       return this;
     }
 
@@ -365,6 +515,8 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
       } else {
         result.verifications_ = verificationsBuilder_.build();
       }
+      result.debugInformation_ = internalGetDebugInformation();
+      result.debugInformation_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -442,6 +594,7 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
           }
         }
       }
+      internalGetMutableDebugInformation().mergeFrom(other.internalGetDebugInformation());
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -482,6 +635,18 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
                 }
                 break;
               } // case 10
+            case 18:
+              {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+                    debugInformation__ =
+                        input.readMessage(
+                            DebugInformationDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableDebugInformation()
+                    .getMutableMap()
+                    .put(debugInformation__.getKey(), debugInformation__.getValue());
+                break;
+              } // case 18
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -861,6 +1026,178 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         verifications_ = null;
       }
       return verificationsBuilder_;
+    }
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String> debugInformation_;
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetDebugInformation() {
+      if (debugInformation_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            DebugInformationDefaultEntryHolder.defaultEntry);
+      }
+      return debugInformation_;
+    }
+
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetMutableDebugInformation() {
+      onChanged();
+      ;
+      if (debugInformation_ == null) {
+        debugInformation_ =
+            com.google.protobuf.MapField.newMapField(
+                DebugInformationDefaultEntryHolder.defaultEntry);
+      }
+      if (!debugInformation_.isMutable()) {
+        debugInformation_ = debugInformation_.copy();
+      }
+      return debugInformation_;
+    }
+
+    public int getDebugInformationCount() {
+      return internalGetDebugInformation().getMap().size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    @java.lang.Override
+    public boolean containsDebugInformation(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      return internalGetDebugInformation().getMap().containsKey(key);
+    }
+    /** Use {@link #getDebugInformationMap()} instead. */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getDebugInformation() {
+      return getDebugInformationMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.String> getDebugInformationMap() {
+      return internalGetDebugInformation().getMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    @java.lang.Override
+    public java.lang.String getDebugInformationOrDefault(
+        java.lang.String key, java.lang.String defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetDebugInformation().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    @java.lang.Override
+    public java.lang.String getDebugInformationOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetDebugInformation().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearDebugInformation() {
+      internalGetMutableDebugInformation().getMutableMap().clear();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    public Builder removeDebugInformation(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      internalGetMutableDebugInformation().getMutableMap().remove(key);
+      return this;
+    }
+    /** Use alternate mutation accessors instead. */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getMutableDebugInformation() {
+      return internalGetMutableDebugInformation().getMutableMap();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    public Builder putDebugInformation(java.lang.String key, java.lang.String value) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      if (value == null) {
+        throw new NullPointerException("map value");
+      }
+
+      internalGetMutableDebugInformation().getMutableMap().put(key, value);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Debugging information used to help diagnose issues
+     * </pre>
+     *
+     * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];
+     * </code>
+     */
+    public Builder putAllDebugInformation(
+        java.util.Map<java.lang.String, java.lang.String> values) {
+      internalGetMutableDebugInformation().getMutableMap().putAll(values);
+      return this;
     }
 
     @java.lang.Override

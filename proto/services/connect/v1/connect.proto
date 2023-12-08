@@ -192,6 +192,8 @@ message NormalizedGovernmentIdData {
 message CreateSessionRequest {
   // Array of verifications to perform
   repeated RequestedVerification verifications = 1;
+  // Debugging information used to help diagnose issues
+  map<string, string> debug_information = 2 [json_name = "debugInformation"];
 }
 
 // A verification to perform in an IDV flow
