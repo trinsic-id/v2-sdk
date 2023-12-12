@@ -1,6 +1,7 @@
 """
 Utility functions for the Trinsic services SDK
 """
+
 import asyncio
 import dataclasses
 import platform

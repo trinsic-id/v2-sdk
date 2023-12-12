@@ -600,35 +600,45 @@ class VerifiableCredentialBase(ServiceBase):
                 IssueFromTemplateRequest,
                 IssueFromTemplateResponse,
             ),
-            "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus": grpclib.const.Handler(
-                self.__rpc_check_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CheckStatusRequest,
-                CheckStatusResponse,
+            "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus": (
+                grpclib.const.Handler(
+                    self.__rpc_check_status,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    CheckStatusRequest,
+                    CheckStatusResponse,
+                )
             ),
-            "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus": grpclib.const.Handler(
-                self.__rpc_update_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UpdateStatusRequest,
-                UpdateStatusResponse,
+            "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus": (
+                grpclib.const.Handler(
+                    self.__rpc_update_status,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    UpdateStatusRequest,
+                    UpdateStatusResponse,
+                )
             ),
-            "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof": grpclib.const.Handler(
-                self.__rpc_create_proof,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CreateProofRequest,
-                CreateProofResponse,
+            "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof": (
+                grpclib.const.Handler(
+                    self.__rpc_create_proof,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    CreateProofRequest,
+                    CreateProofResponse,
+                )
             ),
-            "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof": grpclib.const.Handler(
-                self.__rpc_verify_proof,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                VerifyProofRequest,
-                VerifyProofResponse,
+            "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof": (
+                grpclib.const.Handler(
+                    self.__rpc_verify_proof,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    VerifyProofRequest,
+                    VerifyProofResponse,
+                )
             ),
-            "/services.verifiablecredentials.v1.VerifiableCredential/Send": grpclib.const.Handler(
-                self.__rpc_send,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SendRequest,
-                SendResponse,
+            "/services.verifiablecredentials.v1.VerifiableCredential/Send": (
+                grpclib.const.Handler(
+                    self.__rpc_send,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    SendRequest,
+                    SendResponse,
+                )
             ),
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateCredentialOffer": grpclib.const.Handler(
                 self.__rpc_create_credential_offer,

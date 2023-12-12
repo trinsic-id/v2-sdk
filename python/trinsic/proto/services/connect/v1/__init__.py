@@ -251,10 +251,10 @@ class Verification(betterproto.Message):
     Verification is of type `GOVERNMENT_ID`.
     """
 
-    normalized_government_id_data: Optional[
-        "NormalizedGovernmentIdData"
-    ] = betterproto.message_field(
-        9, optional=True, group="_normalized_government_id_data"
+    normalized_government_id_data: Optional["NormalizedGovernmentIdData"] = (
+        betterproto.message_field(
+            9, optional=True, group="_normalized_government_id_data"
+        )
     )
     """
     Normalized output for manual parsing and usage for this verification Only
@@ -465,7 +465,7 @@ class HasValidCredentialRequest(betterproto.Message):
     identity: "__universalwallet_v1__.CreateWalletRequestExternalIdentity" = (
         betterproto.message_field(1)
     )
-    """The the identity used to find a credential for"""
+    """The identity used to find a credential"""
 
     credential_request_data: "CredentialRequestData" = betterproto.message_field(2)
     """The criteria used to find a valid credential"""
@@ -482,7 +482,7 @@ class HasValidCredentialResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class CredentialRequestData(betterproto.Message):
     type: "VerificationType" = betterproto.enum_field(1)
-    """The type of verification which the credential can be used for"""
+    """The type of verification for which the credential can be used"""
 
 
 class ConnectStub(betterproto.ServiceStub):

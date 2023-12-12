@@ -1,6 +1,7 @@
 """
 Base class and helper methods for the Service wrappers
 """
+
 import base64
 from abc import ABC
 from typing import Dict

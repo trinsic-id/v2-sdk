@@ -598,11 +598,13 @@ class ProviderBase(ServiceBase):
                 UpgradeDidRequest,
                 UpgradeDidResponse,
             ),
-            "/services.provider.v1.Provider/SearchWalletConfigurations": grpclib.const.Handler(
-                self.__rpc_search_wallet_configurations,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SearchWalletConfigurationsRequest,
-                SearchWalletConfigurationResponse,
+            "/services.provider.v1.Provider/SearchWalletConfigurations": (
+                grpclib.const.Handler(
+                    self.__rpc_search_wallet_configurations,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    SearchWalletConfigurationsRequest,
+                    SearchWalletConfigurationResponse,
+                )
             ),
         }
 
@@ -650,28 +652,36 @@ class AccessManagementBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.provider.v1.AccessManagement/AddRoleAssignment": grpclib.const.Handler(
-                self.__rpc_add_role_assignment,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                AddRoleAssignmentRequest,
-                AddRoleAssignmentResponse,
+            "/services.provider.v1.AccessManagement/AddRoleAssignment": (
+                grpclib.const.Handler(
+                    self.__rpc_add_role_assignment,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    AddRoleAssignmentRequest,
+                    AddRoleAssignmentResponse,
+                )
             ),
-            "/services.provider.v1.AccessManagement/RemoveRoleAssignment": grpclib.const.Handler(
-                self.__rpc_remove_role_assignment,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RemoveRoleAssignmentRequest,
-                RemoveRoleAssignmentResponse,
+            "/services.provider.v1.AccessManagement/RemoveRoleAssignment": (
+                grpclib.const.Handler(
+                    self.__rpc_remove_role_assignment,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    RemoveRoleAssignmentRequest,
+                    RemoveRoleAssignmentResponse,
+                )
             ),
-            "/services.provider.v1.AccessManagement/ListRoleAssignments": grpclib.const.Handler(
-                self.__rpc_list_role_assignments,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListRoleAssignmentsRequest,
-                ListRoleAssignmentsResponse,
+            "/services.provider.v1.AccessManagement/ListRoleAssignments": (
+                grpclib.const.Handler(
+                    self.__rpc_list_role_assignments,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    ListRoleAssignmentsRequest,
+                    ListRoleAssignmentsResponse,
+                )
             ),
-            "/services.provider.v1.AccessManagement/ListAvailableRoles": grpclib.const.Handler(
-                self.__rpc_list_available_roles,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListAvailableRolesRequest,
-                ListAvailableRolesResponse,
+            "/services.provider.v1.AccessManagement/ListAvailableRoles": (
+                grpclib.const.Handler(
+                    self.__rpc_list_available_roles,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    ListAvailableRolesRequest,
+                    ListAvailableRolesResponse,
+                )
             ),
         }

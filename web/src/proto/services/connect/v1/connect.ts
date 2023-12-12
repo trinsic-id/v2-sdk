@@ -615,7 +615,7 @@ export interface ListSessionsResponse {
 
 /** Request to preemptively check if an identity has a valid reusable credential */
 export interface HasValidCredentialRequest {
-  /** The the identity used to find a credential for */
+  /** The identity used to find a credential */
   identity?:
     | CreateWalletRequest_ExternalIdentity
     | undefined;
@@ -630,7 +630,7 @@ export interface HasValidCredentialResponse {
 }
 
 export interface CredentialRequestData {
-  /** The type of verification which the credential can be used for */
+  /** The type of verification for which the credential can be used */
   type?: VerificationType | undefined;
 }
 

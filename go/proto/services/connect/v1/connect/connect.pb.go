@@ -1430,7 +1430,7 @@ type HasValidCredentialRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The the identity used to find a credential for
+	// The identity used to find a credential
 	Identity *wallet.CreateWalletRequest_ExternalIdentity `protobuf:"bytes,1,opt,name=identity,proto3" json:"identity,omitempty"`
 	// The criteria used to find a valid credential
 	CredentialRequestData *CredentialRequestData `protobuf:"bytes,2,opt,name=credential_request_data,json=credentialRequestData,proto3" json:"credential_request_data,omitempty"`
@@ -1536,8 +1536,8 @@ type CredentialRequestData struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// The type of verification which the credential can be used for
-	Type VerificationType `protobuf:"varint,1,opt,name=type,proto3,enum=services.connect.v1.VerificationType" json:"type,omitempty"`
+	// The type of verification for which the credential can be used
+	Type VerificationType `protobuf:"varint,1,opt,name=type,proto3,enum=services.connect.v1.VerificationType" json:"type,omitempty"` // Name of the IDV issuer
 }
 
 func (x *CredentialRequestData) Reset() {
