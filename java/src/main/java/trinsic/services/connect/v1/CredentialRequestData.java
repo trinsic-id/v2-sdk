@@ -50,7 +50,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * The type of verification which the credential can be used for
+   * The type of verification for which the credential can be used
    * </pre>
    *
    * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -65,7 +65,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * The type of verification which the credential can be used for
+   * The type of verification for which the credential can be used
    * </pre>
    *
    * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -406,7 +406,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * The type of verification which the credential can be used for
+     * The type of verification for which the credential can be used
      * </pre>
      *
      * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -421,7 +421,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * The type of verification which the credential can be used for
+     * The type of verification for which the credential can be used
      * </pre>
      *
      * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -439,7 +439,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * The type of verification which the credential can be used for
+     * The type of verification for which the credential can be used
      * </pre>
      *
      * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -457,7 +457,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * The type of verification which the credential can be used for
+     * The type of verification for which the credential can be used
      * </pre>
      *
      * <code>.services.connect.v1.VerificationType type = 1;</code>
@@ -478,7 +478,7 @@ public final class CredentialRequestData extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * The type of verification which the credential can be used for
+     * The type of verification for which the credential can be used
      * </pre>
      *
      * <code>.services.connect.v1.VerificationType type = 1;</code>

@@ -15,7 +15,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../common/v1/common.pbenum.dart' as $9;
-import '../../universal-wallet/v1/universal-wallet.pb.dart' as $2;
+import '../../universal-wallet/v1/universal-wallet.pb.dart' as $5;
 import 'connect.pbenum.dart';
 
 export 'connect.pbenum.dart';
@@ -1635,7 +1635,7 @@ class ListSessionsResponse extends $pb.GeneratedMessage {
 /// Request to preemptively check if an identity has a valid reusable credential
 class HasValidCredentialRequest extends $pb.GeneratedMessage {
   factory HasValidCredentialRequest({
-    $2.CreateWalletRequest_ExternalIdentity? identity,
+    $5.CreateWalletRequest_ExternalIdentity? identity,
     CredentialRequestData? credentialRequestData,
   }) {
     final $result = create();
@@ -1660,9 +1660,9 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.CreateWalletRequest_ExternalIdentity>(
+    ..aOM<$5.CreateWalletRequest_ExternalIdentity>(
         1, _omitFieldNames ? '' : 'identity',
-        subBuilder: $2.CreateWalletRequest_ExternalIdentity.create)
+        subBuilder: $5.CreateWalletRequest_ExternalIdentity.create)
     ..aOM<CredentialRequestData>(
         2, _omitFieldNames ? '' : 'credentialRequestData',
         subBuilder: CredentialRequestData.create)
@@ -1693,11 +1693,11 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<HasValidCredentialRequest>(create);
   static HasValidCredentialRequest? _defaultInstance;
 
-  /// The the identity used to find a credential for
+  /// The identity used to find a credential
   @$pb.TagNumber(1)
-  $2.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
+  $5.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
   @$pb.TagNumber(1)
-  set identity($2.CreateWalletRequest_ExternalIdentity v) {
+  set identity($5.CreateWalletRequest_ExternalIdentity v) {
     setField(1, v);
   }
 
@@ -1706,7 +1706,7 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
   @$pb.TagNumber(1)
-  $2.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
+  $5.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
 
   /// The criteria used to find a valid credential
   @$pb.TagNumber(2)
@@ -1845,7 +1845,7 @@ class CredentialRequestData extends $pb.GeneratedMessage {
       $pb.GeneratedMessage.$_defaultFor<CredentialRequestData>(create);
   static CredentialRequestData? _defaultInstance;
 
-  /// The type of verification which the credential can be used for
+  /// The type of verification for which the credential can be used
   @$pb.TagNumber(1)
   VerificationType get type => $_getN(0);
   @$pb.TagNumber(1)

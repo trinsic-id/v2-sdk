@@ -159,9 +159,9 @@ class ListAuthorizedMembersResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class AuthorizedMember(betterproto.Message):
     did: str = betterproto.string_field(1)
-    authorized_member_schemas: List[
-        "AuthorizedMemberSchema"
-    ] = betterproto.message_field(2)
+    authorized_member_schemas: List["AuthorizedMemberSchema"] = (
+        betterproto.message_field(2)
+    )
 
 
 @dataclass(eq=False, repr=False)
@@ -338,29 +338,37 @@ class TrustRegistryBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.trustregistry.v1.TrustRegistry/RegisterMember": grpclib.const.Handler(
-                self.__rpc_register_member,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RegisterMemberRequest,
-                RegisterMemberResponse,
+            "/services.trustregistry.v1.TrustRegistry/RegisterMember": (
+                grpclib.const.Handler(
+                    self.__rpc_register_member,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    RegisterMemberRequest,
+                    RegisterMemberResponse,
+                )
             ),
-            "/services.trustregistry.v1.TrustRegistry/UnregisterMember": grpclib.const.Handler(
-                self.__rpc_unregister_member,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UnregisterMemberRequest,
-                UnregisterMemberResponse,
+            "/services.trustregistry.v1.TrustRegistry/UnregisterMember": (
+                grpclib.const.Handler(
+                    self.__rpc_unregister_member,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    UnregisterMemberRequest,
+                    UnregisterMemberResponse,
+                )
             ),
-            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus": grpclib.const.Handler(
-                self.__rpc_get_member_authorization_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetMemberAuthorizationStatusRequest,
-                GetMemberAuthorizationStatusResponse,
+            "/services.trustregistry.v1.TrustRegistry/GetMemberAuthorizationStatus": (
+                grpclib.const.Handler(
+                    self.__rpc_get_member_authorization_status,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    GetMemberAuthorizationStatusRequest,
+                    GetMemberAuthorizationStatusResponse,
+                )
             ),
-            "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers": grpclib.const.Handler(
-                self.__rpc_list_authorized_members,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListAuthorizedMembersRequest,
-                ListAuthorizedMembersResponse,
+            "/services.trustregistry.v1.TrustRegistry/ListAuthorizedMembers": (
+                grpclib.const.Handler(
+                    self.__rpc_list_authorized_members,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    ListAuthorizedMembersRequest,
+                    ListAuthorizedMembersResponse,
+                )
             ),
             "/services.trustregistry.v1.TrustRegistry/GetMember": grpclib.const.Handler(
                 self.__rpc_get_member,

@@ -12,7 +12,7 @@ public interface HasValidCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The the identity used to find a credential for
+   * The identity used to find a credential
    * </pre>
    *
    * <code>.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 1;</code>
@@ -24,7 +24,7 @@ public interface HasValidCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The the identity used to find a credential for
+   * The identity used to find a credential
    * </pre>
    *
    * <code>.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 1;</code>
@@ -36,7 +36,7 @@ public interface HasValidCredentialRequestOrBuilder
    *
    *
    * <pre>
-   * The the identity used to find a credential for
+   * The identity used to find a credential
    * </pre>
    *
    * <code>.services.universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 1;</code>

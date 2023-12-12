@@ -267,11 +267,13 @@ class FileManagementBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.filemanagement.v1.FileManagement/UploadFile": grpclib.const.Handler(
-                self.__rpc_upload_file,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UploadFileRequest,
-                UploadFileResponse,
+            "/services.filemanagement.v1.FileManagement/UploadFile": (
+                grpclib.const.Handler(
+                    self.__rpc_upload_file,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    UploadFileRequest,
+                    UploadFileResponse,
+                )
             ),
             "/services.filemanagement.v1.FileManagement/GetFile": grpclib.const.Handler(
                 self.__rpc_get_file,
@@ -279,22 +281,28 @@ class FileManagementBase(ServiceBase):
                 GetFileRequest,
                 GetFileResponse,
             ),
-            "/services.filemanagement.v1.FileManagement/DeleteFile": grpclib.const.Handler(
-                self.__rpc_delete_file,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                DeleteFileRequest,
-                DeleteFileResponse,
+            "/services.filemanagement.v1.FileManagement/DeleteFile": (
+                grpclib.const.Handler(
+                    self.__rpc_delete_file,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    DeleteFileRequest,
+                    DeleteFileResponse,
+                )
             ),
-            "/services.filemanagement.v1.FileManagement/ListFiles": grpclib.const.Handler(
-                self.__rpc_list_files,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListFilesRequest,
-                ListFilesResponse,
+            "/services.filemanagement.v1.FileManagement/ListFiles": (
+                grpclib.const.Handler(
+                    self.__rpc_list_files,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    ListFilesRequest,
+                    ListFilesResponse,
+                )
             ),
-            "/services.filemanagement.v1.FileManagement/GetStorageStats": grpclib.const.Handler(
-                self.__rpc_get_storage_stats,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetStorageStatsRequest,
-                GetStorageStatsResponse,
+            "/services.filemanagement.v1.FileManagement/GetStorageStats": (
+                grpclib.const.Handler(
+                    self.__rpc_get_storage_stats,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    GetStorageStatsRequest,
+                    GetStorageStatsResponse,
+                )
             ),
         }

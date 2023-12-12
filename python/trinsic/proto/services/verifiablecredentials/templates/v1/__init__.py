@@ -898,41 +898,53 @@ class CredentialTemplatesBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create": grpclib.const.Handler(
-                self.__rpc_create,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CreateCredentialTemplateRequest,
-                CreateCredentialTemplateResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create": (
+                grpclib.const.Handler(
+                    self.__rpc_create,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    CreateCredentialTemplateRequest,
+                    CreateCredentialTemplateResponse,
+                )
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get": grpclib.const.Handler(
-                self.__rpc_get,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetCredentialTemplateRequest,
-                GetCredentialTemplateResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get": (
+                grpclib.const.Handler(
+                    self.__rpc_get,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    GetCredentialTemplateRequest,
+                    GetCredentialTemplateResponse,
+                )
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update": grpclib.const.Handler(
-                self.__rpc_update,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UpdateCredentialTemplateRequest,
-                UpdateCredentialTemplateResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update": (
+                grpclib.const.Handler(
+                    self.__rpc_update,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    UpdateCredentialTemplateRequest,
+                    UpdateCredentialTemplateResponse,
+                )
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/List": grpclib.const.Handler(
-                self.__rpc_list,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListCredentialTemplatesRequest,
-                ListCredentialTemplatesResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/List": (
+                grpclib.const.Handler(
+                    self.__rpc_list,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    ListCredentialTemplatesRequest,
+                    ListCredentialTemplatesResponse,
+                )
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search": grpclib.const.Handler(
-                self.__rpc_search,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SearchCredentialTemplatesRequest,
-                SearchCredentialTemplatesResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search": (
+                grpclib.const.Handler(
+                    self.__rpc_search,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    SearchCredentialTemplatesRequest,
+                    SearchCredentialTemplatesResponse,
+                )
             ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete": grpclib.const.Handler(
-                self.__rpc_delete,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                DeleteCredentialTemplateRequest,
-                DeleteCredentialTemplateResponse,
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete": (
+                grpclib.const.Handler(
+                    self.__rpc_delete,
+                    grpclib.const.Cardinality.UNARY_UNARY,
+                    DeleteCredentialTemplateRequest,
+                    DeleteCredentialTemplateResponse,
+                )
             ),
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate": grpclib.const.Handler(
                 self.__rpc_create_verification_template,
