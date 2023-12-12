@@ -8299,7 +8299,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "VerificationType",
       "full_type": "services.connect.v1.VerificationType",
-      "description": "The type of verification which the credential can be used for"
+      "description": "The type of verification for which the credential can be used\n\nName of the IDV issuer"
     },
     "services.connect.v1.GetSessionRequest.idv_session_id": {
       "name": "idv_session_id",
@@ -8403,7 +8403,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "ExternalIdentity",
       "full_type": "services.universalwallet.v1.CreateWalletRequest.ExternalIdentity",
-      "description": "The the identity used to find a credential for"
+      "description": "The identity used to find a credential"
     },
     "services.connect.v1.HasValidCredentialResponse.has_valid_credential": {
       "name": "has_valid_credential",
