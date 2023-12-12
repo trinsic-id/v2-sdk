@@ -306,7 +306,7 @@ message ListSessionsResponse {
 
 // Request to preemptively check if an identity has a valid reusable credential
 message HasValidCredentialRequest {
-  // The the identity used to find a credential for
+  // The identity used to find a credential
   universalwallet.v1.CreateWalletRequest.ExternalIdentity identity = 1;
 
   // The criteria used to find a valid credential
@@ -320,8 +320,9 @@ message HasValidCredentialResponse {
 }
 
 message CredentialRequestData {
-  // The type of verification which the credential can be used for
+  // The type of verification for which the credential can be used
   VerificationType type = 1;
+  // Name of the IDV issuer
 }
 
 // Controls how sessions are ordered in `ListSessions`
