@@ -26,7 +26,12 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 
 ```java
 dependencies {
-    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.10.0/trinsic-services-1.10.0.jar', 'trinsic-services-1.10.0')
+    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.13.0/trinsic-services-1.13.0.jar', 'trinsic-services-1.13.0')
+    // You can change these versions if needed, but they are dependencies of the above jar file
+    implementation("io.grpc:grpc-netty-shaded:1.60.0")
+    implementation("io.grpc:grpc-okhttp:1.60.0")
+    implementation("io.grpc:grpc-protobuf:1.60.0")
+    implementation("io.grpc:grpc-stub:1.60.0")
 }
 ```
 
