@@ -9,7 +9,7 @@ hide:
 
     [https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser](https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser)
 
-### Overview
+## Overview
 
 In this example we'll setup a basic webpage and configure it to initiate an identity verification of a government identity document using Trinsic Connect.
 
@@ -21,7 +21,31 @@ Let's take a look at the data flow between the different actors and components i
 ![Trinsic Connect Data Flow](/_static/images/trinsic-connect-flow.png)
 </center>
 
-### Setup our demo
+### Typical Flow
+
+A typical Trinsic Connect flow generally goes as follows:
+
+1. Create a verification session using the [`CreateSession`](/reference/services/connect-service/#create-session){target=_blank} SDK call
+    1. Store the session `id` somewhere in your backend; this will be used to reference the session in further SDK calls
+2. Send the `client_token` you received in the response to `CreateSession` to your frontend
+3. Begin the flow on your frontend by calling the `identityVerification()` method on `ConnectClient`, passing the `client_token` as an argument
+    1. This method returns a promise that will resolve when the flow is completed
+4. Await the promise returned by `identityVerification()`
+5. Ping your backend to trigger it to process the verification results
+6. Fetch the session using the [`GetSession`](/reference/services/connect-service/#get-session){target=_blank} SDK call from your backend, and process the results
+
+
+If the flow is successful, the session's `state` will be `IDV_SUCCESS`, and the resultant identity data will be available in two forms:
+
+- In the `result_vp` field of the `session`
+    - This is a [Verifiable Presentation <small>:material-open-in-new:</small>](https://www.w3.org/TR/vc-data-model/#presentations){target=_blank}, and is cryptographically verifiable.
+- In the `normalized_government_id_data` field of the `verification` within the `session`
+    - This is a strongly-typed representation of the data in `result_vp`, but it is not in the form of a Verifiable Presentation.
+
+
+If the flow is unsucessful, the session's `state` will be `IDV_FAILED`, and the reason for failure will be present in the `session.fail_code` field.
+
+## Setup our demo
 
 Let's create a new npm project:
 
@@ -54,7 +78,7 @@ const trinsic = new TrinsicService({
 
     Assuming you are part of the Trinsic Connect beta, you can obtain auth token from the [Trinsic Studio <small>:material-open-in-new:</small>](https://idv.connect.trinsic.cloud/wallet/relying-party/configure){targer=_blank}.
 
-### Create IDV Session API
+## Create IDV Session API
 
 Let's configure Express to create two endpoints for creating a new IDV session (served at `/api/create-session`) and retrieving an IDV session (served at `/api/get-session`). We'll use Trinsic's SDK to generate the IDV session for a government document verification and then retrieve it to read its results.
 
@@ -95,7 +119,7 @@ app.listen(PORT, () => {
 });
 ```
 
-### Example web page
+## Example web page
 
 Create a new file named `index.html` at the root of the repo and reference Trinsic's SDK.
 
@@ -143,7 +167,7 @@ Let's add additional script to register a button click event that will start the
 </script>
 ```
 
-### Run the demo
+## Run the demo
 
 Run the demo by executing the following command in the terminal
 

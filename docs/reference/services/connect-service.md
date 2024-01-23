@@ -5,6 +5,8 @@ The Connect Service is used to create, manage, and retrieve Identity Verificatio
 Trinsic Connect is a reusable Identity Verification platform that minimizes user friction by allowing them to securely reuse the results of an identity verification
 performed previously on the platform, reducing the number of full verification flows they experience.
 
+[Click here](/examples/idv-browser){target=_blank} for an example of a simple integration of the Trinsic Connect flow.
+
 
 !!! warning "Closed Beta"
     Trinsic Connect is currently in a closed beta; please [contact us](mailto:contact@trinsic.id) to gain early access.
