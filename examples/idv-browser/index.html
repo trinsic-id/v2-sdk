@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2+insiders-4.47.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4+insiders-4.50.0">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.78d85e4f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.67c3bdf0.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2187,6 +2187,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typical-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2248,6 +2265,9 @@
                 
   
                   
+  
+
+
 
   
   
@@ -2258,14 +2278,42 @@
 <p class="admonition-title">Source code for this example</p>
 <p><a href="https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser">https://github.com/trinsic-id/sdk/tree/main/examples/idv-browser</a></p>
 </div>
-<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>In this example we'll setup a basic webpage and configure it to initiate an identity verification of a government identity document using Trinsic Connect.</p>
 <p>We will also configure a backend API that will set up the integration with the SDK and handle the creation and retrieval of the identity verification session (IDV session).</p>
 <p>Let's take a look at the data flow between the different actors and components in a usual IDV verification with Trinsic Connect:</p>
 <p><center>
-<a class="glightbox" href="/_static/images/trinsic-connect-flow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Connect Data Flow" src="/_static/images/trinsic-connect-flow.png" /></a>
+<a class="glightbox" href="/_static/images/trinsic-connect-flow.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Connect Data Flow" src="/_static/images/trinsic-connect-flow.png" /></a>
 </center></p>
-<h3 id="setup-our-demo">Setup our demo<a class="headerlink" href="#setup-our-demo" title="Permanent link">&para;</a></h3>
+<h3 id="typical-flow">Typical Flow<a class="headerlink" href="#typical-flow" title="Permanent link">&para;</a></h3>
+<p>A typical Trinsic Connect flow generally goes as follows:</p>
+<ol>
+<li>Create a verification session using the <a href="/reference/services/connect-service/#create-session" target="_blank"><code>CreateSession</code></a> SDK call<ol>
+<li>Store the session <code>id</code> somewhere in your backend; this will be used to reference the session in further SDK calls</li>
+</ol>
+</li>
+<li>Send the <code>client_token</code> you received in the response to <code>CreateSession</code> to your frontend</li>
+<li>Begin the flow on your frontend by calling the <code>identityVerification()</code> method on <code>ConnectClient</code>, passing the <code>client_token</code> as an argument<ol>
+<li>This method returns a promise that will resolve when the flow is completed</li>
+</ol>
+</li>
+<li>Await the promise returned by <code>identityVerification()</code></li>
+<li>Ping your backend to trigger it to process the verification results</li>
+<li>Fetch the session using the <a href="/reference/services/connect-service/#get-session" target="_blank"><code>GetSession</code></a> SDK call from your backend, and process the results</li>
+</ol>
+<p>If the flow is successful, the session's <code>state</code> will be <code>IDV_SUCCESS</code>, and the resultant identity data will be available in two forms:</p>
+<ul>
+<li>In the <code>result_vp</code> field of the <code>session</code><ul>
+<li>This is a <a href="https://www.w3.org/TR/vc-data-model/#presentations" target="_blank">Verifiable Presentation <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>, and is cryptographically verifiable.</li>
+</ul>
+</li>
+<li>In the <code>normalized_government_id_data</code> field of the <code>verification</code> within the <code>session</code><ul>
+<li>This is a strongly-typed representation of the data in <code>result_vp</code>, but it is not in the form of a Verifiable Presentation.</li>
+</ul>
+</li>
+</ul>
+<p>If the flow is unsucessful, the session's <code>state</code> will be <code>IDV_FAILED</code>, and the reason for failure will be present in the <code>session.fail_code</code> field.</p>
+<h2 id="setup-our-demo">Setup our demo<a class="headerlink" href="#setup-our-demo" title="Permanent link">&para;</a></h2>
 <p>Let's create a new npm project:</p>
 <div class="highlight"><pre><span></span><code>npm init -y
 </code></pre></div>
@@ -2288,7 +2336,7 @@
 <p class="admonition-title">How to obtain an Auth Token</p>
 <p>Assuming you are part of the Trinsic Connect beta, you can obtain auth token from the <a href="https://idv.connect.trinsic.cloud/wallet/relying-party/configure" targer="_blank">Trinsic Studio <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>.</p>
 </div>
-<h3 id="create-idv-session-api">Create IDV Session API<a class="headerlink" href="#create-idv-session-api" title="Permanent link">&para;</a></h3>
+<h2 id="create-idv-session-api">Create IDV Session API<a class="headerlink" href="#create-idv-session-api" title="Permanent link">&para;</a></h2>
 <p>Let's configure Express to create two endpoints for creating a new IDV session (served at <code>/api/create-session</code>) and retrieving an IDV session (served at <code>/api/get-session</code>). We'll use Trinsic's SDK to generate the IDV session for a government document verification and then retrieve it to read its results.</p>
 <div class="highlight"><pre><span></span><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/api/create-session&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">connection</span><span class="p">().</span><span class="nx">createSession</span><span class="p">({</span>
@@ -2322,7 +2370,7 @@
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Access the demo page at http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<h3 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h3>
+<h2 id="example-web-page">Example web page<a class="headerlink" href="#example-web-page" title="Permanent link">&para;</a></h2>
 <p>Create a new file named <code>index.html</code> at the root of the repo and reference Trinsic's SDK.</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/@trinsic/trinsic@1.13.0/dist/trinsic.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -2363,7 +2411,7 @@
 <span class="w">        </span><span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<h3 id="run-the-demo">Run the demo<a class="headerlink" href="#run-the-demo" title="Permanent link">&para;</a></h3>
+<h2 id="run-the-demo">Run the demo<a class="headerlink" href="#run-the-demo" title="Permanent link">&para;</a></h2>
 <p>Run the demo by executing the following command in the terminal</p>
 <div class="highlight"><pre><span></span><code>node index.js
 </code></pre></div>
@@ -2579,7 +2627,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8e8db93a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a0279539.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       

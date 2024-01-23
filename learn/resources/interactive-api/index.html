@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2+insiders-4.47.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4+insiders-4.50.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.78d85e4f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.67c3bdf0.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2502,6 +2502,7 @@
   
                   
 
+
   
   
 
@@ -2518,18 +2519,18 @@
 <li>Go to your <a href="https://dashboard.trinsic.id/ecosystem">Trinsic Ecosystem Dashboard</a>.</li>
 <li>Click <strong>View API Token</strong> and copy your token.</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/1-api-token.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="API Token" src="../../../_static/images/1-api-token.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/1-api-token.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="API Token" src="../../../_static/images/1-api-token.png" /></a></p>
 <ol>
 <li>Run <code>trinsic config -a &lt;token&gt;</code>. This will set your token in the config file.</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/2-trinsic-config.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Config" src="../../../_static/images/2-trinsic-config.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/2-trinsic-config.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Config" src="../../../_static/images/2-trinsic-config.png" /></a></p>
 <ol>
 <li>Run <code>trinsic config</code> and make sure your token is set correctly and your server endpoint is set to <code>prod.trinsic.cloud</code>.</li>
 <li>Run <code>trinsic account info</code> and see if the information matches the ones from your account.</li>
 <li>Run <code>trinsic —-debug account info</code> and copy the pink text after <em>DEBUG: Authorization</em>. This is the ZKP token for authentication you will use with your calls.</li>
 </ol>
 <p><em>Please note this is a lot longer than in the below screenshot.</em></p>
-<p><a class="glightbox" href="../../../_static/images/3-trinsic-debug.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Debug" src="../../../_static/images/3-trinsic-debug.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/3-trinsic-debug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Trinsic Debug" src="../../../_static/images/3-trinsic-debug.png" /></a></p>
 <h2 id="postman">Postman<a class="headerlink" href="#postman" title="Permanent link">&para;</a></h2>
 <h3 id="configuring-postman">Configuring Postman<a class="headerlink" href="#configuring-postman" title="Permanent link">&para;</a></h3>
 <p>To configure Postman, follow these steps:</p>
@@ -2537,24 +2538,24 @@
 <li><a href="https://www.postman.com/downloads/">Download Postman</a> and create an account/log in.</li>
 <li>Click <strong>New &gt; gRPC Request</strong>.</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/postman-grpc.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman gRPC" src="../../../_static/images/postman-grpc.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-grpc.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman gRPC" src="../../../_static/images/postman-grpc.png" /></a></p>
 <ol>
 <li>In the field <strong>Enter server URL</strong>, add <a href="http://prod.trinsic.cloud:443/">prod.trinsic.cloud:443</a> and click the padlock to enable TLS.</li>
 <li>In the tab <em>Metadata</em>, add <strong>Authorization</strong> in the <em>Key</em> field and your token (the one you generated above) in the <em>Value</em> field.</li>
 <li>Your page should look like this:</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/postman-authorization.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman Authorization" src="../../../_static/images/postman-authorization.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-authorization.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman Authorization" src="../../../_static/images/postman-authorization.png" /></a></p>
 <ol>
 <li>In Postman, you can save these configurations by clicking on the dropdown next to <strong>Save</strong> and saving the request inside a Collection.</li>
 </ol>
 <h3 id="making-api-calls">Making API Calls<a class="headerlink" href="#making-api-calls" title="Permanent link">&para;</a></h3>
 <p>With your Postman configured, you can now test all API calls from Trinsic’s API.</p>
 <p>If you click <strong>Select a method</strong>, you’ll see all available methods.</p>
-<p><a class="glightbox" href="../../../_static/images/postman-api-calls.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman API Calls" src="../../../_static/images/postman-api-calls.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-api-calls.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman API Calls" src="../../../_static/images/postman-api-calls.png" /></a></p>
 <p>Try selecting the option <strong>Info</strong> and click <strong>Invoke</strong>. You should see something like this:</p>
-<p><a class="glightbox" href="../../../_static/images/postman-info.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman Info" src="../../../_static/images/postman-info.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-info.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman Info" src="../../../_static/images/postman-info.png" /></a></p>
 <p>If you run the <em>CredentialTemplates/List</em> method, you should see all your Credential Templates listed in the Response:</p>
-<p><a class="glightbox" href="../../../_static/images/postman-list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman List" src="../../../_static/images/postman-list.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman List" src="../../../_static/images/postman-list.png" /></a></p>
 <p>Whenever you call any method, if you have any doubts regarding the fields that appear in the body of the call when you click <strong>Generate Example Message</strong> (what they should be and if they’re required or not), just consult the <a href="https://docs.trinsic.id/reference/">Reference tab of our documentation</a>.</p>
 <h3 id="issuing-a-credential">Issuing a Credential<a class="headerlink" href="#issuing-a-credential" title="Permanent link">&para;</a></h3>
 <p>Copy the <em>id</em> value from one of your Credential Templates, and issue a credential from it following the next steps:</p>
@@ -2566,11 +2567,11 @@
 <li>Populate the field <code>values_json</code> with the information required by your credential template. Remember to use the character <code>\</code> before all double quotes.</li>
 <li>Click on <strong>Invoke</strong>.</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/postman-issue.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman Issue" src="../../../_static/images/postman-issue.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-issue.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman Issue" src="../../../_static/images/postman-issue.png" /></a></p>
 <p>You just issued a credential from your credential template! 😄</p>
 <h3 id="using-queries">Using Queries<a class="headerlink" href="#using-queries" title="Permanent link">&para;</a></h3>
 <p>You can use queries to make searches or get, insert, and update wallets. See the example below:</p>
-<p><a class="glightbox" href="../../../_static/images/postman-search.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Postman Search" src="../../../_static/images/postman-search.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/postman-search.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Postman Search" src="../../../_static/images/postman-search.png" /></a></p>
 <p>Make sure to explore all the methods provided by the Trinsic API! 🤩</p>
 <h2 id="buf-studio">Buf Studio<a class="headerlink" href="#buf-studio" title="Permanent link">&para;</a></h2>
 <h3 id="configuring-buf-studio">Configuring Buf Studio<a class="headerlink" href="#configuring-buf-studio" title="Permanent link">&para;</a></h3>
@@ -2582,15 +2583,15 @@
 <li>Click <strong>gRPC-web</strong> at the end of the page.</li>
 <li>Your page should look like this:</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/buf-authorization.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Authorization" src="../../../_static/images/buf-authorization.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-authorization.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Authorization" src="../../../_static/images/buf-authorization.png" /></a></p>
 <h3 id="making-api-calls_1">Making API Calls<a class="headerlink" href="#making-api-calls_1" title="Permanent link">&para;</a></h3>
 <p>With your Buf Studio configured, you can now test all API calls from Trinsic’s API.</p>
 <p>If you click <strong>Select method</strong>, you’ll see all available methods.</p>
-<p><a class="glightbox" href="../../../_static/images/buf-api-calls.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio API Calls" src="../../../_static/images/buf-api-calls.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-api-calls.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio API Calls" src="../../../_static/images/buf-api-calls.png" /></a></p>
 <p>Try selecting the option <strong>Info</strong> and click <strong>Send</strong>. You should see something like this:</p>
-<p><a class="glightbox" href="../../../_static/images/buf-info.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Info" src="../../../_static/images/buf-info.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-info.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Info" src="../../../_static/images/buf-info.png" /></a></p>
 <p>If you run the <em>CredentialTemplates/List</em> method, you should see all your Credential Templates listed in the Response:</p>
-<p><a class="glightbox" href="../../../_static/images/buf-list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio List" src="../../../_static/images/buf-list.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio List" src="../../../_static/images/buf-list.png" /></a></p>
 <p>Whenever you call any method, if you have any doubts regarding the fields that appear in the body of the call (what they should be and if they’re required or not), just consult the <a href="https://docs.trinsic.id/reference/">Reference tab of our documentation</a>.</p>
 <h3 id="issuing-a-credential_1">Issuing a Credential<a class="headerlink" href="#issuing-a-credential_1" title="Permanent link">&para;</a></h3>
 <p>Copy the <strong>id</strong> value from one of your Credential Templates and issue a credential from it following the next steps:</p>
@@ -2600,11 +2601,11 @@
 <li>Populate the field <code>valuesJson</code> with the information required by your credential template. Remember to use the character <code>\</code> before all double quotes.</li>
 <li>Click on <strong>Send</strong>.</li>
 </ol>
-<p><a class="glightbox" href="../../../_static/images/buf-issue.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Issue" src="../../../_static/images/buf-issue.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-issue.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Issue" src="../../../_static/images/buf-issue.png" /></a></p>
 <p>You just issued a credential from your credential template! 😄</p>
 <h3 id="using-queries_1">Using Queries<a class="headerlink" href="#using-queries_1" title="Permanent link">&para;</a></h3>
 <p>You can use queries to make searches or get, insert, and update wallets. See the example below:</p>
-<p><a class="glightbox" href="../../../_static/images/buf-search.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Search" src="../../../_static/images/buf-search.png" /></a></p>
+<p><a class="glightbox" href="../../../_static/images/buf-search.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Buf Studio Search" src="../../../_static/images/buf-search.png" /></a></p>
 <p>Make sure to explore all the methods provided by the Trinsic API! 🤩</p>
 
 
@@ -2811,7 +2812,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8e8db93a.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a0279539.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
