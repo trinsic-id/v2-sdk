@@ -36,32 +36,32 @@ In order to create a credential offer, we need to create the issuer wallet first
 ecosystem A, we authenticate as it and create the credential offer (you must have the `templateId` from which you want to issue a VC against).
 
 ```ts
-    // Create the issuer wallet in ecosystem A
-    let trinsicAlice = new TrinsicService();
+// Create the issuer wallet in ecosystem A
+let trinsicAlice = new TrinsicService();
 
-    const createWalletAliceRequest = {
-        ecosystemId: "urn:trinsic:ecosystems:ecosystem-A"
-    }
+const createWalletAliceRequest = {
+    ecosystemId: "urn:trinsic:ecosystems:ecosystem-a"
+}
 
-    let createWalletAliceResponse = await trinsicAlice.wallet().createWallet(createWalletAliceRequest);
+let createWalletAliceResponse = await trinsicAlice.wallet().createWallet(createWalletAliceRequest);
 
-    console.log("Issuer Wallet: " + createWalletAliceResponse.wallet?.walletId);
-    console.log("Issuer's Ecosystem: " + createWalletAliceResponse.wallet?.ecosystemId);
+console.log("Issuer Wallet: " + createWalletAliceResponse.wallet?.walletId);
+console.log("Issuer's Ecosystem: " + createWalletAliceResponse.wallet?.ecosystemId);
 
-    // Authenticate as the issuer in ecosystem A
-    trinsicAlice.setAuthToken(createWalletAliceResponse.authToken!);
+// Authenticate as the issuer in ecosystem A
+trinsicAlice.setAuthToken(createWalletAliceResponse.authToken!);
 
-    // Create the credential offer
-    const createCredentialOfferRequest = {
-        templateId: "https://schema.trinsic.cloud/ecosystem-A/example-credential",
-        valuesJson: JSON.stringify({
-            "name": "John Doe"
-        }),
-    }
+// Create the credential offer
+const createCredentialOfferRequest = {
+    templateId: "https://schema.trinsic.cloud/ecosystem-a/example-credential",
+    valuesJson: JSON.stringify({
+        "name": "John Doe"
+    }),
+}
 
-    let createCredentialOfferResponse = await trinsicAlice.credential().createCredentialOffer(createCredentialOfferRequest);
+let createCredentialOfferResponse = await trinsicAlice.credential().createCredentialOffer(createCredentialOfferRequest);
 
-    console.log("Credential Offer: " + createCredentialOfferResponse.documentJson);
+console.log("Credential Offer: " + createCredentialOfferResponse.documentJson);
 ```
 
 ### Create a wallet and accept the credential offer in ecosystem B
@@ -70,32 +70,32 @@ Now we create the holder wallet (Bob's) in ecosystem B, authenticate as it and a
 all items in Bob's wallet to see the VC that was issued by a wallet from ecosystem A and is now stored in a wallet from ecosystem B.
 
 ```ts
-    // Create the holder wallet in ecosystem B
-    let trinsicBob = new TrinsicService();
+// Create the holder wallet in ecosystem B
+let trinsicBob = new TrinsicService();
 
-    const createWalletBobRequest = {
-        ecosystemId: "urn:trinsic:ecosystems:ecosystem-B"
-    }
+const createWalletBobRequest = {
+    ecosystemId: "urn:trinsic:ecosystems:ecosystem-b"
+}
 
-    let createWalletBobResponse = await trinsicBob.wallet().createWallet(createWalletBobRequest);
+let createWalletBobResponse = await trinsicBob.wallet().createWallet(createWalletBobRequest);
 
-    console.log("\nHolder Wallet: " + createWalletBobResponse.wallet?.walletId);
-    console.log("Holder's Ecosystem: " + createWalletBobResponse.wallet?.ecosystemId);
+console.log("\nHolder Wallet: " + createWalletBobResponse.wallet?.walletId);
+console.log("Holder's Ecosystem: " + createWalletBobResponse.wallet?.ecosystemId);
 
-    // Authenticate as the holder in ecosystem B
-    trinsicBob.setAuthToken(createWalletBobResponse.authToken!);
+// Authenticate as the holder in ecosystem B
+trinsicBob.setAuthToken(createWalletBobResponse.authToken!);
 
-    // Accept the credential offer
-    let acceptCredentialOfferRequest = {
-        documentJson: createCredentialOfferResponse.documentJson,
-    }
+// Accept the credential offer
+let acceptCredentialOfferRequest = {
+    documentJson: createCredentialOfferResponse.documentJson,
+}
 
-    const acceptCredentialResponse = await trinsicBob.credential().acceptCredential(acceptCredentialOfferRequest);
+const acceptCredentialResponse = await trinsicBob.credential().acceptCredential(acceptCredentialOfferRequest);
 
-    // Credential issued in ecosystem A stored inside a wallet from ecosystem B
-    const searchWalletBobResponse = await trinsicBob.wallet().searchWallet();
+// Credential issued in ecosystem A stored inside a wallet from ecosystem B
+const searchWalletBobResponse = await trinsicBob.wallet().searchWallet();
 
-    console.log("VC in holder's wallet: " + searchWalletBobResponse.items);
+console.log("VC in holder's wallet: " + searchWalletBobResponse.items);
 ```
 
 Enjoy! 👋
