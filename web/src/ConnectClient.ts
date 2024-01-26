@@ -381,7 +381,11 @@ export class ConnectClient {
             throw new Error("ecosystem and schema are required");
         }
 
-        const settings = { ...this.oidcConfig };
+        const settings = {
+            ...this.oidcConfig,
+            client_id: window.location.href,
+            redirect_uri: window.location.href,
+        };
         settings.extraQueryParams!["trinsic:ecosystem"] = request.ecosystem;
         settings.extraQueryParams!["trinsic:schema"] = request.schema;
 
