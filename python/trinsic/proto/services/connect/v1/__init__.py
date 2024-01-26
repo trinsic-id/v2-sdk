@@ -568,6 +568,7 @@ class ConnectStub(betterproto.ServiceStub):
 
 
 class ConnectBase(ServiceBase):
+
     async def create_session(
         self, create_session_request: "CreateSessionRequest"
     ) -> "CreateSessionResponse":

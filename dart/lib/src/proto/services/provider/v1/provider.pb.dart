@@ -13,9 +13,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $8;
-import '../../account/v1/account.pbenum.dart' as $8;
-import '../../common/v1/common.pbenum.dart' as $9;
+import '../../account/v1/account.pb.dart' as $9;
+import '../../account/v1/account.pbenum.dart' as $9;
+import '../../common/v1/common.pbenum.dart' as $10;
 import 'provider.pbenum.dart';
 
 export 'provider.pbenum.dart';
@@ -123,7 +123,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   factory CreateEcosystemRequest({
     $core.String? name,
     $core.String? description,
-    $8.AccountDetails? details,
+    $9.AccountDetails? details,
     $core.String? domain,
   }) {
     final $result = create();
@@ -156,8 +156,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'name')
     ..aOS(2, _omitFieldNames ? '' : 'description')
-    ..aOM<$8.AccountDetails>(4, _omitFieldNames ? '' : 'details',
-        subBuilder: $8.AccountDetails.create)
+    ..aOM<$9.AccountDetails>(4, _omitFieldNames ? '' : 'details',
+        subBuilder: $9.AccountDetails.create)
     ..aOS(5, _omitFieldNames ? '' : 'domain')
     ..hasRequiredFields = false;
 
@@ -217,9 +217,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
 
   /// The account details of the owner of the ecosystem
   @$pb.TagNumber(4)
-  $8.AccountDetails get details => $_getN(2);
+  $9.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(4)
-  set details($8.AccountDetails v) {
+  set details($9.AccountDetails v) {
     setField(4, v);
   }
 
@@ -228,7 +228,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $8.AccountDetails ensureDetails() => $_ensure(2);
+  $9.AccountDetails ensureDetails() => $_ensure(2);
 
   /// New domain URL
   @$pb.TagNumber(5)
@@ -248,8 +248,8 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $8.AccountProfile? profile,
-    $8.ConfirmationMethod? confirmationMethod,
+    $9.AccountProfile? profile,
+    $9.ConfirmationMethod? confirmationMethod,
   }) {
     final $result = create();
     if (ecosystem != null) {
@@ -278,13 +278,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..aOM<Ecosystem>(1, _omitFieldNames ? '' : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$8.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
-        subBuilder: $8.AccountProfile.create)
-    ..e<$8.ConfirmationMethod>(
+    ..aOM<$9.AccountProfile>(2, _omitFieldNames ? '' : 'profile',
+        subBuilder: $9.AccountProfile.create)
+    ..e<$9.ConfirmationMethod>(
         3, _omitFieldNames ? '' : 'confirmationMethod', $pb.PbFieldType.OE,
-        defaultOrMaker: $8.ConfirmationMethod.None,
-        valueOf: $8.ConfirmationMethod.valueOf,
-        enumValues: $8.ConfirmationMethod.values)
+        defaultOrMaker: $9.ConfirmationMethod.None,
+        valueOf: $9.ConfirmationMethod.valueOf,
+        enumValues: $9.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -329,9 +329,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
 
   /// Account profile for auth of the owner of the ecosystem
   @$pb.TagNumber(2)
-  $8.AccountProfile get profile => $_getN(1);
+  $9.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($8.AccountProfile v) {
+  set profile($9.AccountProfile v) {
     setField(2, v);
   }
 
@@ -340,13 +340,13 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $8.AccountProfile ensureProfile() => $_ensure(1);
+  $9.AccountProfile ensureProfile() => $_ensure(1);
 
   /// Indicates if confirmation of account is required.
   @$pb.TagNumber(3)
-  $8.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $9.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($8.ConfirmationMethod v) {
+  set confirmationMethod($9.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -770,7 +770,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? walletId,
     $core.String? publicDid,
     $core.String? configType,
-    $core.Iterable<$8.WalletAuthToken>? authTokens,
+    $core.Iterable<$9.WalletAuthToken>? authTokens,
     @$core.Deprecated('This field is deprecated.')
     $core.Iterable<$core.String>? externalIdentityIds,
     $core.String? ecosystemId,
@@ -835,9 +835,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     ..aOS(4, _omitFieldNames ? '' : 'walletId')
     ..aOS(5, _omitFieldNames ? '' : 'publicDid')
     ..aOS(6, _omitFieldNames ? '' : 'configType')
-    ..pc<$8.WalletAuthToken>(
+    ..pc<$9.WalletAuthToken>(
         7, _omitFieldNames ? '' : 'authTokens', $pb.PbFieldType.PM,
-        subBuilder: $8.WalletAuthToken.create)
+        subBuilder: $9.WalletAuthToken.create)
     ..pPS(8, _omitFieldNames ? '' : 'externalIdentityIds')
     ..aOS(9, _omitFieldNames ? '' : 'ecosystemId')
     ..aOS(10, _omitFieldNames ? '' : 'description')
@@ -958,7 +958,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   /// This list does not contain the issued token, only metadata
   /// such as ID, description, and creation date.
   @$pb.TagNumber(7)
-  $core.List<$8.WalletAuthToken> get authTokens => $_getList(6);
+  $core.List<$9.WalletAuthToken> get authTokens => $_getList(6);
 
   /// List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet.
   /// This is deprecated; use `external_identities` instead.
@@ -1226,7 +1226,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   factory UpgradeDidRequest({
     $core.String? email,
     $core.String? walletId,
-    $9.SupportedDidMethod? method,
+    $10.SupportedDidMethod? method,
     IonOptions? ionOptions,
     IndyOptions? indyOptions,
     $core.String? didUri,
@@ -1282,11 +1282,11 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
     ..oo(1, [4, 5])
     ..aOS(1, _omitFieldNames ? '' : 'email')
     ..aOS(2, _omitFieldNames ? '' : 'walletId')
-    ..e<$9.SupportedDidMethod>(
+    ..e<$10.SupportedDidMethod>(
         3, _omitFieldNames ? '' : 'method', $pb.PbFieldType.OE,
-        defaultOrMaker: $9.SupportedDidMethod.KEY,
-        valueOf: $9.SupportedDidMethod.valueOf,
-        enumValues: $9.SupportedDidMethod.values)
+        defaultOrMaker: $10.SupportedDidMethod.KEY,
+        valueOf: $10.SupportedDidMethod.valueOf,
+        enumValues: $10.SupportedDidMethod.values)
     ..aOM<IonOptions>(4, _omitFieldNames ? '' : 'ionOptions',
         subBuilder: IonOptions.create)
     ..aOM<IndyOptions>(5, _omitFieldNames ? '' : 'indyOptions',
@@ -1355,9 +1355,9 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
 
   /// DID Method to which wallet should be upgraded
   @$pb.TagNumber(3)
-  $9.SupportedDidMethod get method => $_getN(2);
+  $10.SupportedDidMethod get method => $_getN(2);
   @$pb.TagNumber(3)
-  set method($9.SupportedDidMethod v) {
+  set method($10.SupportedDidMethod v) {
     setField(3, v);
   }
 
