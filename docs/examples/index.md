@@ -39,6 +39,18 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
     [:octicons-arrow-right-24: Guide in Node.js API and browser](/examples/issue-send-chapi)
 
+-   __Cross Ecosystem Issuance__
+
+    ---
+
+    <span class="pill ts">typescript</span>
+
+    Go through the process of cross ecosystem issuance of verifiable credentials. We'll be creating a wallet and a credential offer in ecosystem A and creating a wallet and accepting the offer in ecosystem B.
+
+    <br />
+
+    [:octicons-arrow-right-24: Guide in TypeScript](/examples/cross-eco-issuance)
+
 -   __Issue interactively and deliver out-of-band__
 
     ---
