@@ -11,6 +11,8 @@ import "services/account/v1/account.proto";
 import "services/options/field-options.proto";
 import "services/common/v1/common.proto";
 
+import "services/google/api/annotations.proto";
+
 // Details of an ecosystem
 message Ecosystem {
   // URN of the ecosystem
@@ -213,17 +215,35 @@ service Provider {
   // Create new ecosystem and assign the authenticated user as owner
   rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
     option (options.sdk_template_option).ignore = true;
+    option (google.api.http) = {
+      post: "/v1/provider/createecosystem"
+      body: "*"
+    };
   }
 
   // Returns the public key being used to create/verify oberon tokens
   rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
     option (options.sdk_template_option).anonymous = true;
     option (options.sdk_template_option).no_arguments = true;
+    option (google.api.http) = {
+      post: "/v1/provider/getoberonkey"
+      body: "*"
+    };
   }
 
   // Upgrade a wallet's DID from `did:key` to another method
-  rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
+  rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse) {
+    option (google.api.http) = {
+      post: "/v1/provider/upgradedid"
+      body: "*"
+    };
+  }
 
   // Search for issuers/providers/verifiers in the current ecosystem
-  rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);
+  rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse) {
+    option (google.api.http) = {
+      post: "/v1/provider/searchwalletconfigurations"
+      body: "*"
+    };
+  }
 }

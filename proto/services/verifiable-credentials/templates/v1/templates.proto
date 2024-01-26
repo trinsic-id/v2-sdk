@@ -9,6 +9,8 @@ option go_package = "services/verifiablecredentials/templates/v1/template";
 option java_package = "trinsic.services.verifiablecredentials.templates.v1";
 option java_multiple_files = true;
 
+import "services/google/api/annotations.proto";
+
 // Request to fetch a template by ID
 message GetCredentialTemplateRequest {
   // ID of template to fetch
@@ -262,38 +264,88 @@ enum UriRenderMethod {
 
 service CredentialTemplates {
   // Create a credential template in the current ecosystem
-  rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
+  rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/create"
+      body: "*"
+    };
+  }
 
   // Fetch a credential template by ID
-  rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+  rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/get"
+      body: "*"
+    };
+  }
 
   // Update metadata of a template
-  rpc Update(UpdateCredentialTemplateRequest) returns (UpdateCredentialTemplateResponse);
+  rpc Update(UpdateCredentialTemplateRequest) returns (UpdateCredentialTemplateResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/update"
+      body: "*"
+    };
+  }
 
   // Search credential templates using SQL, returning strongly-typed template data
-  rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
+  rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/list"
+      body: "*"
+    };
+  }
 
   // Search credential templates using SQL, returning raw JSON data
-  rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
+  rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/search"
+      body: "*"
+    };
+  }
 
   // Delete a credential template from the current ecosystem by ID
-  rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
+  rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse) {
+    option (google.api.http) = {
+      post: "/v1/templates/delete"
+      body: "*"
+    };
+  }
 
   // Create/update verification templates
   rpc CreateVerificationTemplate(CreateVerificationTemplateRequest) returns (CreateVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (google.api.http) = {
+      post: "/v1/templates/createverificationtemplate"
+      body: "*"
+    };
   }
   rpc ListVerificationTemplates(ListVerificationTemplatesRequest) returns (ListVerificationTemplatesResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (google.api.http) = {
+      post: "/v1/templates/listverificationtemplates"
+      body: "*"
+    };
   }
   rpc GetVerificationTemplate(GetVerificationTemplateRequest) returns (GetVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (google.api.http) = {
+      post: "/v1/templates/getverificationtemplate"
+      body: "*"
+    };
   }
   rpc UpdateVerificationTemplate(UpdateVerificationTemplateRequest) returns (UpdateVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (google.api.http) = {
+      post: "/v1/templates/updateverificationtemplate"
+      body: "*"
+    };
   }
   rpc DeleteVerificationTemplate(DeleteVerificationTemplateRequest) returns (DeleteVerificationTemplateResponse) {
     option (options.sdk_template_option).experimental = {active: true};
+    option (google.api.http) = {
+      post: "/v1/templates/deleteverificationtemplate"
+      body: "*"
+    };
   }
 }
 
@@ -375,7 +427,7 @@ message VerificationTemplateData {
   string title = 12;
   // Human-readable template description
   string description = 13;
-  
+
   reserved 6;
   reserved "schemaUri";
 }

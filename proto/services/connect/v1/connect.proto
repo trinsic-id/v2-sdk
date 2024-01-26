@@ -9,6 +9,8 @@ option java_multiple_files = true;
 import "services/common/v1/common.proto";
 import "services/universal-wallet/v1/universal-wallet.proto";
 
+import "services/google/api/annotations.proto";
+
 // The type of verification to perform
 enum VerificationType {
   // Government-issued ID (driver's license, passport, etc)
@@ -340,17 +342,42 @@ enum SessionOrdering {
 // The Connect service provides access to Trinsic Connect, a reusable identity verification service.
 service Connect {
   // Create an IDVSession
-  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse) {
+    option (google.api.http) = {
+      post: "/v1/connect/createsession"
+      body: "*"
+    };
+  }
 
   // Cancel an IDVSession
-  rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse);
+  rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse) {
+    option (google.api.http) = {
+      post: "/v1/connect/cancelsession"
+      body: "*"
+    };
+  }
 
   // Get an IDVSession
-  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {
+    option (google.api.http) = {
+      post: "/v1/connect/getsession"
+      body: "*"
+    };
+  }
 
   // List IDVSessions created by the calling wallet
-  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
+  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {
+    option (google.api.http) = {
+      post: "/v1/connect/listsessions"
+      body: "*"
+    };
+  }
 
   // Checks if the identity provided in the request has a wallet containing a valid reusable credential
-  rpc HasValidCredential(HasValidCredentialRequest) returns (HasValidCredentialResponse);
+  rpc HasValidCredential(HasValidCredentialRequest) returns (HasValidCredentialResponse)  {
+    option (google.api.http) = {
+      post: "/v1/connect/hasvalidcredential"
+      body: "*"
+    };
+  }
 }
