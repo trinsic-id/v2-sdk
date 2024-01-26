@@ -1,5 +1,107 @@
 {
   "index": {
+    "google.api.CustomHttpPattern": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/google/api/http.proto",
+      "parent": ""
+    },
+    "google.api.CustomHttpPattern.kind": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.CustomHttpPattern"
+    },
+    "google.api.CustomHttpPattern.path": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.CustomHttpPattern"
+    },
+    "google.api.Http": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/google/api/http.proto",
+      "parent": ""
+    },
+    "google.api.Http.fully_decode_reserved_expansion": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.Http"
+    },
+    "google.api.Http.rules": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.Http"
+    },
+    "google.api.HttpRule": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/google/api/http.proto",
+      "parent": ""
+    },
+    "google.api.HttpRule.additional_bindings": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.body": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.custom": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.delete": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.get": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.patch": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.post": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.put": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.response_body": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
+    "google.api.HttpRule.selector": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/google/api/http.proto",
+      "parent": "google.api.HttpRule"
+    },
     "sdk.options.v1.TrinsicOptions": {
       "type": "message",
       "collection": "messages",
@@ -4762,6 +4864,47 @@
       "enums": [],
       "enum_values": []
     },
+    "services/google/api/annotations.proto": {
+      "name": "services/google/api/annotations.proto",
+      "package": "google.api",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [],
+      "fields": [],
+      "enums": [],
+      "enum_values": []
+    },
+    "services/google/api/http.proto": {
+      "name": "services/google/api/http.proto",
+      "package": "google.api",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "google.api.Http",
+        "google.api.HttpRule",
+        "google.api.CustomHttpPattern"
+      ],
+      "fields": [
+        "google.api.Http.rules",
+        "google.api.Http.fully_decode_reserved_expansion",
+        "google.api.HttpRule.selector",
+        "google.api.HttpRule.get",
+        "google.api.HttpRule.put",
+        "google.api.HttpRule.post",
+        "google.api.HttpRule.delete",
+        "google.api.HttpRule.patch",
+        "google.api.HttpRule.custom",
+        "google.api.HttpRule.body",
+        "google.api.HttpRule.response_body",
+        "google.api.HttpRule.additional_bindings",
+        "google.api.CustomHttpPattern.kind",
+        "google.api.CustomHttpPattern.path"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
     "services/options/field-options.proto": {
       "name": "services/options/field-options.proto",
       "package": "services.options",
@@ -5545,35 +5688,50 @@
       "full_name": "services.connect.v1.Connect.CancelSession",
       "input_type": "services.connect.v1.CancelSessionRequest",
       "output_type": "services.connect.v1.CancelSessionResponse",
-      "description": "Cancel an IDVSession"
+      "description": "Cancel an IDVSession",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.connect.v1.Connect.CreateSession": {
       "name": "CreateSession",
       "full_name": "services.connect.v1.Connect.CreateSession",
       "input_type": "services.connect.v1.CreateSessionRequest",
       "output_type": "services.connect.v1.CreateSessionResponse",
-      "description": "Create an IDVSession"
+      "description": "Create an IDVSession",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.connect.v1.Connect.GetSession": {
       "name": "GetSession",
       "full_name": "services.connect.v1.Connect.GetSession",
       "input_type": "services.connect.v1.GetSessionRequest",
       "output_type": "services.connect.v1.GetSessionResponse",
-      "description": "Get an IDVSession"
+      "description": "Get an IDVSession",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.connect.v1.Connect.HasValidCredential": {
       "name": "HasValidCredential",
       "full_name": "services.connect.v1.Connect.HasValidCredential",
       "input_type": "services.connect.v1.HasValidCredentialRequest",
       "output_type": "services.connect.v1.HasValidCredentialResponse",
-      "description": "Checks if the identity provided in the request has a wallet containing a valid reusable credential"
+      "description": "Checks if the identity provided in the request has a wallet containing a valid reusable credential",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.connect.v1.Connect.ListSessions": {
       "name": "ListSessions",
       "full_name": "services.connect.v1.Connect.ListSessions",
       "input_type": "services.connect.v1.ListSessionsRequest",
       "output_type": "services.connect.v1.ListSessionsResponse",
-      "description": "List IDVSessions created by the calling wallet"
+      "description": "List IDVSessions created by the calling wallet",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.filemanagement.v1.FileManagement.DeleteFile": {
       "name": "DeleteFile",
@@ -5672,6 +5830,7 @@
       "output_type": "services.provider.v1.CreateEcosystemResponse",
       "description": "Create new ecosystem and assign the authenticated user as owner",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5682,6 +5841,7 @@
       "output_type": "services.provider.v1.GetOberonKeyResponse",
       "description": "Returns the public key being used to create/verify oberon tokens",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5690,119 +5850,170 @@
       "full_name": "services.provider.v1.Provider.SearchWalletConfigurations",
       "input_type": "services.provider.v1.SearchWalletConfigurationsRequest",
       "output_type": "services.provider.v1.SearchWalletConfigurationResponse",
-      "description": "Search for issuers/providers/verifiers in the current ecosystem"
+      "description": "Search for issuers/providers/verifiers in the current ecosystem",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.provider.v1.Provider.UpgradeDID": {
       "name": "UpgradeDID",
       "full_name": "services.provider.v1.Provider.UpgradeDID",
       "input_type": "services.provider.v1.UpgradeDidRequest",
       "output_type": "services.provider.v1.UpgradeDidResponse",
-      "description": "Upgrade a wallet's DID from `did:key` to another method"
+      "description": "Upgrade a wallet's DID from `did:key` to another method",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.GetMember": {
       "name": "GetMember",
       "full_name": "services.trustregistry.v1.TrustRegistry.GetMember",
       "input_type": "services.trustregistry.v1.GetMemberRequest",
       "output_type": "services.trustregistry.v1.GetMemberResponse",
-      "description": "Get member for a given did in a trust registry"
+      "description": "Get member for a given did in a trust registry",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus": {
       "name": "GetMemberAuthorizationStatus",
       "full_name": "services.trustregistry.v1.TrustRegistry.GetMemberAuthorizationStatus",
       "input_type": "services.trustregistry.v1.GetMemberAuthorizationStatusRequest",
       "output_type": "services.trustregistry.v1.GetMemberAuthorizationStatusResponse",
-      "description": "Fetch the status of a member for a given credential schema in a trust registry"
+      "description": "Fetch the status of a member for a given credential schema in a trust registry",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers": {
       "name": "ListAuthorizedMembers",
       "full_name": "services.trustregistry.v1.TrustRegistry.ListAuthorizedMembers",
       "input_type": "services.trustregistry.v1.ListAuthorizedMembersRequest",
       "output_type": "services.trustregistry.v1.ListAuthorizedMembersResponse",
-      "description": "Fetch the ecosystem's authorized issuers and the respective templates against which it can issue"
+      "description": "Fetch the ecosystem's authorized issuers and the respective templates against which it can issue",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.RegisterMember": {
       "name": "RegisterMember",
       "full_name": "services.trustregistry.v1.TrustRegistry.RegisterMember",
       "input_type": "services.trustregistry.v1.RegisterMemberRequest",
       "output_type": "services.trustregistry.v1.RegisterMemberResponse",
-      "description": "Register an authoritative issuer for a credential schema"
+      "description": "Register an authoritative issuer for a credential schema",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.UnregisterMember": {
       "name": "UnregisterMember",
       "full_name": "services.trustregistry.v1.TrustRegistry.UnregisterMember",
       "input_type": "services.trustregistry.v1.UnregisterMemberRequest",
       "output_type": "services.trustregistry.v1.UnregisterMemberResponse",
-      "description": "Removes an authoritative issuer for a credential schema from the trust registry"
+      "description": "Removes an authoritative issuer for a credential schema from the trust registry",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm": {
       "name": "AddExternalIdentityConfirm",
       "full_name": "services.universalwallet.v1.UniversalWallet.AddExternalIdentityConfirm",
       "input_type": "services.universalwallet.v1.AddExternalIdentityConfirmRequest",
       "output_type": "services.universalwallet.v1.AddExternalIdentityConfirmResponse",
-      "description": "Confirm identity added to the current wallet using `AddExternalIdentityInit`"
+      "description": "Confirm identity added to the current wallet using `AddExternalIdentityInit`",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit": {
       "name": "AddExternalIdentityInit",
       "full_name": "services.universalwallet.v1.UniversalWallet.AddExternalIdentityInit",
       "input_type": "services.universalwallet.v1.AddExternalIdentityInitRequest",
       "output_type": "services.universalwallet.v1.AddExternalIdentityInitResponse",
-      "description": "Add new external identity to the current wallet, such as email, sms, ethereum address, etc.\nThis identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc."
+      "description": "Add new external identity to the current wallet, such as email, sms, ethereum address, etc.\nThis identity ownership must be confirmed using `AddIdentityConfirm` via OTP, signature, etc.",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm": {
       "name": "AuthenticateConfirm",
       "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateConfirm",
       "input_type": "services.universalwallet.v1.AuthenticateConfirmRequest",
       "output_type": "services.universalwallet.v1.AuthenticateConfirmResponse",
-      "description": "Confirm sign-in to an already existing wallet and return authentication token"
+      "description": "Confirm sign-in to an already existing wallet and return authentication token",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.AuthenticateInit": {
       "name": "AuthenticateInit",
       "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateInit",
       "input_type": "services.universalwallet.v1.AuthenticateInitRequest",
       "output_type": "services.universalwallet.v1.AuthenticateInitResponse",
-      "description": "Sign-in to an already existing wallet, using an identity added that was previously registered\nThis endpoint does not require authentication, and will return a challenge to be signed or verified"
+      "description": "Sign-in to an already existing wallet, using an identity added that was previously registered\nThis endpoint does not require authentication, and will return a challenge to be signed or verified",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode": {
       "name": "AuthenticateResendCode",
       "full_name": "services.universalwallet.v1.UniversalWallet.AuthenticateResendCode",
       "input_type": "services.universalwallet.v1.AuthenticateResendCodeRequest",
       "output_type": "services.universalwallet.v1.AuthenticateResendCodeResponse",
-      "description": "Resend previous authentication code"
+      "description": "Resend previous authentication code",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.CreateWallet": {
       "name": "CreateWallet",
       "full_name": "services.universalwallet.v1.UniversalWallet.CreateWallet",
       "input_type": "services.universalwallet.v1.CreateWalletRequest",
       "output_type": "services.universalwallet.v1.CreateWalletResponse",
-      "description": "Create a new wallet and generate an auth token for access"
+      "description": "Create a new wallet and generate an auth token for access",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
       "name": "DeleteItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.DeleteItem",
       "input_type": "services.universalwallet.v1.DeleteItemRequest",
       "output_type": "services.universalwallet.v1.DeleteItemResponse",
-      "description": "Delete an item from the wallet permanently"
+      "description": "Delete an item from the wallet permanently",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.DeleteWallet": {
       "name": "DeleteWallet",
       "full_name": "services.universalwallet.v1.UniversalWallet.DeleteWallet",
       "input_type": "services.universalwallet.v1.DeleteWalletRequest",
       "output_type": "services.universalwallet.v1.DeleteWalletResponse",
-      "description": "Delete a wallet and its credentials"
+      "description": "Delete a wallet and its credentials",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.GenerateAuthToken": {
       "name": "GenerateAuthToken",
       "full_name": "services.universalwallet.v1.UniversalWallet.GenerateAuthToken",
       "input_type": "services.universalwallet.v1.GenerateAuthTokenRequest",
       "output_type": "services.universalwallet.v1.GenerateAuthTokenResponse",
-      "description": "Generate new token for a given wallet and add it to the collection of known auth tokens.\nThis endpoint requires authentication and will return a new token ID and auth token.\nUse this endpoint if you want to authorize another device, without having to share your\nexisting auth token."
+      "description": "Generate new token for a given wallet and add it to the collection of known auth tokens.\nThis endpoint requires authentication and will return a new token ID and auth token.\nUse this endpoint if you want to authorize another device, without having to share your\nexisting auth token.",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
       "name": "GetItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.GetItem",
       "input_type": "services.universalwallet.v1.GetItemRequest",
       "output_type": "services.universalwallet.v1.GetItemResponse",
-      "description": "Retrieve an item from the wallet with a given item identifier"
+      "description": "Retrieve an item from the wallet with a given item identifier",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.GetMyInfo": {
       "name": "GetMyInfo",
@@ -5811,6 +6022,7 @@
       "output_type": "services.universalwallet.v1.GetMyInfoResponse",
       "description": "Retrieve wallet details and configuration about the currently authenticated wallet",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5819,70 +6031,100 @@
       "full_name": "services.universalwallet.v1.UniversalWallet.GetWalletFromExternalIdentity",
       "input_type": "services.universalwallet.v1.GetWalletFromExternalIdentityRequest",
       "output_type": "services.universalwallet.v1.GetWalletFromExternalIdentityResponse",
-      "description": "Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)"
+      "description": "Retrieve information from an ecosystem wallet by searching for its external identity (email or phone)",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.GetWalletInfo": {
       "name": "GetWalletInfo",
       "full_name": "services.universalwallet.v1.UniversalWallet.GetWalletInfo",
       "input_type": "services.universalwallet.v1.GetWalletInfoRequest",
       "output_type": "services.universalwallet.v1.GetWalletInfoResponse",
-      "description": "Retrieve wallet details and configuration"
+      "description": "Retrieve wallet details and configuration",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.InsertItem": {
       "name": "InsertItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.InsertItem",
       "input_type": "services.universalwallet.v1.InsertItemRequest",
       "output_type": "services.universalwallet.v1.InsertItemResponse",
-      "description": "Insert an item into the wallet"
+      "description": "Insert an item into the wallet",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate": {
       "name": "ListByVerificationTemplate",
       "full_name": "services.universalwallet.v1.UniversalWallet.ListByVerificationTemplate",
       "input_type": "services.universalwallet.v1.ListByVerificationTemplateRequest",
       "output_type": "services.universalwallet.v1.ListByVerificationTemplateResponse",
-      "description": "List credentials which match a given verification template"
+      "description": "List credentials which match a given verification template",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.ListWallets": {
       "name": "ListWallets",
       "full_name": "services.universalwallet.v1.UniversalWallet.ListWallets",
       "input_type": "services.universalwallet.v1.ListWalletsRequest",
       "output_type": "services.universalwallet.v1.ListWalletsResponse",
-      "description": "List all wallets in the ecosystem"
+      "description": "List all wallets in the ecosystem",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity": {
       "name": "RemoveExternalIdentity",
       "full_name": "services.universalwallet.v1.UniversalWallet.RemoveExternalIdentity",
       "input_type": "services.universalwallet.v1.RemoveExternalIdentityRequest",
       "output_type": "services.universalwallet.v1.RemoveExternalIdentityResponse",
-      "description": "Remove an external identity from the current wallet"
+      "description": "Remove an external identity from the current wallet",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.RevokeAuthToken": {
       "name": "RevokeAuthToken",
       "full_name": "services.universalwallet.v1.UniversalWallet.RevokeAuthToken",
       "input_type": "services.universalwallet.v1.RevokeAuthTokenRequest",
       "output_type": "services.universalwallet.v1.RevokeAuthTokenResponse",
-      "description": "Revokes a previously issued auth token and updates the collection of known auth tokens.\nThis endpoint requires authentication."
+      "description": "Revokes a previously issued auth token and updates the collection of known auth tokens.\nThis endpoint requires authentication.",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.Search": {
       "name": "Search",
       "full_name": "services.universalwallet.v1.UniversalWallet.Search",
       "input_type": "services.universalwallet.v1.SearchRequest",
       "output_type": "services.universalwallet.v1.SearchResponse",
-      "description": "Search the wallet using a SQL syntax"
+      "description": "Search the wallet using a SQL syntax",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.universalwallet.v1.UniversalWallet.UpdateItem": {
       "name": "UpdateItem",
       "full_name": "services.universalwallet.v1.UniversalWallet.UpdateItem",
       "input_type": "services.universalwallet.v1.UpdateItemRequest",
       "output_type": "services.universalwallet.v1.UpdateItemResponse",
-      "description": "Update an item in the wallet"
+      "description": "Update an item in the wallet",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Create": {
       "name": "Create",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Create",
       "input_type": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
-      "description": "Create a credential template in the current ecosystem"
+      "description": "Create a credential template in the current ecosystem",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.CreateVerificationTemplate": {
       "name": "CreateVerificationTemplate",
@@ -5891,6 +6133,7 @@
       "output_type": "services.verifiablecredentials.templates.v1.CreateVerificationTemplateResponse",
       "description": "Create/update verification templates",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5899,7 +6142,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete",
       "input_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
-      "description": "Delete a credential template from the current ecosystem by ID"
+      "description": "Delete a credential template from the current ecosystem by ID",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.DeleteVerificationTemplate": {
       "name": "DeleteVerificationTemplate",
@@ -5908,6 +6154,7 @@
       "output_type": "services.verifiablecredentials.templates.v1.DeleteVerificationTemplateResponse",
       "description": "",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5916,7 +6163,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Get",
       "input_type": "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse",
-      "description": "Fetch a credential template by ID"
+      "description": "Fetch a credential template by ID",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.GetVerificationTemplate": {
       "name": "GetVerificationTemplate",
@@ -5925,6 +6175,7 @@
       "output_type": "services.verifiablecredentials.templates.v1.GetVerificationTemplateResponse",
       "description": "",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5933,7 +6184,10 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.List",
       "input_type": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest",
       "output_type": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse",
-      "description": "Search credential templates using SQL, returning strongly-typed template data"
+      "description": "Search credential templates using SQL, returning strongly-typed template data",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.ListVerificationTemplates": {
       "name": "ListVerificationTemplates",
@@ -5942,6 +6196,7 @@
       "output_type": "services.verifiablecredentials.templates.v1.ListVerificationTemplatesResponse",
       "description": "",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5950,14 +6205,20 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Search",
       "input_type": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest",
       "output_type": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse",
-      "description": "Search credential templates using SQL, returning raw JSON data"
+      "description": "Search credential templates using SQL, returning raw JSON data",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Update": {
       "name": "Update",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Update",
       "input_type": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse",
-      "description": "Update metadata of a template"
+      "description": "Update metadata of a template",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.UpdateVerificationTemplate": {
       "name": "UpdateVerificationTemplate",
@@ -5966,6 +6227,7 @@
       "output_type": "services.verifiablecredentials.templates.v1.UpdateVerificationTemplateResponse",
       "description": "",
       "options": {
+        "google.api.http": ".google.api.HttpRule",
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
@@ -5974,66 +6236,134 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.AcceptCredential",
       "input_type": "services.verifiablecredentials.v1.AcceptCredentialRequest",
       "output_type": "services.verifiablecredentials.v1.AcceptCredentialResponse",
-      "description": "Accept an offer to exchange a credential"
+      "description": "Accept an offer to exchange a credential",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus": {
       "name": "CheckStatus",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus",
       "input_type": "services.verifiablecredentials.v1.CheckStatusRequest",
       "output_type": "services.verifiablecredentials.v1.CheckStatusResponse",
-      "description": "Check credential status in the revocation registry"
+      "description": "Check credential status in the revocation registry",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer": {
       "name": "CreateCredentialOffer",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.CreateCredentialOffer",
       "input_type": "services.verifiablecredentials.v1.CreateCredentialOfferRequest",
       "output_type": "services.verifiablecredentials.v1.CreateCredentialOfferResponse",
-      "description": "Create credential offer"
+      "description": "Create credential offer",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CreateProof": {
       "name": "CreateProof",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.CreateProof",
       "input_type": "services.verifiablecredentials.v1.CreateProofRequest",
       "output_type": "services.verifiablecredentials.v1.CreateProofResponse",
-      "description": "Create a proof from a signed document that is a valid\nverifiable credential and contains a signature from which a proof can be derived."
+      "description": "Create a proof from a signed document that is a valid\nverifiable credential and contains a signature from which a proof can be derived.",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate": {
       "name": "IssueFromTemplate",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate",
       "input_type": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
       "output_type": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
-      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and\nrevocation registry values to the credential."
+      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and\nrevocation registry values to the credential.",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential": {
       "name": "RejectCredential",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.RejectCredential",
       "input_type": "services.verifiablecredentials.v1.RejectCredentialRequest",
       "output_type": "services.verifiablecredentials.v1.RejectCredentialResponse",
-      "description": "Reject an offer to exchange a credential"
+      "description": "Reject an offer to exchange a credential",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Send": {
       "name": "Send",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.Send",
       "input_type": "services.verifiablecredentials.v1.SendRequest",
       "output_type": "services.verifiablecredentials.v1.SendResponse",
-      "description": "Sends a document directly to a user's email within the given ecosystem"
+      "description": "Sends a document directly to a user's email within the given ecosystem",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus": {
       "name": "UpdateStatus",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus",
       "input_type": "services.verifiablecredentials.v1.UpdateStatusRequest",
       "output_type": "services.verifiablecredentials.v1.UpdateStatusResponse",
-      "description": "Update credential status by setting the revocation value"
+      "description": "Update credential status by setting the revocation value",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     },
     "services.verifiablecredentials.v1.VerifiableCredential.VerifyProof": {
       "name": "VerifyProof",
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.VerifyProof",
       "input_type": "services.verifiablecredentials.v1.VerifyProofRequest",
       "output_type": "services.verifiablecredentials.v1.VerifyProofResponse",
-      "description": "Verifies a proof by checking the signature value, and if possible schema validation,\nrevocation status, and issuer status against a trust registry"
+      "description": "Verifies a proof by checking the signature value, and if possible schema validation,\nrevocation status, and issuer status against a trust registry",
+      "options": {
+        "google.api.http": ".google.api.HttpRule"
+      }
     }
   },
   "messages": {
+    "google.api.CustomHttpPattern": {
+      "name": "CustomHttpPattern",
+      "full_name": "google.api.CustomHttpPattern",
+      "description": "A custom pattern is used for defining custom HTTP verb.",
+      "fields": [
+        "google.api.CustomHttpPattern.kind",
+        "google.api.CustomHttpPattern.path"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "google.api.Http": {
+      "name": "Http",
+      "full_name": "google.api.Http",
+      "description": "Defines the HTTP configuration for an API service. It contains a list of\n[HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method\nto one or more HTTP REST API methods.",
+      "fields": [
+        "google.api.Http.rules",
+        "google.api.Http.fully_decode_reserved_expansion"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "google.api.HttpRule": {
+      "name": "HttpRule",
+      "full_name": "google.api.HttpRule",
+      "description": "# gRPC Transcoding\n\ngRPC Transcoding is a feature for mapping between a gRPC method and one or\nmore HTTP REST endpoints. It allows developers to build a single API service\nthat supports both gRPC APIs and REST APIs. Many systems, including [Google\nAPIs](https://github.com/googleapis/googleapis),\n[Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC\nGateway](https://github.com/grpc-ecosystem/grpc-gateway),\nand [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature\nand use it for large scale production services.\n\n`HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies\nhow different portions of the gRPC request message are mapped to the URL\npath, URL query parameters, and HTTP request body. It also controls how the\ngRPC response message is mapped to the HTTP response body. `HttpRule` is\ntypically specified as an `google.api.http` annotation on the gRPC method.\n\nEach mapping specifies a URL path template and an HTTP method. The path\ntemplate may refer to one or more fields in the gRPC request message, as long\nas each field is a non-repeated field with a primitive (non-message) type.\nThe path template controls how fields of the request message are mapped to\nthe URL path.\n\nExample:\n\n    service Messaging {\n      rpc GetMessage(GetMessageRequest) returns (Message) {\n        option (google.api.http) = {\n            get: \"/v1/{name=messages/*}\"\n        };\n      }\n    }\n    message GetMessageRequest {\n      string name = 1; // Mapped to URL path.\n    }\n    message Message {\n      string text = 1; // The resource content.\n    }\n\nThis enables an HTTP REST to gRPC mapping as below:\n\nHTTP | gRPC\n-----|-----\n`GET /v1/messages/123456`  | `GetMessage(name: \"messages/123456\")`\n\nAny fields in the request message which are not bound by the path template\nautomatically become HTTP query parameters if there is no HTTP request body.\nFor example:\n\n    service Messaging {\n      rpc GetMessage(GetMessageRequest) returns (Message) {\n        option (google.api.http) = {\n            get:\"/v1/messages/{message_id}\"\n        };\n      }\n    }\n    message GetMessageRequest {\n      message SubMessage {\n        string subfield = 1;\n      }\n      string message_id = 1; // Mapped to URL path.\n      int64 revision = 2;    // Mapped to URL query parameter `revision`.\n      SubMessage sub = 3;    // Mapped to URL query parameter `sub.subfield`.\n    }\n\nThis enables a HTTP JSON to RPC mapping as below:\n\nHTTP | gRPC\n-----|-----\n`GET /v1/messages/123456?revision=2\u0026sub.subfield=foo` |\n`GetMessage(message_id: \"123456\" revision: 2 sub: SubMessage(subfield:\n\"foo\"))`\n\nNote that fields which are mapped to URL query parameters must have a\nprimitive type or a repeated primitive type or a non-repeated message type.\nIn the case of a repeated type, the parameter can be repeated in the URL\nas `...?param=A\u0026param=B`. In the case of a message type, each field of the\nmessage is mapped to a separate parameter, such as\n`...?foo.a=A\u0026foo.b=B\u0026foo.c=C`.\n\nFor HTTP methods that allow a request body, the `body` field\nspecifies the mapping. Consider a REST update method on the\nmessage resource collection:\n\n    service Messaging {\n      rpc UpdateMessage(UpdateMessageRequest) returns (Message) {\n        option (google.api.http) = {\n          patch: \"/v1/messages/{message_id}\"\n          body: \"message\"\n        };\n      }\n    }\n    message UpdateMessageRequest {\n      string message_id = 1; // mapped to the URL\n      Message message = 2;   // mapped to the body\n    }\n\nThe following HTTP JSON to RPC mapping is enabled, where the\nrepresentation of the JSON in the request body is determined by\nprotos JSON encoding:\n\nHTTP | gRPC\n-----|-----\n`PATCH /v1/messages/123456 { \"text\": \"Hi!\" }` | `UpdateMessage(message_id:\n\"123456\" message { text: \"Hi!\" })`\n\nThe special name `*` can be used in the body mapping to define that\nevery field not bound by the path template should be mapped to the\nrequest body.  This enables the following alternative definition of\nthe update method:\n\n    service Messaging {\n      rpc UpdateMessage(Message) returns (Message) {\n        option (google.api.http) = {\n          patch: \"/v1/messages/{message_id}\"\n          body: \"*\"\n        };\n      }\n    }\n    message Message {\n      string message_id = 1;\n      string text = 2;\n    }\n\n\nThe following HTTP JSON to RPC mapping is enabled:\n\nHTTP | gRPC\n-----|-----\n`PATCH /v1/messages/123456 { \"text\": \"Hi!\" }` | `UpdateMessage(message_id:\n\"123456\" text: \"Hi!\")`\n\nNote that when using `*` in the body mapping, it is not possible to\nhave HTTP parameters, as all fields not bound by the path end in\nthe body. This makes this option more rarely used in practice when\ndefining REST APIs. The common usage of `*` is in custom methods\nwhich don't use the URL at all for transferring data.\n\nIt is possible to define multiple HTTP methods for one RPC by using\nthe `additional_bindings` option. Example:\n\n    service Messaging {\n      rpc GetMessage(GetMessageRequest) returns (Message) {\n        option (google.api.http) = {\n          get: \"/v1/messages/{message_id}\"\n          additional_bindings {\n            get: \"/v1/users/{user_id}/messages/{message_id}\"\n          }\n        };\n      }\n    }\n    message GetMessageRequest {\n      string message_id = 1;\n      string user_id = 2;\n    }\n\nThis enables the following two alternative HTTP JSON to RPC mappings:\n\nHTTP | gRPC\n-----|-----\n`GET /v1/messages/123456` | `GetMessage(message_id: \"123456\")`\n`GET /v1/users/me/messages/123456` | `GetMessage(user_id: \"me\" message_id:\n\"123456\")`\n\n## Rules for HTTP mapping\n\n1. Leaf request fields (recursive expansion nested messages in the request\n   message) are classified into three categories:\n   - Fields referred by the path template. They are passed via the URL path.\n   - Fields referred by the [HttpRule.body][google.api.HttpRule.body]. They are passed via the HTTP\n     request body.\n   - All other fields are passed via the URL query parameters, and the\n     parameter name is the field path in the request message. A repeated\n     field can be represented as multiple query parameters under the same\n     name.\n 2. If [HttpRule.body][google.api.HttpRule.body] is \"*\", there is no URL query parameter, all fields\n    are passed via URL path and HTTP request body.\n 3. If [HttpRule.body][google.api.HttpRule.body] is omitted, there is no HTTP request body, all\n    fields are passed via URL path and URL query parameters.\n\n### Path template syntax\n\n    Template = \"/\" Segments [ Verb ] ;\n    Segments = Segment { \"/\" Segment } ;\n    Segment  = \"*\" | \"**\" | LITERAL | Variable ;\n    Variable = \"{\" FieldPath [ \"=\" Segments ] \"}\" ;\n    FieldPath = IDENT { \".\" IDENT } ;\n    Verb     = \":\" LITERAL ;\n\nThe syntax `*` matches a single URL path segment. The syntax `**` matches\nzero or more URL path segments, which must be the last part of the URL path\nexcept the `Verb`.\n\nThe syntax `Variable` matches part of the URL path as specified by its\ntemplate. A variable template must not contain other variables. If a variable\nmatches a single path segment, its template may be omitted, e.g. `{var}`\nis equivalent to `{var=*}`.\n\nThe syntax `LITERAL` matches literal text in the URL path. If the `LITERAL`\ncontains any reserved character, such characters should be percent-encoded\nbefore the matching.\n\nIf a variable contains exactly one path segment, such as `\"{var}\"` or\n`\"{var=*}\"`, when such a variable is expanded into a URL path on the client\nside, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The\nserver side does the reverse decoding. Such variables show up in the\n[Discovery\nDocument](https://developers.google.com/discovery/v1/reference/apis) as\n`{var}`.\n\nIf a variable contains multiple path segments, such as `\"{var=foo/*}\"`\nor `\"{var=**}\"`, when such a variable is expanded into a URL path on the\nclient side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.\nThe server side does the reverse decoding, except \"%2F\" and \"%2f\" are left\nunchanged. Such variables show up in the\n[Discovery\nDocument](https://developers.google.com/discovery/v1/reference/apis) as\n`{+var}`.\n\n## Using gRPC API Service Configuration\n\ngRPC API Service Configuration (service config) is a configuration language\nfor configuring a gRPC service to become a user-facing product. The\nservice config is simply the YAML representation of the `google.api.Service`\nproto message.\n\nAs an alternative to annotating your proto file, you can configure gRPC\ntranscoding in your service config YAML files. You do this by specifying a\n`HttpRule` that maps the gRPC method to a REST endpoint, achieving the same\neffect as the proto annotation. This can be particularly useful if you\nhave a proto that is reused in multiple services. Note that any transcoding\nspecified in the service config will override any matching transcoding\nconfiguration in the proto.\n\nExample:\n\n    http:\n      rules:\n        # Selects a gRPC method and applies HttpRule to it.\n        - selector: example.v1.Messaging.GetMessage\n          get: /v1/messages/{message_id}/{sub.subfield}\n\n## Special notes\n\nWhen gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the\nproto to JSON conversion must follow the [proto3\nspecification](https://developers.google.com/protocol-buffers/docs/proto3#json).\n\nWhile the single segment variable follows the semantics of\n[RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String\nExpansion, the multi segment variable **does not** follow RFC 6570 Section\n3.2.3 Reserved Expansion. The reason is that the Reserved Expansion\ndoes not expand special characters like `?` and `#`, which would lead\nto invalid URLs. As the result, gRPC Transcoding uses a custom encoding\nfor multi segment variables.\n\nThe path variables **must not** refer to any repeated or mapped field,\nbecause client libraries are not capable of handling such variable expansion.\n\nThe path variables **must not** capture the leading \"/\" character. The reason\nis that the most common use case \"{var}\" does not capture the leading \"/\"\ncharacter. For consistency, all path variables must share the same behavior.\n\nRepeated message fields must not be mapped to URL query parameters, because\nno client library can support such complicated mapping.\n\nIf an API needs to use a JSON array for request or response body, it can map\nthe request or response body to a repeated field. However, some gRPC\nTranscoding implementations may not support this feature.",
+      "fields": [
+        "google.api.HttpRule.selector",
+        "google.api.HttpRule.get",
+        "google.api.HttpRule.put",
+        "google.api.HttpRule.post",
+        "google.api.HttpRule.delete",
+        "google.api.HttpRule.patch",
+        "google.api.HttpRule.custom",
+        "google.api.HttpRule.body",
+        "google.api.HttpRule.response_body",
+        "google.api.HttpRule.additional_bindings"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "sdk.options.v1.TrinsicOptions": {
       "name": "TrinsicOptions",
       "full_name": "sdk.options.v1.TrinsicOptions",
@@ -8050,6 +8380,118 @@
     }
   },
   "fields": {
+    "google.api.CustomHttpPattern.kind": {
+      "name": "kind",
+      "full_name": "google.api.CustomHttpPattern.kind",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The name of this custom HTTP verb."
+    },
+    "google.api.CustomHttpPattern.path": {
+      "name": "path",
+      "full_name": "google.api.CustomHttpPattern.path",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The path matched by this custom verb."
+    },
+    "google.api.Http.fully_decode_reserved_expansion": {
+      "name": "fully_decode_reserved_expansion",
+      "full_name": "google.api.Http.fully_decode_reserved_expansion",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "When set to true, URL path parameters will be fully URI-decoded except in\ncases of single segment matches in reserved expansion, where \"%2F\" will be\nleft encoded.\n\nThe default behavior is to not decode RFC 6570 reserved characters in multi\nsegment matches."
+    },
+    "google.api.Http.rules": {
+      "name": "rules",
+      "full_name": "google.api.Http.rules",
+      "label": "LABEL_REPEATED",
+      "type": "HttpRule",
+      "full_type": "google.api.HttpRule",
+      "description": "A list of HTTP configuration rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."
+    },
+    "google.api.HttpRule.additional_bindings": {
+      "name": "additional_bindings",
+      "full_name": "google.api.HttpRule.additional_bindings",
+      "label": "LABEL_REPEATED",
+      "type": "HttpRule",
+      "full_type": "google.api.HttpRule",
+      "description": "Additional HTTP bindings for the selector. Nested bindings must\nnot contain an `additional_bindings` field themselves (that is,\nthe nesting may only be one level deep)."
+    },
+    "google.api.HttpRule.body": {
+      "name": "body",
+      "full_name": "google.api.HttpRule.body",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The name of the request field whose value is mapped to the HTTP request\nbody, or `*` for mapping all request fields not captured by the path\npattern to the HTTP body, or omitted for not having any HTTP request body.\n\nNOTE: the referred field must be present at the top-level of the request\nmessage type."
+    },
+    "google.api.HttpRule.custom": {
+      "name": "custom",
+      "full_name": "google.api.HttpRule.custom",
+      "label": "LABEL_OPTIONAL",
+      "type": "CustomHttpPattern",
+      "full_type": "google.api.CustomHttpPattern",
+      "description": "The custom pattern is used for specifying an HTTP method that is not\nincluded in the `pattern` field, such as HEAD, or \"*\" to leave the\nHTTP method unspecified for this rule. The wild-card rule is useful\nfor services that provide content to Web (HTML) clients."
+    },
+    "google.api.HttpRule.delete": {
+      "name": "delete",
+      "full_name": "google.api.HttpRule.delete",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Maps to HTTP DELETE. Used for deleting a resource."
+    },
+    "google.api.HttpRule.get": {
+      "name": "get",
+      "full_name": "google.api.HttpRule.get",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Maps to HTTP GET. Used for listing and getting information about\nresources."
+    },
+    "google.api.HttpRule.patch": {
+      "name": "patch",
+      "full_name": "google.api.HttpRule.patch",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Maps to HTTP PATCH. Used for updating a resource."
+    },
+    "google.api.HttpRule.post": {
+      "name": "post",
+      "full_name": "google.api.HttpRule.post",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Maps to HTTP POST. Used for creating a resource or performing an action."
+    },
+    "google.api.HttpRule.put": {
+      "name": "put",
+      "full_name": "google.api.HttpRule.put",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Maps to HTTP PUT. Used for replacing a resource."
+    },
+    "google.api.HttpRule.response_body": {
+      "name": "response_body",
+      "full_name": "google.api.HttpRule.response_body",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Optional. The name of the response field whose value is mapped to the HTTP\nresponse body. When omitted, the entire response message will be used\nas the HTTP response body.\n\nNOTE: The referred field must be present at the top-level of the response\nmessage type."
+    },
+    "google.api.HttpRule.selector": {
+      "name": "selector",
+      "full_name": "google.api.HttpRule.selector",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Selects a method to which this rule applies.\n\nRefer to [selector][google.api.DocumentationRule.selector] for syntax details."
+    },
     "sdk.options.v1.TrinsicOptions.auth_token": {
       "name": "auth_token",
       "full_name": "sdk.options.v1.TrinsicOptions.auth_token",
