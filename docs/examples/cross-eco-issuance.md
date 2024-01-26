@@ -92,7 +92,7 @@ let acceptCredentialOfferRequest = {
 
 const acceptCredentialResponse = await trinsicBob.credential().acceptCredential(acceptCredentialOfferRequest);
 
-// Credential issued in ecosystem A stored inside a wallet from ecosystem B
+// Credential issued in ecosystem A stored in a wallet from ecosystem B
 const searchWalletBobResponse = await trinsicBob.wallet().searchWallet();
 
 console.log("VC in holder's wallet: " + searchWalletBobResponse.items);
