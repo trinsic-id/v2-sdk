@@ -27,7 +27,7 @@ npm i @trinsic/trinsic
 Import the required services
 
 ```
-import {AuthenticateInitRequest, CreateWalletRequest, SignatureType, TrinsicService} from "@trinsic/trinsic";
+import { TrinsicService } from "@trinsic/trinsic";
 ```
 
 ### Create a wallet and a credential offer in ecosystem A
