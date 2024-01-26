@@ -1,12 +1,12 @@
-import {AuthenticateInitRequest, CreateWalletRequest, SignatureType, TrinsicService} from "@trinsic/trinsic";
+import { TrinsicService } from "@trinsic/trinsic";
 
 class App {
     public static async start() {
-        // Create the issuer wallet in ecosystem "demo-team"
+        // Create the issuer wallet in ecosystem A
         let trinsicAlice = new TrinsicService();
         
         const createWalletAliceRequest = {
-            ecosystemId: "urn:trinsic:ecosystems:demo-team"
+            ecosystemId: "urn:trinsic:ecosystems:ecosystem-a"
         }
 
         let createWalletAliceResponse = await trinsicAlice.wallet().createWallet(createWalletAliceRequest);
@@ -14,12 +14,12 @@ class App {
         console.log("Issuer Wallet: " + createWalletAliceResponse.wallet?.walletId);
         console.log("Issuer's Ecosystem: " + createWalletAliceResponse.wallet?.ecosystemId);
         
-        // Authenticate as the issuer in ecosystem "demo-team"
+        // Authenticate as the issuer in ecosystem A
         trinsicAlice.setAuthToken(createWalletAliceResponse.authToken!);
         
         // Create the credential offer
         const createCredentialOfferRequest = {
-            templateId: "https://schema.trinsic.cloud/demo-team/example-credential",
+            templateId: "https://schema.trinsic.cloud/ecosystem-a/example-credential",
             valuesJson: JSON.stringify({
                 "name": "John Doe"
             }),
@@ -29,11 +29,11 @@ class App {
 
         console.log("Credential Offer: " + createCredentialOfferResponse.documentJson);
 
-        // Create the holder wallet in ecosystem "example"
+        // Create the holder wallet in ecosystem B
         let trinsicBob = new TrinsicService();
 
         const createWalletBobRequest = {
-            ecosystemId: "urn:trinsic:ecosystems:example"
+            ecosystemId: "urn:trinsic:ecosystems:ecosystem-b"
         }
 
         let createWalletBobResponse = await trinsicBob.wallet().createWallet(createWalletBobRequest);
@@ -41,7 +41,7 @@ class App {
         console.log("\nHolder Wallet: " + createWalletBobResponse.wallet?.walletId);
         console.log("Holder's Ecosystem: " + createWalletBobResponse.wallet?.ecosystemId);
 
-        // Authenticate as the holder in ecosystem "example"
+        // Authenticate as the holder in ecosystem B
         trinsicBob.setAuthToken(createWalletBobResponse.authToken!);
 
         // Accept the credential offer
@@ -51,7 +51,7 @@ class App {
 
         const acceptCredentialResponse = await trinsicBob.credential().acceptCredential(acceptCredentialOfferRequest);
         
-        // Credential issued in ecosystem "demo-team" stored inside a wallet from ecosystem "example"
+        // Credential issued in ecosystem A stored in a wallet from ecosystem B
         const searchWalletBobResponse = await trinsicBob.wallet().searchWallet();
 
         console.log("VC in holder's wallet: " + searchWalletBobResponse.items);
