@@ -66,7 +66,7 @@ console.log("Credential Offer: " + createCredentialOfferResponse.documentJson);
 
 ### Create a wallet and accept the credential offer in ecosystem B
 
-Now we create the holder wallet (Bob's) in ecosystem B, authenticate as it and accept the credential offer. After that, we print
+Now we create the holder wallet (Bob's) in ecosystem B, authenticate and accept the credential offer. After that, we print
 all items in Bob's wallet to see the VC that was issued by a wallet from ecosystem A and is now stored in a wallet from ecosystem B.
 
 ```ts
