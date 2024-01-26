@@ -84,12 +84,13 @@ public final class ProviderOuterClass {
       "\n"
           + "#services/provider/v1/provider.proto\022\024s"
           + "ervices.provider.v1\032!services/account/v1/account.proto\032$services/options/field-o"
-          + "ptions.proto\032\037services/common/v1/common.proto\"r\n"
+          + "ptions.proto\032\037services/common/v1/common."
+          + "proto\032%services/google/api/annotations.proto\"r\n"
           + "\tEcosystem\022\n\n"
           + "\002id\030\001 \001(\t\022\014\n"
           + "\004name\030\002 \001(\t\022\023\n"
-          + "\013description\030\003 \001(\tJ\004\010\004\020\005J\004\010\005\020\006J\004\010"
-          + "\006\020\007J\004\010\007\020\010R\003uriR\010webhooksR\007displayR\006domain\"\230\001\n"
+          + "\013description\030\003 \001(\tJ\004\010\004\020\005J\004\010\005\020\006J\004\010\006"
+          + "\020\007J\004\010\007\020\010R\003uriR\010webhooksR\007displayR\006domain\"\230\001\n"
           + "\026CreateEcosystemRequest\022\022\n"
           + "\004name\030\001 \001(\tB\004\200\246\035\001\022\031\n"
           + "\013description\030\002 \001(\tB\004\200\246\035\001\0224\n"
@@ -98,8 +99,8 @@ public final class ProviderOuterClass {
           + "\027CreateEcosystemResponse\0222\n"
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\0224\n"
           + "\007profile\030\002 \001(\0132#.services.account.v1.AccountProfile\022D\n"
-          + "\023confirmation_method\030\003 \001(\0162"
-          + "\'.services.account.v1.ConfirmationMethod\"\026\n"
+          + "\023confirmation_method\030\003 \001(\0162\'"
+          + ".services.account.v1.ConfirmationMethod\"\026\n"
           + "\024EcosystemInfoRequest\"K\n"
           + "\025EcosystemInfoResponse\0222\n"
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"\025\n"
@@ -125,8 +126,8 @@ public final class ProviderOuterClass {
           + "\014ecosystem_id\030\t \001(\t\022\023\n"
           + "\013description\030\n"
           + " \001(\t\022I\n"
-          + "\023external_identities\030\013 \003(\0132,.ser"
-          + "vices.provider.v1.WalletExternalIdentity\"^\n"
+          + "\023external_identities\030\013 \003(\0132,.serv"
+          + "ices.provider.v1.WalletExternalIdentity\"^\n"
           + "\026WalletExternalIdentity\0228\n"
           + "\010provider\030\001 \001(\0162&.services.provider.v1.IdentityProvider\022\n\n"
           + "\002id\030\002 \001(\t\"r\n\n"
@@ -141,8 +142,7 @@ public final class ProviderOuterClass {
           + "\013IndyNetwork\022\n\n"
           + "\006Danube\020\000\022\021\n\r"
           + "SovrinBuilder\020\001\022\021\n\r"
-          + "SovrinStaging\020\002\022\n"
-          + "\n"
+          + "SovrinStaging\020\002\022\n\n"
           + "\006Sovrin\020\003\022\017\n"
           + "\013IdUnionTest\020\004\022\013\n"
           + "\007IdUnion\020\005\022\017\n"
@@ -165,18 +165,21 @@ public final class ProviderOuterClass {
           + "\005Email\020\001\022\t\n"
           + "\005Phone\020\002\022\013\n"
           + "\007Passkey\020\003\022\030\n"
-          + "\024TrinsicAuthenticator\020\0042\351\003\n"
-          + "\010Provider\022v\n"
+          + "\024TrinsicAuthenticator\020\0042\217\005\n"
+          + "\010Provider\022\235\001\n"
           + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystem"
-          + "Request\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022s\n"
+          + "Request\032-.services.provider.v1.CreateEco"
+          + "systemResponse\"-\212\246\035\002\020\001\202\323\344\223\002!\"\034/v1/provider/createecosystem:\001*\022\227\001\n"
           + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyReques"
-          + "t\032*.services.provider.v1.GetOberonKeyResponse\"\014\212\246\035\002\010\001\212\246\035\002\030\001\022_\n\n"
-          + "UpgradeDID\022\'.serv"
-          + "ices.provider.v1.UpgradeDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalletConfigurationsReq"
-          + "uest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/pr"
-          + "ovider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "t\032*.services.provider.v1.GetOberonKeyRes"
+          + "ponse\"0\212\246\035\002\010\001\212\246\035\002\030\001\202\323\344\223\002\036\"\031/v1/provider/getoberonkey:\001*\022\203\001\n\n"
+          + "UpgradeDID\022\'.services.provider.v1.UpgradeDidRequest\032(.servic"
+          + "es.provider.v1.UpgradeDidResponse\"\"\202\323\344\223\002\034\"\027/v1/provider/upgradedid:\001*\022\302\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider"
+          + ".v1.SearchWalletConfigurationsRequest\0327.services.provider.v1.SearchWalletConfigu"
+          + "rationResponse\"2\202\323\344\223\002,\"\'/v1/provider/searchwalletconfigurations:\001*B^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/"
+          + "v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -185,6 +188,7 @@ public final class ProviderOuterClass {
               trinsic.services.account.v1.Account.getDescriptor(),
               trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
               trinsic.services.common.v1.Common.getDescriptor(),
+              com.google.api.AnnotationsProto.getDescriptor(),
             });
     internal_static_services_provider_v1_Ecosystem_descriptor =
         getDescriptor().getMessageTypes().get(0);
@@ -321,6 +325,7 @@ public final class ProviderOuterClass {
             });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(com.google.api.AnnotationsProto.http);
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
@@ -328,6 +333,7 @@ public final class ProviderOuterClass {
     trinsic.services.account.v1.Account.getDescriptor();
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
     trinsic.services.common.v1.Common.getDescriptor();
+    com.google.api.AnnotationsProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

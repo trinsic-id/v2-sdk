@@ -746,6 +746,7 @@ class UniversalWalletStub(betterproto.ServiceStub):
 
 
 class UniversalWalletBase(ServiceBase):
+
     async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -957,77 +958,59 @@ class UniversalWalletBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.universalwallet.v1.UniversalWallet/GetItem": (
-                grpclib.const.Handler(
-                    self.__rpc_get_item,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    GetItemRequest,
-                    GetItemResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/GetItem": grpclib.const.Handler(
+                self.__rpc_get_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetItemRequest,
+                GetItemResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/Search": (
-                grpclib.const.Handler(
-                    self.__rpc_search,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    SearchRequest,
-                    SearchResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/Search": grpclib.const.Handler(
+                self.__rpc_search,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                SearchRequest,
+                SearchResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/InsertItem": (
-                grpclib.const.Handler(
-                    self.__rpc_insert_item,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    InsertItemRequest,
-                    InsertItemResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/InsertItem": grpclib.const.Handler(
+                self.__rpc_insert_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                InsertItemRequest,
+                InsertItemResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/UpdateItem": (
-                grpclib.const.Handler(
-                    self.__rpc_update_item,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    UpdateItemRequest,
-                    UpdateItemResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/UpdateItem": grpclib.const.Handler(
+                self.__rpc_update_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateItemRequest,
+                UpdateItemResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/DeleteItem": (
-                grpclib.const.Handler(
-                    self.__rpc_delete_item,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    DeleteItemRequest,
-                    DeleteItemResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/DeleteItem": grpclib.const.Handler(
+                self.__rpc_delete_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                DeleteItemRequest,
+                DeleteItemResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/DeleteWallet": (
-                grpclib.const.Handler(
-                    self.__rpc_delete_wallet,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    DeleteWalletRequest,
-                    DeleteWalletResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/DeleteWallet": grpclib.const.Handler(
+                self.__rpc_delete_wallet,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                DeleteWalletRequest,
+                DeleteWalletResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/CreateWallet": (
-                grpclib.const.Handler(
-                    self.__rpc_create_wallet,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    CreateWalletRequest,
-                    CreateWalletResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/CreateWallet": grpclib.const.Handler(
+                self.__rpc_create_wallet,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CreateWalletRequest,
+                CreateWalletResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/GetWalletInfo": (
-                grpclib.const.Handler(
-                    self.__rpc_get_wallet_info,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    GetWalletInfoRequest,
-                    GetWalletInfoResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/GetWalletInfo": grpclib.const.Handler(
+                self.__rpc_get_wallet_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetWalletInfoRequest,
+                GetWalletInfoResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/GetMyInfo": (
-                grpclib.const.Handler(
-                    self.__rpc_get_my_info,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    GetMyInfoRequest,
-                    GetMyInfoResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/GetMyInfo": grpclib.const.Handler(
+                self.__rpc_get_my_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetMyInfoRequest,
+                GetMyInfoResponse,
             ),
             "/services.universalwallet.v1.UniversalWallet/GetWalletFromExternalIdentity": grpclib.const.Handler(
                 self.__rpc_get_wallet_from_external_identity,
@@ -1035,84 +1018,64 @@ class UniversalWalletBase(ServiceBase):
                 GetWalletFromExternalIdentityRequest,
                 GetWalletFromExternalIdentityResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken": (
-                grpclib.const.Handler(
-                    self.__rpc_generate_auth_token,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    GenerateAuthTokenRequest,
-                    GenerateAuthTokenResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/GenerateAuthToken": grpclib.const.Handler(
+                self.__rpc_generate_auth_token,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GenerateAuthTokenRequest,
+                GenerateAuthTokenResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken": (
-                grpclib.const.Handler(
-                    self.__rpc_revoke_auth_token,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    RevokeAuthTokenRequest,
-                    RevokeAuthTokenResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/RevokeAuthToken": grpclib.const.Handler(
+                self.__rpc_revoke_auth_token,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RevokeAuthTokenRequest,
+                RevokeAuthTokenResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit": (
-                grpclib.const.Handler(
-                    self.__rpc_add_external_identity_init,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    AddExternalIdentityInitRequest,
-                    AddExternalIdentityInitResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit": grpclib.const.Handler(
+                self.__rpc_add_external_identity_init,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddExternalIdentityInitRequest,
+                AddExternalIdentityInitResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm": (
-                grpclib.const.Handler(
-                    self.__rpc_add_external_identity_confirm,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    AddExternalIdentityConfirmRequest,
-                    AddExternalIdentityConfirmResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm": grpclib.const.Handler(
+                self.__rpc_add_external_identity_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddExternalIdentityConfirmRequest,
+                AddExternalIdentityConfirmResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity": (
-                grpclib.const.Handler(
-                    self.__rpc_remove_external_identity,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    RemoveExternalIdentityRequest,
-                    RemoveExternalIdentityResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity": grpclib.const.Handler(
+                self.__rpc_remove_external_identity,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RemoveExternalIdentityRequest,
+                RemoveExternalIdentityResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/AuthenticateInit": (
-                grpclib.const.Handler(
-                    self.__rpc_authenticate_init,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    AuthenticateInitRequest,
-                    AuthenticateInitResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateInit": grpclib.const.Handler(
+                self.__rpc_authenticate_init,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateInitRequest,
+                AuthenticateInitResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm": (
-                grpclib.const.Handler(
-                    self.__rpc_authenticate_confirm,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    AuthenticateConfirmRequest,
-                    AuthenticateConfirmResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm": grpclib.const.Handler(
+                self.__rpc_authenticate_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateConfirmRequest,
+                AuthenticateConfirmResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode": (
-                grpclib.const.Handler(
-                    self.__rpc_authenticate_resend_code,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    AuthenticateResendCodeRequest,
-                    AuthenticateResendCodeResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode": grpclib.const.Handler(
+                self.__rpc_authenticate_resend_code,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthenticateResendCodeRequest,
+                AuthenticateResendCodeResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/ListWallets": (
-                grpclib.const.Handler(
-                    self.__rpc_list_wallets,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    ListWalletsRequest,
-                    ListWalletsResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/ListWallets": grpclib.const.Handler(
+                self.__rpc_list_wallets,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListWalletsRequest,
+                ListWalletsResponse,
             ),
-            "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate": (
-                grpclib.const.Handler(
-                    self.__rpc_list_by_verification_template,
-                    grpclib.const.Cardinality.UNARY_UNARY,
-                    ListByVerificationTemplateRequest,
-                    ListByVerificationTemplateResponse,
-                )
+            "/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate": grpclib.const.Handler(
+                self.__rpc_list_by_verification_template,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListByVerificationTemplateRequest,
+                ListByVerificationTemplateResponse,
             ),
         }

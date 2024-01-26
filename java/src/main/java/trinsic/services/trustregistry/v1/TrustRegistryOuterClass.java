@@ -70,7 +70,8 @@ public final class TrustRegistryOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "/services/trust-registry/v1/trust-registry.proto\022\031services.trustregistry.v1\"\263\001\n"
+          + "/services/trust-registry/v1/trust-regis"
+          + "try.proto\022\031services.trustregistry.v1\032%services/google/api/annotations.proto\"\263\001\n"
           + "\025RegisterMemberRequest\022\021\n"
           + "\007did_uri\030\001 \001(\tH\000\022\023\n"
           + "\twallet_id\030\003 \001(\tH\000\022\017\n"
@@ -128,26 +129,33 @@ public final class TrustRegistryOuterClass {
           + "TERMINATED\020\002\022\013\n"
           + "\007REVOKED\020\003\022\r\n"
           + "\tNOT_FOUND\020\n"
-          + "2\232\005\n\r"
-          + "TrustRegistry\022u\n"
+          + "2\207\007\n\r"
+          + "TrustRegistry\022\242\001\n"
           + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMemberRequest\032"
-          + "1.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMemberReque"
-          + "st\0323.services.trustregistry.v1.UnregisterMemberResponse\022\237\001\n"
-          + "\034GetMemberAuthorizationStatus\022>.services.trustregistry.v1.Get"
-          + "MemberAuthorizationStatusRequest\032?.servi"
-          + "ces.trustregistry.v1.GetMemberAuthorizationStatusResponse\022\212\001\n"
-          + "\025ListAuthorizedMembers\0227.services.trustregistry.v1.ListAuth"
-          + "orizedMembersRequest\0328.services.trustreg"
-          + "istry.v1.ListAuthorizedMembersResponse\022f\n"
-          + "\tGetMember\022+.services.trustregistry.v1."
-          + "GetMemberRequest\032,.services.trustregistry.v1.GetMemberResponseBr\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustreg"
-          + "istry/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + "1.services.trustregistry.v1.RegisterMemberResponse\"+\202\323\344\223\002%\""
+          + " /v1/trustregistry/registermember:\001*\022\252\001\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.UnregisterMembe"
+          + "rRequest\0323.services.trustregistry.v1.Unr"
+          + "egisterMemberResponse\"-\202\323\344\223\002\'\"\"/v1/trustregistry/unregistermember:\001*\022\327\001\n"
+          + "\034GetMemberAuthorizationStatus\022>.services.trustre"
+          + "gistry.v1.GetMemberAuthorizationStatusRequest\032?.services.trustregistry.v1.GetMem"
+          + "berAuthorizationStatusResponse\"6\202\323\344\223\0020\022."
+          + "/v1/trustregistry/getmemberauthorizationstatus\022\273\001\n"
+          + "\025ListAuthorizedMembers\0227.services.trustregistry.v1.ListAuthorizedMembe"
+          + "rsRequest\0328.services.trustregistry.v1.Li"
+          + "stAuthorizedMembersResponse\"/\202\323\344\223\002)\022\'/v1/trustregistry/listauthorizedmembers\022\213\001\n"
+          + "\tGetMember\022+.services.trustregistry.v1.G"
+          + "etMemberRequest\032,.services.trustregistry"
+          + ".v1.GetMemberResponse\"#\202\323\344\223\002\035\022\033/v1/trustregistry/getmemberBr\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregistr"
+          + "y/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              com.google.api.AnnotationsProto.getDescriptor(),
+            });
     internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor =
         getDescriptor().getMessageTypes().get(0);
     internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable =
@@ -240,6 +248,12 @@ public final class TrustRegistryOuterClass {
             new java.lang.String[] {
               "AuthorizedMember",
             });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(com.google.api.AnnotationsProto.http);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
+    com.google.api.AnnotationsProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

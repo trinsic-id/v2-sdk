@@ -14,8 +14,8 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../common/v1/common.pbenum.dart' as $9;
-import '../../universal-wallet/v1/universal-wallet.pb.dart' as $5;
+import '../../common/v1/common.pbenum.dart' as $10;
+import '../../universal-wallet/v1/universal-wallet.pb.dart' as $1;
 import 'connect.pbenum.dart';
 
 export 'connect.pbenum.dart';
@@ -1412,7 +1412,7 @@ class GetSessionResponse extends $pb.GeneratedMessage {
 class ListSessionsRequest extends $pb.GeneratedMessage {
   factory ListSessionsRequest({
     SessionOrdering? orderBy,
-    $9.OrderDirection? orderDirection,
+    $10.OrderDirection? orderDirection,
     $core.int? pageSize,
     $core.int? page,
   }) {
@@ -1449,11 +1449,11 @@ class ListSessionsRequest extends $pb.GeneratedMessage {
         defaultOrMaker: SessionOrdering.CREATED,
         valueOf: SessionOrdering.valueOf,
         enumValues: SessionOrdering.values)
-    ..e<$9.OrderDirection>(
+    ..e<$10.OrderDirection>(
         2, _omitFieldNames ? '' : 'orderDirection', $pb.PbFieldType.OE,
-        defaultOrMaker: $9.OrderDirection.ASCENDING,
-        valueOf: $9.OrderDirection.valueOf,
-        enumValues: $9.OrderDirection.values)
+        defaultOrMaker: $10.OrderDirection.ASCENDING,
+        valueOf: $10.OrderDirection.valueOf,
+        enumValues: $10.OrderDirection.values)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'pageSize', $pb.PbFieldType.O3)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
     ..hasRequiredFields = false;
@@ -1496,9 +1496,9 @@ class ListSessionsRequest extends $pb.GeneratedMessage {
 
   /// The order in which sessions should be sorted. Defaults to `ASCENDING`.
   @$pb.TagNumber(2)
-  $9.OrderDirection get orderDirection => $_getN(1);
+  $10.OrderDirection get orderDirection => $_getN(1);
   @$pb.TagNumber(2)
-  set orderDirection($9.OrderDirection v) {
+  set orderDirection($10.OrderDirection v) {
     setField(2, v);
   }
 
@@ -1635,7 +1635,7 @@ class ListSessionsResponse extends $pb.GeneratedMessage {
 /// Request to preemptively check if an identity has a valid reusable credential
 class HasValidCredentialRequest extends $pb.GeneratedMessage {
   factory HasValidCredentialRequest({
-    $5.CreateWalletRequest_ExternalIdentity? identity,
+    $1.CreateWalletRequest_ExternalIdentity? identity,
     CredentialRequestData? credentialRequestData,
   }) {
     final $result = create();
@@ -1660,9 +1660,9 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
-    ..aOM<$5.CreateWalletRequest_ExternalIdentity>(
+    ..aOM<$1.CreateWalletRequest_ExternalIdentity>(
         1, _omitFieldNames ? '' : 'identity',
-        subBuilder: $5.CreateWalletRequest_ExternalIdentity.create)
+        subBuilder: $1.CreateWalletRequest_ExternalIdentity.create)
     ..aOM<CredentialRequestData>(
         2, _omitFieldNames ? '' : 'credentialRequestData',
         subBuilder: CredentialRequestData.create)
@@ -1695,9 +1695,9 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
 
   /// The identity used to find a credential
   @$pb.TagNumber(1)
-  $5.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
+  $1.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
   @$pb.TagNumber(1)
-  set identity($5.CreateWalletRequest_ExternalIdentity v) {
+  set identity($1.CreateWalletRequest_ExternalIdentity v) {
     setField(1, v);
   }
 
@@ -1706,7 +1706,7 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
   @$pb.TagNumber(1)
-  $5.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
+  $1.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
 
   /// The criteria used to find a valid credential
   @$pb.TagNumber(2)
