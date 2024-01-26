@@ -3,7 +3,7 @@ hide:
     - navigation
 ---
 
-# Issue directly and send
+# Cross Ecosystem Issuance
 
 !!! note "Source code for this example"
 
