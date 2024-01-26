@@ -51,6 +51,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.trinsic.id/examples/cross-eco-issuance/</loc>
+         <lastmod>2024-01-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.trinsic.id/examples/idv-browser/</loc>
          <lastmod>2024-01-26</lastmod>
          <changefreq>daily</changefreq>
