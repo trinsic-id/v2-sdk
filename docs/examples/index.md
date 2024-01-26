@@ -48,6 +48,18 @@ These example showcase common scenarios for the issuance of verifiable credentia
 
     *Coming soon...*
 
+-   __Cross Ecosystem Issuance__
+
+    ---
+
+    <span class="pill ts">TypeScript</span>
+
+    Go through the process of cross ecosystem issuance of verifiable credentials. We'll be creating a wallet and a credential offer in ecosystem A and creating a wallet and accepting the offer in ecosystem B.
+
+    <br />
+
+    [:octicons-arrow-right-24: Guide in TypeScript](/examples/cross-eco-issuance)
+
 </div>
 
 ## Requesting and sharing Verifiable Credentials
