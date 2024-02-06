@@ -274,14 +274,14 @@ export class ConnectClient {
         document.head.appendChild(style);
 
         window.addEventListener("message", async (e) => {
-          if(e.data.source !== "oidc-client") return
-          if(e.data.url === undefined) return
-          this.popupWindow?.close();
-          var response = await this.oidcClient?.processSigninResponse(
-              e.data.url
-          );
-          this.processCallback(response);
-      });
+            if (e.data.source !== "oidc-client") return;
+            if (e.data.url === undefined) return;
+            this.popupWindow?.close();
+            var response = await this.oidcClient?.processSigninResponse(
+                e.data.url
+            );
+            this.processCallback(response);
+        });
     }
 
     public detectMobile = (): MobileDetect => {
@@ -380,6 +380,12 @@ export class ConnectClient {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
         }
+        //If we open the popup later in the flow browsers will likely block the popup as there's been too much time/async activity.
+        //Therefore we open it now (empty) and set the location once we have the auth request url.
+        this.popupWindow = this.openPopup();
+        if (this.popupWindow === null) {
+            return;
+        }
 
         const settings = {
             ...this.oidcConfig,
@@ -392,7 +398,7 @@ export class ConnectClient {
         this.oidcClient = new OidcClient(settings);
         var authRequest = await this.oidcClient.createSigninRequest({});
 
-        this.popupWindow = this.openPopup(authRequest.url);
+        this.popupWindow.location = authRequest.url;
 
         var result = new Promise((resolve, reject) => {
             this.processCallback = resolve;
@@ -401,7 +407,7 @@ export class ConnectClient {
         return result;
     }
 
-    openPopup = (url: string) => {
+    openPopup = () => {
         // Calculate the position
         const w = 600;
         const h = 800;
@@ -410,13 +416,17 @@ export class ConnectClient {
 
         // Open the window
         const popup = window.open(
-            url,
+            undefined,
             "oidc-popup",
             `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`
         );
 
         // Check if the popup was blocked
-        if (popup === null || typeof popup === "undefined") {
+        if (
+            popup === null ||
+            popup === undefined ||
+            typeof popup === "undefined"
+        ) {
             alert("Popup blocked, please enable popups and try again");
         }
 
