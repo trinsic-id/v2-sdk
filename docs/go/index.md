@@ -11,7 +11,26 @@ go install github.com/trinsic-id/sdk/go@latest
 2. Test the installation by running the following go code:
     <!--codeinclude-->
     ```golang
-    [GoSample](../../samples/go/sample.go) inside_block:main
+    package main
+
+    import (
+        "context"
+        "fmt"
+        sdk "github.com/trinsic-id/sdk/go/services"
+    )
+
+    func main() {
+        trinsic, err := sdk.NewTrinsic()
+        if err != nil {
+        panic("Account service not created")
+        }
+
+        profile, err := trinsic.Account().LoginAnonymous(context.Background())
+        if err != nil {
+            panic("Sign in failed!")
+        }
+        fmt.Printf("%v\n", profile)
+    }
     ```
 <!--/codeinclude-->
 

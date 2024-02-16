@@ -1,11 +1,30 @@
 import { TrinsicOptions } from "../src";
 
 export function getTestServerOptions(): TrinsicOptions {
-    return {
-        serverEndpoint: "dev-internal.trinsic.cloud",
+    let testEnv: string | undefined;
+    try {
+        // @ts-ignore
+        testEnv = __karma__.config.trinsic_environment.toLowerCase();
+    } catch (e) {
+        // @ts-ignore
+        if (typeof process !== "undefined" && process.env.trinsic_environment) {
+            testEnv = process.env.trinsic_environment;
+        }
+    }
+    testEnv ??= "dev"
+    let serverEndpoint = "staging-internal.trinsic.cloud";
+    if (testEnv.startsWith("dev"))
+        serverEndpoint = "dev-internal.trinsic.cloud";
+    if (testEnv.startsWith("prod"))
+        serverEndpoint = "prod.trinsic.cloud";
+
+    console.log(`Provided environment:${testEnv} -> server endpoint:${serverEndpoint}`);
+
+    return TrinsicOptions.fromPartial({
+        serverEndpoint: serverEndpoint,
         serverPort: 443,
         serverUseTls: true,
-    };
+    });
 }
 
 export function getLocalServerOptions(): TrinsicOptions {
