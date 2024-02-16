@@ -32,7 +32,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
       - name: Install CLI
         run: |
-          brew install python3
+          brew install python@3.12
           brew install trinsic-id/tap/trinsic-cli
       - name: Run CLI Demos
         run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
