@@ -8,42 +8,6 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
-<a name="sdk_options_v1_options-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## sdk/options/v1/options.proto
-
-
- <!-- end services -->
-
-
-<a name="sdk-options-v1-TrinsicOptions"></a>
-
-### TrinsicOptions
-Configuration for Trinsic SDK Services
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
-
-Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_connect_v1_connect-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -580,6 +544,1112 @@ Confirmation method type for two-factor workflows
 | ConnectedDevice | 3 | Confirmation from a connected device is required |
 | Other | 10 | Third-party method of confirmation is required |
 
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_file-management_v1_file-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/file-management/v1/file-management.proto
+
+
+
+<a name="services-filemanagement-v1-FileManagement"></a>
+
+### Service - FileManagement
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
+| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
+| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
+| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
+| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
+
+ <!-- end services -->
+
+
+<a name="services-filemanagement-v1-DeleteFileRequest"></a>
+
+### DeleteFileRequest
+Request to delete a file from Trinsic's CDN by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file to delete |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-DeleteFileResponse"></a>
+
+### DeleteFileResponse
+Response to `DeleteFileRequest`. Empty payload.
+
+
+
+
+
+
+<a name="services-filemanagement-v1-File"></a>
+
+### File
+Contains information about a file stored in Trinsic's CDN
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
+| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
+| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
+| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
+| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
+| url | [string](/reference/proto#string) | CDN URL of file |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetFileRequest"></a>
+
+### GetFileRequest
+Request to fetch information about a stored file
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of file to fetch |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetFileResponse"></a>
+
+### GetFileResponse
+Response to `GetFileRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
+
+### GetStorageStatsRequest
+Request to get statistics about files uploaded by this account
+
+
+
+
+
+
+<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
+
+### GetStorageStatsResponse
+Response to `GetStorageStatsRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-ListFilesRequest"></a>
+
+### ListFilesRequest
+Request to list files
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-ListFilesResponse"></a>
+
+### ListFilesResponse
+Response to `ListFilesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-StorageStats"></a>
+
+### StorageStats
+Represents aggregate statistics of all files uploaded by a single issuer
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
+| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileRequest"></a>
+
+### UploadFileRequest
+Request to upload a file to Trinsic's CDN
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contents | [bytes](/reference/proto#bytes) | Raw content of file |
+| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileResponse"></a>
+
+### UploadFileResponse
+Response to `UploadFileRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_options_field-options-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/options/field-options.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-options-AnnotationOption"></a>
+
+### AnnotationOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
+
+
+
+
+
+
+<a name="services-options-SdkTemplateOption"></a>
+
+### SdkTemplateOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
+| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+
+<a name="services_options_field-options-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_google_api_annotations-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/google/api/annotations.proto
+
+
+ <!-- end services -->
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+
+<a name="services_google_api_annotations-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| http | HttpRule | .google.protobuf.MethodOptions | 72295728 | See `HttpRule`. |
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_google_api_http-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/google/api/http.proto
+
+
+ <!-- end services -->
+
+
+<a name="google-api-CustomHttpPattern"></a>
+
+### CustomHttpPattern
+A custom pattern is used for defining custom HTTP verb.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| kind | [string](/reference/proto#string) | The name of this custom HTTP verb. |
+| path | [string](/reference/proto#string) | The path matched by this custom verb. |
+
+
+
+
+
+
+<a name="google-api-Http"></a>
+
+### Http
+Defines the HTTP configuration for an API service. It contains a list of
+[HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
+to one or more HTTP REST API methods.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| rules | [HttpRule](/reference/proto#google-api-HttpRule)[] | A list of HTTP configuration rules that apply to individual API methods.
+
+**NOTE:** All service configuration rules follow "last one wins" order. |
+| fully_decode_reserved_expansion | [bool](/reference/proto#bool) | When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded.
+
+The default behavior is to not decode RFC 6570 reserved characters in multi segment matches. |
+
+
+
+
+
+
+<a name="google-api-HttpRule"></a>
+
+### HttpRule
+# gRPC Transcoding
+
+gRPC Transcoding is a feature for mapping between a gRPC method and one or
+more HTTP REST endpoints. It allows developers to build a single API service
+that supports both gRPC APIs and REST APIs. Many systems, including [Google
+APIs](https://github.com/googleapis/googleapis),
+[Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC
+Gateway](https://github.com/grpc-ecosystem/grpc-gateway),
+and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature
+and use it for large scale production services.
+
+`HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies
+how different portions of the gRPC request message are mapped to the URL
+path, URL query parameters, and HTTP request body. It also controls how the
+gRPC response message is mapped to the HTTP response body. `HttpRule` is
+typically specified as an `google.api.http` annotation on the gRPC method.
+
+Each mapping specifies a URL path template and an HTTP method. The path
+template may refer to one or more fields in the gRPC request message, as long
+as each field is a non-repeated field with a primitive (non-message) type.
+The path template controls how fields of the request message are mapped to
+the URL path.
+
+Example:
+
+    service Messaging {
+      rpc GetMessage(GetMessageRequest) returns (Message) {
+        option (google.api.http) = {
+            get: "/v1/{name=messages/*}"
+        };
+      }
+    }
+    message GetMessageRequest {
+      string name = 1; // Mapped to URL path.
+    }
+    message Message {
+      string text = 1; // The resource content.
+    }
+
+This enables an HTTP REST to gRPC mapping as below:
+
+HTTP | gRPC
+-----|-----
+`GET /v1/messages/123456`  | `GetMessage(name: "messages/123456")`
+
+Any fields in the request message which are not bound by the path template
+automatically become HTTP query parameters if there is no HTTP request body.
+For example:
+
+    service Messaging {
+      rpc GetMessage(GetMessageRequest) returns (Message) {
+        option (google.api.http) = {
+            get:"/v1/messages/{message_id}"
+        };
+      }
+    }
+    message GetMessageRequest {
+      message SubMessage {
+        string subfield = 1;
+      }
+      string message_id = 1; // Mapped to URL path.
+      int64 revision = 2;    // Mapped to URL query parameter `revision`.
+      SubMessage sub = 3;    // Mapped to URL query parameter `sub.subfield`.
+    }
+
+This enables a HTTP JSON to RPC mapping as below:
+
+HTTP | gRPC
+-----|-----
+`GET /v1/messages/123456?revision=2&sub.subfield=foo` |
+`GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
+"foo"))`
+
+Note that fields which are mapped to URL query parameters must have a
+primitive type or a repeated primitive type or a non-repeated message type.
+In the case of a repeated type, the parameter can be repeated in the URL
+as `...?param=A&param=B`. In the case of a message type, each field of the
+message is mapped to a separate parameter, such as
+`...?foo.a=A&foo.b=B&foo.c=C`.
+
+For HTTP methods that allow a request body, the `body` field
+specifies the mapping. Consider a REST update method on the
+message resource collection:
+
+    service Messaging {
+      rpc UpdateMessage(UpdateMessageRequest) returns (Message) {
+        option (google.api.http) = {
+          patch: "/v1/messages/{message_id}"
+          body: "message"
+        };
+      }
+    }
+    message UpdateMessageRequest {
+      string message_id = 1; // mapped to the URL
+      Message message = 2;   // mapped to the body
+    }
+
+The following HTTP JSON to RPC mapping is enabled, where the
+representation of the JSON in the request body is determined by
+protos JSON encoding:
+
+HTTP | gRPC
+-----|-----
+`PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id:
+"123456" message { text: "Hi!" })`
+
+The special name `*` can be used in the body mapping to define that
+every field not bound by the path template should be mapped to the
+request body.  This enables the following alternative definition of
+the update method:
+
+    service Messaging {
+      rpc UpdateMessage(Message) returns (Message) {
+        option (google.api.http) = {
+          patch: "/v1/messages/{message_id}"
+          body: "*"
+        };
+      }
+    }
+    message Message {
+      string message_id = 1;
+      string text = 2;
+    }
+
+
+The following HTTP JSON to RPC mapping is enabled:
+
+HTTP | gRPC
+-----|-----
+`PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id:
+"123456" text: "Hi!")`
+
+Note that when using `*` in the body mapping, it is not possible to
+have HTTP parameters, as all fields not bound by the path end in
+the body. This makes this option more rarely used in practice when
+defining REST APIs. The common usage of `*` is in custom methods
+which don't use the URL at all for transferring data.
+
+It is possible to define multiple HTTP methods for one RPC by using
+the `additional_bindings` option. Example:
+
+    service Messaging {
+      rpc GetMessage(GetMessageRequest) returns (Message) {
+        option (google.api.http) = {
+          get: "/v1/messages/{message_id}"
+          additional_bindings {
+            get: "/v1/users/{user_id}/messages/{message_id}"
+          }
+        };
+      }
+    }
+    message GetMessageRequest {
+      string message_id = 1;
+      string user_id = 2;
+    }
+
+This enables the following two alternative HTTP JSON to RPC mappings:
+
+HTTP | gRPC
+-----|-----
+`GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
+`GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
+"123456")`
+
+## Rules for HTTP mapping
+
+1. Leaf request fields (recursive expansion nested messages in the request
+   message) are classified into three categories:
+   - Fields referred by the path template. They are passed via the URL path.
+   - Fields referred by the [HttpRule.body][google.api.HttpRule.body]. They are passed via the HTTP
+     request body.
+   - All other fields are passed via the URL query parameters, and the
+     parameter name is the field path in the request message. A repeated
+     field can be represented as multiple query parameters under the same
+     name.
+ 2. If [HttpRule.body][google.api.HttpRule.body] is "*", there is no URL query parameter, all fields
+    are passed via URL path and HTTP request body.
+ 3. If [HttpRule.body][google.api.HttpRule.body] is omitted, there is no HTTP request body, all
+    fields are passed via URL path and URL query parameters.
+
+### Path template syntax
+
+    Template = "/" Segments [ Verb ] ;
+    Segments = Segment { "/" Segment } ;
+    Segment  = "*" | "**" | LITERAL | Variable ;
+    Variable = "{" FieldPath [ "=" Segments ] "}" ;
+    FieldPath = IDENT { "." IDENT } ;
+    Verb     = ":" LITERAL ;
+
+The syntax `*` matches a single URL path segment. The syntax `**` matches
+zero or more URL path segments, which must be the last part of the URL path
+except the `Verb`.
+
+The syntax `Variable` matches part of the URL path as specified by its
+template. A variable template must not contain other variables. If a variable
+matches a single path segment, its template may be omitted, e.g. `{var}`
+is equivalent to `{var=*}`.
+
+The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL`
+contains any reserved character, such characters should be percent-encoded
+before the matching.
+
+If a variable contains exactly one path segment, such as `"{var}"` or
+`"{var=*}"`, when such a variable is expanded into a URL path on the client
+side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
+server side does the reverse decoding. Such variables show up in the
+[Discovery
+Document](https://developers.google.com/discovery/v1/reference/apis) as
+`{var}`.
+
+If a variable contains multiple path segments, such as `"{var=foo/*}"`
+or `"{var=**}"`, when such a variable is expanded into a URL path on the
+client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
+The server side does the reverse decoding, except "%2F" and "%2f" are left
+unchanged. Such variables show up in the
+[Discovery
+Document](https://developers.google.com/discovery/v1/reference/apis) as
+`{+var}`.
+
+## Using gRPC API Service Configuration
+
+gRPC API Service Configuration (service config) is a configuration language
+for configuring a gRPC service to become a user-facing product. The
+service config is simply the YAML representation of the `google.api.Service`
+proto message.
+
+As an alternative to annotating your proto file, you can configure gRPC
+transcoding in your service config YAML files. You do this by specifying a
+`HttpRule` that maps the gRPC method to a REST endpoint, achieving the same
+effect as the proto annotation. This can be particularly useful if you
+have a proto that is reused in multiple services. Note that any transcoding
+specified in the service config will override any matching transcoding
+configuration in the proto.
+
+Example:
+
+    http:
+      rules:
+        # Selects a gRPC method and applies HttpRule to it.
+        - selector: example.v1.Messaging.GetMessage
+          get: /v1/messages/{message_id}/{sub.subfield}
+
+## Special notes
+
+When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the
+proto to JSON conversion must follow the [proto3
+specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
+
+While the single segment variable follows the semantics of
+[RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
+Expansion, the multi segment variable **does not** follow RFC 6570 Section
+3.2.3 Reserved Expansion. The reason is that the Reserved Expansion
+does not expand special characters like `?` and `#`, which would lead
+to invalid URLs. As the result, gRPC Transcoding uses a custom encoding
+for multi segment variables.
+
+The path variables **must not** refer to any repeated or mapped field,
+because client libraries are not capable of handling such variable expansion.
+
+The path variables **must not** capture the leading "/" character. The reason
+is that the most common use case "{var}" does not capture the leading "/"
+character. For consistency, all path variables must share the same behavior.
+
+Repeated message fields must not be mapped to URL query parameters, because
+no client library can support such complicated mapping.
+
+If an API needs to use a JSON array for request or response body, it can map
+the request or response body to a repeated field. However, some gRPC
+Transcoding implementations may not support this feature.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| selector | [string](/reference/proto#string) | Selects a method to which this rule applies.
+
+Refer to [selector][google.api.DocumentationRule.selector] for syntax details. |
+| get | [string](/reference/proto#string) | Maps to HTTP GET. Used for listing and getting information about resources. |
+| put | [string](/reference/proto#string) | Maps to HTTP PUT. Used for replacing a resource. |
+| post | [string](/reference/proto#string) | Maps to HTTP POST. Used for creating a resource or performing an action. |
+| delete | [string](/reference/proto#string) | Maps to HTTP DELETE. Used for deleting a resource. |
+| patch | [string](/reference/proto#string) | Maps to HTTP PATCH. Used for updating a resource. |
+| custom | [CustomHttpPattern](/reference/proto#google-api-CustomHttpPattern) | The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients. |
+| body | [string](/reference/proto#string) | The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body.
+
+NOTE: the referred field must be present at the top-level of the request message type. |
+| response_body | [string](/reference/proto#string) | Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body.
+
+NOTE: The referred field must be present at the top-level of the response message type. |
+| additional_bindings | [HttpRule](/reference/proto#google-api-HttpRule)[] | Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep). |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_provider_v1_provider-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/provider.proto
+
+
+
+<a name="services-provider-v1-Provider"></a>
+
+### Service - Provider
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
+| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
+| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-CreateEcosystemRequest"></a>
+
+### CreateEcosystemRequest
+Request to create an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
+| description | [string](/reference/proto#string) | Ecosystem description |
+| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
+| domain | [string](/reference/proto#string) | New domain URL |
+
+
+
+
+
+
+<a name="services-provider-v1-CreateEcosystemResponse"></a>
+
+### CreateEcosystemResponse
+Response to `CreateEcosystemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
+| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
+| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
+
+
+
+
+
+
+<a name="services-provider-v1-Ecosystem"></a>
+
+### Ecosystem
+Details of an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | URN of the ecosystem |
+| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
+| description | [string](/reference/proto#string) | Ecosystem description |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoRequest"></a>
+
+### EcosystemInfoRequest
+Request to fetch information about an ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoResponse"></a>
+
+### EcosystemInfoResponse
+Response to `InfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyRequest"></a>
+
+### GetOberonKeyRequest
+Request to fetch the Trinsic public key used
+to verify authentication token validity
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyResponse"></a>
+
+### GetOberonKeyResponse
+Response to `GetOberonKeyRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
+
+
+
+
+
+
+<a name="services-provider-v1-IndyOptions"></a>
+
+### IndyOptions
+Options for creation of DID on the SOV network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-IonOptions"></a>
+
+### IonOptions
+Options for creation of DID on the ION network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
+
+### SearchWalletConfigurationResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
+
+### SearchWalletConfigurationsRequest
+Search for issuers/holders/verifiers
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidRequest"></a>
+
+### UpgradeDidRequest
+Request to upgrade a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
+| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
+| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
+| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDidResponse"></a>
+
+### UpgradeDidResponse
+Response to `UpgradeDIDRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) | New DID of wallet |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletConfiguration"></a>
+
+### WalletConfiguration
+Strongly typed information about wallet configurations
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Name/description of the wallet |
+| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
+| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
+| wallet_id | [string](/reference/proto#string) |  |
+| public_did | [string](/reference/proto#string) | The DID of the wallet |
+| config_type | [string](/reference/proto#string) |  |
+| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
+| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
+| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
+| description | [string](/reference/proto#string) |  |
+| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletExternalIdentity"></a>
+
+### WalletExternalIdentity
+An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
+| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-provider-v1-IdentityProvider"></a>
+
+### IdentityProvider
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Unknown | 0 | Identity provider is unknown |
+| Email | 1 | Identity provider is email |
+| Phone | 2 | Identity provider is phone |
+| Passkey | 3 | Identity provider is passkey (WebAuthn) -- for Trinsic internal use only |
+| TrinsicAuthenticator | 4 | Identity provider is passkey using Trinsic Authenticator for mobile phones |
+
+
+
+<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
+
+### IndyOptions.IndyNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| Danube | 0 |  |
+| SovrinBuilder | 1 |  |
+| SovrinStaging | 2 |  |
+| Sovrin | 3 |  |
+| IdUnionTest | 4 |  |
+| IdUnion | 5 |  |
+| IndicioTest | 6 |  |
+| IndicioDemo | 7 |  |
+| Indicio | 8 |  |
+
+
+
+<a name="services-provider-v1-IonOptions-IonNetwork"></a>
+
+### IonOptions.IonNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TestNet | 0 |  |
+| MainNet | 1 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_provider_v1_access-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/access-management.proto
+
+
+
+<a name="services-provider-v1-AccessManagement"></a>
+
+### Service - AccessManagement
+Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
+| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
+| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
+| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
+
+### AddRoleAssignmentRequest
+Role management
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to assign |
+| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
+
+### AddRoleAssignmentResponse
+
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesRequest"></a>
+
+### ListAvailableRolesRequest
+Request to fetch the available roles in the current ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesResponse"></a>
+
+### ListAvailableRolesResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
+
+### ListRoleAssignmentsRequest
+Request to fetch the list of roles assigned to the current account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
+
+### ListRoleAssignmentsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
+
+### RemoveRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to unassign |
+| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
+| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
+
+### RemoveRoleAssignmentResponse
+
+
+
+
+
+
+ <!-- end messages -->
 
  <!-- end enums -->
 
@@ -1708,345 +2778,215 @@ Response to `VerifyProofRequest`
 
 
 
-<a name="services_google_api_http-proto"></a>
+<a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/google/api/http.proto
+## services/trust-registry/v1/trust-registry.proto
 
+
+
+<a name="services-trustregistry-v1-TrustRegistry"></a>
+
+### Service - TrustRegistry
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
+| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
+| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
+| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
+| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
 
  <!-- end services -->
 
 
-<a name="google-api-CustomHttpPattern"></a>
+<a name="services-trustregistry-v1-AuthorizedMember"></a>
 
-### CustomHttpPattern
-A custom pattern is used for defining custom HTTP verb.
+### AuthorizedMember
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| kind | [string](/reference/proto#string) | The name of this custom HTTP verb. |
-| path | [string](/reference/proto#string) | The path matched by this custom verb. |
+| did | [string](/reference/proto#string) |  |
+| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
 
 
 
 
 
 
-<a name="google-api-Http"></a>
+<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
 
-### Http
-Defines the HTTP configuration for an API service. It contains a list of
-[HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
-to one or more HTTP REST API methods.
+### AuthorizedMemberSchema
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| rules | [HttpRule](/reference/proto#google-api-HttpRule)[] | A list of HTTP configuration rules that apply to individual API methods.
-
-**NOTE:** All service configuration rules follow "last one wins" order. |
-| fully_decode_reserved_expansion | [bool](/reference/proto#bool) | When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded.
-
-The default behavior is to not decode RFC 6570 reserved characters in multi segment matches. |
-
+| schema_uri | [string](/reference/proto#string) |  |
+| status | [string](/reference/proto#string) |  |
+| status_details | [string](/reference/proto#string) |  |
+| valid_from | [uint64](/reference/proto#uint64) |  |
+| valid_until | [uint64](/reference/proto#uint64) |  |
 
 
 
 
 
-<a name="google-api-HttpRule"></a>
 
-### HttpRule
-# gRPC Transcoding
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
 
-gRPC Transcoding is a feature for mapping between a gRPC method and one or
-more HTTP REST endpoints. It allows developers to build a single API service
-that supports both gRPC APIs and REST APIs. Many systems, including [Google
-APIs](https://github.com/googleapis/googleapis),
-[Cloud Endpoints](https://cloud.google.com/endpoints), [gRPC
-Gateway](https://github.com/grpc-ecosystem/grpc-gateway),
-and [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature
-and use it for large scale production services.
-
-`HttpRule` defines the schema of the gRPC/REST mapping. The mapping specifies
-how different portions of the gRPC request message are mapped to the URL
-path, URL query parameters, and HTTP request body. It also controls how the
-gRPC response message is mapped to the HTTP response body. `HttpRule` is
-typically specified as an `google.api.http` annotation on the gRPC method.
-
-Each mapping specifies a URL path template and an HTTP method. The path
-template may refer to one or more fields in the gRPC request message, as long
-as each field is a non-repeated field with a primitive (non-message) type.
-The path template controls how fields of the request message are mapped to
-the URL path.
-
-Example:
-
-    service Messaging {
-      rpc GetMessage(GetMessageRequest) returns (Message) {
-        option (google.api.http) = {
-            get: "/v1/{name=messages/*}"
-        };
-      }
-    }
-    message GetMessageRequest {
-      string name = 1; // Mapped to URL path.
-    }
-    message Message {
-      string text = 1; // The resource content.
-    }
-
-This enables an HTTP REST to gRPC mapping as below:
-
-HTTP | gRPC
------|-----
-`GET /v1/messages/123456`  | `GetMessage(name: "messages/123456")`
-
-Any fields in the request message which are not bound by the path template
-automatically become HTTP query parameters if there is no HTTP request body.
-For example:
-
-    service Messaging {
-      rpc GetMessage(GetMessageRequest) returns (Message) {
-        option (google.api.http) = {
-            get:"/v1/messages/{message_id}"
-        };
-      }
-    }
-    message GetMessageRequest {
-      message SubMessage {
-        string subfield = 1;
-      }
-      string message_id = 1; // Mapped to URL path.
-      int64 revision = 2;    // Mapped to URL query parameter `revision`.
-      SubMessage sub = 3;    // Mapped to URL query parameter `sub.subfield`.
-    }
-
-This enables a HTTP JSON to RPC mapping as below:
-
-HTTP | gRPC
------|-----
-`GET /v1/messages/123456?revision=2&sub.subfield=foo` |
-`GetMessage(message_id: "123456" revision: 2 sub: SubMessage(subfield:
-"foo"))`
-
-Note that fields which are mapped to URL query parameters must have a
-primitive type or a repeated primitive type or a non-repeated message type.
-In the case of a repeated type, the parameter can be repeated in the URL
-as `...?param=A&param=B`. In the case of a message type, each field of the
-message is mapped to a separate parameter, such as
-`...?foo.a=A&foo.b=B&foo.c=C`.
-
-For HTTP methods that allow a request body, the `body` field
-specifies the mapping. Consider a REST update method on the
-message resource collection:
-
-    service Messaging {
-      rpc UpdateMessage(UpdateMessageRequest) returns (Message) {
-        option (google.api.http) = {
-          patch: "/v1/messages/{message_id}"
-          body: "message"
-        };
-      }
-    }
-    message UpdateMessageRequest {
-      string message_id = 1; // mapped to the URL
-      Message message = 2;   // mapped to the body
-    }
-
-The following HTTP JSON to RPC mapping is enabled, where the
-representation of the JSON in the request body is determined by
-protos JSON encoding:
-
-HTTP | gRPC
------|-----
-`PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id:
-"123456" message { text: "Hi!" })`
-
-The special name `*` can be used in the body mapping to define that
-every field not bound by the path template should be mapped to the
-request body.  This enables the following alternative definition of
-the update method:
-
-    service Messaging {
-      rpc UpdateMessage(Message) returns (Message) {
-        option (google.api.http) = {
-          patch: "/v1/messages/{message_id}"
-          body: "*"
-        };
-      }
-    }
-    message Message {
-      string message_id = 1;
-      string text = 2;
-    }
-
-
-The following HTTP JSON to RPC mapping is enabled:
-
-HTTP | gRPC
------|-----
-`PATCH /v1/messages/123456 { "text": "Hi!" }` | `UpdateMessage(message_id:
-"123456" text: "Hi!")`
-
-Note that when using `*` in the body mapping, it is not possible to
-have HTTP parameters, as all fields not bound by the path end in
-the body. This makes this option more rarely used in practice when
-defining REST APIs. The common usage of `*` is in custom methods
-which don't use the URL at all for transferring data.
-
-It is possible to define multiple HTTP methods for one RPC by using
-the `additional_bindings` option. Example:
-
-    service Messaging {
-      rpc GetMessage(GetMessageRequest) returns (Message) {
-        option (google.api.http) = {
-          get: "/v1/messages/{message_id}"
-          additional_bindings {
-            get: "/v1/users/{user_id}/messages/{message_id}"
-          }
-        };
-      }
-    }
-    message GetMessageRequest {
-      string message_id = 1;
-      string user_id = 2;
-    }
-
-This enables the following two alternative HTTP JSON to RPC mappings:
-
-HTTP | gRPC
------|-----
-`GET /v1/messages/123456` | `GetMessage(message_id: "123456")`
-`GET /v1/users/me/messages/123456` | `GetMessage(user_id: "me" message_id:
-"123456")`
-
-## Rules for HTTP mapping
-
-1. Leaf request fields (recursive expansion nested messages in the request
-   message) are classified into three categories:
-   - Fields referred by the path template. They are passed via the URL path.
-   - Fields referred by the [HttpRule.body][google.api.HttpRule.body]. They are passed via the HTTP
-     request body.
-   - All other fields are passed via the URL query parameters, and the
-     parameter name is the field path in the request message. A repeated
-     field can be represented as multiple query parameters under the same
-     name.
- 2. If [HttpRule.body][google.api.HttpRule.body] is "*", there is no URL query parameter, all fields
-    are passed via URL path and HTTP request body.
- 3. If [HttpRule.body][google.api.HttpRule.body] is omitted, there is no HTTP request body, all
-    fields are passed via URL path and URL query parameters.
-
-### Path template syntax
-
-    Template = "/" Segments [ Verb ] ;
-    Segments = Segment { "/" Segment } ;
-    Segment  = "*" | "**" | LITERAL | Variable ;
-    Variable = "{" FieldPath [ "=" Segments ] "}" ;
-    FieldPath = IDENT { "." IDENT } ;
-    Verb     = ":" LITERAL ;
-
-The syntax `*` matches a single URL path segment. The syntax `**` matches
-zero or more URL path segments, which must be the last part of the URL path
-except the `Verb`.
-
-The syntax `Variable` matches part of the URL path as specified by its
-template. A variable template must not contain other variables. If a variable
-matches a single path segment, its template may be omitted, e.g. `{var}`
-is equivalent to `{var=*}`.
-
-The syntax `LITERAL` matches literal text in the URL path. If the `LITERAL`
-contains any reserved character, such characters should be percent-encoded
-before the matching.
-
-If a variable contains exactly one path segment, such as `"{var}"` or
-`"{var=*}"`, when such a variable is expanded into a URL path on the client
-side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
-server side does the reverse decoding. Such variables show up in the
-[Discovery
-Document](https://developers.google.com/discovery/v1/reference/apis) as
-`{var}`.
-
-If a variable contains multiple path segments, such as `"{var=foo/*}"`
-or `"{var=**}"`, when such a variable is expanded into a URL path on the
-client side, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded.
-The server side does the reverse decoding, except "%2F" and "%2f" are left
-unchanged. Such variables show up in the
-[Discovery
-Document](https://developers.google.com/discovery/v1/reference/apis) as
-`{+var}`.
-
-## Using gRPC API Service Configuration
-
-gRPC API Service Configuration (service config) is a configuration language
-for configuring a gRPC service to become a user-facing product. The
-service config is simply the YAML representation of the `google.api.Service`
-proto message.
-
-As an alternative to annotating your proto file, you can configure gRPC
-transcoding in your service config YAML files. You do this by specifying a
-`HttpRule` that maps the gRPC method to a REST endpoint, achieving the same
-effect as the proto annotation. This can be particularly useful if you
-have a proto that is reused in multiple services. Note that any transcoding
-specified in the service config will override any matching transcoding
-configuration in the proto.
-
-Example:
-
-    http:
-      rules:
-        # Selects a gRPC method and applies HttpRule to it.
-        - selector: example.v1.Messaging.GetMessage
-          get: /v1/messages/{message_id}/{sub.subfield}
-
-## Special notes
-
-When gRPC Transcoding is used to map a gRPC to JSON REST endpoints, the
-proto to JSON conversion must follow the [proto3
-specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
-
-While the single segment variable follows the semantics of
-[RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
-Expansion, the multi segment variable **does not** follow RFC 6570 Section
-3.2.3 Reserved Expansion. The reason is that the Reserved Expansion
-does not expand special characters like `?` and `#`, which would lead
-to invalid URLs. As the result, gRPC Transcoding uses a custom encoding
-for multi segment variables.
-
-The path variables **must not** refer to any repeated or mapped field,
-because client libraries are not capable of handling such variable expansion.
-
-The path variables **must not** capture the leading "/" character. The reason
-is that the most common use case "{var}" does not capture the leading "/"
-character. For consistency, all path variables must share the same behavior.
-
-Repeated message fields must not be mapped to URL query parameters, because
-no client library can support such complicated mapping.
-
-If an API needs to use a JSON array for request or response body, it can map
-the request or response body to a repeated field. However, some gRPC
-Transcoding implementations may not support this feature.
+### GetMemberAuthorizationStatusRequest
+Request to fetch member status in Trust Registry for a specific credential schema.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| selector | [string](/reference/proto#string) | Selects a method to which this rule applies.
+| did_uri | [string](/reference/proto#string) | DID URI of member |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
 
-Refer to [selector][google.api.DocumentationRule.selector] for syntax details. |
-| get | [string](/reference/proto#string) | Maps to HTTP GET. Used for listing and getting information about resources. |
-| put | [string](/reference/proto#string) | Maps to HTTP PUT. Used for replacing a resource. |
-| post | [string](/reference/proto#string) | Maps to HTTP POST. Used for creating a resource or performing an action. |
-| delete | [string](/reference/proto#string) | Maps to HTTP DELETE. Used for deleting a resource. |
-| patch | [string](/reference/proto#string) | Maps to HTTP PATCH. Used for updating a resource. |
-| custom | [CustomHttpPattern](/reference/proto#google-api-CustomHttpPattern) | The custom pattern is used for specifying an HTTP method that is not included in the `pattern` field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful for services that provide content to Web (HTML) clients. |
-| body | [string](/reference/proto#string) | The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body.
 
-NOTE: the referred field must be present at the top-level of the request message type. |
-| response_body | [string](/reference/proto#string) | Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body.
 
-NOTE: The referred field must be present at the top-level of the response message type. |
-| additional_bindings | [HttpRule](/reference/proto#google-api-HttpRule)[] | Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep). |
+
+
+
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
+
+### GetMemberAuthorizationStatusResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberRequest"></a>
+
+### GetMemberRequest
+Request to get a member of the Trust Registry
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to get |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
+| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberResponse"></a>
+
+### GetMemberResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
+
+### ListAuthorizedMembersRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
+
+### ListAuthorizedMembersResponse
+Response to `ListAuthorizedMembersRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
+| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
+
+### RegisterMemberRequest
+Request to register a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to register |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
+| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
+| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
+| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
+
+### RegisterMemberResponse
+Response to `RegisterMemberRequest`
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
+
+### UnregisterMemberRequest
+Request to unregister a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+The URI of the credential schema must be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
+| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
+
+### UnregisterMemberResponse
+Response to `UnregisterMemberRequest`
 
 
 
@@ -2054,31 +2994,22 @@ NOTE: The referred field must be present at the top-level of the response messag
 
  <!-- end messages -->
 
+
+<a name="services-trustregistry-v1-RegistrationStatus"></a>
+
+### RegistrationStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CURRENT | 0 | Member is currently authorized, as of the time of the query |
+| EXPIRED | 1 | Member's authorization has expired |
+| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
+| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
+| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
+
+
  <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_google_api_annotations-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/google/api/annotations.proto
-
-
- <!-- end services -->
-
- <!-- end messages -->
-
- <!-- end enums -->
-
-
-<a name="services_google_api_annotations-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| http | HttpRule | .google.protobuf.MethodOptions | 72295728 | See `HttpRule`. |
 
  <!-- end HasExtensions -->
 
@@ -2728,973 +3659,6 @@ Response to `UpdateItemRequest`
 
 
 
-<a name="services_provider_v1_access-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/access-management.proto
-
-
-
-<a name="services-provider-v1-AccessManagement"></a>
-
-### Service - AccessManagement
-Access Management service provides methods to manage access to ecosystem resources
-such by assigning roles and permissions to wallet accounts
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
-| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
-| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
-| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
-
-### AddRoleAssignmentRequest
-Role management
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to assign |
-| email | [string](/reference/proto#string) | Email address of account to assign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to assign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
-
-### AddRoleAssignmentResponse
-
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesRequest"></a>
-
-### ListAvailableRolesRequest
-Request to fetch the available roles in the current ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-ListAvailableRolesResponse"></a>
-
-### ListAvailableRolesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
-
-### ListRoleAssignmentsRequest
-Request to fetch the list of roles assigned to the current account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to list roles. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to list roles. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to list roles. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
-
-### ListRoleAssignmentsResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| roles | [string](/reference/proto#string)[] | List of roles |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
-
-### RemoveRoleAssignmentRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| role | [string](/reference/proto#string) | Role to unassign |
-| email | [string](/reference/proto#string) | Email address of account to unassign role. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to unassign role. Mutually exclusive with `email` and `walletId`. |
-
-
-
-
-
-
-<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
-
-### RemoveRoleAssignmentResponse
-
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_provider_v1_provider-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/provider/v1/provider.proto
-
-
-
-<a name="services-provider-v1-Provider"></a>
-
-### Service - Provider
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
-| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
-| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-provider-v1-CreateEcosystemRequest"></a>
-
-### CreateEcosystemRequest
-Request to create an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
-| description | [string](/reference/proto#string) | Ecosystem description |
-| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
-| domain | [string](/reference/proto#string) | New domain URL |
-
-
-
-
-
-
-<a name="services-provider-v1-CreateEcosystemResponse"></a>
-
-### CreateEcosystemResponse
-Response to `CreateEcosystemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
-| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. |
-
-
-
-
-
-
-<a name="services-provider-v1-Ecosystem"></a>
-
-### Ecosystem
-Details of an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | URN of the ecosystem |
-| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
-| description | [string](/reference/proto#string) | Ecosystem description |
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoRequest"></a>
-
-### EcosystemInfoRequest
-Request to fetch information about an ecosystem
-
-
-
-
-
-
-<a name="services-provider-v1-EcosystemInfoResponse"></a>
-
-### EcosystemInfoResponse
-Response to `InfoRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyRequest"></a>
-
-### GetOberonKeyRequest
-Request to fetch the Trinsic public key used
-to verify authentication token validity
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyResponse"></a>
-
-### GetOberonKeyResponse
-Response to `GetOberonKeyRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64-url encoded string |
-
-
-
-
-
-
-<a name="services-provider-v1-IndyOptions"></a>
-
-### IndyOptions
-Options for creation of DID on the SOV network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IndyOptions.IndyNetwork](/reference/proto#services-provider-v1-IndyOptions-IndyNetwork) | SOV network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-IonOptions"></a>
-
-### IonOptions
-Options for creation of DID on the ION network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
-
-### SearchWalletConfigurationResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
-
-
-
-
-
-
-<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
-
-### SearchWalletConfigurationsRequest
-Search for issuers/holders/verifiers
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM c WHERE [**queryFilter**]` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidRequest"></a>
-
-### UpgradeDidRequest
-Request to upgrade a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId` and `didUri`. |
-| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email` and `didUri`. |
-| did_uri | [string](/reference/proto#string) | DID URI of the account to upgrade. Mutually exclusive with `email` and `walletId`. |
-| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
-| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
-| indy_options | [IndyOptions](/reference/proto#services-provider-v1-IndyOptions) | Configuration for creation of DID on INDY network |
-
-
-
-
-
-
-<a name="services-provider-v1-UpgradeDidResponse"></a>
-
-### UpgradeDidResponse
-Response to `UpgradeDIDRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) | New DID of wallet |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletConfiguration"></a>
-
-### WalletConfiguration
-Strongly typed information about wallet configurations
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name/description of the wallet |
-| email | [string](/reference/proto#string) | **Deprecated.** Deprecated and will be removed on August 1, 2023 -- use external_identities. This field is set to the first email address present in `external_identities`, if any. |
-| sms | [string](/reference/proto#string) | **Deprecated.** Deprecated -- use external_identities |
-| wallet_id | [string](/reference/proto#string) |  |
-| public_did | [string](/reference/proto#string) | The DID of the wallet |
-| config_type | [string](/reference/proto#string) |  |
-| auth_tokens | [services.account.v1.WalletAuthToken](/reference/proto#services-account-v1-WalletAuthToken)[] | List of active authentication tokens for this wallet. This list does not contain the issued token, only metadata such as ID, description, and creation date. |
-| external_identity_ids | [string](/reference/proto#string)[] | **Deprecated.** List of external identity IDs (email addresses, phone numbers, etc.) associated with this wallet. This is deprecated; use `external_identities` instead. |
-| ecosystem_id | [string](/reference/proto#string) | Ecosystem in which this wallet is contained. |
-| description | [string](/reference/proto#string) |  |
-| external_identities | [WalletExternalIdentity](/reference/proto#services-provider-v1-WalletExternalIdentity)[] | List of external identities associated with this wallet. |
-
-
-
-
-
-
-<a name="services-provider-v1-WalletExternalIdentity"></a>
-
-### WalletExternalIdentity
-An external identity (email address, phone number, etc.) associated with a wallet for authentication purposes.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| provider | [IdentityProvider](/reference/proto#services-provider-v1-IdentityProvider) | The type of this identity (whether this identity is an email address, phone number, etc.) |
-| id | [string](/reference/proto#string) | The actual email address/phone number/etc. for this identity |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-provider-v1-IdentityProvider"></a>
-
-### IdentityProvider
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Unknown | 0 | Identity provider is unknown |
-| Email | 1 | Identity provider is email |
-| Phone | 2 | Identity provider is phone |
-| Passkey | 3 | Identity provider is passkey (WebAuthn) -- for Trinsic internal use only |
-| TrinsicAuthenticator | 4 | Identity provider is passkey using Trinsic Authenticator for mobile phones |
-
-
-
-<a name="services-provider-v1-IndyOptions-IndyNetwork"></a>
-
-### IndyOptions.IndyNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Danube | 0 |  |
-| SovrinBuilder | 1 |  |
-| SovrinStaging | 2 |  |
-| Sovrin | 3 |  |
-| IdUnionTest | 4 |  |
-| IdUnion | 5 |  |
-| IndicioTest | 6 |  |
-| IndicioDemo | 7 |  |
-| Indicio | 8 |  |
-
-
-
-<a name="services-provider-v1-IonOptions-IonNetwork"></a>
-
-### IonOptions.IonNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| TestNet | 0 |  |
-| MainNet | 1 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_options_field-options-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/options/field-options.proto
-
-
- <!-- end services -->
-
-
-<a name="services-options-AnnotationOption"></a>
-
-### AnnotationOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| active | [bool](/reference/proto#bool) | Is this annotation active |
-| message | [string](/reference/proto#string) | Custom annotation message to provide |
-
-
-
-
-
-
-<a name="services-options-SdkTemplateOption"></a>
-
-### SdkTemplateOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
-| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
-| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
-| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
-| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
-| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_file-management_v1_file-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/file-management/v1/file-management.proto
-
-
-
-<a name="services-filemanagement-v1-FileManagement"></a>
-
-### Service - FileManagement
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
-| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
-| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
-| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
-| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
-
- <!-- end services -->
-
-
-<a name="services-filemanagement-v1-DeleteFileRequest"></a>
-
-### DeleteFileRequest
-Request to delete a file from Trinsic's CDN by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to delete |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-DeleteFileResponse"></a>
-
-### DeleteFileResponse
-Response to `DeleteFileRequest`. Empty payload.
-
-
-
-
-
-
-<a name="services-filemanagement-v1-File"></a>
-
-### File
-Contains information about a file stored in Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
-| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
-| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
-| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
-| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
-| url | [string](/reference/proto#string) | CDN URL of file |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileRequest"></a>
-
-### GetFileRequest
-Request to fetch information about a stored file
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to fetch |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileResponse"></a>
-
-### GetFileResponse
-Response to `GetFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
-
-### GetStorageStatsRequest
-Request to get statistics about files uploaded by this account
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
-
-### GetStorageStatsResponse
-Response to `GetStorageStatsRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesRequest"></a>
-
-### ListFilesRequest
-Request to list files
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesResponse"></a>
-
-### ListFilesResponse
-Response to `ListFilesRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-StorageStats"></a>
-
-### StorageStats
-Represents aggregate statistics of all files uploaded by a single issuer
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
-| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileRequest"></a>
-
-### UploadFileRequest
-Request to upload a file to Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| contents | [bytes](/reference/proto#bytes) | Raw content of file |
-| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileResponse"></a>
-
-### UploadFileResponse
-Response to `UploadFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_trust-registry_v1_trust-registry-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/trust-registry/v1/trust-registry.proto
-
-
-
-<a name="services-trustregistry-v1-TrustRegistry"></a>
-
-### Service - TrustRegistry
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
-| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
-| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
-| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
-| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
-
- <!-- end services -->
-
-
-<a name="services-trustregistry-v1-AuthorizedMember"></a>
-
-### AuthorizedMember
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) |  |
-| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
-
-### AuthorizedMemberSchema
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| schema_uri | [string](/reference/proto#string) |  |
-| status | [string](/reference/proto#string) |  |
-| status_details | [string](/reference/proto#string) |  |
-| valid_from | [uint64](/reference/proto#uint64) |  |
-| valid_until | [uint64](/reference/proto#uint64) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
-
-### GetMemberAuthorizationStatusRequest
-Request to fetch member status in Trust Registry for a specific credential schema.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
-
-### GetMemberAuthorizationStatusResponse
-Response to `GetMemberAuthorizationStatusRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMemberRequest"></a>
-
-### GetMemberRequest
-Request to get a member of the Trust Registry
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to get |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
-| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMemberResponse"></a>
-
-### GetMemberResponse
-Response to `GetMemberAuthorizationStatusRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
-
-### ListAuthorizedMembersRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
-
-### ListAuthorizedMembersResponse
-Response to `ListAuthorizedMembersRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
-| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
-
-### RegisterMemberRequest
-Request to register a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to register |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
-| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
-| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
-| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
-
-### RegisterMemberResponse
-Response to `RegisterMemberRequest`
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
-
-### UnregisterMemberRequest
-Request to unregister a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-The URI of the credential schema must be specified.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
-| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
-
-### UnregisterMemberResponse
-Response to `UnregisterMemberRequest`
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-trustregistry-v1-RegistrationStatus"></a>
-
-### RegistrationStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| CURRENT | 0 | Member is currently authorized, as of the time of the query |
-| EXPIRED | 1 | Member's authorization has expired |
-| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
-| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
-| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_common_v1_common-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -3780,6 +3744,42 @@ https://docs.godiddy.com/en/supported-methods
 | ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
 | INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
 
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="sdk_options_v1_options-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## sdk/options/v1/options.proto
+
+
+ <!-- end services -->
+
+
+<a name="sdk-options-v1-TrinsicOptions"></a>
+
+### TrinsicOptions
+Configuration for Trinsic SDK Services
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+
+Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
+
+
+
+
+
+ <!-- end messages -->
 
  <!-- end enums -->
 

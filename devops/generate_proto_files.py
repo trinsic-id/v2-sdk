@@ -187,6 +187,7 @@ def update_golang():
         'account "services/account/v1/account"': 'account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"',
         'common "services/common/v1/common"': 'common "github.com/trinsic-id/sdk/go/proto/services/common/v1/common"',
         'provider "services/provider/v1/provider"': 'provider "github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"',
+        'wallet "services/universalwallet/v1/wallet"': 'wallet "github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"',
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)

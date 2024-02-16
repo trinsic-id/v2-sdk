@@ -8,11 +8,11 @@ package connect
 
 import (
 	common "github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
+	wallet "github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	wallet "services/universalwallet/v1/wallet"
 	sync "sync"
 )
 
