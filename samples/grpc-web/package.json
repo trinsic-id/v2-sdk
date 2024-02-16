@@ -7,7 +7,7 @@
         "test:node": "jest --config ./jest.config.cjs --no-cache"
     },
     "dependencies": {
-        "@trinsic/trinsic": "1.11.0"
+        "@trinsic/trinsic": "1.13.1-rc2"
     },
     "devDependencies": {
         "@types/jasmine": "4.0.3",
