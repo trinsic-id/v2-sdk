@@ -2279,20 +2279,7 @@
 <li>Run the following command to install the go SDK package
 <div class="highlight"><pre><span></span><code>go<span class="w"> </span>install<span class="w"> </span>github.com/trinsic-id/sdk/go@latest
 </code></pre></div></li>
-<li>
-<p>Test the installation by running the following go code:</p>
-<div class="highlight"><pre><span></span><code><span class="nx">trinsic</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">NewTrinsic</span><span class="p">()</span>
-<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Account service not created&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginAnonymous</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
-<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Sign in failed!&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profile</span><span class="p">)</span>
-</code></pre></div>
-</li>
+<li>Test the installation by running the following go code:</li>
 </ol>
 
 
