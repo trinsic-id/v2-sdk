@@ -63,8 +63,8 @@ jobs:
         if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         name: "Install packages"
         shell: pwsh
-        working-directory: ./sdk/samples/grpc-web
+        working-directory: ./sdk/web
       - run: npm run test:browser -- --trinsic_environment="${{ inputs.environment }}"
         name: "Run grpc-web tests"
         shell: pwsh
-        working-directory: ./sdk/samples/grpc-web
+        working-directory: ./sdk/web
