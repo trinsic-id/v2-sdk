@@ -50,15 +50,15 @@ jobs:
       - uses: actions/cache@v3
         id: npm-cache
         with:
-          path: './sdk/samples/grpc-web/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('./sdk/samples/grpc-web/package.lock') }}
+          path: './sdk/web/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('./sdk/web/package.lock') }}
           restore-keys: ${{ runner.os }}-modules-
       - uses: actions/setup-node@v3
         name: Setup Node v18
         with:
           node-version: 18
           cache: 'npm'
-          cache-dependency-path: ./sdk/samples/grpc-web/package-lock.json
+          cache-dependency-path: ./sdk/web/package-lock.json
       - run: npm ci
         if: ${{ steps.npm-cache.outputs.cache-hit != 'true' }}
         name: "Install packages"
