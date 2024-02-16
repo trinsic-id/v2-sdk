@@ -7,7 +7,9 @@ export function getTestServerOptions(): TrinsicOptions {
         testEnv = __karma__.config.trinsic_environment.toLowerCase();
     } catch (e) {
         // @ts-ignore
-        testEnv = process.env.trinsic_environment;
+        if (typeof process !== "undefined" && process.env.trinsic_environment) {
+            testEnv = process.env.trinsic_environment;
+        }
     }
     testEnv ??= "dev"
     let serverEndpoint = "staging-internal.trinsic.cloud";
