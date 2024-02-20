@@ -1285,8 +1285,8 @@ export const TrustRegistryDefinition = {
         _unknownFields: {
           578365826: [
             new Uint8Array([
-              48,
-              18,
+              51,
+              34,
               46,
               47,
               118,
@@ -1334,6 +1334,9 @@ export const TrustRegistryDefinition = {
               116,
               117,
               115,
+              58,
+              1,
+              42,
             ]),
           ],
         },
@@ -1350,8 +1353,8 @@ export const TrustRegistryDefinition = {
         _unknownFields: {
           578365826: [
             new Uint8Array([
-              41,
-              18,
+              44,
+              34,
               39,
               47,
               118,
@@ -1392,6 +1395,9 @@ export const TrustRegistryDefinition = {
               101,
               114,
               115,
+              58,
+              1,
+              42,
             ]),
           ],
         },
@@ -1408,8 +1414,8 @@ export const TrustRegistryDefinition = {
         _unknownFields: {
           578365826: [
             new Uint8Array([
-              29,
-              18,
+              32,
+              34,
               27,
               47,
               118,
@@ -1438,6 +1444,9 @@ export const TrustRegistryDefinition = {
               98,
               101,
               114,
+              58,
+              1,
+              42,
             ]),
           ],
         },
