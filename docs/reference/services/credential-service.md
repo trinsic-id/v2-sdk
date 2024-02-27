@@ -92,7 +92,8 @@ The purpose of the "Create Offer" endpoint is to initiate interactive issuance a
 
 By utilizing the "Create Offer" endpoint, the issuing party can initiate a request for the user's consent to issue a verifiable credential on their behalf. This interactive process ensures that the user actively participates in the credential issuance and has the opportunity to review and provide their consent before the credential is issued.
 
-Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued credential will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder.
+Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued VC will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder. When {{ field_ref("CreateCredentialOfferRequest", "holder_binding") }} is set to true, upon acceptance of the credential offer, the resulting VC will have `credentialSubject.id` set to the holder's wallet DID. Otherwise, it defaults to a static value `urn:vc:subject:0`. During proof creation, if the VC includes a holder DID within the `credentialSubject` field, the resulting proof will also include a _proof of ownership_ associated with the holder DID. This serves to authenticate to the verifier that the presenter of the proof indeed possesses the DID designated by the issuer within the `credentialSubject` field of the credential.
+
 
 {{ proto_sample_start() }}
     === "TypeScript"
