@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9+insiders-4.52.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11+insiders-4.53.0">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ca286e8c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.458d28d0.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2619,7 +2619,7 @@ Here's an example of a VC with extended issuer information:</p>
 <h2 id="create-credential-offer">Create Credential Offer<a class="headerlink" href="#create-credential-offer" title="Permanent link">&para;</a></h2>
 <p>The purpose of the "Create Offer" endpoint is to initiate interactive issuance and facilitate the issuance of a verifiable credential. This endpoint serves as the starting point for the interactive issuance process, allowing the issuing party to generate an offer to issue a credential to a specific user or entity.</p>
 <p>By utilizing the "Create Offer" endpoint, the issuing party can initiate a request for the user's consent to issue a verifiable credential on their behalf. This interactive process ensures that the user actively participates in the credential issuance and has the opportunity to review and provide their consent before the credential is issued.</p>
-<p>Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued credential will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder.</p>
+<p>Furthermore, the "Create Offer" endpoint enables the issuing party to define and configure the holder binding properties of the credential. This means that the issued VC will be bound to the intended holder, making it non-transferable and restricted for use solely by the authorized holder. When <code class='proto-field-ref'><a onclick="openFieldRef(this, 'CreateCredentialOfferRequest', 'holder_binding')">holder_binding</a></code> is set to true, upon acceptance of the credential offer, the resulting VC will have <code>credentialSubject.id</code> set to the holder's wallet DID. Otherwise, it defaults to a static value <code>urn:vc:subject:0</code>. During proof creation, if the VC includes a holder DID within the <code>credentialSubject</code> field, the resulting proof will also include a <em>proof of ownership</em> associated with the holder DID. This serves to authenticate to the verifier that the presenter of the proof indeed possesses the DID designated by the issuer within the <code>credentialSubject</code> field of the credential.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -3323,7 +3323,7 @@ trinsic<span class="w"> </span>vc<span class="w"> </span>issuer<span class="w"> 
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.1e90e0fb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.0e2aa882.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.82b033e4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
