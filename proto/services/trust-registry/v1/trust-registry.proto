@@ -158,21 +158,24 @@ service TrustRegistry {
   // Fetch the status of a member for a given credential schema in a trust registry
   rpc GetMemberAuthorizationStatus(GetMemberAuthorizationStatusRequest) returns (GetMemberAuthorizationStatusResponse) {
     option (google.api.http) = {
-      get: "/v1/trustregistry/getmemberauthorizationstatus"
+      post: "/v1/trustregistry/getmemberauthorizationstatus"
+      body: "*"
     };
   }
 
   // Fetch the ecosystem's authorized issuers and the respective templates against which it can issue
   rpc ListAuthorizedMembers(ListAuthorizedMembersRequest) returns (ListAuthorizedMembersResponse) {
     option (google.api.http) = {
-      get: "/v1/trustregistry/listauthorizedmembers"
+      post: "/v1/trustregistry/listauthorizedmembers"
+      body: "*"
     };
   }
 
   // Get member for a given did in a trust registry
   rpc GetMember(GetMemberRequest) returns (GetMemberResponse) {
     option (google.api.http) = {
-      get: "/v1/trustregistry/getmember"
+      post: "/v1/trustregistry/getmember"
+      body: "*"
     };
   }
 }
