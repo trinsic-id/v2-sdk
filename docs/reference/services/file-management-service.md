@@ -38,7 +38,7 @@ The `hl` parameter is expected to be included with the URL whenever it is issued
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [UploadFile](../../../web/test/FileManagementService.test.ts) inside_block:uploadFile
+        [UploadFile](../../../web/test/FileManagementService.test._ts) inside_block:uploadFile
         ```
         <!--/codeinclude-->
 
@@ -84,7 +84,7 @@ Only files uploaded by the calling account will be returned.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [GetFile](../../../web/test/FileManagementService.test.ts) inside_block:getFile
+        [GetFile](../../../web/test/FileManagementService.test._ts) inside_block:getFile
         ```
         <!--/codeinclude-->
 
@@ -130,7 +130,7 @@ Only files uploaded by the calling account may be deleted.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [DeleteFile](../../../web/test/FileManagementService.test.ts) inside_block:deleteFile
+        [DeleteFile](../../../web/test/FileManagementService.test._ts) inside_block:deleteFile
         ```
         <!--/codeinclude-->
 
@@ -174,7 +174,7 @@ Queries the files uploaded by the calling account.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [ListFiles](../../../web/test/FileManagementService.test.ts) inside_block:listFiles
+        [ListFiles](../../../web/test/FileManagementService.test._ts) inside_block:listFiles
         ```
         <!--/codeinclude-->
 
@@ -218,7 +218,7 @@ Returns aggregate statistics regarding the files uploaded by the calling account
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [GetStorageStats](../../../web/test/FileManagementService.test.ts) inside_block:getStorageStats
+        [GetStorageStats](../../../web/test/FileManagementService.test._ts) inside_block:getStorageStats
         ```
         <!--/codeinclude-->
 
