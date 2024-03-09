@@ -18,7 +18,7 @@ export function getTestServerOptions(): TrinsicOptions {
     if (testEnv.startsWith("prod"))
         serverEndpoint = "prod.trinsic.cloud";
 
-    console.log(`Provided environment:${testEnv} -> server endpoint:${serverEndpoint}`);
+    console.debug(`Provided environment:${testEnv} -> server endpoint:${serverEndpoint}`);
 
     return TrinsicOptions.fromPartial({
         serverEndpoint: serverEndpoint,
