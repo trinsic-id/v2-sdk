@@ -42,9 +42,9 @@ describe("WalletService Unit Tests", () => {
         ecosystemId = createResponse.ecosystem!.id!;
         root.authToken = trinsic.provider().options.authToken;
 
-        var response = await trinsic
+        let response = await trinsic
             .wallet()
-            .createWallet({ ecosystemId: ecosystemId });
+            .createWallet({ecosystemId: ecosystemId});
         allison.authToken = response.authToken;
 
         response = await trinsic
