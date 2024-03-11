@@ -17,6 +17,7 @@
         "build:typescript": "npx tsc",
         "test:node": "jest --config .config/jest.config.cjs --no-cache",
         "test:browser": "karma start .config/karma.conf.cjs",
+        "test:grpc-web-tests": "karma start .config/karma.grpc-web.conf.cjs",
         "test": "npm run test:node && npm run test:browser",
         "build-and-test": "npm run build && npx run test"
     },
