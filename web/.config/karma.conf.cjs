@@ -19,6 +19,7 @@ module.exports = async (config) => {
 
         client: {
             clearContext: true, // will show the results in node once all the testcases are loaded
+            args: config.trinsic_environment ? ["--trinsic_environment="+config.trinsic_environment] : [],
         },
 
         reporters: ["kjhtml", "progress", "coverage"],

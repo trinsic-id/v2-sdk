@@ -4,7 +4,14 @@ export function getTestServerOptions(): TrinsicOptions {
     let testEnv: string | undefined;
     try {
         // @ts-ignore
-        testEnv = __karma__.config.trinsic_environment.toLowerCase();
+        const argArr: string[] = __karma__?.config.args;
+        argArr?.forEach((arg: string) => {
+            let [key, value] = arg.split("=");
+            key = key.replace("--", "");
+            if (key === "trinsic_environment") testEnv = value;
+        });
+        // @ts-ignore
+        testEnv = __karma__.config.args.trinsic_environment.toLowerCase();
     } catch (e) {
         // @ts-ignore
         if (typeof process !== "undefined" && process.env.trinsic_environment) {
