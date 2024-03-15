@@ -330,7 +330,7 @@ export class ConnectClient {
 
         const iframe = document.createElement("iframe");
         iframe.className = "h-full w-full bg-transparent";
-        iframe.allow = "camera *; microphone *; display-capture *";
+        iframe.allow = "camera *; microphone *; display-capture *; publickey-credentials-get *; publickey-credentials-create *";
         iframe.src = `${this.baseUrl}/connect/verify?clientToken=${clientToken}`;
 
         modalContainer.append(iframe);
