@@ -64,7 +64,7 @@ jobs:
         name: "Install packages"
         shell: pwsh
         working-directory: ./sdk/web
-      - run: npm run test:grpc-web-tests -- --trinsic_environment="${{ inputs.environment }}"
+      - run: npm run test:browser -- --trinsic_environment="${{ inputs.environment }}"
         name: "Run grpc-web tests"
         shell: pwsh
         working-directory: ./sdk/web
