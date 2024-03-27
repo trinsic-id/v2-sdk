@@ -15,157 +15,157 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'templates.pb.dart' as $5;
+import 'templates.pb.dart' as $2;
 
 export 'templates.pb.dart';
 
 @$pb.GrpcServiceName(
     'services.verifiablecredentials.templates.v1.CredentialTemplates')
 class CredentialTemplatesClient extends $grpc.Client {
-  static final _$create = $grpc.ClientMethod<$5.CreateCredentialTemplateRequest,
-          $5.CreateCredentialTemplateResponse>(
+  static final _$create = $grpc.ClientMethod<$2.CreateCredentialTemplateRequest,
+          $2.CreateCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Create',
-      ($5.CreateCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($2.CreateCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.CreateCredentialTemplateResponse.fromBuffer(value));
-  static final _$get = $grpc.ClientMethod<$5.GetCredentialTemplateRequest,
-          $5.GetCredentialTemplateResponse>(
+          $2.CreateCredentialTemplateResponse.fromBuffer(value));
+  static final _$get = $grpc.ClientMethod<$2.GetCredentialTemplateRequest,
+          $2.GetCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Get',
-      ($5.GetCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($2.GetCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.GetCredentialTemplateResponse.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$5.UpdateCredentialTemplateRequest,
-          $5.UpdateCredentialTemplateResponse>(
+          $2.GetCredentialTemplateResponse.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$2.UpdateCredentialTemplateRequest,
+          $2.UpdateCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Update',
-      ($5.UpdateCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($2.UpdateCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.UpdateCredentialTemplateResponse.fromBuffer(value));
-  static final _$list = $grpc.ClientMethod<$5.ListCredentialTemplatesRequest,
-          $5.ListCredentialTemplatesResponse>(
+          $2.UpdateCredentialTemplateResponse.fromBuffer(value));
+  static final _$list = $grpc.ClientMethod<$2.ListCredentialTemplatesRequest,
+          $2.ListCredentialTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/List',
-      ($5.ListCredentialTemplatesRequest value) => value.writeToBuffer(),
+      ($2.ListCredentialTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.ListCredentialTemplatesResponse.fromBuffer(value));
+          $2.ListCredentialTemplatesResponse.fromBuffer(value));
   static final _$search = $grpc.ClientMethod<
-          $5.SearchCredentialTemplatesRequest,
-          $5.SearchCredentialTemplatesResponse>(
+          $2.SearchCredentialTemplatesRequest,
+          $2.SearchCredentialTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Search',
-      ($5.SearchCredentialTemplatesRequest value) => value.writeToBuffer(),
+      ($2.SearchCredentialTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.SearchCredentialTemplatesResponse.fromBuffer(value));
-  static final _$delete = $grpc.ClientMethod<$5.DeleteCredentialTemplateRequest,
-          $5.DeleteCredentialTemplateResponse>(
+          $2.SearchCredentialTemplatesResponse.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$2.DeleteCredentialTemplateRequest,
+          $2.DeleteCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete',
-      ($5.DeleteCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($2.DeleteCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.DeleteCredentialTemplateResponse.fromBuffer(value));
+          $2.DeleteCredentialTemplateResponse.fromBuffer(value));
   static final _$createVerificationTemplate = $grpc.ClientMethod<
-          $5.CreateVerificationTemplateRequest,
-          $5.CreateVerificationTemplateResponse>(
+          $2.CreateVerificationTemplateRequest,
+          $2.CreateVerificationTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/CreateVerificationTemplate',
-      ($5.CreateVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($2.CreateVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.CreateVerificationTemplateResponse.fromBuffer(value));
+          $2.CreateVerificationTemplateResponse.fromBuffer(value));
   static final _$listVerificationTemplates = $grpc.ClientMethod<
-          $5.ListVerificationTemplatesRequest,
-          $5.ListVerificationTemplatesResponse>(
+          $2.ListVerificationTemplatesRequest,
+          $2.ListVerificationTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/ListVerificationTemplates',
-      ($5.ListVerificationTemplatesRequest value) => value.writeToBuffer(),
+      ($2.ListVerificationTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.ListVerificationTemplatesResponse.fromBuffer(value));
+          $2.ListVerificationTemplatesResponse.fromBuffer(value));
   static final _$getVerificationTemplate = $grpc.ClientMethod<
-          $5.GetVerificationTemplateRequest,
-          $5.GetVerificationTemplateResponse>(
+          $2.GetVerificationTemplateRequest,
+          $2.GetVerificationTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/GetVerificationTemplate',
-      ($5.GetVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($2.GetVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.GetVerificationTemplateResponse.fromBuffer(value));
+          $2.GetVerificationTemplateResponse.fromBuffer(value));
   static final _$updateVerificationTemplate = $grpc.ClientMethod<
-          $5.UpdateVerificationTemplateRequest,
-          $5.UpdateVerificationTemplateResponse>(
+          $2.UpdateVerificationTemplateRequest,
+          $2.UpdateVerificationTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/UpdateVerificationTemplate',
-      ($5.UpdateVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($2.UpdateVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.UpdateVerificationTemplateResponse.fromBuffer(value));
+          $2.UpdateVerificationTemplateResponse.fromBuffer(value));
   static final _$deleteVerificationTemplate = $grpc.ClientMethod<
-          $5.DeleteVerificationTemplateRequest,
-          $5.DeleteVerificationTemplateResponse>(
+          $2.DeleteVerificationTemplateRequest,
+          $2.DeleteVerificationTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/DeleteVerificationTemplate',
-      ($5.DeleteVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($2.DeleteVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.DeleteVerificationTemplateResponse.fromBuffer(value));
+          $2.DeleteVerificationTemplateResponse.fromBuffer(value));
 
   CredentialTemplatesClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$5.CreateCredentialTemplateResponse> create(
-      $5.CreateCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$2.CreateCredentialTemplateResponse> create(
+      $2.CreateCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$create, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetCredentialTemplateResponse> get(
-      $5.GetCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$2.GetCredentialTemplateResponse> get(
+      $2.GetCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.UpdateCredentialTemplateResponse> update(
-      $5.UpdateCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$2.UpdateCredentialTemplateResponse> update(
+      $2.UpdateCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.ListCredentialTemplatesResponse> list(
-      $5.ListCredentialTemplatesRequest request,
+  $grpc.ResponseFuture<$2.ListCredentialTemplatesResponse> list(
+      $2.ListCredentialTemplatesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.SearchCredentialTemplatesResponse> search(
-      $5.SearchCredentialTemplatesRequest request,
+  $grpc.ResponseFuture<$2.SearchCredentialTemplatesResponse> search(
+      $2.SearchCredentialTemplatesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.DeleteCredentialTemplateResponse> delete(
-      $5.DeleteCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$2.DeleteCredentialTemplateResponse> delete(
+      $2.DeleteCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.CreateVerificationTemplateResponse>
-      createVerificationTemplate($5.CreateVerificationTemplateRequest request,
+  $grpc.ResponseFuture<$2.CreateVerificationTemplateResponse>
+      createVerificationTemplate($2.CreateVerificationTemplateRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createVerificationTemplate, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$5.ListVerificationTemplatesResponse>
-      listVerificationTemplates($5.ListVerificationTemplatesRequest request,
+  $grpc.ResponseFuture<$2.ListVerificationTemplatesResponse>
+      listVerificationTemplates($2.ListVerificationTemplatesRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listVerificationTemplates, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetVerificationTemplateResponse>
-      getVerificationTemplate($5.GetVerificationTemplateRequest request,
+  $grpc.ResponseFuture<$2.GetVerificationTemplateResponse>
+      getVerificationTemplate($2.GetVerificationTemplateRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getVerificationTemplate, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$5.UpdateVerificationTemplateResponse>
-      updateVerificationTemplate($5.UpdateVerificationTemplateRequest request,
+  $grpc.ResponseFuture<$2.UpdateVerificationTemplateResponse>
+      updateVerificationTemplate($2.UpdateVerificationTemplateRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateVerificationTemplate, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$5.DeleteVerificationTemplateResponse>
-      deleteVerificationTemplate($5.DeleteVerificationTemplateRequest request,
+  $grpc.ResponseFuture<$2.DeleteVerificationTemplateResponse>
+      deleteVerificationTemplate($2.DeleteVerificationTemplateRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteVerificationTemplate, request,
         options: options);
@@ -179,199 +179,199 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
       'services.verifiablecredentials.templates.v1.CredentialTemplates';
 
   CredentialTemplatesServiceBase() {
-    $addMethod($grpc.ServiceMethod<$5.CreateCredentialTemplateRequest,
-            $5.CreateCredentialTemplateResponse>(
+    $addMethod($grpc.ServiceMethod<$2.CreateCredentialTemplateRequest,
+            $2.CreateCredentialTemplateResponse>(
         'Create',
         create_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.CreateCredentialTemplateRequest.fromBuffer(value),
-        ($5.CreateCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.GetCredentialTemplateRequest,
-            $5.GetCredentialTemplateResponse>(
+            $2.CreateCredentialTemplateRequest.fromBuffer(value),
+        ($2.CreateCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.GetCredentialTemplateRequest,
+            $2.GetCredentialTemplateResponse>(
         'Get',
         get_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.GetCredentialTemplateRequest.fromBuffer(value),
-        ($5.GetCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.UpdateCredentialTemplateRequest,
-            $5.UpdateCredentialTemplateResponse>(
+            $2.GetCredentialTemplateRequest.fromBuffer(value),
+        ($2.GetCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.UpdateCredentialTemplateRequest,
+            $2.UpdateCredentialTemplateResponse>(
         'Update',
         update_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.UpdateCredentialTemplateRequest.fromBuffer(value),
-        ($5.UpdateCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.ListCredentialTemplatesRequest,
-            $5.ListCredentialTemplatesResponse>(
+            $2.UpdateCredentialTemplateRequest.fromBuffer(value),
+        ($2.UpdateCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ListCredentialTemplatesRequest,
+            $2.ListCredentialTemplatesResponse>(
         'List',
         list_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.ListCredentialTemplatesRequest.fromBuffer(value),
-        ($5.ListCredentialTemplatesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.SearchCredentialTemplatesRequest,
-            $5.SearchCredentialTemplatesResponse>(
+            $2.ListCredentialTemplatesRequest.fromBuffer(value),
+        ($2.ListCredentialTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.SearchCredentialTemplatesRequest,
+            $2.SearchCredentialTemplatesResponse>(
         'Search',
         search_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.SearchCredentialTemplatesRequest.fromBuffer(value),
-        ($5.SearchCredentialTemplatesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.DeleteCredentialTemplateRequest,
-            $5.DeleteCredentialTemplateResponse>(
+            $2.SearchCredentialTemplatesRequest.fromBuffer(value),
+        ($2.SearchCredentialTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.DeleteCredentialTemplateRequest,
+            $2.DeleteCredentialTemplateResponse>(
         'Delete',
         delete_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.DeleteCredentialTemplateRequest.fromBuffer(value),
-        ($5.DeleteCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.CreateVerificationTemplateRequest,
-            $5.CreateVerificationTemplateResponse>(
+            $2.DeleteCredentialTemplateRequest.fromBuffer(value),
+        ($2.DeleteCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.CreateVerificationTemplateRequest,
+            $2.CreateVerificationTemplateResponse>(
         'CreateVerificationTemplate',
         createVerificationTemplate_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.CreateVerificationTemplateRequest.fromBuffer(value),
-        ($5.CreateVerificationTemplateResponse value) =>
+            $2.CreateVerificationTemplateRequest.fromBuffer(value),
+        ($2.CreateVerificationTemplateResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.ListVerificationTemplatesRequest,
-            $5.ListVerificationTemplatesResponse>(
+    $addMethod($grpc.ServiceMethod<$2.ListVerificationTemplatesRequest,
+            $2.ListVerificationTemplatesResponse>(
         'ListVerificationTemplates',
         listVerificationTemplates_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.ListVerificationTemplatesRequest.fromBuffer(value),
-        ($5.ListVerificationTemplatesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.GetVerificationTemplateRequest,
-            $5.GetVerificationTemplateResponse>(
+            $2.ListVerificationTemplatesRequest.fromBuffer(value),
+        ($2.ListVerificationTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.GetVerificationTemplateRequest,
+            $2.GetVerificationTemplateResponse>(
         'GetVerificationTemplate',
         getVerificationTemplate_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.GetVerificationTemplateRequest.fromBuffer(value),
-        ($5.GetVerificationTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.UpdateVerificationTemplateRequest,
-            $5.UpdateVerificationTemplateResponse>(
+            $2.GetVerificationTemplateRequest.fromBuffer(value),
+        ($2.GetVerificationTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.UpdateVerificationTemplateRequest,
+            $2.UpdateVerificationTemplateResponse>(
         'UpdateVerificationTemplate',
         updateVerificationTemplate_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.UpdateVerificationTemplateRequest.fromBuffer(value),
-        ($5.UpdateVerificationTemplateResponse value) =>
+            $2.UpdateVerificationTemplateRequest.fromBuffer(value),
+        ($2.UpdateVerificationTemplateResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.DeleteVerificationTemplateRequest,
-            $5.DeleteVerificationTemplateResponse>(
+    $addMethod($grpc.ServiceMethod<$2.DeleteVerificationTemplateRequest,
+            $2.DeleteVerificationTemplateResponse>(
         'DeleteVerificationTemplate',
         deleteVerificationTemplate_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.DeleteVerificationTemplateRequest.fromBuffer(value),
-        ($5.DeleteVerificationTemplateResponse value) =>
+            $2.DeleteVerificationTemplateRequest.fromBuffer(value),
+        ($2.DeleteVerificationTemplateResponse value) =>
             value.writeToBuffer()));
   }
 
-  $async.Future<$5.CreateCredentialTemplateResponse> create_Pre(
+  $async.Future<$2.CreateCredentialTemplateResponse> create_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.CreateCredentialTemplateRequest> request) async {
+      $async.Future<$2.CreateCredentialTemplateRequest> request) async {
     return create(call, await request);
   }
 
-  $async.Future<$5.GetCredentialTemplateResponse> get_Pre(
+  $async.Future<$2.GetCredentialTemplateResponse> get_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GetCredentialTemplateRequest> request) async {
+      $async.Future<$2.GetCredentialTemplateRequest> request) async {
     return get(call, await request);
   }
 
-  $async.Future<$5.UpdateCredentialTemplateResponse> update_Pre(
+  $async.Future<$2.UpdateCredentialTemplateResponse> update_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.UpdateCredentialTemplateRequest> request) async {
+      $async.Future<$2.UpdateCredentialTemplateRequest> request) async {
     return update(call, await request);
   }
 
-  $async.Future<$5.ListCredentialTemplatesResponse> list_Pre(
+  $async.Future<$2.ListCredentialTemplatesResponse> list_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.ListCredentialTemplatesRequest> request) async {
+      $async.Future<$2.ListCredentialTemplatesRequest> request) async {
     return list(call, await request);
   }
 
-  $async.Future<$5.SearchCredentialTemplatesResponse> search_Pre(
+  $async.Future<$2.SearchCredentialTemplatesResponse> search_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.SearchCredentialTemplatesRequest> request) async {
+      $async.Future<$2.SearchCredentialTemplatesRequest> request) async {
     return search(call, await request);
   }
 
-  $async.Future<$5.DeleteCredentialTemplateResponse> delete_Pre(
+  $async.Future<$2.DeleteCredentialTemplateResponse> delete_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.DeleteCredentialTemplateRequest> request) async {
+      $async.Future<$2.DeleteCredentialTemplateRequest> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$5.CreateVerificationTemplateResponse>
+  $async.Future<$2.CreateVerificationTemplateResponse>
       createVerificationTemplate_Pre($grpc.ServiceCall call,
-          $async.Future<$5.CreateVerificationTemplateRequest> request) async {
+          $async.Future<$2.CreateVerificationTemplateRequest> request) async {
     return createVerificationTemplate(call, await request);
   }
 
-  $async.Future<$5.ListVerificationTemplatesResponse>
+  $async.Future<$2.ListVerificationTemplatesResponse>
       listVerificationTemplates_Pre($grpc.ServiceCall call,
-          $async.Future<$5.ListVerificationTemplatesRequest> request) async {
+          $async.Future<$2.ListVerificationTemplatesRequest> request) async {
     return listVerificationTemplates(call, await request);
   }
 
-  $async.Future<$5.GetVerificationTemplateResponse> getVerificationTemplate_Pre(
+  $async.Future<$2.GetVerificationTemplateResponse> getVerificationTemplate_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GetVerificationTemplateRequest> request) async {
+      $async.Future<$2.GetVerificationTemplateRequest> request) async {
     return getVerificationTemplate(call, await request);
   }
 
-  $async.Future<$5.UpdateVerificationTemplateResponse>
+  $async.Future<$2.UpdateVerificationTemplateResponse>
       updateVerificationTemplate_Pre($grpc.ServiceCall call,
-          $async.Future<$5.UpdateVerificationTemplateRequest> request) async {
+          $async.Future<$2.UpdateVerificationTemplateRequest> request) async {
     return updateVerificationTemplate(call, await request);
   }
 
-  $async.Future<$5.DeleteVerificationTemplateResponse>
+  $async.Future<$2.DeleteVerificationTemplateResponse>
       deleteVerificationTemplate_Pre($grpc.ServiceCall call,
-          $async.Future<$5.DeleteVerificationTemplateRequest> request) async {
+          $async.Future<$2.DeleteVerificationTemplateRequest> request) async {
     return deleteVerificationTemplate(call, await request);
   }
 
-  $async.Future<$5.CreateCredentialTemplateResponse> create(
-      $grpc.ServiceCall call, $5.CreateCredentialTemplateRequest request);
-  $async.Future<$5.GetCredentialTemplateResponse> get(
-      $grpc.ServiceCall call, $5.GetCredentialTemplateRequest request);
-  $async.Future<$5.UpdateCredentialTemplateResponse> update(
-      $grpc.ServiceCall call, $5.UpdateCredentialTemplateRequest request);
-  $async.Future<$5.ListCredentialTemplatesResponse> list(
-      $grpc.ServiceCall call, $5.ListCredentialTemplatesRequest request);
-  $async.Future<$5.SearchCredentialTemplatesResponse> search(
-      $grpc.ServiceCall call, $5.SearchCredentialTemplatesRequest request);
-  $async.Future<$5.DeleteCredentialTemplateResponse> delete(
-      $grpc.ServiceCall call, $5.DeleteCredentialTemplateRequest request);
-  $async.Future<$5.CreateVerificationTemplateResponse>
+  $async.Future<$2.CreateCredentialTemplateResponse> create(
+      $grpc.ServiceCall call, $2.CreateCredentialTemplateRequest request);
+  $async.Future<$2.GetCredentialTemplateResponse> get(
+      $grpc.ServiceCall call, $2.GetCredentialTemplateRequest request);
+  $async.Future<$2.UpdateCredentialTemplateResponse> update(
+      $grpc.ServiceCall call, $2.UpdateCredentialTemplateRequest request);
+  $async.Future<$2.ListCredentialTemplatesResponse> list(
+      $grpc.ServiceCall call, $2.ListCredentialTemplatesRequest request);
+  $async.Future<$2.SearchCredentialTemplatesResponse> search(
+      $grpc.ServiceCall call, $2.SearchCredentialTemplatesRequest request);
+  $async.Future<$2.DeleteCredentialTemplateResponse> delete(
+      $grpc.ServiceCall call, $2.DeleteCredentialTemplateRequest request);
+  $async.Future<$2.CreateVerificationTemplateResponse>
       createVerificationTemplate(
-          $grpc.ServiceCall call, $5.CreateVerificationTemplateRequest request);
-  $async.Future<$5.ListVerificationTemplatesResponse> listVerificationTemplates(
-      $grpc.ServiceCall call, $5.ListVerificationTemplatesRequest request);
-  $async.Future<$5.GetVerificationTemplateResponse> getVerificationTemplate(
-      $grpc.ServiceCall call, $5.GetVerificationTemplateRequest request);
-  $async.Future<$5.UpdateVerificationTemplateResponse>
+          $grpc.ServiceCall call, $2.CreateVerificationTemplateRequest request);
+  $async.Future<$2.ListVerificationTemplatesResponse> listVerificationTemplates(
+      $grpc.ServiceCall call, $2.ListVerificationTemplatesRequest request);
+  $async.Future<$2.GetVerificationTemplateResponse> getVerificationTemplate(
+      $grpc.ServiceCall call, $2.GetVerificationTemplateRequest request);
+  $async.Future<$2.UpdateVerificationTemplateResponse>
       updateVerificationTemplate(
-          $grpc.ServiceCall call, $5.UpdateVerificationTemplateRequest request);
-  $async.Future<$5.DeleteVerificationTemplateResponse>
+          $grpc.ServiceCall call, $2.UpdateVerificationTemplateRequest request);
+  $async.Future<$2.DeleteVerificationTemplateResponse>
       deleteVerificationTemplate(
-          $grpc.ServiceCall call, $5.DeleteVerificationTemplateRequest request);
+          $grpc.ServiceCall call, $2.DeleteVerificationTemplateRequest request);
 }

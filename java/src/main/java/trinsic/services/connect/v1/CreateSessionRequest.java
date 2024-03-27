@@ -63,6 +63,7 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
             trinsic.services.connect.v1.CreateSessionRequest.Builder.class);
   }
 
+  private int bitField0_;
   public static final int VERIFICATIONS_FIELD_NUMBER = 1;
   private java.util.List<trinsic.services.connect.v1.RequestedVerification> verifications_;
   /**
@@ -234,6 +235,59 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     return map.get(key);
   }
 
+  public static final int DEMO_RP_FIELD_NUMBER = 3;
+  private trinsic.services.connect.v1.DemoRelyingParty demoRp_;
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   *
+   * @return Whether the demoRp field is set.
+   */
+  @java.lang.Override
+  public boolean hasDemoRp() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   *
+   * @return The demoRp.
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.DemoRelyingParty getDemoRp() {
+    return demoRp_ == null
+        ? trinsic.services.connect.v1.DemoRelyingParty.getDefaultInstance()
+        : demoRp_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   */
+  @java.lang.Override
+  public trinsic.services.connect.v1.DemoRelyingPartyOrBuilder getDemoRpOrBuilder() {
+    return demoRp_ == null
+        ? trinsic.services.connect.v1.DemoRelyingParty.getDefaultInstance()
+        : demoRp_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -253,6 +307,9 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     }
     com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
         output, internalGetDebugInformation(), DebugInformationDefaultEntryHolder.defaultEntry, 2);
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeMessage(3, getDemoRp());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -275,6 +332,9 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
               .build();
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, debugInformation__);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getDemoRp());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -293,6 +353,10 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
 
     if (!getVerificationsList().equals(other.getVerificationsList())) return false;
     if (!internalGetDebugInformation().equals(other.internalGetDebugInformation())) return false;
+    if (hasDemoRp() != other.hasDemoRp()) return false;
+    if (hasDemoRp()) {
+      if (!getDemoRp().equals(other.getDemoRp())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -311,6 +375,10 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     if (!internalGetDebugInformation().getMap().isEmpty()) {
       hash = (37 * hash) + DEBUG_INFORMATION_FIELD_NUMBER;
       hash = (53 * hash) + internalGetDebugInformation().hashCode();
+    }
+    if (hasDemoRp()) {
+      hash = (37 * hash) + DEMO_RP_FIELD_NUMBER;
+      hash = (53 * hash) + getDemoRp().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -461,10 +529,20 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
     }
 
     // Construct using trinsic.services.connect.v1.CreateSessionRequest.newBuilder()
-    private Builder() {}
+    private Builder() {
+      maybeForceBuilderInitialization();
+    }
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
+      maybeForceBuilderInitialization();
+    }
+
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        getVerificationsFieldBuilder();
+        getDemoRpFieldBuilder();
+      }
     }
 
     @java.lang.Override
@@ -478,6 +556,12 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
       }
       bitField0_ = (bitField0_ & ~0x00000001);
       internalGetMutableDebugInformation().clear();
+      if (demoRpBuilder_ == null) {
+        demoRp_ = null;
+      } else {
+        demoRpBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -506,6 +590,7 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
       trinsic.services.connect.v1.CreateSessionRequest result =
           new trinsic.services.connect.v1.CreateSessionRequest(this);
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (verificationsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           verifications_ = java.util.Collections.unmodifiableList(verifications_);
@@ -517,6 +602,15 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
       }
       result.debugInformation_ = internalGetDebugInformation();
       result.debugInformation_.makeImmutable();
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        if (demoRpBuilder_ == null) {
+          result.demoRp_ = demoRp_;
+        } else {
+          result.demoRp_ = demoRpBuilder_.build();
+        }
+        to_bitField0_ |= 0x00000001;
+      }
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -595,6 +689,9 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         }
       }
       internalGetMutableDebugInformation().mergeFrom(other.internalGetDebugInformation());
+      if (other.hasDemoRp()) {
+        mergeDemoRp(other.getDemoRp());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -647,6 +744,12 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
                     .put(debugInformation__.getKey(), debugInformation__.getValue());
                 break;
               } // case 18
+            case 26:
+              {
+                input.readMessage(getDemoRpFieldBuilder().getBuilder(), extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1198,6 +1301,210 @@ public final class CreateSessionRequest extends com.google.protobuf.GeneratedMes
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableDebugInformation().getMutableMap().putAll(values);
       return this;
+    }
+
+    private trinsic.services.connect.v1.DemoRelyingParty demoRp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.DemoRelyingParty,
+            trinsic.services.connect.v1.DemoRelyingParty.Builder,
+            trinsic.services.connect.v1.DemoRelyingPartyOrBuilder>
+        demoRpBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     *
+     * @return Whether the demoRp field is set.
+     */
+    public boolean hasDemoRp() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     *
+     * @return The demoRp.
+     */
+    public trinsic.services.connect.v1.DemoRelyingParty getDemoRp() {
+      if (demoRpBuilder_ == null) {
+        return demoRp_ == null
+            ? trinsic.services.connect.v1.DemoRelyingParty.getDefaultInstance()
+            : demoRp_;
+      } else {
+        return demoRpBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public Builder setDemoRp(trinsic.services.connect.v1.DemoRelyingParty value) {
+      if (demoRpBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        demoRp_ = value;
+        onChanged();
+      } else {
+        demoRpBuilder_.setMessage(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public Builder setDemoRp(trinsic.services.connect.v1.DemoRelyingParty.Builder builderForValue) {
+      if (demoRpBuilder_ == null) {
+        demoRp_ = builderForValue.build();
+        onChanged();
+      } else {
+        demoRpBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public Builder mergeDemoRp(trinsic.services.connect.v1.DemoRelyingParty value) {
+      if (demoRpBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) != 0)
+            && demoRp_ != null
+            && demoRp_ != trinsic.services.connect.v1.DemoRelyingParty.getDefaultInstance()) {
+          demoRp_ =
+              trinsic.services.connect.v1.DemoRelyingParty.newBuilder(demoRp_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          demoRp_ = value;
+        }
+        onChanged();
+      } else {
+        demoRpBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000004;
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public Builder clearDemoRp() {
+      if (demoRpBuilder_ == null) {
+        demoRp_ = null;
+        onChanged();
+      } else {
+        demoRpBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000004);
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public trinsic.services.connect.v1.DemoRelyingParty.Builder getDemoRpBuilder() {
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return getDemoRpFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    public trinsic.services.connect.v1.DemoRelyingPartyOrBuilder getDemoRpOrBuilder() {
+      if (demoRpBuilder_ != null) {
+        return demoRpBuilder_.getMessageOrBuilder();
+      } else {
+        return demoRp_ == null
+            ? trinsic.services.connect.v1.DemoRelyingParty.getDefaultInstance()
+            : demoRp_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Information about the Relying Party used for demo purposes.
+     * This is only to be used if the demo flag is set to true in the debug information.
+     * </pre>
+     *
+     * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.connect.v1.DemoRelyingParty,
+            trinsic.services.connect.v1.DemoRelyingParty.Builder,
+            trinsic.services.connect.v1.DemoRelyingPartyOrBuilder>
+        getDemoRpFieldBuilder() {
+      if (demoRpBuilder_ == null) {
+        demoRpBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.connect.v1.DemoRelyingParty,
+                trinsic.services.connect.v1.DemoRelyingParty.Builder,
+                trinsic.services.connect.v1.DemoRelyingPartyOrBuilder>(
+                getDemoRp(), getParentForChildren(), isClean());
+        demoRp_ = null;
+      }
+      return demoRpBuilder_;
     }
 
     @java.lang.Override

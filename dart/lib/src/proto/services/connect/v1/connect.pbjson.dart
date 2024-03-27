@@ -374,6 +374,22 @@ final $typed_data.Uint8List normalizedGovernmentIdDataDescriptor = $convert.base
     'ZXJCDQoLX2dpdmVuX25hbWVCDgoMX2ZhbWlseV9uYW1lQgoKCF9hZGRyZXNzQhAKDl9kYXRlX2'
     '9mX2JpcnRoQgoKCF9jb3VudHJ5Qg0KC19pc3N1ZV9kYXRlQhIKEF9leHBpcmF0aW9uX2RhdGU=');
 
+@$core.Deprecated('Use demoRelyingPartyDescriptor instead')
+const DemoRelyingParty$json = {
+  '1': 'DemoRelyingParty',
+  '2': [
+    {'1': 'display_name', '3': 1, '4': 1, '5': 9, '10': 'displayName'},
+    {'1': 'logo_url', '3': 2, '4': 1, '5': 9, '10': 'logoUrl'},
+    {'1': 'primary_color', '3': 3, '4': 1, '5': 9, '10': 'primaryColor'},
+  ],
+};
+
+/// Descriptor for `DemoRelyingParty`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List demoRelyingPartyDescriptor = $convert.base64Decode(
+    'ChBEZW1vUmVseWluZ1BhcnR5EiEKDGRpc3BsYXlfbmFtZRgBIAEoCVILZGlzcGxheU5hbWUSGQ'
+    'oIbG9nb191cmwYAiABKAlSB2xvZ29VcmwSIwoNcHJpbWFyeV9jb2xvchgDIAEoCVIMcHJpbWFy'
+    'eUNvbG9y');
+
 @$core.Deprecated('Use createSessionRequestDescriptor instead')
 const CreateSessionRequest$json = {
   '1': 'CreateSessionRequest',
@@ -394,8 +410,21 @@ const CreateSessionRequest$json = {
       '6': '.services.connect.v1.CreateSessionRequest.DebugInformationEntry',
       '10': 'debugInformation'
     },
+    {
+      '1': 'demo_rp',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.services.connect.v1.DemoRelyingParty',
+      '9': 0,
+      '10': 'demoRp',
+      '17': true
+    },
   ],
   '3': [CreateSessionRequest_DebugInformationEntry$json],
+  '8': [
+    {'1': '_demo_rp'},
+  ],
 };
 
 @$core.Deprecated('Use createSessionRequestDescriptor instead')
@@ -413,9 +442,10 @@ final $typed_data.Uint8List createSessionRequestDescriptor = $convert.base64Deco
     'ChRDcmVhdGVTZXNzaW9uUmVxdWVzdBJQCg12ZXJpZmljYXRpb25zGAEgAygLMiouc2VydmljZX'
     'MuY29ubmVjdC52MS5SZXF1ZXN0ZWRWZXJpZmljYXRpb25SDXZlcmlmaWNhdGlvbnMSbAoRZGVi'
     'dWdfaW5mb3JtYXRpb24YAiADKAsyPy5zZXJ2aWNlcy5jb25uZWN0LnYxLkNyZWF0ZVNlc3Npb2'
-    '5SZXF1ZXN0LkRlYnVnSW5mb3JtYXRpb25FbnRyeVIQZGVidWdJbmZvcm1hdGlvbhpDChVEZWJ1'
-    'Z0luZm9ybWF0aW9uRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbH'
-    'VlOgI4AQ==');
+    '5SZXF1ZXN0LkRlYnVnSW5mb3JtYXRpb25FbnRyeVIQZGVidWdJbmZvcm1hdGlvbhJDCgdkZW1v'
+    'X3JwGAMgASgLMiUuc2VydmljZXMuY29ubmVjdC52MS5EZW1vUmVseWluZ1BhcnR5SABSBmRlbW'
+    '9ScIgBARpDChVEZWJ1Z0luZm9ybWF0aW9uRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFs'
+    'dWUYAiABKAlSBXZhbHVlOgI4AUIKCghfZGVtb19ycA==');
 
 @$core.Deprecated('Use requestedVerificationDescriptor instead')
 const RequestedVerification$json = {

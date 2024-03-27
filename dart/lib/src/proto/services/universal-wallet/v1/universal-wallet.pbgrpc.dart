@@ -15,261 +15,261 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'universal-wallet.pb.dart' as $1;
+import 'universal-wallet.pb.dart' as $5;
 
 export 'universal-wallet.pb.dart';
 
 @$pb.GrpcServiceName('services.universalwallet.v1.UniversalWallet')
 class UniversalWalletClient extends $grpc.Client {
   static final _$getItem =
-      $grpc.ClientMethod<$1.GetItemRequest, $1.GetItemResponse>(
+      $grpc.ClientMethod<$5.GetItemRequest, $5.GetItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/GetItem',
-          ($1.GetItemRequest value) => value.writeToBuffer(),
+          ($5.GetItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.GetItemResponse.fromBuffer(value));
+              $5.GetItemResponse.fromBuffer(value));
   static final _$search =
-      $grpc.ClientMethod<$1.SearchRequest, $1.SearchResponse>(
+      $grpc.ClientMethod<$5.SearchRequest, $5.SearchResponse>(
           '/services.universalwallet.v1.UniversalWallet/Search',
-          ($1.SearchRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $1.SearchResponse.fromBuffer(value));
+          ($5.SearchRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $5.SearchResponse.fromBuffer(value));
   static final _$insertItem =
-      $grpc.ClientMethod<$1.InsertItemRequest, $1.InsertItemResponse>(
+      $grpc.ClientMethod<$5.InsertItemRequest, $5.InsertItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/InsertItem',
-          ($1.InsertItemRequest value) => value.writeToBuffer(),
+          ($5.InsertItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.InsertItemResponse.fromBuffer(value));
+              $5.InsertItemResponse.fromBuffer(value));
   static final _$updateItem =
-      $grpc.ClientMethod<$1.UpdateItemRequest, $1.UpdateItemResponse>(
+      $grpc.ClientMethod<$5.UpdateItemRequest, $5.UpdateItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/UpdateItem',
-          ($1.UpdateItemRequest value) => value.writeToBuffer(),
+          ($5.UpdateItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.UpdateItemResponse.fromBuffer(value));
+              $5.UpdateItemResponse.fromBuffer(value));
   static final _$deleteItem =
-      $grpc.ClientMethod<$1.DeleteItemRequest, $1.DeleteItemResponse>(
+      $grpc.ClientMethod<$5.DeleteItemRequest, $5.DeleteItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/DeleteItem',
-          ($1.DeleteItemRequest value) => value.writeToBuffer(),
+          ($5.DeleteItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.DeleteItemResponse.fromBuffer(value));
+              $5.DeleteItemResponse.fromBuffer(value));
   static final _$deleteWallet =
-      $grpc.ClientMethod<$1.DeleteWalletRequest, $1.DeleteWalletResponse>(
+      $grpc.ClientMethod<$5.DeleteWalletRequest, $5.DeleteWalletResponse>(
           '/services.universalwallet.v1.UniversalWallet/DeleteWallet',
-          ($1.DeleteWalletRequest value) => value.writeToBuffer(),
+          ($5.DeleteWalletRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.DeleteWalletResponse.fromBuffer(value));
+              $5.DeleteWalletResponse.fromBuffer(value));
   static final _$createWallet =
-      $grpc.ClientMethod<$1.CreateWalletRequest, $1.CreateWalletResponse>(
+      $grpc.ClientMethod<$5.CreateWalletRequest, $5.CreateWalletResponse>(
           '/services.universalwallet.v1.UniversalWallet/CreateWallet',
-          ($1.CreateWalletRequest value) => value.writeToBuffer(),
+          ($5.CreateWalletRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.CreateWalletResponse.fromBuffer(value));
+              $5.CreateWalletResponse.fromBuffer(value));
   static final _$getWalletInfo =
-      $grpc.ClientMethod<$1.GetWalletInfoRequest, $1.GetWalletInfoResponse>(
+      $grpc.ClientMethod<$5.GetWalletInfoRequest, $5.GetWalletInfoResponse>(
           '/services.universalwallet.v1.UniversalWallet/GetWalletInfo',
-          ($1.GetWalletInfoRequest value) => value.writeToBuffer(),
+          ($5.GetWalletInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.GetWalletInfoResponse.fromBuffer(value));
+              $5.GetWalletInfoResponse.fromBuffer(value));
   static final _$getMyInfo =
-      $grpc.ClientMethod<$1.GetMyInfoRequest, $1.GetMyInfoResponse>(
+      $grpc.ClientMethod<$5.GetMyInfoRequest, $5.GetMyInfoResponse>(
           '/services.universalwallet.v1.UniversalWallet/GetMyInfo',
-          ($1.GetMyInfoRequest value) => value.writeToBuffer(),
+          ($5.GetMyInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.GetMyInfoResponse.fromBuffer(value));
+              $5.GetMyInfoResponse.fromBuffer(value));
   static final _$getWalletFromExternalIdentity = $grpc.ClientMethod<
-          $1.GetWalletFromExternalIdentityRequest,
-          $1.GetWalletFromExternalIdentityResponse>(
+          $5.GetWalletFromExternalIdentityRequest,
+          $5.GetWalletFromExternalIdentityResponse>(
       '/services.universalwallet.v1.UniversalWallet/GetWalletFromExternalIdentity',
-      ($1.GetWalletFromExternalIdentityRequest value) => value.writeToBuffer(),
+      ($5.GetWalletFromExternalIdentityRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.GetWalletFromExternalIdentityResponse.fromBuffer(value));
+          $5.GetWalletFromExternalIdentityResponse.fromBuffer(value));
   static final _$generateAuthToken = $grpc.ClientMethod<
-          $1.GenerateAuthTokenRequest, $1.GenerateAuthTokenResponse>(
+          $5.GenerateAuthTokenRequest, $5.GenerateAuthTokenResponse>(
       '/services.universalwallet.v1.UniversalWallet/GenerateAuthToken',
-      ($1.GenerateAuthTokenRequest value) => value.writeToBuffer(),
+      ($5.GenerateAuthTokenRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.GenerateAuthTokenResponse.fromBuffer(value));
+          $5.GenerateAuthTokenResponse.fromBuffer(value));
   static final _$revokeAuthToken =
-      $grpc.ClientMethod<$1.RevokeAuthTokenRequest, $1.RevokeAuthTokenResponse>(
+      $grpc.ClientMethod<$5.RevokeAuthTokenRequest, $5.RevokeAuthTokenResponse>(
           '/services.universalwallet.v1.UniversalWallet/RevokeAuthToken',
-          ($1.RevokeAuthTokenRequest value) => value.writeToBuffer(),
+          ($5.RevokeAuthTokenRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.RevokeAuthTokenResponse.fromBuffer(value));
+              $5.RevokeAuthTokenResponse.fromBuffer(value));
   static final _$addExternalIdentityInit = $grpc.ClientMethod<
-          $1.AddExternalIdentityInitRequest,
-          $1.AddExternalIdentityInitResponse>(
+          $5.AddExternalIdentityInitRequest,
+          $5.AddExternalIdentityInitResponse>(
       '/services.universalwallet.v1.UniversalWallet/AddExternalIdentityInit',
-      ($1.AddExternalIdentityInitRequest value) => value.writeToBuffer(),
+      ($5.AddExternalIdentityInitRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.AddExternalIdentityInitResponse.fromBuffer(value));
+          $5.AddExternalIdentityInitResponse.fromBuffer(value));
   static final _$addExternalIdentityConfirm = $grpc.ClientMethod<
-          $1.AddExternalIdentityConfirmRequest,
-          $1.AddExternalIdentityConfirmResponse>(
+          $5.AddExternalIdentityConfirmRequest,
+          $5.AddExternalIdentityConfirmResponse>(
       '/services.universalwallet.v1.UniversalWallet/AddExternalIdentityConfirm',
-      ($1.AddExternalIdentityConfirmRequest value) => value.writeToBuffer(),
+      ($5.AddExternalIdentityConfirmRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.AddExternalIdentityConfirmResponse.fromBuffer(value));
+          $5.AddExternalIdentityConfirmResponse.fromBuffer(value));
   static final _$removeExternalIdentity = $grpc.ClientMethod<
-          $1.RemoveExternalIdentityRequest, $1.RemoveExternalIdentityResponse>(
+          $5.RemoveExternalIdentityRequest, $5.RemoveExternalIdentityResponse>(
       '/services.universalwallet.v1.UniversalWallet/RemoveExternalIdentity',
-      ($1.RemoveExternalIdentityRequest value) => value.writeToBuffer(),
+      ($5.RemoveExternalIdentityRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.RemoveExternalIdentityResponse.fromBuffer(value));
+          $5.RemoveExternalIdentityResponse.fromBuffer(value));
   static final _$authenticateInit = $grpc.ClientMethod<
-          $1.AuthenticateInitRequest, $1.AuthenticateInitResponse>(
+          $5.AuthenticateInitRequest, $5.AuthenticateInitResponse>(
       '/services.universalwallet.v1.UniversalWallet/AuthenticateInit',
-      ($1.AuthenticateInitRequest value) => value.writeToBuffer(),
+      ($5.AuthenticateInitRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.AuthenticateInitResponse.fromBuffer(value));
+          $5.AuthenticateInitResponse.fromBuffer(value));
   static final _$authenticateConfirm = $grpc.ClientMethod<
-          $1.AuthenticateConfirmRequest, $1.AuthenticateConfirmResponse>(
+          $5.AuthenticateConfirmRequest, $5.AuthenticateConfirmResponse>(
       '/services.universalwallet.v1.UniversalWallet/AuthenticateConfirm',
-      ($1.AuthenticateConfirmRequest value) => value.writeToBuffer(),
+      ($5.AuthenticateConfirmRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.AuthenticateConfirmResponse.fromBuffer(value));
+          $5.AuthenticateConfirmResponse.fromBuffer(value));
   static final _$authenticateResendCode = $grpc.ClientMethod<
-          $1.AuthenticateResendCodeRequest, $1.AuthenticateResendCodeResponse>(
+          $5.AuthenticateResendCodeRequest, $5.AuthenticateResendCodeResponse>(
       '/services.universalwallet.v1.UniversalWallet/AuthenticateResendCode',
-      ($1.AuthenticateResendCodeRequest value) => value.writeToBuffer(),
+      ($5.AuthenticateResendCodeRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.AuthenticateResendCodeResponse.fromBuffer(value));
+          $5.AuthenticateResendCodeResponse.fromBuffer(value));
   static final _$listWallets =
-      $grpc.ClientMethod<$1.ListWalletsRequest, $1.ListWalletsResponse>(
+      $grpc.ClientMethod<$5.ListWalletsRequest, $5.ListWalletsResponse>(
           '/services.universalwallet.v1.UniversalWallet/ListWallets',
-          ($1.ListWalletsRequest value) => value.writeToBuffer(),
+          ($5.ListWalletsRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $1.ListWalletsResponse.fromBuffer(value));
+              $5.ListWalletsResponse.fromBuffer(value));
   static final _$listByVerificationTemplate = $grpc.ClientMethod<
-          $1.ListByVerificationTemplateRequest,
-          $1.ListByVerificationTemplateResponse>(
+          $5.ListByVerificationTemplateRequest,
+          $5.ListByVerificationTemplateResponse>(
       '/services.universalwallet.v1.UniversalWallet/ListByVerificationTemplate',
-      ($1.ListByVerificationTemplateRequest value) => value.writeToBuffer(),
+      ($5.ListByVerificationTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $1.ListByVerificationTemplateResponse.fromBuffer(value));
+          $5.ListByVerificationTemplateResponse.fromBuffer(value));
 
   UniversalWalletClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$1.GetItemResponse> getItem($1.GetItemRequest request,
+  $grpc.ResponseFuture<$5.GetItemResponse> getItem($5.GetItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.SearchResponse> search($1.SearchRequest request,
+  $grpc.ResponseFuture<$5.SearchResponse> search($5.SearchRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.InsertItemResponse> insertItem(
-      $1.InsertItemRequest request,
+  $grpc.ResponseFuture<$5.InsertItemResponse> insertItem(
+      $5.InsertItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$insertItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.UpdateItemResponse> updateItem(
-      $1.UpdateItemRequest request,
+  $grpc.ResponseFuture<$5.UpdateItemResponse> updateItem(
+      $5.UpdateItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.DeleteItemResponse> deleteItem(
-      $1.DeleteItemRequest request,
+  $grpc.ResponseFuture<$5.DeleteItemResponse> deleteItem(
+      $5.DeleteItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.DeleteWalletResponse> deleteWallet(
-      $1.DeleteWalletRequest request,
+  $grpc.ResponseFuture<$5.DeleteWalletResponse> deleteWallet(
+      $5.DeleteWalletRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteWallet, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.CreateWalletResponse> createWallet(
-      $1.CreateWalletRequest request,
+  $grpc.ResponseFuture<$5.CreateWalletResponse> createWallet(
+      $5.CreateWalletRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createWallet, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.GetWalletInfoResponse> getWalletInfo(
-      $1.GetWalletInfoRequest request,
+  $grpc.ResponseFuture<$5.GetWalletInfoResponse> getWalletInfo(
+      $5.GetWalletInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getWalletInfo, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.GetMyInfoResponse> getMyInfo(
-      $1.GetMyInfoRequest request,
+  $grpc.ResponseFuture<$5.GetMyInfoResponse> getMyInfo(
+      $5.GetMyInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMyInfo, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.GetWalletFromExternalIdentityResponse>
+  $grpc.ResponseFuture<$5.GetWalletFromExternalIdentityResponse>
       getWalletFromExternalIdentity(
-          $1.GetWalletFromExternalIdentityRequest request,
+          $5.GetWalletFromExternalIdentityRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getWalletFromExternalIdentity, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$1.GenerateAuthTokenResponse> generateAuthToken(
-      $1.GenerateAuthTokenRequest request,
+  $grpc.ResponseFuture<$5.GenerateAuthTokenResponse> generateAuthToken(
+      $5.GenerateAuthTokenRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$generateAuthToken, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.RevokeAuthTokenResponse> revokeAuthToken(
-      $1.RevokeAuthTokenRequest request,
+  $grpc.ResponseFuture<$5.RevokeAuthTokenResponse> revokeAuthToken(
+      $5.RevokeAuthTokenRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$revokeAuthToken, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.AddExternalIdentityInitResponse>
-      addExternalIdentityInit($1.AddExternalIdentityInitRequest request,
+  $grpc.ResponseFuture<$5.AddExternalIdentityInitResponse>
+      addExternalIdentityInit($5.AddExternalIdentityInitRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addExternalIdentityInit, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$1.AddExternalIdentityConfirmResponse>
-      addExternalIdentityConfirm($1.AddExternalIdentityConfirmRequest request,
+  $grpc.ResponseFuture<$5.AddExternalIdentityConfirmResponse>
+      addExternalIdentityConfirm($5.AddExternalIdentityConfirmRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addExternalIdentityConfirm, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$1.RemoveExternalIdentityResponse>
-      removeExternalIdentity($1.RemoveExternalIdentityRequest request,
+  $grpc.ResponseFuture<$5.RemoveExternalIdentityResponse>
+      removeExternalIdentity($5.RemoveExternalIdentityRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$removeExternalIdentity, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$1.AuthenticateInitResponse> authenticateInit(
-      $1.AuthenticateInitRequest request,
+  $grpc.ResponseFuture<$5.AuthenticateInitResponse> authenticateInit(
+      $5.AuthenticateInitRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$authenticateInit, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.AuthenticateConfirmResponse> authenticateConfirm(
-      $1.AuthenticateConfirmRequest request,
+  $grpc.ResponseFuture<$5.AuthenticateConfirmResponse> authenticateConfirm(
+      $5.AuthenticateConfirmRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$authenticateConfirm, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.AuthenticateResendCodeResponse>
-      authenticateResendCode($1.AuthenticateResendCodeRequest request,
+  $grpc.ResponseFuture<$5.AuthenticateResendCodeResponse>
+      authenticateResendCode($5.AuthenticateResendCodeRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$authenticateResendCode, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$1.ListWalletsResponse> listWallets(
-      $1.ListWalletsRequest request,
+  $grpc.ResponseFuture<$5.ListWalletsResponse> listWallets(
+      $5.ListWalletsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listWallets, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.ListByVerificationTemplateResponse>
-      listByVerificationTemplate($1.ListByVerificationTemplateRequest request,
+  $grpc.ResponseFuture<$5.ListByVerificationTemplateResponse>
+      listByVerificationTemplate($5.ListByVerificationTemplateRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listByVerificationTemplate, request,
         options: options);
@@ -281,335 +281,335 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
   $core.String get $name => 'services.universalwallet.v1.UniversalWallet';
 
   UniversalWalletServiceBase() {
-    $addMethod($grpc.ServiceMethod<$1.GetItemRequest, $1.GetItemResponse>(
+    $addMethod($grpc.ServiceMethod<$5.GetItemRequest, $5.GetItemResponse>(
         'GetItem',
         getItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.GetItemRequest.fromBuffer(value),
-        ($1.GetItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.SearchRequest, $1.SearchResponse>(
+        ($core.List<$core.int> value) => $5.GetItemRequest.fromBuffer(value),
+        ($5.GetItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.SearchRequest, $5.SearchResponse>(
         'Search',
         search_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.SearchRequest.fromBuffer(value),
-        ($1.SearchResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.InsertItemRequest, $1.InsertItemResponse>(
+        ($core.List<$core.int> value) => $5.SearchRequest.fromBuffer(value),
+        ($5.SearchResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.InsertItemRequest, $5.InsertItemResponse>(
         'InsertItem',
         insertItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.InsertItemRequest.fromBuffer(value),
-        ($1.InsertItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.UpdateItemRequest, $1.UpdateItemResponse>(
+        ($core.List<$core.int> value) => $5.InsertItemRequest.fromBuffer(value),
+        ($5.InsertItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.UpdateItemRequest, $5.UpdateItemResponse>(
         'UpdateItem',
         updateItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.UpdateItemRequest.fromBuffer(value),
-        ($1.UpdateItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.DeleteItemRequest, $1.DeleteItemResponse>(
+        ($core.List<$core.int> value) => $5.UpdateItemRequest.fromBuffer(value),
+        ($5.UpdateItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.DeleteItemRequest, $5.DeleteItemResponse>(
         'DeleteItem',
         deleteItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.DeleteItemRequest.fromBuffer(value),
-        ($1.DeleteItemResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $5.DeleteItemRequest.fromBuffer(value),
+        ($5.DeleteItemResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$1.DeleteWalletRequest, $1.DeleteWalletResponse>(
+        $grpc.ServiceMethod<$5.DeleteWalletRequest, $5.DeleteWalletResponse>(
             'DeleteWallet',
             deleteWallet_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $1.DeleteWalletRequest.fromBuffer(value),
-            ($1.DeleteWalletResponse value) => value.writeToBuffer()));
+                $5.DeleteWalletRequest.fromBuffer(value),
+            ($5.DeleteWalletResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$1.CreateWalletRequest, $1.CreateWalletResponse>(
+        $grpc.ServiceMethod<$5.CreateWalletRequest, $5.CreateWalletResponse>(
             'CreateWallet',
             createWallet_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $1.CreateWalletRequest.fromBuffer(value),
-            ($1.CreateWalletResponse value) => value.writeToBuffer()));
+                $5.CreateWalletRequest.fromBuffer(value),
+            ($5.CreateWalletResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$1.GetWalletInfoRequest, $1.GetWalletInfoResponse>(
+        $grpc.ServiceMethod<$5.GetWalletInfoRequest, $5.GetWalletInfoResponse>(
             'GetWalletInfo',
             getWalletInfo_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $1.GetWalletInfoRequest.fromBuffer(value),
-            ($1.GetWalletInfoResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetMyInfoRequest, $1.GetMyInfoResponse>(
+                $5.GetWalletInfoRequest.fromBuffer(value),
+            ($5.GetWalletInfoResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetMyInfoRequest, $5.GetMyInfoResponse>(
         'GetMyInfo',
         getMyInfo_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $1.GetMyInfoRequest.fromBuffer(value),
-        ($1.GetMyInfoResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GetWalletFromExternalIdentityRequest,
-            $1.GetWalletFromExternalIdentityResponse>(
+        ($core.List<$core.int> value) => $5.GetMyInfoRequest.fromBuffer(value),
+        ($5.GetMyInfoResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.GetWalletFromExternalIdentityRequest,
+            $5.GetWalletFromExternalIdentityResponse>(
         'GetWalletFromExternalIdentity',
         getWalletFromExternalIdentity_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.GetWalletFromExternalIdentityRequest.fromBuffer(value),
-        ($1.GetWalletFromExternalIdentityResponse value) =>
+            $5.GetWalletFromExternalIdentityRequest.fromBuffer(value),
+        ($5.GetWalletFromExternalIdentityResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.GenerateAuthTokenRequest,
-            $1.GenerateAuthTokenResponse>(
+    $addMethod($grpc.ServiceMethod<$5.GenerateAuthTokenRequest,
+            $5.GenerateAuthTokenResponse>(
         'GenerateAuthToken',
         generateAuthToken_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.GenerateAuthTokenRequest.fromBuffer(value),
-        ($1.GenerateAuthTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.RevokeAuthTokenRequest,
-            $1.RevokeAuthTokenResponse>(
+            $5.GenerateAuthTokenRequest.fromBuffer(value),
+        ($5.GenerateAuthTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.RevokeAuthTokenRequest,
+            $5.RevokeAuthTokenResponse>(
         'RevokeAuthToken',
         revokeAuthToken_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.RevokeAuthTokenRequest.fromBuffer(value),
-        ($1.RevokeAuthTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.AddExternalIdentityInitRequest,
-            $1.AddExternalIdentityInitResponse>(
+            $5.RevokeAuthTokenRequest.fromBuffer(value),
+        ($5.RevokeAuthTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AddExternalIdentityInitRequest,
+            $5.AddExternalIdentityInitResponse>(
         'AddExternalIdentityInit',
         addExternalIdentityInit_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.AddExternalIdentityInitRequest.fromBuffer(value),
-        ($1.AddExternalIdentityInitResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.AddExternalIdentityConfirmRequest,
-            $1.AddExternalIdentityConfirmResponse>(
+            $5.AddExternalIdentityInitRequest.fromBuffer(value),
+        ($5.AddExternalIdentityInitResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AddExternalIdentityConfirmRequest,
+            $5.AddExternalIdentityConfirmResponse>(
         'AddExternalIdentityConfirm',
         addExternalIdentityConfirm_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.AddExternalIdentityConfirmRequest.fromBuffer(value),
-        ($1.AddExternalIdentityConfirmResponse value) =>
+            $5.AddExternalIdentityConfirmRequest.fromBuffer(value),
+        ($5.AddExternalIdentityConfirmResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.RemoveExternalIdentityRequest,
-            $1.RemoveExternalIdentityResponse>(
+    $addMethod($grpc.ServiceMethod<$5.RemoveExternalIdentityRequest,
+            $5.RemoveExternalIdentityResponse>(
         'RemoveExternalIdentity',
         removeExternalIdentity_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.RemoveExternalIdentityRequest.fromBuffer(value),
-        ($1.RemoveExternalIdentityResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.AuthenticateInitRequest,
-            $1.AuthenticateInitResponse>(
+            $5.RemoveExternalIdentityRequest.fromBuffer(value),
+        ($5.RemoveExternalIdentityResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AuthenticateInitRequest,
+            $5.AuthenticateInitResponse>(
         'AuthenticateInit',
         authenticateInit_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.AuthenticateInitRequest.fromBuffer(value),
-        ($1.AuthenticateInitResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.AuthenticateConfirmRequest,
-            $1.AuthenticateConfirmResponse>(
+            $5.AuthenticateInitRequest.fromBuffer(value),
+        ($5.AuthenticateInitResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AuthenticateConfirmRequest,
+            $5.AuthenticateConfirmResponse>(
         'AuthenticateConfirm',
         authenticateConfirm_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.AuthenticateConfirmRequest.fromBuffer(value),
-        ($1.AuthenticateConfirmResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.AuthenticateResendCodeRequest,
-            $1.AuthenticateResendCodeResponse>(
+            $5.AuthenticateConfirmRequest.fromBuffer(value),
+        ($5.AuthenticateConfirmResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.AuthenticateResendCodeRequest,
+            $5.AuthenticateResendCodeResponse>(
         'AuthenticateResendCode',
         authenticateResendCode_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.AuthenticateResendCodeRequest.fromBuffer(value),
-        ($1.AuthenticateResendCodeResponse value) => value.writeToBuffer()));
+            $5.AuthenticateResendCodeRequest.fromBuffer(value),
+        ($5.AuthenticateResendCodeResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$1.ListWalletsRequest, $1.ListWalletsResponse>(
+        $grpc.ServiceMethod<$5.ListWalletsRequest, $5.ListWalletsResponse>(
             'ListWallets',
             listWallets_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $1.ListWalletsRequest.fromBuffer(value),
-            ($1.ListWalletsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.ListByVerificationTemplateRequest,
-            $1.ListByVerificationTemplateResponse>(
+                $5.ListWalletsRequest.fromBuffer(value),
+            ($5.ListWalletsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.ListByVerificationTemplateRequest,
+            $5.ListByVerificationTemplateResponse>(
         'ListByVerificationTemplate',
         listByVerificationTemplate_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $1.ListByVerificationTemplateRequest.fromBuffer(value),
-        ($1.ListByVerificationTemplateResponse value) =>
+            $5.ListByVerificationTemplateRequest.fromBuffer(value),
+        ($5.ListByVerificationTemplateResponse value) =>
             value.writeToBuffer()));
   }
 
-  $async.Future<$1.GetItemResponse> getItem_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.GetItemRequest> request) async {
+  $async.Future<$5.GetItemResponse> getItem_Pre(
+      $grpc.ServiceCall call, $async.Future<$5.GetItemRequest> request) async {
     return getItem(call, await request);
   }
 
-  $async.Future<$1.SearchResponse> search_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.SearchRequest> request) async {
+  $async.Future<$5.SearchResponse> search_Pre(
+      $grpc.ServiceCall call, $async.Future<$5.SearchRequest> request) async {
     return search(call, await request);
   }
 
-  $async.Future<$1.InsertItemResponse> insertItem_Pre($grpc.ServiceCall call,
-      $async.Future<$1.InsertItemRequest> request) async {
+  $async.Future<$5.InsertItemResponse> insertItem_Pre($grpc.ServiceCall call,
+      $async.Future<$5.InsertItemRequest> request) async {
     return insertItem(call, await request);
   }
 
-  $async.Future<$1.UpdateItemResponse> updateItem_Pre($grpc.ServiceCall call,
-      $async.Future<$1.UpdateItemRequest> request) async {
+  $async.Future<$5.UpdateItemResponse> updateItem_Pre($grpc.ServiceCall call,
+      $async.Future<$5.UpdateItemRequest> request) async {
     return updateItem(call, await request);
   }
 
-  $async.Future<$1.DeleteItemResponse> deleteItem_Pre($grpc.ServiceCall call,
-      $async.Future<$1.DeleteItemRequest> request) async {
+  $async.Future<$5.DeleteItemResponse> deleteItem_Pre($grpc.ServiceCall call,
+      $async.Future<$5.DeleteItemRequest> request) async {
     return deleteItem(call, await request);
   }
 
-  $async.Future<$1.DeleteWalletResponse> deleteWallet_Pre(
+  $async.Future<$5.DeleteWalletResponse> deleteWallet_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.DeleteWalletRequest> request) async {
+      $async.Future<$5.DeleteWalletRequest> request) async {
     return deleteWallet(call, await request);
   }
 
-  $async.Future<$1.CreateWalletResponse> createWallet_Pre(
+  $async.Future<$5.CreateWalletResponse> createWallet_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.CreateWalletRequest> request) async {
+      $async.Future<$5.CreateWalletRequest> request) async {
     return createWallet(call, await request);
   }
 
-  $async.Future<$1.GetWalletInfoResponse> getWalletInfo_Pre(
+  $async.Future<$5.GetWalletInfoResponse> getWalletInfo_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.GetWalletInfoRequest> request) async {
+      $async.Future<$5.GetWalletInfoRequest> request) async {
     return getWalletInfo(call, await request);
   }
 
-  $async.Future<$1.GetMyInfoResponse> getMyInfo_Pre($grpc.ServiceCall call,
-      $async.Future<$1.GetMyInfoRequest> request) async {
+  $async.Future<$5.GetMyInfoResponse> getMyInfo_Pre($grpc.ServiceCall call,
+      $async.Future<$5.GetMyInfoRequest> request) async {
     return getMyInfo(call, await request);
   }
 
-  $async.Future<$1.GetWalletFromExternalIdentityResponse>
+  $async.Future<$5.GetWalletFromExternalIdentityResponse>
       getWalletFromExternalIdentity_Pre(
           $grpc.ServiceCall call,
-          $async.Future<$1.GetWalletFromExternalIdentityRequest>
+          $async.Future<$5.GetWalletFromExternalIdentityRequest>
               request) async {
     return getWalletFromExternalIdentity(call, await request);
   }
 
-  $async.Future<$1.GenerateAuthTokenResponse> generateAuthToken_Pre(
+  $async.Future<$5.GenerateAuthTokenResponse> generateAuthToken_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.GenerateAuthTokenRequest> request) async {
+      $async.Future<$5.GenerateAuthTokenRequest> request) async {
     return generateAuthToken(call, await request);
   }
 
-  $async.Future<$1.RevokeAuthTokenResponse> revokeAuthToken_Pre(
+  $async.Future<$5.RevokeAuthTokenResponse> revokeAuthToken_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.RevokeAuthTokenRequest> request) async {
+      $async.Future<$5.RevokeAuthTokenRequest> request) async {
     return revokeAuthToken(call, await request);
   }
 
-  $async.Future<$1.AddExternalIdentityInitResponse> addExternalIdentityInit_Pre(
+  $async.Future<$5.AddExternalIdentityInitResponse> addExternalIdentityInit_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.AddExternalIdentityInitRequest> request) async {
+      $async.Future<$5.AddExternalIdentityInitRequest> request) async {
     return addExternalIdentityInit(call, await request);
   }
 
-  $async.Future<$1.AddExternalIdentityConfirmResponse>
+  $async.Future<$5.AddExternalIdentityConfirmResponse>
       addExternalIdentityConfirm_Pre($grpc.ServiceCall call,
-          $async.Future<$1.AddExternalIdentityConfirmRequest> request) async {
+          $async.Future<$5.AddExternalIdentityConfirmRequest> request) async {
     return addExternalIdentityConfirm(call, await request);
   }
 
-  $async.Future<$1.RemoveExternalIdentityResponse> removeExternalIdentity_Pre(
+  $async.Future<$5.RemoveExternalIdentityResponse> removeExternalIdentity_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.RemoveExternalIdentityRequest> request) async {
+      $async.Future<$5.RemoveExternalIdentityRequest> request) async {
     return removeExternalIdentity(call, await request);
   }
 
-  $async.Future<$1.AuthenticateInitResponse> authenticateInit_Pre(
+  $async.Future<$5.AuthenticateInitResponse> authenticateInit_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.AuthenticateInitRequest> request) async {
+      $async.Future<$5.AuthenticateInitRequest> request) async {
     return authenticateInit(call, await request);
   }
 
-  $async.Future<$1.AuthenticateConfirmResponse> authenticateConfirm_Pre(
+  $async.Future<$5.AuthenticateConfirmResponse> authenticateConfirm_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.AuthenticateConfirmRequest> request) async {
+      $async.Future<$5.AuthenticateConfirmRequest> request) async {
     return authenticateConfirm(call, await request);
   }
 
-  $async.Future<$1.AuthenticateResendCodeResponse> authenticateResendCode_Pre(
+  $async.Future<$5.AuthenticateResendCodeResponse> authenticateResendCode_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$1.AuthenticateResendCodeRequest> request) async {
+      $async.Future<$5.AuthenticateResendCodeRequest> request) async {
     return authenticateResendCode(call, await request);
   }
 
-  $async.Future<$1.ListWalletsResponse> listWallets_Pre($grpc.ServiceCall call,
-      $async.Future<$1.ListWalletsRequest> request) async {
+  $async.Future<$5.ListWalletsResponse> listWallets_Pre($grpc.ServiceCall call,
+      $async.Future<$5.ListWalletsRequest> request) async {
     return listWallets(call, await request);
   }
 
-  $async.Future<$1.ListByVerificationTemplateResponse>
+  $async.Future<$5.ListByVerificationTemplateResponse>
       listByVerificationTemplate_Pre($grpc.ServiceCall call,
-          $async.Future<$1.ListByVerificationTemplateRequest> request) async {
+          $async.Future<$5.ListByVerificationTemplateRequest> request) async {
     return listByVerificationTemplate(call, await request);
   }
 
-  $async.Future<$1.GetItemResponse> getItem(
-      $grpc.ServiceCall call, $1.GetItemRequest request);
-  $async.Future<$1.SearchResponse> search(
-      $grpc.ServiceCall call, $1.SearchRequest request);
-  $async.Future<$1.InsertItemResponse> insertItem(
-      $grpc.ServiceCall call, $1.InsertItemRequest request);
-  $async.Future<$1.UpdateItemResponse> updateItem(
-      $grpc.ServiceCall call, $1.UpdateItemRequest request);
-  $async.Future<$1.DeleteItemResponse> deleteItem(
-      $grpc.ServiceCall call, $1.DeleteItemRequest request);
-  $async.Future<$1.DeleteWalletResponse> deleteWallet(
-      $grpc.ServiceCall call, $1.DeleteWalletRequest request);
-  $async.Future<$1.CreateWalletResponse> createWallet(
-      $grpc.ServiceCall call, $1.CreateWalletRequest request);
-  $async.Future<$1.GetWalletInfoResponse> getWalletInfo(
-      $grpc.ServiceCall call, $1.GetWalletInfoRequest request);
-  $async.Future<$1.GetMyInfoResponse> getMyInfo(
-      $grpc.ServiceCall call, $1.GetMyInfoRequest request);
-  $async.Future<$1.GetWalletFromExternalIdentityResponse>
+  $async.Future<$5.GetItemResponse> getItem(
+      $grpc.ServiceCall call, $5.GetItemRequest request);
+  $async.Future<$5.SearchResponse> search(
+      $grpc.ServiceCall call, $5.SearchRequest request);
+  $async.Future<$5.InsertItemResponse> insertItem(
+      $grpc.ServiceCall call, $5.InsertItemRequest request);
+  $async.Future<$5.UpdateItemResponse> updateItem(
+      $grpc.ServiceCall call, $5.UpdateItemRequest request);
+  $async.Future<$5.DeleteItemResponse> deleteItem(
+      $grpc.ServiceCall call, $5.DeleteItemRequest request);
+  $async.Future<$5.DeleteWalletResponse> deleteWallet(
+      $grpc.ServiceCall call, $5.DeleteWalletRequest request);
+  $async.Future<$5.CreateWalletResponse> createWallet(
+      $grpc.ServiceCall call, $5.CreateWalletRequest request);
+  $async.Future<$5.GetWalletInfoResponse> getWalletInfo(
+      $grpc.ServiceCall call, $5.GetWalletInfoRequest request);
+  $async.Future<$5.GetMyInfoResponse> getMyInfo(
+      $grpc.ServiceCall call, $5.GetMyInfoRequest request);
+  $async.Future<$5.GetWalletFromExternalIdentityResponse>
       getWalletFromExternalIdentity($grpc.ServiceCall call,
-          $1.GetWalletFromExternalIdentityRequest request);
-  $async.Future<$1.GenerateAuthTokenResponse> generateAuthToken(
-      $grpc.ServiceCall call, $1.GenerateAuthTokenRequest request);
-  $async.Future<$1.RevokeAuthTokenResponse> revokeAuthToken(
-      $grpc.ServiceCall call, $1.RevokeAuthTokenRequest request);
-  $async.Future<$1.AddExternalIdentityInitResponse> addExternalIdentityInit(
-      $grpc.ServiceCall call, $1.AddExternalIdentityInitRequest request);
-  $async.Future<$1.AddExternalIdentityConfirmResponse>
+          $5.GetWalletFromExternalIdentityRequest request);
+  $async.Future<$5.GenerateAuthTokenResponse> generateAuthToken(
+      $grpc.ServiceCall call, $5.GenerateAuthTokenRequest request);
+  $async.Future<$5.RevokeAuthTokenResponse> revokeAuthToken(
+      $grpc.ServiceCall call, $5.RevokeAuthTokenRequest request);
+  $async.Future<$5.AddExternalIdentityInitResponse> addExternalIdentityInit(
+      $grpc.ServiceCall call, $5.AddExternalIdentityInitRequest request);
+  $async.Future<$5.AddExternalIdentityConfirmResponse>
       addExternalIdentityConfirm(
-          $grpc.ServiceCall call, $1.AddExternalIdentityConfirmRequest request);
-  $async.Future<$1.RemoveExternalIdentityResponse> removeExternalIdentity(
-      $grpc.ServiceCall call, $1.RemoveExternalIdentityRequest request);
-  $async.Future<$1.AuthenticateInitResponse> authenticateInit(
-      $grpc.ServiceCall call, $1.AuthenticateInitRequest request);
-  $async.Future<$1.AuthenticateConfirmResponse> authenticateConfirm(
-      $grpc.ServiceCall call, $1.AuthenticateConfirmRequest request);
-  $async.Future<$1.AuthenticateResendCodeResponse> authenticateResendCode(
-      $grpc.ServiceCall call, $1.AuthenticateResendCodeRequest request);
-  $async.Future<$1.ListWalletsResponse> listWallets(
-      $grpc.ServiceCall call, $1.ListWalletsRequest request);
-  $async.Future<$1.ListByVerificationTemplateResponse>
+          $grpc.ServiceCall call, $5.AddExternalIdentityConfirmRequest request);
+  $async.Future<$5.RemoveExternalIdentityResponse> removeExternalIdentity(
+      $grpc.ServiceCall call, $5.RemoveExternalIdentityRequest request);
+  $async.Future<$5.AuthenticateInitResponse> authenticateInit(
+      $grpc.ServiceCall call, $5.AuthenticateInitRequest request);
+  $async.Future<$5.AuthenticateConfirmResponse> authenticateConfirm(
+      $grpc.ServiceCall call, $5.AuthenticateConfirmRequest request);
+  $async.Future<$5.AuthenticateResendCodeResponse> authenticateResendCode(
+      $grpc.ServiceCall call, $5.AuthenticateResendCodeRequest request);
+  $async.Future<$5.ListWalletsResponse> listWallets(
+      $grpc.ServiceCall call, $5.ListWalletsRequest request);
+  $async.Future<$5.ListByVerificationTemplateResponse>
       listByVerificationTemplate(
-          $grpc.ServiceCall call, $1.ListByVerificationTemplateRequest request);
+          $grpc.ServiceCall call, $5.ListByVerificationTemplateRequest request);
 }

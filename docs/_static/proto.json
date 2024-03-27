@@ -486,6 +486,12 @@
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.CreateSessionRequest"
     },
+    "services.connect.v1.CreateSessionRequest.demo_rp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.CreateSessionRequest"
+    },
     "services.connect.v1.CreateSessionRequest.verifications": {
       "type": "field",
       "collection": "fields",
@@ -515,6 +521,30 @@
       "collection": "fields",
       "file": "services/connect/v1/connect.proto",
       "parent": "services.connect.v1.CredentialRequestData"
+    },
+    "services.connect.v1.DemoRelyingParty": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/connect/v1/connect.proto",
+      "parent": ""
+    },
+    "services.connect.v1.DemoRelyingParty.display_name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.DemoRelyingParty"
+    },
+    "services.connect.v1.DemoRelyingParty.logo_url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.DemoRelyingParty"
+    },
+    "services.connect.v1.DemoRelyingParty.primary_color": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/connect/v1/connect.proto",
+      "parent": "services.connect.v1.DemoRelyingParty"
     },
     "services.connect.v1.GetSessionRequest": {
       "type": "message",
@@ -4697,6 +4727,7 @@
         "services.connect.v1.IDVSession.VerificationsEntry",
         "services.connect.v1.Verification",
         "services.connect.v1.NormalizedGovernmentIdData",
+        "services.connect.v1.DemoRelyingParty",
         "services.connect.v1.CreateSessionRequest",
         "services.connect.v1.CreateSessionRequest.DebugInformationEntry",
         "services.connect.v1.RequestedVerification",
@@ -4741,8 +4772,12 @@
         "services.connect.v1.NormalizedGovernmentIdData.country",
         "services.connect.v1.NormalizedGovernmentIdData.issue_date",
         "services.connect.v1.NormalizedGovernmentIdData.expiration_date",
+        "services.connect.v1.DemoRelyingParty.display_name",
+        "services.connect.v1.DemoRelyingParty.logo_url",
+        "services.connect.v1.DemoRelyingParty.primary_color",
         "services.connect.v1.CreateSessionRequest.verifications",
         "services.connect.v1.CreateSessionRequest.debug_information",
+        "services.connect.v1.CreateSessionRequest.demo_rp",
         "services.connect.v1.CreateSessionRequest.DebugInformationEntry.key",
         "services.connect.v1.CreateSessionRequest.DebugInformationEntry.value",
         "services.connect.v1.RequestedVerification.type",
@@ -6475,7 +6510,8 @@
       "description": "Request to create an Identity Verification Session",
       "fields": [
         "services.connect.v1.CreateSessionRequest.verifications",
-        "services.connect.v1.CreateSessionRequest.debug_information"
+        "services.connect.v1.CreateSessionRequest.debug_information",
+        "services.connect.v1.CreateSessionRequest.demo_rp"
       ],
       "messages": [
         "services.connect.v1.CreateSessionRequest.DebugInformationEntry"
@@ -6510,6 +6546,18 @@
       "description": "",
       "fields": [
         "services.connect.v1.CredentialRequestData.type"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.connect.v1.DemoRelyingParty": {
+      "name": "DemoRelyingParty",
+      "full_name": "services.connect.v1.DemoRelyingParty",
+      "description": "Information about a Relying Party used for demo purposes",
+      "fields": [
+        "services.connect.v1.DemoRelyingParty.display_name",
+        "services.connect.v1.DemoRelyingParty.logo_url",
+        "services.connect.v1.DemoRelyingParty.primary_color"
       ],
       "messages": [],
       "enums": []
@@ -8719,6 +8767,14 @@
       "full_type": "services.connect.v1.CreateSessionRequest.DebugInformationEntry",
       "description": "Debugging information used to help diagnose issues"
     },
+    "services.connect.v1.CreateSessionRequest.demo_rp": {
+      "name": "demo_rp",
+      "full_name": "services.connect.v1.CreateSessionRequest.demo_rp",
+      "label": "LABEL_OPTIONAL",
+      "type": "DemoRelyingParty",
+      "full_type": "services.connect.v1.DemoRelyingParty",
+      "description": "Information about the Relying Party used for demo purposes.\nThis is only to be used if the demo flag is set to true in the debug information."
+    },
     "services.connect.v1.CreateSessionRequest.verifications": {
       "name": "verifications",
       "full_name": "services.connect.v1.CreateSessionRequest.verifications",
@@ -8742,6 +8798,30 @@
       "type": "VerificationType",
       "full_type": "services.connect.v1.VerificationType",
       "description": "The type of verification for which the credential can be used\n\nName of the IDV issuer"
+    },
+    "services.connect.v1.DemoRelyingParty.display_name": {
+      "name": "display_name",
+      "full_name": "services.connect.v1.DemoRelyingParty.display_name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.connect.v1.DemoRelyingParty.logo_url": {
+      "name": "logo_url",
+      "full_name": "services.connect.v1.DemoRelyingParty.logo_url",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.connect.v1.DemoRelyingParty.primary_color": {
+      "name": "primary_color",
+      "full_name": "services.connect.v1.DemoRelyingParty.primary_color",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
     },
     "services.connect.v1.GetSessionRequest.idv_session_id": {
       "name": "idv_session_id",

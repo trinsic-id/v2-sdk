@@ -15,74 +15,74 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'connect.pb.dart' as $2;
+import 'connect.pb.dart' as $7;
 
 export 'connect.pb.dart';
 
 @$pb.GrpcServiceName('services.connect.v1.Connect')
 class ConnectClient extends $grpc.Client {
   static final _$createSession =
-      $grpc.ClientMethod<$2.CreateSessionRequest, $2.CreateSessionResponse>(
+      $grpc.ClientMethod<$7.CreateSessionRequest, $7.CreateSessionResponse>(
           '/services.connect.v1.Connect/CreateSession',
-          ($2.CreateSessionRequest value) => value.writeToBuffer(),
+          ($7.CreateSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $2.CreateSessionResponse.fromBuffer(value));
+              $7.CreateSessionResponse.fromBuffer(value));
   static final _$cancelSession =
-      $grpc.ClientMethod<$2.CancelSessionRequest, $2.CancelSessionResponse>(
+      $grpc.ClientMethod<$7.CancelSessionRequest, $7.CancelSessionResponse>(
           '/services.connect.v1.Connect/CancelSession',
-          ($2.CancelSessionRequest value) => value.writeToBuffer(),
+          ($7.CancelSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $2.CancelSessionResponse.fromBuffer(value));
+              $7.CancelSessionResponse.fromBuffer(value));
   static final _$getSession =
-      $grpc.ClientMethod<$2.GetSessionRequest, $2.GetSessionResponse>(
+      $grpc.ClientMethod<$7.GetSessionRequest, $7.GetSessionResponse>(
           '/services.connect.v1.Connect/GetSession',
-          ($2.GetSessionRequest value) => value.writeToBuffer(),
+          ($7.GetSessionRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $2.GetSessionResponse.fromBuffer(value));
+              $7.GetSessionResponse.fromBuffer(value));
   static final _$listSessions =
-      $grpc.ClientMethod<$2.ListSessionsRequest, $2.ListSessionsResponse>(
+      $grpc.ClientMethod<$7.ListSessionsRequest, $7.ListSessionsResponse>(
           '/services.connect.v1.Connect/ListSessions',
-          ($2.ListSessionsRequest value) => value.writeToBuffer(),
+          ($7.ListSessionsRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $2.ListSessionsResponse.fromBuffer(value));
+              $7.ListSessionsResponse.fromBuffer(value));
   static final _$hasValidCredential = $grpc.ClientMethod<
-          $2.HasValidCredentialRequest, $2.HasValidCredentialResponse>(
+          $7.HasValidCredentialRequest, $7.HasValidCredentialResponse>(
       '/services.connect.v1.Connect/HasValidCredential',
-      ($2.HasValidCredentialRequest value) => value.writeToBuffer(),
+      ($7.HasValidCredentialRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $2.HasValidCredentialResponse.fromBuffer(value));
+          $7.HasValidCredentialResponse.fromBuffer(value));
 
   ConnectClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$2.CreateSessionResponse> createSession(
-      $2.CreateSessionRequest request,
+  $grpc.ResponseFuture<$7.CreateSessionResponse> createSession(
+      $7.CreateSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createSession, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.CancelSessionResponse> cancelSession(
-      $2.CancelSessionRequest request,
+  $grpc.ResponseFuture<$7.CancelSessionResponse> cancelSession(
+      $7.CancelSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$cancelSession, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.GetSessionResponse> getSession(
-      $2.GetSessionRequest request,
+  $grpc.ResponseFuture<$7.GetSessionResponse> getSession(
+      $7.GetSessionRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getSession, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.ListSessionsResponse> listSessions(
-      $2.ListSessionsRequest request,
+  $grpc.ResponseFuture<$7.ListSessionsResponse> listSessions(
+      $7.ListSessionsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listSessions, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.HasValidCredentialResponse> hasValidCredential(
-      $2.HasValidCredentialRequest request,
+  $grpc.ResponseFuture<$7.HasValidCredentialResponse> hasValidCredential(
+      $7.HasValidCredentialRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$hasValidCredential, request, options: options);
   }
@@ -94,87 +94,87 @@ abstract class ConnectServiceBase extends $grpc.Service {
 
   ConnectServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$2.CreateSessionRequest, $2.CreateSessionResponse>(
+        $grpc.ServiceMethod<$7.CreateSessionRequest, $7.CreateSessionResponse>(
             'CreateSession',
             createSession_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $2.CreateSessionRequest.fromBuffer(value),
-            ($2.CreateSessionResponse value) => value.writeToBuffer()));
+                $7.CreateSessionRequest.fromBuffer(value),
+            ($7.CreateSessionResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$2.CancelSessionRequest, $2.CancelSessionResponse>(
+        $grpc.ServiceMethod<$7.CancelSessionRequest, $7.CancelSessionResponse>(
             'CancelSession',
             cancelSession_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $2.CancelSessionRequest.fromBuffer(value),
-            ($2.CancelSessionResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.GetSessionRequest, $2.GetSessionResponse>(
+                $7.CancelSessionRequest.fromBuffer(value),
+            ($7.CancelSessionResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.GetSessionRequest, $7.GetSessionResponse>(
         'GetSession',
         getSession_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.GetSessionRequest.fromBuffer(value),
-        ($2.GetSessionResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $7.GetSessionRequest.fromBuffer(value),
+        ($7.GetSessionResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$2.ListSessionsRequest, $2.ListSessionsResponse>(
+        $grpc.ServiceMethod<$7.ListSessionsRequest, $7.ListSessionsResponse>(
             'ListSessions',
             listSessions_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $2.ListSessionsRequest.fromBuffer(value),
-            ($2.ListSessionsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.HasValidCredentialRequest,
-            $2.HasValidCredentialResponse>(
+                $7.ListSessionsRequest.fromBuffer(value),
+            ($7.ListSessionsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$7.HasValidCredentialRequest,
+            $7.HasValidCredentialResponse>(
         'HasValidCredential',
         hasValidCredential_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $2.HasValidCredentialRequest.fromBuffer(value),
-        ($2.HasValidCredentialResponse value) => value.writeToBuffer()));
+            $7.HasValidCredentialRequest.fromBuffer(value),
+        ($7.HasValidCredentialResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$2.CreateSessionResponse> createSession_Pre(
+  $async.Future<$7.CreateSessionResponse> createSession_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.CreateSessionRequest> request) async {
+      $async.Future<$7.CreateSessionRequest> request) async {
     return createSession(call, await request);
   }
 
-  $async.Future<$2.CancelSessionResponse> cancelSession_Pre(
+  $async.Future<$7.CancelSessionResponse> cancelSession_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.CancelSessionRequest> request) async {
+      $async.Future<$7.CancelSessionRequest> request) async {
     return cancelSession(call, await request);
   }
 
-  $async.Future<$2.GetSessionResponse> getSession_Pre($grpc.ServiceCall call,
-      $async.Future<$2.GetSessionRequest> request) async {
+  $async.Future<$7.GetSessionResponse> getSession_Pre($grpc.ServiceCall call,
+      $async.Future<$7.GetSessionRequest> request) async {
     return getSession(call, await request);
   }
 
-  $async.Future<$2.ListSessionsResponse> listSessions_Pre(
+  $async.Future<$7.ListSessionsResponse> listSessions_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.ListSessionsRequest> request) async {
+      $async.Future<$7.ListSessionsRequest> request) async {
     return listSessions(call, await request);
   }
 
-  $async.Future<$2.HasValidCredentialResponse> hasValidCredential_Pre(
+  $async.Future<$7.HasValidCredentialResponse> hasValidCredential_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$2.HasValidCredentialRequest> request) async {
+      $async.Future<$7.HasValidCredentialRequest> request) async {
     return hasValidCredential(call, await request);
   }
 
-  $async.Future<$2.CreateSessionResponse> createSession(
-      $grpc.ServiceCall call, $2.CreateSessionRequest request);
-  $async.Future<$2.CancelSessionResponse> cancelSession(
-      $grpc.ServiceCall call, $2.CancelSessionRequest request);
-  $async.Future<$2.GetSessionResponse> getSession(
-      $grpc.ServiceCall call, $2.GetSessionRequest request);
-  $async.Future<$2.ListSessionsResponse> listSessions(
-      $grpc.ServiceCall call, $2.ListSessionsRequest request);
-  $async.Future<$2.HasValidCredentialResponse> hasValidCredential(
-      $grpc.ServiceCall call, $2.HasValidCredentialRequest request);
+  $async.Future<$7.CreateSessionResponse> createSession(
+      $grpc.ServiceCall call, $7.CreateSessionRequest request);
+  $async.Future<$7.CancelSessionResponse> cancelSession(
+      $grpc.ServiceCall call, $7.CancelSessionRequest request);
+  $async.Future<$7.GetSessionResponse> getSession(
+      $grpc.ServiceCall call, $7.GetSessionRequest request);
+  $async.Future<$7.ListSessionsResponse> listSessions(
+      $grpc.ServiceCall call, $7.ListSessionsRequest request);
+  $async.Future<$7.HasValidCredentialResponse> hasValidCredential(
+      $grpc.ServiceCall call, $7.HasValidCredentialRequest request);
 }

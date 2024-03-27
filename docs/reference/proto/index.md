@@ -8,746 +8,29 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
-<a name="services_connect_v1_connect-proto"></a>
+<a name="sdk_options_v1_options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/connect/v1/connect.proto
-
-
-
-<a name="services-connect-v1-Connect"></a>
-
-### Service - Connect
-The Connect service provides access to Trinsic Connect, a reusable identity verification service.
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
-| CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
-| GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
-| ListSessions | [ListSessionsRequest](/reference/proto#services-connect-v1-ListSessionsRequest) | [ListSessionsResponse](/reference/proto#services-connect-v1-ListSessionsResponse) | List IDVSessions created by the calling wallet |
-| HasValidCredential | [HasValidCredentialRequest](/reference/proto#services-connect-v1-HasValidCredentialRequest) | [HasValidCredentialResponse](/reference/proto#services-connect-v1-HasValidCredentialResponse) | Checks if the identity provided in the request has a wallet containing a valid reusable credential |
-
- <!-- end services -->
-
-
-<a name="services-connect-v1-CancelSessionRequest"></a>
-
-### CancelSessionRequest
-Request to cancel an Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to cancel |
-
-
-
-
-
-
-<a name="services-connect-v1-CancelSessionResponse"></a>
-
-### CancelSessionResponse
-Response to `CancelIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession in its current state after cancellation |
-
-
-
-
-
-
-<a name="services-connect-v1-CreateSessionRequest"></a>
-
-### CreateSessionRequest
-Request to create an Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
-| debug_information | [CreateSessionRequest.DebugInformationEntry](/reference/proto#services-connect-v1-CreateSessionRequest-DebugInformationEntry)[] | Debugging information used to help diagnose issues |
-
-
-
-
-
-
-<a name="services-connect-v1-CreateSessionRequest-DebugInformationEntry"></a>
-
-### CreateSessionRequest.DebugInformationEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-connect-v1-CreateSessionResponse"></a>
-
-### CreateSessionResponse
-Response to `CreateIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
-
-
-
-
-
-
-<a name="services-connect-v1-CredentialRequestData"></a>
-
-### CredentialRequestData
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification for which the credential can be used
-
-Name of the IDV issuer |
-
-
-
-
-
-
-<a name="services-connect-v1-GetSessionRequest"></a>
-
-### GetSessionRequest
-Request to get an IDVSession
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to get |
-
-
-
-
-
-
-<a name="services-connect-v1-GetSessionResponse"></a>
-
-### GetSessionResponse
-Response to `GetIDVSessionRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession |
-
-
-
-
-
-
-<a name="services-connect-v1-GovernmentIDFields"></a>
-
-### GovernmentIDFields
-Selection of fields to retrieve from a Government ID. All fields default to `false` unless explicitly set to `true`.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id_number | [bool](/reference/proto#bool) | ID number of the underlying identity document |
-| given_name | [bool](/reference/proto#bool) | Given ("first") name of the document holder |
-| family_name | [bool](/reference/proto#bool) | Family ("last") name of the document holder |
-| address | [bool](/reference/proto#bool) | Full address of the document holder |
-| date_of_birth | [bool](/reference/proto#bool) | Date of birth of the document holder |
-| country | [bool](/reference/proto#bool) | ISO3 country code of the document |
-| issue_date | [bool](/reference/proto#bool) | Issuance date of the document |
-| expiration_date | [bool](/reference/proto#bool) | Expiration date date of the document |
-
-
-
-
-
-
-<a name="services-connect-v1-GovernmentIDOptions"></a>
-
-### GovernmentIDOptions
-Options for a Verification of type `GOVERNMENT_ID`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| fields | [GovernmentIDFields](/reference/proto#services-connect-v1-GovernmentIDFields) | The fields to retrieve from the Government ID. If this object is not set, all fields will be retrieved. |
-
-
-
-
-
-
-<a name="services-connect-v1-HasValidCredentialRequest"></a>
-
-### HasValidCredentialRequest
-Request to preemptively check if an identity has a valid reusable credential
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| identity | [services.universalwallet.v1.CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | The identity used to find a credential |
-| credential_request_data | [CredentialRequestData](/reference/proto#services-connect-v1-CredentialRequestData) | The criteria used to find a valid credential |
-
-
-
-
-
-
-<a name="services-connect-v1-HasValidCredentialResponse"></a>
-
-### HasValidCredentialResponse
-Response to `HasValidCredentialRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| has_valid_credential | [bool](/reference/proto#bool) | Whether the identity has a valid credential |
-
-
-
-
-
-
-<a name="services-connect-v1-IDVSession"></a>
-
-### IDVSession
-An Identity Verification Session
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | The ID of the IDVSession. |
-| client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
-| state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
-| verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
-| fail_code | [SessionFailCode](/reference/proto#services-connect-v1-SessionFailCode) | The reason for the IDVSession's failure. Only set if `state` is `IDV_FAILED`. |
-| result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
-| created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
-| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
-
-
-
-
-
-
-<a name="services-connect-v1-IDVSession-VerificationsEntry"></a>
-
-### IDVSession.VerificationsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [Verification](/reference/proto#services-connect-v1-Verification) |  |
-
-
-
-
-
-
-<a name="services-connect-v1-ListSessionsRequest"></a>
-
-### ListSessionsRequest
-Request to list all IDVSessions you've created
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| order_by | [SessionOrdering](/reference/proto#services-connect-v1-SessionOrdering) | The field by which sessions should be sorted. Defaults to `CREATED`. |
-| order_direction | [services.common.v1.OrderDirection](/reference/proto#services-common-v1-OrderDirection) | The order in which sessions should be sorted. Defaults to `ASCENDING`. |
-| page_size | [int32](/reference/proto#int32) | The number of results to return per page. Must be between `1` and `10`, inclusive. Defaults to `10`. |
-| page | [int32](/reference/proto#int32) | The page index of results to return. Starts at `1`. Defaults to `1`. |
-
-
-
-
-
-
-<a name="services-connect-v1-ListSessionsResponse"></a>
-
-### ListSessionsResponse
-Response to `ListIDVSessionsRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| sessions | [IDVSession](/reference/proto#services-connect-v1-IDVSession)[] | The sessions you've created |
-| total | [int32](/reference/proto#int32) | The total number of sessions you've created |
-| more | [bool](/reference/proto#bool) | If `true`, this is not the last page of results. If `false`, this is the last page of results. |
-
-
-
-
-
-
-<a name="services-connect-v1-NormalizedGovernmentIdData"></a>
-
-### NormalizedGovernmentIdData
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id_number | [string](/reference/proto#string) | The ID number of the underlying identity document |
-| given_name | [string](/reference/proto#string) | Given ("first") name of the document holder |
-| family_name | [string](/reference/proto#string) | Family ("last") name of the document holder |
-| address | [string](/reference/proto#string) | Full address of the document holder |
-| date_of_birth | [string](/reference/proto#string) | Date of birth of the document holder |
-| country | [string](/reference/proto#string) | ISO3 country code of the document |
-| issue_date | [string](/reference/proto#string) | Issuance date of the document |
-| expiration_date | [string](/reference/proto#string) | Expiration date date of the document |
-
-
-
-
-
-
-<a name="services-connect-v1-RequestedVerification"></a>
-
-### RequestedVerification
-A verification to perform in an IDV flow
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification to perform |
-| government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | Options for a Verification of type `GOVERNMENT_ID` |
-
-
-
-
-
-
-<a name="services-connect-v1-Verification"></a>
-
-### Verification
-A Verification that is part of an IDVSession
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | The ID of the verification |
-| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
-| state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
-| fail_code | [VerificationFailCode](/reference/proto#services-connect-v1-VerificationFailCode) | The reason for the Verification's failure. Only set if `state` is `VERIFICATION_FAILED`. |
-| reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
-| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
-| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet begun. |
-| government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | The Government ID options for this Verification. Only set if this Verification is of type `GOVERNMENT_ID`. |
-| normalized_government_id_data | [NormalizedGovernmentIdData](/reference/proto#services-connect-v1-NormalizedGovernmentIdData) | Normalized output for manual parsing and usage for this verification Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded. |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-connect-v1-IDVSessionState"></a>
-
-### IDVSessionState
-The states a VerificationSession can be in
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| IDV_CREATED | 0 | Session has been created, but not yet shown to user |
-| IDV_INITIATED | 1 | Session has been shown to user (iframe / popup opened), but user has not yet logged in. |
-| IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
-| IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
-| IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
-| IDV_FAILED | 5 | The session failed; reason is present in `fail_code`. |
-
-
-
-<a name="services-connect-v1-SessionFailCode"></a>
-
-### SessionFailCode
-The specific reason an IDVSession is in the `Failed` state
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| SESSION_FAIL_NONE | 0 | The Session is not in a failure state. |
-| SESSION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this session to fail |
-| SESSION_FAIL_VERIFICATION_FAILED | 2 | The session failed because one or more of the verifications failed. The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s). |
-| SESSION_FAIL_AUTHENTICATION | 3 | The session failed because the user failed to authenticate with their phone number too many times. |
-| SESSION_FAIL_EXPIRED | 4 | The session expired |
-| SESSION_FAIL_USER_CANCELED | 5 | The user canceled / rejected the session |
-| SESSION_FAIL_RP_CANCELED | 6 | The RP canceled the session |
-
-
-
-<a name="services-connect-v1-SessionOrdering"></a>
-
-### SessionOrdering
-Controls how sessions are ordered in `ListSessions`
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| CREATED | 0 | Order sessions according to when they were created |
-| UPDATED | 1 | Order sessions according to when they last changed state |
-| STATE | 2 | Order sessions according to their numerical state |
-
-
-
-<a name="services-connect-v1-VerificationFailCode"></a>
-
-### VerificationFailCode
-The specific reason a Verification is in the `Failed` state
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| VERIFICATION_FAIL_NONE | 0 | The verification is not in a failure state |
-| VERIFICATION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this verification to fail |
-| VERIFICATION_FAIL_INVALID_IMAGE | 2 | The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. This failure reason is non-terminal; the user is able to retry the verification. |
-| VERIFICATION_FAIL_INAUTHENTIC | 3 | The identity data/images provided are suspected to be inauthentic, fraudulent, or forged. |
-| VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT | 4 | The document provided is either of an unsupported type, or from an unsupported country. |
-
-
-
-<a name="services-connect-v1-VerificationState"></a>
-
-### VerificationState
-The states an individual Verification can be in
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
-| VERIFICATION_PENDING_REUSE | 1 | This verification has been started by the user, and can be reused from a previous verification, but the user has not yet decided whether to reuse it. |
-| VERIFICATION_STARTED | 2 | This verification has been started by the user, but not yet completed |
-| VERIFICATION_SUCCESS | 3 | This verification has been successfully completed |
-| VERIFICATION_FAILED | 4 | This verification has failed |
-
-
-
-<a name="services-connect-v1-VerificationType"></a>
-
-### VerificationType
-The type of verification to perform
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| GOVERNMENT_ID | 0 | Government-issued ID (driver's license, passport, etc) |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_account_v1_account-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/account/v1/account.proto
+## sdk/options/v1/options.proto
 
 
  <!-- end services -->
 
 
-<a name="services-account-v1-AccountDetails"></a>
+<a name="sdk-options-v1-TrinsicOptions"></a>
 
-### AccountDetails
-Account registration details
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Account name |
-| email | [string](/reference/proto#string) | **Deprecated.** Email address of account. |
-| sms | [string](/reference/proto#string) | **Deprecated.** SMS number including country code |
-
-
-
-
-
-
-<a name="services-account-v1-AccountProfile"></a>
-
-### AccountProfile
-Device profile containing sensitive authentication data.
-This information should be stored securely
+### TrinsicOptions
+Configuration for Trinsic SDK Services
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| profile_type | [string](/reference/proto#string) | The type of profile, used to differentiate between protocol schemes or versions |
-| auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
-| auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
-| protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
-
-
-
-
-
-
-<a name="services-account-v1-TokenProtection"></a>
-
-### TokenProtection
-Token protection info
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
-| method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
-
-
-
-
-
-
-<a name="services-account-v1-WalletAuthToken"></a>
-
-### WalletAuthToken
-Information about authentication tokens for a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | Unique identifier for the token. This field will match the `DeviceId` in the WalletAuthData |
-| description | [string](/reference/proto#string) | Device name/description |
-| date_created | [string](/reference/proto#string) | Date when the token was created in ISO 8601 format |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="services-account-v1-ConfirmationMethod"></a>
-
-### ConfirmationMethod
-Confirmation method type for two-factor workflows
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| None | 0 | No confirmation required |
-| Email | 1 | Email confirmation required |
-| Sms | 2 | SMS confirmation required |
-| ConnectedDevice | 3 | Confirmation from a connected device is required |
-| Other | 10 | Third-party method of confirmation is required |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_file-management_v1_file-management-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/file-management/v1/file-management.proto
-
-
-
-<a name="services-filemanagement-v1-FileManagement"></a>
-
-### Service - FileManagement
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
-| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
-| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
-| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
-| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
-
- <!-- end services -->
-
-
-<a name="services-filemanagement-v1-DeleteFileRequest"></a>
-
-### DeleteFileRequest
-Request to delete a file from Trinsic's CDN by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to delete |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-DeleteFileResponse"></a>
-
-### DeleteFileResponse
-Response to `DeleteFileRequest`. Empty payload.
-
-
-
-
-
-
-<a name="services-filemanagement-v1-File"></a>
-
-### File
-Contains information about a file stored in Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
-| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
-| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
-| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
-| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
-| url | [string](/reference/proto#string) | CDN URL of file |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileRequest"></a>
-
-### GetFileRequest
-Request to fetch information about a stored file
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of file to fetch |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetFileResponse"></a>
-
-### GetFileResponse
-Response to `GetFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
-
-### GetStorageStatsRequest
-Request to get statistics about files uploaded by this account
-
-
-
-
-
-
-<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
-
-### GetStorageStatsResponse
-Response to `GetStorageStatsRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesRequest"></a>
-
-### ListFilesRequest
-Request to list files
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-ListFilesResponse"></a>
-
-### ListFilesResponse
-Response to `ListFilesRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-StorageStats"></a>
-
-### StorageStats
-Represents aggregate statistics of all files uploaded by a single issuer
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
-| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileRequest"></a>
-
-### UploadFileRequest
-Request to upload a file to Trinsic's CDN
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| contents | [bytes](/reference/proto#bytes) | Raw content of file |
-| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
-
-
-
-
-
-
-<a name="services-filemanagement-v1-UploadFileResponse"></a>
-
-### UploadFileResponse
-Response to `UploadFileRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+
+Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
 
 
 
@@ -756,66 +39,6 @@ Response to `UploadFileRequest`
  <!-- end messages -->
 
  <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_options_field-options-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/options/field-options.proto
-
-
- <!-- end services -->
-
-
-<a name="services-options-AnnotationOption"></a>
-
-### AnnotationOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| active | [bool](/reference/proto#bool) | Is this annotation active |
-| message | [string](/reference/proto#string) | Custom annotation message to provide |
-
-
-
-
-
-
-<a name="services-options-SdkTemplateOption"></a>
-
-### SdkTemplateOption
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
-| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
-| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
-| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
-| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
-| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
@@ -1190,6 +413,98 @@ NOTE: The referred field must be present at the top-level of the response messag
 
 
  <!-- end messages -->
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_common_v1_common-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/common/v1/common.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-common-v1-Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+
+
+
+
+
+
+<a name="services-common-v1-TrinsicClientOptions"></a>
+
+### TrinsicClientOptions
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-common-v1-OrderDirection"></a>
+
+### OrderDirection
+The direction to order results
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| ASCENDING | 0 |  |
+| DESCENDING | 1 |  |
+
+
+
+<a name="services-common-v1-ResponseStatus"></a>
+
+### ResponseStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SUCCESS | 0 |  |
+| WALLET_ACCESS_DENIED | 10 |  |
+| WALLET_EXISTS | 11 |  |
+| ITEM_NOT_FOUND | 20 |  |
+| SERIALIZATION_ERROR | 200 |  |
+| UNKNOWN_ERROR | 100 |  |
+
+
+
+<a name="services-common-v1-SupportedDidMethod"></a>
+
+### SupportedDidMethod
+Enum of all supported DID Methods
+https://docs.godiddy.com/en/supported-methods
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY | 0 | The did:key method -- all wallets use this by default |
+| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
+| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+
 
  <!-- end enums -->
 
@@ -1652,6 +967,66 @@ Request to fetch the list of roles assigned to the current account
  <!-- end messages -->
 
  <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_options_field-options-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/options/field-options.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-options-AnnotationOption"></a>
+
+### AnnotationOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| active | [bool](/reference/proto#bool) | Is this annotation active |
+| message | [string](/reference/proto#string) | Custom annotation message to provide |
+
+
+
+
+
+
+<a name="services-options-SdkTemplateOption"></a>
+
+### SdkTemplateOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignore this method. This method will be wrapped manually. |
+| no_arguments | [bool](/reference/proto#bool) | Whether the SDK template generator should generate this method without arguments, eg ProviderService.GetEcosystemInfo() where the request object is empty |
+| experimental | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is experimental. Consider it in beta, so documentation may be incomplete or incorrect. |
+| deprecated | [AnnotationOption](/reference/proto#services-options-AnnotationOption) | This endpoint is deprecated. It will be removed in the future. |
+
+
+
+
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+
+<a name="services_options_field-options-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
@@ -2778,236 +2153,209 @@ Response to `VerifyProofRequest`
 
 
 
-<a name="services_trust-registry_v1_trust-registry-proto"></a>
+<a name="services_file-management_v1_file-management-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/trust-registry/v1/trust-registry.proto
+## services/file-management/v1/file-management.proto
 
 
 
-<a name="services-trustregistry-v1-TrustRegistry"></a>
+<a name="services-filemanagement-v1-FileManagement"></a>
 
-### Service - TrustRegistry
+### Service - FileManagement
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
-| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
-| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
-| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
-| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
+| UploadFile | [UploadFileRequest](/reference/proto#services-filemanagement-v1-UploadFileRequest) | [UploadFileResponse](/reference/proto#services-filemanagement-v1-UploadFileResponse) | Upload a file to Trinsic's CDN |
+| GetFile | [GetFileRequest](/reference/proto#services-filemanagement-v1-GetFileRequest) | [GetFileResponse](/reference/proto#services-filemanagement-v1-GetFileResponse) | Fetch information about a file by its ID |
+| DeleteFile | [DeleteFileRequest](/reference/proto#services-filemanagement-v1-DeleteFileRequest) | [DeleteFileResponse](/reference/proto#services-filemanagement-v1-DeleteFileResponse) | Delete a file by its ID |
+| ListFiles | [ListFilesRequest](/reference/proto#services-filemanagement-v1-ListFilesRequest) | [ListFilesResponse](/reference/proto#services-filemanagement-v1-ListFilesResponse) | List files the calling account has uploaded |
+| GetStorageStats | [GetStorageStatsRequest](/reference/proto#services-filemanagement-v1-GetStorageStatsRequest) | [GetStorageStatsResponse](/reference/proto#services-filemanagement-v1-GetStorageStatsResponse) | Get statistics about files uploaded by the calling account |
 
  <!-- end services -->
 
 
-<a name="services-trustregistry-v1-AuthorizedMember"></a>
+<a name="services-filemanagement-v1-DeleteFileRequest"></a>
 
-### AuthorizedMember
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did | [string](/reference/proto#string) |  |
-| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
-
-### AuthorizedMemberSchema
-
+### DeleteFileRequest
+Request to delete a file from Trinsic's CDN by ID
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| schema_uri | [string](/reference/proto#string) |  |
-| status | [string](/reference/proto#string) |  |
-| status_details | [string](/reference/proto#string) |  |
-| valid_from | [uint64](/reference/proto#uint64) |  |
-| valid_until | [uint64](/reference/proto#uint64) |  |
+| id | [string](/reference/proto#string) | ID of file to delete |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
+<a name="services-filemanagement-v1-DeleteFileResponse"></a>
 
-### GetMemberAuthorizationStatusRequest
-Request to fetch member status in Trust Registry for a specific credential schema.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
+### DeleteFileResponse
+Response to `DeleteFileRequest`. Empty payload.
 
 
 
 
 
 
-<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
+<a name="services-filemanagement-v1-File"></a>
 
-### GetMemberAuthorizationStatusResponse
-Response to `GetMemberAuthorizationStatusRequest`
+### File
+Contains information about a file stored in Trinsic's CDN
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
+| id | [string](/reference/proto#string) | ID of file, generated randomly by Trinsic on upload |
+| uploader_id | [string](/reference/proto#string) | Wallet ID of uploader |
+| size | [uint32](/reference/proto#uint32) | Size, in bytes, of file |
+| mime_type | [string](/reference/proto#string) | Uploader-provided MIME type of file |
+| uploaded | [string](/reference/proto#string) | ISO 8601 timestamp of when file was uploaded to Trinsic |
+| url | [string](/reference/proto#string) | CDN URL of file |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-GetMemberRequest"></a>
+<a name="services-filemanagement-v1-GetFileRequest"></a>
 
-### GetMemberRequest
-Request to get a member of the Trust Registry
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to get |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
-| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GetMemberResponse"></a>
-
-### GetMemberResponse
-Response to `GetMemberAuthorizationStatusRequest`
+### GetFileRequest
+Request to fetch information about a stored file
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
+| id | [string](/reference/proto#string) | ID of file to fetch |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
+<a name="services-filemanagement-v1-GetFileResponse"></a>
 
-### ListAuthorizedMembersRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
-
-### ListAuthorizedMembersResponse
-Response to `ListAuthorizedMembersRequest`
+### GetFileResponse
+Response to `GetFileRequest`
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
-| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
+| file | [File](/reference/proto#services-filemanagement-v1-File) | File specified by `id` parameter of `GetFileRequest`. |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
+<a name="services-filemanagement-v1-GetStorageStatsRequest"></a>
 
-### RegisterMemberRequest
-Request to register a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to register |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
-| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
-| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
-| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
+### GetStorageStatsRequest
+Request to get statistics about files uploaded by this account
 
 
 
 
 
 
-<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
+<a name="services-filemanagement-v1-GetStorageStatsResponse"></a>
 
-### RegisterMemberResponse
-Response to `RegisterMemberRequest`
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
-
-### UnregisterMemberRequest
-Request to unregister a member as a valid issuer of a specific credential schema.
-Only one of `did_uri`, `wallet_id`, or `email` may be specified.
-The URI of the credential schema must be specified.
+### GetStorageStatsResponse
+Response to `GetStorageStatsRequest`
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
-| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
-| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
-| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
+| stats | [StorageStats](/reference/proto#services-filemanagement-v1-StorageStats) | Statistics about files uploaded by the calling account |
 
 
 
 
 
 
-<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
+<a name="services-filemanagement-v1-ListFilesRequest"></a>
 
-### UnregisterMemberResponse
-Response to `UnregisterMemberRequest`
+### ListFilesRequest
+Request to list files
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | Query to search with. If not specified, will return the most recent 100 files. |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListFilesRequest` if more data is available for query |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-ListFilesResponse"></a>
+
+### ListFilesResponse
+Response to `ListFilesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| files | [File](/reference/proto#services-filemanagement-v1-File)[] | Files found by query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListFilesRequest` |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-StorageStats"></a>
+
+### StorageStats
+Represents aggregate statistics of all files uploaded by a single issuer
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| num_files | [uint32](/reference/proto#uint32) | Number of files uploaded by this account |
+| total_size | [uint64](/reference/proto#uint64) | Sum total size of all files, in bytes |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileRequest"></a>
+
+### UploadFileRequest
+Request to upload a file to Trinsic's CDN
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| contents | [bytes](/reference/proto#bytes) | Raw content of file |
+| mime_type | [string](/reference/proto#string) | MIME type describing file contents |
+
+
+
+
+
+
+<a name="services-filemanagement-v1-UploadFileResponse"></a>
+
+### UploadFileResponse
+Response to `UploadFileRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| uploaded_file | [File](/reference/proto#services-filemanagement-v1-File) | Information about newly-uploaded file |
 
 
 
 
 
  <!-- end messages -->
-
-
-<a name="services-trustregistry-v1-RegistrationStatus"></a>
-
-### RegistrationStatus
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| CURRENT | 0 | Member is currently authorized, as of the time of the query |
-| EXPIRED | 1 | Member's authorization has expired |
-| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
-| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
-| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
-
 
  <!-- end enums -->
 
@@ -3659,43 +3007,215 @@ Response to `UpdateItemRequest`
 
 
 
-<a name="services_common_v1_common-proto"></a>
+<a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/common/v1/common.proto
+## services/trust-registry/v1/trust-registry.proto
 
+
+
+<a name="services-trustregistry-v1-TrustRegistry"></a>
+
+### Service - TrustRegistry
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| RegisterMember | [RegisterMemberRequest](/reference/proto#services-trustregistry-v1-RegisterMemberRequest) | [RegisterMemberResponse](/reference/proto#services-trustregistry-v1-RegisterMemberResponse) | Register an authoritative issuer for a credential schema |
+| UnregisterMember | [UnregisterMemberRequest](/reference/proto#services-trustregistry-v1-UnregisterMemberRequest) | [UnregisterMemberResponse](/reference/proto#services-trustregistry-v1-UnregisterMemberResponse) | Removes an authoritative issuer for a credential schema from the trust registry |
+| GetMemberAuthorizationStatus | [GetMemberAuthorizationStatusRequest](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusRequest) | [GetMemberAuthorizationStatusResponse](/reference/proto#services-trustregistry-v1-GetMemberAuthorizationStatusResponse) | Fetch the status of a member for a given credential schema in a trust registry |
+| ListAuthorizedMembers | [ListAuthorizedMembersRequest](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersRequest) | [ListAuthorizedMembersResponse](/reference/proto#services-trustregistry-v1-ListAuthorizedMembersResponse) | Fetch the ecosystem's authorized issuers and the respective templates against which it can issue |
+| GetMember | [GetMemberRequest](/reference/proto#services-trustregistry-v1-GetMemberRequest) | [GetMemberResponse](/reference/proto#services-trustregistry-v1-GetMemberResponse) | Get member for a given did in a trust registry |
 
  <!-- end services -->
 
 
-<a name="services-common-v1-Nonce"></a>
+<a name="services-trustregistry-v1-AuthorizedMember"></a>
 
-### Nonce
-Nonce used to generate an oberon proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
-
-
-
-
-
-
-<a name="services-common-v1-TrinsicClientOptions"></a>
-
-### TrinsicClientOptions
+### AuthorizedMember
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
+| did | [string](/reference/proto#string) |  |
+| authorized_member_schemas | [AuthorizedMemberSchema](/reference/proto#services-trustregistry-v1-AuthorizedMemberSchema)[] |  |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-AuthorizedMemberSchema"></a>
+
+### AuthorizedMemberSchema
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schema_uri | [string](/reference/proto#string) |  |
+| status | [string](/reference/proto#string) |  |
+| status_details | [string](/reference/proto#string) |  |
+| valid_from | [uint64](/reference/proto#uint64) |  |
+| valid_until | [uint64](/reference/proto#uint64) |  |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusRequest"></a>
+
+### GetMemberAuthorizationStatusRequest
+Request to fetch member status in Trust Registry for a specific credential schema.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema associated with member |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberAuthorizationStatusResponse"></a>
+
+### GetMemberAuthorizationStatusResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) | Status of member for given credential schema |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberRequest"></a>
+
+### GetMemberRequest
+Request to get a member of the Trust Registry
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to get |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to get |
+| email | [string](/reference/proto#string) | Email address of member to get. Must be associated with an existing Trinsic account. |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-GetMemberResponse"></a>
+
+### GetMemberResponse
+Response to `GetMemberAuthorizationStatusRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_member | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember) | Member for given did in given framework |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersRequest"></a>
+
+### ListAuthorizedMembersRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| schema_uri | [string](/reference/proto#string) | id of schema that needs to be checked |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results, from previous `ListAuthorizedMembersResponse` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-ListAuthorizedMembersResponse"></a>
+
+### ListAuthorizedMembersResponse
+Response to `ListAuthorizedMembersRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| authorized_members | [AuthorizedMember](/reference/proto#services-trustregistry-v1-AuthorizedMember)[] | JSON string containing array of resultant objects |
+| has_more_results | [bool](/reference/proto#bool) | Whether more data is available to fetch for query |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `ListAuthorizedMembersRequest` |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberRequest"></a>
+
+### RegisterMemberRequest
+Request to register a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to register |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to register |
+| email | [string](/reference/proto#string) | Email address of member to register. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to register member as authorized issuer of |
+| valid_from_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. |
+| valid_until_utc | [uint64](/reference/proto#uint64) | Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-RegisterMemberResponse"></a>
+
+### RegisterMemberResponse
+Response to `RegisterMemberRequest`
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberRequest"></a>
+
+### UnregisterMemberRequest
+Request to unregister a member as a valid issuer of a specific credential schema.
+Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+The URI of the credential schema must be specified.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](/reference/proto#string) | DID URI of member to unregister |
+| wallet_id | [string](/reference/proto#string) | Trinsic Wallet ID of member to unregister |
+| email | [string](/reference/proto#string) | Email address of member to unregister. Must be associated with an existing Trinsic account. |
+| schema_uri | [string](/reference/proto#string) | URI of credential schema to unregister member as authorized issuer of |
+
+
+
+
+
+
+<a name="services-trustregistry-v1-UnregisterMemberResponse"></a>
+
+### UnregisterMemberResponse
+Response to `UnregisterMemberRequest`
 
 
 
@@ -3704,45 +3224,18 @@ Nonce used to generate an oberon proof
  <!-- end messages -->
 
 
-<a name="services-common-v1-OrderDirection"></a>
+<a name="services-trustregistry-v1-RegistrationStatus"></a>
 
-### OrderDirection
-The direction to order results
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ASCENDING | 0 |  |
-| DESCENDING | 1 |  |
-
-
-
-<a name="services-common-v1-ResponseStatus"></a>
-
-### ResponseStatus
+### RegistrationStatus
 
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SUCCESS | 0 |  |
-| WALLET_ACCESS_DENIED | 10 |  |
-| WALLET_EXISTS | 11 |  |
-| ITEM_NOT_FOUND | 20 |  |
-| SERIALIZATION_ERROR | 200 |  |
-| UNKNOWN_ERROR | 100 |  |
-
-
-
-<a name="services-common-v1-SupportedDidMethod"></a>
-
-### SupportedDidMethod
-Enum of all supported DID Methods
-https://docs.godiddy.com/en/supported-methods
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| KEY | 0 | The did:key method -- all wallets use this by default |
-| ION | 1 | The did:ion method -- Sidetree implementation on top of Bitcoin by Microsoft |
-| INDY | 2 | The did:sov method -- Hyperledger Indy based by Sovrin Foundation |
+| CURRENT | 0 | Member is currently authorized, as of the time of the query |
+| EXPIRED | 1 | Member's authorization has expired |
+| TERMINATED | 2 | Member has voluntarily ceased Issuer role under the specific EGF |
+| REVOKED | 3 | Member authority under specific EGF was terminated by the governing authority |
+| NOT_FOUND | 10 | Member is not associated with given credential schema in the EGF |
 
 
  <!-- end enums -->
@@ -3751,35 +3244,560 @@ https://docs.godiddy.com/en/supported-methods
 
 
 
-<a name="sdk_options_v1_options-proto"></a>
+<a name="services_connect_v1_connect-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## sdk/options/v1/options.proto
+## services/connect/v1/connect.proto
 
+
+
+<a name="services-connect-v1-Connect"></a>
+
+### Service - Connect
+The Connect service provides access to Trinsic Connect, a reusable identity verification service.
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| CreateSession | [CreateSessionRequest](/reference/proto#services-connect-v1-CreateSessionRequest) | [CreateSessionResponse](/reference/proto#services-connect-v1-CreateSessionResponse) | Create an IDVSession |
+| CancelSession | [CancelSessionRequest](/reference/proto#services-connect-v1-CancelSessionRequest) | [CancelSessionResponse](/reference/proto#services-connect-v1-CancelSessionResponse) | Cancel an IDVSession |
+| GetSession | [GetSessionRequest](/reference/proto#services-connect-v1-GetSessionRequest) | [GetSessionResponse](/reference/proto#services-connect-v1-GetSessionResponse) | Get an IDVSession |
+| ListSessions | [ListSessionsRequest](/reference/proto#services-connect-v1-ListSessionsRequest) | [ListSessionsResponse](/reference/proto#services-connect-v1-ListSessionsResponse) | List IDVSessions created by the calling wallet |
+| HasValidCredential | [HasValidCredentialRequest](/reference/proto#services-connect-v1-HasValidCredentialRequest) | [HasValidCredentialResponse](/reference/proto#services-connect-v1-HasValidCredentialResponse) | Checks if the identity provided in the request has a wallet containing a valid reusable credential |
 
  <!-- end services -->
 
 
-<a name="sdk-options-v1-TrinsicOptions"></a>
+<a name="services-connect-v1-CancelSessionRequest"></a>
 
-### TrinsicOptions
-Configuration for Trinsic SDK Services
+### CancelSessionRequest
+Request to cancel an Identity Verification Session
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to cancel |
 
-Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
+
+
+
+
+
+<a name="services-connect-v1-CancelSessionResponse"></a>
+
+### CancelSessionResponse
+Response to `CancelIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession in its current state after cancellation |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionRequest"></a>
+
+### CreateSessionRequest
+Request to create an Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verifications | [RequestedVerification](/reference/proto#services-connect-v1-RequestedVerification)[] | Array of verifications to perform |
+| debug_information | [CreateSessionRequest.DebugInformationEntry](/reference/proto#services-connect-v1-CreateSessionRequest-DebugInformationEntry)[] | Debugging information used to help diagnose issues |
+| demo_rp | [DemoRelyingParty](/reference/proto#services-connect-v1-DemoRelyingParty) | Information about the Relying Party used for demo purposes. This is only to be used if the demo flag is set to true in the debug information. |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionRequest-DebugInformationEntry"></a>
+
+### CreateSessionRequest.DebugInformationEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-connect-v1-CreateSessionResponse"></a>
+
+### CreateSessionResponse
+Response to `CreateIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The created IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-CredentialRequestData"></a>
+
+### CredentialRequestData
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification for which the credential can be used
+
+Name of the IDV issuer |
+
+
+
+
+
+
+<a name="services-connect-v1-DemoRelyingParty"></a>
+
+### DemoRelyingParty
+Information about a Relying Party used for demo purposes
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| display_name | [string](/reference/proto#string) |  |
+| logo_url | [string](/reference/proto#string) |  |
+| primary_color | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionRequest"></a>
+
+### GetSessionRequest
+Request to get an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| idv_session_id | [string](/reference/proto#string) | The ID of the IDVSession to get |
+
+
+
+
+
+
+<a name="services-connect-v1-GetSessionResponse"></a>
+
+### GetSessionResponse
+Response to `GetIDVSessionRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| session | [IDVSession](/reference/proto#services-connect-v1-IDVSession) | The IDVSession |
+
+
+
+
+
+
+<a name="services-connect-v1-GovernmentIDFields"></a>
+
+### GovernmentIDFields
+Selection of fields to retrieve from a Government ID. All fields default to `false` unless explicitly set to `true`.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id_number | [bool](/reference/proto#bool) | ID number of the underlying identity document |
+| given_name | [bool](/reference/proto#bool) | Given ("first") name of the document holder |
+| family_name | [bool](/reference/proto#bool) | Family ("last") name of the document holder |
+| address | [bool](/reference/proto#bool) | Full address of the document holder |
+| date_of_birth | [bool](/reference/proto#bool) | Date of birth of the document holder |
+| country | [bool](/reference/proto#bool) | ISO3 country code of the document |
+| issue_date | [bool](/reference/proto#bool) | Issuance date of the document |
+| expiration_date | [bool](/reference/proto#bool) | Expiration date date of the document |
+
+
+
+
+
+
+<a name="services-connect-v1-GovernmentIDOptions"></a>
+
+### GovernmentIDOptions
+Options for a Verification of type `GOVERNMENT_ID`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| fields | [GovernmentIDFields](/reference/proto#services-connect-v1-GovernmentIDFields) | The fields to retrieve from the Government ID. If this object is not set, all fields will be retrieved. |
+
+
+
+
+
+
+<a name="services-connect-v1-HasValidCredentialRequest"></a>
+
+### HasValidCredentialRequest
+Request to preemptively check if an identity has a valid reusable credential
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| identity | [services.universalwallet.v1.CreateWalletRequest.ExternalIdentity](/reference/proto#services-universalwallet-v1-CreateWalletRequest-ExternalIdentity) | The identity used to find a credential |
+| credential_request_data | [CredentialRequestData](/reference/proto#services-connect-v1-CredentialRequestData) | The criteria used to find a valid credential |
+
+
+
+
+
+
+<a name="services-connect-v1-HasValidCredentialResponse"></a>
+
+### HasValidCredentialResponse
+Response to `HasValidCredentialRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| has_valid_credential | [bool](/reference/proto#bool) | Whether the identity has a valid credential |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession"></a>
+
+### IDVSession
+An Identity Verification Session
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the IDVSession. |
+| client_token | [string](/reference/proto#string) | The Client Token for this IDVSession. This should be passed to your frontend to initiate the IDV flow using Trinsic's Web SDK. |
+| state | [IDVSessionState](/reference/proto#services-connect-v1-IDVSessionState) | State of the IDVSession |
+| verifications | [IDVSession.VerificationsEntry](/reference/proto#services-connect-v1-IDVSession-VerificationsEntry)[] | The actual Verifications to perform in this IDV flow |
+| fail_code | [SessionFailCode](/reference/proto#services-connect-v1-SessionFailCode) | The reason for the IDVSession's failure. Only set if `state` is `IDV_FAILED`. |
+| result_vp | [string](/reference/proto#string) | The resultant signed VP combining the results of all verifications |
+| created | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession was created |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, that this IDVSession's `state` was last updated |
+
+
+
+
+
+
+<a name="services-connect-v1-IDVSession-VerificationsEntry"></a>
+
+### IDVSession.VerificationsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [Verification](/reference/proto#services-connect-v1-Verification) |  |
+
+
+
+
+
+
+<a name="services-connect-v1-ListSessionsRequest"></a>
+
+### ListSessionsRequest
+Request to list all IDVSessions you've created
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| order_by | [SessionOrdering](/reference/proto#services-connect-v1-SessionOrdering) | The field by which sessions should be sorted. Defaults to `CREATED`. |
+| order_direction | [services.common.v1.OrderDirection](/reference/proto#services-common-v1-OrderDirection) | The order in which sessions should be sorted. Defaults to `ASCENDING`. |
+| page_size | [int32](/reference/proto#int32) | The number of results to return per page. Must be between `1` and `10`, inclusive. Defaults to `10`. |
+| page | [int32](/reference/proto#int32) | The page index of results to return. Starts at `1`. Defaults to `1`. |
+
+
+
+
+
+
+<a name="services-connect-v1-ListSessionsResponse"></a>
+
+### ListSessionsResponse
+Response to `ListIDVSessionsRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| sessions | [IDVSession](/reference/proto#services-connect-v1-IDVSession)[] | The sessions you've created |
+| total | [int32](/reference/proto#int32) | The total number of sessions you've created |
+| more | [bool](/reference/proto#bool) | If `true`, this is not the last page of results. If `false`, this is the last page of results. |
+
+
+
+
+
+
+<a name="services-connect-v1-NormalizedGovernmentIdData"></a>
+
+### NormalizedGovernmentIdData
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id_number | [string](/reference/proto#string) | The ID number of the underlying identity document |
+| given_name | [string](/reference/proto#string) | Given ("first") name of the document holder |
+| family_name | [string](/reference/proto#string) | Family ("last") name of the document holder |
+| address | [string](/reference/proto#string) | Full address of the document holder |
+| date_of_birth | [string](/reference/proto#string) | Date of birth of the document holder |
+| country | [string](/reference/proto#string) | ISO3 country code of the document |
+| issue_date | [string](/reference/proto#string) | Issuance date of the document |
+| expiration_date | [string](/reference/proto#string) | Expiration date date of the document |
+
+
+
+
+
+
+<a name="services-connect-v1-RequestedVerification"></a>
+
+### RequestedVerification
+A verification to perform in an IDV flow
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification to perform |
+| government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | Options for a Verification of type `GOVERNMENT_ID` |
+
+
+
+
+
+
+<a name="services-connect-v1-Verification"></a>
+
+### Verification
+A Verification that is part of an IDVSession
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | The ID of the verification |
+| type | [VerificationType](/reference/proto#services-connect-v1-VerificationType) | The type of verification (driver's license, passport, proof of address, etc) |
+| state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
+| fail_code | [VerificationFailCode](/reference/proto#services-connect-v1-VerificationFailCode) | The reason for the Verification's failure. Only set if `state` is `VERIFICATION_FAILED`. |
+| reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
+| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
+| updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet begun. |
+| government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | The Government ID options for this Verification. Only set if this Verification is of type `GOVERNMENT_ID`. |
+| normalized_government_id_data | [NormalizedGovernmentIdData](/reference/proto#services-connect-v1-NormalizedGovernmentIdData) | Normalized output for manual parsing and usage for this verification Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded. |
 
 
 
 
 
  <!-- end messages -->
+
+
+<a name="services-connect-v1-IDVSessionState"></a>
+
+### IDVSessionState
+The states a VerificationSession can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| IDV_CREATED | 0 | Session has been created, but not yet shown to user |
+| IDV_INITIATED | 1 | Session has been shown to user (iframe / popup opened), but user has not yet logged in. |
+| IDV_AUTHENTICATING | 2 | User has entered their phone number, but not yet authenticated with the code sent via SMS |
+| IDV_IN_PROGRESS | 3 | User has been authenticated and is performing identity verification |
+| IDV_SUCCESS | 4 | Session was completed successfully and IDV data is available to RP |
+| IDV_FAILED | 5 | The session failed; reason is present in `fail_code`. |
+
+
+
+<a name="services-connect-v1-SessionFailCode"></a>
+
+### SessionFailCode
+The specific reason an IDVSession is in the `Failed` state
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SESSION_FAIL_NONE | 0 | The Session is not in a failure state. |
+| SESSION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this session to fail |
+| SESSION_FAIL_VERIFICATION_FAILED | 2 | The session failed because one or more of the verifications failed. The reason for the failure is present in the `fail_reason` field of the relevant `Verification` object(s). |
+| SESSION_FAIL_AUTHENTICATION | 3 | The session failed because the user failed to authenticate with their phone number too many times. |
+| SESSION_FAIL_EXPIRED | 4 | The session expired |
+| SESSION_FAIL_USER_CANCELED | 5 | The user canceled / rejected the session |
+| SESSION_FAIL_RP_CANCELED | 6 | The RP canceled the session |
+
+
+
+<a name="services-connect-v1-SessionOrdering"></a>
+
+### SessionOrdering
+Controls how sessions are ordered in `ListSessions`
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| CREATED | 0 | Order sessions according to when they were created |
+| UPDATED | 1 | Order sessions according to when they last changed state |
+| STATE | 2 | Order sessions according to their numerical state |
+
+
+
+<a name="services-connect-v1-VerificationFailCode"></a>
+
+### VerificationFailCode
+The specific reason a Verification is in the `Failed` state
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFICATION_FAIL_NONE | 0 | The verification is not in a failure state |
+| VERIFICATION_FAIL_INTERNAL | 1 | An internal Trinsic error caused this verification to fail |
+| VERIFICATION_FAIL_INVALID_IMAGE | 2 | The image(s) provided for this verification were either too low-quality, not of the correct type, or otherwise unable to be processed. This failure reason is non-terminal; the user is able to retry the verification. |
+| VERIFICATION_FAIL_INAUTHENTIC | 3 | The identity data/images provided are suspected to be inauthentic, fraudulent, or forged. |
+| VERIFICATION_FAIL_UNSUPPORTED_DOCUMENT | 4 | The document provided is either of an unsupported type, or from an unsupported country. |
+
+
+
+<a name="services-connect-v1-VerificationState"></a>
+
+### VerificationState
+The states an individual Verification can be in
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
+| VERIFICATION_PENDING_REUSE | 1 | This verification has been started by the user, and can be reused from a previous verification, but the user has not yet decided whether to reuse it. |
+| VERIFICATION_STARTED | 2 | This verification has been started by the user, but not yet completed |
+| VERIFICATION_SUCCESS | 3 | This verification has been successfully completed |
+| VERIFICATION_FAILED | 4 | This verification has failed |
+
+
+
+<a name="services-connect-v1-VerificationType"></a>
+
+### VerificationType
+The type of verification to perform
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| GOVERNMENT_ID | 0 | Government-issued ID (driver's license, passport, etc) |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_account_v1_account-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/account/v1/account.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-account-v1-AccountDetails"></a>
+
+### AccountDetails
+Account registration details
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Account name |
+| email | [string](/reference/proto#string) | **Deprecated.** Email address of account. |
+| sms | [string](/reference/proto#string) | **Deprecated.** SMS number including country code |
+
+
+
+
+
+
+<a name="services-account-v1-AccountProfile"></a>
+
+### AccountProfile
+Device profile containing sensitive authentication data.
+This information should be stored securely
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| profile_type | [string](/reference/proto#string) | The type of profile, used to differentiate between protocol schemes or versions |
+| auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
+| auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
+| protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
+
+
+
+
+
+
+<a name="services-account-v1-TokenProtection"></a>
+
+### TokenProtection
+Token protection info
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
+| method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
+
+
+
+
+
+
+<a name="services-account-v1-WalletAuthToken"></a>
+
+### WalletAuthToken
+Information about authentication tokens for a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | Unique identifier for the token. This field will match the `DeviceId` in the WalletAuthData |
+| description | [string](/reference/proto#string) | Device name/description |
+| date_created | [string](/reference/proto#string) | Date when the token was created in ISO 8601 format |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-account-v1-ConfirmationMethod"></a>
+
+### ConfirmationMethod
+Confirmation method type for two-factor workflows
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| None | 0 | No confirmation required |
+| Email | 1 | Email confirmation required |
+| Sms | 2 | SMS confirmation required |
+| ConnectedDevice | 3 | Confirmation from a connected device is required |
+| Other | 10 | Third-party method of confirmation is required |
+
 
  <!-- end enums -->
 
