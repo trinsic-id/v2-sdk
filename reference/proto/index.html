@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14+insiders-4.53.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15+insiders-4.53.3">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.003a5498.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.458d28d0.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -7338,6 +7338,11 @@ The URI of the credential schema must be specified.</p>
 <td><a href="/reference/proto#services-connect-v1-CreateSessionRequest-DebugInformationEntry">CreateSessionRequest.DebugInformationEntry</a>[]</td>
 <td>Debugging information used to help diagnose issues</td>
 </tr>
+<tr>
+<td>demo_rp</td>
+<td><a href="/reference/proto#services-connect-v1-DemoRelyingParty">DemoRelyingParty</a></td>
+<td>Information about the Relying Party used for demo purposes. This is only to be used if the demo flag is set to true in the debug information.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-connect-v1-CreateSessionRequest-DebugInformationEntry"></a></p>
@@ -7401,6 +7406,35 @@ The URI of the credential schema must be specified.</p>
 </tbody>
 </table>
 <p>Name of the IDV issuer |</p>
+<p><a name="services-connect-v1-DemoRelyingParty"></a></p>
+<h3 id="demorelyingparty">DemoRelyingParty<a class="headerlink" href="#demorelyingparty" title="Permanent link">&para;</a></h3>
+<p>Information about a Relying Party used for demo purposes</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>display_name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>logo_url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>primary_color</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-connect-v1-GetSessionRequest"></a></p>
 <h3 id="getsessionrequest">GetSessionRequest<a class="headerlink" href="#getsessionrequest" title="Permanent link">&para;</a></h3>
 <p>Request to get an IDVSession</p>
