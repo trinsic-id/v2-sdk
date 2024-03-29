@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "@trinsic/trinsic": "^1.11.3-pre.14",
-    "express": "^4.18.2"
+    "express": "^4.19.2"
   }
 }
