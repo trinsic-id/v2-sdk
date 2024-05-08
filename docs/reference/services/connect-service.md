@@ -125,6 +125,44 @@ A session cannot be canceled if it is in the {{ field_ref("CancelSessionResponse
 
 ---
 
+## Invoke Headless Verification Flow
+
+In scenarios where a relying party (or attestation provider) wants to preemptively check whether or not a user has a reusable credential, the `HasValidCredential` method runs a headless verification flow with the provided identity. It returns a boolean value, `true` if the identity has a reusable credential `false` otherwise. 
+
+No PII will be included in the response, if you are interested in obtaining results you will need to invoke a verification flow on the client.
+
+{{ proto_sample_start() }}
+
+    === "TypeScript"
+        ```ts
+        import { TrinsicService } from "@trinsic/trinsic";
+
+        const trinsic = new TrinsicService({ authToken: "<auth token>" });
+
+        const result = await trinsic.connect().hasValidCredential({
+            identity: {
+                identity: "<phone number>",
+                provider: IdentityProvider.PHONE,
+            },
+            credentialRequestData: {
+                type: VerificationType.GOVERNMENT_ID
+            },
+        });
+
+        console.log(result.hasValidCredential);
+        ```
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [Has Valid Credential](../../../dotnet/Tests/Tests.cs) inside_block:hasValidCredential
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.connect.v1.Connect.HasValidCredential") }}
+
+---
+
 ## Invoke Verification Flow on the Client
 
 Once a Session has been [created](#create-session), the verification flow must be run on your end-user's device, using the {{ field_ref("CreateSessionResponse", "session.client_token") }}  returned during Session creation.

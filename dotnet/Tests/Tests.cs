@@ -337,6 +337,18 @@ public class Tests
             });
             // }
 
+            // hasValidCredential() {
+            await trinsic.Connect.HasValidCredentialAsync(new() {
+                Identity = new() {
+                    Identity = "<phone number>",
+                    Provider = IdentityProvider.Phone
+                },
+                CredentialRequestData = new() {
+                    Type = VerificationType.GovernmentId
+                }
+            });
+            // }
+
         } catch {
             // We expect the above calls to fail due to lack of privileges
         }
