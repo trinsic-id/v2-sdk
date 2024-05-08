@@ -8,5 +8,14 @@
     "groupSlug": "all",
     "assignees": ["fundthmcalculus"],
     "reviewers": ["fundthmcalculus"],
-    "prHourlyLimit": 0
+    "prHourlyLimit": 0,
+    "packageRules": [
+        {
+            "matchManagers": ["npm"],
+            "groupName": "all NPM dependencies",
+            "groupSlug": "all",
+            "assignees": ["lucasamonrc"],
+            "reviewers": ["lucasamonrc"]
+        }
+    ]
 }
