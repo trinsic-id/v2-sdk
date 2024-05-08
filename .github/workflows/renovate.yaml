@@ -20,4 +20,4 @@ jobs:
           LOG_LEVEL: debug
         with:
           configurationFile: .github/renovate.json
-          token: ${{ secrets.MEWMBA_RENOVATE_TOKEN }}
+          token: ${{ secrets.SDK_REPO_PUSH_TOKEN }}
