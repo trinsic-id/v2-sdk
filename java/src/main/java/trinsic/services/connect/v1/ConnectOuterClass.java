@@ -29,6 +29,10 @@ public final class ConnectOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_NormalizedGovernmentIdData_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_connect_v1_DemoRelyingParty_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_connect_v1_DemoRelyingParty_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_connect_v1_CreateSessionRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_connect_v1_CreateSessionRequest_fieldAccessorTable;
@@ -152,14 +156,21 @@ public final class ConnectOuterClass {
           + "\016_date_of_birthB\n\n"
           + "\010_countryB\r\n"
           + "\013_issue_dateB\022\n"
-          + "\020_expiration_date\"\200\002\n"
+          + "\020_expiration_date\"u\n"
+          + "\020DemoRelyingParty\022!\n"
+          + "\014display_name\030\001 \001(\tR\013displayName\022\031\n"
+          + "\010logo_url\030\002 \001(\tR\007logoUrl\022#\n\r"
+          + "primary_color\030\003 \001(\tR\014primaryColor\"\321\002\n"
           + "\024CreateSessionRequest\022A\n\r"
           + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\022l\n"
-          + "\021debug_information\030\002 \003(\0132?.services.connect.v1."
-          + "CreateSessionRequest.DebugInformationEntryR\020debugInformation\0327\n"
+          + "\021debug_information\030\002 \003(\0132?.services.connect.v1.C"
+          + "reateSessionRequest.DebugInformationEntryR\020debugInformation\022C\n"
+          + "\007demo_rp\030\003 \001(\0132%.s"
+          + "ervices.connect.v1.DemoRelyingPartyH\000R\006demoRp\210\001\001\0327\n"
           + "\025DebugInformationEntry\022\013\n"
           + "\003key\030\001 \001(\t\022\r\n"
-          + "\005value\030\002 \001(\t:\0028\001\"\242\001\n"
+          + "\005value\030\002 \001(\t:\0028\001B\n\n"
+          + "\010_demo_rp\"\242\001\n"
           + "\025RequestedVerification\0223\n"
           + "\004type\030\001 \001(\0162%.services.connect.v1.VerificationType\022I\n"
           + "\025government_id_options\030\002"
@@ -331,13 +342,21 @@ public final class ConnectOuterClass {
               "IssueDate",
               "ExpirationDate",
             });
-    internal_static_services_connect_v1_CreateSessionRequest_descriptor =
+    internal_static_services_connect_v1_DemoRelyingParty_descriptor =
         getDescriptor().getMessageTypes().get(3);
+    internal_static_services_connect_v1_DemoRelyingParty_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_connect_v1_DemoRelyingParty_descriptor,
+            new java.lang.String[] {
+              "DisplayName", "LogoUrl", "PrimaryColor",
+            });
+    internal_static_services_connect_v1_CreateSessionRequest_descriptor =
+        getDescriptor().getMessageTypes().get(4);
     internal_static_services_connect_v1_CreateSessionRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CreateSessionRequest_descriptor,
             new java.lang.String[] {
-              "Verifications", "DebugInformation",
+              "Verifications", "DebugInformation", "DemoRp", "DemoRp",
             });
     internal_static_services_connect_v1_CreateSessionRequest_DebugInformationEntry_descriptor =
         internal_static_services_connect_v1_CreateSessionRequest_descriptor.getNestedTypes().get(0);
@@ -348,7 +367,7 @@ public final class ConnectOuterClass {
               "Key", "Value",
             });
     internal_static_services_connect_v1_RequestedVerification_descriptor =
-        getDescriptor().getMessageTypes().get(4);
+        getDescriptor().getMessageTypes().get(5);
     internal_static_services_connect_v1_RequestedVerification_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_RequestedVerification_descriptor,
@@ -356,7 +375,7 @@ public final class ConnectOuterClass {
               "Type", "GovernmentIdOptions", "Options",
             });
     internal_static_services_connect_v1_GovernmentIDOptions_descriptor =
-        getDescriptor().getMessageTypes().get(5);
+        getDescriptor().getMessageTypes().get(6);
     internal_static_services_connect_v1_GovernmentIDOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GovernmentIDOptions_descriptor,
@@ -364,7 +383,7 @@ public final class ConnectOuterClass {
               "Fields",
             });
     internal_static_services_connect_v1_GovernmentIDFields_descriptor =
-        getDescriptor().getMessageTypes().get(6);
+        getDescriptor().getMessageTypes().get(7);
     internal_static_services_connect_v1_GovernmentIDFields_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GovernmentIDFields_descriptor,
@@ -379,7 +398,7 @@ public final class ConnectOuterClass {
               "ExpirationDate",
             });
     internal_static_services_connect_v1_CreateSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(7);
+        getDescriptor().getMessageTypes().get(8);
     internal_static_services_connect_v1_CreateSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CreateSessionResponse_descriptor,
@@ -387,7 +406,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_CancelSessionRequest_descriptor =
-        getDescriptor().getMessageTypes().get(8);
+        getDescriptor().getMessageTypes().get(9);
     internal_static_services_connect_v1_CancelSessionRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CancelSessionRequest_descriptor,
@@ -395,7 +414,7 @@ public final class ConnectOuterClass {
               "IdvSessionId",
             });
     internal_static_services_connect_v1_CancelSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(9);
+        getDescriptor().getMessageTypes().get(10);
     internal_static_services_connect_v1_CancelSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CancelSessionResponse_descriptor,
@@ -403,7 +422,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_GetSessionRequest_descriptor =
-        getDescriptor().getMessageTypes().get(10);
+        getDescriptor().getMessageTypes().get(11);
     internal_static_services_connect_v1_GetSessionRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GetSessionRequest_descriptor,
@@ -411,7 +430,7 @@ public final class ConnectOuterClass {
               "IdvSessionId",
             });
     internal_static_services_connect_v1_GetSessionResponse_descriptor =
-        getDescriptor().getMessageTypes().get(11);
+        getDescriptor().getMessageTypes().get(12);
     internal_static_services_connect_v1_GetSessionResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_GetSessionResponse_descriptor,
@@ -419,7 +438,7 @@ public final class ConnectOuterClass {
               "Session",
             });
     internal_static_services_connect_v1_ListSessionsRequest_descriptor =
-        getDescriptor().getMessageTypes().get(12);
+        getDescriptor().getMessageTypes().get(13);
     internal_static_services_connect_v1_ListSessionsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_ListSessionsRequest_descriptor,
@@ -427,7 +446,7 @@ public final class ConnectOuterClass {
               "OrderBy", "OrderDirection", "PageSize", "Page", "PageSize", "Page",
             });
     internal_static_services_connect_v1_ListSessionsResponse_descriptor =
-        getDescriptor().getMessageTypes().get(13);
+        getDescriptor().getMessageTypes().get(14);
     internal_static_services_connect_v1_ListSessionsResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_ListSessionsResponse_descriptor,
@@ -435,7 +454,7 @@ public final class ConnectOuterClass {
               "Sessions", "Total", "More",
             });
     internal_static_services_connect_v1_HasValidCredentialRequest_descriptor =
-        getDescriptor().getMessageTypes().get(14);
+        getDescriptor().getMessageTypes().get(15);
     internal_static_services_connect_v1_HasValidCredentialRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_HasValidCredentialRequest_descriptor,
@@ -443,7 +462,7 @@ public final class ConnectOuterClass {
               "Identity", "CredentialRequestData",
             });
     internal_static_services_connect_v1_HasValidCredentialResponse_descriptor =
-        getDescriptor().getMessageTypes().get(15);
+        getDescriptor().getMessageTypes().get(16);
     internal_static_services_connect_v1_HasValidCredentialResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_HasValidCredentialResponse_descriptor,
@@ -451,7 +470,7 @@ public final class ConnectOuterClass {
               "HasValidCredential",
             });
     internal_static_services_connect_v1_CredentialRequestData_descriptor =
-        getDescriptor().getMessageTypes().get(16);
+        getDescriptor().getMessageTypes().get(17);
     internal_static_services_connect_v1_CredentialRequestData_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_connect_v1_CredentialRequestData_descriptor,

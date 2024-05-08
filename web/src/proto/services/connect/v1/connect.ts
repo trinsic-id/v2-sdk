@@ -472,6 +472,13 @@ export interface NormalizedGovernmentIdData {
   expirationDate?: string | undefined;
 }
 
+/** Information about a Relying Party used for demo purposes */
+export interface DemoRelyingParty {
+  displayName?: string | undefined;
+  logoUrl?: string | undefined;
+  primaryColor?: string | undefined;
+}
+
 /** Request to create an Identity Verification Session */
 export interface CreateSessionRequest {
   /** Array of verifications to perform */
@@ -479,7 +486,14 @@ export interface CreateSessionRequest {
     | RequestedVerification[]
     | undefined;
   /** Debugging information used to help diagnose issues */
-  debugInformation?: { [key: string]: string } | undefined;
+  debugInformation?:
+    | { [key: string]: string }
+    | undefined;
+  /**
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   */
+  demoRp?: DemoRelyingParty | undefined;
 }
 
 export interface CreateSessionRequest_DebugInformationEntry {
@@ -1276,8 +1290,97 @@ export const NormalizedGovernmentIdData = {
   },
 };
 
+function createBaseDemoRelyingParty(): DemoRelyingParty {
+  return { displayName: "", logoUrl: "", primaryColor: "" };
+}
+
+export const DemoRelyingParty = {
+  encode(message: DemoRelyingParty, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.displayName !== undefined && message.displayName !== "") {
+      writer.uint32(10).string(message.displayName);
+    }
+    if (message.logoUrl !== undefined && message.logoUrl !== "") {
+      writer.uint32(18).string(message.logoUrl);
+    }
+    if (message.primaryColor !== undefined && message.primaryColor !== "") {
+      writer.uint32(26).string(message.primaryColor);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): DemoRelyingParty {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDemoRelyingParty();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag !== 10) {
+            break;
+          }
+
+          message.displayName = reader.string();
+          continue;
+        case 2:
+          if (tag !== 18) {
+            break;
+          }
+
+          message.logoUrl = reader.string();
+          continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.primaryColor = reader.string();
+          continue;
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): DemoRelyingParty {
+    return {
+      displayName: isSet(object.displayName) ? String(object.displayName) : "",
+      logoUrl: isSet(object.logoUrl) ? String(object.logoUrl) : "",
+      primaryColor: isSet(object.primaryColor) ? String(object.primaryColor) : "",
+    };
+  },
+
+  toJSON(message: DemoRelyingParty): unknown {
+    const obj: any = {};
+    if (message.displayName !== undefined && message.displayName !== "") {
+      obj.displayName = message.displayName;
+    }
+    if (message.logoUrl !== undefined && message.logoUrl !== "") {
+      obj.logoUrl = message.logoUrl;
+    }
+    if (message.primaryColor !== undefined && message.primaryColor !== "") {
+      obj.primaryColor = message.primaryColor;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<DemoRelyingParty>): DemoRelyingParty {
+    return DemoRelyingParty.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<DemoRelyingParty>): DemoRelyingParty {
+    const message = createBaseDemoRelyingParty();
+    message.displayName = object.displayName ?? "";
+    message.logoUrl = object.logoUrl ?? "";
+    message.primaryColor = object.primaryColor ?? "";
+    return message;
+  },
+};
+
 function createBaseCreateSessionRequest(): CreateSessionRequest {
-  return { verifications: [], debugInformation: {} };
+  return { verifications: [], debugInformation: {}, demoRp: undefined };
 }
 
 export const CreateSessionRequest = {
@@ -1290,6 +1393,9 @@ export const CreateSessionRequest = {
     Object.entries(message.debugInformation || {}).forEach(([key, value]) => {
       CreateSessionRequest_DebugInformationEntry.encode({ key: key as any, value }, writer.uint32(18).fork()).ldelim();
     });
+    if (message.demoRp !== undefined) {
+      DemoRelyingParty.encode(message.demoRp, writer.uint32(26).fork()).ldelim();
+    }
     return writer;
   },
 
@@ -1317,6 +1423,13 @@ export const CreateSessionRequest = {
             message.debugInformation![entry2.key] = entry2.value;
           }
           continue;
+        case 3:
+          if (tag !== 26) {
+            break;
+          }
+
+          message.demoRp = DemoRelyingParty.decode(reader, reader.uint32());
+          continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -1337,6 +1450,7 @@ export const CreateSessionRequest = {
           return acc;
         }, {})
         : {},
+      demoRp: isSet(object.demoRp) ? DemoRelyingParty.fromJSON(object.demoRp) : undefined,
     };
   },
 
@@ -1353,6 +1467,9 @@ export const CreateSessionRequest = {
           obj.debugInformation[k] = v;
         });
       }
+    }
+    if (message.demoRp !== undefined) {
+      obj.demoRp = DemoRelyingParty.toJSON(message.demoRp);
     }
     return obj;
   },
@@ -1372,6 +1489,9 @@ export const CreateSessionRequest = {
       },
       {},
     );
+    message.demoRp = (object.demoRp !== undefined && object.demoRp !== null)
+      ? DemoRelyingParty.fromPartial(object.demoRp)
+      : undefined;
     return message;
   },
 };

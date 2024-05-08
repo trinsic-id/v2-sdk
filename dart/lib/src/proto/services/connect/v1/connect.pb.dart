@@ -15,7 +15,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import '../../common/v1/common.pbenum.dart' as $10;
-import '../../universal-wallet/v1/universal-wallet.pb.dart' as $1;
+import '../../universal-wallet/v1/universal-wallet.pb.dart' as $4;
 import 'connect.pbenum.dart';
 
 export 'connect.pbenum.dart';
@@ -642,11 +642,109 @@ class NormalizedGovernmentIdData extends $pb.GeneratedMessage {
   void clearExpirationDate() => clearField(8);
 }
 
+/// Information about a Relying Party used for demo purposes
+class DemoRelyingParty extends $pb.GeneratedMessage {
+  factory DemoRelyingParty({
+    $core.String? displayName,
+    $core.String? logoUrl,
+    $core.String? primaryColor,
+  }) {
+    final $result = create();
+    if (displayName != null) {
+      $result.displayName = displayName;
+    }
+    if (logoUrl != null) {
+      $result.logoUrl = logoUrl;
+    }
+    if (primaryColor != null) {
+      $result.primaryColor = primaryColor;
+    }
+    return $result;
+  }
+  DemoRelyingParty._() : super();
+  factory DemoRelyingParty.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DemoRelyingParty.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'DemoRelyingParty',
+      package:
+          const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
+      createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'displayName')
+    ..aOS(2, _omitFieldNames ? '' : 'logoUrl')
+    ..aOS(3, _omitFieldNames ? '' : 'primaryColor')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DemoRelyingParty clone() => DemoRelyingParty()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DemoRelyingParty copyWith(void Function(DemoRelyingParty) updates) =>
+      super.copyWith((message) => updates(message as DemoRelyingParty))
+          as DemoRelyingParty;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DemoRelyingParty create() => DemoRelyingParty._();
+  DemoRelyingParty createEmptyInstance() => create();
+  static $pb.PbList<DemoRelyingParty> createRepeated() =>
+      $pb.PbList<DemoRelyingParty>();
+  @$core.pragma('dart2js:noInline')
+  static DemoRelyingParty getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DemoRelyingParty>(create);
+  static DemoRelyingParty? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get displayName => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set displayName($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDisplayName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDisplayName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get logoUrl => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set logoUrl($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasLogoUrl() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLogoUrl() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get primaryColor => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set primaryColor($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasPrimaryColor() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPrimaryColor() => clearField(3);
+}
+
 /// Request to create an Identity Verification Session
 class CreateSessionRequest extends $pb.GeneratedMessage {
   factory CreateSessionRequest({
     $core.Iterable<RequestedVerification>? verifications,
     $core.Map<$core.String, $core.String>? debugInformation,
+    DemoRelyingParty? demoRp,
   }) {
     final $result = create();
     if (verifications != null) {
@@ -654,6 +752,9 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
     }
     if (debugInformation != null) {
       $result.debugInformation.addAll(debugInformation);
+    }
+    if (demoRp != null) {
+      $result.demoRp = demoRp;
     }
     return $result;
   }
@@ -679,6 +780,8 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
         keyFieldType: $pb.PbFieldType.OS,
         valueFieldType: $pb.PbFieldType.OS,
         packageName: const $pb.PackageName('services.connect.v1'))
+    ..aOM<DemoRelyingParty>(3, _omitFieldNames ? '' : 'demoRp',
+        subBuilder: DemoRelyingParty.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -712,6 +815,22 @@ class CreateSessionRequest extends $pb.GeneratedMessage {
   /// Debugging information used to help diagnose issues
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.String> get debugInformation => $_getMap(1);
+
+  /// Information about the Relying Party used for demo purposes.
+  /// This is only to be used if the demo flag is set to true in the debug information.
+  @$pb.TagNumber(3)
+  DemoRelyingParty get demoRp => $_getN(2);
+  @$pb.TagNumber(3)
+  set demoRp(DemoRelyingParty v) {
+    setField(3, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDemoRp() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDemoRp() => clearField(3);
+  @$pb.TagNumber(3)
+  DemoRelyingParty ensureDemoRp() => $_ensure(2);
 }
 
 enum RequestedVerification_Options { governmentIdOptions, notSet }
@@ -1635,7 +1754,7 @@ class ListSessionsResponse extends $pb.GeneratedMessage {
 /// Request to preemptively check if an identity has a valid reusable credential
 class HasValidCredentialRequest extends $pb.GeneratedMessage {
   factory HasValidCredentialRequest({
-    $1.CreateWalletRequest_ExternalIdentity? identity,
+    $4.CreateWalletRequest_ExternalIdentity? identity,
     CredentialRequestData? credentialRequestData,
   }) {
     final $result = create();
@@ -1660,9 +1779,9 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
       package:
           const $pb.PackageName(_omitMessageNames ? '' : 'services.connect.v1'),
       createEmptyInstance: create)
-    ..aOM<$1.CreateWalletRequest_ExternalIdentity>(
+    ..aOM<$4.CreateWalletRequest_ExternalIdentity>(
         1, _omitFieldNames ? '' : 'identity',
-        subBuilder: $1.CreateWalletRequest_ExternalIdentity.create)
+        subBuilder: $4.CreateWalletRequest_ExternalIdentity.create)
     ..aOM<CredentialRequestData>(
         2, _omitFieldNames ? '' : 'credentialRequestData',
         subBuilder: CredentialRequestData.create)
@@ -1695,9 +1814,9 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
 
   /// The identity used to find a credential
   @$pb.TagNumber(1)
-  $1.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
+  $4.CreateWalletRequest_ExternalIdentity get identity => $_getN(0);
   @$pb.TagNumber(1)
-  set identity($1.CreateWalletRequest_ExternalIdentity v) {
+  set identity($4.CreateWalletRequest_ExternalIdentity v) {
     setField(1, v);
   }
 
@@ -1706,7 +1825,7 @@ class HasValidCredentialRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearIdentity() => clearField(1);
   @$pb.TagNumber(1)
-  $1.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
+  $4.CreateWalletRequest_ExternalIdentity ensureIdentity() => $_ensure(0);
 
   /// The criteria used to find a valid credential
   @$pb.TagNumber(2)
