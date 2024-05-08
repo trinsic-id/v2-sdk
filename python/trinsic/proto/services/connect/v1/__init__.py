@@ -306,6 +306,15 @@ class NormalizedGovernmentIdData(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
+class DemoRelyingParty(betterproto.Message):
+    """Information about a Relying Party used for demo purposes"""
+
+    display_name: str = betterproto.string_field(1)
+    logo_url: str = betterproto.string_field(2)
+    primary_color: str = betterproto.string_field(3)
+
+
+@dataclass(eq=False, repr=False)
 class CreateSessionRequest(betterproto.Message):
     """Request to create an Identity Verification Session"""
 
@@ -316,6 +325,14 @@ class CreateSessionRequest(betterproto.Message):
         2, betterproto.TYPE_STRING, betterproto.TYPE_STRING
     )
     """Debugging information used to help diagnose issues"""
+
+    demo_rp: Optional["DemoRelyingParty"] = betterproto.message_field(
+        3, optional=True, group="_demo_rp"
+    )
+    """
+    Information about the Relying Party used for demo purposes. This is only to
+    be used if the demo flag is set to true in the debug information.
+    """
 
 
 @dataclass(eq=False, repr=False)

@@ -118,4 +118,42 @@ public interface CreateSessionRequestOrBuilder
    * <code>map&lt;string, string&gt; debug_information = 2 [json_name = "debugInformation"];</code>
    */
   java.lang.String getDebugInformationOrThrow(java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   *
+   * @return Whether the demoRp field is set.
+   */
+  boolean hasDemoRp();
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   *
+   * @return The demoRp.
+   */
+  trinsic.services.connect.v1.DemoRelyingParty getDemoRp();
+  /**
+   *
+   *
+   * <pre>
+   * Information about the Relying Party used for demo purposes.
+   * This is only to be used if the demo flag is set to true in the debug information.
+   * </pre>
+   *
+   * <code>optional .services.connect.v1.DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];</code>
+   */
+  trinsic.services.connect.v1.DemoRelyingPartyOrBuilder getDemoRpOrBuilder();
 }
