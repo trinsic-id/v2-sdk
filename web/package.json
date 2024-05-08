@@ -46,7 +46,7 @@
         "micromodal": "0.4.10",
         "nice-grpc-web": "3.2.4",
         "oidc-client-ts": "2.2.5",
-        "protobufjs": "7.2.4"
+        "protobufjs": "7.2.5"
     },
     "devDependencies": {
         "@babel/core": "7.18.10",
