@@ -1,0 +1,23 @@
+name: "Renovate Bot"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * 1" # "At 09:00 on Monday."
+
+  pull_request:
+    paths:
+      - ".github/workflows/renovate.yaml"
+      - ".github/renovate.json"
+
+jobs:
+  renovate_runner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v40.1.11
+        env:
+          LOG_LEVEL: debug
+        with:
+          configurationFile: .github/renovate.json
+          token: ${{ secrets.MEWMBA_RENOVATE_TOKEN }}
