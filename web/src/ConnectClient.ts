@@ -239,17 +239,17 @@ const CSSString = `
 import MicroModal from "micromodal";
 
 export class ConnectClient {
-    public baseUrl: string;
+    public baseUrl?: string;
 
     public oidcConfig: OidcClientSettings;
     oidcClient?: OidcClient;
     popupWindow?: Window | null;
 
-    constructor(connectUrl: string = "https://connect.trinsic.cloud") {
+    constructor(connectUrl?: string) {
         this.baseUrl = connectUrl;
 
         this.oidcConfig = {
-            authority: this.baseUrl,
+            authority: this.getBaseOIDCUrl(),
             client_id: window.location.origin,
             redirect_uri: window.location.origin,
 
@@ -330,8 +330,8 @@ export class ConnectClient {
 
         const iframe = document.createElement("iframe");
         iframe.className = "h-full w-full bg-transparent";
-        iframe.allow = "camera *; microphone *; display-capture *";
-        iframe.src = `${this.baseUrl}/connect/verify?clientToken=${clientToken}`;
+        iframe.allow = "camera *; microphone *; display-capture *; publickey-credentials-get *; publickey-credentials-create *";
+        iframe.src = `${this.getBaseConnectUrl()}/?clientToken=${clientToken}`;
 
         modalContainer.append(iframe);
         bgOverlay.append(modalContainer);
@@ -380,6 +380,7 @@ export class ConnectClient {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
         }
+
         //If we open the popup later in the flow browsers will likely block the popup as there's been too much time/async activity.
         //Therefore we open it now (empty) and set the location once we have the auth request url.
         this.popupWindow = this.openPopup();
@@ -432,6 +433,22 @@ export class ConnectClient {
 
         return popup;
     };
+
+    private getBaseOIDCUrl(): string {
+        if (!!this.baseUrl) {
+            return this.baseUrl;
+        }
+
+        return "https://connect.trinsic.cloud";
+    }
+
+    private getBaseConnectUrl(): string {
+        if (!!this.baseUrl) {
+            return this.baseUrl;
+        }
+
+        return "https://connect.trinsic.id";
+    }
 }
 
 export interface IVerifiableCredentialRequest {

@@ -190,12 +190,22 @@ message NormalizedGovernmentIdData {
   optional string expiration_date = 8 [json_name = "expirationDate"];
 }
 
+// Information about a Relying Party used for demo purposes
+message DemoRelyingParty {
+  string display_name = 1 [json_name = "displayName"];
+  string logo_url = 2 [json_name = "logoUrl"];
+  string primary_color = 3 [json_name = "primaryColor"];
+}
+
 // Request to create an Identity Verification Session
 message CreateSessionRequest {
   // Array of verifications to perform
   repeated RequestedVerification verifications = 1;
   // Debugging information used to help diagnose issues
   map<string, string> debug_information = 2 [json_name = "debugInformation"];
+  // Information about the Relying Party used for demo purposes.
+  // This is only to be used if the demo flag is set to true in the debug information.
+  optional DemoRelyingParty demo_rp = 3 [json_name = "demoRp"];
 }
 
 // A verification to perform in an IDV flow
