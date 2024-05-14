@@ -5725,7 +5725,8 @@
       "output_type": "services.connect.v1.CancelSessionResponse",
       "description": "Cancel an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.CreateSession": {
@@ -5735,7 +5736,8 @@
       "output_type": "services.connect.v1.CreateSessionResponse",
       "description": "Create an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.GetSession": {
@@ -5745,7 +5747,8 @@
       "output_type": "services.connect.v1.GetSessionResponse",
       "description": "Get an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.HasValidCredential": {
@@ -5755,7 +5758,8 @@
       "output_type": "services.connect.v1.HasValidCredentialResponse",
       "description": "Checks if the identity provided in the request has a wallet containing a valid reusable credential",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.ListSessions": {
@@ -5765,7 +5769,8 @@
       "output_type": "services.connect.v1.ListSessionsResponse",
       "description": "List IDVSessions created by the calling wallet",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.filemanagement.v1.FileManagement.DeleteFile": {
