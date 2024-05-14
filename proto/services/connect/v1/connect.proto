@@ -10,6 +10,7 @@ import "services/common/v1/common.proto";
 import "services/universal-wallet/v1/universal-wallet.proto";
 
 import "services/google/api/annotations.proto";
+import "services/options/field-options.proto";
 
 // The type of verification to perform
 enum VerificationType {
@@ -353,6 +354,7 @@ enum SessionOrdering {
 service Connect {
   // Create an IDVSession
   rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/createsession"
       body: "*"
@@ -361,6 +363,7 @@ service Connect {
 
   // Cancel an IDVSession
   rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/cancelsession"
       body: "*"
@@ -369,6 +372,7 @@ service Connect {
 
   // Get an IDVSession
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/getsession"
       body: "*"
@@ -377,6 +381,7 @@ service Connect {
 
   // List IDVSessions created by the calling wallet
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/listsessions"
       body: "*"
@@ -385,6 +390,7 @@ service Connect {
 
   // Checks if the identity provided in the request has a wallet containing a valid reusable credential
   rpc HasValidCredential(HasValidCredentialRequest) returns (HasValidCredentialResponse)  {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/hasvalidcredential"
       body: "*"

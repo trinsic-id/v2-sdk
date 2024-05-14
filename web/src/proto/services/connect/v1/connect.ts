@@ -2575,6 +2575,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               30,
@@ -2622,6 +2623,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               30,
@@ -2669,6 +2671,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               27,
@@ -2713,6 +2716,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               29,
@@ -2759,6 +2763,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               35,
