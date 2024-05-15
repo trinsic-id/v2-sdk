@@ -49,18 +49,21 @@ const VerificationState$json = {
   '1': 'VerificationState',
   '2': [
     {'1': 'VERIFICATION_PENDING', '2': 0},
-    {'1': 'VERIFICATION_PENDING_REUSE', '2': 1},
-    {'1': 'VERIFICATION_STARTED', '2': 2},
     {'1': 'VERIFICATION_SUCCESS', '2': 3},
     {'1': 'VERIFICATION_FAILED', '2': 4},
   ],
+  '4': [
+    {'1': 1, '2': 1},
+    {'1': 2, '2': 2},
+  ],
+  '5': ['VERIFICATION_PENDING_REUSE', 'VERIFICATION_STARTED'],
 };
 
 /// Descriptor for `VerificationState`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List verificationStateDescriptor = $convert.base64Decode(
-    'ChFWZXJpZmljYXRpb25TdGF0ZRIYChRWRVJJRklDQVRJT05fUEVORElORxAAEh4KGlZFUklGSU'
-    'NBVElPTl9QRU5ESU5HX1JFVVNFEAESGAoUVkVSSUZJQ0FUSU9OX1NUQVJURUQQAhIYChRWRVJJ'
-    'RklDQVRJT05fU1VDQ0VTUxADEhcKE1ZFUklGSUNBVElPTl9GQUlMRUQQBA==');
+    'ChFWZXJpZmljYXRpb25TdGF0ZRIYChRWRVJJRklDQVRJT05fUEVORElORxAAEhgKFFZFUklGSU'
+    'NBVElPTl9TVUNDRVNTEAMSFwoTVkVSSUZJQ0FUSU9OX0ZBSUxFRBAEIgQIARABIgQIAhACKhpW'
+    'RVJJRklDQVRJT05fUEVORElOR19SRVVTRSoUVkVSSUZJQ0FUSU9OX1NUQVJURUQ=');
 
 @$core.Deprecated('Use sessionFailCodeDescriptor instead')
 const SessionFailCode$json = {
@@ -230,7 +233,6 @@ const Verification$json = {
       '17': true
     },
     {'1': 'reused', '3': 5, '4': 1, '5': 8, '10': 'reused'},
-    {'1': 'begun', '3': 6, '4': 1, '5': 6, '10': 'begun'},
     {'1': 'updated', '3': 7, '4': 1, '5': 6, '10': 'updated'},
     {
       '1': 'government_id_options',
@@ -258,6 +260,10 @@ const Verification$json = {
     {'1': '_government_id_options'},
     {'1': '_normalized_government_id_data'},
   ],
+  '9': [
+    {'1': 6, '2': 7},
+  ],
+  '10': ['begun'],
 };
 
 /// Descriptor for `Verification`. Decode as a `google.protobuf.DescriptorProto`.
@@ -266,13 +272,13 @@ final $typed_data.Uint8List verificationDescriptor = $convert.base64Decode(
     '5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblR5cGVSBHR5cGUSPAoFc3RhdGUYAyABKA4yJi5zZXJ2'
     'aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvblN0YXRlUgVzdGF0ZRJLCglmYWlsX2NvZGUYBC'
     'ABKA4yKS5zZXJ2aWNlcy5jb25uZWN0LnYxLlZlcmlmaWNhdGlvbkZhaWxDb2RlSABSCGZhaWxD'
-    'b2RliAEBEhYKBnJldXNlZBgFIAEoCFIGcmV1c2VkEhQKBWJlZ3VuGAYgASgGUgViZWd1bhIYCg'
-    'd1cGRhdGVkGAcgASgGUgd1cGRhdGVkEmEKFWdvdmVybm1lbnRfaWRfb3B0aW9ucxgIIAEoCzIo'
-    'LnNlcnZpY2VzLmNvbm5lY3QudjEuR292ZXJubWVudElET3B0aW9uc0gBUhNnb3Zlcm5tZW50SW'
-    'RPcHRpb25ziAEBEncKHW5vcm1hbGl6ZWRfZ292ZXJubWVudF9pZF9kYXRhGAkgASgLMi8uc2Vy'
-    'dmljZXMuY29ubmVjdC52MS5Ob3JtYWxpemVkR292ZXJubWVudElkRGF0YUgCUhpub3JtYWxpem'
-    'VkR292ZXJubWVudElkRGF0YYgBAUIMCgpfZmFpbF9jb2RlQhgKFl9nb3Zlcm5tZW50X2lkX29w'
-    'dGlvbnNCIAoeX25vcm1hbGl6ZWRfZ292ZXJubWVudF9pZF9kYXRh');
+    'b2RliAEBEhYKBnJldXNlZBgFIAEoCFIGcmV1c2VkEhgKB3VwZGF0ZWQYByABKAZSB3VwZGF0ZW'
+    'QSYQoVZ292ZXJubWVudF9pZF9vcHRpb25zGAggASgLMiguc2VydmljZXMuY29ubmVjdC52MS5H'
+    'b3Zlcm5tZW50SURPcHRpb25zSAFSE2dvdmVybm1lbnRJZE9wdGlvbnOIAQESdwodbm9ybWFsaX'
+    'plZF9nb3Zlcm5tZW50X2lkX2RhdGEYCSABKAsyLy5zZXJ2aWNlcy5jb25uZWN0LnYxLk5vcm1h'
+    'bGl6ZWRHb3Zlcm5tZW50SWREYXRhSAJSGm5vcm1hbGl6ZWRHb3Zlcm5tZW50SWREYXRhiAEBQg'
+    'wKCl9mYWlsX2NvZGVCGAoWX2dvdmVybm1lbnRfaWRfb3B0aW9uc0IgCh5fbm9ybWFsaXplZF9n'
+    'b3Zlcm5tZW50X2lkX2RhdGFKBAgGEAdSBWJlZ3Vu');
 
 @$core.Deprecated('Use normalizedGovernmentIdDataDescriptor instead')
 const NormalizedGovernmentIdData$json = {

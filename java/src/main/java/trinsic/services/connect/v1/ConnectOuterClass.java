@@ -104,14 +104,14 @@ public final class ConnectOuterClass {
       "\n"
           + "!services/connect/v1/connect.proto\022\023ser"
           + "vices.connect.v1\032\037services/common/v1/com"
-          + "mon.proto\0323services/universal-wallet/v1/"
-          + "universal-wallet.proto\032%services/google/api/annotations.proto\"\233\003\n\n"
+          + "mon.proto\0323services/universal-wallet/v1/universal-wallet.proto\032%services/google/"
+          + "api/annotations.proto\032$services/options/field-options.proto\"\233\003\n\n"
           + "IDVSession\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014client_token\030\002 \001(\t\0223\n"
           + "\005state\030\003 \001(\0162$.services.connect.v1.IDVSessionState\022I\n\r"
-          + "verifications\030\004 \003(\01322.services.co"
-          + "nnect.v1.IDVSession.VerificationsEntry\022<\n"
+          + "verifications\030\004"
+          + " \003(\01322.services.connect.v1.IDVSession.VerificationsEntry\022<\n"
           + "\tfail_code\030\005"
           + " \001(\0162$.services.connect.v1.SessionFailCodeH\000\210\001\001\022\026\n"
           + "\tresult_vp\030\006 \001(\tH\001\210\001\001\022\017\n"
@@ -121,26 +121,24 @@ public final class ConnectOuterClass {
           + "\003key\030\001 \001(\t\0220\n"
           + "\005value\030\002 \001(\0132!.services.connect.v1.Verification:\0028\001B\014\n\n"
           + "_fail_codeB\014\n\n"
-          + "_result_vp\"\356\003\n"
+          + "_result_vp\"\354\003\n"
           + "\014Verification\022\n\n"
           + "\002id\030\001 \001(\t\0223\n"
           + "\004type\030\002 \001(\0162%.services.connect.v1.VerificationType\0225\n"
           + "\005state\030\003 \001(\0162&.services.connect.v1.VerificationState\022A\n"
-          + "\tfail_code\030\004 \001(\0162).servic"
-          + "es.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
-          + "\006reused\030\005 \001(\010\022\r\n"
-          + "\005begun\030\006 \001(\006\022\017\n"
+          + "\tfail_code\030\004"
+          + " \001(\0162).services.connect.v1.VerificationFailCodeH\000\210\001\001\022\016\n"
+          + "\006reused\030\005 \001(\010\022\017\n"
           + "\007updated\030\007 \001(\006\022L\n"
-          + "\025government_id_options\030\010 \001(\0132("
-          + ".services.connect.v1.GovernmentIDOptionsH\001\210\001\001\022[\n"
-          + "\035normalized_government_id_data\030\t"
-          + " \001(\0132/.services.connect.v1.NormalizedGovernmentIdDataH\002\210\001\001B\014\n\n"
+          + "\025government_id_options\030\010"
+          + " \001(\0132(.services.connect.v1.GovernmentIDOptionsH\001\210\001\001\022[\n"
+          + "\035normalized_government_id_data\030\t \001(\0132/.services.c"
+          + "onnect.v1.NormalizedGovernmentIdDataH\002\210\001\001B\014\n\n"
           + "_fail_codeB\030\n"
           + "\026_government_id_optionsB \n"
-          + "\036_normalized_government_id_data\"\273\003\n"
+          + "\036_normalized_government_id_dataJ\004\010\006\020\007R\005begun\"\273\003\n"
           + "\032NormalizedGovernmentIdData\022 \n"
-          + "\tid_number\030\001 \001(\tH\000R\010idNumber\210\001\001\022\"\n"
-          + "\n"
+          + "\tid_number\030\001 \001(\tH\000R\010idNumber\210\001\001\022\"\n\n"
           + "given_name\030\002 \001(\tH\001R\tgivenName\210\001\001\022$\n"
           + "\013family_name\030\003 \001(\tH\002R\n"
           + "familyName\210\001\001\022\035\n"
@@ -163,10 +161,10 @@ public final class ConnectOuterClass {
           + "primary_color\030\003 \001(\tR\014primaryColor\"\321\002\n"
           + "\024CreateSessionRequest\022A\n\r"
           + "verifications\030\001 \003(\0132*.services.connect.v1.RequestedVerification\022l\n"
-          + "\021debug_information\030\002 \003(\0132?.services.connect.v1.C"
-          + "reateSessionRequest.DebugInformationEntryR\020debugInformation\022C\n"
-          + "\007demo_rp\030\003 \001(\0132%.s"
-          + "ervices.connect.v1.DemoRelyingPartyH\000R\006demoRp\210\001\001\0327\n"
+          + "\021debug_information\030\002 \003(\0132?.services.connect.v1.Creat"
+          + "eSessionRequest.DebugInformationEntryR\020debugInformation\022C\n"
+          + "\007demo_rp\030\003 \001(\0132%.servi"
+          + "ces.connect.v1.DemoRelyingPartyH\000R\006demoRp\210\001\001\0327\n"
           + "\025DebugInformationEntry\022\013\n"
           + "\003key\030\001 \001(\t\022\r\n"
           + "\005value\030\002 \001(\t:\0028\001B\n\n"
@@ -209,10 +207,10 @@ public final class ConnectOuterClass {
           + "\005total\030\002 \001(\005\022\014\n"
           + "\004more\030\003 \001(\010\"\275\001\n"
           + "\031HasValidCredentialRequest\022S\n"
-          + "\010identity\030\001 \001(\0132A.services.univers"
-          + "alwallet.v1.CreateWalletRequest.ExternalIdentity\022K\n"
-          + "\027credential_request_data\030\002 \001("
-          + "\0132*.services.connect.v1.CredentialRequestData\":\n"
+          + "\010identity\030\001 \001(\0132A.services.universalwa"
+          + "llet.v1.CreateWalletRequest.ExternalIdentity\022K\n"
+          + "\027credential_request_data\030\002 \001(\0132*."
+          + "services.connect.v1.CredentialRequestData\":\n"
           + "\032HasValidCredentialResponse\022\034\n"
           + "\024has_valid_credential\030\001 \001(\010\"L\n"
           + "\025CredentialRequestData\0223\n"
@@ -225,13 +223,12 @@ public final class ConnectOuterClass {
           + "\022IDV_AUTHENTICATING\020\002\022\023\n"
           + "\017IDV_IN_PROGRESS\020\003\022\017\n"
           + "\013IDV_SUCCESS\020\004\022\016\n\n"
-          + "IDV_FAILED\020\005*\232\001\n"
+          + "IDV_FAILED\020\005*\236\001\n"
           + "\021VerificationState\022\030\n"
-          + "\024VERIFICATION_PENDING\020\000\022\036\n"
-          + "\032VERIFICATION_PENDING_REUSE\020\001\022\030\n"
-          + "\024VERIFICATION_STARTED\020\002\022\030\n"
+          + "\024VERIFICATION_PENDING\020\000\022\030\n"
           + "\024VERIFICATION_SUCCESS\020\003\022\027\n"
-          + "\023VERIFICATION_FAILED\020\004*\342\001\n"
+          + "\023VERIFICATI"
+          + "ON_FAILED\020\004\"\004\010\001\020\001\"\004\010\002\020\002*\032VERIFICATION_PENDING_REUSE*\024VERIFICATION_STARTED*\342\001\n"
           + "\017SessionFailCode\022\025\n"
           + "\021SESSION_FAIL_NONE\020\000\022\031\n"
           + "\025SESSION_FAIL_INTERNAL\020\001\022$\n"
@@ -249,21 +246,22 @@ public final class ConnectOuterClass {
           + "\017SessionOrdering\022\013\n"
           + "\007CREATED\020\000\022\013\n"
           + "\007UPDATED\020\001\022\t\n"
-          + "\005STATE\020\0022\330\005\n"
-          + "\007Connect\022\214\001\n\r"
+          + "\005STATE\020\0022\200\006\n"
+          + "\007Connect\022\224\001\n\r"
           + "CreateSession\022).services.connect.v1.CreateSessionRequest\032*.servi"
-          + "ces.connect.v1.CreateSessionResponse\"$\202\323\344\223\002\036\"\031/v1/connect/createsession:\001*\022\214\001\n\r"
-          + "CancelSession\022).services.connect.v1.Cance"
-          + "lSessionRequest\032*.services.connect.v1.Ca"
-          + "ncelSessionResponse\"$\202\323\344\223\002\036\"\031/v1/connect/cancelsession:\001*\022\200\001\n\n"
-          + "GetSession\022&.services.connect.v1.GetSessionRequest\032\'.servi"
-          + "ces.connect.v1.GetSessionResponse\"!\202\323\344\223\002\033\"\026/v1/connect/getsession:\001*\022\210\001\n"
-          + "\014ListSessions\022(.services.connect.v1.ListSessions"
-          + "Request\032).services.connect.v1.ListSessio"
-          + "nsResponse\"#\202\323\344\223\002\035\"\030/v1/connect/listsessions:\001*\022\240\001\n"
-          + "\022HasValidCredential\022..services.connect.v1.HasValidCredentialRequest\032/"
-          + ".services.connect.v1.HasValidCredentialR"
-          + "esponse\")\202\323\344\223\002#\"\036/v1/connect/hasvalidcredential:\001*BZ\n"
+          + "ces.connect.v1.CreateSessionResponse\",\212\246"
+          + "\035\004*\002\010\001\202\323\344\223\002\036\"\031/v1/connect/createsession:\001*\022\224\001\n\r"
+          + "CancelSession\022).services.connect.v1.CancelSessionRequest\032*.services.conne"
+          + "ct.v1.CancelSessionResponse\",\212\246\035\004*\002\010\001\202\323\344\223\002\036\"\031/v1/connect/cancelsession:\001*\022\210\001\n\n"
+          + "GetSession\022&.services.connect.v1.GetSessio"
+          + "nRequest\032\'.services.connect.v1.GetSessio"
+          + "nResponse\")\212\246\035\004*\002\010\001\202\323\344\223\002\033\"\026/v1/connect/getsession:\001*\022\220\001\n"
+          + "\014ListSessions\022(.services.connect.v1.ListSessionsRequest\032).servic"
+          + "es.connect.v1.ListSessionsResponse\"+\212\246\035\004"
+          + "*\002\010\001\202\323\344\223\002\035\"\030/v1/connect/listsessions:\001*\022\250\001\n"
+          + "\022HasValidCredential\022..services.connect.v1.HasValidCredentialRequest\032/.service"
+          + "s.connect.v1.HasValidCredentialResponse\""
+          + "1\212\246\035\004*\002\010\001\202\323\344\223\002#\"\036/v1/connect/hasvalidcredential:\001*BZ\n"
           + "\033trinsic.services.connect.v1P\001Z\033services/connect/v1/connect\252\002\033Trins"
           + "ic.Services.Connect.V1b\006proto3"
     };
@@ -274,6 +272,7 @@ public final class ConnectOuterClass {
               trinsic.services.common.v1.Common.getDescriptor(),
               trinsic.services.universalwallet.v1.UniversalWalletOuterClass.getDescriptor(),
               com.google.api.AnnotationsProto.getDescriptor(),
+              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
             });
     internal_static_services_connect_v1_IDVSession_descriptor =
         getDescriptor().getMessageTypes().get(0);
@@ -311,7 +310,6 @@ public final class ConnectOuterClass {
               "State",
               "FailCode",
               "Reused",
-              "Begun",
               "Updated",
               "GovernmentIdOptions",
               "NormalizedGovernmentIdData",
@@ -480,11 +478,13 @@ public final class ConnectOuterClass {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.api.AnnotationsProto.http);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.common.v1.Common.getDescriptor();
     trinsic.services.universalwallet.v1.UniversalWalletOuterClass.getDescriptor();
     com.google.api.AnnotationsProto.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

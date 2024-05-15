@@ -64,11 +64,6 @@ class IDVSessionState extends $pb.ProtobufEnum {
 class VerificationState extends $pb.ProtobufEnum {
   static const VerificationState VERIFICATION_PENDING =
       VerificationState._(0, _omitEnumNames ? '' : 'VERIFICATION_PENDING');
-  static const VerificationState VERIFICATION_PENDING_REUSE =
-      VerificationState._(
-          1, _omitEnumNames ? '' : 'VERIFICATION_PENDING_REUSE');
-  static const VerificationState VERIFICATION_STARTED =
-      VerificationState._(2, _omitEnumNames ? '' : 'VERIFICATION_STARTED');
   static const VerificationState VERIFICATION_SUCCESS =
       VerificationState._(3, _omitEnumNames ? '' : 'VERIFICATION_SUCCESS');
   static const VerificationState VERIFICATION_FAILED =
@@ -76,8 +71,6 @@ class VerificationState extends $pb.ProtobufEnum {
 
   static const $core.List<VerificationState> values = <VerificationState>[
     VERIFICATION_PENDING,
-    VERIFICATION_PENDING_REUSE,
-    VERIFICATION_STARTED,
     VERIFICATION_SUCCESS,
     VERIFICATION_FAILED,
   ];

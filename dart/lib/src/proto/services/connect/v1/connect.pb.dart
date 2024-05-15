@@ -224,7 +224,6 @@ class Verification extends $pb.GeneratedMessage {
     VerificationState? state,
     VerificationFailCode? failCode,
     $core.bool? reused,
-    $fixnum.Int64? begun,
     $fixnum.Int64? updated,
     GovernmentIDOptions? governmentIdOptions,
     NormalizedGovernmentIdData? normalizedGovernmentIdData,
@@ -244,9 +243,6 @@ class Verification extends $pb.GeneratedMessage {
     }
     if (reused != null) {
       $result.reused = reused;
-    }
-    if (begun != null) {
-      $result.begun = begun;
     }
     if (updated != null) {
       $result.updated = updated;
@@ -288,8 +284,6 @@ class Verification extends $pb.GeneratedMessage {
         valueOf: VerificationFailCode.valueOf,
         enumValues: VerificationFailCode.values)
     ..aOB(5, _omitFieldNames ? '' : 'reused')
-    ..a<$fixnum.Int64>(6, _omitFieldNames ? '' : 'begun', $pb.PbFieldType.OF6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(7, _omitFieldNames ? '' : 'updated', $pb.PbFieldType.OF6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOM<GovernmentIDOptions>(8, _omitFieldNames ? '' : 'governmentIdOptions',
@@ -389,65 +383,51 @@ class Verification extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   void clearReused() => clearField(5);
 
-  /// The unix timestamp, in seconds, when this verification was begun
-  /// by the user -- or `0` if not yet begun.
-  @$pb.TagNumber(6)
-  $fixnum.Int64 get begun => $_getI64(5);
-  @$pb.TagNumber(6)
-  set begun($fixnum.Int64 v) {
-    $_setInt64(5, v);
-  }
-
-  @$pb.TagNumber(6)
-  $core.bool hasBegun() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearBegun() => clearField(6);
-
   /// The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
   /// begun.
   @$pb.TagNumber(7)
-  $fixnum.Int64 get updated => $_getI64(6);
+  $fixnum.Int64 get updated => $_getI64(5);
   @$pb.TagNumber(7)
   set updated($fixnum.Int64 v) {
-    $_setInt64(6, v);
+    $_setInt64(5, v);
   }
 
   @$pb.TagNumber(7)
-  $core.bool hasUpdated() => $_has(6);
+  $core.bool hasUpdated() => $_has(5);
   @$pb.TagNumber(7)
   void clearUpdated() => clearField(7);
 
   /// The Government ID options for this Verification.
   /// Only set if this Verification is of type `GOVERNMENT_ID`.
   @$pb.TagNumber(8)
-  GovernmentIDOptions get governmentIdOptions => $_getN(7);
+  GovernmentIDOptions get governmentIdOptions => $_getN(6);
   @$pb.TagNumber(8)
   set governmentIdOptions(GovernmentIDOptions v) {
     setField(8, v);
   }
 
   @$pb.TagNumber(8)
-  $core.bool hasGovernmentIdOptions() => $_has(7);
+  $core.bool hasGovernmentIdOptions() => $_has(6);
   @$pb.TagNumber(8)
   void clearGovernmentIdOptions() => clearField(8);
   @$pb.TagNumber(8)
-  GovernmentIDOptions ensureGovernmentIdOptions() => $_ensure(7);
+  GovernmentIDOptions ensureGovernmentIdOptions() => $_ensure(6);
 
   /// Normalized output for manual parsing and usage for this verification
   /// Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded.
   @$pb.TagNumber(9)
-  NormalizedGovernmentIdData get normalizedGovernmentIdData => $_getN(8);
+  NormalizedGovernmentIdData get normalizedGovernmentIdData => $_getN(7);
   @$pb.TagNumber(9)
   set normalizedGovernmentIdData(NormalizedGovernmentIdData v) {
     setField(9, v);
   }
 
   @$pb.TagNumber(9)
-  $core.bool hasNormalizedGovernmentIdData() => $_has(8);
+  $core.bool hasNormalizedGovernmentIdData() => $_has(7);
   @$pb.TagNumber(9)
   void clearNormalizedGovernmentIdData() => clearField(9);
   @$pb.TagNumber(9)
-  NormalizedGovernmentIdData ensureNormalizedGovernmentIdData() => $_ensure(8);
+  NormalizedGovernmentIdData ensureNormalizedGovernmentIdData() => $_ensure(7);
 }
 
 class NormalizedGovernmentIdData extends $pb.GeneratedMessage {
