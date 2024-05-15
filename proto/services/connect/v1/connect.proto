@@ -10,6 +10,7 @@ import "services/common/v1/common.proto";
 import "services/universal-wallet/v1/universal-wallet.proto";
 
 import "services/google/api/annotations.proto";
+import "services/options/field-options.proto";
 
 // The type of verification to perform
 enum VerificationType {
@@ -43,11 +44,13 @@ enum IDVSessionState {
 enum VerificationState {
   // This verification has not yet been performed in the flow
   VERIFICATION_PENDING = 0;
-  // This verification has been started by the user, and can be reused from a previous verification, but the user
-  // has not yet decided whether to reuse it.
-  VERIFICATION_PENDING_REUSE = 1;
-  // This verification has been started by the user, but not yet completed
-  VERIFICATION_STARTED = 2;
+
+  reserved 1;
+  reserved "VERIFICATION_PENDING_REUSE";
+
+  reserved 2;
+  reserved "VERIFICATION_STARTED";
+  
   // This verification has been successfully completed
   VERIFICATION_SUCCESS = 3;
   // This verification has failed
@@ -130,6 +133,9 @@ message IDVSession {
 
 // A Verification that is part of an IDVSession
 message Verification {
+  reserved 6;
+  reserved "begun";
+
   // The ID of the verification
   string id = 1;
 
@@ -146,10 +152,6 @@ message Verification {
   // Whether this was a reused (true) or fresh (false) verification.
   // If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information.
   bool reused = 5;
-
-  // The unix timestamp, in seconds, when this verification was begun
-  // by the user -- or `0` if not yet begun.
-  fixed64 begun = 6;
 
   // The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
   // begun.
@@ -353,6 +355,7 @@ enum SessionOrdering {
 service Connect {
   // Create an IDVSession
   rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/createsession"
       body: "*"
@@ -361,6 +364,7 @@ service Connect {
 
   // Cancel an IDVSession
   rpc CancelSession(CancelSessionRequest) returns (CancelSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/cancelsession"
       body: "*"
@@ -369,6 +373,7 @@ service Connect {
 
   // Get an IDVSession
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/getsession"
       body: "*"
@@ -377,6 +382,7 @@ service Connect {
 
   // List IDVSessions created by the calling wallet
   rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse) {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/listsessions"
       body: "*"
@@ -385,6 +391,7 @@ service Connect {
 
   // Checks if the identity provided in the request has a wallet containing a valid reusable credential
   rpc HasValidCredential(HasValidCredentialRequest) returns (HasValidCredentialResponse)  {
+    option (options.sdk_template_option).deprecated = {active: true};
     option (google.api.http) = {
       post: "/v1/connect/hasvalidcredential"
       body: "*"
