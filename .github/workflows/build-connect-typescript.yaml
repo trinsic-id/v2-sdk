@@ -11,6 +11,7 @@ on:
 
 jobs:
   build_test:
+    # TODO - Matrix all possible swagger_jsons?
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +22,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Build Connect TypeScript SDK
-        run: |
-          npm ci
-          npm run test
+        run: ./devops/make-swagger.ps1 -language typescript-fetch -swaggerFile ./connect/swagger_api.json -outputFolder ./connect/typescript
         shell: pwsh
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
