@@ -2400,7 +2400,6 @@ A Verification that is part of an IDVSession
 | state | [VerificationState](/reference/proto#services-connect-v1-VerificationState) | The state of the verification |
 | fail_code | [VerificationFailCode](/reference/proto#services-connect-v1-VerificationFailCode) | The reason for the Verification's failure. Only set if `state` is `VERIFICATION_FAILED`. |
 | reused | [bool](/reference/proto#bool) | Whether this was a reused (true) or fresh (false) verification. If `state` is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey useful information. |
-| begun | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification was begun by the user -- or `0` if not yet begun. |
 | updated | [fixed64](/reference/proto#fixed64) | The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet begun. |
 | government_id_options | [GovernmentIDOptions](/reference/proto#services-connect-v1-GovernmentIDOptions) | The Government ID options for this Verification. Only set if this Verification is of type `GOVERNMENT_ID`. |
 | normalized_government_id_data | [NormalizedGovernmentIdData](/reference/proto#services-connect-v1-NormalizedGovernmentIdData) | Normalized output for manual parsing and usage for this verification Only set if this Verification is of type `GOVERNMENT_ID` and has succeeded. |
@@ -2481,8 +2480,6 @@ The states an individual Verification can be in
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 | VERIFICATION_PENDING | 0 | This verification has not yet been performed in the flow |
-| VERIFICATION_PENDING_REUSE | 1 | This verification has been started by the user, and can be reused from a previous verification, but the user has not yet decided whether to reuse it. |
-| VERIFICATION_STARTED | 2 | This verification has been started by the user, but not yet completed |
 | VERIFICATION_SUCCESS | 3 | This verification has been successfully completed |
 | VERIFICATION_FAILED | 4 | This verification has failed |
 

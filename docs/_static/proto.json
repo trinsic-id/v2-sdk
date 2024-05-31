@@ -984,12 +984,6 @@
       "file": "services/connect/v1/connect.proto",
       "parent": ""
     },
-    "services.connect.v1.Verification.begun": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/connect/v1/connect.proto",
-      "parent": "services.connect.v1.Verification"
-    },
     "services.connect.v1.Verification.fail_code": {
       "type": "field",
       "collection": "fields",
@@ -1087,18 +1081,6 @@
       "parent": "services.connect.v1.VerificationState"
     },
     "services.connect.v1.VerificationState.VERIFICATION_PENDING": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/connect/v1/connect.proto",
-      "parent": "services.connect.v1.VerificationState"
-    },
-    "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/connect/v1/connect.proto",
-      "parent": "services.connect.v1.VerificationState"
-    },
-    "services.connect.v1.VerificationState.VERIFICATION_STARTED": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/connect/v1/connect.proto",
@@ -4760,7 +4742,6 @@
         "services.connect.v1.Verification.state",
         "services.connect.v1.Verification.fail_code",
         "services.connect.v1.Verification.reused",
-        "services.connect.v1.Verification.begun",
         "services.connect.v1.Verification.updated",
         "services.connect.v1.Verification.government_id_options",
         "services.connect.v1.Verification.normalized_government_id_data",
@@ -4825,8 +4806,6 @@
         "services.connect.v1.IDVSessionState.IDV_SUCCESS",
         "services.connect.v1.IDVSessionState.IDV_FAILED",
         "services.connect.v1.VerificationState.VERIFICATION_PENDING",
-        "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
-        "services.connect.v1.VerificationState.VERIFICATION_STARTED",
         "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
         "services.connect.v1.VerificationState.VERIFICATION_FAILED",
         "services.connect.v1.SessionFailCode.SESSION_FAIL_NONE",
@@ -5725,7 +5704,8 @@
       "output_type": "services.connect.v1.CancelSessionResponse",
       "description": "Cancel an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.CreateSession": {
@@ -5735,7 +5715,8 @@
       "output_type": "services.connect.v1.CreateSessionResponse",
       "description": "Create an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.GetSession": {
@@ -5745,7 +5726,8 @@
       "output_type": "services.connect.v1.GetSessionResponse",
       "description": "Get an IDVSession",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.HasValidCredential": {
@@ -5755,7 +5737,8 @@
       "output_type": "services.connect.v1.HasValidCredentialResponse",
       "description": "Checks if the identity provided in the request has a wallet containing a valid reusable credential",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.connect.v1.Connect.ListSessions": {
@@ -5765,7 +5748,8 @@
       "output_type": "services.connect.v1.ListSessionsResponse",
       "description": "List IDVSessions created by the calling wallet",
       "options": {
-        "google.api.http": ".google.api.HttpRule"
+        "google.api.http": ".google.api.HttpRule",
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
     },
     "services.filemanagement.v1.FileManagement.DeleteFile": {
@@ -6724,7 +6708,6 @@
         "services.connect.v1.Verification.state",
         "services.connect.v1.Verification.fail_code",
         "services.connect.v1.Verification.reused",
-        "services.connect.v1.Verification.begun",
         "services.connect.v1.Verification.updated",
         "services.connect.v1.Verification.government_id_options",
         "services.connect.v1.Verification.normalized_government_id_data"
@@ -9150,14 +9133,6 @@
       "type": "VerificationType",
       "full_type": "services.connect.v1.VerificationType",
       "description": "The type of verification to perform"
-    },
-    "services.connect.v1.Verification.begun": {
-      "name": "begun",
-      "full_name": "services.connect.v1.Verification.begun",
-      "label": "LABEL_OPTIONAL",
-      "type": "fixed64",
-      "full_type": "fixed64",
-      "description": "The unix timestamp, in seconds, when this verification was begun\nby the user -- or `0` if not yet begun."
     },
     "services.connect.v1.Verification.fail_code": {
       "name": "fail_code",
@@ -11990,8 +11965,6 @@
       "description": "The states an individual Verification can be in",
       "values": [
         "services.connect.v1.VerificationState.VERIFICATION_PENDING",
-        "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
-        "services.connect.v1.VerificationState.VERIFICATION_STARTED",
         "services.connect.v1.VerificationState.VERIFICATION_SUCCESS",
         "services.connect.v1.VerificationState.VERIFICATION_FAILED"
       ]
@@ -12329,18 +12302,6 @@
       "full_name": "services.connect.v1.VerificationState.VERIFICATION_PENDING",
       "description": "This verification has not yet been performed in the flow",
       "value": 0
-    },
-    "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE": {
-      "name": "VERIFICATION_PENDING_REUSE",
-      "full_name": "services.connect.v1.VerificationState.VERIFICATION_PENDING_REUSE",
-      "description": "This verification has been started by the user, and can be reused from a previous verification, but the user\nhas not yet decided whether to reuse it.",
-      "value": 1
-    },
-    "services.connect.v1.VerificationState.VERIFICATION_STARTED": {
-      "name": "VERIFICATION_STARTED",
-      "full_name": "services.connect.v1.VerificationState.VERIFICATION_STARTED",
-      "description": "This verification has been started by the user, but not yet completed",
-      "value": 2
     },
     "services.connect.v1.VerificationState.VERIFICATION_SUCCESS": {
       "name": "VERIFICATION_SUCCESS",

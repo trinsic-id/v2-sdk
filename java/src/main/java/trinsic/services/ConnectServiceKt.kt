@@ -11,30 +11,35 @@ class ConnectServiceKt(options: Options.TrinsicOptions.Builder?) : ServiceBase(o
   // target: /home/runner/work/sdk/sdk/java/src/main/java/trinsic/services/ConnectServiceKt.kt
 
   @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is deprecated")
   suspend fun createSession(request: CreateSessionRequest): CreateSessionResponse {
-    /** Create an IDVSession */
+    /** This method is deprecated Create an IDVSession */
     return withMetadata(stub, request).createSession(request)
   }
   @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is deprecated")
   suspend fun cancelSession(request: CancelSessionRequest): CancelSessionResponse {
-    /** Cancel an IDVSession */
+    /** This method is deprecated Cancel an IDVSession */
     return withMetadata(stub, request).cancelSession(request)
   }
   @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is deprecated")
   suspend fun getSession(request: GetSessionRequest): GetSessionResponse {
-    /** Get an IDVSession */
+    /** This method is deprecated Get an IDVSession */
     return withMetadata(stub, request).getSession(request)
   }
   @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is deprecated")
   suspend fun listSessions(request: ListSessionsRequest): ListSessionsResponse {
-    /** List IDVSessions created by the calling wallet */
+    /** This method is deprecated List IDVSessions created by the calling wallet */
     return withMetadata(stub, request).listSessions(request)
   }
   @Throws(InvalidProtocolBufferException::class)
+  @Deprecated("This method is deprecated")
   suspend fun hasValidCredential(request: HasValidCredentialRequest): HasValidCredentialResponse {
     /**
-     * Checks if the identity provided in the request has a wallet containing a valid reusable
-     * credential
+     * This method is deprecated Checks if the identity provided in the request has a wallet
+     * containing a valid reusable credential
      */
     return withMetadata(stub, request).hasValidCredential(request)
   }

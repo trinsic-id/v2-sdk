@@ -63,18 +63,6 @@ class VerificationState(betterproto.Enum):
     VERIFICATION_PENDING = 0
     """This verification has not yet been performed in the flow"""
 
-    VERIFICATION_PENDING_REUSE = 1
-    """
-    This verification has been started by the user, and can be reused from a
-    previous verification, but the user has not yet decided whether to reuse
-    it.
-    """
-
-    VERIFICATION_STARTED = 2
-    """
-    This verification has been started by the user, but not yet completed
-    """
-
     VERIFICATION_SUCCESS = 3
     """This verification has been successfully completed"""
 
@@ -229,12 +217,6 @@ class Verification(betterproto.Message):
     Whether this was a reused (true) or fresh (false) verification. If `state`
     is not `VERIFICATION_SUCCESS`, this field is `false` and does not convey
     useful information.
-    """
-
-    begun: int = betterproto.fixed64_field(6)
-    """
-    The unix timestamp, in seconds, when this verification was begun by the
-    user -- or `0` if not yet begun.
     """
 
     updated: int = betterproto.fixed64_field(7)
