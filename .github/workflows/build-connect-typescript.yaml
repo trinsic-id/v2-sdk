@@ -1,0 +1,27 @@
+name: "Connect/TypeScript"
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'connect/swagger**'
+      - '.github/workflows/*typescript*'
+      - "devops/**"
+
+jobs:
+  build_test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        name: Setup Node v20
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Build Connect TypeScript SDK
+        run: |
+          npm ci
+          npm run test
+        shell: pwsh
