@@ -250,25 +250,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     return reused_;
   }
 
-  public static final int BEGUN_FIELD_NUMBER = 6;
-  private long begun_;
-  /**
-   *
-   *
-   * <pre>
-   * The unix timestamp, in seconds, when this verification was begun
-   * by the user -- or `0` if not yet begun.
-   * </pre>
-   *
-   * <code>fixed64 begun = 6;</code>
-   *
-   * @return The begun.
-   */
-  @java.lang.Override
-  public long getBegun() {
-    return begun_;
-  }
-
   public static final int UPDATED_FIELD_NUMBER = 7;
   private long updated_;
   /**
@@ -431,9 +412,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     if (reused_ != false) {
       output.writeBool(5, reused_);
     }
-    if (begun_ != 0L) {
-      output.writeFixed64(6, begun_);
-    }
     if (updated_ != 0L) {
       output.writeFixed64(7, updated_);
     }
@@ -466,9 +444,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     }
     if (reused_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(5, reused_);
-    }
-    if (begun_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeFixed64Size(6, begun_);
     }
     if (updated_ != 0L) {
       size += com.google.protobuf.CodedOutputStream.computeFixed64Size(7, updated_);
@@ -504,7 +479,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       if (failCode_ != other.failCode_) return false;
     }
     if (getReused() != other.getReused()) return false;
-    if (getBegun() != other.getBegun()) return false;
     if (getUpdated() != other.getUpdated()) return false;
     if (hasGovernmentIdOptions() != other.hasGovernmentIdOptions()) return false;
     if (hasGovernmentIdOptions()) {
@@ -538,8 +512,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     }
     hash = (37 * hash) + REUSED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getReused());
-    hash = (37 * hash) + BEGUN_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getBegun());
     hash = (37 * hash) + UPDATED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getUpdated());
     if (hasGovernmentIdOptions()) {
@@ -708,8 +680,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       bitField0_ = (bitField0_ & ~0x00000001);
       reused_ = false;
 
-      begun_ = 0L;
-
       updated_ = 0L;
 
       if (governmentIdOptionsBuilder_ == null) {
@@ -761,7 +731,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       }
       result.failCode_ = failCode_;
       result.reused_ = reused_;
-      result.begun_ = begun_;
       result.updated_ = updated_;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         if (governmentIdOptionsBuilder_ == null) {
@@ -845,9 +814,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
       if (other.getReused() != false) {
         setReused(other.getReused());
       }
-      if (other.getBegun() != 0L) {
-        setBegun(other.getBegun());
-      }
       if (other.getUpdated() != 0L) {
         setUpdated(other.getUpdated());
       }
@@ -913,12 +879,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
 
                 break;
               } // case 40
-            case 49:
-              {
-                begun_ = input.readFixed64();
-
-                break;
-              } // case 49
             case 57:
               {
                 updated_ = input.readFixed64();
@@ -1411,61 +1371,6 @@ public final class Verification extends com.google.protobuf.GeneratedMessageV3
     public Builder clearReused() {
 
       reused_ = false;
-      onChanged();
-      return this;
-    }
-
-    private long begun_;
-    /**
-     *
-     *
-     * <pre>
-     * The unix timestamp, in seconds, when this verification was begun
-     * by the user -- or `0` if not yet begun.
-     * </pre>
-     *
-     * <code>fixed64 begun = 6;</code>
-     *
-     * @return The begun.
-     */
-    @java.lang.Override
-    public long getBegun() {
-      return begun_;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The unix timestamp, in seconds, when this verification was begun
-     * by the user -- or `0` if not yet begun.
-     * </pre>
-     *
-     * <code>fixed64 begun = 6;</code>
-     *
-     * @param value The begun to set.
-     * @return This builder for chaining.
-     */
-    public Builder setBegun(long value) {
-
-      begun_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The unix timestamp, in seconds, when this verification was begun
-     * by the user -- or `0` if not yet begun.
-     * </pre>
-     *
-     * <code>fixed64 begun = 6;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearBegun() {
-
-      begun_ = 0L;
       onChanged();
       return this;
     }

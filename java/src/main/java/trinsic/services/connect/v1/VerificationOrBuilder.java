@@ -141,20 +141,6 @@ public interface VerificationOrBuilder
    *
    *
    * <pre>
-   * The unix timestamp, in seconds, when this verification was begun
-   * by the user -- or `0` if not yet begun.
-   * </pre>
-   *
-   * <code>fixed64 begun = 6;</code>
-   *
-   * @return The begun.
-   */
-  long getBegun();
-
-  /**
-   *
-   *
-   * <pre>
    * The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
    * begun.
    * </pre>

@@ -104,13 +104,6 @@ export function iDVSessionStateToJSON(object: IDVSessionState): string {
 export enum VerificationState {
   /** VERIFICATION_PENDING - This verification has not yet been performed in the flow */
   VERIFICATION_PENDING = 0,
-  /**
-   * VERIFICATION_PENDING_REUSE - This verification has been started by the user, and can be reused from a previous verification, but the user
-   * has not yet decided whether to reuse it.
-   */
-  VERIFICATION_PENDING_REUSE = 1,
-  /** VERIFICATION_STARTED - This verification has been started by the user, but not yet completed */
-  VERIFICATION_STARTED = 2,
   /** VERIFICATION_SUCCESS - This verification has been successfully completed */
   VERIFICATION_SUCCESS = 3,
   /** VERIFICATION_FAILED - This verification has failed */
@@ -123,12 +116,6 @@ export function verificationStateFromJSON(object: any): VerificationState {
     case 0:
     case "VERIFICATION_PENDING":
       return VerificationState.VERIFICATION_PENDING;
-    case 1:
-    case "VERIFICATION_PENDING_REUSE":
-      return VerificationState.VERIFICATION_PENDING_REUSE;
-    case 2:
-    case "VERIFICATION_STARTED":
-      return VerificationState.VERIFICATION_STARTED;
     case 3:
     case "VERIFICATION_SUCCESS":
       return VerificationState.VERIFICATION_SUCCESS;
@@ -146,10 +133,6 @@ export function verificationStateToJSON(object: VerificationState): string {
   switch (object) {
     case VerificationState.VERIFICATION_PENDING:
       return "VERIFICATION_PENDING";
-    case VerificationState.VERIFICATION_PENDING_REUSE:
-      return "VERIFICATION_PENDING_REUSE";
-    case VerificationState.VERIFICATION_STARTED:
-      return "VERIFICATION_STARTED";
     case VerificationState.VERIFICATION_SUCCESS:
       return "VERIFICATION_SUCCESS";
     case VerificationState.VERIFICATION_FAILED:
@@ -410,13 +393,6 @@ export interface Verification {
    */
   reused?:
     | boolean
-    | undefined;
-  /**
-   * The unix timestamp, in seconds, when this verification was begun
-   * by the user -- or `0` if not yet begun.
-   */
-  begun?:
-    | number
     | undefined;
   /**
    * The unix timestamp, in seconds, when this verification last changed state -- or `0` if it has not yet
@@ -926,7 +902,6 @@ function createBaseVerification(): Verification {
     state: 0,
     failCode: undefined,
     reused: false,
-    begun: 0,
     updated: 0,
     governmentIdOptions: undefined,
     normalizedGovernmentIdData: undefined,
@@ -949,9 +924,6 @@ export const Verification = {
     }
     if (message.reused === true) {
       writer.uint32(40).bool(message.reused);
-    }
-    if (message.begun !== undefined && message.begun !== 0) {
-      writer.uint32(49).fixed64(message.begun);
     }
     if (message.updated !== undefined && message.updated !== 0) {
       writer.uint32(57).fixed64(message.updated);
@@ -1007,13 +979,6 @@ export const Verification = {
 
           message.reused = reader.bool();
           continue;
-        case 6:
-          if (tag !== 49) {
-            break;
-          }
-
-          message.begun = longToNumber(reader.fixed64() as Long);
-          continue;
         case 7:
           if (tag !== 57) {
             break;
@@ -1051,7 +1016,6 @@ export const Verification = {
       state: isSet(object.state) ? verificationStateFromJSON(object.state) : 0,
       failCode: isSet(object.failCode) ? verificationFailCodeFromJSON(object.failCode) : undefined,
       reused: isSet(object.reused) ? Boolean(object.reused) : false,
-      begun: isSet(object.begun) ? Number(object.begun) : 0,
       updated: isSet(object.updated) ? Number(object.updated) : 0,
       governmentIdOptions: isSet(object.governmentIdOptions)
         ? GovernmentIDOptions.fromJSON(object.governmentIdOptions)
@@ -1079,9 +1043,6 @@ export const Verification = {
     if (message.reused === true) {
       obj.reused = message.reused;
     }
-    if (message.begun !== undefined && message.begun !== 0) {
-      obj.begun = Math.round(message.begun);
-    }
     if (message.updated !== undefined && message.updated !== 0) {
       obj.updated = Math.round(message.updated);
     }
@@ -1104,7 +1065,6 @@ export const Verification = {
     message.state = object.state ?? 0;
     message.failCode = object.failCode ?? undefined;
     message.reused = object.reused ?? false;
-    message.begun = object.begun ?? 0;
     message.updated = object.updated ?? 0;
     message.governmentIdOptions = (object.governmentIdOptions !== undefined && object.governmentIdOptions !== null)
       ? GovernmentIDOptions.fromPartial(object.governmentIdOptions)
@@ -2575,6 +2535,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               30,
@@ -2622,6 +2583,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               30,
@@ -2669,6 +2631,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               27,
@@ -2713,6 +2676,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               29,
@@ -2759,6 +2723,7 @@ export const ConnectDefinition = {
       responseStream: false,
       options: {
         _unknownFields: {
+          480010: [new Uint8Array([4, 42, 2, 8, 1])],
           578365826: [
             new Uint8Array([
               35,

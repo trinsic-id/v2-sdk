@@ -27,27 +27,6 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    *
    *
    * <pre>
-   * This verification has been started by the user, and can be reused from a previous verification, but the user
-   * has not yet decided whether to reuse it.
-   * </pre>
-   *
-   * <code>VERIFICATION_PENDING_REUSE = 1;</code>
-   */
-  VERIFICATION_PENDING_REUSE(1),
-  /**
-   *
-   *
-   * <pre>
-   * This verification has been started by the user, but not yet completed
-   * </pre>
-   *
-   * <code>VERIFICATION_STARTED = 2;</code>
-   */
-  VERIFICATION_STARTED(2),
-  /**
-   *
-   *
-   * <pre>
    * This verification has been successfully completed
    * </pre>
    *
@@ -77,27 +56,6 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
    * <code>VERIFICATION_PENDING = 0;</code>
    */
   public static final int VERIFICATION_PENDING_VALUE = 0;
-  /**
-   *
-   *
-   * <pre>
-   * This verification has been started by the user, and can be reused from a previous verification, but the user
-   * has not yet decided whether to reuse it.
-   * </pre>
-   *
-   * <code>VERIFICATION_PENDING_REUSE = 1;</code>
-   */
-  public static final int VERIFICATION_PENDING_REUSE_VALUE = 1;
-  /**
-   *
-   *
-   * <pre>
-   * This verification has been started by the user, but not yet completed
-   * </pre>
-   *
-   * <code>VERIFICATION_STARTED = 2;</code>
-   */
-  public static final int VERIFICATION_STARTED_VALUE = 2;
   /**
    *
    *
@@ -145,10 +103,6 @@ public enum VerificationState implements com.google.protobuf.ProtocolMessageEnum
     switch (value) {
       case 0:
         return VERIFICATION_PENDING;
-      case 1:
-        return VERIFICATION_PENDING_REUSE;
-      case 2:
-        return VERIFICATION_STARTED;
       case 3:
         return VERIFICATION_SUCCESS;
       case 4:

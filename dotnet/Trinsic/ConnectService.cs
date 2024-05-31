@@ -20,90 +20,100 @@ public class ConnectService : ServiceBase
 // target: /home/runner/work/sdk/sdk/dotnet/Trinsic/ConnectService.cs
 
 	/// <summary>
-    /// Create an IDVSession
+    ///This method is deprecated
+    ///  Create an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public CreateSessionResponse CreateSession(CreateSessionRequest request) {
         
         return Client.CreateSession(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Create an IDVSession
+    ///This method is deprecated
+    ///  Create an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public async Task<CreateSessionResponse> CreateSessionAsync(CreateSessionRequest request) {
         
         return await Client.CreateSessionAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Cancel an IDVSession
+    ///This method is deprecated
+    ///  Cancel an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public CancelSessionResponse CancelSession(CancelSessionRequest request) {
         
         return Client.CancelSession(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Cancel an IDVSession
+    ///This method is deprecated
+    ///  Cancel an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public async Task<CancelSessionResponse> CancelSessionAsync(CancelSessionRequest request) {
         
         return await Client.CancelSessionAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Get an IDVSession
+    ///This method is deprecated
+    ///  Get an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public GetSessionResponse GetSession(GetSessionRequest request) {
         
         return Client.GetSession(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Get an IDVSession
+    ///This method is deprecated
+    ///  Get an IDVSession
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public async Task<GetSessionResponse> GetSessionAsync(GetSessionRequest request) {
         
         return await Client.GetSessionAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// List IDVSessions created by the calling wallet
+    ///This method is deprecated
+    ///  List IDVSessions created by the calling wallet
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public ListSessionsResponse ListSessions(ListSessionsRequest request) {
         
         return Client.ListSessions(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// List IDVSessions created by the calling wallet
+    ///This method is deprecated
+    ///  List IDVSessions created by the calling wallet
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public async Task<ListSessionsResponse> ListSessionsAsync(ListSessionsRequest request) {
         
         return await Client.ListSessionsAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Checks if the identity provided in the request has a wallet containing a valid reusable credential
+    ///This method is deprecated
+    ///  Checks if the identity provided in the request has a wallet containing a valid reusable credential
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public HasValidCredentialResponse HasValidCredential(HasValidCredentialRequest request) {
         
         return Client.HasValidCredential(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Checks if the identity provided in the request has a wallet containing a valid reusable credential
+    ///This method is deprecated
+    ///  Checks if the identity provided in the request has a wallet containing a valid reusable credential
     /// </summary>
-    
+    [Obsolete("This method is deprecated")]
     public async Task<HasValidCredentialResponse> HasValidCredentialAsync(HasValidCredentialRequest request) {
         
         return await Client.HasValidCredentialAsync(request, await BuildMetadataAsync(request));
