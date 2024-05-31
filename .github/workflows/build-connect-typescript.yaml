@@ -1,4 +1,4 @@
-name: "Connect/TypeScript"
+name: "Connect SDK Build"
 
 on:
   workflow_call:
@@ -11,7 +11,10 @@ on:
 
 jobs:
   build_test:
-    # TODO - Matrix all possible swagger_jsons?
+    strategy:
+      matrix:
+        swagger_json: ['connect/swagger_api.json']
+        language: [['typescript-fetch', 'connect/typescript'], ['csharp', 'connect/csharp']]
     name: Test
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +25,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Build Connect TypeScript SDK
-        run: ./devops/make-swagger.ps1 -language typescript-fetch -swaggerFile ./connect/swagger_api.json -outputFolder ./connect/typescript
+        run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
       - uses: stefanzweifel/git-auto-commit-action@v4
