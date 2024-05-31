@@ -55,6 +55,41 @@ function Convert-ToRelativePath {
     }
 }
 
+function Remove-OpenApiFiles {
+    param (
+        [string]$baseDirectory
+    )
+    # Define the path to the file containing the list of files to delete
+    $openApiFiles = "$baseDirectory/.openapi-generator/FILES"
+
+    # Check if the file exists
+    if (-Not (Test-Path -Path $openApiFiles)) {
+        Write-Error "The file $openApiFiles does not exist."
+        exit
+    }
+
+    # Read all lines from the file
+    $filesToDelete = Get-Content -Path $openApiFiles
+
+    # Iterate over each line and delete the file
+    foreach ($file in $filesToDelete) {
+        $filePath = "$baseDirectory/$file"
+        # Check if the file exists
+        if (Test-Path -Path $filePath) {
+            # Attempt to delete the file
+            try {
+                Remove-Item -Path $filePath -Force
+                Write-Output "Deleted file: $filePath"
+            } catch {
+                Write-Error "Failed to delete file: $filePath. Error: $_"
+            }
+        } else {
+            Write-Warning "File does not exist: $filePath"
+        }
+    }
+
+}
+
 # Convert provided paths to relative
 $relativeSwaggerFile = Convert-ToRelativePath -absolutePath (Resolve-Path $swaggerFile) -baseDirectory $baseDir
 $relativeOutputFolder = Convert-ToRelativePath -absolutePath (Resolve-Path $outputFolder) -baseDirectory $baseDir
@@ -66,7 +101,7 @@ Write-Output "Generating SDK for $language from $relativeSwaggerFile to $relativ
 
 # Empty the output folder, since openapi-generator-cli can create all intermediate directories
 if (Test-Path $relativeOutputFolder) {
-    Remove-Item -Recurse -Force $relativeOutputFolder
+    Remove-OpenApiFiles -baseDirectory $relativeOutputFolder
 }
 
 docker run --rm -v ".:/local" openapitools/openapi-generator-cli generate `
