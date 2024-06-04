@@ -33,6 +33,7 @@ jobs:
         run: |
           npm ci
           npm run build:prettier
+        shell: pwsh
         working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes
