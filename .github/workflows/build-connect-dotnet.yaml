@@ -21,9 +21,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '8.0.x'
+
       - name: Build Connect Dotnet SDK
-        run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
       - name: Format code

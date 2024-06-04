@@ -24,8 +24,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+
       - name: Build Connect TypeScript SDK
-        run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
       - name: Format code
