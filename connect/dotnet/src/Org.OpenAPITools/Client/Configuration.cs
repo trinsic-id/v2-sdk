@@ -127,18 +127,6 @@ public class Configuration : IReadableConfiguration
                     {"url", "https://connect-api.trinsic.id"},
                     {"description", "Production server"},
                 }
-            },
-            {
-                new Dictionary<string, object> {
-                    {"url", "https://dev-connect-api.trinsic.id"},
-                    {"description", "Development server"},
-                }
-            },
-            {
-                new Dictionary<string, object> {
-                    {"url", "https://staging-connect-api.trinsic.id"},
-                    {"description", "Staging server"},
-                }
             }
         };
         OperationServers = new Dictionary<string, List<IReadOnlyDictionary<string, object>>>()
