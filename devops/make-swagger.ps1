@@ -43,11 +43,13 @@ function Convert-ToRelativePath {
     $uri = New-Object System.Uri($absolutePath)
     $baseUri = New-Object System.Uri($baseDirectory)
 
+    Write-Host "Converting $absolutePath to relative path based on $baseDirectory"
+
     if ($baseUri.IsBaseOf($uri)) {
-        $relativeUri = $baseUri.MakeRelativeUri($uri)
-        $relativeUri = [System.Uri]::UnescapeDataString($relativeUri.ToString())
-        # Remove the leading "/sdk" from the relative path
-        $relativeUri = $relativeUri -replace "^sdk/", ""
+        $relativeUri = [System.IO.Path]::GetRelativePath($baseDirectory, $absolutePath)
+        Write-Host "Relative path: $relativeUri"
+        # Replace backslashes with forward slashes
+        $relativeUri = $relativeUri -replace '\\', '/'
         return $relativeUri
     }
     else {
@@ -104,7 +106,21 @@ if (Test-Path $relativeOutputFolder) {
     Remove-OpenApiFiles -baseDirectory $relativeOutputFolder
 }
 
-docker run --rm -v ".:/local" openapitools/openapi-generator-cli generate `
-    -i "/local/$relativeSwaggerFile" `
-    -g $language `
-    -o "/local/$relativeOutputFolder"
+# Docker command to run openapi-generator-cli locally eg TRINSIC_CI = false
+if ($env:TRINSIC_CI -eq "true")
+{
+    # Docker command to run openapi-generator-cli in CI - https://stackoverflow.com/a/71931931
+    openapi-generator-cli generate `
+        -i "./$relativeSwaggerFile" `
+        -g $language `
+        -o "./$relativeOutputFolder"
+} else
+{
+    docker run --rm -v ".:/local" openapitools/openapi-generator-cli generate `
+        -i "/local/$relativeSwaggerFile" `
+        -g $language `
+        -o "/local/$relativeOutputFolder"
+}
+if ($LASTEXITCODE -ne 0) {
+    throw "Failed to generate SDK for $language from $relativeSwaggerFile to $relativeOutputFolder."
+}
