@@ -15,7 +15,7 @@ jobs:
       matrix:
         swagger_json: ['connect/swagger_api.json']
         language: [['csharp', 'connect/dotnet']]
-    name: Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +30,7 @@ jobs:
       - name: Format code
         run: |
           dotnet format
+        shell: pwsh
         working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes

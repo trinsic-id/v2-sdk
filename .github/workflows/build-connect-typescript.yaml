@@ -15,7 +15,7 @@ jobs:
       matrix:
         swagger_json: ['connect/swagger_api.json']
         language: [['typescript-fetch', 'connect/typescript']]
-    name: Test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
