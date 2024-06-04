@@ -1,0 +1,36 @@
+name: "Connect SDK / Dart"
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'connect/swagger**'
+      - '.github/workflows/build-connect-dart.yaml'
+      - "devops/**"
+
+jobs:
+  build_test:
+    strategy:
+      matrix:
+        swagger_json: ['connect/swagger_api.json']
+        language: [['dart', 'connect/dart']]
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+
+      - name: Build Connect Dotnet SDK
+        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        shell: pwsh
+
+      - name: Format code
+        run: |
+          dart format .
+        shell: pwsh
+        working-directory: ${{ matrix.language[1] }}
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
