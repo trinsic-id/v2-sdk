@@ -66,8 +66,8 @@ function Remove-OpenApiFiles {
 
     # Check if the file exists
     if (-Not (Test-Path -Path $openApiFiles)) {
-        Write-Error "The file $openApiFiles does not exist."
-        exit
+        Write-Host "The file $openApiFiles does not exist. No files to delete."
+        return
     }
 
     # Read all lines from the file
