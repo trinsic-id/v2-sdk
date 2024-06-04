@@ -1,4 +1,4 @@
-name: "Connect SDK Build"
+name: "Connect SDK / Typescript"
 
 on:
   workflow_call:
@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
       - 'connect/swagger**'
-      - '.github/workflows/*typescript*'
+      - '.github/workflows/build-connect-typescript.yaml'
       - "devops/**"
 
 jobs:
@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         swagger_json: ['connect/swagger_api.json']
-        language: [['typescript-fetch', 'connect/typescript'], ['csharp', 'connect/csharp']]
-    name: Test
+        language: [['typescript-fetch', 'connect/typescript']]
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +24,17 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+
       - name: Build Connect TypeScript SDK
-        run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Format code
+        run: |
+          npm ci
+          npm run build:prettier
+        shell: pwsh
+        working-directory: ${{ matrix.language[1] }}
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4

@@ -1,0 +1,37 @@
+name: "Connect SDK / Dotnet"
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'connect/swagger**'
+      - '.github/workflows/build-connect-dotnet.yaml'
+      - "devops/**"
+
+jobs:
+  build_test:
+    strategy:
+      matrix:
+        swagger_json: ['connect/swagger_api.json']
+        language: [['csharp', 'connect/dotnet']]
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build Connect Dotnet SDK
+        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        shell: pwsh
+
+      - name: Format code
+        run: |
+          dotnet format
+        shell: pwsh
+        working-directory: ${{ matrix.language[1] }}
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
