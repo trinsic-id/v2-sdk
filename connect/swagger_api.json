@@ -9,14 +9,6 @@
     {
       "url": "https://connect-api.trinsic.id",
       "description": "Production server"
-    },
-    {
-      "url": "https://dev-connect-api.trinsic.id",
-      "description": "Development server"
-    },
-    {
-      "url": "https://staging-connect-api.trinsic.id",
-      "description": "Staging server"
     }
   ],
   "paths": {
