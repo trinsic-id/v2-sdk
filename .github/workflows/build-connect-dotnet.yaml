@@ -1,4 +1,4 @@
-name: "Connect SDK / Typescript"
+name: "Connect SDK / Dotnet"
 
 on:
   workflow_call:
@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
       - 'connect/swagger**'
-      - '.github/workflows/build-connect-typescript.yaml'
+      - '.github/workflows/build-connect-dotnet.yaml'
       - "devops/**"
 
 jobs:
@@ -14,24 +14,21 @@ jobs:
     strategy:
       matrix:
         swagger_json: ['connect/swagger_api.json']
-        language: [['typescript-fetch', 'connect/typescript']]
+        language: [['csharp', 'connect/dotnet']]
     name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        name: Setup Node v20
+      - uses: actions/setup-dotnet@v2
         with:
-          node-version: 20
-          cache: 'npm'
-      - name: Build Connect TypeScript SDK
+          dotnet-version: '6.0.x'
+      - name: Build Connect Dotnet SDK
         run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
       - name: Format code
         run: |
-          npm ci
-          npm run build:prettier
+          dotnet format
         working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes
