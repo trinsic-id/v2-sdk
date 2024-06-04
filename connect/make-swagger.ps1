@@ -129,5 +129,5 @@ if ($IsLinux) {
     $currentUserId = $(id -u)
     $currentGroupId = $(id -g)
     Write-Output "Changing owner of generated files to ${currentUserId}:$currentGroupId"
-    chown -R "${currentUserId}:$currentGroupId" "/local/$relativeOutputFolder"
+    sudo chown -R "${currentUserId}:$currentGroupId" $relativeOutputFolder
 }

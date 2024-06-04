@@ -6,10 +6,6 @@ info:
 servers:
 - description: Production server
   url: https://connect-api.trinsic.id
-- description: Development server
-  url: https://dev-connect-api.trinsic.id
-- description: Staging server
-  url: https://staging-connect-api.trinsic.id
 security:
 - Bearer: []
 paths:
