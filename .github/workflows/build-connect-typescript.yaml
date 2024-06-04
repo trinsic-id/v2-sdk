@@ -28,4 +28,11 @@ jobs:
         run: ./devops/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Format code
+        run: |
+          npm ci
+          npm run build:prettier
+        working-directory: connect/typescript
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
