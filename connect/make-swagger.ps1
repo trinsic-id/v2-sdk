@@ -124,3 +124,10 @@ if ($env:TRINSIC_CI -eq "true")
 if ($LASTEXITCODE -ne 0) {
     throw "Failed to generate SDK for $language from $relativeSwaggerFile to $relativeOutputFolder."
 }
+# If Linux, change the owner of the generated files to the current user
+if ($IsLinux) {
+    $currentUserId = $(id -u)
+    $currentGroupId = $(id -g)
+    Write-Output "Changing owner of generated files to ${currentUserId}:$currentGroupId"
+    chown -R "${currentUserId}:$currentGroupId" "/local/$relativeOutputFolder"
+}
