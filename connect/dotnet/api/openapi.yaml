@@ -11,7 +11,7 @@ security:
 paths:
   /v1/sessions/list:
     post:
-      operationId: Session.ListSessions
+      operationId: ListSessions
       parameters:
       - description: Bearer token. Can be left empty on anonymous endpoints
         explode: false
@@ -68,7 +68,7 @@ paths:
       - Session
   /v1/sessions/get:
     get:
-      operationId: Session.GetSession
+      operationId: GetSession
       parameters:
       - explode: true
         in: query
@@ -123,7 +123,7 @@ paths:
       - Session
   /v1/sessions:
     post:
-      operationId: Session.CreateSession
+      operationId: CreateSession
       parameters:
       - description: Bearer token. Can be left empty on anonymous endpoints
         explode: false
@@ -180,7 +180,7 @@ paths:
       - Session
   /v1/sessions/cancel:
     post:
-      operationId: Session.CancelSession
+      operationId: CancelSession
       parameters:
       - explode: true
         in: query

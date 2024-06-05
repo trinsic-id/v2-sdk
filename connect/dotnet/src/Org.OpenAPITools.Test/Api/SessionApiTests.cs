@@ -47,54 +47,54 @@ public class SessionApiTests : IDisposable
     }
 
     /// <summary>
-    /// Test SessionCancelSession
+    /// Test CancelSession
     /// </summary>
     [Fact]
-    public void SessionCancelSessionTest()
+    public void CancelSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.SessionCancelSession(trinsicAuthorization, sessionId);
+        //var response = instance.CancelSession(trinsicAuthorization, sessionId);
         //Assert.IsType<CancelSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test SessionCreateSession
+    /// Test CreateSession
     /// </summary>
     [Fact]
-    public void SessionCreateSessionTest()
+    public void CreateSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string trinsicAuthorization = null;
         //CreateSessionRequest? createSessionRequest = null;
-        //var response = instance.SessionCreateSession(trinsicAuthorization, createSessionRequest);
+        //var response = instance.CreateSession(trinsicAuthorization, createSessionRequest);
         //Assert.IsType<CreateSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test SessionGetSession
+    /// Test GetSession
     /// </summary>
     [Fact]
-    public void SessionGetSessionTest()
+    public void GetSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.SessionGetSession(trinsicAuthorization, sessionId);
+        //var response = instance.GetSession(trinsicAuthorization, sessionId);
         //Assert.IsType<GetSessionResponseV1>(response);
     }
 
     /// <summary>
-    /// Test SessionListSessions
+    /// Test ListSessions
     /// </summary>
     [Fact]
-    public void SessionListSessionsTest()
+    public void ListSessionsTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string trinsicAuthorization = null;
         //ListSessionsRequest? listSessionsRequest = null;
-        //var response = instance.SessionListSessions(trinsicAuthorization, listSessionsRequest);
+        //var response = instance.ListSessions(trinsicAuthorization, listSessionsRequest);
         //Assert.IsType<ListSessionsResponseV1>(response);
     }
 }

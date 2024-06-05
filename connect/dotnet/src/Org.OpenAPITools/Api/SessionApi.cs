@@ -27,7 +27,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>CancelSessionResponse</returns>
-    CancelSessionResponse SessionCancelSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
+    CancelSessionResponse CancelSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
 
     /// <summary>
     /// 
@@ -40,7 +40,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of CancelSessionResponse</returns>
-    ApiResponse<CancelSessionResponse> SessionCancelSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
+    ApiResponse<CancelSessionResponse> CancelSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
     /// <summary>
     /// 
     /// </summary>
@@ -49,7 +49,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>CreateSessionResponse</returns>
-    CreateSessionResponse SessionCreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0);
+    CreateSessionResponse CreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0);
 
     /// <summary>
     /// 
@@ -62,7 +62,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of CreateSessionResponse</returns>
-    ApiResponse<CreateSessionResponse> SessionCreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0);
+    ApiResponse<CreateSessionResponse> CreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0);
     /// <summary>
     /// 
     /// </summary>
@@ -71,7 +71,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>GetSessionResponseV1</returns>
-    GetSessionResponseV1 SessionGetSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
+    GetSessionResponseV1 GetSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
 
     /// <summary>
     /// 
@@ -84,7 +84,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of GetSessionResponseV1</returns>
-    ApiResponse<GetSessionResponseV1> SessionGetSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
+    ApiResponse<GetSessionResponseV1> GetSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0);
     /// <summary>
     /// 
     /// </summary>
@@ -93,7 +93,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ListSessionsResponseV1</returns>
-    ListSessionsResponseV1 SessionListSessions(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0);
+    ListSessionsResponseV1 ListSessions(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0);
 
     /// <summary>
     /// 
@@ -106,7 +106,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of ListSessionsResponseV1</returns>
-    ApiResponse<ListSessionsResponseV1> SessionListSessionsWithHttpInfo(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0);
+    ApiResponse<ListSessionsResponseV1> ListSessionsWithHttpInfo(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0);
     #endregion Synchronous Operations
 }
 
@@ -128,7 +128,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CancelSessionResponse</returns>
-    System.Threading.Tasks.Task<CancelSessionResponse> SessionCancelSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<CancelSessionResponse> CancelSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -142,7 +142,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CancelSessionResponse)</returns>
-    System.Threading.Tasks.Task<ApiResponse<CancelSessionResponse>> SessionCancelSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<CancelSessionResponse>> CancelSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
     /// 
     /// </summary>
@@ -155,7 +155,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CreateSessionResponse</returns>
-    System.Threading.Tasks.Task<CreateSessionResponse> SessionCreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -169,7 +169,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateSessionResponse)</returns>
-    System.Threading.Tasks.Task<ApiResponse<CreateSessionResponse>> SessionCreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<CreateSessionResponse>> CreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
     /// 
     /// </summary>
@@ -182,7 +182,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of GetSessionResponseV1</returns>
-    System.Threading.Tasks.Task<GetSessionResponseV1> SessionGetSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<GetSessionResponseV1> GetSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -196,7 +196,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetSessionResponseV1)</returns>
-    System.Threading.Tasks.Task<ApiResponse<GetSessionResponseV1>> SessionGetSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<GetSessionResponseV1>> GetSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
     /// 
     /// </summary>
@@ -209,7 +209,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponseV1</returns>
-    System.Threading.Tasks.Task<ListSessionsResponseV1> SessionListSessionsAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ListSessionsResponseV1> ListSessionsAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -223,7 +223,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponseV1)</returns>
-    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponseV1>> SessionListSessionsWithHttpInfoAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponseV1>> ListSessionsWithHttpInfoAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     #endregion Asynchronous Operations
 }
 
@@ -352,9 +352,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>CancelSessionResponse</returns>
-    public CancelSessionResponse SessionCancelSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
+    public CancelSessionResponse CancelSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
     {
-        var localVarResponse = SessionCancelSessionWithHttpInfo(trinsicAuthorization, sessionId);
+        var localVarResponse = CancelSessionWithHttpInfo(trinsicAuthorization, sessionId);
         return localVarResponse.Data;
     }
 
@@ -366,12 +366,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of CancelSessionResponse</returns>
-    public Org.OpenAPITools.Client.ApiResponse<CancelSessionResponse> SessionCancelSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
+    public Org.OpenAPITools.Client.ApiResponse<CancelSessionResponse> CancelSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionCancelSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CancelSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -405,7 +405,7 @@ public partial class SessionApi : ISessionApi
 
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
 
-        localVarRequestOptions.Operation = "SessionApi.SessionCancelSession";
+        localVarRequestOptions.Operation = "SessionApi.CancelSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -419,7 +419,7 @@ public partial class SessionApi : ISessionApi
         var localVarResponse = Client.Post<CancelSessionResponse>("/v1/sessions/cancel", localVarRequestOptions, Configuration);
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionCancelSession", localVarResponse);
+            var _exception = ExceptionFactory("CancelSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -438,9 +438,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CancelSessionResponse</returns>
-    public async System.Threading.Tasks.Task<CancelSessionResponse> SessionCancelSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<CancelSessionResponse> CancelSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await SessionCancelSessionWithHttpInfoAsync(trinsicAuthorization, sessionId, operationIndex, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await CancelSessionWithHttpInfoAsync(trinsicAuthorization, sessionId, operationIndex, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -453,12 +453,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CancelSessionResponse)</returns>
-    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<CancelSessionResponse>> SessionCancelSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<CancelSessionResponse>> CancelSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionCancelSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CancelSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -492,7 +492,7 @@ public partial class SessionApi : ISessionApi
 
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
 
-        localVarRequestOptions.Operation = "SessionApi.SessionCancelSession";
+        localVarRequestOptions.Operation = "SessionApi.CancelSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -507,7 +507,7 @@ public partial class SessionApi : ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionCancelSession", localVarResponse);
+            var _exception = ExceptionFactory("CancelSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -525,9 +525,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>CreateSessionResponse</returns>
-    public CreateSessionResponse SessionCreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0)
+    public CreateSessionResponse CreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0)
     {
-        var localVarResponse = SessionCreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
+        var localVarResponse = CreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
         return localVarResponse.Data;
     }
 
@@ -539,12 +539,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of CreateSessionResponse</returns>
-    public Org.OpenAPITools.Client.ApiResponse<CreateSessionResponse> SessionCreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0)
+    public Org.OpenAPITools.Client.ApiResponse<CreateSessionResponse> CreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0)
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionCreateSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -577,7 +577,7 @@ public partial class SessionApi : ISessionApi
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
         localVarRequestOptions.Data = createSessionRequest;
 
-        localVarRequestOptions.Operation = "SessionApi.SessionCreateSession";
+        localVarRequestOptions.Operation = "SessionApi.CreateSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -591,7 +591,7 @@ public partial class SessionApi : ISessionApi
         var localVarResponse = Client.Post<CreateSessionResponse>("/v1/sessions", localVarRequestOptions, Configuration);
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionCreateSession", localVarResponse);
+            var _exception = ExceptionFactory("CreateSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -610,9 +610,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CreateSessionResponse</returns>
-    public async System.Threading.Tasks.Task<CreateSessionResponse> SessionCreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await SessionCreateSessionWithHttpInfoAsync(trinsicAuthorization, createSessionRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await CreateSessionWithHttpInfoAsync(trinsicAuthorization, createSessionRequest, operationIndex, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -625,12 +625,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateSessionResponse)</returns>
-    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<CreateSessionResponse>> SessionCreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<CreateSessionResponse>> CreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionCreateSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -663,7 +663,7 @@ public partial class SessionApi : ISessionApi
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
         localVarRequestOptions.Data = createSessionRequest;
 
-        localVarRequestOptions.Operation = "SessionApi.SessionCreateSession";
+        localVarRequestOptions.Operation = "SessionApi.CreateSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -678,7 +678,7 @@ public partial class SessionApi : ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionCreateSession", localVarResponse);
+            var _exception = ExceptionFactory("CreateSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -696,9 +696,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>GetSessionResponseV1</returns>
-    public GetSessionResponseV1 SessionGetSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
+    public GetSessionResponseV1 GetSession(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
     {
-        var localVarResponse = SessionGetSessionWithHttpInfo(trinsicAuthorization, sessionId);
+        var localVarResponse = GetSessionWithHttpInfo(trinsicAuthorization, sessionId);
         return localVarResponse.Data;
     }
 
@@ -710,12 +710,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="sessionId"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of GetSessionResponseV1</returns>
-    public Org.OpenAPITools.Client.ApiResponse<GetSessionResponseV1> SessionGetSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
+    public Org.OpenAPITools.Client.ApiResponse<GetSessionResponseV1> GetSessionWithHttpInfo(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0)
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionGetSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->GetSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -749,7 +749,7 @@ public partial class SessionApi : ISessionApi
 
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
 
-        localVarRequestOptions.Operation = "SessionApi.SessionGetSession";
+        localVarRequestOptions.Operation = "SessionApi.GetSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -763,7 +763,7 @@ public partial class SessionApi : ISessionApi
         var localVarResponse = Client.Get<GetSessionResponseV1>("/v1/sessions/get", localVarRequestOptions, Configuration);
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionGetSession", localVarResponse);
+            var _exception = ExceptionFactory("GetSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -782,9 +782,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of GetSessionResponseV1</returns>
-    public async System.Threading.Tasks.Task<GetSessionResponseV1> SessionGetSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<GetSessionResponseV1> GetSessionAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await SessionGetSessionWithHttpInfoAsync(trinsicAuthorization, sessionId, operationIndex, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await GetSessionWithHttpInfoAsync(trinsicAuthorization, sessionId, operationIndex, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -797,12 +797,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (GetSessionResponseV1)</returns>
-    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<GetSessionResponseV1>> SessionGetSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<GetSessionResponseV1>> GetSessionWithHttpInfoAsync(string trinsicAuthorization, string? sessionId = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionGetSession");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->GetSession");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -836,7 +836,7 @@ public partial class SessionApi : ISessionApi
 
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
 
-        localVarRequestOptions.Operation = "SessionApi.SessionGetSession";
+        localVarRequestOptions.Operation = "SessionApi.GetSession";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -851,7 +851,7 @@ public partial class SessionApi : ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionGetSession", localVarResponse);
+            var _exception = ExceptionFactory("GetSession", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -869,9 +869,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ListSessionsResponseV1</returns>
-    public ListSessionsResponseV1 SessionListSessions(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0)
+    public ListSessionsResponseV1 ListSessions(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0)
     {
-        var localVarResponse = SessionListSessionsWithHttpInfo(trinsicAuthorization, listSessionsRequest);
+        var localVarResponse = ListSessionsWithHttpInfo(trinsicAuthorization, listSessionsRequest);
         return localVarResponse.Data;
     }
 
@@ -883,12 +883,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <returns>ApiResponse of ListSessionsResponseV1</returns>
-    public Org.OpenAPITools.Client.ApiResponse<ListSessionsResponseV1> SessionListSessionsWithHttpInfo(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0)
+    public Org.OpenAPITools.Client.ApiResponse<ListSessionsResponseV1> ListSessionsWithHttpInfo(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0)
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionListSessions");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->ListSessions");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -921,7 +921,7 @@ public partial class SessionApi : ISessionApi
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
         localVarRequestOptions.Data = listSessionsRequest;
 
-        localVarRequestOptions.Operation = "SessionApi.SessionListSessions";
+        localVarRequestOptions.Operation = "SessionApi.ListSessions";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -935,7 +935,7 @@ public partial class SessionApi : ISessionApi
         var localVarResponse = Client.Post<ListSessionsResponseV1>("/v1/sessions/list", localVarRequestOptions, Configuration);
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionListSessions", localVarResponse);
+            var _exception = ExceptionFactory("ListSessions", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -954,9 +954,9 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponseV1</returns>
-    public async System.Threading.Tasks.Task<ListSessionsResponseV1> SessionListSessionsAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<ListSessionsResponseV1> ListSessionsAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await SessionListSessionsWithHttpInfoAsync(trinsicAuthorization, listSessionsRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await ListSessionsWithHttpInfoAsync(trinsicAuthorization, listSessionsRequest, operationIndex, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -969,12 +969,12 @@ public partial class SessionApi : ISessionApi
     /// <param name="operationIndex">Index associated with the operation.</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponseV1)</returns>
-    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ListSessionsResponseV1>> SessionListSessionsWithHttpInfoAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ListSessionsResponseV1>> ListSessionsWithHttpInfoAsync(string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->SessionListSessions");
+            throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->ListSessions");
         }
 
         var localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1007,7 +1007,7 @@ public partial class SessionApi : ISessionApi
         localVarRequestOptions.HeaderParameters.Add("TrinsicAuthorization", Org.OpenAPITools.Client.ClientUtils.ParameterToString(trinsicAuthorization)); // header parameter
         localVarRequestOptions.Data = listSessionsRequest;
 
-        localVarRequestOptions.Operation = "SessionApi.SessionListSessions";
+        localVarRequestOptions.Operation = "SessionApi.ListSessions";
         localVarRequestOptions.OperationIndex = operationIndex;
 
         // authentication (Bearer) required
@@ -1022,7 +1022,7 @@ public partial class SessionApi : ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("SessionListSessions", localVarResponse);
+            var _exception = ExceptionFactory("ListSessions", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;

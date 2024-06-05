@@ -4,14 +4,14 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**SessionCancelSession**](SessionApi.md#sessioncancelsession) | **POST** /v1/sessions/cancel |  |
-| [**SessionCreateSession**](SessionApi.md#sessioncreatesession) | **POST** /v1/sessions |  |
-| [**SessionGetSession**](SessionApi.md#sessiongetsession) | **GET** /v1/sessions/get |  |
-| [**SessionListSessions**](SessionApi.md#sessionlistsessions) | **POST** /v1/sessions/list |  |
+| [**CancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
+| [**CreateSession**](SessionApi.md#createsession) | **POST** /v1/sessions |  |
+| [**GetSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get |  |
+| [**ListSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list |  |
 
-<a id="sessioncancelsession"></a>
-# **SessionCancelSession**
-> CancelSessionResponse SessionCancelSession (string trinsicAuthorization, string? sessionId = null)
+<a id="cancelsession"></a>
+# **CancelSession**
+> CancelSessionResponse CancelSession (string trinsicAuthorization, string? sessionId = null)
 
 
 
@@ -25,7 +25,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class SessionCancelSessionExample
+    public class CancelSessionExample
     {
         public static void Main()
         {
@@ -40,12 +40,12 @@ namespace Example
 
             try
             {
-                CancelSessionResponse result = apiInstance.SessionCancelSession(trinsicAuthorization, sessionId);
+                CancelSessionResponse result = apiInstance.CancelSession(trinsicAuthorization, sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.SessionCancelSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.CancelSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -54,20 +54,20 @@ namespace Example
 }
 ```
 
-#### Using the SessionCancelSessionWithHttpInfo variant
+#### Using the CancelSessionWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CancelSessionResponse> response = apiInstance.SessionCancelSessionWithHttpInfo(trinsicAuthorization, sessionId);
+    ApiResponse<CancelSessionResponse> response = apiInstance.CancelSessionWithHttpInfo(trinsicAuthorization, sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.SessionCancelSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.CancelSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -105,9 +105,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="sessioncreatesession"></a>
-# **SessionCreateSession**
-> CreateSessionResponse SessionCreateSession (string trinsicAuthorization, CreateSessionRequest? createSessionRequest = null)
+<a id="createsession"></a>
+# **CreateSession**
+> CreateSessionResponse CreateSession (string trinsicAuthorization, CreateSessionRequest? createSessionRequest = null)
 
 
 
@@ -121,7 +121,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class SessionCreateSessionExample
+    public class CreateSessionExample
     {
         public static void Main()
         {
@@ -136,12 +136,12 @@ namespace Example
 
             try
             {
-                CreateSessionResponse result = apiInstance.SessionCreateSession(trinsicAuthorization, createSessionRequest);
+                CreateSessionResponse result = apiInstance.CreateSession(trinsicAuthorization, createSessionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.SessionCreateSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.CreateSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -150,20 +150,20 @@ namespace Example
 }
 ```
 
-#### Using the SessionCreateSessionWithHttpInfo variant
+#### Using the CreateSessionWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CreateSessionResponse> response = apiInstance.SessionCreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
+    ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.SessionCreateSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.CreateSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -201,9 +201,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="sessiongetsession"></a>
-# **SessionGetSession**
-> GetSessionResponseV1 SessionGetSession (string trinsicAuthorization, string? sessionId = null)
+<a id="getsession"></a>
+# **GetSession**
+> GetSessionResponseV1 GetSession (string trinsicAuthorization, string? sessionId = null)
 
 
 
@@ -217,7 +217,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class SessionGetSessionExample
+    public class GetSessionExample
     {
         public static void Main()
         {
@@ -232,12 +232,12 @@ namespace Example
 
             try
             {
-                GetSessionResponseV1 result = apiInstance.SessionGetSession(trinsicAuthorization, sessionId);
+                GetSessionResponseV1 result = apiInstance.GetSession(trinsicAuthorization, sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.SessionGetSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.GetSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -246,20 +246,20 @@ namespace Example
 }
 ```
 
-#### Using the SessionGetSessionWithHttpInfo variant
+#### Using the GetSessionWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<GetSessionResponseV1> response = apiInstance.SessionGetSessionWithHttpInfo(trinsicAuthorization, sessionId);
+    ApiResponse<GetSessionResponseV1> response = apiInstance.GetSessionWithHttpInfo(trinsicAuthorization, sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.SessionGetSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.GetSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -297,9 +297,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="sessionlistsessions"></a>
-# **SessionListSessions**
-> ListSessionsResponseV1 SessionListSessions (string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = null)
+<a id="listsessions"></a>
+# **ListSessions**
+> ListSessionsResponseV1 ListSessions (string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = null)
 
 
 
@@ -313,7 +313,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class SessionListSessionsExample
+    public class ListSessionsExample
     {
         public static void Main()
         {
@@ -328,12 +328,12 @@ namespace Example
 
             try
             {
-                ListSessionsResponseV1 result = apiInstance.SessionListSessions(trinsicAuthorization, listSessionsRequest);
+                ListSessionsResponseV1 result = apiInstance.ListSessions(trinsicAuthorization, listSessionsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.SessionListSessions: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.ListSessions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -342,20 +342,20 @@ namespace Example
 }
 ```
 
-#### Using the SessionListSessionsWithHttpInfo variant
+#### Using the ListSessionsWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<ListSessionsResponseV1> response = apiInstance.SessionListSessionsWithHttpInfo(trinsicAuthorization, listSessionsRequest);
+    ApiResponse<ListSessionsResponseV1> response = apiInstance.ListSessionsWithHttpInfo(trinsicAuthorization, listSessionsRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.SessionListSessionsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.ListSessionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

@@ -42,22 +42,22 @@ import {
     ValidationResultToJSON,
 } from "../models/index";
 
-export interface SessionCancelSessionRequest {
+export interface CancelSessionRequest {
     trinsicAuthorization: string;
     sessionId?: string;
 }
 
-export interface SessionCreateSessionRequest {
+export interface CreateSessionOperationRequest {
     trinsicAuthorization: string;
     createSessionRequest?: CreateSessionRequest;
 }
 
-export interface SessionGetSessionRequest {
+export interface GetSessionRequest {
     trinsicAuthorization: string;
     sessionId?: string;
 }
 
-export interface SessionListSessionsRequest {
+export interface ListSessionsOperationRequest {
     trinsicAuthorization: string;
     listSessionsRequest?: ListSessionsRequest;
 }
@@ -68,14 +68,14 @@ export interface SessionListSessionsRequest {
 export class SessionApi extends runtime.BaseAPI {
     /**
      */
-    async sessionCancelSessionRaw(
-        requestParameters: SessionCancelSessionRequest,
+    async cancelSessionRaw(
+        requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CancelSessionResponse>> {
         if (requestParameters["trinsicAuthorization"] == null) {
             throw new runtime.RequiredError(
                 "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling sessionCancelSession().',
+                'Required parameter "trinsicAuthorization" was null or undefined when calling cancelSession().',
             );
         }
 
@@ -118,11 +118,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionCancelSession(
-        requestParameters: SessionCancelSessionRequest,
+    async cancelSession(
+        requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CancelSessionResponse> {
-        const response = await this.sessionCancelSessionRaw(
+        const response = await this.cancelSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -131,14 +131,14 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionCreateSessionRaw(
-        requestParameters: SessionCreateSessionRequest,
+    async createSessionRaw(
+        requestParameters: CreateSessionOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CreateSessionResponse>> {
         if (requestParameters["trinsicAuthorization"] == null) {
             throw new runtime.RequiredError(
                 "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling sessionCreateSession().',
+                'Required parameter "trinsicAuthorization" was null or undefined when calling createSession().',
             );
         }
 
@@ -182,11 +182,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionCreateSession(
-        requestParameters: SessionCreateSessionRequest,
+    async createSession(
+        requestParameters: CreateSessionOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CreateSessionResponse> {
-        const response = await this.sessionCreateSessionRaw(
+        const response = await this.createSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -195,14 +195,14 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionGetSessionRaw(
-        requestParameters: SessionGetSessionRequest,
+    async getSessionRaw(
+        requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<GetSessionResponseV1>> {
         if (requestParameters["trinsicAuthorization"] == null) {
             throw new runtime.RequiredError(
                 "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling sessionGetSession().',
+                'Required parameter "trinsicAuthorization" was null or undefined when calling getSession().',
             );
         }
 
@@ -245,11 +245,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionGetSession(
-        requestParameters: SessionGetSessionRequest,
+    async getSession(
+        requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<GetSessionResponseV1> {
-        const response = await this.sessionGetSessionRaw(
+        const response = await this.getSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -258,14 +258,14 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionListSessionsRaw(
-        requestParameters: SessionListSessionsRequest,
+    async listSessionsRaw(
+        requestParameters: ListSessionsOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<ListSessionsResponseV1>> {
         if (requestParameters["trinsicAuthorization"] == null) {
             throw new runtime.RequiredError(
                 "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling sessionListSessions().',
+                'Required parameter "trinsicAuthorization" was null or undefined when calling listSessions().',
             );
         }
 
@@ -309,11 +309,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async sessionListSessions(
-        requestParameters: SessionListSessionsRequest,
+    async listSessions(
+        requestParameters: ListSessionsOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<ListSessionsResponseV1> {
-        const response = await this.sessionListSessionsRaw(
+        const response = await this.listSessionsRaw(
             requestParameters,
             initOverrides,
         );
