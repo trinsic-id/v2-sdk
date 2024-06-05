@@ -127,18 +127,6 @@ public class Configuration : IReadableConfiguration
                     {"url", "https://connect-api.trinsic.id"},
                     {"description", "Production server"},
                 }
-            },
-            {
-                new Dictionary<string, object> {
-                    {"url", "https://dev-connect-api.trinsic.id"},
-                    {"description", "Development server"},
-                }
-            },
-            {
-                new Dictionary<string, object> {
-                    {"url", "https://staging-connect-api.trinsic.id"},
-                    {"description", "Staging server"},
-                }
             }
         };
         OperationServers = new Dictionary<string, List<IReadOnlyDictionary<string, object>>>()
@@ -374,10 +362,7 @@ public class Configuration : IReadableConfiguration
     public virtual IDictionary<string, string> ApiKeyPrefix
     {
         get => _apiKeyPrefix;
-        set
-        {
-            _apiKeyPrefix = value ?? throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
-        }
+        set => _apiKeyPrefix = value ?? throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
     }
 
     /// <summary>
@@ -387,10 +372,7 @@ public class Configuration : IReadableConfiguration
     public virtual IDictionary<string, string> ApiKey
     {
         get => _apiKey;
-        set
-        {
-            _apiKey = value ?? throw new InvalidOperationException("ApiKey collection may not be null.");
-        }
+        set => _apiKey = value ?? throw new InvalidOperationException("ApiKey collection may not be null.");
     }
 
     /// <summary>
@@ -400,10 +382,7 @@ public class Configuration : IReadableConfiguration
     public virtual IList<IReadOnlyDictionary<string, object>> Servers
     {
         get => _servers;
-        set
-        {
-            _servers = value ?? throw new InvalidOperationException("Servers may not be null.");
-        }
+        set => _servers = value ?? throw new InvalidOperationException("Servers may not be null.");
     }
 
     /// <summary>
@@ -413,10 +392,7 @@ public class Configuration : IReadableConfiguration
     public virtual IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> OperationServers
     {
         get => _operationServers;
-        set
-        {
-            _operationServers = value ?? throw new InvalidOperationException("Operation servers may not be null.");
-        }
+        set => _operationServers = value ?? throw new InvalidOperationException("Operation servers may not be null.");
     }
 
     /// <summary>

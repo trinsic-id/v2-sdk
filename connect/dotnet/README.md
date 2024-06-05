@@ -95,12 +95,12 @@ namespace Example
 
             try
             {
-                CancelSessionResponse result = apiInstance.SessionCancelSession(trinsicAuthorization, sessionId);
+                CancelSessionResponse result = apiInstance.CancelSession(trinsicAuthorization, sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling SessionApi.SessionCancelSession: " + e.Message );
+                Debug.Print("Exception when calling SessionApi.CancelSession: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -117,10 +117,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionApi* | [**SessionCancelSession**](docs/SessionApi.md#sessioncancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**SessionCreateSession**](docs/SessionApi.md#sessioncreatesession) | **POST** /v1/sessions | 
-*SessionApi* | [**SessionGetSession**](docs/SessionApi.md#sessiongetsession) | **GET** /v1/sessions/get | 
-*SessionApi* | [**SessionListSessions**](docs/SessionApi.md#sessionlistsessions) | **POST** /v1/sessions/list | 
+*SessionApi* | [**CancelSession**](docs/SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+*SessionApi* | [**CreateSession**](docs/SessionApi.md#createsession) | **POST** /v1/sessions | 
+*SessionApi* | [**GetSession**](docs/SessionApi.md#getsession) | **GET** /v1/sessions/get | 
+*SessionApi* | [**ListSessions**](docs/SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
 <a id="documentation-for-models"></a>
