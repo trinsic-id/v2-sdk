@@ -9,14 +9,14 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**sessionCancelSession**](SessionApi.md#sessioncancelsession) | **POST** /v1/sessions/cancel | 
-[**sessionCreateSession**](SessionApi.md#sessioncreatesession) | **POST** /v1/sessions | 
-[**sessionGetSession**](SessionApi.md#sessiongetsession) | **GET** /v1/sessions/get | 
-[**sessionListSessions**](SessionApi.md#sessionlistsessions) | **POST** /v1/sessions/list | 
+[**cancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions | 
+[**getSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get | 
+[**listSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
-# **sessionCancelSession**
-> CancelSessionResponse sessionCancelSession(trinsicAuthorization, sessionId)
+# **cancelSession**
+> CancelSessionResponse cancelSession(trinsicAuthorization, sessionId)
 
 
 
@@ -35,10 +35,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.sessionCancelSession(trinsicAuthorization, sessionId);
+    final result = api_instance.cancelSession(trinsicAuthorization, sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->sessionCancelSession: $e\n');
+    print('Exception when calling SessionApi->cancelSession: $e\n');
 }
 ```
 
@@ -64,8 +64,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sessionCreateSession**
-> CreateSessionResponse sessionCreateSession(trinsicAuthorization, createSessionRequest)
+# **createSession**
+> CreateSessionResponse createSession(trinsicAuthorization, createSessionRequest)
 
 
 
@@ -84,10 +84,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final createSessionRequest = CreateSessionRequest(); // CreateSessionRequest | 
 
 try {
-    final result = api_instance.sessionCreateSession(trinsicAuthorization, createSessionRequest);
+    final result = api_instance.createSession(trinsicAuthorization, createSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->sessionCreateSession: $e\n');
+    print('Exception when calling SessionApi->createSession: $e\n');
 }
 ```
 
@@ -113,8 +113,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sessionGetSession**
-> GetSessionResponseV1 sessionGetSession(trinsicAuthorization, sessionId)
+# **getSession**
+> GetSessionResponseV1 getSession(trinsicAuthorization, sessionId)
 
 
 
@@ -133,10 +133,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.sessionGetSession(trinsicAuthorization, sessionId);
+    final result = api_instance.getSession(trinsicAuthorization, sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->sessionGetSession: $e\n');
+    print('Exception when calling SessionApi->getSession: $e\n');
 }
 ```
 
@@ -162,8 +162,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **sessionListSessions**
-> ListSessionsResponseV1 sessionListSessions(trinsicAuthorization, listSessionsRequest)
+# **listSessions**
+> ListSessionsResponseV1 listSessions(trinsicAuthorization, listSessionsRequest)
 
 
 
@@ -182,10 +182,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final listSessionsRequest = ListSessionsRequest(); // ListSessionsRequest | 
 
 try {
-    final result = api_instance.sessionListSessions(trinsicAuthorization, listSessionsRequest);
+    final result = api_instance.listSessions(trinsicAuthorization, listSessionsRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->sessionListSessions: $e\n');
+    print('Exception when calling SessionApi->listSessions: $e\n');
 }
 ```
 

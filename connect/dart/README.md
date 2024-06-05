@@ -52,10 +52,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.sessionCancelSession(trinsicAuthorization, sessionId);
+    final result = api_instance.cancelSession(trinsicAuthorization, sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->sessionCancelSession: $e\n');
+    print('Exception when calling SessionApi->cancelSession: $e\n');
 }
 
 ```
@@ -66,10 +66,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionApi* | [**sessionCancelSession**](doc//SessionApi.md#sessioncancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**sessionCreateSession**](doc//SessionApi.md#sessioncreatesession) | **POST** /v1/sessions | 
-*SessionApi* | [**sessionGetSession**](doc//SessionApi.md#sessiongetsession) | **GET** /v1/sessions/get | 
-*SessionApi* | [**sessionListSessions**](doc//SessionApi.md#sessionlistsessions) | **POST** /v1/sessions/list | 
+*SessionApi* | [**cancelSession**](doc//SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+*SessionApi* | [**createSession**](doc//SessionApi.md#createsession) | **POST** /v1/sessions | 
+*SessionApi* | [**getSession**](doc//SessionApi.md#getsession) | **GET** /v1/sessions/get | 
+*SessionApi* | [**listSessions**](doc//SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
 ## Documentation For Models
