@@ -17,7 +17,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "Session.ListSessions",
+        "operationId": "ListSessions",
         "parameters": [
           {
             "name": "TrinsicAuthorization",
@@ -108,7 +108,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "Session.GetSession",
+        "operationId": "GetSession",
         "parameters": [
           {
             "name": "sessionId",
@@ -189,7 +189,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "Session.CreateSession",
+        "operationId": "CreateSession",
         "parameters": [
           {
             "name": "TrinsicAuthorization",
@@ -280,7 +280,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "Session.CancelSession",
+        "operationId": "CancelSession",
         "parameters": [
           {
             "name": "sessionId",
