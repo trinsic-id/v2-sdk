@@ -5,7 +5,7 @@ on:
   pull_request:
     # We don't have path dependencies because we code-inject the samples, and we want to ensure those are all in the right places.
     paths-ignore:
-      - 'connect'
+      - 'connect/**'
   workflow_dispatch:
 jobs:
   build:
