@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class SessionFailCode {
   /// Instantiate a new enum with the provided [value].
   const SessionFailCode._(this.value);
@@ -24,15 +25,11 @@ class SessionFailCode {
 
   static const sessionFailNone = SessionFailCode._(r'SessionFailNone');
   static const sessionFailInternal = SessionFailCode._(r'SessionFailInternal');
-  static const sessionFailVerificationFailed =
-      SessionFailCode._(r'SessionFailVerificationFailed');
-  static const sessionFailAuthentication =
-      SessionFailCode._(r'SessionFailAuthentication');
+  static const sessionFailVerificationFailed = SessionFailCode._(r'SessionFailVerificationFailed');
+  static const sessionFailAuthentication = SessionFailCode._(r'SessionFailAuthentication');
   static const sessionFailExpired = SessionFailCode._(r'SessionFailExpired');
-  static const sessionFailUserCanceled =
-      SessionFailCode._(r'SessionFailUserCanceled');
-  static const sessionFailRpcCanceled =
-      SessionFailCode._(r'SessionFailRpcCanceled');
+  static const sessionFailUserCanceled = SessionFailCode._(r'SessionFailUserCanceled');
+  static const sessionFailRpcCanceled = SessionFailCode._(r'SessionFailRpcCanceled');
 
   /// List of all possible values in this [enum][SessionFailCode].
   static const values = <SessionFailCode>[
@@ -45,13 +42,9 @@ class SessionFailCode {
     sessionFailRpcCanceled,
   ];
 
-  static SessionFailCode? fromJson(dynamic value) =>
-      SessionFailCodeTypeTransformer().decode(value);
+  static SessionFailCode? fromJson(dynamic value) => SessionFailCodeTypeTransformer().decode(value);
 
-  static List<SessionFailCode> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<SessionFailCode> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <SessionFailCode>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -68,8 +61,7 @@ class SessionFailCode {
 /// Transformation class that can [encode] an instance of [SessionFailCode] to String,
 /// and [decode] dynamic data back to [SessionFailCode].
 class SessionFailCodeTypeTransformer {
-  factory SessionFailCodeTypeTransformer() =>
-      _instance ??= const SessionFailCodeTypeTransformer._();
+  factory SessionFailCodeTypeTransformer() => _instance ??= const SessionFailCodeTypeTransformer._();
 
   const SessionFailCodeTypeTransformer._();
 
@@ -86,20 +78,13 @@ class SessionFailCodeTypeTransformer {
   SessionFailCode? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'SessionFailNone':
-          return SessionFailCode.sessionFailNone;
-        case r'SessionFailInternal':
-          return SessionFailCode.sessionFailInternal;
-        case r'SessionFailVerificationFailed':
-          return SessionFailCode.sessionFailVerificationFailed;
-        case r'SessionFailAuthentication':
-          return SessionFailCode.sessionFailAuthentication;
-        case r'SessionFailExpired':
-          return SessionFailCode.sessionFailExpired;
-        case r'SessionFailUserCanceled':
-          return SessionFailCode.sessionFailUserCanceled;
-        case r'SessionFailRpcCanceled':
-          return SessionFailCode.sessionFailRpcCanceled;
+        case r'SessionFailNone': return SessionFailCode.sessionFailNone;
+        case r'SessionFailInternal': return SessionFailCode.sessionFailInternal;
+        case r'SessionFailVerificationFailed': return SessionFailCode.sessionFailVerificationFailed;
+        case r'SessionFailAuthentication': return SessionFailCode.sessionFailAuthentication;
+        case r'SessionFailExpired': return SessionFailCode.sessionFailExpired;
+        case r'SessionFailUserCanceled': return SessionFailCode.sessionFailUserCanceled;
+        case r'SessionFailRpcCanceled': return SessionFailCode.sessionFailRpcCanceled;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -112,3 +97,4 @@ class SessionFailCodeTypeTransformer {
   /// Singleton [SessionFailCodeTypeTransformer] instance.
   static SessionFailCodeTypeTransformer? _instance;
 }
+

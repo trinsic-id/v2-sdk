@@ -2,8 +2,8 @@
 # AUTO-GENERATED FILE, DO NOT MODIFY!
 #
 
-name: 'openapi'
-version: '1.0.0'
+name: 'Trinsic Connect'
+version: '0.0.1'
 description: 'OpenAPI API client'
 homepage: 'homepage'
 environment:

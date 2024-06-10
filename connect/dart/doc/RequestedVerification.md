@@ -1,8 +1,8 @@
-# openapi.model.RequestedVerification
+# Trinsic Connect.model.RequestedVerification
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:Trinsic Connect/api.dart';
 ```
 
 ## Properties

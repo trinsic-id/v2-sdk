@@ -1,8 +1,8 @@
-# openapi.model.GetSessionResponseV1
+# Trinsic Connect.model.GetSessionResponseV1
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:Trinsic Connect/api.dart';
 ```
 
 ## Properties

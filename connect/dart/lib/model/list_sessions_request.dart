@@ -44,30 +44,27 @@ class ListSessionsRequest {
   int? page;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ListSessionsRequest &&
-          other.orderBy == orderBy &&
-          other.orderDirection == orderDirection &&
-          other.pageSize == pageSize &&
-          other.page == page;
+  bool operator ==(Object other) => identical(this, other) || other is ListSessionsRequest &&
+    other.orderBy == orderBy &&
+    other.orderDirection == orderDirection &&
+    other.pageSize == pageSize &&
+    other.page == page;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (orderBy.hashCode) +
-      (orderDirection.hashCode) +
-      (pageSize == null ? 0 : pageSize!.hashCode) +
-      (page == null ? 0 : page!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (orderBy.hashCode) +
+    (orderDirection.hashCode) +
+    (pageSize == null ? 0 : pageSize!.hashCode) +
+    (page == null ? 0 : page!.hashCode);
 
   @override
-  String toString() =>
-      'ListSessionsRequest[orderBy=$orderBy, orderDirection=$orderDirection, pageSize=$pageSize, page=$page]';
+  String toString() => 'ListSessionsRequest[orderBy=$orderBy, orderDirection=$orderDirection, pageSize=$pageSize, page=$page]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'orderBy'] = this.orderBy;
-    json[r'orderDirection'] = this.orderDirection;
+      json[r'orderBy'] = this.orderBy;
+      json[r'orderDirection'] = this.orderDirection;
     if (this.pageSize != null) {
       json[r'pageSize'] = this.pageSize;
     } else {
@@ -93,10 +90,8 @@ class ListSessionsRequest {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "ListSessionsRequest[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "ListSessionsRequest[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ListSessionsRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ListSessionsRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -111,10 +106,7 @@ class ListSessionsRequest {
     return null;
   }
 
-  static List<ListSessionsRequest> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<ListSessionsRequest> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ListSessionsRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -142,19 +134,13 @@ class ListSessionsRequest {
   }
 
   // maps a json object with a list of ListSessionsRequest-objects as value to a dart map
-  static Map<String, List<ListSessionsRequest>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<ListSessionsRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<ListSessionsRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ListSessionsRequest.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = ListSessionsRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -166,3 +152,4 @@ class ListSessionsRequest {
     'orderDirection',
   };
 }
+

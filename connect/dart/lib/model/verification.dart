@@ -82,35 +82,30 @@ class Verification {
   NormalizedGovernmentIdData? normalizedGovernmentIdData;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Verification &&
-          other.id == id &&
-          other.type == type &&
-          other.state == state &&
-          other.failCode == failCode &&
-          other.reused == reused &&
-          other.updated == updated &&
-          other.governmentIdOptions == governmentIdOptions &&
-          other.normalizedGovernmentIdData == normalizedGovernmentIdData;
+  bool operator ==(Object other) => identical(this, other) || other is Verification &&
+    other.id == id &&
+    other.type == type &&
+    other.state == state &&
+    other.failCode == failCode &&
+    other.reused == reused &&
+    other.updated == updated &&
+    other.governmentIdOptions == governmentIdOptions &&
+    other.normalizedGovernmentIdData == normalizedGovernmentIdData;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (id == null ? 0 : id!.hashCode) +
-      (type == null ? 0 : type!.hashCode) +
-      (state == null ? 0 : state!.hashCode) +
-      (failCode == null ? 0 : failCode!.hashCode) +
-      (reused == null ? 0 : reused!.hashCode) +
-      (updated == null ? 0 : updated!.hashCode) +
-      (governmentIdOptions == null ? 0 : governmentIdOptions!.hashCode) +
-      (normalizedGovernmentIdData == null
-          ? 0
-          : normalizedGovernmentIdData!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (state == null ? 0 : state!.hashCode) +
+    (failCode == null ? 0 : failCode!.hashCode) +
+    (reused == null ? 0 : reused!.hashCode) +
+    (updated == null ? 0 : updated!.hashCode) +
+    (governmentIdOptions == null ? 0 : governmentIdOptions!.hashCode) +
+    (normalizedGovernmentIdData == null ? 0 : normalizedGovernmentIdData!.hashCode);
 
   @override
-  String toString() =>
-      'Verification[id=$id, type=$type, state=$state, failCode=$failCode, reused=$reused, updated=$updated, governmentIdOptions=$governmentIdOptions, normalizedGovernmentIdData=$normalizedGovernmentIdData]';
+  String toString() => 'Verification[id=$id, type=$type, state=$state, failCode=$failCode, reused=$reused, updated=$updated, governmentIdOptions=$governmentIdOptions, normalizedGovernmentIdData=$normalizedGovernmentIdData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -169,10 +164,8 @@ class Verification {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "Verification[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "Verification[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "Verification[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "Verification[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -184,19 +177,14 @@ class Verification {
         failCode: VerificationFailCode.fromJson(json[r'failCode']),
         reused: mapValueOfType<bool>(json, r'reused'),
         updated: mapValueOfType<int>(json, r'updated'),
-        governmentIdOptions:
-            GovernmentIDOptions.fromJson(json[r'governmentIdOptions']),
-        normalizedGovernmentIdData: NormalizedGovernmentIdData.fromJson(
-            json[r'normalizedGovernmentIdData']),
+        governmentIdOptions: GovernmentIDOptions.fromJson(json[r'governmentIdOptions']),
+        normalizedGovernmentIdData: NormalizedGovernmentIdData.fromJson(json[r'normalizedGovernmentIdData']),
       );
     }
     return null;
   }
 
-  static List<Verification> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<Verification> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Verification>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -224,24 +212,20 @@ class Verification {
   }
 
   // maps a json object with a list of Verification-objects as value to a dart map
-  static Map<String, List<Verification>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<Verification>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Verification>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Verification.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = Verification.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
+

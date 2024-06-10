@@ -88,33 +88,30 @@ class GovernmentIDOptions {
   bool? expirationDate;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GovernmentIDOptions &&
-          other.idNumber == idNumber &&
-          other.givenName == givenName &&
-          other.familyName == familyName &&
-          other.address == address &&
-          other.dateOfBirth == dateOfBirth &&
-          other.country == country &&
-          other.issueDate == issueDate &&
-          other.expirationDate == expirationDate;
+  bool operator ==(Object other) => identical(this, other) || other is GovernmentIDOptions &&
+    other.idNumber == idNumber &&
+    other.givenName == givenName &&
+    other.familyName == familyName &&
+    other.address == address &&
+    other.dateOfBirth == dateOfBirth &&
+    other.country == country &&
+    other.issueDate == issueDate &&
+    other.expirationDate == expirationDate;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (idNumber == null ? 0 : idNumber!.hashCode) +
-      (givenName == null ? 0 : givenName!.hashCode) +
-      (familyName == null ? 0 : familyName!.hashCode) +
-      (address == null ? 0 : address!.hashCode) +
-      (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
-      (country == null ? 0 : country!.hashCode) +
-      (issueDate == null ? 0 : issueDate!.hashCode) +
-      (expirationDate == null ? 0 : expirationDate!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (idNumber == null ? 0 : idNumber!.hashCode) +
+    (givenName == null ? 0 : givenName!.hashCode) +
+    (familyName == null ? 0 : familyName!.hashCode) +
+    (address == null ? 0 : address!.hashCode) +
+    (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
+    (country == null ? 0 : country!.hashCode) +
+    (issueDate == null ? 0 : issueDate!.hashCode) +
+    (expirationDate == null ? 0 : expirationDate!.hashCode);
 
   @override
-  String toString() =>
-      'GovernmentIDOptions[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+  String toString() => 'GovernmentIDOptions[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -173,10 +170,8 @@ class GovernmentIDOptions {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "GovernmentIDOptions[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "GovernmentIDOptions[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GovernmentIDOptions[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GovernmentIDOptions[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -195,10 +190,7 @@ class GovernmentIDOptions {
     return null;
   }
 
-  static List<GovernmentIDOptions> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<GovernmentIDOptions> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GovernmentIDOptions>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -226,24 +218,20 @@ class GovernmentIDOptions {
   }
 
   // maps a json object with a list of GovernmentIDOptions-objects as value to a dart map
-  static Map<String, List<GovernmentIDOptions>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<GovernmentIDOptions>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GovernmentIDOptions>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GovernmentIDOptions.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = GovernmentIDOptions.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
+

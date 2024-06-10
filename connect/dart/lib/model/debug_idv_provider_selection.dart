@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class DebugIdvProviderSelection {
   /// Instantiate a new enum with the provided [value].
   const DebugIdvProviderSelection._(this.value);
@@ -39,13 +40,9 @@ class DebugIdvProviderSelection {
     eidEasy,
   ];
 
-  static DebugIdvProviderSelection? fromJson(dynamic value) =>
-      DebugIdvProviderSelectionTypeTransformer().decode(value);
+  static DebugIdvProviderSelection? fromJson(dynamic value) => DebugIdvProviderSelectionTypeTransformer().decode(value);
 
-  static List<DebugIdvProviderSelection> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<DebugIdvProviderSelection> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DebugIdvProviderSelection>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -62,8 +59,7 @@ class DebugIdvProviderSelection {
 /// Transformation class that can [encode] an instance of [DebugIdvProviderSelection] to String,
 /// and [decode] dynamic data back to [DebugIdvProviderSelection].
 class DebugIdvProviderSelectionTypeTransformer {
-  factory DebugIdvProviderSelectionTypeTransformer() =>
-      _instance ??= const DebugIdvProviderSelectionTypeTransformer._();
+  factory DebugIdvProviderSelectionTypeTransformer() => _instance ??= const DebugIdvProviderSelectionTypeTransformer._();
 
   const DebugIdvProviderSelectionTypeTransformer._();
 
@@ -80,18 +76,12 @@ class DebugIdvProviderSelectionTypeTransformer {
   DebugIdvProviderSelection? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Default':
-          return DebugIdvProviderSelection.default_;
-        case r'IdVerse':
-          return DebugIdvProviderSelection.idVerse;
-        case r'Argos':
-          return DebugIdvProviderSelection.argos;
-        case r'Clear':
-          return DebugIdvProviderSelection.clear;
-        case r'Yoti':
-          return DebugIdvProviderSelection.yoti;
-        case r'EidEasy':
-          return DebugIdvProviderSelection.eidEasy;
+        case r'Default': return DebugIdvProviderSelection.default_;
+        case r'IdVerse': return DebugIdvProviderSelection.idVerse;
+        case r'Argos': return DebugIdvProviderSelection.argos;
+        case r'Clear': return DebugIdvProviderSelection.clear;
+        case r'Yoti': return DebugIdvProviderSelection.yoti;
+        case r'EidEasy': return DebugIdvProviderSelection.eidEasy;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -104,3 +94,4 @@ class DebugIdvProviderSelectionTypeTransformer {
   /// Singleton [DebugIdvProviderSelectionTypeTransformer] instance.
   static DebugIdvProviderSelectionTypeTransformer? _instance;
 }
+
