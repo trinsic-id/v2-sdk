@@ -25,14 +25,13 @@ class GetSessionResponseV1 {
   Session? session;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is GetSessionResponseV1 && other.session == session;
+  bool operator ==(Object other) => identical(this, other) || other is GetSessionResponseV1 &&
+    other.session == session;
 
   @override
   int get hashCode =>
-      // ignore: unnecessary_parenthesis
-      (session == null ? 0 : session!.hashCode);
+    // ignore: unnecessary_parenthesis
+    (session == null ? 0 : session!.hashCode);
 
   @override
   String toString() => 'GetSessionResponseV1[session=$session]';
@@ -59,10 +58,8 @@ class GetSessionResponseV1 {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key),
-              'Required key "GetSessionResponseV1[$key]" is missing from JSON.');
-          assert(json[key] != null,
-              'Required key "GetSessionResponseV1[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "GetSessionResponseV1[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "GetSessionResponseV1[$key]" has a null value in JSON.');
         });
         return true;
       }());
@@ -74,10 +71,7 @@ class GetSessionResponseV1 {
     return null;
   }
 
-  static List<GetSessionResponseV1> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<GetSessionResponseV1> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetSessionResponseV1>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -105,24 +99,20 @@ class GetSessionResponseV1 {
   }
 
   // maps a json object with a list of GetSessionResponseV1-objects as value to a dart map
-  static Map<String, List<GetSessionResponseV1>> mapListFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static Map<String, List<GetSessionResponseV1>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<GetSessionResponseV1>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GetSessionResponseV1.listFromJson(
-          entry.value,
-          growable: growable,
-        );
+        map[entry.key] = GetSessionResponseV1.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+  };
 }
+

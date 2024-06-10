@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class VerificationState {
   /// Instantiate a new enum with the provided [value].
   const VerificationState._(this.value);
@@ -22,10 +23,8 @@ class VerificationState {
 
   String toJson() => value;
 
-  static const verificationPending =
-      VerificationState._(r'VerificationPending');
-  static const verificationSuccess =
-      VerificationState._(r'VerificationSuccess');
+  static const verificationPending = VerificationState._(r'VerificationPending');
+  static const verificationSuccess = VerificationState._(r'VerificationSuccess');
   static const verificationFailed = VerificationState._(r'VerificationFailed');
 
   /// List of all possible values in this [enum][VerificationState].
@@ -35,13 +34,9 @@ class VerificationState {
     verificationFailed,
   ];
 
-  static VerificationState? fromJson(dynamic value) =>
-      VerificationStateTypeTransformer().decode(value);
+  static VerificationState? fromJson(dynamic value) => VerificationStateTypeTransformer().decode(value);
 
-  static List<VerificationState> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<VerificationState> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VerificationState>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -58,8 +53,7 @@ class VerificationState {
 /// Transformation class that can [encode] an instance of [VerificationState] to String,
 /// and [decode] dynamic data back to [VerificationState].
 class VerificationStateTypeTransformer {
-  factory VerificationStateTypeTransformer() =>
-      _instance ??= const VerificationStateTypeTransformer._();
+  factory VerificationStateTypeTransformer() => _instance ??= const VerificationStateTypeTransformer._();
 
   const VerificationStateTypeTransformer._();
 
@@ -76,12 +70,9 @@ class VerificationStateTypeTransformer {
   VerificationState? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'VerificationPending':
-          return VerificationState.verificationPending;
-        case r'VerificationSuccess':
-          return VerificationState.verificationSuccess;
-        case r'VerificationFailed':
-          return VerificationState.verificationFailed;
+        case r'VerificationPending': return VerificationState.verificationPending;
+        case r'VerificationSuccess': return VerificationState.verificationSuccess;
+        case r'VerificationFailed': return VerificationState.verificationFailed;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -94,3 +85,4 @@ class VerificationStateTypeTransformer {
   /// Singleton [VerificationStateTypeTransformer] instance.
   static VerificationStateTypeTransformer? _instance;
 }
+

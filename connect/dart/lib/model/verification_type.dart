@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class VerificationType {
   /// Instantiate a new enum with the provided [value].
   const VerificationType._(this.value);
@@ -29,13 +30,9 @@ class VerificationType {
     governmentId,
   ];
 
-  static VerificationType? fromJson(dynamic value) =>
-      VerificationTypeTypeTransformer().decode(value);
+  static VerificationType? fromJson(dynamic value) => VerificationTypeTypeTransformer().decode(value);
 
-  static List<VerificationType> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<VerificationType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VerificationType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -52,8 +49,7 @@ class VerificationType {
 /// Transformation class that can [encode] an instance of [VerificationType] to String,
 /// and [decode] dynamic data back to [VerificationType].
 class VerificationTypeTypeTransformer {
-  factory VerificationTypeTypeTransformer() =>
-      _instance ??= const VerificationTypeTypeTransformer._();
+  factory VerificationTypeTypeTransformer() => _instance ??= const VerificationTypeTypeTransformer._();
 
   const VerificationTypeTypeTransformer._();
 
@@ -70,8 +66,7 @@ class VerificationTypeTypeTransformer {
   VerificationType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'GovernmentId':
-          return VerificationType.governmentId;
+        case r'GovernmentId': return VerificationType.governmentId;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -84,3 +79,4 @@ class VerificationTypeTypeTransformer {
   /// Singleton [VerificationTypeTypeTransformer] instance.
   static VerificationTypeTypeTransformer? _instance;
 }
+

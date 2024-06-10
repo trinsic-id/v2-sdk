@@ -1,11 +1,12 @@
 # Parameters:
 param (
-    [string]$language = "typescript-fetch",
+    [string]$language = "dart",
     [string]$swaggerFile = "$PSScriptRoot/../connect/swagger_api.json",
-    [string]$outputFolder = "$PSScriptRoot/../connect/typescript"
+    [string]$outputFolder = "$PSScriptRoot/../connect/dart"
 )
 # Example usage:
-# .\generate-sdk.ps1 -language typescript-fetch -swaggerFile "C:\path\to\connect\api\autorest\swagger_api.json" -outputFolder "C:\path\to\connect\sdk\typescript"
+# .\make-swagger.ps1 -language typescript-fetch -swaggerFile "C:\path\to\connect\api\autorest\swagger_api.json" -outputFolder "C:\path\to\connect\sdk\typescript"
+# .\make-swagger.ps1 -language dart -swaggerFile ".\swagger_api.json" -outputFolder ".\dart"
 
 if (-not (Test-Path $swaggerFile)) {
     throw "The swagger file '$swaggerFile' does not exist."
@@ -113,13 +114,15 @@ if ($env:TRINSIC_CI -eq "true")
     openapi-generator-cli generate `
         -i "./$relativeSwaggerFile" `
         -g $language `
-        -o "./$relativeOutputFolder"
+        -o "./$relativeOutputFolder" `
+        -c "./$relativeOutputFolder/../config-$language.yaml"
 } else
 {
     docker run --rm -v ".:/local" openapitools/openapi-generator-cli generate `
         -i "/local/$relativeSwaggerFile" `
         -g $language `
-        -o "/local/$relativeOutputFolder"
+        -o "/local/$relativeOutputFolder" `
+        -c "/local/$relativeOutputFolder/../config-$language.yaml"
 }
 if ($LASTEXITCODE -ne 0) {
     throw "Failed to generate SDK for $language from $relativeSwaggerFile to $relativeOutputFolder."

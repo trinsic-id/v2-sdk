@@ -10,6 +10,7 @@
 
 part of openapi.api;
 
+
 class VerificationFailCode {
   /// Instantiate a new enum with the provided [value].
   const VerificationFailCode._(this.value);
@@ -22,16 +23,11 @@ class VerificationFailCode {
 
   String toJson() => value;
 
-  static const verificationFailNone =
-      VerificationFailCode._(r'VerificationFailNone');
-  static const verificationFailInternal =
-      VerificationFailCode._(r'VerificationFailInternal');
-  static const verificationFailInvalidImage =
-      VerificationFailCode._(r'VerificationFailInvalidImage');
-  static const verificationFailInauthentic =
-      VerificationFailCode._(r'VerificationFailInauthentic');
-  static const verificationFailUnsupportedDocument =
-      VerificationFailCode._(r'VerificationFailUnsupportedDocument');
+  static const verificationFailNone = VerificationFailCode._(r'VerificationFailNone');
+  static const verificationFailInternal = VerificationFailCode._(r'VerificationFailInternal');
+  static const verificationFailInvalidImage = VerificationFailCode._(r'VerificationFailInvalidImage');
+  static const verificationFailInauthentic = VerificationFailCode._(r'VerificationFailInauthentic');
+  static const verificationFailUnsupportedDocument = VerificationFailCode._(r'VerificationFailUnsupportedDocument');
 
   /// List of all possible values in this [enum][VerificationFailCode].
   static const values = <VerificationFailCode>[
@@ -42,13 +38,9 @@ class VerificationFailCode {
     verificationFailUnsupportedDocument,
   ];
 
-  static VerificationFailCode? fromJson(dynamic value) =>
-      VerificationFailCodeTypeTransformer().decode(value);
+  static VerificationFailCode? fromJson(dynamic value) => VerificationFailCodeTypeTransformer().decode(value);
 
-  static List<VerificationFailCode> listFromJson(
-    dynamic json, {
-    bool growable = false,
-  }) {
+  static List<VerificationFailCode> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VerificationFailCode>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -65,8 +57,7 @@ class VerificationFailCode {
 /// Transformation class that can [encode] an instance of [VerificationFailCode] to String,
 /// and [decode] dynamic data back to [VerificationFailCode].
 class VerificationFailCodeTypeTransformer {
-  factory VerificationFailCodeTypeTransformer() =>
-      _instance ??= const VerificationFailCodeTypeTransformer._();
+  factory VerificationFailCodeTypeTransformer() => _instance ??= const VerificationFailCodeTypeTransformer._();
 
   const VerificationFailCodeTypeTransformer._();
 
@@ -83,16 +74,11 @@ class VerificationFailCodeTypeTransformer {
   VerificationFailCode? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'VerificationFailNone':
-          return VerificationFailCode.verificationFailNone;
-        case r'VerificationFailInternal':
-          return VerificationFailCode.verificationFailInternal;
-        case r'VerificationFailInvalidImage':
-          return VerificationFailCode.verificationFailInvalidImage;
-        case r'VerificationFailInauthentic':
-          return VerificationFailCode.verificationFailInauthentic;
-        case r'VerificationFailUnsupportedDocument':
-          return VerificationFailCode.verificationFailUnsupportedDocument;
+        case r'VerificationFailNone': return VerificationFailCode.verificationFailNone;
+        case r'VerificationFailInternal': return VerificationFailCode.verificationFailInternal;
+        case r'VerificationFailInvalidImage': return VerificationFailCode.verificationFailInvalidImage;
+        case r'VerificationFailInauthentic': return VerificationFailCode.verificationFailInauthentic;
+        case r'VerificationFailUnsupportedDocument': return VerificationFailCode.verificationFailUnsupportedDocument;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -105,3 +91,4 @@ class VerificationFailCodeTypeTransformer {
   /// Singleton [VerificationFailCodeTypeTransformer] instance.
   static VerificationFailCodeTypeTransformer? _instance;
 }
+

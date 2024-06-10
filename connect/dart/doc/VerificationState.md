@@ -1,8 +1,8 @@
-# openapi.model.VerificationState
+# Trinsic Connect.model.VerificationState
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:Trinsic Connect/api.dart';
 ```
 
 ## Properties
