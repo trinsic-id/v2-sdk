@@ -74,11 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   Future<void> _startTrinsicConnectFlow() async {
     // TODO - Do we want hard-coded dev?
-    // We have to base64url encode the auth token
-    List<int> encodedToken = utf8.encode(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT);
-    String base64Url = base64UrlEncode(encodedToken);
     var url = "https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${Uri.encodeComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}";
-    final result = await FlutterWebAuth2.authenticate(url: url, callbackUrlScheme: "https");
+    final result = await FlutterWebAuth2.authenticate(url: url, callbackUrlScheme: "mewmba.ngrok.dev");
     setState(() {
       _authenticateResult = result;
     });
