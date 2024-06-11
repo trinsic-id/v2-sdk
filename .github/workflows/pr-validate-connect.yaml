@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - "connect/**"
 
 concurrency:
   group: prvalidate
@@ -24,6 +26,26 @@ jobs:
           dotnet format ./connect/dotnet/Trinsic.Connect.sln
           dotnet build ./connect/dotnet/Trinsic.Connect.sln
         shell: pwsh
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+
+  verify-typescript:
+    name: Verify Typescript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+      - name: Run dotnet format validation
+        run: |
+          npm ci
+          npx build:prettier
+          npx build
+        shell: pwsh
+        working-directory: connect/typescript
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
