@@ -1,8 +1,8 @@
-# Trinsic Connect.model.OrderDirection
+# TrinsicConnect.model.OrderDirection
 
 ## Load the model package
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 ```
 
 ## Properties

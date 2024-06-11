@@ -1,8 +1,8 @@
-# Trinsic Connect.api.SessionApi
+# TrinsicConnect.api.SessionApi
 
 ## Load the API package
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 ```
 
 All URIs are relative to *https://connect-api.trinsic.id*
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ### Example
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 // TODO Configure HTTP Bearer authorization: Bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Example
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 // TODO Configure HTTP Bearer authorization: Bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Example
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 // TODO Configure HTTP Bearer authorization: Bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken('YOUR_ACCESS_TOKEN');
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Example
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 // TODO Configure HTTP Bearer authorization: Bearer
 // Case 1. Use String Token
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken('YOUR_ACCESS_TOKEN');
