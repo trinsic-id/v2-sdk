@@ -1,3 +1,9 @@
-# This space intentionally left blank
-# additionalProperties:
+ additionalProperties:
   # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md
+  packageVersion: 0.0.1
+  packageName: Trinsic.Connect
+  netCoreProjectFile: true
+  optionalProjectFile: false
+  library: httpclient
+  optionalAssemblyInfo: false
+  targetFramework: net8.0

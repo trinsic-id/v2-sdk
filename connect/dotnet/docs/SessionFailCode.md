@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.SessionFailCode
+# Trinsic.Connect.Model.SessionFailCode
 
 ## Properties
 

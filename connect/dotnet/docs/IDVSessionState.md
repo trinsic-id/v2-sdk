@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.IDVSessionState
+# Trinsic.Connect.Model.IDVSessionState
 
 ## Properties
 

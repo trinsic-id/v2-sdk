@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.Session
+# Trinsic.Connect.Model.Session
 
 ## Properties
 

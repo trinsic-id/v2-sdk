@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Api.SessionApi
+# Trinsic.Connect.Api.SessionApi
 
 All URIs are relative to *https://connect-api.trinsic.id*
 
@@ -19,9 +19,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
 
 namespace Example
 {
@@ -34,7 +35,10 @@ namespace Example
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
-            var apiInstance = new SessionApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
@@ -115,9 +119,10 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
 
 namespace Example
 {
@@ -130,7 +135,10 @@ namespace Example
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
-            var apiInstance = new SessionApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var createSessionRequest = new CreateSessionRequest?(); // CreateSessionRequest? |  (optional) 
 
@@ -211,9 +219,10 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
 
 namespace Example
 {
@@ -226,7 +235,10 @@ namespace Example
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
-            var apiInstance = new SessionApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
@@ -307,9 +319,10 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
 
 namespace Example
 {
@@ -322,7 +335,10 @@ namespace Example
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
-            var apiInstance = new SessionApi(config);
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional) 
 

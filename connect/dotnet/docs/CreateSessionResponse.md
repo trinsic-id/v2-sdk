@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.CreateSessionResponse
+# Trinsic.Connect.Model.CreateSessionResponse
 
 ## Properties
 

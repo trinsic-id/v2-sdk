@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.SessionOrdering
+# Trinsic.Connect.Model.SessionOrdering
 
 ## Properties
 

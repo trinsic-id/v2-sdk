@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.DebugIdvProviderSelection
+# Trinsic.Connect.Model.DebugIdvProviderSelection
 
 ## Properties
 

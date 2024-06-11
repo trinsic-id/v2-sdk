@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.CancelSessionResponse
+# Trinsic.Connect.Model.CancelSessionResponse
 
 ## Properties
 
