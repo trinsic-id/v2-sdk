@@ -12,7 +12,7 @@ on:
 jobs:
   publish:
     name: Publish to nuget.org
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     environment:
       name: nuget.org
     steps:
@@ -20,29 +20,9 @@ jobs:
       - uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '8.0.x'
-      - uses: trinsic-id/set-version@v0.1
-        id: setversion
-        with:
-          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}
-      - run: |
-          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:Version=${{ steps.setversion.outputs.packageVersion }}
-        working-directory: ./dotnet
-        shell: pwsh
-      - uses: actions/upload-artifact@v3
-        with:
-          name: nuget
-          path: |
-            ./dotnet/**/Release/*.nupkg
-            ./dotnet/**/Release/*.snupkg
       - name: Push packages to Nuget
-        run: |
-          foreach ($item in get-childitem ./ -recurse | select-object FullName | where { $_.FullName.EndsWith(".nupkg") })
-          {
-            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
-          }
+        run: ./.github/workflows/connect/release-dotnet.ps1 -ApiKey ${{ secrets.NUGET_API_KEY }}
         shell: pwsh
-        working-directory: ./dotnet
 
 
 
