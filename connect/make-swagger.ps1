@@ -111,7 +111,7 @@ if (Test-Path $relativeOutputFolder) {
 if ($env:TRINSIC_CI -eq "true")
 {
     # Docker command to run openapi-generator-cli in CI - https://stackoverflow.com/a/71931931
-    openapi-generator-cli generate `
+    npx --yes openapi-generator-cli generate `
         -i "./$relativeSwaggerFile" `
         -g $language `
         -o "./$relativeOutputFolder" `
