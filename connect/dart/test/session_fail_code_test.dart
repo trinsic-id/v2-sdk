@@ -13,9 +13,5 @@ import 'package:test/test.dart';
 
 // tests for SessionFailCode
 void main() {
-
-  group('test SessionFailCode', () {
-
-  });
-
+  group('test SessionFailCode', () {});
 }

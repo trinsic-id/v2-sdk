@@ -13,9 +13,5 @@ import 'package:test/test.dart';
 
 // tests for VerificationFailCode
 void main() {
-
-  group('test VerificationFailCode', () {
-
-  });
-
+  group('test VerificationFailCode', () {});
 }

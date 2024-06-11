@@ -13,9 +13,5 @@ import 'package:test/test.dart';
 
 // tests for DebugIdvProviderSelection
 void main() {
-
-  group('test DebugIdvProviderSelection', () {
-
-  });
-
+  group('test DebugIdvProviderSelection', () {});
 }

@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class OrderDirection {
   /// Instantiate a new enum with the provided [value].
   const OrderDirection._(this.value);
@@ -32,9 +31,13 @@ class OrderDirection {
     descending,
   ];
 
-  static OrderDirection? fromJson(dynamic value) => OrderDirectionTypeTransformer().decode(value);
+  static OrderDirection? fromJson(dynamic value) =>
+      OrderDirectionTypeTransformer().decode(value);
 
-  static List<OrderDirection> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OrderDirection> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OrderDirection>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class OrderDirection {
 /// Transformation class that can [encode] an instance of [OrderDirection] to String,
 /// and [decode] dynamic data back to [OrderDirection].
 class OrderDirectionTypeTransformer {
-  factory OrderDirectionTypeTransformer() => _instance ??= const OrderDirectionTypeTransformer._();
+  factory OrderDirectionTypeTransformer() =>
+      _instance ??= const OrderDirectionTypeTransformer._();
 
   const OrderDirectionTypeTransformer._();
 
@@ -68,8 +72,10 @@ class OrderDirectionTypeTransformer {
   OrderDirection? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Ascending': return OrderDirection.ascending;
-        case r'Descending': return OrderDirection.descending;
+        case r'Ascending':
+          return OrderDirection.ascending;
+        case r'Descending':
+          return OrderDirection.descending;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class OrderDirectionTypeTransformer {
   /// Singleton [OrderDirectionTypeTransformer] instance.
   static OrderDirectionTypeTransformer? _instance;
 }
-
