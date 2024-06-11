@@ -40,7 +40,7 @@ namespace Example
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
-            var sessionId = "sessionId_example";  // string? |  (optional) 
+            var sessionId = "sessionId_example";  // string? |  (optional)
 
             try
             {
@@ -90,7 +90,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[Bearer](../src/Trinsic.Connect/README.md#Bearer)
 
 ### HTTP request headers
 
@@ -107,7 +107,7 @@ catch (ApiException e)
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../src/Trinsic.Connect/README.md#documentation-for-api-endpoints) [[Back to Model list]](../src/Trinsic.Connect/README.md#documentation-for-models) [[Back to README]](../src/Trinsic.Connect/README.md)
 
 <a id="createsession"></a>
 # **CreateSession**
@@ -140,7 +140,7 @@ namespace Example
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
-            var createSessionRequest = new CreateSessionRequest?(); // CreateSessionRequest? |  (optional) 
+            var createSessionRequest = new CreateSessionRequest?(); // CreateSessionRequest? |  (optional)
 
             try
             {
@@ -190,7 +190,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[Bearer](../src/Trinsic.Connect/README.md#Bearer)
 
 ### HTTP request headers
 
@@ -207,7 +207,7 @@ catch (ApiException e)
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../src/Trinsic.Connect/README.md#documentation-for-api-endpoints) [[Back to Model list]](../src/Trinsic.Connect/README.md#documentation-for-models) [[Back to README]](../src/Trinsic.Connect/README.md)
 
 <a id="getsession"></a>
 # **GetSession**
@@ -240,7 +240,7 @@ namespace Example
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
-            var sessionId = "sessionId_example";  // string? |  (optional) 
+            var sessionId = "sessionId_example";  // string? |  (optional)
 
             try
             {
@@ -290,7 +290,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[Bearer](../src/Trinsic.Connect/README.md#Bearer)
 
 ### HTTP request headers
 
@@ -307,7 +307,7 @@ catch (ApiException e)
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../src/Trinsic.Connect/README.md#documentation-for-api-endpoints) [[Back to Model list]](../src/Trinsic.Connect/README.md#documentation-for-models) [[Back to README]](../src/Trinsic.Connect/README.md)
 
 <a id="listsessions"></a>
 # **ListSessions**
@@ -340,7 +340,7 @@ namespace Example
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
             var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
-            var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional) 
+            var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional)
 
             try
             {
@@ -390,7 +390,7 @@ catch (ApiException e)
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[Bearer](../src/Trinsic.Connect/README.md#Bearer)
 
 ### HTTP request headers
 
@@ -407,5 +407,5 @@ catch (ApiException e)
 | **403** | Forbidden |  -  |
 | **500** | Internal Server Error |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../src/Trinsic.Connect/README.md#documentation-for-api-endpoints) [[Back to Model list]](../src/Trinsic.Connect/README.md#documentation-for-models) [[Back to README]](../src/Trinsic.Connect/README.md)
 
