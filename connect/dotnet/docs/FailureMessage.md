@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.FailureMessage
+# Trinsic.Connect.Model.FailureMessage
 
 ## Properties
 

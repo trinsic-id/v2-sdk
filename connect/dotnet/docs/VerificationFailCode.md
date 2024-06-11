@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.VerificationFailCode
+# Trinsic.Connect.Model.VerificationFailCode
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.RequestedVerification
+# Trinsic.Connect.Model.RequestedVerification
 
 ## Properties
 

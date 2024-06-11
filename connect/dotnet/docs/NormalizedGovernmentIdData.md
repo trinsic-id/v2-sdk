@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.NormalizedGovernmentIdData
+# Trinsic.Connect.Model.NormalizedGovernmentIdData
 
 ## Properties
 
