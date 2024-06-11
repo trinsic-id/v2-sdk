@@ -358,6 +358,9 @@
   "components": {
     "schemas": {
       "CancelSessionResponse": {
+        "required": [
+          "session"
+        ],
         "type": "object",
         "properties": {
           "session": {
@@ -380,6 +383,9 @@
         "additionalProperties": false
       },
       "CreateSessionResponse": {
+        "required": [
+          "session"
+        ],
         "type": "object",
         "properties": {
           "session": {
