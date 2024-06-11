@@ -11,7 +11,6 @@
 import 'package:Trinsic Connect/api.dart';
 import 'package:test/test.dart';
 
-
 /// tests for SessionApi
 void main() {
   // final instance = SessionApi();
@@ -36,6 +35,5 @@ void main() {
     test('test listSessions', () async {
       // TODO
     });
-
   });
 }

@@ -55,8 +55,5 @@ void main() {
     test('to test the property `normalizedGovernmentIdData`', () async {
       // TODO
     });
-
-
   });
-
 }
