@@ -1,0 +1,28 @@
+name: "Connect SDK / .NET (release)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Package Version (leave empty for latest release)'
+        required: false
+  release:
+    types: [published, prereleased]
+
+jobs:
+  publish:
+    name: Publish to nuget.org
+    runs-on: ubuntu-latest
+    environment:
+      name: nuget.org
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '8.0.x'
+      - name: Push packages to Nuget
+        run: ./.github/workflows/connect/release-dotnet.ps1 -ApiKey ${{ secrets.NUGET_API_KEY }}
+        shell: pwsh
+
+
+
