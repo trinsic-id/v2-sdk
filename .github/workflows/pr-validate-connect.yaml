@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "connect/**"
+      - ".github/workflows/pr-validate-connect.yaml"
 
 concurrency:
   group: prvalidate
