@@ -40,13 +40,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "20"
-      - name: Run dotnet format validation
-        run: |
-          npm ci
-          npx build:prettier
-          npx build
+      - name: Run Typescript format validation
+        run: ./.github/workflows/connect/build-typescript.ps1
         shell: pwsh
-        working-directory: connect/typescript
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4

@@ -30,11 +30,8 @@ jobs:
         shell: pwsh
 
       - name: Format code
-        run: |
-          npm ci
-          npm run build:prettier
+        run: ./.github/workflows/connect/build-typescript.ps1
         shell: pwsh
-        working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
