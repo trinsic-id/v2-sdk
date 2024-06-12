@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Connect", "src\Trinsic.Connect\Trinsic.Connect.csproj", "{37D78AC5-C2BC-47B4-97A1-432F528E08F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Connect", "src\Trinsic.Connect\Trinsic.Connect.csproj", "{4F7EC36B-0A7A-4BB1-98C9-909AA114B7F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Connect.Test", "src\Trinsic.Connect.Test\Trinsic.Connect.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{37D78AC5-C2BC-47B4-97A1-432F528E08F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37D78AC5-C2BC-47B4-97A1-432F528E08F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37D78AC5-C2BC-47B4-97A1-432F528E08F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37D78AC5-C2BC-47B4-97A1-432F528E08F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F7EC36B-0A7A-4BB1-98C9-909AA114B7F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F7EC36B-0A7A-4BB1-98C9-909AA114B7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F7EC36B-0A7A-4BB1-98C9-909AA114B7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F7EC36B-0A7A-4BB1-98C9-909AA114B7F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

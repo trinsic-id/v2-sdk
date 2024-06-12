@@ -3,7 +3,7 @@ additionalProperties:
   packageVersion: 0.0.1
   packageName: Trinsic.Connect
   netCoreProjectFile: true
-  optionalProjectFile: false
+  optionalProjectFile: true
   library: httpclient
-  optionalAssemblyInfo: false
+  optionalAssemblyInfo: true
   targetFramework: net8.0
