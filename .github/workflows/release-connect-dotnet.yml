@@ -19,7 +19,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
       - name: Set version
-        run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "dotnet"
+        run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "csharp"
         shell: pwsh
       - name: Push packages to Nuget
         run: ./.github/workflows/connect/release-dotnet.ps1 -ApiKey ${{ secrets.NUGET_API_KEY }}
