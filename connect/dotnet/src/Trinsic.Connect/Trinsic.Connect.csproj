@@ -6,10 +6,10 @@
     <AssemblyName>Trinsic.Connect</AssemblyName>
     <PackageId>Trinsic.Connect</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>OpenAPI</Authors>
-    <Company>OpenAPI</Company>
-    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
-    <Description>A library generated from a OpenAPI doc</Description>
+    <Authors>Trinsic</Authors>
+    <Company>trinsic.id</Company>
+    <AssemblyTitle>Trinsic Connect SDK</AssemblyTitle>
+    <Description>Trinsic Connect SDK</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Trinsic.Connect</RootNamespace>
     <Version>0.0.1</Version>
