@@ -23,7 +23,6 @@ jobs:
         run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "typescript"
         shell: pwsh
       - run: ./.github/workflows/connect/release-typescript.ps1
-        working-directory: ./connect/typescript
         shell: pwsh
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
