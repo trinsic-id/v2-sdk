@@ -11,10 +11,6 @@ on:
 
 jobs:
   build_test:
-    strategy:
-      matrix:
-        swagger_json: ['connect/swagger_api.json']
-        language: [['typescript-fetch', 'connect/typescript']]
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -26,10 +22,6 @@ jobs:
           cache: 'npm'
 
       - name: Build Connect TypeScript SDK
-        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
-        shell: pwsh
-
-      - name: Build and format
         run: ./.github/workflows/connect/build-typescript.ps1
         shell: pwsh
 
