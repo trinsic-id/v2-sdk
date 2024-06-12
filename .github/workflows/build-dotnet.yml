@@ -6,7 +6,8 @@ on:
     paths:
       - "dotnet/**"
       - "proto/**"
-      - ".github/workflows/*dotnet*"
+      - ".github/workflows/build-dotnet*"
+      - ".github/workflows/release-dotnet*"
       - "devops/**"
   push:
     branches:
@@ -14,7 +15,6 @@ on:
     paths:
       - "dotnet/**"
       - "proto/**"
-      - ".github/workflows/*dotnet*"
       - "devops/**"
   workflow_dispatch:
 

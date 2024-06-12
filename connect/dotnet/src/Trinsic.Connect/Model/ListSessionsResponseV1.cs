@@ -8,7 +8,6 @@
  */
 
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -18,7 +17,7 @@ namespace Trinsic.Connect.Model;
 /// ListSessionsResponseV1
 /// </summary>
 [DataContract(Name = "ListSessionsResponseV1")]
-public partial class ListSessionsResponseV1 : IValidatableObject
+public partial class ListSessionsResponseV1
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="ListSessionsResponseV1" /> class.
@@ -55,15 +54,5 @@ public partial class ListSessionsResponseV1 : IValidatableObject
     public virtual string ToJson()
     {
         return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-    }
-
-    /// <summary>
-    /// To validate all properties of the instance
-    /// </summary>
-    /// <param name="validationContext">Validation context</param>
-    /// <returns>Validation Result</returns>
-    IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-    {
-        yield break;
     }
 }

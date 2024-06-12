@@ -1,8 +1,8 @@
 # Parameters:
 param (
-    [string]$language = "typescript-fetch",
+    [string]$language = "csharp",
     [string]$swaggerFile = "$PSScriptRoot/../connect/swagger_api.json",
-    [string]$outputFolder = "$PSScriptRoot/../connect/typescript"
+    [string]$outputFolder = "$PSScriptRoot/../connect/dotnet"
 )
 # Example usage:
 # .\make-swagger.ps1 -language typescript-fetch -swaggerFile "C:\path\to\connect\api\autorest\swagger_api.json" -outputFolder "C:\path\to\connect\sdk\typescript"

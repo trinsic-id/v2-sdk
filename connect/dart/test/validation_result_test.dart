@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
 // tests for ValidationResult

@@ -8,7 +8,6 @@
  */
 
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -18,7 +17,7 @@ namespace Trinsic.Connect.Model;
 /// Session
 /// </summary>
 [DataContract(Name = "Session")]
-public partial class Session : IValidatableObject
+public partial class Session
 {
 
     /// <summary>
@@ -118,15 +117,5 @@ public partial class Session : IValidatableObject
     public virtual string ToJson()
     {
         return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-    }
-
-    /// <summary>
-    /// To validate all properties of the instance
-    /// </summary>
-    /// <param name="validationContext">Validation context</param>
-    /// <returns>Validation Result</returns>
-    IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-    {
-        yield break;
     }
 }

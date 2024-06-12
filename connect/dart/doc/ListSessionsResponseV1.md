@@ -1,8 +1,8 @@
-# Trinsic Connect.model.ListSessionsResponseV1
+# TrinsicConnect.model.ListSessionsResponseV1
 
 ## Load the model package
 ```dart
-import 'package:Trinsic Connect/api.dart';
+import 'package:TrinsicConnect/api.dart';
 ```
 
 ## Properties

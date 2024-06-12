@@ -273,6 +273,8 @@ components:
       properties:
         session:
           $ref: '#/components/schemas/Session'
+      required:
+      - session
       type: object
     CreateSessionRequest:
       additionalProperties: false
@@ -345,6 +347,8 @@ components:
       properties:
         session:
           $ref: '#/components/schemas/Session'
+      required:
+      - session
       type: object
     DebugIdvProviderSelection:
       enum:

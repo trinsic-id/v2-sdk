@@ -26,11 +26,9 @@ jobs:
         run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
-      - name: Format code
-        run: |
-          dart format .
+      - name: Build and format
+        run: ./.github/workflows/connect/build-dart.ps1
         shell: pwsh
-        working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4

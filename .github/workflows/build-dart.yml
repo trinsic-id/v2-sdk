@@ -7,7 +7,8 @@ on:
     paths:
       - "dart/**"
       - "proto/**"
-      - ".github/workflows/*dart*"
+      - ".github/workflows/build-dart*"
+      - ".github/workflows/release-dart*"
       - "devops/**"
   push:
     branches:
@@ -15,7 +16,6 @@ on:
     paths:
       - "dart/**"
       - "proto/**"
-      - ".github/workflows/*dart*"
       - "devops/**"
 
 jobs:
