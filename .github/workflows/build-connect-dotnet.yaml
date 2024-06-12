@@ -11,10 +11,6 @@ on:
 
 jobs:
   build_test:
-    strategy:
-      matrix:
-        swagger_json: ['connect/swagger_api.json']
-        language: [['csharp', 'connect/dotnet']]
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -24,10 +20,6 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build Connect Dotnet SDK
-        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
-        shell: pwsh
-
-      - name: Build and format
         run: ./.github/workflows/connect/build-dotnet.ps1
         shell: pwsh
 

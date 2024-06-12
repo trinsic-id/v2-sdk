@@ -32,7 +32,7 @@ jobs:
           apiGithubToken: ${{ secrets.GITHUB_TOKEN }}
           commitMessage: "Updated dotnet released package version"
           githubAssignee: ${{ github.actor }}
-          prTitle: "Updated Dotnet Released Package Version"
+          prTitle: "Updated dotnet Released Package Version"
           githubBranch: "main"
           githubWorkingDirectory: "."
           githubRepository: "trinsic-id/sdk"
