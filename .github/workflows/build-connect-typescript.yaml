@@ -29,7 +29,7 @@ jobs:
         run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
         shell: pwsh
 
-      - name: Format code
+      - name: Build and format
         run: ./.github/workflows/connect/build-typescript.ps1
         shell: pwsh
 
