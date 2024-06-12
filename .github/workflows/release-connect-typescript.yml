@@ -1,4 +1,4 @@
-name: "Connect SDK / .NET (release)"
+name: "Connect SDK / Typescript (release)"
 
 on:
   workflow_dispatch:
@@ -9,30 +9,35 @@ on:
 
 jobs:
   publish:
-    name: Publish to nuget.org
+    name: Publish to npm.js
     runs-on: ubuntu-latest
     environment:
-      name: nuget.org
+      name: npmjs.com
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '8.0.x'
       - name: Set version
-        run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "dotnet"
+        run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "typescript"
         shell: pwsh
-      - name: Push packages to Nuget
-        run: ./.github/workflows/connect/release-dotnet.ps1 -ApiKey ${{ secrets.NUGET_API_KEY }}
-        shell: pwsh
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - run: |
+          npm ci
+          npm run build
+          npm publish --no-git-tag-version --yes --no-verify-access
+        working-directory: ./connect/typescript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Mewmba Create PR
         id: mewmba-create-pr
         uses: trinsic-id/mewmba/actions/mewmba-pr@main
         with:
           apiGithubToken: ${{ secrets.GITHUB_TOKEN }}
-          commitMessage: "Updated dotnet released package version"
+          commitMessage: "Updated typescript released package version"
           githubAssignee: ${{ github.actor }}
-          prTitle: "Updated Dotnet Released Package Version"
+          prTitle: "Updated typescript Released Package Version"
           githubBranch: "main"
           githubWorkingDirectory: "."
           githubRepository: "trinsic-id/sdk"
