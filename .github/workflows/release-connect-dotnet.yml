@@ -1,4 +1,4 @@
-name: "Connect SDK / .NET (release)"
+name: "Connect SDK / Dotnet (release)"
 
 on:
   workflow_dispatch:
