@@ -7,7 +7,7 @@
 param (
     [string]$Language="all",
     [string]$Version="0.0.1",
-    [switch]$IncrementPatch=$true
+    [switch]$IncrementPatch=$false
 )
 
 $MatchString = '(packageVersion|pubVersion|npmVersion):\s*"?(\d+\.\d+\.\d+)"?'
