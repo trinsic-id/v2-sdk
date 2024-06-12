@@ -22,6 +22,9 @@ jobs:
       - name: Set version
         run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "typescript"
         shell: pwsh
+      - name: Build!
+        run: ./.github/workflows/connect/build-typescript.ps1
+        shell: pwsh
       - run: ./.github/workflows/connect/release-typescript.ps1
         shell: pwsh
         env:
