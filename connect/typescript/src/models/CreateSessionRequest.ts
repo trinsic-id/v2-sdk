@@ -31,7 +31,7 @@ export interface CreateSessionRequest {
      * @type {Array<RequestedVerification>}
      * @memberof CreateSessionRequest
      */
-    verifications?: Array<RequestedVerification>;
+    verifications?: Array<RequestedVerification> | null;
 }
 
 /**
