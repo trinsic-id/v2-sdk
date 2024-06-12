@@ -1,4 +1,4 @@
- additionalProperties:
+additionalProperties:
   # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md
   packageVersion: 0.0.1
   packageName: Trinsic.Connect
