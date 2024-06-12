@@ -31,7 +31,7 @@ export interface CancelSessionResponse {
      * @type {Session}
      * @memberof CancelSessionResponse
      */
-    session?: Session;
+    session: Session;
 }
 
 /**
@@ -40,6 +40,7 @@ export interface CancelSessionResponse {
 export function instanceOfCancelSessionResponse(
     value: object,
 ): value is CancelSessionResponse {
+    if (!("session" in value) || value["session"] === undefined) return false;
     return true;
 }
 
@@ -57,10 +58,7 @@ export function CancelSessionResponseFromJSONTyped(
         return json;
     }
     return {
-        session:
-            json["session"] == null
-                ? undefined
-                : SessionFromJSON(json["session"]),
+        session: SessionFromJSON(json["session"]),
     };
 }
 

@@ -31,7 +31,7 @@ export interface CreateSessionResponse {
      * @type {Session}
      * @memberof CreateSessionResponse
      */
-    session?: Session;
+    session: Session;
 }
 
 /**
@@ -40,6 +40,7 @@ export interface CreateSessionResponse {
 export function instanceOfCreateSessionResponse(
     value: object,
 ): value is CreateSessionResponse {
+    if (!("session" in value) || value["session"] === undefined) return false;
     return true;
 }
 
@@ -57,10 +58,7 @@ export function CreateSessionResponseFromJSONTyped(
         return json;
     }
     return {
-        session:
-            json["session"] == null
-                ? undefined
-                : SessionFromJSON(json["session"]),
+        session: SessionFromJSON(json["session"]),
     };
 }
 
