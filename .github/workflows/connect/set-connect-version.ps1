@@ -76,6 +76,13 @@ function Update-Language {
 
 Set-Location $PSScriptRoot/../../../connect
 
+# HACK - Allow incrementing patch version if version is `NEXTPATCH`, this makes the release-connect-[language].yaml workflow easier
+if ($Version -eq "NEXTPATCH") {
+    $IncrementPatch = $true
+    $Version = "0.0.1"
+}
+
+
 Write-Host "Setting version to $Version for $Language, IncrementPatch: $IncrementPatch"
 
 if ($Language -eq "all") {
