@@ -10,5 +10,6 @@ additionalProperties:
   netCoreProjectFile: true
   optionalProjectFile: true
   library: httpclient
+  validatable: false
   optionalAssemblyInfo: true
   targetFramework: net8.0
