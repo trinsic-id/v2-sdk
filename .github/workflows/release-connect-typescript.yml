@@ -15,19 +15,18 @@ jobs:
       name: npmjs.com
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-node@v3
         with:
-          dotnet-version: '8.0.x'
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
       - name: Set version
         run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "typescript"
         shell: pwsh
-      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - run: |
-          npm ci
-          npm run build
-          npm publish --no-git-tag-version --yes --no-verify-access
+      - run: ./.github/workflows/connect/release-typescript.ps1
         working-directory: ./connect/typescript
+        shell: pwsh
         env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Mewmba Create PR
