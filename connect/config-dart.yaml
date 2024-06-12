@@ -3,4 +3,4 @@ additionalProperties:
   pubAuthorEmail: engineering@trinsic.id
   pubName: Trinsic Connect
 #  pubShortDescription:
-  pubVersion: 0.0.1
+  pubVersion: 0.1.5

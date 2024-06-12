@@ -1,6 +1,6 @@
- additionalProperties:
+additionalProperties:
   # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md
-  packageVersion: 0.0.1
+  packageVersion: 0.0.4
   packageName: Trinsic.Connect
   netCoreProjectFile: true
   optionalProjectFile: false
