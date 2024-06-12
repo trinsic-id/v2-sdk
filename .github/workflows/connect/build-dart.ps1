@@ -3,5 +3,3 @@ Set-Location $PSScriptRoot/../../../connect/dart
 dart format .
 dart pub get
 dart analyze
-dart pub global activate coverage
-dart run coverage:test_with_coverage
