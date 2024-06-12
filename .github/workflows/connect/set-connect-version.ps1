@@ -82,6 +82,11 @@ if ($Version -eq "NEXTPATCH") {
     $Version = "0.0.1"
 }
 
+# HACK typescript or typescript-fetch are the same thing!
+if ($Language -eq "typescript") {
+    $Language = "typescript-fetch"
+}
+
 
 Write-Host "Setting version to $Version for $Language, IncrementPatch: $IncrementPatch"
 
