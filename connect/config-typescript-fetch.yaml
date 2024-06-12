@@ -2,4 +2,4 @@
 # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/typescript-fetch.md
 additionalProperties:
   npmName: "@trinsic/connect"
-  npmVersion: "0.0.1"
+  npmVersion: "0.0.2"
