@@ -4,14 +4,14 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
-| [**CreateSession**](SessionApi.md#createsession) | **POST** /v1/sessions |  |
-| [**GetSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get |  |
-| [**ListSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list |  |
+| [**CancelSessionAsync**](SessionApi.md#cancelsessionasync) | **POST** /v1/sessions/cancel |  |
+| [**CreateSessionAsync**](SessionApi.md#createsessionasync) | **POST** /v1/sessions/create |  |
+| [**GetSessionAsync**](SessionApi.md#getsessionasync) | **GET** /v1/sessions/get |  |
+| [**ListSessionsAsync**](SessionApi.md#listsessionsasync) | **POST** /v1/sessions/list |  |
 
-<a id="cancelsession"></a>
-# **CancelSession**
-> CancelSessionResponse CancelSession (string trinsicAuthorization, string? sessionId = null)
+<a id="cancelsessionasync"></a>
+# **CancelSessionAsync**
+> CancelSessionResponse CancelSessionAsync (string? sessionId = null)
 
 
 
@@ -26,7 +26,7 @@ using Trinsic.Connect.Model;
 
 namespace Example
 {
-    public class CancelSessionExample
+    public class CancelSessionAsyncExample
     {
         public static void Main()
         {
@@ -39,17 +39,16 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
-            var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
             {
-                CancelSessionResponse result = apiInstance.CancelSession(trinsicAuthorization, sessionId);
+                CancelSessionResponse result = apiInstance.CancelSessionAsync(sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.CancelSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.CancelSessionAsync: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -58,20 +57,20 @@ namespace Example
 }
 ```
 
-#### Using the CancelSessionWithHttpInfo variant
+#### Using the CancelSessionAsyncWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CancelSessionResponse> response = apiInstance.CancelSessionWithHttpInfo(trinsicAuthorization, sessionId);
+    ApiResponse<CancelSessionResponse> response = apiInstance.CancelSessionAsyncWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.CancelSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.CancelSessionAsyncWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -81,7 +80,6 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **trinsicAuthorization** | **string** | Bearer token. Can be left empty on anonymous endpoints | [default to &quot;Bearer &quot;] |
 | **sessionId** | **string?** |  | [optional]  |
 
 ### Return type
@@ -109,9 +107,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createsession"></a>
-# **CreateSession**
-> CreateSessionResponse CreateSession (string trinsicAuthorization, CreateSessionRequest? createSessionRequest = null)
+<a id="createsessionasync"></a>
+# **CreateSessionAsync**
+> CreateSessionResponse CreateSessionAsync (CreateSessionRequest? createSessionRequest = null)
 
 
 
@@ -126,7 +124,7 @@ using Trinsic.Connect.Model;
 
 namespace Example
 {
-    public class CreateSessionExample
+    public class CreateSessionAsyncExample
     {
         public static void Main()
         {
@@ -139,17 +137,16 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
-            var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var createSessionRequest = new CreateSessionRequest?(); // CreateSessionRequest? |  (optional) 
 
             try
             {
-                CreateSessionResponse result = apiInstance.CreateSession(trinsicAuthorization, createSessionRequest);
+                CreateSessionResponse result = apiInstance.CreateSessionAsync(createSessionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.CreateSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.CreateSessionAsync: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -158,20 +155,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateSessionWithHttpInfo variant
+#### Using the CreateSessionAsyncWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
+    ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionAsyncWithHttpInfo(createSessionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.CreateSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.CreateSessionAsyncWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -181,7 +178,6 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **trinsicAuthorization** | **string** | Bearer token. Can be left empty on anonymous endpoints | [default to &quot;Bearer &quot;] |
 | **createSessionRequest** | [**CreateSessionRequest?**](CreateSessionRequest?.md) |  | [optional]  |
 
 ### Return type
@@ -209,9 +205,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="getsession"></a>
-# **GetSession**
-> GetSessionResponseV1 GetSession (string trinsicAuthorization, string? sessionId = null)
+<a id="getsessionasync"></a>
+# **GetSessionAsync**
+> GetSessionResponseV1 GetSessionAsync (string? sessionId = null)
 
 
 
@@ -226,7 +222,7 @@ using Trinsic.Connect.Model;
 
 namespace Example
 {
-    public class GetSessionExample
+    public class GetSessionAsyncExample
     {
         public static void Main()
         {
@@ -239,17 +235,16 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
-            var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
             {
-                GetSessionResponseV1 result = apiInstance.GetSession(trinsicAuthorization, sessionId);
+                GetSessionResponseV1 result = apiInstance.GetSessionAsync(sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.GetSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.GetSessionAsync: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -258,20 +253,20 @@ namespace Example
 }
 ```
 
-#### Using the GetSessionWithHttpInfo variant
+#### Using the GetSessionAsyncWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<GetSessionResponseV1> response = apiInstance.GetSessionWithHttpInfo(trinsicAuthorization, sessionId);
+    ApiResponse<GetSessionResponseV1> response = apiInstance.GetSessionAsyncWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.GetSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.GetSessionAsyncWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -281,7 +276,6 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **trinsicAuthorization** | **string** | Bearer token. Can be left empty on anonymous endpoints | [default to &quot;Bearer &quot;] |
 | **sessionId** | **string?** |  | [optional]  |
 
 ### Return type
@@ -309,9 +303,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="listsessions"></a>
-# **ListSessions**
-> ListSessionsResponseV1 ListSessions (string trinsicAuthorization, ListSessionsRequest? listSessionsRequest = null)
+<a id="listsessionsasync"></a>
+# **ListSessionsAsync**
+> ListSessionsResponseV1 ListSessionsAsync (ListSessionsRequest? listSessionsRequest = null)
 
 
 
@@ -326,7 +320,7 @@ using Trinsic.Connect.Model;
 
 namespace Example
 {
-    public class ListSessionsExample
+    public class ListSessionsAsyncExample
     {
         public static void Main()
         {
@@ -339,17 +333,16 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
-            var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional) 
 
             try
             {
-                ListSessionsResponseV1 result = apiInstance.ListSessions(trinsicAuthorization, listSessionsRequest);
+                ListSessionsResponseV1 result = apiInstance.ListSessionsAsync(listSessionsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.ListSessions: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.ListSessionsAsync: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -358,20 +351,20 @@ namespace Example
 }
 ```
 
-#### Using the ListSessionsWithHttpInfo variant
+#### Using the ListSessionsAsyncWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<ListSessionsResponseV1> response = apiInstance.ListSessionsWithHttpInfo(trinsicAuthorization, listSessionsRequest);
+    ApiResponse<ListSessionsResponseV1> response = apiInstance.ListSessionsAsyncWithHttpInfo(listSessionsRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.ListSessionsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.ListSessionsAsyncWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -381,7 +374,6 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **trinsicAuthorization** | **string** | Bearer token. Can be left empty on anonymous endpoints | [default to &quot;Bearer &quot;] |
 | **listSessionsRequest** | [**ListSessionsRequest?**](ListSessionsRequest?.md) |  | [optional]  |
 
 ### Return type

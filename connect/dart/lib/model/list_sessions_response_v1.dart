@@ -13,8 +13,26 @@ part of openapi.api;
 class ListSessionsResponseV1 {
   /// Returns a new [ListSessionsResponseV1] instance.
   ListSessionsResponseV1({
+    this.total,
+    this.more,
     this.sessions = const [],
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? total;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? more;
 
   List<Session>? sessions;
 
@@ -22,18 +40,33 @@ class ListSessionsResponseV1 {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ListSessionsResponseV1 &&
+          other.total == total &&
+          other.more == more &&
           _deepEquality.equals(other.sessions, sessions);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
+      (total == null ? 0 : total!.hashCode) +
+      (more == null ? 0 : more!.hashCode) +
       (sessions == null ? 0 : sessions!.hashCode);
 
   @override
-  String toString() => 'ListSessionsResponseV1[sessions=$sessions]';
+  String toString() =>
+      'ListSessionsResponseV1[total=$total, more=$more, sessions=$sessions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.total != null) {
+      json[r'total'] = this.total;
+    } else {
+      json[r'total'] = null;
+    }
+    if (this.more != null) {
+      json[r'more'] = this.more;
+    } else {
+      json[r'more'] = null;
+    }
     if (this.sessions != null) {
       json[r'sessions'] = this.sessions;
     } else {
@@ -63,6 +96,8 @@ class ListSessionsResponseV1 {
       }());
 
       return ListSessionsResponseV1(
+        total: mapValueOfType<int>(json, r'total'),
+        more: mapValueOfType<bool>(json, r'more'),
         sessions: Session.listFromJson(json[r'sessions']),
       );
     }

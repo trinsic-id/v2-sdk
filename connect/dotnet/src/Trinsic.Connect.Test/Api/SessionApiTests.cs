@@ -47,54 +47,50 @@ public class SessionApiTests : IDisposable
     }
 
     /// <summary>
-    /// Test CancelSession
+    /// Test CancelSessionAsync
     /// </summary>
     [Fact]
-    public void CancelSessionTest()
+    public void CancelSessionAsyncTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.CancelSession(trinsicAuthorization, sessionId);
+        //var response = instance.CancelSessionAsync(sessionId);
         //Assert.IsType<CancelSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test CreateSession
+    /// Test CreateSessionAsync
     /// </summary>
     [Fact]
-    public void CreateSessionTest()
+    public void CreateSessionAsyncTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //CreateSessionRequest? createSessionRequest = null;
-        //var response = instance.CreateSession(trinsicAuthorization, createSessionRequest);
+        //var response = instance.CreateSessionAsync(createSessionRequest);
         //Assert.IsType<CreateSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test GetSession
+    /// Test GetSessionAsync
     /// </summary>
     [Fact]
-    public void GetSessionTest()
+    public void GetSessionAsyncTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.GetSession(trinsicAuthorization, sessionId);
+        //var response = instance.GetSessionAsync(sessionId);
         //Assert.IsType<GetSessionResponseV1>(response);
     }
 
     /// <summary>
-    /// Test ListSessions
+    /// Test ListSessionsAsync
     /// </summary>
     [Fact]
-    public void ListSessionsTest()
+    public void ListSessionsAsyncTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //ListSessionsRequest? listSessionsRequest = null;
-        //var response = instance.ListSessions(trinsicAuthorization, listSessionsRequest);
+        //var response = instance.ListSessionsAsync(listSessionsRequest);
         //Assert.IsType<ListSessionsResponseV1>(response);
     }
 }
