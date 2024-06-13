@@ -94,7 +94,7 @@ class SessionApi {
   ///   Bearer token. Can be left empty on anonymous endpoints
   ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<Response> createSessionWithHttpInfo(
+  Future<Response> createSessionAsyncWithHttpInfo(
     String trinsicAuthorization, {
     CreateSessionRequest? createSessionRequest,
   }) async {
@@ -134,11 +134,11 @@ class SessionApi {
   ///   Bearer token. Can be left empty on anonymous endpoints
   ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<CreateSessionResponse?> createSession(
+  Future<CreateSessionResponse?> createSessionAsync(
     String trinsicAuthorization, {
     CreateSessionRequest? createSessionRequest,
   }) async {
-    final response = await createSessionWithHttpInfo(
+    final response = await createSessionAsyncWithHttpInfo(
       trinsicAuthorization,
       createSessionRequest: createSessionRequest,
     );

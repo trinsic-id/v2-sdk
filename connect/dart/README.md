@@ -67,7 +67,7 @@ All URIs are relative to *https://connect-api.trinsic.id*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SessionApi* | [**cancelSession**](doc//SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**createSession**](doc//SessionApi.md#createsession) | **POST** /v1/sessions | 
+*SessionApi* | [**createSessionAsync**](doc//SessionApi.md#createsessionasync) | **POST** /v1/sessions | 
 *SessionApi* | [**getSession**](doc//SessionApi.md#getsession) | **GET** /v1/sessions/get | 
 *SessionApi* | [**listSessions**](doc//SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 

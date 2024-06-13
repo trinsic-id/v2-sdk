@@ -10,7 +10,7 @@ All URIs are relative to *https://connect-api.trinsic.id*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions | 
+[**createSessionAsync**](SessionApi.md#createsessionasync) | **POST** /v1/sessions | 
 [**getSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get | 
 [**listSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
@@ -64,8 +64,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createSession**
-> CreateSessionResponse createSession(trinsicAuthorization, createSessionRequest)
+# **createSessionAsync**
+> CreateSessionResponse createSessionAsync(trinsicAuthorization, createSessionRequest)
 
 
 
@@ -84,10 +84,10 @@ final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer to
 final createSessionRequest = CreateSessionRequest(); // CreateSessionRequest | 
 
 try {
-    final result = api_instance.createSession(trinsicAuthorization, createSessionRequest);
+    final result = api_instance.createSessionAsync(trinsicAuthorization, createSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->createSession: $e\n');
+    print('Exception when calling SessionApi->createSessionAsync: $e\n');
 }
 ```
 

@@ -21,8 +21,8 @@ void main() {
       // TODO
     });
 
-    //Future<CreateSessionResponse> createSession(String trinsicAuthorization, { CreateSessionRequest createSessionRequest }) async
-    test('test createSession', () async {
+    //Future<CreateSessionResponse> createSessionAsync(String trinsicAuthorization, { CreateSessionRequest createSessionRequest }) async
+    test('test createSessionAsync', () async {
       // TODO
     });
 
