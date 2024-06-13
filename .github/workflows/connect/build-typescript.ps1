@@ -14,7 +14,7 @@ $packageJson.repository.url = "https://github.com/trinsic-id/sdk"
 $packageJson | ConvertTo-Json -Depth 100 | Set-Content -Path "package.json"
 
 
-# Run the build script
+# Run the build script - don't use CI in case we updated package version
 npm install
 npx --yes prettier --write .
 npm run build
