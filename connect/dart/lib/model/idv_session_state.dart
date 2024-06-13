@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class IDVSessionState {
   /// Instantiate a new enum with the provided [value].
   const IDVSessionState._(this.value);
@@ -40,9 +39,13 @@ class IDVSessionState {
     idvFailed,
   ];
 
-  static IDVSessionState? fromJson(dynamic value) => IDVSessionStateTypeTransformer().decode(value);
+  static IDVSessionState? fromJson(dynamic value) =>
+      IDVSessionStateTypeTransformer().decode(value);
 
-  static List<IDVSessionState> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<IDVSessionState> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <IDVSessionState>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -59,7 +62,8 @@ class IDVSessionState {
 /// Transformation class that can [encode] an instance of [IDVSessionState] to String,
 /// and [decode] dynamic data back to [IDVSessionState].
 class IDVSessionStateTypeTransformer {
-  factory IDVSessionStateTypeTransformer() => _instance ??= const IDVSessionStateTypeTransformer._();
+  factory IDVSessionStateTypeTransformer() =>
+      _instance ??= const IDVSessionStateTypeTransformer._();
 
   const IDVSessionStateTypeTransformer._();
 
@@ -76,12 +80,18 @@ class IDVSessionStateTypeTransformer {
   IDVSessionState? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'IdvCreated': return IDVSessionState.idvCreated;
-        case r'IdvInitiated': return IDVSessionState.idvInitiated;
-        case r'IdvAuthenticating': return IDVSessionState.idvAuthenticating;
-        case r'IdvInProgress': return IDVSessionState.idvInProgress;
-        case r'IdvSuccess': return IDVSessionState.idvSuccess;
-        case r'IdvFailed': return IDVSessionState.idvFailed;
+        case r'IdvCreated':
+          return IDVSessionState.idvCreated;
+        case r'IdvInitiated':
+          return IDVSessionState.idvInitiated;
+        case r'IdvAuthenticating':
+          return IDVSessionState.idvAuthenticating;
+        case r'IdvInProgress':
+          return IDVSessionState.idvInProgress;
+        case r'IdvSuccess':
+          return IDVSessionState.idvSuccess;
+        case r'IdvFailed':
+          return IDVSessionState.idvFailed;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -94,4 +104,3 @@ class IDVSessionStateTypeTransformer {
   /// Singleton [IDVSessionStateTypeTransformer] instance.
   static IDVSessionStateTypeTransformer? _instance;
 }
-

@@ -11,31 +11,29 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-
 /// tests for SessionApi
 void main() {
   // final instance = SessionApi();
 
   group('tests for SessionApi', () {
-    //Future<CancelSessionResponse> cancelSession(String trinsicAuthorization, { String sessionId }) async
-    test('test cancelSession', () async {
+    //Future<CancelSessionResponse> cancelSessionAsync({ String sessionId }) async
+    test('test cancelSessionAsync', () async {
       // TODO
     });
 
-    //Future<CreateSessionResponse> createSession(String trinsicAuthorization, { CreateSessionRequest createSessionRequest }) async
-    test('test createSession', () async {
+    //Future<CreateSessionResponse> createSessionAsync({ CreateSessionRequest createSessionRequest }) async
+    test('test createSessionAsync', () async {
       // TODO
     });
 
-    //Future<GetSessionResponseV1> getSession(String trinsicAuthorization, { String sessionId }) async
-    test('test getSession', () async {
+    //Future<GetSessionResponseV1> getSessionAsync({ String sessionId }) async
+    test('test getSessionAsync', () async {
       // TODO
     });
 
-    //Future<ListSessionsResponseV1> listSessions(String trinsicAuthorization, { ListSessionsRequest listSessionsRequest }) async
-    test('test listSessions', () async {
+    //Future<ListSessionsResponseV1> listSessionsAsync({ ListSessionsRequest listSessionsRequest }) async
+    test('test listSessionsAsync', () async {
       // TODO
     });
-
   });
 }

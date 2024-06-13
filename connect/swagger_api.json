@@ -17,20 +17,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "ListSessions",
-        "parameters": [
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
-            }
-          }
-        ],
+        "operationId": "ListSessionsAsync",
         "requestBody": {
           "content": {
             "application/json": {
@@ -108,7 +95,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "GetSession",
+        "operationId": "GetSessionAsync",
         "parameters": [
           {
             "name": "sessionId",
@@ -117,17 +104,6 @@
               "maxLength": 100,
               "minLength": 5,
               "type": "string"
-            }
-          },
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
             }
           }
         ],
@@ -184,25 +160,12 @@
         }
       }
     },
-    "/v1/sessions": {
+    "/v1/sessions/create": {
       "post": {
         "tags": [
           "Session"
         ],
-        "operationId": "CreateSession",
-        "parameters": [
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
-            }
-          }
-        ],
+        "operationId": "CreateSessionAsync",
         "requestBody": {
           "content": {
             "application/json": {
@@ -280,24 +243,15 @@
         "tags": [
           "Session"
         ],
-        "operationId": "CancelSession",
+        "operationId": "CancelSessionAsync",
         "parameters": [
           {
             "name": "sessionId",
             "in": "query",
             "schema": {
+              "maxLength": 100,
+              "minLength": 5,
               "type": "string"
-            }
-          },
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
             }
           }
         ],
@@ -358,6 +312,9 @@
   "components": {
     "schemas": {
       "CancelSessionResponse": {
+        "required": [
+          "session"
+        ],
         "type": "object",
         "properties": {
           "session": {
@@ -380,6 +337,9 @@
         "additionalProperties": false
       },
       "CreateSessionResponse": {
+        "required": [
+          "session"
+        ],
         "type": "object",
         "properties": {
           "session": {
@@ -490,6 +450,13 @@
       "ListSessionsResponseV1": {
         "type": "object",
         "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "more": {
+            "type": "boolean"
+          },
           "sessions": {
             "type": "array",
             "items": {

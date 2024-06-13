@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.Verification
+# Trinsic.Connect.Model.Verification
 
 ## Properties
 

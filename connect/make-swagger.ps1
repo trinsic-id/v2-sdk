@@ -1,8 +1,8 @@
 # Parameters:
 param (
-    [string]$language = "dart",
+    [string]$language = "csharp",
     [string]$swaggerFile = "$PSScriptRoot/../connect/swagger_api.json",
-    [string]$outputFolder = "$PSScriptRoot/../connect/dart"
+    [string]$outputFolder = "$PSScriptRoot/../connect/dotnet"
 )
 # Example usage:
 # .\make-swagger.ps1 -language typescript-fetch -swaggerFile "C:\path\to\connect\api\autorest\swagger_api.json" -outputFolder "C:\path\to\connect\sdk\typescript"
@@ -111,7 +111,7 @@ if (Test-Path $relativeOutputFolder) {
 if ($env:TRINSIC_CI -eq "true")
 {
     # Docker command to run openapi-generator-cli in CI - https://stackoverflow.com/a/71931931
-    openapi-generator-cli generate `
+    npx --yes openapi-generator-cli generate `
         -i "./$relativeSwaggerFile" `
         -g $language `
         -o "./$relativeOutputFolder" `

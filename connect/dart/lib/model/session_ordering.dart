@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class SessionOrdering {
   /// Instantiate a new enum with the provided [value].
   const SessionOrdering._(this.value);
@@ -34,9 +33,13 @@ class SessionOrdering {
     state,
   ];
 
-  static SessionOrdering? fromJson(dynamic value) => SessionOrderingTypeTransformer().decode(value);
+  static SessionOrdering? fromJson(dynamic value) =>
+      SessionOrderingTypeTransformer().decode(value);
 
-  static List<SessionOrdering> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SessionOrdering> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SessionOrdering>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -53,7 +56,8 @@ class SessionOrdering {
 /// Transformation class that can [encode] an instance of [SessionOrdering] to String,
 /// and [decode] dynamic data back to [SessionOrdering].
 class SessionOrderingTypeTransformer {
-  factory SessionOrderingTypeTransformer() => _instance ??= const SessionOrderingTypeTransformer._();
+  factory SessionOrderingTypeTransformer() =>
+      _instance ??= const SessionOrderingTypeTransformer._();
 
   const SessionOrderingTypeTransformer._();
 
@@ -70,9 +74,12 @@ class SessionOrderingTypeTransformer {
   SessionOrdering? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'Created': return SessionOrdering.created;
-        case r'Updated': return SessionOrdering.updated;
-        case r'State': return SessionOrdering.state;
+        case r'Created':
+          return SessionOrdering.created;
+        case r'Updated':
+          return SessionOrdering.updated;
+        case r'State':
+          return SessionOrdering.state;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +92,3 @@ class SessionOrderingTypeTransformer {
   /// Singleton [SessionOrderingTypeTransformer] instance.
   static SessionOrderingTypeTransformer? _instance;
 }
-

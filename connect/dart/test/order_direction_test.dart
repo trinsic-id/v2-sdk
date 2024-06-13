@@ -13,9 +13,5 @@ import 'package:test/test.dart';
 
 // tests for OrderDirection
 void main() {
-
-  group('test OrderDirection', () {
-
-  });
-
+  group('test OrderDirection', () {});
 }

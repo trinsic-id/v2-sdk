@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.OrderDirection
+# Trinsic.Connect.Model.OrderDirection
 
 ## Properties
 

@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo><!-- setting GenerateAssemblyInfo to false causes this bug https://github.com/dotnet/project-system/issues/3934 -->
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Trinsic.Connect</AssemblyName>
+    <PackageId>Trinsic.Connect</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>Trinsic</Authors>
+    <Company>trinsic.id</Company>
+    <AssemblyTitle>Trinsic Connect SDK</AssemblyTitle>
+    <Description>Trinsic Connect SDK</Description>
+    <Copyright>No Copyright</Copyright>
+    <RootNamespace>Trinsic.Connect</RootNamespace>
+    <Version>0.0.1</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Trinsic.Connect.xml</DocumentationFile>
+    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <Nullable>annotations</Nullable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Polly" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

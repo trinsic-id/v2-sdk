@@ -11,10 +11,6 @@ on:
 
 jobs:
   build_test:
-    strategy:
-      matrix:
-        swagger_json: ['connect/swagger_api.json']
-        language: [['typescript-fetch', 'connect/typescript']]
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -26,15 +22,8 @@ jobs:
           cache: 'npm'
 
       - name: Build Connect TypeScript SDK
-        run: ./connect/make-swagger.ps1 -language ${{ matrix.language[0] }} -swaggerFile ${{ matrix.swagger_json }} -outputFolder ${{ matrix.language[1] }}
+        run: ./.github/workflows/connect/build-typescript.ps1
         shell: pwsh
-
-      - name: Format code
-        run: |
-          npm ci
-          npm run build:prettier
-        shell: pwsh
-        working-directory: ${{ matrix.language[1] }}
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4

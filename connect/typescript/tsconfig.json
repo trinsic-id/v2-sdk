@@ -1,17 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES2017",
-        "module": "CommonJS",
-        "moduleResolution": "node",
         "declaration": true,
-        "sourceMap": true,
-        "outDir": "./lib",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "noImplicitAny": false
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "lib": ["es6", "dom"],
+        "typeRoots": ["node_modules/@types"]
     },
-    "include": ["./**/*.ts"],
-    "exclude": ["node_modules", "lib", "dist"]
+    "exclude": ["dist", "node_modules"]
 }

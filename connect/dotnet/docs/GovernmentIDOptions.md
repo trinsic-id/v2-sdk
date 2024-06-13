@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.GovernmentIDOptions
+# Trinsic.Connect.Model.GovernmentIDOptions
 
 ## Properties
 

@@ -13,9 +13,5 @@ import 'package:test/test.dart';
 
 // tests for VerificationState
 void main() {
-
-  group('test VerificationState', () {
-
-  });
-
+  group('test VerificationState', () {});
 }

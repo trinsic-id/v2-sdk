@@ -1,4 +1,4 @@
-# Org.OpenAPITools.Model.ValidationResult
+# Trinsic.Connect.Model.ValidationResult
 
 ## Properties
 

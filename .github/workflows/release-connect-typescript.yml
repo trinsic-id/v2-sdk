@@ -1,0 +1,47 @@
+name: "Connect SDK / Typescript (release)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Package Version (leave empty for next patch version)'
+        required: false
+
+jobs:
+  publish:
+    name: Publish to npm.js
+    runs-on: ubuntu-latest
+    environment:
+      name: npmjs.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Set version
+        run: ./.github/workflows/connect/set-connect-version.ps1 -Version ${{ github.event.inputs.packageVersion || 'NEXTPATCH' }} -Language "typescript"
+        shell: pwsh
+      - name: Build!
+        run: ./.github/workflows/connect/build-typescript.ps1
+        shell: pwsh
+      - run: ./.github/workflows/connect/release-typescript.ps1
+        shell: pwsh
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Mewmba Create PR
+        id: mewmba-create-pr
+        uses: trinsic-id/mewmba/actions/mewmba-pr@main
+        with:
+          apiGithubToken: ${{ secrets.GITHUB_TOKEN }}
+          commitMessage: "Updated typescript released package version"
+          githubAssignee: ${{ github.actor }}
+          prTitle: "Updated typescript Released Package Version"
+          githubBranch: "main"
+          githubWorkingDirectory: "."
+          githubRepository: "trinsic-id/sdk"
+
+
+

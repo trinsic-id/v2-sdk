@@ -6,6 +6,10 @@ on:
     # We don't have path dependencies because we code-inject the samples, and we want to ensure those are all in the right places.
     paths-ignore:
       - 'connect/**'
+      - '.github/workflows/build-connect-*.yaml'
+      - '.github/workflows/release-connect-*.yml'
+      - '.github/workflows/pr-validate-connect.yaml'
+      - '.github/workflows/connect/**'
   workflow_dispatch:
 jobs:
   build:

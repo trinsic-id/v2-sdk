@@ -1,0 +1,48 @@
+name: "Connect PR Validation"
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "connect/**"
+      - ".github/workflows/pr-validate-connect.yaml"
+
+concurrency:
+  group: prvalidate
+  cancel-in-progress: true
+
+jobs:
+  verify-dotnet:
+    name: Verify Dotnet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 8.0.x
+      - name: Run dotnet format validation
+        run: |
+          dotnet format ./connect/dotnet/Trinsic.Connect.sln
+          dotnet build ./connect/dotnet/Trinsic.Connect.sln
+        shell: pwsh
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+
+  verify-typescript:
+    name: Verify Typescript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+      - name: Run Typescript format validation
+        run: ./.github/workflows/connect/build-typescript.ps1
+        shell: pwsh
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
