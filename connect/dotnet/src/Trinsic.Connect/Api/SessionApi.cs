@@ -47,7 +47,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="trinsicAuthorization">Bearer token. Can be left empty on anonymous endpoints</param>
     /// <param name="createSessionRequest"> (optional)</param>
     /// <returns>CreateSessionResponse</returns>
-    CreateSessionResponse CreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
+    CreateSessionResponse CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
 
     /// <summary>
     /// 
@@ -59,7 +59,7 @@ public interface ISessionApiSync : IApiAccessor
     /// <param name="trinsicAuthorization">Bearer token. Can be left empty on anonymous endpoints</param>
     /// <param name="createSessionRequest"> (optional)</param>
     /// <returns>ApiResponse of CreateSessionResponse</returns>
-    ApiResponse<CreateSessionResponse> CreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
+    ApiResponse<CreateSessionResponse> CreateSessionAsyncWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
     /// <summary>
     /// 
     /// </summary>
@@ -145,7 +145,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CreateSessionResponse</returns>
-    System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsyncAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -158,7 +158,7 @@ public interface ISessionApiAsync : IApiAccessor
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateSessionResponse)</returns>
-    System.Threading.Tasks.Task<ApiResponse<CreateSessionResponse>> CreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<CreateSessionResponse>> CreateSessionAsyncWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
     /// 
     /// </summary>
@@ -604,9 +604,9 @@ public partial class SessionApi : IDisposable, ISessionApi
     /// <param name="trinsicAuthorization">Bearer token. Can be left empty on anonymous endpoints</param>
     /// <param name="createSessionRequest"> (optional)</param>
     /// <returns>CreateSessionResponse</returns>
-    public CreateSessionResponse CreateSession(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?))
+    public CreateSessionResponse CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?))
     {
-        var localVarResponse = CreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
+        var localVarResponse = CreateSessionAsyncWithHttpInfo(trinsicAuthorization, createSessionRequest);
         return localVarResponse.Data;
     }
 
@@ -617,12 +617,12 @@ public partial class SessionApi : IDisposable, ISessionApi
     /// <param name="trinsicAuthorization">Bearer token. Can be left empty on anonymous endpoints</param>
     /// <param name="createSessionRequest"> (optional)</param>
     /// <returns>ApiResponse of CreateSessionResponse</returns>
-    public Trinsic.Connect.Client.ApiResponse<CreateSessionResponse> CreateSessionWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?))
+    public Trinsic.Connect.Client.ApiResponse<CreateSessionResponse> CreateSessionAsyncWithHttpInfo(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSession");
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSessionAsync");
         }
 
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
@@ -667,7 +667,7 @@ public partial class SessionApi : IDisposable, ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("CreateSession", localVarResponse);
+            var _exception = ExceptionFactory("CreateSessionAsync", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;
@@ -685,9 +685,9 @@ public partial class SessionApi : IDisposable, ISessionApi
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of CreateSessionResponse</returns>
-    public async System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsyncAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await CreateSessionWithHttpInfoAsync(trinsicAuthorization, createSessionRequest, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await CreateSessionAsyncWithHttpInfoAsync(trinsicAuthorization, createSessionRequest, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -699,12 +699,12 @@ public partial class SessionApi : IDisposable, ISessionApi
     /// <param name="createSessionRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (CreateSessionResponse)</returns>
-    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<CreateSessionResponse>> CreateSessionWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<CreateSessionResponse>> CreateSessionAsyncWithHttpInfoAsync(string trinsicAuthorization, CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'trinsicAuthorization' is set
         if (trinsicAuthorization == null)
         {
-            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSession");
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'trinsicAuthorization' when calling SessionApi->CreateSessionAsync");
         }
 
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
@@ -750,7 +750,7 @@ public partial class SessionApi : IDisposable, ISessionApi
 
         if (ExceptionFactory != null)
         {
-            var _exception = ExceptionFactory("CreateSession", localVarResponse);
+            var _exception = ExceptionFactory("CreateSessionAsync", localVarResponse);
             if (_exception != null)
             {
                 throw _exception;

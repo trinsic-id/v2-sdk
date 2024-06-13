@@ -22,11 +22,27 @@ public partial class ListSessionsResponseV1
     /// <summary>
     /// Initializes a new instance of the <see cref="ListSessionsResponseV1" /> class.
     /// </summary>
+    /// <param name="total">total.</param>
+    /// <param name="more">more.</param>
     /// <param name="sessions">sessions.</param>
-    public ListSessionsResponseV1(List<Session> sessions = default(List<Session>))
+    public ListSessionsResponseV1(int total = default(int), bool more = default(bool), List<Session> sessions = default(List<Session>))
     {
+        Total = total;
+        More = more;
         Sessions = sessions;
     }
+
+    /// <summary>
+    /// Gets or Sets Total
+    /// </summary>
+    [DataMember(Name = "total", EmitDefaultValue = false)]
+    public int Total { get; set; }
+
+    /// <summary>
+    /// Gets or Sets More
+    /// </summary>
+    [DataMember(Name = "more", EmitDefaultValue = true)]
+    public bool More { get; set; }
 
     /// <summary>
     /// Gets or Sets Sessions
@@ -42,6 +58,8 @@ public partial class ListSessionsResponseV1
     {
         var sb = new StringBuilder();
         sb.Append("class ListSessionsResponseV1 {\n");
+        sb.Append("  Total: ").Append(Total).Append("\n");
+        sb.Append("  More: ").Append(More).Append("\n");
         sb.Append("  Sessions: ").Append(Sessions).Append("\n");
         sb.Append("}\n");
         return sb.ToString();

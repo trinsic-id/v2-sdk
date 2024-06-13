@@ -5,7 +5,7 @@ All URIs are relative to *https://connect-api.trinsic.id*
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
 | [**CancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
-| [**CreateSession**](SessionApi.md#createsession) | **POST** /v1/sessions |  |
+| [**CreateSessionAsync**](SessionApi.md#createsessionasync) | **POST** /v1/sessions |  |
 | [**GetSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get |  |
 | [**ListSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list |  |
 
@@ -109,9 +109,9 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a id="createsession"></a>
-# **CreateSession**
-> CreateSessionResponse CreateSession (string trinsicAuthorization, CreateSessionRequest? createSessionRequest = null)
+<a id="createsessionasync"></a>
+# **CreateSessionAsync**
+> CreateSessionResponse CreateSessionAsync (string trinsicAuthorization, CreateSessionRequest? createSessionRequest = null)
 
 
 
@@ -126,7 +126,7 @@ using Trinsic.Connect.Model;
 
 namespace Example
 {
-    public class CreateSessionExample
+    public class CreateSessionAsyncExample
     {
         public static void Main()
         {
@@ -144,12 +144,12 @@ namespace Example
 
             try
             {
-                CreateSessionResponse result = apiInstance.CreateSession(trinsicAuthorization, createSessionRequest);
+                CreateSessionResponse result = apiInstance.CreateSessionAsync(trinsicAuthorization, createSessionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.CreateSession: " + e.Message);
+                Debug.Print("Exception when calling SessionApi.CreateSessionAsync: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -158,20 +158,20 @@ namespace Example
 }
 ```
 
-#### Using the CreateSessionWithHttpInfo variant
+#### Using the CreateSessionAsyncWithHttpInfo variant
 This returns an ApiResponse object which contains the response data, status code and headers.
 
 ```csharp
 try
 {
-    ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionWithHttpInfo(trinsicAuthorization, createSessionRequest);
+    ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionAsyncWithHttpInfo(trinsicAuthorization, createSessionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.CreateSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionApi.CreateSessionAsyncWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }

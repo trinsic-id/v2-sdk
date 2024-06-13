@@ -60,15 +60,15 @@ public class SessionApiTests : IDisposable
     }
 
     /// <summary>
-    /// Test CreateSession
+    /// Test CreateSessionAsync
     /// </summary>
     [Fact]
-    public void CreateSessionTest()
+    public void CreateSessionAsyncTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string trinsicAuthorization = null;
         //CreateSessionRequest? createSessionRequest = null;
-        //var response = instance.CreateSession(trinsicAuthorization, createSessionRequest);
+        //var response = instance.CreateSessionAsync(trinsicAuthorization, createSessionRequest);
         //Assert.IsType<CreateSessionResponse>(response);
     }
 
