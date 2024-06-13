@@ -410,3 +410,4 @@ samples/grpc-web/lib/
 samples/grpc-web/coverage/
 web/dist/
 connect/typescript/lib
+connect/typescript/dist

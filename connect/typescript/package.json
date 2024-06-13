@@ -5,7 +5,7 @@
     "author": "OpenAPI-Generator",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+        "url": "https://github.com/trinsic-id/sdk"
     },
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
@@ -13,11 +13,14 @@
         "build": "tsc",
         "prepare": "npm run build"
     },
+    "devDependencies": {
+        "typescript": "^4.0 || ^5.0"
+    },
+    "publishConfig": {
+        "registry": "https://github.com/trinsic-id/sdk.git"
+    },
     "dependencies": {
         "micromodal": "0.4.10",
         "oidc-client-ts": "2.2.5"
-    },
-    "devDependencies": {
-        "typescript": "^4.0 || ^5.0"
     }
 }

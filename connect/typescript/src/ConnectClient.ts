@@ -278,7 +278,7 @@ export class ConnectClient {
             if (e.data.url === undefined) return;
             this.popupWindow?.close();
             var response = await this.oidcClient?.processSigninResponse(
-                e.data.url
+                e.data.url,
             );
             this.processCallback(response);
         });
@@ -330,7 +330,8 @@ export class ConnectClient {
 
         const iframe = document.createElement("iframe");
         iframe.className = "h-full w-full bg-transparent";
-        iframe.allow = "camera *; microphone *; display-capture *; publickey-credentials-get *; publickey-credentials-create *";
+        iframe.allow =
+            "camera *; microphone *; display-capture *; publickey-credentials-get *; publickey-credentials-create *";
         iframe.src = `${this.getBaseConnectUrl()}/?clientToken=${clientToken}`;
 
         modalContainer.append(iframe);
@@ -366,7 +367,7 @@ export class ConnectClient {
                         reject(event.data);
                     }
                 },
-                false
+                false,
             );
         });
         return result;
@@ -375,7 +376,7 @@ export class ConnectClient {
     processCallback = (response: any) => {};
 
     public async requestVerifiableCredential(
-        request: IVerifiableCredentialRequest
+        request: IVerifiableCredentialRequest,
     ): Promise<any> {
         if (!request || !request.ecosystem || !request.schema) {
             throw new Error("ecosystem and schema are required");
@@ -419,7 +420,7 @@ export class ConnectClient {
         const popup = window.open(
             undefined,
             "oidc-popup",
-            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`
+            `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`,
         );
 
         // Check if the popup was blocked
