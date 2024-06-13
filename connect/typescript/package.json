@@ -2,10 +2,10 @@
     "name": "@trinsic/connect",
     "version": "0.0.2",
     "description": "OpenAPI client for @trinsic/connect",
-    "author": "OpenAPI-Generator",
+    "author": "Trinsic",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+        "url": "https://github.com/trinsic-id/sdk"
     },
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",
@@ -15,5 +15,9 @@
     },
     "devDependencies": {
         "typescript": "^4.0 || ^5.0"
+    },
+    "dependencies": {
+        "micromodal": "0.4.10",
+        "oidc-client-ts": "2.2.5"
     }
 }
