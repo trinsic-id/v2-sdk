@@ -11,6 +11,7 @@ npm install "micromodal@0.4.10" "oidc-client-ts@2.2.5" --save-exact
 # Set repository.url to the correct value
 $packageJson = Get-Content -Path "package.json" -Raw | ConvertFrom-Json
 $packageJson.repository.url = "https://github.com/trinsic-id/sdk"
+$packageJson.author = "Trinsic"
 $packageJson | ConvertTo-Json -Depth 100 | Set-Content -Path "package.json"
 
 

@@ -3,5 +3,4 @@
 additionalProperties:
   npmName: "@trinsic/connect"
   npmVersion: "0.0.2"
-  npmRepository: "https://github.com/trinsic-id/sdk.git"
   npmAuthor: "Trinsic"
