@@ -46,6 +46,24 @@ public class ListSessionsResponseV1Tests : IDisposable
     }
 
     /// <summary>
+    /// Test the property 'Total'
+    /// </summary>
+    [Fact]
+    public void TotalTest()
+    {
+        // TODO unit test for the property 'Total'
+    }
+
+    /// <summary>
+    /// Test the property 'More'
+    /// </summary>
+    [Fact]
+    public void MoreTest()
+    {
+        // TODO unit test for the property 'More'
+    }
+
+    /// <summary>
     /// Test the property 'Sessions'
     /// </summary>
     [Fact]
