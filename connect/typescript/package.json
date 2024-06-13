@@ -1,6 +1,6 @@
 {
     "name": "@trinsic/connect",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "OpenAPI client for @trinsic/connect",
     "author": "Trinsic",
     "repository": {
