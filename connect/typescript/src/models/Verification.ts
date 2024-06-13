@@ -55,7 +55,7 @@ export interface Verification {
      * @type {string}
      * @memberof Verification
      */
-    id?: string;
+    id?: string | null;
     /**
      *
      * @type {VerificationType}
