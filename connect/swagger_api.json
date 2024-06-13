@@ -189,7 +189,7 @@
         "tags": [
           "Session"
         ],
-        "operationId": "CreateSession",
+        "operationId": "CreateSessionAsync",
         "parameters": [
           {
             "name": "TrinsicAuthorization",
@@ -286,6 +286,8 @@
             "name": "sessionId",
             "in": "query",
             "schema": {
+              "maxLength": 100,
+              "minLength": 5,
               "type": "string"
             }
           },
@@ -496,6 +498,13 @@
       "ListSessionsResponseV1": {
         "type": "object",
         "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "more": {
+            "type": "boolean"
+          },
           "sessions": {
             "type": "array",
             "items": {
