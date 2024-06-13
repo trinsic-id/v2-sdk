@@ -47,7 +47,7 @@ export interface CancelSessionRequest {
     sessionId?: string;
 }
 
-export interface CreateSessionOperationRequest {
+export interface CreateSessionAsyncRequest {
     trinsicAuthorization: string;
     createSessionRequest?: CreateSessionRequest;
 }
@@ -131,14 +131,14 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSessionRaw(
-        requestParameters: CreateSessionOperationRequest,
+    async createSessionAsyncRaw(
+        requestParameters: CreateSessionAsyncRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CreateSessionResponse>> {
         if (requestParameters["trinsicAuthorization"] == null) {
             throw new runtime.RequiredError(
                 "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling createSession().',
+                'Required parameter "trinsicAuthorization" was null or undefined when calling createSessionAsync().',
             );
         }
 
@@ -182,11 +182,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSession(
-        requestParameters: CreateSessionOperationRequest,
+    async createSessionAsync(
+        requestParameters: CreateSessionAsyncRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CreateSessionResponse> {
-        const response = await this.createSessionRaw(
+        const response = await this.createSessionAsyncRaw(
             requestParameters,
             initOverrides,
         );

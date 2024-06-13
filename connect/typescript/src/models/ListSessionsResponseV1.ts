@@ -28,6 +28,18 @@ import {
 export interface ListSessionsResponseV1 {
     /**
      *
+     * @type {number}
+     * @memberof ListSessionsResponseV1
+     */
+    total?: number;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ListSessionsResponseV1
+     */
+    more?: boolean;
+    /**
+     *
      * @type {Array<Session>}
      * @memberof ListSessionsResponseV1
      */
@@ -57,6 +69,8 @@ export function ListSessionsResponseV1FromJSONTyped(
         return json;
     }
     return {
+        total: json["total"] == null ? undefined : json["total"],
+        more: json["more"] == null ? undefined : json["more"],
         sessions:
             json["sessions"] == null
                 ? undefined
@@ -71,6 +85,8 @@ export function ListSessionsResponseV1ToJSON(
         return value;
     }
     return {
+        total: value["total"],
+        more: value["more"],
         sessions:
             value["sessions"] == null
                 ? undefined
