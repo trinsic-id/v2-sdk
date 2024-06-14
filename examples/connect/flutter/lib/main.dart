@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'SECRET.dart';
@@ -73,12 +71,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   Future<void> _startTrinsicConnectFlow() async {
+    try {
     // TODO - Do we want hard-coded dev?
-    var url = "https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${Uri.encodeComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}";
-    final result = await FlutterWebAuth2.authenticate(url: url, callbackUrlScheme: "mewmba.ngrok.dev");
+    var redirectUri = "dev.ngrok.mewmba:/";
+    var url = "https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${Uri.encodeComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}"
+        "&redirect_uri=${Uri.encodeComponent(redirectUri)}";
+    final result = await FlutterWebAuth2.authenticate(url: url, callbackUrlScheme: "dev.ngrok.mewmba");
     setState(() {
       _authenticateResult = result;
     });
+    } catch (e) {
+      setState(() {
+        _authenticateResult = e.toString();
+      });
+    }
   }
 
   @override

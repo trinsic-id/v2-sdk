@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_auth_2: ^3.0.0
+  flutter_web_auth_2: ^4.0.0-alpha.0
   TrinsicConnect:
     path: ../../../connect/dart
 
