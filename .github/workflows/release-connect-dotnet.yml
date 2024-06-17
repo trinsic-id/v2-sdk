@@ -23,6 +23,7 @@ jobs:
         shell: pwsh
       - name: Build!
         run: ./.github/workflows/connect/build-dotnet.ps1
+        shell: pwsh
       - name: Push packages to Nuget
         run: ./.github/workflows/connect/release-dotnet.ps1 -ApiKey ${{ secrets.NUGET_API_KEY }}
         shell: pwsh
