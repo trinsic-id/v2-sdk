@@ -70,16 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
   Future<void> _startTrinsicConnectFlow() async {
     try {
-    // TODO - Do we want hard-coded dev?
-    var redirectUri = "dev.ngrok.mewmba:/";
-    var url = "https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${Uri.encodeComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}"
-        "&redirect_uri=${Uri.encodeComponent(redirectUri)}";
-    final result = await FlutterWebAuth2.authenticate(url: url, callbackUrlScheme: "dev.ngrok.mewmba");
-    setState(() {
-      _authenticateResult = result;
-    });
+      // TODO - Do we want hard-coded dev?
+      // var redirectUri = "https://mewmba.ngrok.dev/connect/mobilecomplete";
+      var redirectUriScheme = "dev.ngrok.mewmba";
+      var redirectUri = "$redirectUriScheme://";
+      var url =
+          "https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${Uri.encodeComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}"
+          "&redirect_uri=${Uri.encodeComponent(redirectUri)}";
+      final result = await FlutterWebAuth2.authenticate(
+          url: url, callbackUrlScheme: redirectUriScheme);
+      setState(() {
+        _authenticateResult = result;
+      });
+      // Bring application to the foreground
+
+      // Reload the page to clear the custom tab
     } catch (e) {
       setState(() {
         _authenticateResult = e.toString();
