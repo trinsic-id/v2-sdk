@@ -14,7 +14,7 @@ dotnet pack -c Release -o $publishFolder
 if ($ApiKey -eq "")
 {
     Write-Host "No NuGet API key set, skipping push"
-    exit 0
+    exit -1
 }
 foreach ($item in get-childitem $publishFolder -recurse | select-object FullName | where { $_.FullName.EndsWith(".nupkg") })
 {
