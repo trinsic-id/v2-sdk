@@ -9,14 +9,14 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSessionAsync**](SessionApi.md#cancelsessionasync) | **POST** /v1/sessions/cancel | 
-[**createSessionAsync**](SessionApi.md#createsessionasync) | **POST** /v1/sessions/create | 
-[**getSessionAsync**](SessionApi.md#getsessionasync) | **GET** /v1/sessions/get | 
-[**listSessionsAsync**](SessionApi.md#listsessionsasync) | **POST** /v1/sessions/list | 
+[**cancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions/create | 
+[**getSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get | 
+[**listSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
-# **cancelSessionAsync**
-> CancelSessionResponse cancelSessionAsync(sessionId)
+# **cancelSession**
+> CancelSessionResponse cancelSession(sessionId)
 
 
 
@@ -34,10 +34,10 @@ final api_instance = SessionApi();
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.cancelSessionAsync(sessionId);
+    final result = api_instance.cancelSession(sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->cancelSessionAsync: $e\n');
+    print('Exception when calling SessionApi->cancelSession: $e\n');
 }
 ```
 
@@ -62,8 +62,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createSessionAsync**
-> CreateSessionResponse createSessionAsync(createSessionRequest)
+# **createSession**
+> CreateSessionResponse createSession(createSessionRequest)
 
 
 
@@ -81,10 +81,10 @@ final api_instance = SessionApi();
 final createSessionRequest = CreateSessionRequest(); // CreateSessionRequest | 
 
 try {
-    final result = api_instance.createSessionAsync(createSessionRequest);
+    final result = api_instance.createSession(createSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->createSessionAsync: $e\n');
+    print('Exception when calling SessionApi->createSession: $e\n');
 }
 ```
 
@@ -109,8 +109,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getSessionAsync**
-> GetSessionResponseV1 getSessionAsync(sessionId)
+# **getSession**
+> GetSessionResponseV1 getSession(sessionId)
 
 
 
@@ -128,10 +128,10 @@ final api_instance = SessionApi();
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.getSessionAsync(sessionId);
+    final result = api_instance.getSession(sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->getSessionAsync: $e\n');
+    print('Exception when calling SessionApi->getSession: $e\n');
 }
 ```
 
@@ -156,8 +156,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **listSessionsAsync**
-> ListSessionsResponseV1 listSessionsAsync(listSessionsRequest)
+# **listSessions**
+> ListSessionsResponseV1 listSessions(listSessionsRequest)
 
 
 
@@ -175,10 +175,10 @@ final api_instance = SessionApi();
 final listSessionsRequest = ListSessionsRequest(); // ListSessionsRequest | 
 
 try {
-    final result = api_instance.listSessionsAsync(listSessionsRequest);
+    final result = api_instance.listSessions(listSessionsRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->listSessionsAsync: $e\n');
+    print('Exception when calling SessionApi->listSessions: $e\n');
 }
 ```
 

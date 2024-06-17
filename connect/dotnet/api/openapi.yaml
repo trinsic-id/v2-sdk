@@ -11,7 +11,7 @@ security:
 paths:
   /v1/sessions/list:
     post:
-      operationId: ListSessionsAsync
+      operationId: ListSessions
       requestBody:
         content:
           application/json:
@@ -58,7 +58,7 @@ paths:
       - Session
   /v1/sessions/get:
     get:
-      operationId: GetSessionAsync
+      operationId: GetSession
       parameters:
       - explode: true
         in: query
@@ -104,7 +104,7 @@ paths:
       - Session
   /v1/sessions/create:
     post:
-      operationId: CreateSessionAsync
+      operationId: CreateSession
       requestBody:
         content:
           application/json:
@@ -151,7 +151,7 @@ paths:
       - Session
   /v1/sessions/cancel:
     post:
-      operationId: CancelSessionAsync
+      operationId: CancelSession
       parameters:
       - explode: true
         in: query

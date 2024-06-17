@@ -42,19 +42,19 @@ import {
     ValidationResultToJSON,
 } from "../models/index";
 
-export interface CancelSessionAsyncRequest {
+export interface CancelSessionRequest {
     sessionId?: string;
 }
 
-export interface CreateSessionAsyncRequest {
+export interface CreateSessionOperationRequest {
     createSessionRequest?: CreateSessionRequest;
 }
 
-export interface GetSessionAsyncRequest {
+export interface GetSessionRequest {
     sessionId?: string;
 }
 
-export interface ListSessionsAsyncRequest {
+export interface ListSessionsOperationRequest {
     listSessionsRequest?: ListSessionsRequest;
 }
 
@@ -64,8 +64,8 @@ export interface ListSessionsAsyncRequest {
 export class SessionApi extends runtime.BaseAPI {
     /**
      */
-    async cancelSessionAsyncRaw(
-        requestParameters: CancelSessionAsyncRequest,
+    async cancelSessionRaw(
+        requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CancelSessionResponse>> {
         const queryParameters: any = {};
@@ -101,11 +101,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async cancelSessionAsync(
-        requestParameters: CancelSessionAsyncRequest = {},
+    async cancelSession(
+        requestParameters: CancelSessionRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CancelSessionResponse> {
-        const response = await this.cancelSessionAsyncRaw(
+        const response = await this.cancelSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -114,8 +114,8 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSessionAsyncRaw(
-        requestParameters: CreateSessionAsyncRequest,
+    async createSessionRaw(
+        requestParameters: CreateSessionOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CreateSessionResponse>> {
         const queryParameters: any = {};
@@ -152,11 +152,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSessionAsync(
-        requestParameters: CreateSessionAsyncRequest = {},
+    async createSession(
+        requestParameters: CreateSessionOperationRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CreateSessionResponse> {
-        const response = await this.createSessionAsyncRaw(
+        const response = await this.createSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -165,8 +165,8 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async getSessionAsyncRaw(
-        requestParameters: GetSessionAsyncRequest,
+    async getSessionRaw(
+        requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<GetSessionResponseV1>> {
         const queryParameters: any = {};
@@ -202,11 +202,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async getSessionAsync(
-        requestParameters: GetSessionAsyncRequest = {},
+    async getSession(
+        requestParameters: GetSessionRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<GetSessionResponseV1> {
-        const response = await this.getSessionAsyncRaw(
+        const response = await this.getSessionRaw(
             requestParameters,
             initOverrides,
         );
@@ -215,8 +215,8 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async listSessionsAsyncRaw(
-        requestParameters: ListSessionsAsyncRequest,
+    async listSessionsRaw(
+        requestParameters: ListSessionsOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<ListSessionsResponseV1>> {
         const queryParameters: any = {};
@@ -253,11 +253,11 @@ export class SessionApi extends runtime.BaseAPI {
 
     /**
      */
-    async listSessionsAsync(
-        requestParameters: ListSessionsAsyncRequest = {},
+    async listSessions(
+        requestParameters: ListSessionsOperationRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<ListSessionsResponseV1> {
-        const response = await this.listSessionsAsyncRaw(
+        const response = await this.listSessionsRaw(
             requestParameters,
             initOverrides,
         );

@@ -20,7 +20,7 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [String] sessionId:
-  Future<Response> cancelSessionAsyncWithHttpInfo({
+  Future<Response> cancelSessionWithHttpInfo({
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
@@ -53,10 +53,10 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [String] sessionId:
-  Future<CancelSessionResponse?> cancelSessionAsync({
+  Future<CancelSessionResponse?> cancelSession({
     String? sessionId,
   }) async {
-    final response = await cancelSessionAsyncWithHttpInfo(
+    final response = await cancelSessionWithHttpInfo(
       sessionId: sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -79,7 +79,7 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<Response> createSessionAsyncWithHttpInfo({
+  Future<Response> createSessionWithHttpInfo({
     CreateSessionRequest? createSessionRequest,
   }) async {
     // ignore: prefer_const_declarations
@@ -112,10 +112,10 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<CreateSessionResponse?> createSessionAsync({
+  Future<CreateSessionResponse?> createSession({
     CreateSessionRequest? createSessionRequest,
   }) async {
-    final response = await createSessionAsyncWithHttpInfo(
+    final response = await createSessionWithHttpInfo(
       createSessionRequest: createSessionRequest,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -138,7 +138,7 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [String] sessionId:
-  Future<Response> getSessionAsyncWithHttpInfo({
+  Future<Response> getSessionWithHttpInfo({
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
@@ -171,10 +171,10 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [String] sessionId:
-  Future<GetSessionResponseV1?> getSessionAsync({
+  Future<GetSessionResponseV1?> getSession({
     String? sessionId,
   }) async {
-    final response = await getSessionAsyncWithHttpInfo(
+    final response = await getSessionWithHttpInfo(
       sessionId: sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -197,7 +197,7 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [ListSessionsRequest] listSessionsRequest:
-  Future<Response> listSessionsAsyncWithHttpInfo({
+  Future<Response> listSessionsWithHttpInfo({
     ListSessionsRequest? listSessionsRequest,
   }) async {
     // ignore: prefer_const_declarations
@@ -230,10 +230,10 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [ListSessionsRequest] listSessionsRequest:
-  Future<ListSessionsResponseV1?> listSessionsAsync({
+  Future<ListSessionsResponseV1?> listSessions({
     ListSessionsRequest? listSessionsRequest,
   }) async {
-    final response = await listSessionsAsyncWithHttpInfo(
+    final response = await listSessionsWithHttpInfo(
       listSessionsRequest: listSessionsRequest,
     );
     if (response.statusCode >= HttpStatus.badRequest) {

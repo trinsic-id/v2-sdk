@@ -47,50 +47,50 @@ public class SessionApiTests : IDisposable
     }
 
     /// <summary>
-    /// Test CancelSessionAsync
+    /// Test CancelSession
     /// </summary>
     [Fact]
-    public void CancelSessionAsyncTest()
+    public void CancelSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string? sessionId = null;
-        //var response = instance.CancelSessionAsync(sessionId);
+        //var response = instance.CancelSession(sessionId);
         //Assert.IsType<CancelSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test CreateSessionAsync
+    /// Test CreateSession
     /// </summary>
     [Fact]
-    public void CreateSessionAsyncTest()
+    public void CreateSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //CreateSessionRequest? createSessionRequest = null;
-        //var response = instance.CreateSessionAsync(createSessionRequest);
+        //var response = instance.CreateSession(createSessionRequest);
         //Assert.IsType<CreateSessionResponse>(response);
     }
 
     /// <summary>
-    /// Test GetSessionAsync
+    /// Test GetSession
     /// </summary>
     [Fact]
-    public void GetSessionAsyncTest()
+    public void GetSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //string? sessionId = null;
-        //var response = instance.GetSessionAsync(sessionId);
+        //var response = instance.GetSession(sessionId);
         //Assert.IsType<GetSessionResponseV1>(response);
     }
 
     /// <summary>
-    /// Test ListSessionsAsync
+    /// Test ListSessions
     /// </summary>
     [Fact]
-    public void ListSessionsAsyncTest()
+    public void ListSessionsTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
         //ListSessionsRequest? listSessionsRequest = null;
-        //var response = instance.ListSessionsAsync(listSessionsRequest);
+        //var response = instance.ListSessions(listSessionsRequest);
         //Assert.IsType<ListSessionsResponseV1>(response);
     }
 }
