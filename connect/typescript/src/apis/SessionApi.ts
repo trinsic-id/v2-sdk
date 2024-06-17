@@ -43,22 +43,18 @@ import {
 } from "../models/index";
 
 export interface CancelSessionRequest {
-    trinsicAuthorization: string;
     sessionId?: string;
 }
 
 export interface CreateSessionOperationRequest {
-    trinsicAuthorization: string;
     createSessionRequest?: CreateSessionRequest;
 }
 
 export interface GetSessionRequest {
-    trinsicAuthorization: string;
     sessionId?: string;
 }
 
 export interface ListSessionsOperationRequest {
-    trinsicAuthorization: string;
     listSessionsRequest?: ListSessionsRequest;
 }
 
@@ -72,13 +68,6 @@ export class SessionApi extends runtime.BaseAPI {
         requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CancelSessionResponse>> {
-        if (requestParameters["trinsicAuthorization"] == null) {
-            throw new runtime.RequiredError(
-                "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling cancelSession().',
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters["sessionId"] != null) {
@@ -86,12 +75,6 @@ export class SessionApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters["trinsicAuthorization"] != null) {
-            headerParameters["TrinsicAuthorization"] = String(
-                requestParameters["trinsicAuthorization"],
-            );
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -119,7 +102,7 @@ export class SessionApi extends runtime.BaseAPI {
     /**
      */
     async cancelSession(
-        requestParameters: CancelSessionRequest,
+        requestParameters: CancelSessionRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CancelSessionResponse> {
         const response = await this.cancelSessionRaw(
@@ -135,24 +118,11 @@ export class SessionApi extends runtime.BaseAPI {
         requestParameters: CreateSessionOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CreateSessionResponse>> {
-        if (requestParameters["trinsicAuthorization"] == null) {
-            throw new runtime.RequiredError(
-                "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling createSession().',
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters["Content-Type"] = "application/json";
-
-        if (requestParameters["trinsicAuthorization"] != null) {
-            headerParameters["TrinsicAuthorization"] = String(
-                requestParameters["trinsicAuthorization"],
-            );
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -164,7 +134,7 @@ export class SessionApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/v1/sessions`,
+                path: `/v1/sessions/create`,
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -183,7 +153,7 @@ export class SessionApi extends runtime.BaseAPI {
     /**
      */
     async createSession(
-        requestParameters: CreateSessionOperationRequest,
+        requestParameters: CreateSessionOperationRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CreateSessionResponse> {
         const response = await this.createSessionRaw(
@@ -199,13 +169,6 @@ export class SessionApi extends runtime.BaseAPI {
         requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<GetSessionResponseV1>> {
-        if (requestParameters["trinsicAuthorization"] == null) {
-            throw new runtime.RequiredError(
-                "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling getSession().',
-            );
-        }
-
         const queryParameters: any = {};
 
         if (requestParameters["sessionId"] != null) {
@@ -213,12 +176,6 @@ export class SessionApi extends runtime.BaseAPI {
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters["trinsicAuthorization"] != null) {
-            headerParameters["TrinsicAuthorization"] = String(
-                requestParameters["trinsicAuthorization"],
-            );
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -246,7 +203,7 @@ export class SessionApi extends runtime.BaseAPI {
     /**
      */
     async getSession(
-        requestParameters: GetSessionRequest,
+        requestParameters: GetSessionRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<GetSessionResponseV1> {
         const response = await this.getSessionRaw(
@@ -262,24 +219,11 @@ export class SessionApi extends runtime.BaseAPI {
         requestParameters: ListSessionsOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<ListSessionsResponseV1>> {
-        if (requestParameters["trinsicAuthorization"] == null) {
-            throw new runtime.RequiredError(
-                "trinsicAuthorization",
-                'Required parameter "trinsicAuthorization" was null or undefined when calling listSessions().',
-            );
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters["Content-Type"] = "application/json";
-
-        if (requestParameters["trinsicAuthorization"] != null) {
-            headerParameters["TrinsicAuthorization"] = String(
-                requestParameters["trinsicAuthorization"],
-            );
-        }
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -310,7 +254,7 @@ export class SessionApi extends runtime.BaseAPI {
     /**
      */
     async listSessions(
-        requestParameters: ListSessionsOperationRequest,
+        requestParameters: ListSessionsOperationRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<ListSessionsResponseV1> {
         const response = await this.listSessionsRaw(

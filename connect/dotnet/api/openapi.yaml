@@ -12,16 +12,6 @@ paths:
   /v1/sessions/list:
     post:
       operationId: ListSessions
-      parameters:
-      - description: Bearer token. Can be left empty on anonymous endpoints
-        explode: false
-        in: header
-        name: TrinsicAuthorization
-        required: true
-        schema:
-          default: 'Bearer '
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -79,15 +69,6 @@ paths:
           minLength: 5
           type: string
         style: form
-      - description: Bearer token. Can be left empty on anonymous endpoints
-        explode: false
-        in: header
-        name: TrinsicAuthorization
-        required: true
-        schema:
-          default: 'Bearer '
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -121,19 +102,9 @@ paths:
           description: Internal Server Error
       tags:
       - Session
-  /v1/sessions:
+  /v1/sessions/create:
     post:
       operationId: CreateSession
-      parameters:
-      - description: Bearer token. Can be left empty on anonymous endpoints
-        explode: false
-        in: header
-        name: TrinsicAuthorization
-        required: true
-        schema:
-          default: 'Bearer '
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
@@ -187,17 +158,10 @@ paths:
         name: sessionId
         required: false
         schema:
+          maxLength: 100
+          minLength: 5
           type: string
         style: form
-      - description: Bearer token. Can be left empty on anonymous endpoints
-        explode: false
-        in: header
-        name: TrinsicAuthorization
-        required: true
-        schema:
-          default: 'Bearer '
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -238,7 +202,7 @@ components:
       example:
         session:
           clientToken: clientToken
-          created: 6
+          created: 1
           failCode: SessionFailNone
           id: id
           state: IdvCreated
@@ -249,7 +213,7 @@ components:
               id: id
               state: VerificationPending
               type: GovernmentId
-              updated: 0
+              updated: 6
               reused: true
               normalizedGovernmentIdData:
                 country: country
@@ -269,7 +233,7 @@ components:
                 idNumber: true
                 issueDate: true
                 expirationDate: true
-          updated: 1
+          updated: 5
       properties:
         session:
           $ref: '#/components/schemas/Session'
@@ -312,7 +276,7 @@ components:
       example:
         session:
           clientToken: clientToken
-          created: 6
+          created: 1
           failCode: SessionFailNone
           id: id
           state: IdvCreated
@@ -323,7 +287,7 @@ components:
               id: id
               state: VerificationPending
               type: GovernmentId
-              updated: 0
+              updated: 6
               reused: true
               normalizedGovernmentIdData:
                 country: country
@@ -343,7 +307,7 @@ components:
                 idNumber: true
                 issueDate: true
                 expirationDate: true
-          updated: 1
+          updated: 5
       properties:
         session:
           $ref: '#/components/schemas/Session'
@@ -373,7 +337,7 @@ components:
       example:
         session:
           clientToken: clientToken
-          created: 6
+          created: 1
           failCode: SessionFailNone
           id: id
           state: IdvCreated
@@ -384,7 +348,7 @@ components:
               id: id
               state: VerificationPending
               type: GovernmentId
-              updated: 0
+              updated: 6
               reused: true
               normalizedGovernmentIdData:
                 country: country
@@ -404,7 +368,7 @@ components:
                 idNumber: true
                 issueDate: true
                 expirationDate: true
-          updated: 1
+          updated: 5
       properties:
         session:
           $ref: '#/components/schemas/Session'
@@ -476,9 +440,10 @@ components:
     ListSessionsResponseV1:
       additionalProperties: false
       example:
+        total: 0
         sessions:
         - clientToken: clientToken
-          created: 6
+          created: 1
           failCode: SessionFailNone
           id: id
           state: IdvCreated
@@ -489,7 +454,7 @@ components:
               id: id
               state: VerificationPending
               type: GovernmentId
-              updated: 0
+              updated: 6
               reused: true
               normalizedGovernmentIdData:
                 country: country
@@ -509,9 +474,9 @@ components:
                 idNumber: true
                 issueDate: true
                 expirationDate: true
-          updated: 1
+          updated: 5
         - clientToken: clientToken
-          created: 6
+          created: 1
           failCode: SessionFailNone
           id: id
           state: IdvCreated
@@ -522,7 +487,7 @@ components:
               id: id
               state: VerificationPending
               type: GovernmentId
-              updated: 0
+              updated: 6
               reused: true
               normalizedGovernmentIdData:
                 country: country
@@ -542,8 +507,14 @@ components:
                 idNumber: true
                 issueDate: true
                 expirationDate: true
-          updated: 1
+          updated: 5
+        more: true
       properties:
+        total:
+          format: int32
+          type: integer
+        more:
+          type: boolean
         sessions:
           items:
             $ref: '#/components/schemas/Session'
@@ -615,7 +586,7 @@ components:
       additionalProperties: false
       example:
         clientToken: clientToken
-        created: 6
+        created: 1
         failCode: SessionFailNone
         id: id
         state: IdvCreated
@@ -626,7 +597,7 @@ components:
             id: id
             state: VerificationPending
             type: GovernmentId
-            updated: 0
+            updated: 6
             reused: true
             normalizedGovernmentIdData:
               country: country
@@ -646,7 +617,7 @@ components:
               idNumber: true
               issueDate: true
               expirationDate: true
-        updated: 1
+        updated: 5
       properties:
         id:
           nullable: true
@@ -714,7 +685,7 @@ components:
         id: id
         state: VerificationPending
         type: GovernmentId
-        updated: 0
+        updated: 6
         reused: true
         normalizedGovernmentIdData:
           country: country

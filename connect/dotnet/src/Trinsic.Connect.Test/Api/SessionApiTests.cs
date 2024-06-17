@@ -53,9 +53,8 @@ public class SessionApiTests : IDisposable
     public void CancelSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.CancelSession(trinsicAuthorization, sessionId);
+        //var response = instance.CancelSession(sessionId);
         //Assert.IsType<CancelSessionResponse>(response);
     }
 
@@ -66,9 +65,8 @@ public class SessionApiTests : IDisposable
     public void CreateSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //CreateSessionRequest? createSessionRequest = null;
-        //var response = instance.CreateSession(trinsicAuthorization, createSessionRequest);
+        //var response = instance.CreateSession(createSessionRequest);
         //Assert.IsType<CreateSessionResponse>(response);
     }
 
@@ -79,9 +77,8 @@ public class SessionApiTests : IDisposable
     public void GetSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //string? sessionId = null;
-        //var response = instance.GetSession(trinsicAuthorization, sessionId);
+        //var response = instance.GetSession(sessionId);
         //Assert.IsType<GetSessionResponseV1>(response);
     }
 
@@ -92,9 +89,8 @@ public class SessionApiTests : IDisposable
     public void ListSessionsTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string trinsicAuthorization = null;
         //ListSessionsRequest? listSessionsRequest = null;
-        //var response = instance.ListSessions(trinsicAuthorization, listSessionsRequest);
+        //var response = instance.ListSessions(listSessionsRequest);
         //Assert.IsType<ListSessionsResponseV1>(response);
     }
 }

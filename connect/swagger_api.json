@@ -18,19 +18,6 @@
           "Session"
         ],
         "operationId": "ListSessions",
-        "parameters": [
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -118,17 +105,6 @@
               "minLength": 5,
               "type": "string"
             }
-          },
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
-            }
           }
         ],
         "responses": {
@@ -184,25 +160,12 @@
         }
       }
     },
-    "/v1/sessions": {
+    "/v1/sessions/create": {
       "post": {
         "tags": [
           "Session"
         ],
         "operationId": "CreateSession",
-        "parameters": [
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -286,18 +249,9 @@
             "name": "sessionId",
             "in": "query",
             "schema": {
+              "maxLength": 100,
+              "minLength": 5,
               "type": "string"
-            }
-          },
-          {
-            "name": "TrinsicAuthorization",
-            "in": "header",
-            "description": "Bearer token. Can be left empty on anonymous endpoints",
-            "required": true,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "string",
-              "default": "Bearer "
             }
           }
         ],
@@ -496,6 +450,13 @@
       "ListSessionsResponseV1": {
         "type": "object",
         "properties": {
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "more": {
+            "type": "boolean"
+          },
           "sessions": {
             "type": "array",
             "items": {

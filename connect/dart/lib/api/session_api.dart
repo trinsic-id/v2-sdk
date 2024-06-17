@@ -19,12 +19,8 @@ class SessionApi {
   /// Performs an HTTP 'POST /v1/sessions/cancel' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [String] sessionId:
-  Future<Response> cancelSessionWithHttpInfo(
-    String trinsicAuthorization, {
+  Future<Response> cancelSessionWithHttpInfo({
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
@@ -41,9 +37,6 @@ class SessionApi {
       queryParams.addAll(_queryParams('', 'sessionId', sessionId));
     }
 
-    headerParams[r'TrinsicAuthorization'] =
-        parameterToString(trinsicAuthorization);
-
     const contentTypes = <String>[];
 
     return apiClient.invokeAPI(
@@ -59,16 +52,11 @@ class SessionApi {
 
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [String] sessionId:
-  Future<CancelSessionResponse?> cancelSession(
-    String trinsicAuthorization, {
+  Future<CancelSessionResponse?> cancelSession({
     String? sessionId,
   }) async {
     final response = await cancelSessionWithHttpInfo(
-      trinsicAuthorization,
       sessionId: sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -87,19 +75,15 @@ class SessionApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /v1/sessions' operation and returns the [Response].
+  /// Performs an HTTP 'POST /v1/sessions/create' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<Response> createSessionWithHttpInfo(
-    String trinsicAuthorization, {
+  Future<Response> createSessionWithHttpInfo({
     CreateSessionRequest? createSessionRequest,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/sessions';
+    final path = r'/v1/sessions/create';
 
     // ignore: prefer_final_locals
     Object? postBody = createSessionRequest;
@@ -107,9 +91,6 @@ class SessionApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    headerParams[r'TrinsicAuthorization'] =
-        parameterToString(trinsicAuthorization);
 
     const contentTypes = <String>[
       'application/json',
@@ -130,16 +111,11 @@ class SessionApi {
 
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [CreateSessionRequest] createSessionRequest:
-  Future<CreateSessionResponse?> createSession(
-    String trinsicAuthorization, {
+  Future<CreateSessionResponse?> createSession({
     CreateSessionRequest? createSessionRequest,
   }) async {
     final response = await createSessionWithHttpInfo(
-      trinsicAuthorization,
       createSessionRequest: createSessionRequest,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -161,12 +137,8 @@ class SessionApi {
   /// Performs an HTTP 'GET /v1/sessions/get' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [String] sessionId:
-  Future<Response> getSessionWithHttpInfo(
-    String trinsicAuthorization, {
+  Future<Response> getSessionWithHttpInfo({
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
@@ -183,9 +155,6 @@ class SessionApi {
       queryParams.addAll(_queryParams('', 'sessionId', sessionId));
     }
 
-    headerParams[r'TrinsicAuthorization'] =
-        parameterToString(trinsicAuthorization);
-
     const contentTypes = <String>[];
 
     return apiClient.invokeAPI(
@@ -201,16 +170,11 @@ class SessionApi {
 
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [String] sessionId:
-  Future<GetSessionResponseV1?> getSession(
-    String trinsicAuthorization, {
+  Future<GetSessionResponseV1?> getSession({
     String? sessionId,
   }) async {
     final response = await getSessionWithHttpInfo(
-      trinsicAuthorization,
       sessionId: sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -232,12 +196,8 @@ class SessionApi {
   /// Performs an HTTP 'POST /v1/sessions/list' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [ListSessionsRequest] listSessionsRequest:
-  Future<Response> listSessionsWithHttpInfo(
-    String trinsicAuthorization, {
+  Future<Response> listSessionsWithHttpInfo({
     ListSessionsRequest? listSessionsRequest,
   }) async {
     // ignore: prefer_const_declarations
@@ -249,9 +209,6 @@ class SessionApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    headerParams[r'TrinsicAuthorization'] =
-        parameterToString(trinsicAuthorization);
 
     const contentTypes = <String>[
       'application/json',
@@ -272,16 +229,11 @@ class SessionApi {
 
   /// Parameters:
   ///
-  /// * [String] trinsicAuthorization (required):
-  ///   Bearer token. Can be left empty on anonymous endpoints
-  ///
   /// * [ListSessionsRequest] listSessionsRequest:
-  Future<ListSessionsResponseV1?> listSessions(
-    String trinsicAuthorization, {
+  Future<ListSessionsResponseV1?> listSessions({
     ListSessionsRequest? listSessionsRequest,
   }) async {
     final response = await listSessionsWithHttpInfo(
-      trinsicAuthorization,
       listSessionsRequest: listSessionsRequest,
     );
     if (response.statusCode >= HttpStatus.badRequest) {

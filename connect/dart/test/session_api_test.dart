@@ -16,22 +16,22 @@ void main() {
   // final instance = SessionApi();
 
   group('tests for SessionApi', () {
-    //Future<CancelSessionResponse> cancelSession(String trinsicAuthorization, { String sessionId }) async
+    //Future<CancelSessionResponse> cancelSession({ String sessionId }) async
     test('test cancelSession', () async {
       // TODO
     });
 
-    //Future<CreateSessionResponse> createSession(String trinsicAuthorization, { CreateSessionRequest createSessionRequest }) async
+    //Future<CreateSessionResponse> createSession({ CreateSessionRequest createSessionRequest }) async
     test('test createSession', () async {
       // TODO
     });
 
-    //Future<GetSessionResponseV1> getSession(String trinsicAuthorization, { String sessionId }) async
+    //Future<GetSessionResponseV1> getSession({ String sessionId }) async
     test('test getSession', () async {
       // TODO
     });
 
-    //Future<ListSessionsResponseV1> listSessions(String trinsicAuthorization, { ListSessionsRequest listSessionsRequest }) async
+    //Future<ListSessionsResponseV1> listSessions({ ListSessionsRequest listSessionsRequest }) async
     test('test listSessions', () async {
       // TODO
     });

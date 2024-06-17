@@ -113,12 +113,11 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
-            var trinsicAuthorization = "\"Bearer \"";  // string | Bearer token. Can be left empty on anonymous endpoints (default to "Bearer ")
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
             {
-                CancelSessionResponse result = apiInstance.CancelSession(trinsicAuthorization, sessionId);
+                CancelSessionResponse result = apiInstance.CancelSession(sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -141,7 +140,7 @@ All URIs are relative to *https://connect-api.trinsic.id*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SessionApi* | [**CancelSession**](docs/SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**CreateSession**](docs/SessionApi.md#createsession) | **POST** /v1/sessions | 
+*SessionApi* | [**CreateSession**](docs/SessionApi.md#createsession) | **POST** /v1/sessions/create | 
 *SessionApi* | [**GetSession**](docs/SessionApi.md#getsession) | **GET** /v1/sessions/get | 
 *SessionApi* | [**ListSessions**](docs/SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 

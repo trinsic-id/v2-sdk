@@ -48,11 +48,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionApi();
-final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer token. Can be left empty on anonymous endpoints
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.cancelSession(trinsicAuthorization, sessionId);
+    final result = api_instance.cancelSession(sessionId);
     print(result);
 } catch (e) {
     print('Exception when calling SessionApi->cancelSession: $e\n');
@@ -67,7 +66,7 @@ All URIs are relative to *https://connect-api.trinsic.id*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SessionApi* | [**cancelSession**](doc//SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**createSession**](doc//SessionApi.md#createsession) | **POST** /v1/sessions | 
+*SessionApi* | [**createSession**](doc//SessionApi.md#createsession) | **POST** /v1/sessions/create | 
 *SessionApi* | [**getSession**](doc//SessionApi.md#getsession) | **GET** /v1/sessions/get | 
 *SessionApi* | [**listSessions**](doc//SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 

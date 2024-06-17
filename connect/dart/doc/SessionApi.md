@@ -10,13 +10,13 @@ All URIs are relative to *https://connect-api.trinsic.id*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions | 
+[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions/create | 
 [**getSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get | 
 [**listSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
 # **cancelSession**
-> CancelSessionResponse cancelSession(trinsicAuthorization, sessionId)
+> CancelSessionResponse cancelSession(sessionId)
 
 
 
@@ -31,11 +31,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionApi();
-final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer token. Can be left empty on anonymous endpoints
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.cancelSession(trinsicAuthorization, sessionId);
+    final result = api_instance.cancelSession(sessionId);
     print(result);
 } catch (e) {
     print('Exception when calling SessionApi->cancelSession: $e\n');
@@ -46,7 +45,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **trinsicAuthorization** | **String**| Bearer token. Can be left empty on anonymous endpoints | [default to 'Bearer ']
  **sessionId** | **String**|  | [optional] 
 
 ### Return type
@@ -65,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createSession**
-> CreateSessionResponse createSession(trinsicAuthorization, createSessionRequest)
+> CreateSessionResponse createSession(createSessionRequest)
 
 
 
@@ -80,11 +78,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionApi();
-final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer token. Can be left empty on anonymous endpoints
 final createSessionRequest = CreateSessionRequest(); // CreateSessionRequest | 
 
 try {
-    final result = api_instance.createSession(trinsicAuthorization, createSessionRequest);
+    final result = api_instance.createSession(createSessionRequest);
     print(result);
 } catch (e) {
     print('Exception when calling SessionApi->createSession: $e\n');
@@ -95,7 +92,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **trinsicAuthorization** | **String**| Bearer token. Can be left empty on anonymous endpoints | [default to 'Bearer ']
  **createSessionRequest** | [**CreateSessionRequest**](CreateSessionRequest.md)|  | [optional] 
 
 ### Return type
@@ -114,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getSession**
-> GetSessionResponseV1 getSession(trinsicAuthorization, sessionId)
+> GetSessionResponseV1 getSession(sessionId)
 
 
 
@@ -129,11 +125,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionApi();
-final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer token. Can be left empty on anonymous endpoints
 final sessionId = sessionId_example; // String | 
 
 try {
-    final result = api_instance.getSession(trinsicAuthorization, sessionId);
+    final result = api_instance.getSession(sessionId);
     print(result);
 } catch (e) {
     print('Exception when calling SessionApi->getSession: $e\n');
@@ -144,7 +139,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **trinsicAuthorization** | **String**| Bearer token. Can be left empty on anonymous endpoints | [default to 'Bearer ']
  **sessionId** | **String**|  | [optional] 
 
 ### Return type
@@ -163,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listSessions**
-> ListSessionsResponseV1 listSessions(trinsicAuthorization, listSessionsRequest)
+> ListSessionsResponseV1 listSessions(listSessionsRequest)
 
 
 
@@ -178,11 +172,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionApi();
-final trinsicAuthorization = trinsicAuthorization_example; // String | Bearer token. Can be left empty on anonymous endpoints
 final listSessionsRequest = ListSessionsRequest(); // ListSessionsRequest | 
 
 try {
-    final result = api_instance.listSessions(trinsicAuthorization, listSessionsRequest);
+    final result = api_instance.listSessions(listSessionsRequest);
     print(result);
 } catch (e) {
     print('Exception when calling SessionApi->listSessions: $e\n');
@@ -193,7 +186,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **trinsicAuthorization** | **String**| Bearer token. Can be left empty on anonymous endpoints | [default to 'Bearer ']
  **listSessionsRequest** | [**ListSessionsRequest**](ListSessionsRequest.md)|  | [optional] 
 
 ### Return type

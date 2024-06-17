@@ -16,6 +16,16 @@ void main() {
   // final instance = ListSessionsResponseV1();
 
   group('test ListSessionsResponseV1', () {
+    // int total
+    test('to test the property `total`', () async {
+      // TODO
+    });
+
+    // bool more
+    test('to test the property `more`', () async {
+      // TODO
+    });
+
     // List<Session> sessions (default value: const [])
     test('to test the property `sessions`', () async {
       // TODO
