@@ -16,7 +16,7 @@ function getAccessToken() {
 }
 
 const basePath = "https://dev-connect-api.trinsic.id";
-const baseConnect = "https://dev-connect.trinsic.cloud";
+const baseConnect = "https://dev-connect.trinsic.id";
 const connectApi = new SessionApi(new Configuration({accessToken: getAccessToken(), basePath: basePath}));
 
 router.post('/create-session', async (req: Request, res: Response) => {
