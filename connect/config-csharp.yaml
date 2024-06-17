@@ -7,7 +7,7 @@ additionalProperties:
   packageAuthors: Trinsic
   packageDescription: Trinsic Connect SDK
   packageRepositoryUrl: https://github.com/trinsic-id/sdk.git
-  packageGuid: eae0c21a-20c5-476c-b681-16260b12bf24 # This prevents `openapi-generator-cli` from generating a new GUID each time
+  packageGuid: "{EAE0C21A-20C5-476C-B681-16260B12BF24}" # This prevents `openapi-generator-cli` from generating a new GUID each time
   netCoreProjectFile: true
   optionalProjectFile: true
   library: httpclient
