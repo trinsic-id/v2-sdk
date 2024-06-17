@@ -6,25 +6,25 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import {CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT} from "@/app/(tabs)/SECRET";
-import {makeRedirectUri, useAuthRequest} from "expo-auth-session";
+import {DiscoveryDocument, makeRedirectUri, useAuthRequest} from "expo-auth-session";
 import React from "react";
+import {AuthRequestConfig} from "expo-auth-session/src/AuthRequest.types";
 
 
 // TODO - Do we want hard-coded dev?
-// var redirectUri = "https://mewmba.ngrok.dev/connect/mobilecomplete";
-const redirectUriScheme = "dev.ngrok.mewmba";
+const redirectUriScheme = "exp";
 const redirectUri = `${redirectUriScheme}://mobilecomplete`;
 const url =
     `https://mewmba.ngrok.dev/connect/launch-test?idvProviderSelection=trinsicfake&authToken=${encodeURIComponent(CONNECT_RP_AUTH_TOKEN_DO_NOT_COMMIT)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
 
 
-const config = {
-    redirectUri: makeRedirectUri({scheme: redirectUriScheme, path: "mobilecomplete", native: redirectUri}),
-    clientId: "id.trinsic.connect",
+const config: AuthRequestConfig = {
+    redirectUri: makeRedirectUri({scheme: redirectUriScheme}),
+    clientId: "N/A",
     scopes: ['N/A'],
     clientSecret: "N/A"
 };
-const discovery = {
+const discovery:DiscoveryDocument = {
     authorizationEndpoint: url
 };
 
@@ -54,12 +54,12 @@ export default function HomeScreen() {
         <ThemedText type="title">Open Trinsic Connect</ThemedText>
         <HelloWave />
       </ThemedView>
-        <Button title="Connect Wallet" onPress={() => {
+        <Button title="Login Connect" onPress={() => {
             console.log('Prompting Login');
-            promptAsync().then((result) => {
+            promptAsync({ url: url}).then((result) => {
                 console.log('Prompt Result:', result);
             });
-        }} />
+        }} disabled={!request} />
     </ParallaxScrollView>
   );
 }
