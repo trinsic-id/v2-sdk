@@ -1,4 +1,4 @@
-## @trinsic/connect@0.0.3
+## @trinsic/connect@0.0.4
 
 This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
@@ -40,7 +40,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @trinsic/connect@0.0.3 --save
+npm install @trinsic/connect@0.0.4 --save
 ```
 
 _unPublished (not recommended):_
