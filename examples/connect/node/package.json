@@ -10,7 +10,7 @@
   "license": "MIT",
     "dependencies": {
         "express": "4.19.2",
-        "@trinsic/connect": "0.0.3"
+        "@trinsic/connect": "0.0.4"
     },
     "devDependencies": {
         "@types/node": "20.14.2",

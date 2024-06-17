@@ -1,3 +1,4 @@
+// @ts-ignore
 import express from 'express';
 import connectRoutes from './src/routes';
 
