@@ -24,13 +24,13 @@ export interface ValidationResult {
      * @type {Array<string>}
      * @memberof ValidationResult
      */
-    readonly memberNames?: Array<string>;
+    readonly memberNames?: Array<string> | null;
     /**
      *
      * @type {string}
      * @memberof ValidationResult
      */
-    errorMessage?: string;
+    errorMessage?: string | null;
 }
 
 /**
