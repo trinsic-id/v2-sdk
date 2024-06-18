@@ -333,8 +333,7 @@
             },
             "nullable": true
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CreateSessionResponse": {
         "required": [
