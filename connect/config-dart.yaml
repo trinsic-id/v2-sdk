@@ -4,3 +4,4 @@ additionalProperties:
   pubName: TrinsicConnect
 #  pubShortDescription:
   pubVersion: 0.0.1
+  disallowAdditionalPropertiesIfNotPresent: false
