@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Trinsic.Connect.Model;
 
@@ -26,6 +27,7 @@ public partial class CreateSessionRequest
     public CreateSessionRequest(List<RequestedVerification> verifications = default(List<RequestedVerification>))
     {
         Verifications = verifications;
+        AdditionalProperties = new Dictionary<string, object>();
     }
 
     /// <summary>
@@ -33,6 +35,12 @@ public partial class CreateSessionRequest
     /// </summary>
     [DataMember(Name = "verifications", EmitDefaultValue = true)]
     public List<RequestedVerification> Verifications { get; set; }
+
+    /// <summary>
+    /// Gets or Sets additional properties
+    /// </summary>
+    [JsonExtensionData]
+    public IDictionary<string, object> AdditionalProperties { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -43,6 +51,7 @@ public partial class CreateSessionRequest
         var sb = new StringBuilder();
         sb.Append("class CreateSessionRequest {\n");
         sb.Append("  Verifications: ").Append(Verifications).Append("\n");
+        sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }
