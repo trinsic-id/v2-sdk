@@ -11,10 +11,6 @@ on:
 
 jobs:
   build_test:
-    strategy:
-      matrix:
-        swagger_json: ['connect/swagger_api.json']
-        language: [['dart', 'connect/dart']]
     name: Build
     runs-on: ubuntu-latest
     steps:
