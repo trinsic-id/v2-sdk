@@ -241,7 +241,6 @@ components:
       - session
       type: object
     CreateSessionRequest:
-      additionalProperties: false
       example:
         verifications:
         - type: GovernmentId
