@@ -334,7 +334,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       },
       "CreateSessionResponse": {
         "required": [

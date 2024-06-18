@@ -14,3 +14,4 @@ additionalProperties:
   validatable: false
   optionalAssemblyInfo: true
   targetFramework: net8.0
+  disallowAdditionalPropertiesIfNotPresent: false

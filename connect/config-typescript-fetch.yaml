@@ -4,3 +4,4 @@ additionalProperties:
   npmName: "@trinsic/connect"
   npmVersion: "0.0.4"
   npmAuthor: "Trinsic"
+  disallowAdditionalPropertiesIfNotPresent: false

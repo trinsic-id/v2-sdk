@@ -43,13 +43,13 @@ export interface Session {
      * @type {string}
      * @memberof Session
      */
-    id?: string | null;
+    id?: string;
     /**
      *
      * @type {string}
      * @memberof Session
      */
-    clientToken?: string | null;
+    clientToken?: string;
     /**
      *
      * @type {IDVSessionState}
@@ -61,7 +61,7 @@ export interface Session {
      * @type {{ [key: string]: Verification; }}
      * @memberof Session
      */
-    verifications?: { [key: string]: Verification } | null;
+    verifications?: { [key: string]: Verification };
     /**
      *
      * @type {SessionFailCode}
@@ -73,7 +73,7 @@ export interface Session {
      * @type {string}
      * @memberof Session
      */
-    resultVp?: string | null;
+    resultVp?: string;
     /**
      *
      * @type {number}

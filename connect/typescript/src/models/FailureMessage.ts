@@ -24,7 +24,7 @@ export interface FailureMessage {
      * @type {string}
      * @memberof FailureMessage
      */
-    message?: string | null;
+    message?: string;
 }
 
 /**

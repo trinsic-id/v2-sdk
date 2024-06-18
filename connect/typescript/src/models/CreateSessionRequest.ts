@@ -26,12 +26,13 @@ import {
  * @interface CreateSessionRequest
  */
 export interface CreateSessionRequest {
+    [key: string]: any | any;
     /**
      *
      * @type {Array<RequestedVerification>}
      * @memberof CreateSessionRequest
      */
-    verifications?: Array<RequestedVerification> | null;
+    verifications?: Array<RequestedVerification>;
 }
 
 /**
@@ -55,6 +56,7 @@ export function CreateSessionRequestFromJSONTyped(
         return json;
     }
     return {
+        ...json,
         verifications:
             json["verifications"] == null
                 ? undefined
@@ -71,6 +73,7 @@ export function CreateSessionRequestToJSON(
         return value;
     }
     return {
+        ...value,
         verifications:
             value["verifications"] == null
                 ? undefined
