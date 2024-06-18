@@ -43,7 +43,7 @@ export interface ListSessionsResponseV1 {
      * @type {Array<Session>}
      * @memberof ListSessionsResponseV1
      */
-    sessions?: Array<Session>;
+    sessions?: Array<Session> | null;
 }
 
 /**

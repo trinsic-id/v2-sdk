@@ -24,49 +24,49 @@ export interface NormalizedGovernmentIdData {
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    idNumber?: string;
+    idNumber?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    givenName?: string;
+    givenName?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    familyName?: string;
+    familyName?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    address?: string;
+    address?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    dateOfBirth?: string;
+    dateOfBirth?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    country?: string;
+    country?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    issueDate?: string;
+    issueDate?: string | null;
     /**
      *
      * @type {string}
      * @memberof NormalizedGovernmentIdData
      */
-    expirationDate?: string;
+    expirationDate?: string | null;
 }
 
 /**
