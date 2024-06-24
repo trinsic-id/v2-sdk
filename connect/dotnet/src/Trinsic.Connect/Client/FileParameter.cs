@@ -11,7 +11,6 @@ using System.IO;
 
 namespace Trinsic.Connect.Client;
 
-
 /// <summary>
 /// Represents a File passed to the API as a Parameter, allows using different backends for files
 /// </summary>
