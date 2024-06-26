@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Reused** | **bool** |  | [optional] 
 **Updated** | **long** |  | [optional] 
 **GovernmentIdOptions** | [**GovernmentIDOptions**](GovernmentIDOptions.md) |  | [optional] 
-**NormalizedGovernmentIdData** | [**NormalizedGovernmentIdData**](NormalizedGovernmentIdData.md) |  | [optional] 
+**NormalizedGovernmentIdData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

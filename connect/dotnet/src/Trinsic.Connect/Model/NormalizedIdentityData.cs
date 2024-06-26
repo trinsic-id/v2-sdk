@@ -13,13 +13,13 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// NormalizedGovernmentIdData
+/// NormalizedIdentityData
 /// </summary>
-[DataContract(Name = "NormalizedGovernmentIdData")]
-public partial class NormalizedGovernmentIdData
+[DataContract(Name = "NormalizedIdentityData")]
+public partial class NormalizedIdentityData
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="NormalizedGovernmentIdData" /> class.
+    /// Initializes a new instance of the <see cref="NormalizedIdentityData" /> class.
     /// </summary>
     /// <param name="idNumber">idNumber.</param>
     /// <param name="givenName">givenName.</param>
@@ -29,7 +29,7 @@ public partial class NormalizedGovernmentIdData
     /// <param name="country">country.</param>
     /// <param name="issueDate">issueDate.</param>
     /// <param name="expirationDate">expirationDate.</param>
-    public NormalizedGovernmentIdData(string idNumber = default(string), string givenName = default(string), string familyName = default(string), string address = default(string), string dateOfBirth = default(string), string country = default(string), string issueDate = default(string), string expirationDate = default(string))
+    public NormalizedIdentityData(string idNumber = default(string), string givenName = default(string), string familyName = default(string), string address = default(string), string dateOfBirth = default(string), string country = default(string), string issueDate = default(string), string expirationDate = default(string))
     {
         IdNumber = idNumber;
         GivenName = givenName;
@@ -96,7 +96,7 @@ public partial class NormalizedGovernmentIdData
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class NormalizedGovernmentIdData {\n");
+        sb.Append("class NormalizedIdentityData {\n");
         sb.Append("  IdNumber: ").Append(IdNumber).Append("\n");
         sb.Append("  GivenName: ").Append(GivenName).Append("\n");
         sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
