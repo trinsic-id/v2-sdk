@@ -47,7 +47,7 @@ public partial class Verification
     /// <param name="updated">updated.</param>
     /// <param name="governmentIdOptions">governmentIdOptions.</param>
     /// <param name="normalizedGovernmentIdData">normalizedGovernmentIdData.</param>
-    public Verification(string id = default(string), VerificationType? type = default(VerificationType?), VerificationState? state = default(VerificationState?), VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), long updated = default(long), GovernmentIDOptions governmentIdOptions = default(GovernmentIDOptions), NormalizedGovernmentIdData normalizedGovernmentIdData = default(NormalizedGovernmentIdData))
+    public Verification(string id = default(string), VerificationType? type = default(VerificationType?), VerificationState? state = default(VerificationState?), VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), long updated = default(long), GovernmentIDOptions governmentIdOptions = default(GovernmentIDOptions), NormalizedIdentityData normalizedGovernmentIdData = default(NormalizedIdentityData))
     {
         Id = id;
         Type = type;
@@ -87,7 +87,7 @@ public partial class Verification
     /// Gets or Sets NormalizedGovernmentIdData
     /// </summary>
     [DataMember(Name = "normalizedGovernmentIdData", EmitDefaultValue = false)]
-    public NormalizedGovernmentIdData NormalizedGovernmentIdData { get; set; }
+    public NormalizedIdentityData NormalizedGovernmentIdData { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object

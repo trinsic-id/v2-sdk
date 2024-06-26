@@ -247,10 +247,10 @@ class ApiClient {
           return IDVSessionStateTypeTransformer().decode(value);
         case 'ListSessionsRequest':
           return ListSessionsRequest.fromJson(value);
-        case 'ListSessionsResponseV1':
-          return ListSessionsResponseV1.fromJson(value);
-        case 'NormalizedGovernmentIdData':
-          return NormalizedGovernmentIdData.fromJson(value);
+        case 'ListSessionsResponse':
+          return ListSessionsResponse.fromJson(value);
+        case 'NormalizedIdentityData':
+          return NormalizedIdentityData.fromJson(value);
         case 'OrderDirection':
           return OrderDirectionTypeTransformer().decode(value);
         case 'RequestedVerification':

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class NormalizedGovernmentIdData {
-  /// Returns a new [NormalizedGovernmentIdData] instance.
-  NormalizedGovernmentIdData({
+class NormalizedIdentityData {
+  /// Returns a new [NormalizedIdentityData] instance.
+  NormalizedIdentityData({
     this.idNumber,
     this.givenName,
     this.familyName,
@@ -42,7 +42,7 @@ class NormalizedGovernmentIdData {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NormalizedGovernmentIdData &&
+      other is NormalizedIdentityData &&
           other.idNumber == idNumber &&
           other.givenName == givenName &&
           other.familyName == familyName &&
@@ -66,7 +66,7 @@ class NormalizedGovernmentIdData {
 
   @override
   String toString() =>
-      'NormalizedGovernmentIdData[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'NormalizedIdentityData[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -113,10 +113,10 @@ class NormalizedGovernmentIdData {
     return json;
   }
 
-  /// Returns a new [NormalizedGovernmentIdData] instance and imports its values from
+  /// Returns a new [NormalizedIdentityData] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NormalizedGovernmentIdData? fromJson(dynamic value) {
+  static NormalizedIdentityData? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -126,14 +126,14 @@ class NormalizedGovernmentIdData {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "NormalizedGovernmentIdData[$key]" is missing from JSON.');
+              'Required key "NormalizedIdentityData[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "NormalizedGovernmentIdData[$key]" has a null value in JSON.');
+              'Required key "NormalizedIdentityData[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return NormalizedGovernmentIdData(
+      return NormalizedIdentityData(
         idNumber: mapValueOfType<String>(json, r'idNumber'),
         givenName: mapValueOfType<String>(json, r'givenName'),
         familyName: mapValueOfType<String>(json, r'familyName'),
@@ -147,14 +147,14 @@ class NormalizedGovernmentIdData {
     return null;
   }
 
-  static List<NormalizedGovernmentIdData> listFromJson(
+  static List<NormalizedIdentityData> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <NormalizedGovernmentIdData>[];
+    final result = <NormalizedIdentityData>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = NormalizedGovernmentIdData.fromJson(row);
+        final value = NormalizedIdentityData.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -163,12 +163,12 @@ class NormalizedGovernmentIdData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, NormalizedGovernmentIdData> mapFromJson(dynamic json) {
-    final map = <String, NormalizedGovernmentIdData>{};
+  static Map<String, NormalizedIdentityData> mapFromJson(dynamic json) {
+    final map = <String, NormalizedIdentityData>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = NormalizedGovernmentIdData.fromJson(entry.value);
+        final value = NormalizedIdentityData.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -177,17 +177,17 @@ class NormalizedGovernmentIdData {
     return map;
   }
 
-  // maps a json object with a list of NormalizedGovernmentIdData-objects as value to a dart map
-  static Map<String, List<NormalizedGovernmentIdData>> mapListFromJson(
+  // maps a json object with a list of NormalizedIdentityData-objects as value to a dart map
+  static Map<String, List<NormalizedIdentityData>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<NormalizedGovernmentIdData>>{};
+    final map = <String, List<NormalizedIdentityData>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = NormalizedGovernmentIdData.listFromJson(
+        map[entry.key] = NormalizedIdentityData.listFromJson(
           entry.value,
           growable: growable,
         );

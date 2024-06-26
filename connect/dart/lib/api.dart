@@ -28,7 +28,7 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
-part 'api/session_api.dart';
+part 'api/sessions_api.dart';
 
 part 'model/cancel_session_response.dart';
 part 'model/create_session_request.dart';
@@ -39,8 +39,8 @@ part 'model/get_session_response_v1.dart';
 part 'model/government_id_options.dart';
 part 'model/idv_session_state.dart';
 part 'model/list_sessions_request.dart';
-part 'model/list_sessions_response_v1.dart';
-part 'model/normalized_government_id_data.dart';
+part 'model/list_sessions_response.dart';
+part 'model/normalized_identity_data.dart';
 part 'model/order_direction.dart';
 part 'model/requested_verification.dart';
 part 'model/session.dart';

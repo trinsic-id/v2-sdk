@@ -1,4 +1,4 @@
-# Trinsic.Connect.Model.NormalizedGovernmentIdData
+# Trinsic.Connect.Model.NormalizedIdentityData
 
 ## Properties
 

@@ -47,14 +47,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionApi();
+final api_instance = SessionsApi();
 final sessionId = sessionId_example; // String | 
 
 try {
     final result = api_instance.cancelSession(sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->cancelSession: $e\n');
+    print('Exception when calling SessionsApi->cancelSession: $e\n');
 }
 
 ```
@@ -65,10 +65,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionApi* | [**cancelSession**](doc//SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**createSession**](doc//SessionApi.md#createsession) | **POST** /v1/sessions/create | 
-*SessionApi* | [**getSession**](doc//SessionApi.md#getsession) | **GET** /v1/sessions/get | 
-*SessionApi* | [**listSessions**](doc//SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
+*SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/cancel | 
+*SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions/create | 
+*SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/get | 
+*SessionsApi* | [**listSessions**](doc//SessionsApi.md#listsessions) | **POST** /api/v1/sessions/list | 
 
 
 ## Documentation For Models
@@ -82,8 +82,8 @@ Class | Method | HTTP request | Description
  - [GovernmentIDOptions](doc//GovernmentIDOptions.md)
  - [IDVSessionState](doc//IDVSessionState.md)
  - [ListSessionsRequest](doc//ListSessionsRequest.md)
- - [ListSessionsResponseV1](doc//ListSessionsResponseV1.md)
- - [NormalizedGovernmentIdData](doc//NormalizedGovernmentIdData.md)
+ - [ListSessionsResponse](doc//ListSessionsResponse.md)
+ - [NormalizedIdentityData](doc//NormalizedIdentityData.md)
  - [OrderDirection](doc//OrderDirection.md)
  - [RequestedVerification](doc//RequestedVerification.md)
  - [Session](doc//Session.md)

@@ -1,4 +1,4 @@
-# TrinsicConnect.api.SessionApi
+# TrinsicConnect.api.SessionsApi
 
 ## Load the API package
 ```dart
@@ -9,10 +9,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-[**createSession**](SessionApi.md#createsession) | **POST** /v1/sessions/create | 
-[**getSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get | 
-[**listSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
+[**cancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/cancel | 
+[**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions/create | 
+[**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/get | 
+[**listSessions**](SessionsApi.md#listsessions) | **POST** /api/v1/sessions/list | 
 
 
 # **cancelSession**
@@ -30,14 +30,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionApi();
+final api_instance = SessionsApi();
 final sessionId = sessionId_example; // String | 
 
 try {
     final result = api_instance.cancelSession(sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->cancelSession: $e\n');
+    print('Exception when calling SessionsApi->cancelSession: $e\n');
 }
 ```
 
@@ -77,14 +77,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionApi();
+final api_instance = SessionsApi();
 final createSessionRequest = CreateSessionRequest(); // CreateSessionRequest | 
 
 try {
     final result = api_instance.createSession(createSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->createSession: $e\n');
+    print('Exception when calling SessionsApi->createSession: $e\n');
 }
 ```
 
@@ -124,14 +124,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionApi();
+final api_instance = SessionsApi();
 final sessionId = sessionId_example; // String | 
 
 try {
     final result = api_instance.getSession(sessionId);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->getSession: $e\n');
+    print('Exception when calling SessionsApi->getSession: $e\n');
 }
 ```
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listSessions**
-> ListSessionsResponseV1 listSessions(listSessionsRequest)
+> ListSessionsResponse listSessions(listSessionsRequest)
 
 
 
@@ -171,14 +171,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionApi();
+final api_instance = SessionsApi();
 final listSessionsRequest = ListSessionsRequest(); // ListSessionsRequest | 
 
 try {
     final result = api_instance.listSessions(listSessionsRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionApi->listSessions: $e\n');
+    print('Exception when calling SessionsApi->listSessions: $e\n');
 }
 ```
 
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListSessionsResponseV1**](ListSessionsResponseV1.md)
+[**ListSessionsResponse**](ListSessionsResponse.md)
 
 ### Authorization
 
