@@ -15,7 +15,7 @@
     "/v1/sessions/list": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "ListSessions",
         "requestBody": {
@@ -93,7 +93,7 @@
     "/v1/sessions/get": {
       "get": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "GetSession",
         "parameters": [
@@ -163,7 +163,7 @@
     "/v1/sessions/create": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "CreateSession",
         "requestBody": {
@@ -241,7 +241,7 @@
     "/v1/sessions/cancel": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "CancelSession",
         "parameters": [
@@ -466,7 +466,7 @@
         },
         "additionalProperties": false
       },
-      "NormalizedGovernmentIdData": {
+      "NormalizedIdentityData": {
         "type": "object",
         "properties": {
           "idNumber": {
@@ -627,7 +627,7 @@
             "$ref": "#/components/schemas/GovernmentIDOptions"
           },
           "normalizedGovernmentIdData": {
-            "$ref": "#/components/schemas/NormalizedGovernmentIdData"
+            "$ref": "#/components/schemas/NormalizedIdentityData"
           }
         },
         "additionalProperties": false
