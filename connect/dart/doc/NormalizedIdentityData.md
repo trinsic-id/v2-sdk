@@ -1,4 +1,4 @@
-# TrinsicConnect.model.NormalizedGovernmentIdData
+# TrinsicConnect.model.NormalizedIdentityData
 
 ## Load the model package
 ```dart

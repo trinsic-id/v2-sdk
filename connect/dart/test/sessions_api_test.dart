@@ -11,11 +11,11 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-/// tests for SessionApi
+/// tests for SessionsApi
 void main() {
-  // final instance = SessionApi();
+  // final instance = SessionsApi();
 
-  group('tests for SessionApi', () {
+  group('tests for SessionsApi', () {
     //Future<CancelSessionResponse> cancelSession({ String sessionId }) async
     test('test cancelSession', () async {
       // TODO
@@ -31,7 +31,7 @@ void main() {
       // TODO
     });
 
-    //Future<ListSessionsResponseV1> listSessions({ ListSessionsRequest listSessionsRequest }) async
+    //Future<ListSessionsResponse> listSessions({ ListSessionsRequest listSessionsRequest }) async
     test('test listSessions', () async {
       // TODO
     });

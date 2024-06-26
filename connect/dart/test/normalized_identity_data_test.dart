@@ -11,11 +11,11 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for NormalizedGovernmentIdData
+// tests for NormalizedIdentityData
 void main() {
-  // final instance = NormalizedGovernmentIdData();
+  // final instance = NormalizedIdentityData();
 
-  group('test NormalizedGovernmentIdData', () {
+  group('test NormalizedIdentityData', () {
     // String idNumber
     test('to test the property `idNumber`', () async {
       // TODO

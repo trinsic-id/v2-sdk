@@ -11,11 +11,16 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for ListSessionsResponseV1
+// tests for ListSessionsResponse
 void main() {
-  // final instance = ListSessionsResponseV1();
+  // final instance = ListSessionsResponse();
 
-  group('test ListSessionsResponseV1', () {
+  group('test ListSessionsResponse', () {
+    // List<Session> sessions (default value: const [])
+    test('to test the property `sessions`', () async {
+      // TODO
+    });
+
     // int total
     test('to test the property `total`', () async {
       // TODO
@@ -23,11 +28,6 @@ void main() {
 
     // bool more
     test('to test the property `more`', () async {
-      // TODO
-    });
-
-    // List<Session> sessions (default value: const [])
-    test('to test the property `sessions`', () async {
       // TODO
     });
   });

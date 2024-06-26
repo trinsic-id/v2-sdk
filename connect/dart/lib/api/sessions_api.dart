@@ -10,13 +10,13 @@
 
 part of openapi.api;
 
-class SessionApi {
-  SessionApi([ApiClient? apiClient])
+class SessionsApi {
+  SessionsApi([ApiClient? apiClient])
       : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /v1/sessions/cancel' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions/cancel' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] sessionId:
@@ -24,7 +24,7 @@ class SessionApi {
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/sessions/cancel';
+    final path = r'/api/v1/sessions/cancel';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -75,7 +75,7 @@ class SessionApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /v1/sessions/create' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions/create' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -83,7 +83,7 @@ class SessionApi {
     CreateSessionRequest? createSessionRequest,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/sessions/create';
+    final path = r'/api/v1/sessions/create';
 
     // ignore: prefer_final_locals
     Object? postBody = createSessionRequest;
@@ -134,7 +134,7 @@ class SessionApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /v1/sessions/get' operation and returns the [Response].
+  /// Performs an HTTP 'GET /api/v1/sessions/get' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] sessionId:
@@ -142,7 +142,7 @@ class SessionApi {
     String? sessionId,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/sessions/get';
+    final path = r'/api/v1/sessions/get';
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -193,7 +193,7 @@ class SessionApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /v1/sessions/list' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions/list' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [ListSessionsRequest] listSessionsRequest:
@@ -201,7 +201,7 @@ class SessionApi {
     ListSessionsRequest? listSessionsRequest,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/v1/sessions/list';
+    final path = r'/api/v1/sessions/list';
 
     // ignore: prefer_final_locals
     Object? postBody = listSessionsRequest;
@@ -230,7 +230,7 @@ class SessionApi {
   /// Parameters:
   ///
   /// * [ListSessionsRequest] listSessionsRequest:
-  Future<ListSessionsResponseV1?> listSessions({
+  Future<ListSessionsResponse?> listSessions({
     ListSessionsRequest? listSessionsRequest,
   }) async {
     final response = await listSessionsWithHttpInfo(
@@ -246,8 +246,8 @@ class SessionApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'ListSessionsResponseV1',
-      ) as ListSessionsResponseV1;
+        'ListSessionsResponse',
+      ) as ListSessionsResponse;
     }
     return null;
   }

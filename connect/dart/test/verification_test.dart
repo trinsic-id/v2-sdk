@@ -51,7 +51,7 @@ void main() {
       // TODO
     });
 
-    // NormalizedGovernmentIdData normalizedGovernmentIdData
+    // NormalizedIdentityData normalizedGovernmentIdData
     test('to test the property `normalizedGovernmentIdData`', () async {
       // TODO
     });

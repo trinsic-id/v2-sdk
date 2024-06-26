@@ -79,7 +79,7 @@ class Verification {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  NormalizedGovernmentIdData? normalizedGovernmentIdData;
+  NormalizedIdentityData? normalizedGovernmentIdData;
 
   @override
   bool operator ==(Object other) =>
@@ -186,7 +186,7 @@ class Verification {
         updated: mapValueOfType<int>(json, r'updated'),
         governmentIdOptions:
             GovernmentIDOptions.fromJson(json[r'governmentIdOptions']),
-        normalizedGovernmentIdData: NormalizedGovernmentIdData.fromJson(
+        normalizedGovernmentIdData: NormalizedIdentityData.fromJson(
             json[r'normalizedGovernmentIdData']),
       );
     }
