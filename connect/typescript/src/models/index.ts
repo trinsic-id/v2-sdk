@@ -10,7 +10,7 @@ export * from "./GovernmentIDOptions";
 export * from "./IDVSessionState";
 export * from "./ListSessionsRequest";
 export * from "./ListSessionsResponseV1";
-export * from "./NormalizedGovernmentIdData";
+export * from "./NormalizedIdentityData";
 export * from "./OrderDirection";
 export * from "./RequestedVerification";
 export * from "./Session";

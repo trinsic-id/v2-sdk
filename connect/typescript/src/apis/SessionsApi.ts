@@ -61,7 +61,7 @@ export interface ListSessionsOperationRequest {
 /**
  *
  */
-export class SessionApi extends runtime.BaseAPI {
+export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async cancelSessionRaw(

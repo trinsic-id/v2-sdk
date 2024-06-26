@@ -16,78 +16,78 @@ import { mapValues } from "../runtime";
 /**
  *
  * @export
- * @interface NormalizedGovernmentIdData
+ * @interface NormalizedIdentityData
  */
-export interface NormalizedGovernmentIdData {
+export interface NormalizedIdentityData {
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     idNumber?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     givenName?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     familyName?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     address?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     dateOfBirth?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     country?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     issueDate?: string | null;
     /**
      *
      * @type {string}
-     * @memberof NormalizedGovernmentIdData
+     * @memberof NormalizedIdentityData
      */
     expirationDate?: string | null;
 }
 
 /**
- * Check if a given object implements the NormalizedGovernmentIdData interface.
+ * Check if a given object implements the NormalizedIdentityData interface.
  */
-export function instanceOfNormalizedGovernmentIdData(
+export function instanceOfNormalizedIdentityData(
     value: object,
-): value is NormalizedGovernmentIdData {
+): value is NormalizedIdentityData {
     return true;
 }
 
-export function NormalizedGovernmentIdDataFromJSON(
+export function NormalizedIdentityDataFromJSON(
     json: any,
-): NormalizedGovernmentIdData {
-    return NormalizedGovernmentIdDataFromJSONTyped(json, false);
+): NormalizedIdentityData {
+    return NormalizedIdentityDataFromJSONTyped(json, false);
 }
 
-export function NormalizedGovernmentIdDataFromJSONTyped(
+export function NormalizedIdentityDataFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): NormalizedGovernmentIdData {
+): NormalizedIdentityData {
     if (json == null) {
         return json;
     }
@@ -105,8 +105,8 @@ export function NormalizedGovernmentIdDataFromJSONTyped(
     };
 }
 
-export function NormalizedGovernmentIdDataToJSON(
-    value?: NormalizedGovernmentIdData | null,
+export function NormalizedIdentityDataToJSON(
+    value?: NormalizedIdentityData | null,
 ): any {
     if (value == null) {
         return value;

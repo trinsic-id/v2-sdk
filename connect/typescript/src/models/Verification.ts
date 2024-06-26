@@ -13,12 +13,6 @@
  */
 
 import { mapValues } from "../runtime";
-import type { NormalizedGovernmentIdData } from "./NormalizedGovernmentIdData";
-import {
-    NormalizedGovernmentIdDataFromJSON,
-    NormalizedGovernmentIdDataFromJSONTyped,
-    NormalizedGovernmentIdDataToJSON,
-} from "./NormalizedGovernmentIdData";
 import type { VerificationType } from "./VerificationType";
 import {
     VerificationTypeFromJSON,
@@ -37,6 +31,12 @@ import {
     GovernmentIDOptionsFromJSONTyped,
     GovernmentIDOptionsToJSON,
 } from "./GovernmentIDOptions";
+import type { NormalizedIdentityData } from "./NormalizedIdentityData";
+import {
+    NormalizedIdentityDataFromJSON,
+    NormalizedIdentityDataFromJSONTyped,
+    NormalizedIdentityDataToJSON,
+} from "./NormalizedIdentityData";
 import type { VerificationFailCode } from "./VerificationFailCode";
 import {
     VerificationFailCodeFromJSON,
@@ -94,10 +94,10 @@ export interface Verification {
     governmentIdOptions?: GovernmentIDOptions;
     /**
      *
-     * @type {NormalizedGovernmentIdData}
+     * @type {NormalizedIdentityData}
      * @memberof Verification
      */
-    normalizedGovernmentIdData?: NormalizedGovernmentIdData;
+    normalizedGovernmentIdData?: NormalizedIdentityData;
 }
 
 /**
@@ -141,7 +141,7 @@ export function VerificationFromJSONTyped(
         normalizedGovernmentIdData:
             json["normalizedGovernmentIdData"] == null
                 ? undefined
-                : NormalizedGovernmentIdDataFromJSON(
+                : NormalizedIdentityDataFromJSON(
                       json["normalizedGovernmentIdData"],
                   ),
     };
@@ -161,7 +161,7 @@ export function VerificationToJSON(value?: Verification | null): any {
         governmentIdOptions: GovernmentIDOptionsToJSON(
             value["governmentIdOptions"],
         ),
-        normalizedGovernmentIdData: NormalizedGovernmentIdDataToJSON(
+        normalizedGovernmentIdData: NormalizedIdentityDataToJSON(
             value["normalizedGovernmentIdData"],
         ),
     };

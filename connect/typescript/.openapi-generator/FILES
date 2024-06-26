@@ -3,7 +3,7 @@
 .openapi-generator-ignore
 README.md
 package.json
-src/apis/SessionApi.ts
+src/apis/SessionsApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/CancelSessionResponse.ts
@@ -16,7 +16,7 @@ src/models/GovernmentIDOptions.ts
 src/models/IDVSessionState.ts
 src/models/ListSessionsRequest.ts
 src/models/ListSessionsResponseV1.ts
-src/models/NormalizedGovernmentIdData.ts
+src/models/NormalizedIdentityData.ts
 src/models/OrderDirection.ts
 src/models/RequestedVerification.ts
 src/models/Session.ts
