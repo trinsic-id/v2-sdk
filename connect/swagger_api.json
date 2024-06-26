@@ -12,10 +12,10 @@
     }
   ],
   "paths": {
-    "/v1/sessions/list": {
+    "/api/v1/sessions/list": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "ListSessions",
         "requestBody": {
@@ -43,17 +43,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponseV1"
+                  "$ref": "#/components/schemas/ListSessionsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponseV1"
+                  "$ref": "#/components/schemas/ListSessionsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponseV1"
+                  "$ref": "#/components/schemas/ListSessionsResponse"
                 }
               }
             }
@@ -90,10 +90,10 @@
         }
       }
     },
-    "/v1/sessions/get": {
+    "/api/v1/sessions/get": {
       "get": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "GetSession",
         "parameters": [
@@ -160,10 +160,10 @@
         }
       }
     },
-    "/v1/sessions/create": {
+    "/api/v1/sessions/create": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "CreateSession",
         "requestBody": {
@@ -238,10 +238,10 @@
         }
       }
     },
-    "/v1/sessions/cancel": {
+    "/api/v1/sessions/cancel": {
       "post": {
         "tags": [
-          "Session"
+          "Sessions"
         ],
         "operationId": "CancelSession",
         "parameters": [
@@ -446,27 +446,27 @@
         },
         "additionalProperties": false
       },
-      "ListSessionsResponseV1": {
+      "ListSessionsResponse": {
         "type": "object",
         "properties": {
-          "total": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "more": {
-            "type": "boolean"
-          },
           "sessions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Session"
             },
             "nullable": true
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "more": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
       },
-      "NormalizedGovernmentIdData": {
+      "NormalizedIdentityData": {
         "type": "object",
         "properties": {
           "idNumber": {
@@ -627,7 +627,7 @@
             "$ref": "#/components/schemas/GovernmentIDOptions"
           },
           "normalizedGovernmentIdData": {
-            "$ref": "#/components/schemas/NormalizedGovernmentIdData"
+            "$ref": "#/components/schemas/NormalizedIdentityData"
           }
         },
         "additionalProperties": false
