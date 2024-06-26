@@ -112,7 +112,7 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
@@ -122,7 +122,7 @@ namespace Example
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling SessionApi.CancelSession: " + e.Message );
+                Debug.Print("Exception when calling SessionsApi.CancelSession: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -139,10 +139,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionApi* | [**CancelSession**](docs/SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
-*SessionApi* | [**CreateSession**](docs/SessionApi.md#createsession) | **POST** /v1/sessions/create | 
-*SessionApi* | [**GetSession**](docs/SessionApi.md#getsession) | **GET** /v1/sessions/get | 
-*SessionApi* | [**ListSessions**](docs/SessionApi.md#listsessions) | **POST** /v1/sessions/list | 
+*SessionsApi* | [**CancelSession**](docs/SessionsApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+*SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /v1/sessions/create | 
+*SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /v1/sessions/get | 
+*SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
 <a id="documentation-for-models"></a>
@@ -158,7 +158,7 @@ Class | Method | HTTP request | Description
  - [Model.IDVSessionState](docs/IDVSessionState.md)
  - [Model.ListSessionsRequest](docs/ListSessionsRequest.md)
  - [Model.ListSessionsResponseV1](docs/ListSessionsResponseV1.md)
- - [Model.NormalizedGovernmentIdData](docs/NormalizedGovernmentIdData.md)
+ - [Model.NormalizedIdentityData](docs/NormalizedIdentityData.md)
  - [Model.OrderDirection](docs/OrderDirection.md)
  - [Model.RequestedVerification](docs/RequestedVerification.md)
  - [Model.Session](docs/Session.md)

@@ -55,7 +55,7 @@ paths:
         "500":
           description: Internal Server Error
       tags:
-      - Session
+      - Sessions
   /v1/sessions/get:
     get:
       operationId: GetSession
@@ -101,7 +101,7 @@ paths:
         "500":
           description: Internal Server Error
       tags:
-      - Session
+      - Sessions
   /v1/sessions/create:
     post:
       operationId: CreateSession
@@ -148,7 +148,7 @@ paths:
         "500":
           description: Internal Server Error
       tags:
-      - Session
+      - Sessions
   /v1/sessions/cancel:
     post:
       operationId: CancelSession
@@ -194,7 +194,7 @@ paths:
         "500":
           description: Internal Server Error
       tags:
-      - Session
+      - Sessions
 components:
   schemas:
     CancelSessionResponse:
@@ -520,7 +520,7 @@ components:
           nullable: true
           type: array
       type: object
-    NormalizedGovernmentIdData:
+    NormalizedIdentityData:
       additionalProperties: false
       example:
         country: country
@@ -722,7 +722,7 @@ components:
         governmentIdOptions:
           $ref: '#/components/schemas/GovernmentIDOptions'
         normalizedGovernmentIdData:
-          $ref: '#/components/schemas/NormalizedGovernmentIdData'
+          $ref: '#/components/schemas/NormalizedIdentityData'
       type: object
     VerificationFailCode:
       enum:

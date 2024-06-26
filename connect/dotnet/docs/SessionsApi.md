@@ -1,13 +1,13 @@
-# Trinsic.Connect.Api.SessionApi
+# Trinsic.Connect.Api.SessionsApi
 
 All URIs are relative to *https://connect-api.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
-| [**CreateSession**](SessionApi.md#createsession) | **POST** /v1/sessions/create |  |
-| [**GetSession**](SessionApi.md#getsession) | **GET** /v1/sessions/get |  |
-| [**ListSessions**](SessionApi.md#listsessions) | **POST** /v1/sessions/list |  |
+| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
+| [**CreateSession**](SessionsApi.md#createsession) | **POST** /v1/sessions/create |  |
+| [**GetSession**](SessionsApi.md#getsession) | **GET** /v1/sessions/get |  |
+| [**ListSessions**](SessionsApi.md#listsessions) | **POST** /v1/sessions/list |  |
 
 <a id="cancelsession"></a>
 # **CancelSession**
@@ -38,7 +38,7 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
@@ -48,7 +48,7 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.CancelSession: " + e.Message);
+                Debug.Print("Exception when calling SessionsApi.CancelSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -70,7 +70,7 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.CancelSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionsApi.CancelSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -136,7 +136,7 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
             var createSessionRequest = new CreateSessionRequest?(); // CreateSessionRequest? |  (optional) 
 
             try
@@ -146,7 +146,7 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.CreateSession: " + e.Message);
+                Debug.Print("Exception when calling SessionsApi.CreateSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -168,7 +168,7 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.CreateSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionsApi.CreateSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -234,7 +234,7 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
             var sessionId = "sessionId_example";  // string? |  (optional) 
 
             try
@@ -244,7 +244,7 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.GetSession: " + e.Message);
+                Debug.Print("Exception when calling SessionsApi.GetSession: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -266,7 +266,7 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.GetSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionsApi.GetSessionWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
@@ -332,7 +332,7 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionApi(httpClient, config, httpClientHandler);
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
             var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional) 
 
             try
@@ -342,7 +342,7 @@ namespace Example
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling SessionApi.ListSessions: " + e.Message);
+                Debug.Print("Exception when calling SessionsApi.ListSessions: " + e.Message);
                 Debug.Print("Status Code: " + e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -364,7 +364,7 @@ try
 }
 catch (ApiException e)
 {
-    Debug.Print("Exception when calling SessionApi.ListSessionsWithHttpInfo: " + e.Message);
+    Debug.Print("Exception when calling SessionsApi.ListSessionsWithHttpInfo: " + e.Message);
     Debug.Print("Status Code: " + e.ErrorCode);
     Debug.Print(e.StackTrace);
 }
