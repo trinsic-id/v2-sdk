@@ -15,7 +15,7 @@ src/models/GetSessionResponseV1.ts
 src/models/GovernmentIDOptions.ts
 src/models/IDVSessionState.ts
 src/models/ListSessionsRequest.ts
-src/models/ListSessionsResponse.ts
+src/models/ListSessionsResponseV1.ts
 src/models/NormalizedIdentityData.ts
 src/models/OrderDirection.ts
 src/models/RequestedVerification.ts

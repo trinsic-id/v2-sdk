@@ -9,7 +9,7 @@ export * from "./GetSessionResponseV1";
 export * from "./GovernmentIDOptions";
 export * from "./IDVSessionState";
 export * from "./ListSessionsRequest";
-export * from "./ListSessionsResponse";
+export * from "./ListSessionsResponseV1";
 export * from "./NormalizedIdentityData";
 export * from "./OrderDirection";
 export * from "./RequestedVerification";

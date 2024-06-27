@@ -20,7 +20,7 @@ import type {
     FailureMessage,
     GetSessionResponseV1,
     ListSessionsRequest,
-    ListSessionsResponse,
+    ListSessionsResponseV1,
     ValidationResult,
 } from "../models/index";
 import {
@@ -36,8 +36,8 @@ import {
     GetSessionResponseV1ToJSON,
     ListSessionsRequestFromJSON,
     ListSessionsRequestToJSON,
-    ListSessionsResponseFromJSON,
-    ListSessionsResponseToJSON,
+    ListSessionsResponseV1FromJSON,
+    ListSessionsResponseV1ToJSON,
     ValidationResultFromJSON,
     ValidationResultToJSON,
 } from "../models/index";
@@ -86,7 +86,7 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/cancel`,
+                path: `/v1/sessions/cancel`,
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -134,7 +134,7 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/create`,
+                path: `/v1/sessions/create`,
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -187,7 +187,7 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/get`,
+                path: `/v1/sessions/get`,
                 method: "GET",
                 headers: headerParameters,
                 query: queryParameters,
@@ -218,7 +218,7 @@ export class SessionsApi extends runtime.BaseAPI {
     async listSessionsRaw(
         requestParameters: ListSessionsOperationRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
-    ): Promise<runtime.ApiResponse<ListSessionsResponse>> {
+    ): Promise<runtime.ApiResponse<ListSessionsResponseV1>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -235,7 +235,7 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/list`,
+                path: `/v1/sessions/list`,
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -247,7 +247,7 @@ export class SessionsApi extends runtime.BaseAPI {
         );
 
         return new runtime.JSONApiResponse(response, (jsonValue) =>
-            ListSessionsResponseFromJSON(jsonValue),
+            ListSessionsResponseV1FromJSON(jsonValue),
         );
     }
 
@@ -256,7 +256,7 @@ export class SessionsApi extends runtime.BaseAPI {
     async listSessions(
         requestParameters: ListSessionsOperationRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
-    ): Promise<ListSessionsResponse> {
+    ): Promise<ListSessionsResponseV1> {
         const response = await this.listSessionsRaw(
             requestParameters,
             initOverrides,

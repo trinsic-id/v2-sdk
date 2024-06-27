@@ -23,71 +23,73 @@ import {
 /**
  *
  * @export
- * @interface ListSessionsResponse
+ * @interface ListSessionsResponseV1
  */
-export interface ListSessionsResponse {
-    /**
-     *
-     * @type {Array<Session>}
-     * @memberof ListSessionsResponse
-     */
-    sessions?: Array<Session> | null;
+export interface ListSessionsResponseV1 {
     /**
      *
      * @type {number}
-     * @memberof ListSessionsResponse
+     * @memberof ListSessionsResponseV1
      */
     total?: number;
     /**
      *
      * @type {boolean}
-     * @memberof ListSessionsResponse
+     * @memberof ListSessionsResponseV1
      */
     more?: boolean;
+    /**
+     *
+     * @type {Array<Session>}
+     * @memberof ListSessionsResponseV1
+     */
+    sessions?: Array<Session> | null;
 }
 
 /**
- * Check if a given object implements the ListSessionsResponse interface.
+ * Check if a given object implements the ListSessionsResponseV1 interface.
  */
-export function instanceOfListSessionsResponse(
+export function instanceOfListSessionsResponseV1(
     value: object,
-): value is ListSessionsResponse {
+): value is ListSessionsResponseV1 {
     return true;
 }
 
-export function ListSessionsResponseFromJSON(json: any): ListSessionsResponse {
-    return ListSessionsResponseFromJSONTyped(json, false);
+export function ListSessionsResponseV1FromJSON(
+    json: any,
+): ListSessionsResponseV1 {
+    return ListSessionsResponseV1FromJSONTyped(json, false);
 }
 
-export function ListSessionsResponseFromJSONTyped(
+export function ListSessionsResponseV1FromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): ListSessionsResponse {
+): ListSessionsResponseV1 {
     if (json == null) {
         return json;
     }
     return {
+        total: json["total"] == null ? undefined : json["total"],
+        more: json["more"] == null ? undefined : json["more"],
         sessions:
             json["sessions"] == null
                 ? undefined
                 : (json["sessions"] as Array<any>).map(SessionFromJSON),
-        total: json["total"] == null ? undefined : json["total"],
-        more: json["more"] == null ? undefined : json["more"],
     };
 }
 
-export function ListSessionsResponseToJSON(
-    value?: ListSessionsResponse | null,
+export function ListSessionsResponseV1ToJSON(
+    value?: ListSessionsResponseV1 | null,
 ): any {
     if (value == null) {
         return value;
     }
     return {
+        total: value["total"],
+        more: value["more"],
         sessions:
             value["sessions"] == null
                 ? undefined
                 : (value["sessions"] as Array<any>).map(SessionToJSON),
-        total: value["total"],
-        more: value["more"],
     };
 }
