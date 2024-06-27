@@ -14,29 +14,23 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// ListSessionsResponse
+/// ListSessionsResponseV1
 /// </summary>
-[DataContract(Name = "ListSessionsResponse")]
-public partial class ListSessionsResponse
+[DataContract(Name = "ListSessionsResponseV1")]
+public partial class ListSessionsResponseV1
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ListSessionsResponse" /> class.
+    /// Initializes a new instance of the <see cref="ListSessionsResponseV1" /> class.
     /// </summary>
-    /// <param name="sessions">sessions.</param>
     /// <param name="total">total.</param>
     /// <param name="more">more.</param>
-    public ListSessionsResponse(List<Session> sessions = default(List<Session>), int total = default(int), bool more = default(bool))
+    /// <param name="sessions">sessions.</param>
+    public ListSessionsResponseV1(int total = default(int), bool more = default(bool), List<Session> sessions = default(List<Session>))
     {
-        Sessions = sessions;
         Total = total;
         More = more;
+        Sessions = sessions;
     }
-
-    /// <summary>
-    /// Gets or Sets Sessions
-    /// </summary>
-    [DataMember(Name = "sessions", EmitDefaultValue = true)]
-    public List<Session> Sessions { get; set; }
 
     /// <summary>
     /// Gets or Sets Total
@@ -51,16 +45,22 @@ public partial class ListSessionsResponse
     public bool More { get; set; }
 
     /// <summary>
+    /// Gets or Sets Sessions
+    /// </summary>
+    [DataMember(Name = "sessions", EmitDefaultValue = true)]
+    public List<Session> Sessions { get; set; }
+
+    /// <summary>
     /// Returns the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class ListSessionsResponse {\n");
-        sb.Append("  Sessions: ").Append(Sessions).Append("\n");
+        sb.Append("class ListSessionsResponseV1 {\n");
         sb.Append("  Total: ").Append(Total).Append("\n");
         sb.Append("  More: ").Append(More).Append("\n");
+        sb.Append("  Sessions: ").Append(Sessions).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }

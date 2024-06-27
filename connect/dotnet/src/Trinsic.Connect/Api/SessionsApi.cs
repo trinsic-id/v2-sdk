@@ -79,8 +79,8 @@ public interface ISessionsApiSync : IApiAccessor
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
-    /// <returns>ListSessionsResponse</returns>
-    ListSessionsResponse ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
+    /// <returns>ListSessionsResponseV1</returns>
+    ListSessionsResponseV1 ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
 
     /// <summary>
     /// 
@@ -90,8 +90,8 @@ public interface ISessionsApiSync : IApiAccessor
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
-    /// <returns>ApiResponse of ListSessionsResponse</returns>
-    ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
+    /// <returns>ApiResponse of ListSessionsResponseV1</returns>
+    ApiResponse<ListSessionsResponseV1> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
     #endregion Synchronous Operations
 }
 
@@ -179,8 +179,8 @@ public interface ISessionsApiAsync : IApiAccessor
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ListSessionsResponse</returns>
-    System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <returns>Task of ListSessionsResponseV1</returns>
+    System.Threading.Tasks.Task<ListSessionsResponseV1> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -191,8 +191,8 @@ public interface ISessionsApiAsync : IApiAccessor
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
-    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <returns>Task of ApiResponse (ListSessionsResponseV1)</returns>
+    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponseV1>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     #endregion Asynchronous Operations
 }
 
@@ -473,7 +473,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Post<CancelSessionResponse>("/api/v1/sessions/cancel", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Post<CancelSessionResponse>("/v1/sessions/cancel", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -548,7 +548,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.PostAsync<CancelSessionResponse>("/api/v1/sessions/cancel", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.PostAsync<CancelSessionResponse>("/v1/sessions/cancel", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {
@@ -619,7 +619,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Post<CreateSessionResponse>("/api/v1/sessions/create", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Post<CreateSessionResponse>("/v1/sessions/create", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -694,7 +694,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.PostAsync<CreateSessionResponse>("/api/v1/sessions/create", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.PostAsync<CreateSessionResponse>("/v1/sessions/create", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {
@@ -765,7 +765,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Get<GetSessionResponseV1>("/api/v1/sessions/get", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Get<GetSessionResponseV1>("/v1/sessions/get", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -840,7 +840,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.GetAsync<GetSessionResponseV1>("/api/v1/sessions/get", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.GetAsync<GetSessionResponseV1>("/v1/sessions/get", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {
@@ -859,8 +859,8 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
-    /// <returns>ListSessionsResponse</returns>
-    public ListSessionsResponse ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
+    /// <returns>ListSessionsResponseV1</returns>
+    public ListSessionsResponseV1 ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
     {
         var localVarResponse = ListSessionsWithHttpInfo(listSessionsRequest);
         return localVarResponse.Data;
@@ -871,8 +871,8 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
-    /// <returns>ApiResponse of ListSessionsResponse</returns>
-    public Trinsic.Connect.Client.ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
+    /// <returns>ApiResponse of ListSessionsResponseV1</returns>
+    public Trinsic.Connect.Client.ApiResponse<ListSessionsResponseV1> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
     {
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
 
@@ -911,7 +911,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Post<ListSessionsResponse>("/api/v1/sessions/list", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Post<ListSessionsResponseV1>("/v1/sessions/list", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -931,8 +931,8 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ListSessionsResponse</returns>
-    public async System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    /// <returns>Task of ListSessionsResponseV1</returns>
+    public async System.Threading.Tasks.Task<ListSessionsResponseV1> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         var localVarResponse = await ListSessionsWithHttpInfoAsync(listSessionsRequest, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
@@ -944,8 +944,8 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="listSessionsRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
-    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    /// <returns>Task of ApiResponse (ListSessionsResponseV1)</returns>
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ListSessionsResponseV1>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
 
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
@@ -986,7 +986,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.PostAsync<ListSessionsResponse>("/api/v1/sessions/list", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.PostAsync<ListSessionsResponseV1>("/v1/sessions/list", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {

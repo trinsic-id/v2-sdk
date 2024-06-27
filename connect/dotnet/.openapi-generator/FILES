@@ -13,7 +13,7 @@ docs/GetSessionResponseV1.md
 docs/GovernmentIDOptions.md
 docs/IDVSessionState.md
 docs/ListSessionsRequest.md
-docs/ListSessionsResponse.md
+docs/ListSessionsResponseV1.md
 docs/NormalizedIdentityData.md
 docs/OrderDirection.md
 docs/RequestedVerification.md
@@ -37,7 +37,7 @@ src/Trinsic.Connect.Test/Model/GetSessionResponseV1Tests.cs
 src/Trinsic.Connect.Test/Model/GovernmentIDOptionsTests.cs
 src/Trinsic.Connect.Test/Model/IDVSessionStateTests.cs
 src/Trinsic.Connect.Test/Model/ListSessionsRequestTests.cs
-src/Trinsic.Connect.Test/Model/ListSessionsResponseTests.cs
+src/Trinsic.Connect.Test/Model/ListSessionsResponseV1Tests.cs
 src/Trinsic.Connect.Test/Model/NormalizedIdentityDataTests.cs
 src/Trinsic.Connect.Test/Model/OrderDirectionTests.cs
 src/Trinsic.Connect.Test/Model/RequestedVerificationTests.cs
@@ -78,7 +78,7 @@ src/Trinsic.Connect/Model/GetSessionResponseV1.cs
 src/Trinsic.Connect/Model/GovernmentIDOptions.cs
 src/Trinsic.Connect/Model/IDVSessionState.cs
 src/Trinsic.Connect/Model/ListSessionsRequest.cs
-src/Trinsic.Connect/Model/ListSessionsResponse.cs
+src/Trinsic.Connect/Model/ListSessionsResponseV1.cs
 src/Trinsic.Connect/Model/NormalizedIdentityData.cs
 src/Trinsic.Connect/Model/OrderDirection.cs
 src/Trinsic.Connect/Model/RequestedVerification.cs

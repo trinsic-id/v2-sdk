@@ -4,10 +4,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/cancel |  |
-| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions/create |  |
-| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/get |  |
-| [**ListSessions**](SessionsApi.md#listsessions) | **POST** /api/v1/sessions/list |  |
+| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /v1/sessions/cancel |  |
+| [**CreateSession**](SessionsApi.md#createsession) | **POST** /v1/sessions/create |  |
+| [**GetSession**](SessionsApi.md#getsession) | **GET** /v1/sessions/get |  |
+| [**ListSessions**](SessionsApi.md#listsessions) | **POST** /v1/sessions/list |  |
 
 <a id="cancelsession"></a>
 # **CancelSession**
@@ -305,7 +305,7 @@ catch (ApiException e)
 
 <a id="listsessions"></a>
 # **ListSessions**
-> ListSessionsResponse ListSessions (ListSessionsRequest? listSessionsRequest = null)
+> ListSessionsResponseV1 ListSessions (ListSessionsRequest? listSessionsRequest = null)
 
 
 
@@ -337,7 +337,7 @@ namespace Example
 
             try
             {
-                ListSessionsResponse result = apiInstance.ListSessions(listSessionsRequest);
+                ListSessionsResponseV1 result = apiInstance.ListSessions(listSessionsRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -357,7 +357,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ListSessionsResponse> response = apiInstance.ListSessionsWithHttpInfo(listSessionsRequest);
+    ApiResponse<ListSessionsResponseV1> response = apiInstance.ListSessionsWithHttpInfo(listSessionsRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -378,7 +378,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**ListSessionsResponse**](ListSessionsResponse.md)
+[**ListSessionsResponseV1**](ListSessionsResponseV1.md)
 
 ### Authorization
 

@@ -91,6 +91,6 @@ public class SessionsApiTests : IDisposable
         // TODO uncomment below to test the method and replace null with proper value
         //ListSessionsRequest? listSessionsRequest = null;
         //var response = instance.ListSessions(listSessionsRequest);
-        //Assert.IsType<ListSessionsResponse>(response);
+        //Assert.IsType<ListSessionsResponseV1>(response);
     }
 }

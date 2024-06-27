@@ -139,10 +139,10 @@ All URIs are relative to *https://connect-api.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionsApi* | [**CancelSession**](docs/SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/cancel | 
-*SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /api/v1/sessions/create | 
-*SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /api/v1/sessions/get | 
-*SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **POST** /api/v1/sessions/list | 
+*SessionsApi* | [**CancelSession**](docs/SessionsApi.md#cancelsession) | **POST** /v1/sessions/cancel | 
+*SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /v1/sessions/create | 
+*SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /v1/sessions/get | 
+*SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **POST** /v1/sessions/list | 
 
 
 <a id="documentation-for-models"></a>
@@ -157,7 +157,7 @@ Class | Method | HTTP request | Description
  - [Model.GovernmentIDOptions](docs/GovernmentIDOptions.md)
  - [Model.IDVSessionState](docs/IDVSessionState.md)
  - [Model.ListSessionsRequest](docs/ListSessionsRequest.md)
- - [Model.ListSessionsResponse](docs/ListSessionsResponse.md)
+ - [Model.ListSessionsResponseV1](docs/ListSessionsResponseV1.md)
  - [Model.NormalizedIdentityData](docs/NormalizedIdentityData.md)
  - [Model.OrderDirection](docs/OrderDirection.md)
  - [Model.RequestedVerification](docs/RequestedVerification.md)
