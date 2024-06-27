@@ -12,7 +12,7 @@
     }
   ],
   "paths": {
-    "/api/v1/sessions/list": {
+    "/v1/sessions/list": {
       "post": {
         "tags": [
           "Sessions"
@@ -43,17 +43,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponse"
+                  "$ref": "#/components/schemas/ListSessionsResponseV1"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponse"
+                  "$ref": "#/components/schemas/ListSessionsResponseV1"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListSessionsResponse"
+                  "$ref": "#/components/schemas/ListSessionsResponseV1"
                 }
               }
             }
@@ -90,7 +90,7 @@
         }
       }
     },
-    "/api/v1/sessions/get": {
+    "/v1/sessions/get": {
       "get": {
         "tags": [
           "Sessions"
@@ -160,7 +160,7 @@
         }
       }
     },
-    "/api/v1/sessions/create": {
+    "/v1/sessions/create": {
       "post": {
         "tags": [
           "Sessions"
@@ -238,7 +238,7 @@
         }
       }
     },
-    "/api/v1/sessions/cancel": {
+    "/v1/sessions/cancel": {
       "post": {
         "tags": [
           "Sessions"
@@ -446,22 +446,22 @@
         },
         "additionalProperties": false
       },
-      "ListSessionsResponse": {
+      "ListSessionsResponseV1": {
         "type": "object",
         "properties": {
-          "sessions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Session"
-            },
-            "nullable": true
-          },
           "total": {
             "type": "integer",
             "format": "int32"
           },
           "more": {
             "type": "boolean"
+          },
+          "sessions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
