@@ -116,7 +116,7 @@ public class Configuration : IReadableConfiguration
     {
         Proxy = null;
         UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.0.4/csharp");
-        BasePath = "https://connect-api.trinsic.id";
+        BasePath = "https://connect.trinsic.id";
         DefaultHeaders = new ConcurrentDictionary<string, string>();
         ApiKey = new ConcurrentDictionary<string, string>();
         ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -124,7 +124,7 @@ public class Configuration : IReadableConfiguration
         {
             {
                 new Dictionary<string, object> {
-                    {"url", "https://connect-api.trinsic.id"},
+                    {"url", "https://connect.trinsic.id"},
                     {"description", "Production server"},
                 }
             }
@@ -145,7 +145,7 @@ public class Configuration : IReadableConfiguration
         IDictionary<string, string> defaultHeaders,
         IDictionary<string, string> apiKey,
         IDictionary<string, string> apiKeyPrefix,
-        string basePath = "https://connect-api.trinsic.id") : this()
+        string basePath = "https://connect.trinsic.id") : this()
     {
         if (string.IsNullOrWhiteSpace(basePath))
         {

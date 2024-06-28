@@ -105,7 +105,7 @@ namespace Example
         {
 
             Configuration config = new Configuration();
-            config.BasePath = "https://connect-api.trinsic.id";
+            config.BasePath = "https://connect.trinsic.id";
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -135,7 +135,7 @@ namespace Example
 <a id="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://connect-api.trinsic.id*
+All URIs are relative to *https://connect.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
