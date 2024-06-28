@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://connect-api.trinsic.id",
+      "url": "https://connect.trinsic.id",
       "description": "Production server"
     }
   ],
