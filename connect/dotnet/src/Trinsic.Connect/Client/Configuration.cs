@@ -29,7 +29,7 @@ public class Configuration : IReadableConfiguration
     /// Version of the package.
     /// </summary>
     /// <value>Version of the package.</value>
-    public const string Version = "0.0.4";
+    public const string Version = "0.0.5";
 
     /// <summary>
     /// Identifier for ISO 8601 DateTime Format
@@ -115,7 +115,7 @@ public class Configuration : IReadableConfiguration
     public Configuration()
     {
         Proxy = null;
-        UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.0.4/csharp");
+        UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.0.5/csharp");
         BasePath = "https://connect-api.trinsic.id";
         DefaultHeaders = new ConcurrentDictionary<string, string>();
         ApiKey = new ConcurrentDictionary<string, string>();
@@ -362,7 +362,10 @@ public class Configuration : IReadableConfiguration
     public virtual IDictionary<string, string> ApiKeyPrefix
     {
         get => _apiKeyPrefix;
-        set => _apiKeyPrefix = value ?? throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
+        set
+        {
+            _apiKeyPrefix = value ?? throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
+        }
     }
 
     /// <summary>
@@ -372,7 +375,10 @@ public class Configuration : IReadableConfiguration
     public virtual IDictionary<string, string> ApiKey
     {
         get => _apiKey;
-        set => _apiKey = value ?? throw new InvalidOperationException("ApiKey collection may not be null.");
+        set
+        {
+            _apiKey = value ?? throw new InvalidOperationException("ApiKey collection may not be null.");
+        }
     }
 
     /// <summary>
@@ -382,7 +388,10 @@ public class Configuration : IReadableConfiguration
     public virtual IList<IReadOnlyDictionary<string, object>> Servers
     {
         get => _servers;
-        set => _servers = value ?? throw new InvalidOperationException("Servers may not be null.");
+        set
+        {
+            _servers = value ?? throw new InvalidOperationException("Servers may not be null.");
+        }
     }
 
     /// <summary>
@@ -392,7 +401,10 @@ public class Configuration : IReadableConfiguration
     public virtual IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> OperationServers
     {
         get => _operationServers;
-        set => _operationServers = value ?? throw new InvalidOperationException("Operation servers may not be null.");
+        set
+        {
+            _operationServers = value ?? throw new InvalidOperationException("Operation servers may not be null.");
+        }
     }
 
     /// <summary>
@@ -515,7 +527,7 @@ public class Configuration : IReadableConfiguration
         report += "    OS: " + System.Environment.OSVersion + "\n";
         report += "    .NET Framework Version: " + System.Environment.Version + "\n";
         report += "    Version of the API: v1\n";
-        report += "    SDK Package Version: 0.0.4\n";
+        report += "    SDK Package Version: 0.0.5\n";
 
         return report;
     }
