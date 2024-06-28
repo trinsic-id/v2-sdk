@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-export const BASE_PATH = "https://connect-api.trinsic.id".replace(/\/+$/, "");
+export const BASE_PATH = "https://connect.trinsic.id".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
     basePath?: string; // override base path

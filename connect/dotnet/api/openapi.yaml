@@ -5,7 +5,7 @@ info:
   x-swaggerexclude: External
 servers:
 - description: Production server
-  url: https://connect-api.trinsic.id
+  url: https://connect.trinsic.id
 security:
 - Bearer: []
 paths:
