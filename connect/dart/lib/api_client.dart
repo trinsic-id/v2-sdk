@@ -12,7 +12,7 @@ part of openapi.api;
 
 class ApiClient {
   ApiClient({
-    this.basePath = 'https://connect-api.trinsic.id',
+    this.basePath = 'https://connect.trinsic.id',
     this.authentication,
   });
 

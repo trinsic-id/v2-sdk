@@ -5,7 +5,7 @@
 import 'package:TrinsicConnect/api.dart';
 ```
 
-All URIs are relative to *https://connect-api.trinsic.id*
+All URIs are relative to *https://connect.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
