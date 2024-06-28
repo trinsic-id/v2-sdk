@@ -1,6 +1,6 @@
 # Trinsic.Connect.Api.SessionsApi
 
-All URIs are relative to *https://connect-api.trinsic.id*
+All URIs are relative to *https://connect.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -31,7 +31,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://connect-api.trinsic.id";
+            config.BasePath = "https://connect.trinsic.id";
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -129,7 +129,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://connect-api.trinsic.id";
+            config.BasePath = "https://connect.trinsic.id";
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -227,7 +227,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://connect-api.trinsic.id";
+            config.BasePath = "https://connect.trinsic.id";
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
@@ -325,7 +325,7 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://connect-api.trinsic.id";
+            config.BasePath = "https://connect.trinsic.id";
             // Configure Bearer token for authorization: Bearer
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
