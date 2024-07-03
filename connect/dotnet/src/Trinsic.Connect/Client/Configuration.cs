@@ -29,7 +29,7 @@ public class Configuration : IReadableConfiguration
     /// Version of the package.
     /// </summary>
     /// <value>Version of the package.</value>
-    public const string Version = "0.0.5";
+    public const string Version = "0.0.6";
 
     /// <summary>
     /// Identifier for ISO 8601 DateTime Format
@@ -115,7 +115,7 @@ public class Configuration : IReadableConfiguration
     public Configuration()
     {
         Proxy = null;
-        UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.0.5/csharp");
+        UserAgent = WebUtility.UrlEncode("OpenAPI-Generator/0.0.6/csharp");
         BasePath = "https://connect.trinsic.id";
         DefaultHeaders = new ConcurrentDictionary<string, string>();
         ApiKey = new ConcurrentDictionary<string, string>();
@@ -515,7 +515,7 @@ public class Configuration : IReadableConfiguration
         report += "    OS: " + System.Environment.OSVersion + "\n";
         report += "    .NET Framework Version: " + System.Environment.Version + "\n";
         report += "    Version of the API: v1\n";
-        report += "    SDK Package Version: 0.0.5\n";
+        report += "    SDK Package Version: 0.0.6\n";
 
         return report;
     }
