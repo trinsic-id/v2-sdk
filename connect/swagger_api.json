@@ -12,8 +12,8 @@
     }
   ],
   "paths": {
-    "/api/v1/sessions/list": {
-      "post": {
+    "/api/v1/sessions": {
+      "get": {
         "tags": [
           "Sessions"
         ],
@@ -22,17 +22,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ListSessionsRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ListSessionsRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ListSessionsRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ListSessionsRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ListSessionsRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ListSessionsRequest"
+                  }
+                ]
               }
             }
           }
@@ -88,79 +100,7 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/api/v1/sessions/get": {
-      "get": {
-        "tags": [
-          "Sessions"
-        ],
-        "operationId": "GetSession",
-        "parameters": [
-          {
-            "name": "sessionId",
-            "in": "query",
-            "schema": {
-              "maxLength": 100,
-              "minLength": 5,
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation Failed",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ValidationResult"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FailureMessage"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/v1/sessions/create": {
+      },
       "post": {
         "tags": [
           "Sessions"
@@ -170,17 +110,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSessionRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateSessionRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSessionRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateSessionRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSessionRequest"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateSessionRequest"
+                  }
+                ]
               }
             }
           }
@@ -238,7 +190,76 @@
         }
       }
     },
-    "/api/v1/sessions/cancel": {
+    "/api/v1/sessions/{sessionId}": {
+      "get": {
+        "tags": [
+          "Sessions"
+        ],
+        "operationId": "GetSession",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/cancel": {
       "post": {
         "tags": [
           "Sessions"
@@ -247,10 +268,9 @@
         "parameters": [
           {
             "name": "sessionId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
-              "maxLength": 100,
-              "minLength": 5,
               "type": "string"
             }
           }
@@ -275,6 +295,59 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/redact": {
+      "post": {
+        "tags": [
+          "Sessions"
+        ],
+        "operationId": "RedactSession",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "minLength": 5,
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           },
           "400": {
             "description": "Validation Failed",
@@ -318,7 +391,11 @@
         "type": "object",
         "properties": {
           "session": {
-            "$ref": "#/components/schemas/Session"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Session"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -326,12 +403,12 @@
       "CreateSessionRequest": {
         "type": "object",
         "properties": {
-          "verifications": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RequestedVerification"
-            },
-            "nullable": true
+          "governmentIdOptions": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GovernmentIDOptionsRequest"
+              }
+            ]
           }
         }
       },
@@ -342,42 +419,84 @@
         "type": "object",
         "properties": {
           "session": {
-            "$ref": "#/components/schemas/Session"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Session"
+              }
+            ]
           }
         },
         "additionalProperties": false
       },
-      "DebugIdvProviderSelection": {
-        "enum": [
-          "Default",
-          "IdVerse",
-          "Argos",
-          "Clear",
-          "Yoti",
-          "EidEasy"
-        ],
-        "type": "string"
-      },
       "FailureMessage": {
+        "required": [
+          "message"
+        ],
         "type": "object",
         "properties": {
           "message": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
       },
       "GetSessionResponseV1": {
+        "required": [
+          "session"
+        ],
         "type": "object",
         "properties": {
           "session": {
-            "$ref": "#/components/schemas/Session"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Session"
+              }
+            ]
           }
         },
         "additionalProperties": false
       },
       "GovernmentIDOptions": {
+        "required": [
+          "address",
+          "country",
+          "dateOfBirth",
+          "expirationDate",
+          "familyName",
+          "givenName",
+          "idNumber",
+          "issueDate"
+        ],
+        "type": "object",
+        "properties": {
+          "idNumber": {
+            "type": "boolean"
+          },
+          "givenName": {
+            "type": "boolean"
+          },
+          "familyName": {
+            "type": "boolean"
+          },
+          "address": {
+            "type": "boolean"
+          },
+          "dateOfBirth": {
+            "type": "boolean"
+          },
+          "country": {
+            "type": "boolean"
+          },
+          "issueDate": {
+            "type": "boolean"
+          },
+          "expirationDate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GovernmentIDOptionsRequest": {
         "type": "object",
         "properties": {
           "idNumber": {
@@ -419,17 +538,21 @@
         "type": "string"
       },
       "ListSessionsRequest": {
-        "required": [
-          "orderBy",
-          "orderDirection"
-        ],
         "type": "object",
         "properties": {
           "orderBy": {
-            "$ref": "#/components/schemas/SessionOrdering"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SessionOrdering"
+              }
+            ]
           },
           "orderDirection": {
-            "$ref": "#/components/schemas/OrderDirection"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OrderDirection"
+              }
+            ]
           },
           "pageSize": {
             "maximum": 10,
@@ -447,14 +570,18 @@
         "additionalProperties": false
       },
       "ListSessionsResponse": {
+        "required": [
+          "more",
+          "sessions",
+          "total"
+        ],
         "type": "object",
         "properties": {
           "sessions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Session"
-            },
-            "nullable": true
+            }
           },
           "total": {
             "type": "integer",
@@ -470,36 +597,28 @@
         "type": "object",
         "properties": {
           "idNumber": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "givenName": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "familyName": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "address": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "dateOfBirth": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "country": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "issueDate": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "expirationDate": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -511,45 +630,46 @@
         ],
         "type": "string"
       },
-      "RequestedVerification": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/VerificationType"
-          },
-          "governmentIdOptions": {
-            "$ref": "#/components/schemas/GovernmentIDOptions"
-          }
-        },
-        "additionalProperties": false
-      },
       "Session": {
+        "required": [
+          "clientToken",
+          "created",
+          "id",
+          "state",
+          "updated",
+          "verification"
+        ],
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "clientToken": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "state": {
-            "$ref": "#/components/schemas/IDVSessionState"
-          },
-          "verifications": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Verification"
-            },
-            "nullable": true
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IDVSessionState"
+              }
+            ]
           },
           "failCode": {
-            "$ref": "#/components/schemas/SessionFailCode"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SessionFailCode"
+              }
+            ]
+          },
+          "verification": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Verification"
+              }
+            ]
           },
           "resultVp": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           },
           "created": {
             "type": "integer",
@@ -583,6 +703,9 @@
         "type": "string"
       },
       "ValidationResult": {
+        "required": [
+          "memberNames"
+        ],
         "type": "object",
         "properties": {
           "memberNames": {
@@ -590,31 +713,40 @@
             "items": {
               "type": "string"
             },
-            "nullable": true,
             "readOnly": true
           },
           "errorMessage": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "additionalProperties": false
       },
       "Verification": {
+        "required": [
+          "governmentIdOptions",
+          "id",
+          "reused",
+          "state",
+          "updated"
+        ],
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "type": {
-            "$ref": "#/components/schemas/VerificationType"
+            "type": "string"
           },
           "state": {
-            "$ref": "#/components/schemas/VerificationState"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VerificationState"
+              }
+            ]
           },
           "failCode": {
-            "$ref": "#/components/schemas/VerificationFailCode"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VerificationFailCode"
+              }
+            ]
           },
           "reused": {
             "type": "boolean"
@@ -624,10 +756,18 @@
             "format": "int64"
           },
           "governmentIdOptions": {
-            "$ref": "#/components/schemas/GovernmentIDOptions"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GovernmentIDOptions"
+              }
+            ]
           },
           "normalizedGovernmentIdData": {
-            "$ref": "#/components/schemas/NormalizedIdentityData"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/NormalizedIdentityData"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -647,12 +787,6 @@
           "VerificationPending",
           "VerificationSuccess",
           "VerificationFailed"
-        ],
-        "type": "string"
-      },
-      "VerificationType": {
-        "enum": [
-          "GovernmentId"
         ],
         "type": "string"
       }
