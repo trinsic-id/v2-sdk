@@ -43,7 +43,7 @@ import {
 } from "../models/index";
 
 export interface CancelSessionRequest {
-    sessionId?: string;
+    sessionId: string;
 }
 
 export interface CreateSessionOperationRequest {
@@ -51,11 +51,15 @@ export interface CreateSessionOperationRequest {
 }
 
 export interface GetSessionRequest {
-    sessionId?: string;
+    sessionId: string;
 }
 
 export interface ListSessionsOperationRequest {
     listSessionsRequest?: ListSessionsRequest;
+}
+
+export interface RedactSessionRequest {
+    sessionId?: string;
 }
 
 /**
@@ -68,11 +72,14 @@ export class SessionsApi extends runtime.BaseAPI {
         requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<CancelSessionResponse>> {
-        const queryParameters: any = {};
-
-        if (requestParameters["sessionId"] != null) {
-            queryParameters["sessionId"] = requestParameters["sessionId"];
+        if (requestParameters["sessionId"] == null) {
+            throw new runtime.RequiredError(
+                "sessionId",
+                'Required parameter "sessionId" was null or undefined when calling cancelSession().',
+            );
         }
+
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -86,7 +93,10 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/cancel`,
+                path: `/api/v1/sessions/{sessionId}/cancel`.replace(
+                    `{${"sessionId"}}`,
+                    encodeURIComponent(String(requestParameters["sessionId"])),
+                ),
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -102,7 +112,7 @@ export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async cancelSession(
-        requestParameters: CancelSessionRequest = {},
+        requestParameters: CancelSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<CancelSessionResponse> {
         const response = await this.cancelSessionRaw(
@@ -134,7 +144,7 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/create`,
+                path: `/api/v1/sessions`,
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -169,11 +179,14 @@ export class SessionsApi extends runtime.BaseAPI {
         requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<GetSessionResponseV1>> {
-        const queryParameters: any = {};
-
-        if (requestParameters["sessionId"] != null) {
-            queryParameters["sessionId"] = requestParameters["sessionId"];
+        if (requestParameters["sessionId"] == null) {
+            throw new runtime.RequiredError(
+                "sessionId",
+                'Required parameter "sessionId" was null or undefined when calling getSession().',
+            );
         }
+
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -187,7 +200,10 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/get`,
+                path: `/api/v1/sessions/{sessionId}`.replace(
+                    `{${"sessionId"}}`,
+                    encodeURIComponent(String(requestParameters["sessionId"])),
+                ),
                 method: "GET",
                 headers: headerParameters,
                 query: queryParameters,
@@ -203,7 +219,7 @@ export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async getSession(
-        requestParameters: GetSessionRequest = {},
+        requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<GetSessionResponseV1> {
         const response = await this.getSessionRaw(
@@ -235,8 +251,8 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/list`,
-                method: "POST",
+                path: `/api/v1/sessions`,
+                method: "GET",
                 headers: headerParameters,
                 query: queryParameters,
                 body: ListSessionsRequestToJSON(
@@ -262,5 +278,49 @@ export class SessionsApi extends runtime.BaseAPI {
             initOverrides,
         );
         return await response.value();
+    }
+
+    /**
+     */
+    async redactSessionRaw(
+        requestParameters: RedactSessionRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        if (requestParameters["sessionId"] != null) {
+            queryParameters["sessionId"] = requestParameters["sessionId"];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request(
+            {
+                path: `/api/v1/sessions/redact`,
+                method: "POST",
+                headers: headerParameters,
+                query: queryParameters,
+            },
+            initOverrides,
+        );
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async redactSession(
+        requestParameters: RedactSessionRequest = {},
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<void> {
+        await this.redactSessionRaw(requestParameters, initOverrides);
     }
 }

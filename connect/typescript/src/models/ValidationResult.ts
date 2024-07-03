@@ -24,13 +24,13 @@ export interface ValidationResult {
      * @type {Array<string>}
      * @memberof ValidationResult
      */
-    readonly memberNames?: Array<string> | null;
+    readonly memberNames: Array<string>;
     /**
      *
      * @type {string}
      * @memberof ValidationResult
      */
-    errorMessage?: string | null;
+    errorMessage?: string;
 }
 
 /**
@@ -39,6 +39,8 @@ export interface ValidationResult {
 export function instanceOfValidationResult(
     value: object,
 ): value is ValidationResult {
+    if (!("memberNames" in value) || value["memberNames"] === undefined)
+        return false;
     return true;
 }
 
@@ -54,8 +56,7 @@ export function ValidationResultFromJSONTyped(
         return json;
     }
     return {
-        memberNames:
-            json["memberNames"] == null ? undefined : json["memberNames"],
+        memberNames: json["memberNames"],
         errorMessage:
             json["errorMessage"] == null ? undefined : json["errorMessage"],
     };

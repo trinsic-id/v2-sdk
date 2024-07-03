@@ -31,13 +31,13 @@ void main() {
       // TODO
     });
 
-    // Map<String, Verification> verifications (default value: const {})
-    test('to test the property `verifications`', () async {
+    // SessionFailCode failCode
+    test('to test the property `failCode`', () async {
       // TODO
     });
 
-    // SessionFailCode failCode
-    test('to test the property `failCode`', () async {
+    // Verification verification
+    test('to test the property `verification`', () async {
       // TODO
     });
 

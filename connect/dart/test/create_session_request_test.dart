@@ -16,8 +16,8 @@ void main() {
   // final instance = CreateSessionRequest();
 
   group('test CreateSessionRequest', () {
-    // List<RequestedVerification> verifications (default value: const [])
-    test('to test the property `verifications`', () async {
+    // GovernmentIDOptionsRequest governmentIdOptions
+    test('to test the property `governmentIdOptions`', () async {
       // TODO
     });
   });

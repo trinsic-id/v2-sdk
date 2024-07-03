@@ -24,7 +24,7 @@ export interface FailureMessage {
      * @type {string}
      * @memberof FailureMessage
      */
-    message?: string | null;
+    message: string;
 }
 
 /**
@@ -33,6 +33,7 @@ export interface FailureMessage {
 export function instanceOfFailureMessage(
     value: object,
 ): value is FailureMessage {
+    if (!("message" in value) || value["message"] === undefined) return false;
     return true;
 }
 
@@ -48,7 +49,7 @@ export function FailureMessageFromJSONTyped(
         return json;
     }
     return {
-        message: json["message"] == null ? undefined : json["message"],
+        message: json["message"],
     };
 }
 

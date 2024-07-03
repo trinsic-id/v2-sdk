@@ -13,33 +13,18 @@ part of openapi.api;
 class Verification {
   /// Returns a new [Verification] instance.
   Verification({
-    this.id,
-    this.type,
-    this.state,
+    required this.id,
+    required this.state,
     this.failCode,
-    this.reused,
-    this.updated,
-    this.governmentIdOptions,
+    required this.reused,
+    required this.updated,
+    required this.governmentIdOptions,
     this.normalizedGovernmentIdData,
   });
 
-  String? id;
+  String id;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  VerificationType? type;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  VerificationState? state;
+  VerificationState state;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -49,29 +34,11 @@ class Verification {
   ///
   VerificationFailCode? failCode;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? reused;
+  bool reused;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? updated;
+  int updated;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  GovernmentIDOptions? governmentIdOptions;
+  GovernmentIDOptions governmentIdOptions;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -86,7 +53,6 @@ class Verification {
       identical(this, other) ||
       other is Verification &&
           other.id == id &&
-          other.type == type &&
           other.state == state &&
           other.failCode == failCode &&
           other.reused == reused &&
@@ -97,58 +63,32 @@ class Verification {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (id == null ? 0 : id!.hashCode) +
-      (type == null ? 0 : type!.hashCode) +
-      (state == null ? 0 : state!.hashCode) +
+      (id.hashCode) +
+      (state.hashCode) +
       (failCode == null ? 0 : failCode!.hashCode) +
-      (reused == null ? 0 : reused!.hashCode) +
-      (updated == null ? 0 : updated!.hashCode) +
-      (governmentIdOptions == null ? 0 : governmentIdOptions!.hashCode) +
+      (reused.hashCode) +
+      (updated.hashCode) +
+      (governmentIdOptions.hashCode) +
       (normalizedGovernmentIdData == null
           ? 0
           : normalizedGovernmentIdData!.hashCode);
 
   @override
   String toString() =>
-      'Verification[id=$id, type=$type, state=$state, failCode=$failCode, reused=$reused, updated=$updated, governmentIdOptions=$governmentIdOptions, normalizedGovernmentIdData=$normalizedGovernmentIdData]';
+      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, governmentIdOptions=$governmentIdOptions, normalizedGovernmentIdData=$normalizedGovernmentIdData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.type != null) {
-      json[r'type'] = this.type;
-    } else {
-      json[r'type'] = null;
-    }
-    if (this.state != null) {
-      json[r'state'] = this.state;
-    } else {
-      json[r'state'] = null;
-    }
+    json[r'id'] = this.id;
+    json[r'state'] = this.state;
     if (this.failCode != null) {
       json[r'failCode'] = this.failCode;
     } else {
       json[r'failCode'] = null;
     }
-    if (this.reused != null) {
-      json[r'reused'] = this.reused;
-    } else {
-      json[r'reused'] = null;
-    }
-    if (this.updated != null) {
-      json[r'updated'] = this.updated;
-    } else {
-      json[r'updated'] = null;
-    }
-    if (this.governmentIdOptions != null) {
-      json[r'governmentIdOptions'] = this.governmentIdOptions;
-    } else {
-      json[r'governmentIdOptions'] = null;
-    }
+    json[r'reused'] = this.reused;
+    json[r'updated'] = this.updated;
+    json[r'governmentIdOptions'] = this.governmentIdOptions;
     if (this.normalizedGovernmentIdData != null) {
       json[r'normalizedGovernmentIdData'] = this.normalizedGovernmentIdData;
     } else {
@@ -178,14 +118,13 @@ class Verification {
       }());
 
       return Verification(
-        id: mapValueOfType<String>(json, r'id'),
-        type: VerificationType.fromJson(json[r'type']),
-        state: VerificationState.fromJson(json[r'state']),
+        id: mapValueOfType<String>(json, r'id')!,
+        state: VerificationState.fromJson(json[r'state'])!,
         failCode: VerificationFailCode.fromJson(json[r'failCode']),
-        reused: mapValueOfType<bool>(json, r'reused'),
-        updated: mapValueOfType<int>(json, r'updated'),
+        reused: mapValueOfType<bool>(json, r'reused')!,
+        updated: mapValueOfType<int>(json, r'updated')!,
         governmentIdOptions:
-            GovernmentIDOptions.fromJson(json[r'governmentIdOptions']),
+            GovernmentIDOptions.fromJson(json[r'governmentIdOptions'])!,
         normalizedGovernmentIdData: NormalizedIdentityData.fromJson(
             json[r'normalizedGovernmentIdData']),
       );
@@ -243,5 +182,11 @@ class Verification {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'id',
+    'state',
+    'reused',
+    'updated',
+    'governmentIdOptions',
+  };
 }

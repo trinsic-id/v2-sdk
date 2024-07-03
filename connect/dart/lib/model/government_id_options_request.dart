@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class NormalizedIdentityData {
-  /// Returns a new [NormalizedIdentityData] instance.
-  NormalizedIdentityData({
+class GovernmentIDOptionsRequest {
+  /// Returns a new [GovernmentIDOptionsRequest] instance.
+  GovernmentIDOptionsRequest({
     this.idNumber,
     this.givenName,
     this.familyName,
@@ -29,7 +29,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? idNumber;
+  bool? idNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -37,7 +37,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? givenName;
+  bool? givenName;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,7 +45,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? familyName;
+  bool? familyName;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -53,7 +53,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? address;
+  bool? address;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -61,7 +61,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? dateOfBirth;
+  bool? dateOfBirth;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -69,7 +69,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? country;
+  bool? country;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -77,7 +77,7 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? issueDate;
+  bool? issueDate;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -85,12 +85,12 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? expirationDate;
+  bool? expirationDate;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NormalizedIdentityData &&
+      other is GovernmentIDOptionsRequest &&
           other.idNumber == idNumber &&
           other.givenName == givenName &&
           other.familyName == familyName &&
@@ -114,7 +114,7 @@ class NormalizedIdentityData {
 
   @override
   String toString() =>
-      'NormalizedIdentityData[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'GovernmentIDOptionsRequest[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,10 +161,10 @@ class NormalizedIdentityData {
     return json;
   }
 
-  /// Returns a new [NormalizedIdentityData] instance and imports its values from
+  /// Returns a new [GovernmentIDOptionsRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NormalizedIdentityData? fromJson(dynamic value) {
+  static GovernmentIDOptionsRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -174,35 +174,35 @@ class NormalizedIdentityData {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "NormalizedIdentityData[$key]" is missing from JSON.');
+              'Required key "GovernmentIDOptionsRequest[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "NormalizedIdentityData[$key]" has a null value in JSON.');
+              'Required key "GovernmentIDOptionsRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return NormalizedIdentityData(
-        idNumber: mapValueOfType<String>(json, r'idNumber'),
-        givenName: mapValueOfType<String>(json, r'givenName'),
-        familyName: mapValueOfType<String>(json, r'familyName'),
-        address: mapValueOfType<String>(json, r'address'),
-        dateOfBirth: mapValueOfType<String>(json, r'dateOfBirth'),
-        country: mapValueOfType<String>(json, r'country'),
-        issueDate: mapValueOfType<String>(json, r'issueDate'),
-        expirationDate: mapValueOfType<String>(json, r'expirationDate'),
+      return GovernmentIDOptionsRequest(
+        idNumber: mapValueOfType<bool>(json, r'idNumber'),
+        givenName: mapValueOfType<bool>(json, r'givenName'),
+        familyName: mapValueOfType<bool>(json, r'familyName'),
+        address: mapValueOfType<bool>(json, r'address'),
+        dateOfBirth: mapValueOfType<bool>(json, r'dateOfBirth'),
+        country: mapValueOfType<bool>(json, r'country'),
+        issueDate: mapValueOfType<bool>(json, r'issueDate'),
+        expirationDate: mapValueOfType<bool>(json, r'expirationDate'),
       );
     }
     return null;
   }
 
-  static List<NormalizedIdentityData> listFromJson(
+  static List<GovernmentIDOptionsRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <NormalizedIdentityData>[];
+    final result = <GovernmentIDOptionsRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = NormalizedIdentityData.fromJson(row);
+        final value = GovernmentIDOptionsRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -211,12 +211,12 @@ class NormalizedIdentityData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, NormalizedIdentityData> mapFromJson(dynamic json) {
-    final map = <String, NormalizedIdentityData>{};
+  static Map<String, GovernmentIDOptionsRequest> mapFromJson(dynamic json) {
+    final map = <String, GovernmentIDOptionsRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = NormalizedIdentityData.fromJson(entry.value);
+        final value = GovernmentIDOptionsRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -225,17 +225,17 @@ class NormalizedIdentityData {
     return map;
   }
 
-  // maps a json object with a list of NormalizedIdentityData-objects as value to a dart map
-  static Map<String, List<NormalizedIdentityData>> mapListFromJson(
+  // maps a json object with a list of GovernmentIDOptionsRequest-objects as value to a dart map
+  static Map<String, List<GovernmentIDOptionsRequest>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<NormalizedIdentityData>>{};
+    final map = <String, List<GovernmentIDOptionsRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = NormalizedIdentityData.listFromJson(
+        map[entry.key] = GovernmentIDOptionsRequest.listFromJson(
           entry.value,
           growable: growable,
         );

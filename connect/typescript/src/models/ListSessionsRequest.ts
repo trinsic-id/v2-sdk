@@ -37,13 +37,13 @@ export interface ListSessionsRequest {
      * @type {SessionOrdering}
      * @memberof ListSessionsRequest
      */
-    orderBy: SessionOrdering;
+    orderBy?: SessionOrdering;
     /**
      *
      * @type {OrderDirection}
      * @memberof ListSessionsRequest
      */
-    orderDirection: OrderDirection;
+    orderDirection?: OrderDirection;
     /**
      *
      * @type {number}
@@ -64,9 +64,6 @@ export interface ListSessionsRequest {
 export function instanceOfListSessionsRequest(
     value: object,
 ): value is ListSessionsRequest {
-    if (!("orderBy" in value) || value["orderBy"] === undefined) return false;
-    if (!("orderDirection" in value) || value["orderDirection"] === undefined)
-        return false;
     return true;
 }
 
@@ -82,8 +79,14 @@ export function ListSessionsRequestFromJSONTyped(
         return json;
     }
     return {
-        orderBy: SessionOrderingFromJSON(json["orderBy"]),
-        orderDirection: OrderDirectionFromJSON(json["orderDirection"]),
+        orderBy:
+            json["orderBy"] == null
+                ? undefined
+                : SessionOrderingFromJSON(json["orderBy"]),
+        orderDirection:
+            json["orderDirection"] == null
+                ? undefined
+                : OrderDirectionFromJSON(json["orderDirection"]),
         pageSize: json["pageSize"] == null ? undefined : json["pageSize"],
         page: json["page"] == null ? undefined : json["page"],
     };

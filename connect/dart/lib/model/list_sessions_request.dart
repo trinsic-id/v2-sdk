@@ -13,15 +13,27 @@ part of openapi.api;
 class ListSessionsRequest {
   /// Returns a new [ListSessionsRequest] instance.
   ListSessionsRequest({
-    required this.orderBy,
-    required this.orderDirection,
+    this.orderBy,
+    this.orderDirection,
     this.pageSize,
     this.page,
   });
 
-  SessionOrdering orderBy;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  SessionOrdering? orderBy;
 
-  OrderDirection orderDirection;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  OrderDirection? orderDirection;
 
   /// Minimum value: 1
   /// Maximum value: 10
@@ -55,8 +67,8 @@ class ListSessionsRequest {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (orderBy.hashCode) +
-      (orderDirection.hashCode) +
+      (orderBy == null ? 0 : orderBy!.hashCode) +
+      (orderDirection == null ? 0 : orderDirection!.hashCode) +
       (pageSize == null ? 0 : pageSize!.hashCode) +
       (page == null ? 0 : page!.hashCode);
 
@@ -66,8 +78,16 @@ class ListSessionsRequest {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'orderBy'] = this.orderBy;
-    json[r'orderDirection'] = this.orderDirection;
+    if (this.orderBy != null) {
+      json[r'orderBy'] = this.orderBy;
+    } else {
+      json[r'orderBy'] = null;
+    }
+    if (this.orderDirection != null) {
+      json[r'orderDirection'] = this.orderDirection;
+    } else {
+      json[r'orderDirection'] = null;
+    }
     if (this.pageSize != null) {
       json[r'pageSize'] = this.pageSize;
     } else {
@@ -102,8 +122,8 @@ class ListSessionsRequest {
       }());
 
       return ListSessionsRequest(
-        orderBy: SessionOrdering.fromJson(json[r'orderBy'])!,
-        orderDirection: OrderDirection.fromJson(json[r'orderDirection'])!,
+        orderBy: SessionOrdering.fromJson(json[r'orderBy']),
+        orderDirection: OrderDirection.fromJson(json[r'orderDirection']),
         pageSize: mapValueOfType<int>(json, r'pageSize'),
         page: mapValueOfType<int>(json, r'page'),
       );
@@ -161,8 +181,5 @@ class ListSessionsRequest {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'orderBy',
-    'orderDirection',
-  };
+  static const requiredKeys = <String>{};
 }

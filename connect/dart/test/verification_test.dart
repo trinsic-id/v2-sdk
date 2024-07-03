@@ -21,11 +21,6 @@ void main() {
       // TODO
     });
 
-    // VerificationType type
-    test('to test the property `type`', () async {
-      // TODO
-    });
-
     // VerificationState state
     test('to test the property `state`', () async {
       // TODO

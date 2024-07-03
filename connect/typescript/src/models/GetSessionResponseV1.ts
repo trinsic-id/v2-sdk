@@ -31,7 +31,7 @@ export interface GetSessionResponseV1 {
      * @type {Session}
      * @memberof GetSessionResponseV1
      */
-    session?: Session;
+    session: Session;
 }
 
 /**
@@ -40,6 +40,7 @@ export interface GetSessionResponseV1 {
 export function instanceOfGetSessionResponseV1(
     value: object,
 ): value is GetSessionResponseV1 {
+    if (!("session" in value) || value["session"] === undefined) return false;
     return true;
 }
 
@@ -55,10 +56,7 @@ export function GetSessionResponseV1FromJSONTyped(
         return json;
     }
     return {
-        session:
-            json["session"] == null
-                ? undefined
-                : SessionFromJSON(json["session"]),
+        session: SessionFromJSON(json["session"]),
     };
 }
 

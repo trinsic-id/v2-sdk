@@ -9,16 +9,15 @@ src/index.ts
 src/models/CancelSessionResponse.ts
 src/models/CreateSessionRequest.ts
 src/models/CreateSessionResponse.ts
-src/models/DebugIdvProviderSelection.ts
 src/models/FailureMessage.ts
 src/models/GetSessionResponseV1.ts
 src/models/GovernmentIDOptions.ts
+src/models/GovernmentIDOptionsRequest.ts
 src/models/IDVSessionState.ts
 src/models/ListSessionsRequest.ts
 src/models/ListSessionsResponse.ts
 src/models/NormalizedIdentityData.ts
 src/models/OrderDirection.ts
-src/models/RequestedVerification.ts
 src/models/Session.ts
 src/models/SessionFailCode.ts
 src/models/SessionOrdering.ts
@@ -26,7 +25,6 @@ src/models/ValidationResult.ts
 src/models/Verification.ts
 src/models/VerificationFailCode.ts
 src/models/VerificationState.ts
-src/models/VerificationType.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.json

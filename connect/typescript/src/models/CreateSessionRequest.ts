@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from "../runtime";
-import type { RequestedVerification } from "./RequestedVerification";
+import type { GovernmentIDOptionsRequest } from "./GovernmentIDOptionsRequest";
 import {
-    RequestedVerificationFromJSON,
-    RequestedVerificationFromJSONTyped,
-    RequestedVerificationToJSON,
-} from "./RequestedVerification";
+    GovernmentIDOptionsRequestFromJSON,
+    GovernmentIDOptionsRequestFromJSONTyped,
+    GovernmentIDOptionsRequestToJSON,
+} from "./GovernmentIDOptionsRequest";
 
 /**
  *
@@ -28,10 +28,10 @@ import {
 export interface CreateSessionRequest {
     /**
      *
-     * @type {Array<RequestedVerification>}
+     * @type {GovernmentIDOptionsRequest}
      * @memberof CreateSessionRequest
      */
-    verifications?: Array<RequestedVerification> | null;
+    governmentIdOptions?: GovernmentIDOptionsRequest;
 }
 
 /**
@@ -55,11 +55,11 @@ export function CreateSessionRequestFromJSONTyped(
         return json;
     }
     return {
-        verifications:
-            json["verifications"] == null
+        governmentIdOptions:
+            json["governmentIdOptions"] == null
                 ? undefined
-                : (json["verifications"] as Array<any>).map(
-                      RequestedVerificationFromJSON,
+                : GovernmentIDOptionsRequestFromJSON(
+                      json["governmentIdOptions"],
                   ),
     };
 }
@@ -71,11 +71,8 @@ export function CreateSessionRequestToJSON(
         return value;
     }
     return {
-        verifications:
-            value["verifications"] == null
-                ? undefined
-                : (value["verifications"] as Array<any>).map(
-                      RequestedVerificationToJSON,
-                  ),
+        governmentIdOptions: GovernmentIDOptionsRequestToJSON(
+            value["governmentIdOptions"],
+        ),
     };
 }

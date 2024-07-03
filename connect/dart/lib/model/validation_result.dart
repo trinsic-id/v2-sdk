@@ -17,8 +17,14 @@ class ValidationResult {
     this.errorMessage,
   });
 
-  List<String>? memberNames;
+  List<String> memberNames;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? errorMessage;
 
   @override
@@ -31,7 +37,7 @@ class ValidationResult {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (memberNames == null ? 0 : memberNames!.hashCode) +
+      (memberNames.hashCode) +
       (errorMessage == null ? 0 : errorMessage!.hashCode);
 
   @override
@@ -40,11 +46,7 @@ class ValidationResult {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.memberNames != null) {
-      json[r'memberNames'] = this.memberNames;
-    } else {
-      json[r'memberNames'] = null;
-    }
+    json[r'memberNames'] = this.memberNames;
     if (this.errorMessage != null) {
       json[r'errorMessage'] = this.errorMessage;
     } else {
@@ -135,5 +137,7 @@ class ValidationResult {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'memberNames',
+  };
 }

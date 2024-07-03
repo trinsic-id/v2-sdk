@@ -43,25 +43,19 @@ export interface Session {
      * @type {string}
      * @memberof Session
      */
-    id?: string | null;
+    id: string;
     /**
      *
      * @type {string}
      * @memberof Session
      */
-    clientToken?: string | null;
+    clientToken: string;
     /**
      *
      * @type {IDVSessionState}
      * @memberof Session
      */
-    state?: IDVSessionState;
-    /**
-     *
-     * @type {{ [key: string]: Verification; }}
-     * @memberof Session
-     */
-    verifications?: { [key: string]: Verification } | null;
+    state: IDVSessionState;
     /**
      *
      * @type {SessionFailCode}
@@ -70,28 +64,42 @@ export interface Session {
     failCode?: SessionFailCode;
     /**
      *
+     * @type {Verification}
+     * @memberof Session
+     */
+    verification: Verification;
+    /**
+     *
      * @type {string}
      * @memberof Session
      */
-    resultVp?: string | null;
+    resultVp?: string;
     /**
      *
      * @type {number}
      * @memberof Session
      */
-    created?: number;
+    created: number;
     /**
      *
      * @type {number}
      * @memberof Session
      */
-    updated?: number;
+    updated: number;
 }
 
 /**
  * Check if a given object implements the Session interface.
  */
 export function instanceOfSession(value: object): value is Session {
+    if (!("id" in value) || value["id"] === undefined) return false;
+    if (!("clientToken" in value) || value["clientToken"] === undefined)
+        return false;
+    if (!("state" in value) || value["state"] === undefined) return false;
+    if (!("verification" in value) || value["verification"] === undefined)
+        return false;
+    if (!("created" in value) || value["created"] === undefined) return false;
+    if (!("updated" in value) || value["updated"] === undefined) return false;
     return true;
 }
 
@@ -107,24 +115,17 @@ export function SessionFromJSONTyped(
         return json;
     }
     return {
-        id: json["id"] == null ? undefined : json["id"],
-        clientToken:
-            json["clientToken"] == null ? undefined : json["clientToken"],
-        state:
-            json["state"] == null
-                ? undefined
-                : IDVSessionStateFromJSON(json["state"]),
-        verifications:
-            json["verifications"] == null
-                ? undefined
-                : mapValues(json["verifications"], VerificationFromJSON),
+        id: json["id"],
+        clientToken: json["clientToken"],
+        state: IDVSessionStateFromJSON(json["state"]),
         failCode:
             json["failCode"] == null
                 ? undefined
                 : SessionFailCodeFromJSON(json["failCode"]),
+        verification: VerificationFromJSON(json["verification"]),
         resultVp: json["resultVp"] == null ? undefined : json["resultVp"],
-        created: json["created"] == null ? undefined : json["created"],
-        updated: json["updated"] == null ? undefined : json["updated"],
+        created: json["created"],
+        updated: json["updated"],
     };
 }
 
@@ -136,11 +137,8 @@ export function SessionToJSON(value?: Session | null): any {
         id: value["id"],
         clientToken: value["clientToken"],
         state: IDVSessionStateToJSON(value["state"]),
-        verifications:
-            value["verifications"] == null
-                ? undefined
-                : mapValues(value["verifications"], VerificationToJSON),
         failCode: SessionFailCodeToJSON(value["failCode"]),
+        verification: VerificationToJSON(value["verification"]),
         resultVp: value["resultVp"],
         created: value["created"],
         updated: value["updated"],
