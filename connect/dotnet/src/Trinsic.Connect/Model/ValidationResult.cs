@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Trinsic.Connect.Model;
 
@@ -22,6 +23,11 @@ public partial class ValidationResult
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationResult" /> class.
     /// </summary>
+    [JsonConstructorAttribute]
+    protected ValidationResult() { }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidationResult" /> class.
+    /// </summary>
     /// <param name="errorMessage">errorMessage.</param>
     public ValidationResult(string errorMessage = default(string))
     {
@@ -31,7 +37,7 @@ public partial class ValidationResult
     /// <summary>
     /// Gets or Sets MemberNames
     /// </summary>
-    [DataMember(Name = "memberNames", EmitDefaultValue = true)]
+    [DataMember(Name = "memberNames", IsRequired = true, EmitDefaultValue = true)]
     public List<string> MemberNames { get; private set; }
 
     /// <summary>
@@ -45,7 +51,7 @@ public partial class ValidationResult
     /// <summary>
     /// Gets or Sets ErrorMessage
     /// </summary>
-    [DataMember(Name = "errorMessage", EmitDefaultValue = true)]
+    [DataMember(Name = "errorMessage", EmitDefaultValue = false)]
     public string ErrorMessage { get; set; }
 
     /// <summary>

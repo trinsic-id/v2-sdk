@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Verifications** | [**List&lt;RequestedVerification&gt;**](RequestedVerification.md) |  | [optional] 
+**GovernmentIdOptions** | [**GovernmentIDOptionsRequest**](GovernmentIDOptionsRequest.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

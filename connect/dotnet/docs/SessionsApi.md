@@ -4,14 +4,15 @@ All URIs are relative to *https://connect.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/cancel |  |
-| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions/create |  |
-| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/get |  |
-| [**ListSessions**](SessionsApi.md#listsessions) | **POST** /api/v1/sessions/list |  |
+| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel |  |
+| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions |  |
+| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} |  |
+| [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions |  |
+| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/redact |  |
 
 <a id="cancelsession"></a>
 # **CancelSession**
-> CancelSessionResponse CancelSession (string? sessionId = null)
+> CancelSessionResponse CancelSession (string sessionId)
 
 
 
@@ -39,7 +40,7 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var sessionId = "sessionId_example";  // string? |  (optional) 
+            var sessionId = "sessionId_example";  // string | 
 
             try
             {
@@ -80,7 +81,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **sessionId** | **string?** |  | [optional]  |
+| **sessionId** | **string** |  |  |
 
 ### Return type
 
@@ -207,7 +208,7 @@ catch (ApiException e)
 
 <a id="getsession"></a>
 # **GetSession**
-> GetSessionResponseV1 GetSession (string? sessionId = null)
+> GetSessionResponseV1 GetSession (string sessionId)
 
 
 
@@ -235,7 +236,7 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var sessionId = "sessionId_example";  // string? |  (optional) 
+            var sessionId = "sessionId_example";  // string | 
 
             try
             {
@@ -276,7 +277,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **sessionId** | **string?** |  | [optional]  |
+| **sessionId** | **string** |  |  |
 
 ### Return type
 
@@ -388,6 +389,100 @@ catch (ApiException e)
 
  - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Validation Failed |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a id="redactsession"></a>
+# **RedactSession**
+> void RedactSession (string? sessionId = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
+
+namespace Example
+{
+    public class RedactSessionExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://connect.trinsic.id";
+            // Configure Bearer token for authorization: Bearer
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
+            var sessionId = "sessionId_example";  // string? |  (optional) 
+
+            try
+            {
+                apiInstance.RedactSession(sessionId);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SessionsApi.RedactSession: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RedactSessionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    apiInstance.RedactSessionWithHttpInfo(sessionId);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SessionsApi.RedactSessionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **sessionId** | **string?** |  | [optional]  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

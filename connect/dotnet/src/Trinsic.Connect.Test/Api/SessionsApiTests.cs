@@ -53,7 +53,7 @@ public class SessionsApiTests : IDisposable
     public void CancelSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string? sessionId = null;
+        //string sessionId = null;
         //var response = instance.CancelSession(sessionId);
         //Assert.IsType<CancelSessionResponse>(response);
     }
@@ -77,7 +77,7 @@ public class SessionsApiTests : IDisposable
     public void GetSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string? sessionId = null;
+        //string sessionId = null;
         //var response = instance.GetSession(sessionId);
         //Assert.IsType<GetSessionResponseV1>(response);
     }
@@ -92,5 +92,16 @@ public class SessionsApiTests : IDisposable
         //ListSessionsRequest? listSessionsRequest = null;
         //var response = instance.ListSessions(listSessionsRequest);
         //Assert.IsType<ListSessionsResponse>(response);
+    }
+
+    /// <summary>
+    /// Test RedactSession
+    /// </summary>
+    [Fact]
+    public void RedactSessionTest()
+    {
+        // TODO uncomment below to test the method and replace null with proper value
+        //string? sessionId = null;
+        //instance.RedactSession(sessionId);
     }
 }

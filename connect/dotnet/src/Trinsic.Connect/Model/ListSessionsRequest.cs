@@ -9,7 +9,6 @@
 
 using System.Runtime.Serialization;
 using System.Text;
-using Newtonsoft.Json;
 
 namespace Trinsic.Connect.Model;
 
@@ -23,27 +22,22 @@ public partial class ListSessionsRequest
     /// <summary>
     /// Gets or Sets OrderBy
     /// </summary>
-    [DataMember(Name = "orderBy", IsRequired = true, EmitDefaultValue = true)]
-    public SessionOrdering OrderBy { get; set; }
+    [DataMember(Name = "orderBy", EmitDefaultValue = false)]
+    public SessionOrdering? OrderBy { get; set; }
 
     /// <summary>
     /// Gets or Sets OrderDirection
     /// </summary>
-    [DataMember(Name = "orderDirection", IsRequired = true, EmitDefaultValue = true)]
-    public OrderDirection OrderDirection { get; set; }
+    [DataMember(Name = "orderDirection", EmitDefaultValue = false)]
+    public OrderDirection? OrderDirection { get; set; }
     /// <summary>
     /// Initializes a new instance of the <see cref="ListSessionsRequest" /> class.
     /// </summary>
-    [JsonConstructorAttribute]
-    protected ListSessionsRequest() { }
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ListSessionsRequest" /> class.
-    /// </summary>
-    /// <param name="orderBy">orderBy (required).</param>
-    /// <param name="orderDirection">orderDirection (required).</param>
+    /// <param name="orderBy">orderBy.</param>
+    /// <param name="orderDirection">orderDirection.</param>
     /// <param name="pageSize">pageSize.</param>
     /// <param name="page">page.</param>
-    public ListSessionsRequest(SessionOrdering orderBy = default(SessionOrdering), OrderDirection orderDirection = default(OrderDirection), int pageSize = default(int), int page = default(int))
+    public ListSessionsRequest(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int pageSize = default(int), int page = default(int))
     {
         OrderBy = orderBy;
         OrderDirection = orderDirection;

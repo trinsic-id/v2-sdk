@@ -9,20 +9,23 @@ servers:
 security:
 - Bearer: []
 paths:
-  /api/v1/sessions/list:
-    post:
+  /api/v1/sessions:
+    get:
       operationId: ListSessions
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ListSessionsRequest'
+              allOf:
+              - $ref: '#/components/schemas/ListSessionsRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/ListSessionsRequest'
+              allOf:
+              - $ref: '#/components/schemas/ListSessionsRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/ListSessionsRequest'
+              allOf:
+              - $ref: '#/components/schemas/ListSessionsRequest'
       responses:
         "200":
           content:
@@ -56,66 +59,22 @@ paths:
           description: Internal Server Error
       tags:
       - Sessions
-  /api/v1/sessions/get:
-    get:
-      operationId: GetSession
-      parameters:
-      - explode: true
-        in: query
-        name: sessionId
-        required: false
-        schema:
-          maxLength: 100
-          minLength: 5
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/ValidationResult'
-                type: array
-          description: Validation Failed
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailureMessage'
-          description: Unauthorized
-        "403":
-          description: Forbidden
-        "500":
-          description: Internal Server Error
-      tags:
-      - Sessions
-  /api/v1/sessions/create:
     post:
       operationId: CreateSession
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSessionRequest'
+              allOf:
+              - $ref: '#/components/schemas/CreateSessionRequest'
           text/json:
             schema:
-              $ref: '#/components/schemas/CreateSessionRequest'
+              allOf:
+              - $ref: '#/components/schemas/CreateSessionRequest'
           application/*+json:
             schema:
-              $ref: '#/components/schemas/CreateSessionRequest'
+              allOf:
+              - $ref: '#/components/schemas/CreateSessionRequest'
       responses:
         "200":
           content:
@@ -149,19 +108,61 @@ paths:
           description: Internal Server Error
       tags:
       - Sessions
-  /api/v1/sessions/cancel:
+  /api/v1/sessions/{sessionId}:
+    get:
+      operationId: GetSession
+      parameters:
+      - explode: false
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetSessionResponseV1'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSessionResponseV1'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetSessionResponseV1'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      tags:
+      - Sessions
+  /api/v1/sessions/{sessionId}/cancel:
     post:
       operationId: CancelSession
       parameters:
-      - explode: true
-        in: query
+      - explode: false
+        in: path
         name: sessionId
-        required: false
+        required: true
         schema:
-          maxLength: 100
-          minLength: 5
           type: string
-        style: form
+        style: simple
       responses:
         "200":
           content:
@@ -174,6 +175,42 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CancelSessionResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      tags:
+      - Sessions
+  /api/v1/sessions/redact:
+    post:
+      operationId: RedactSession
+      parameters:
+      - explode: true
+        in: query
+        name: sessionId
+        required: false
+        schema:
+          maxLength: 100
+          minLength: 5
+          type: string
+        style: form
+      responses:
+        "200":
           description: OK
         "400":
           content:
@@ -200,189 +237,85 @@ components:
     CancelSessionResponse:
       additionalProperties: false
       example:
-        session:
-          clientToken: clientToken
-          created: 6
-          failCode: SessionFailNone
-          id: id
-          state: IdvCreated
-          resultVp: resultVp
-          verifications:
-            key:
-              failCode: VerificationFailNone
-              id: id
-              state: VerificationPending
-              type: GovernmentId
-              updated: 0
-              reused: true
-              normalizedGovernmentIdData:
-                country: country
-                address: address
-                givenName: givenName
-                familyName: familyName
-                dateOfBirth: dateOfBirth
-                idNumber: idNumber
-                issueDate: issueDate
-                expirationDate: expirationDate
-              governmentIdOptions:
-                country: true
-                address: true
-                givenName: true
-                familyName: true
-                dateOfBirth: true
-                idNumber: true
-                issueDate: true
-                expirationDate: true
-          updated: 1
+        session: ""
       properties:
         session:
-          $ref: '#/components/schemas/Session'
+          allOf:
+          - $ref: '#/components/schemas/Session'
       required:
       - session
       type: object
     CreateSessionRequest:
       example:
-        verifications:
-        - type: GovernmentId
-          governmentIdOptions:
-            country: true
-            address: true
-            givenName: true
-            familyName: true
-            dateOfBirth: true
-            idNumber: true
-            issueDate: true
-            expirationDate: true
-        - type: GovernmentId
-          governmentIdOptions:
-            country: true
-            address: true
-            givenName: true
-            familyName: true
-            dateOfBirth: true
-            idNumber: true
-            issueDate: true
-            expirationDate: true
+        governmentIdOptions: ""
       properties:
-        verifications:
-          items:
-            $ref: '#/components/schemas/RequestedVerification'
-          nullable: true
-          type: array
+        governmentIdOptions:
+          allOf:
+          - $ref: '#/components/schemas/GovernmentIDOptionsRequest'
       type: object
     CreateSessionResponse:
       additionalProperties: false
       example:
-        session:
-          clientToken: clientToken
-          created: 6
-          failCode: SessionFailNone
-          id: id
-          state: IdvCreated
-          resultVp: resultVp
-          verifications:
-            key:
-              failCode: VerificationFailNone
-              id: id
-              state: VerificationPending
-              type: GovernmentId
-              updated: 0
-              reused: true
-              normalizedGovernmentIdData:
-                country: country
-                address: address
-                givenName: givenName
-                familyName: familyName
-                dateOfBirth: dateOfBirth
-                idNumber: idNumber
-                issueDate: issueDate
-                expirationDate: expirationDate
-              governmentIdOptions:
-                country: true
-                address: true
-                givenName: true
-                familyName: true
-                dateOfBirth: true
-                idNumber: true
-                issueDate: true
-                expirationDate: true
-          updated: 1
+        session: ""
       properties:
         session:
-          $ref: '#/components/schemas/Session'
+          allOf:
+          - $ref: '#/components/schemas/Session'
       required:
       - session
       type: object
-    DebugIdvProviderSelection:
-      enum:
-      - Default
-      - IdVerse
-      - Argos
-      - Clear
-      - Yoti
-      - EidEasy
-      type: string
     FailureMessage:
       additionalProperties: false
       example:
         message: message
       properties:
         message:
-          nullable: true
           type: string
+      required:
+      - message
       type: object
     GetSessionResponseV1:
       additionalProperties: false
       example:
-        session:
-          clientToken: clientToken
-          created: 6
-          failCode: SessionFailNone
-          id: id
-          state: IdvCreated
-          resultVp: resultVp
-          verifications:
-            key:
-              failCode: VerificationFailNone
-              id: id
-              state: VerificationPending
-              type: GovernmentId
-              updated: 0
-              reused: true
-              normalizedGovernmentIdData:
-                country: country
-                address: address
-                givenName: givenName
-                familyName: familyName
-                dateOfBirth: dateOfBirth
-                idNumber: idNumber
-                issueDate: issueDate
-                expirationDate: expirationDate
-              governmentIdOptions:
-                country: true
-                address: true
-                givenName: true
-                familyName: true
-                dateOfBirth: true
-                idNumber: true
-                issueDate: true
-                expirationDate: true
-          updated: 1
+        session: ""
       properties:
         session:
-          $ref: '#/components/schemas/Session'
+          allOf:
+          - $ref: '#/components/schemas/Session'
+      required:
+      - session
       type: object
     GovernmentIDOptions:
       additionalProperties: false
-      example:
-        country: true
-        address: true
-        givenName: true
-        familyName: true
-        dateOfBirth: true
-        idNumber: true
-        issueDate: true
-        expirationDate: true
+      properties:
+        idNumber:
+          type: boolean
+        givenName:
+          type: boolean
+        familyName:
+          type: boolean
+        address:
+          type: boolean
+        dateOfBirth:
+          type: boolean
+        country:
+          type: boolean
+        issueDate:
+          type: boolean
+        expirationDate:
+          type: boolean
+      required:
+      - address
+      - country
+      - dateOfBirth
+      - expirationDate
+      - familyName
+      - givenName
+      - idNumber
+      - issueDate
+      type: object
+    GovernmentIDOptionsRequest:
+      additionalProperties: false
       properties:
         idNumber:
           type: boolean
@@ -413,15 +346,17 @@ components:
     ListSessionsRequest:
       additionalProperties: false
       example:
-        orderBy: Created
-        orderDirection: Ascending
+        orderBy: ""
+        orderDirection: ""
         pageSize: 1
         page: 1294386359
       properties:
         orderBy:
-          $ref: '#/components/schemas/SessionOrdering'
+          allOf:
+          - $ref: '#/components/schemas/SessionOrdering'
         orderDirection:
-          $ref: '#/components/schemas/OrderDirection'
+          allOf:
+          - $ref: '#/components/schemas/OrderDirection'
         pageSize:
           format: int32
           maximum: 10
@@ -432,129 +367,62 @@ components:
           maximum: 2147483647
           minimum: 1
           type: integer
-      required:
-      - orderBy
-      - orderDirection
       type: object
     ListSessionsResponse:
       additionalProperties: false
       example:
         sessions:
         - clientToken: clientToken
-          created: 6
-          failCode: SessionFailNone
+          created: 0
+          failCode: ""
           id: id
-          state: IdvCreated
+          state: ""
           resultVp: resultVp
-          verifications:
-            key:
-              failCode: VerificationFailNone
-              id: id
-              state: VerificationPending
-              type: GovernmentId
-              updated: 0
-              reused: true
-              normalizedGovernmentIdData:
-                country: country
-                address: address
-                givenName: givenName
-                familyName: familyName
-                dateOfBirth: dateOfBirth
-                idNumber: idNumber
-                issueDate: issueDate
-                expirationDate: expirationDate
-              governmentIdOptions:
-                country: true
-                address: true
-                givenName: true
-                familyName: true
-                dateOfBirth: true
-                idNumber: true
-                issueDate: true
-                expirationDate: true
-          updated: 1
+          updated: 6
+          verification: ""
         - clientToken: clientToken
-          created: 6
-          failCode: SessionFailNone
+          created: 0
+          failCode: ""
           id: id
-          state: IdvCreated
+          state: ""
           resultVp: resultVp
-          verifications:
-            key:
-              failCode: VerificationFailNone
-              id: id
-              state: VerificationPending
-              type: GovernmentId
-              updated: 0
-              reused: true
-              normalizedGovernmentIdData:
-                country: country
-                address: address
-                givenName: givenName
-                familyName: familyName
-                dateOfBirth: dateOfBirth
-                idNumber: idNumber
-                issueDate: issueDate
-                expirationDate: expirationDate
-              governmentIdOptions:
-                country: true
-                address: true
-                givenName: true
-                familyName: true
-                dateOfBirth: true
-                idNumber: true
-                issueDate: true
-                expirationDate: true
-          updated: 1
-        total: 5
+          updated: 6
+          verification: ""
+        total: 1
         more: true
       properties:
         sessions:
           items:
             $ref: '#/components/schemas/Session'
-          nullable: true
           type: array
         total:
           format: int32
           type: integer
         more:
           type: boolean
+      required:
+      - more
+      - sessions
+      - total
       type: object
     NormalizedIdentityData:
       additionalProperties: false
-      example:
-        country: country
-        address: address
-        givenName: givenName
-        familyName: familyName
-        dateOfBirth: dateOfBirth
-        idNumber: idNumber
-        issueDate: issueDate
-        expirationDate: expirationDate
       properties:
         idNumber:
-          nullable: true
           type: string
         givenName:
-          nullable: true
           type: string
         familyName:
-          nullable: true
           type: string
         address:
-          nullable: true
           type: string
         dateOfBirth:
-          nullable: true
           type: string
         country:
-          nullable: true
           type: string
         issueDate:
-          nullable: true
           type: string
         expirationDate:
-          nullable: true
           type: string
       type: object
     OrderDirection:
@@ -562,79 +430,32 @@ components:
       - Ascending
       - Descending
       type: string
-    RequestedVerification:
-      additionalProperties: false
-      example:
-        type: GovernmentId
-        governmentIdOptions:
-          country: true
-          address: true
-          givenName: true
-          familyName: true
-          dateOfBirth: true
-          idNumber: true
-          issueDate: true
-          expirationDate: true
-      properties:
-        type:
-          $ref: '#/components/schemas/VerificationType'
-        governmentIdOptions:
-          $ref: '#/components/schemas/GovernmentIDOptions'
-      type: object
     Session:
       additionalProperties: false
       example:
         clientToken: clientToken
-        created: 6
-        failCode: SessionFailNone
+        created: 0
+        failCode: ""
         id: id
-        state: IdvCreated
+        state: ""
         resultVp: resultVp
-        verifications:
-          key:
-            failCode: VerificationFailNone
-            id: id
-            state: VerificationPending
-            type: GovernmentId
-            updated: 0
-            reused: true
-            normalizedGovernmentIdData:
-              country: country
-              address: address
-              givenName: givenName
-              familyName: familyName
-              dateOfBirth: dateOfBirth
-              idNumber: idNumber
-              issueDate: issueDate
-              expirationDate: expirationDate
-            governmentIdOptions:
-              country: true
-              address: true
-              givenName: true
-              familyName: true
-              dateOfBirth: true
-              idNumber: true
-              issueDate: true
-              expirationDate: true
-        updated: 1
+        updated: 6
+        verification: ""
       properties:
         id:
-          nullable: true
           type: string
         clientToken:
-          nullable: true
           type: string
         state:
-          $ref: '#/components/schemas/IDVSessionState'
-        verifications:
-          additionalProperties:
-            $ref: '#/components/schemas/Verification'
-          nullable: true
-          type: object
+          allOf:
+          - $ref: '#/components/schemas/IDVSessionState'
         failCode:
-          $ref: '#/components/schemas/SessionFailCode'
+          allOf:
+          - $ref: '#/components/schemas/SessionFailCode'
+        verification:
+          allOf:
+          - $ref: '#/components/schemas/Verification'
         resultVp:
-          nullable: true
           type: string
         created:
           format: int64
@@ -642,6 +463,13 @@ components:
         updated:
           format: int64
           type: integer
+      required:
+      - clientToken
+      - created
+      - id
+      - state
+      - updated
+      - verification
       type: object
     SessionFailCode:
       enum:
@@ -670,59 +498,41 @@ components:
         memberNames:
           items:
             type: string
-          nullable: true
           readOnly: true
           type: array
         errorMessage:
-          nullable: true
           type: string
+      required:
+      - memberNames
       type: object
     Verification:
       additionalProperties: false
-      example:
-        failCode: VerificationFailNone
-        id: id
-        state: VerificationPending
-        type: GovernmentId
-        updated: 0
-        reused: true
-        normalizedGovernmentIdData:
-          country: country
-          address: address
-          givenName: givenName
-          familyName: familyName
-          dateOfBirth: dateOfBirth
-          idNumber: idNumber
-          issueDate: issueDate
-          expirationDate: expirationDate
-        governmentIdOptions:
-          country: true
-          address: true
-          givenName: true
-          familyName: true
-          dateOfBirth: true
-          idNumber: true
-          issueDate: true
-          expirationDate: true
       properties:
         id:
-          nullable: true
           type: string
-        type:
-          $ref: '#/components/schemas/VerificationType'
         state:
-          $ref: '#/components/schemas/VerificationState'
+          allOf:
+          - $ref: '#/components/schemas/VerificationState'
         failCode:
-          $ref: '#/components/schemas/VerificationFailCode'
+          allOf:
+          - $ref: '#/components/schemas/VerificationFailCode'
         reused:
           type: boolean
         updated:
           format: int64
           type: integer
         governmentIdOptions:
-          $ref: '#/components/schemas/GovernmentIDOptions'
+          allOf:
+          - $ref: '#/components/schemas/GovernmentIDOptions'
         normalizedGovernmentIdData:
-          $ref: '#/components/schemas/NormalizedIdentityData'
+          allOf:
+          - $ref: '#/components/schemas/NormalizedIdentityData'
+      required:
+      - governmentIdOptions
+      - id
+      - reused
+      - state
+      - updated
       type: object
     VerificationFailCode:
       enum:
@@ -737,10 +547,6 @@ components:
       - VerificationPending
       - VerificationSuccess
       - VerificationFailed
-      type: string
-    VerificationType:
-      enum:
-      - GovernmentId
       type: string
   securitySchemes:
     Bearer:

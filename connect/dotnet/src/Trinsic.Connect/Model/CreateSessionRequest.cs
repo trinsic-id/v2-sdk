@@ -23,18 +23,18 @@ public partial class CreateSessionRequest
     /// <summary>
     /// Initializes a new instance of the <see cref="CreateSessionRequest" /> class.
     /// </summary>
-    /// <param name="verifications">verifications.</param>
-    public CreateSessionRequest(List<RequestedVerification> verifications = default(List<RequestedVerification>))
+    /// <param name="governmentIdOptions">governmentIdOptions.</param>
+    public CreateSessionRequest(GovernmentIDOptionsRequest governmentIdOptions = default(GovernmentIDOptionsRequest))
     {
-        Verifications = verifications;
+        GovernmentIdOptions = governmentIdOptions;
         AdditionalProperties = new Dictionary<string, object>();
     }
 
     /// <summary>
-    /// Gets or Sets Verifications
+    /// Gets or Sets GovernmentIdOptions
     /// </summary>
-    [DataMember(Name = "verifications", EmitDefaultValue = true)]
-    public List<RequestedVerification> Verifications { get; set; }
+    [DataMember(Name = "governmentIdOptions", EmitDefaultValue = false)]
+    public GovernmentIDOptionsRequest GovernmentIdOptions { get; set; }
 
     /// <summary>
     /// Gets or Sets additional properties
@@ -50,7 +50,7 @@ public partial class CreateSessionRequest
     {
         var sb = new StringBuilder();
         sb.Append("class CreateSessionRequest {\n");
-        sb.Append("  Verifications: ").Append(Verifications).Append("\n");
+        sb.Append("  GovernmentIdOptions: ").Append(GovernmentIdOptions).Append("\n");
         sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
