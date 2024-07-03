@@ -12,7 +12,7 @@
     <Description>Trinsic Connect SDK</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Trinsic.Connect</RootNamespace>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Trinsic.Connect.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

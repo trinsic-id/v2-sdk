@@ -73,21 +73,21 @@ public class SessionTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Verifications'
-    /// </summary>
-    [Fact]
-    public void VerificationsTest()
-    {
-        // TODO unit test for the property 'Verifications'
-    }
-
-    /// <summary>
     /// Test the property 'FailCode'
     /// </summary>
     [Fact]
     public void FailCodeTest()
     {
         // TODO unit test for the property 'FailCode'
+    }
+
+    /// <summary>
+    /// Test the property 'Verification'
+    /// </summary>
+    [Fact]
+    public void VerificationTest()
+    {
+        // TODO unit test for the property 'Verification'
     }
 
     /// <summary>

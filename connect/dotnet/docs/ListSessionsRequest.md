@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderBy** | **SessionOrdering** |  | 
-**OrderDirection** | **OrderDirection** |  | 
+**OrderBy** | **SessionOrdering** |  | [optional] 
+**OrderDirection** | **OrderDirection** |  | [optional] 
 **PageSize** | **int** |  | [optional] 
 **Page** | **int** |  | [optional] 
 

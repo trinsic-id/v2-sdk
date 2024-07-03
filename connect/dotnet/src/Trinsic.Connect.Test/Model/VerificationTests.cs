@@ -55,15 +55,6 @@ public class VerificationTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Type'
-    /// </summary>
-    [Fact]
-    public void TypeTest()
-    {
-        // TODO unit test for the property 'Type'
-    }
-
-    /// <summary>
     /// Test the property 'State'
     /// </summary>
     [Fact]

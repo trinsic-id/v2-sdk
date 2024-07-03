@@ -9,6 +9,7 @@
 
 using System.Runtime.Serialization;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Trinsic.Connect.Model;
 
@@ -21,14 +22,19 @@ public partial class GovernmentIDOptions
     /// <summary>
     /// Initializes a new instance of the <see cref="GovernmentIDOptions" /> class.
     /// </summary>
-    /// <param name="idNumber">idNumber.</param>
-    /// <param name="givenName">givenName.</param>
-    /// <param name="familyName">familyName.</param>
-    /// <param name="address">address.</param>
-    /// <param name="dateOfBirth">dateOfBirth.</param>
-    /// <param name="country">country.</param>
-    /// <param name="issueDate">issueDate.</param>
-    /// <param name="expirationDate">expirationDate.</param>
+    [JsonConstructorAttribute]
+    protected GovernmentIDOptions() { }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GovernmentIDOptions" /> class.
+    /// </summary>
+    /// <param name="idNumber">idNumber (required).</param>
+    /// <param name="givenName">givenName (required).</param>
+    /// <param name="familyName">familyName (required).</param>
+    /// <param name="address">address (required).</param>
+    /// <param name="dateOfBirth">dateOfBirth (required).</param>
+    /// <param name="country">country (required).</param>
+    /// <param name="issueDate">issueDate (required).</param>
+    /// <param name="expirationDate">expirationDate (required).</param>
     public GovernmentIDOptions(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
     {
         IdNumber = idNumber;
@@ -44,49 +50,49 @@ public partial class GovernmentIDOptions
     /// <summary>
     /// Gets or Sets IdNumber
     /// </summary>
-    [DataMember(Name = "idNumber", EmitDefaultValue = true)]
+    [DataMember(Name = "idNumber", IsRequired = true, EmitDefaultValue = true)]
     public bool IdNumber { get; set; }
 
     /// <summary>
     /// Gets or Sets GivenName
     /// </summary>
-    [DataMember(Name = "givenName", EmitDefaultValue = true)]
+    [DataMember(Name = "givenName", IsRequired = true, EmitDefaultValue = true)]
     public bool GivenName { get; set; }
 
     /// <summary>
     /// Gets or Sets FamilyName
     /// </summary>
-    [DataMember(Name = "familyName", EmitDefaultValue = true)]
+    [DataMember(Name = "familyName", IsRequired = true, EmitDefaultValue = true)]
     public bool FamilyName { get; set; }
 
     /// <summary>
     /// Gets or Sets Address
     /// </summary>
-    [DataMember(Name = "address", EmitDefaultValue = true)]
+    [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
     public bool Address { get; set; }
 
     /// <summary>
     /// Gets or Sets DateOfBirth
     /// </summary>
-    [DataMember(Name = "dateOfBirth", EmitDefaultValue = true)]
+    [DataMember(Name = "dateOfBirth", IsRequired = true, EmitDefaultValue = true)]
     public bool DateOfBirth { get; set; }
 
     /// <summary>
     /// Gets or Sets Country
     /// </summary>
-    [DataMember(Name = "country", EmitDefaultValue = true)]
+    [DataMember(Name = "country", IsRequired = true, EmitDefaultValue = true)]
     public bool Country { get; set; }
 
     /// <summary>
     /// Gets or Sets IssueDate
     /// </summary>
-    [DataMember(Name = "issueDate", EmitDefaultValue = true)]
+    [DataMember(Name = "issueDate", IsRequired = true, EmitDefaultValue = true)]
     public bool IssueDate { get; set; }
 
     /// <summary>
     /// Gets or Sets ExpirationDate
     /// </summary>
-    [DataMember(Name = "expirationDate", EmitDefaultValue = true)]
+    [DataMember(Name = "expirationDate", IsRequired = true, EmitDefaultValue = true)]
     public bool ExpirationDate { get; set; }
 
     /// <summary>

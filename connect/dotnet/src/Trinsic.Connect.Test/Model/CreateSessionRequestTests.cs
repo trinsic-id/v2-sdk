@@ -46,11 +46,11 @@ public class CreateSessionRequestTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Verifications'
+    /// Test the property 'GovernmentIdOptions'
     /// </summary>
     [Fact]
-    public void VerificationsTest()
+    public void GovernmentIdOptionsTest()
     {
-        // TODO unit test for the property 'Verifications'
+        // TODO unit test for the property 'GovernmentIdOptions'
     }
 }
