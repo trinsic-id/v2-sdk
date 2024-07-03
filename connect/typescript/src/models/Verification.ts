@@ -13,12 +13,6 @@
  */
 
 import { mapValues } from "../runtime";
-import type { VerificationType } from "./VerificationType";
-import {
-    VerificationTypeFromJSON,
-    VerificationTypeFromJSONTyped,
-    VerificationTypeToJSON,
-} from "./VerificationType";
 import type { VerificationState } from "./VerificationState";
 import {
     VerificationStateFromJSON,
@@ -55,19 +49,13 @@ export interface Verification {
      * @type {string}
      * @memberof Verification
      */
-    id?: string | null;
-    /**
-     *
-     * @type {VerificationType}
-     * @memberof Verification
-     */
-    type?: VerificationType;
+    id: string;
     /**
      *
      * @type {VerificationState}
      * @memberof Verification
      */
-    state?: VerificationState;
+    state: VerificationState;
     /**
      *
      * @type {VerificationFailCode}
@@ -79,19 +67,19 @@ export interface Verification {
      * @type {boolean}
      * @memberof Verification
      */
-    reused?: boolean;
+    reused: boolean;
     /**
      *
      * @type {number}
      * @memberof Verification
      */
-    updated?: number;
+    updated: number;
     /**
      *
      * @type {GovernmentIDOptions}
      * @memberof Verification
      */
-    governmentIdOptions?: GovernmentIDOptions;
+    governmentIdOptions: GovernmentIDOptions;
     /**
      *
      * @type {NormalizedIdentityData}
@@ -104,6 +92,15 @@ export interface Verification {
  * Check if a given object implements the Verification interface.
  */
 export function instanceOfVerification(value: object): value is Verification {
+    if (!("id" in value) || value["id"] === undefined) return false;
+    if (!("state" in value) || value["state"] === undefined) return false;
+    if (!("reused" in value) || value["reused"] === undefined) return false;
+    if (!("updated" in value) || value["updated"] === undefined) return false;
+    if (
+        !("governmentIdOptions" in value) ||
+        value["governmentIdOptions"] === undefined
+    )
+        return false;
     return true;
 }
 
@@ -119,25 +116,17 @@ export function VerificationFromJSONTyped(
         return json;
     }
     return {
-        id: json["id"] == null ? undefined : json["id"],
-        type:
-            json["type"] == null
-                ? undefined
-                : VerificationTypeFromJSON(json["type"]),
-        state:
-            json["state"] == null
-                ? undefined
-                : VerificationStateFromJSON(json["state"]),
+        id: json["id"],
+        state: VerificationStateFromJSON(json["state"]),
         failCode:
             json["failCode"] == null
                 ? undefined
                 : VerificationFailCodeFromJSON(json["failCode"]),
-        reused: json["reused"] == null ? undefined : json["reused"],
-        updated: json["updated"] == null ? undefined : json["updated"],
-        governmentIdOptions:
-            json["governmentIdOptions"] == null
-                ? undefined
-                : GovernmentIDOptionsFromJSON(json["governmentIdOptions"]),
+        reused: json["reused"],
+        updated: json["updated"],
+        governmentIdOptions: GovernmentIDOptionsFromJSON(
+            json["governmentIdOptions"],
+        ),
         normalizedGovernmentIdData:
             json["normalizedGovernmentIdData"] == null
                 ? undefined
@@ -153,7 +142,6 @@ export function VerificationToJSON(value?: Verification | null): any {
     }
     return {
         id: value["id"],
-        type: VerificationTypeToJSON(value["type"]),
         state: VerificationStateToJSON(value["state"]),
         failCode: VerificationFailCodeToJSON(value["failCode"]),
         reused: value["reused"],

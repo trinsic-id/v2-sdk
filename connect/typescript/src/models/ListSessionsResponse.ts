@@ -31,19 +31,19 @@ export interface ListSessionsResponse {
      * @type {Array<Session>}
      * @memberof ListSessionsResponse
      */
-    sessions?: Array<Session> | null;
+    sessions: Array<Session>;
     /**
      *
      * @type {number}
      * @memberof ListSessionsResponse
      */
-    total?: number;
+    total: number;
     /**
      *
      * @type {boolean}
      * @memberof ListSessionsResponse
      */
-    more?: boolean;
+    more: boolean;
 }
 
 /**
@@ -52,6 +52,9 @@ export interface ListSessionsResponse {
 export function instanceOfListSessionsResponse(
     value: object,
 ): value is ListSessionsResponse {
+    if (!("sessions" in value) || value["sessions"] === undefined) return false;
+    if (!("total" in value) || value["total"] === undefined) return false;
+    if (!("more" in value) || value["more"] === undefined) return false;
     return true;
 }
 
@@ -67,12 +70,9 @@ export function ListSessionsResponseFromJSONTyped(
         return json;
     }
     return {
-        sessions:
-            json["sessions"] == null
-                ? undefined
-                : (json["sessions"] as Array<any>).map(SessionFromJSON),
-        total: json["total"] == null ? undefined : json["total"],
-        more: json["more"] == null ? undefined : json["more"],
+        sessions: (json["sessions"] as Array<any>).map(SessionFromJSON),
+        total: json["total"],
+        more: json["more"],
     };
 }
 
@@ -83,10 +83,7 @@ export function ListSessionsResponseToJSON(
         return value;
     }
     return {
-        sessions:
-            value["sessions"] == null
-                ? undefined
-                : (value["sessions"] as Array<any>).map(SessionToJSON),
+        sessions: (value["sessions"] as Array<any>).map(SessionToJSON),
         total: value["total"],
         more: value["more"],
     };

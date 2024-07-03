@@ -24,49 +24,49 @@ export interface GovernmentIDOptions {
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    idNumber?: boolean;
+    idNumber: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    givenName?: boolean;
+    givenName: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    familyName?: boolean;
+    familyName: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    address?: boolean;
+    address: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    dateOfBirth?: boolean;
+    dateOfBirth: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    country?: boolean;
+    country: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    issueDate?: boolean;
+    issueDate: boolean;
     /**
      *
      * @type {boolean}
      * @memberof GovernmentIDOptions
      */
-    expirationDate?: boolean;
+    expirationDate: boolean;
 }
 
 /**
@@ -75,6 +75,19 @@ export interface GovernmentIDOptions {
 export function instanceOfGovernmentIDOptions(
     value: object,
 ): value is GovernmentIDOptions {
+    if (!("idNumber" in value) || value["idNumber"] === undefined) return false;
+    if (!("givenName" in value) || value["givenName"] === undefined)
+        return false;
+    if (!("familyName" in value) || value["familyName"] === undefined)
+        return false;
+    if (!("address" in value) || value["address"] === undefined) return false;
+    if (!("dateOfBirth" in value) || value["dateOfBirth"] === undefined)
+        return false;
+    if (!("country" in value) || value["country"] === undefined) return false;
+    if (!("issueDate" in value) || value["issueDate"] === undefined)
+        return false;
+    if (!("expirationDate" in value) || value["expirationDate"] === undefined)
+        return false;
     return true;
 }
 
@@ -90,16 +103,14 @@ export function GovernmentIDOptionsFromJSONTyped(
         return json;
     }
     return {
-        idNumber: json["idNumber"] == null ? undefined : json["idNumber"],
-        givenName: json["givenName"] == null ? undefined : json["givenName"],
-        familyName: json["familyName"] == null ? undefined : json["familyName"],
-        address: json["address"] == null ? undefined : json["address"],
-        dateOfBirth:
-            json["dateOfBirth"] == null ? undefined : json["dateOfBirth"],
-        country: json["country"] == null ? undefined : json["country"],
-        issueDate: json["issueDate"] == null ? undefined : json["issueDate"],
-        expirationDate:
-            json["expirationDate"] == null ? undefined : json["expirationDate"],
+        idNumber: json["idNumber"],
+        givenName: json["givenName"],
+        familyName: json["familyName"],
+        address: json["address"],
+        dateOfBirth: json["dateOfBirth"],
+        country: json["country"],
+        issueDate: json["issueDate"],
+        expirationDate: json["expirationDate"],
     };
 }
 

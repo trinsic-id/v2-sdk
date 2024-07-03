@@ -16,78 +16,78 @@ import { mapValues } from "../runtime";
 /**
  *
  * @export
- * @interface NormalizedIdentityData
+ * @interface GovernmentIDOptionsRequest
  */
-export interface NormalizedIdentityData {
+export interface GovernmentIDOptionsRequest {
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    idNumber?: string;
+    idNumber?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    givenName?: string;
+    givenName?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    familyName?: string;
+    familyName?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    address?: string;
+    address?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    dateOfBirth?: string;
+    dateOfBirth?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    country?: string;
+    country?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    issueDate?: string;
+    issueDate?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof GovernmentIDOptionsRequest
      */
-    expirationDate?: string;
+    expirationDate?: boolean;
 }
 
 /**
- * Check if a given object implements the NormalizedIdentityData interface.
+ * Check if a given object implements the GovernmentIDOptionsRequest interface.
  */
-export function instanceOfNormalizedIdentityData(
+export function instanceOfGovernmentIDOptionsRequest(
     value: object,
-): value is NormalizedIdentityData {
+): value is GovernmentIDOptionsRequest {
     return true;
 }
 
-export function NormalizedIdentityDataFromJSON(
+export function GovernmentIDOptionsRequestFromJSON(
     json: any,
-): NormalizedIdentityData {
-    return NormalizedIdentityDataFromJSONTyped(json, false);
+): GovernmentIDOptionsRequest {
+    return GovernmentIDOptionsRequestFromJSONTyped(json, false);
 }
 
-export function NormalizedIdentityDataFromJSONTyped(
+export function GovernmentIDOptionsRequestFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): NormalizedIdentityData {
+): GovernmentIDOptionsRequest {
     if (json == null) {
         return json;
     }
@@ -105,8 +105,8 @@ export function NormalizedIdentityDataFromJSONTyped(
     };
 }
 
-export function NormalizedIdentityDataToJSON(
-    value?: NormalizedIdentityData | null,
+export function GovernmentIDOptionsRequestToJSON(
+    value?: GovernmentIDOptionsRequest | null,
 ): any {
     if (value == null) {
         return value;
