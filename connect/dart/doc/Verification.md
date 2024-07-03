@@ -8,13 +8,12 @@ import 'package:TrinsicConnect/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**type** | [**VerificationType**](VerificationType.md) |  | [optional] 
-**state** | [**VerificationState**](VerificationState.md) |  | [optional] 
+**id** | **String** |  | 
+**state** | [**VerificationState**](VerificationState.md) |  | 
 **failCode** | [**VerificationFailCode**](VerificationFailCode.md) |  | [optional] 
-**reused** | **bool** |  | [optional] 
-**updated** | **int** |  | [optional] 
-**governmentIdOptions** | [**GovernmentIDOptions**](GovernmentIDOptions.md) |  | [optional] 
+**reused** | **bool** |  | 
+**updated** | **int** |  | 
+**governmentIdOptions** | [**GovernmentIDOptions**](GovernmentIDOptions.md) |  | 
 **normalizedGovernmentIdData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -13,31 +13,38 @@ part of openapi.api;
 class CreateSessionRequest {
   /// Returns a new [CreateSessionRequest] instance.
   CreateSessionRequest({
-    this.verifications = const [],
+    this.governmentIdOptions,
   });
 
-  List<RequestedVerification>? verifications;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GovernmentIDOptionsRequest? governmentIdOptions;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CreateSessionRequest &&
-          _deepEquality.equals(other.verifications, verifications);
+          other.governmentIdOptions == governmentIdOptions;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (verifications == null ? 0 : verifications!.hashCode);
+      (governmentIdOptions == null ? 0 : governmentIdOptions!.hashCode);
 
   @override
-  String toString() => 'CreateSessionRequest[verifications=$verifications]';
+  String toString() =>
+      'CreateSessionRequest[governmentIdOptions=$governmentIdOptions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.verifications != null) {
-      json[r'verifications'] = this.verifications;
+    if (this.governmentIdOptions != null) {
+      json[r'governmentIdOptions'] = this.governmentIdOptions;
     } else {
-      json[r'verifications'] = null;
+      json[r'governmentIdOptions'] = null;
     }
     return json;
   }
@@ -63,8 +70,8 @@ class CreateSessionRequest {
       }());
 
       return CreateSessionRequest(
-        verifications:
-            RequestedVerification.listFromJson(json[r'verifications']),
+        governmentIdOptions:
+            GovernmentIDOptionsRequest.fromJson(json[r'governmentIdOptions']),
       );
     }
     return null;

@@ -13,10 +13,10 @@ part of openapi.api;
 class FailureMessage {
   /// Returns a new [FailureMessage] instance.
   FailureMessage({
-    this.message,
+    required this.message,
   });
 
-  String? message;
+  String message;
 
   @override
   bool operator ==(Object other) =>
@@ -26,18 +26,14 @@ class FailureMessage {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (message == null ? 0 : message!.hashCode);
+      (message.hashCode);
 
   @override
   String toString() => 'FailureMessage[message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.message != null) {
-      json[r'message'] = this.message;
-    } else {
-      json[r'message'] = null;
-    }
+    json[r'message'] = this.message;
     return json;
   }
 
@@ -62,7 +58,7 @@ class FailureMessage {
       }());
 
       return FailureMessage(
-        message: mapValueOfType<String>(json, r'message'),
+        message: mapValueOfType<String>(json, r'message')!,
       );
     }
     return null;
@@ -118,5 +114,7 @@ class FailureMessage {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'message',
+  };
 }

@@ -13,79 +13,31 @@ part of openapi.api;
 class GovernmentIDOptions {
   /// Returns a new [GovernmentIDOptions] instance.
   GovernmentIDOptions({
-    this.idNumber,
-    this.givenName,
-    this.familyName,
-    this.address,
-    this.dateOfBirth,
-    this.country,
-    this.issueDate,
-    this.expirationDate,
+    required this.idNumber,
+    required this.givenName,
+    required this.familyName,
+    required this.address,
+    required this.dateOfBirth,
+    required this.country,
+    required this.issueDate,
+    required this.expirationDate,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? idNumber;
+  bool idNumber;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? givenName;
+  bool givenName;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? familyName;
+  bool familyName;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? address;
+  bool address;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? dateOfBirth;
+  bool dateOfBirth;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? country;
+  bool country;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? issueDate;
+  bool issueDate;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? expirationDate;
+  bool expirationDate;
 
   @override
   bool operator ==(Object other) =>
@@ -103,14 +55,14 @@ class GovernmentIDOptions {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (idNumber == null ? 0 : idNumber!.hashCode) +
-      (givenName == null ? 0 : givenName!.hashCode) +
-      (familyName == null ? 0 : familyName!.hashCode) +
-      (address == null ? 0 : address!.hashCode) +
-      (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
-      (country == null ? 0 : country!.hashCode) +
-      (issueDate == null ? 0 : issueDate!.hashCode) +
-      (expirationDate == null ? 0 : expirationDate!.hashCode);
+      (idNumber.hashCode) +
+      (givenName.hashCode) +
+      (familyName.hashCode) +
+      (address.hashCode) +
+      (dateOfBirth.hashCode) +
+      (country.hashCode) +
+      (issueDate.hashCode) +
+      (expirationDate.hashCode);
 
   @override
   String toString() =>
@@ -118,46 +70,14 @@ class GovernmentIDOptions {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.idNumber != null) {
-      json[r'idNumber'] = this.idNumber;
-    } else {
-      json[r'idNumber'] = null;
-    }
-    if (this.givenName != null) {
-      json[r'givenName'] = this.givenName;
-    } else {
-      json[r'givenName'] = null;
-    }
-    if (this.familyName != null) {
-      json[r'familyName'] = this.familyName;
-    } else {
-      json[r'familyName'] = null;
-    }
-    if (this.address != null) {
-      json[r'address'] = this.address;
-    } else {
-      json[r'address'] = null;
-    }
-    if (this.dateOfBirth != null) {
-      json[r'dateOfBirth'] = this.dateOfBirth;
-    } else {
-      json[r'dateOfBirth'] = null;
-    }
-    if (this.country != null) {
-      json[r'country'] = this.country;
-    } else {
-      json[r'country'] = null;
-    }
-    if (this.issueDate != null) {
-      json[r'issueDate'] = this.issueDate;
-    } else {
-      json[r'issueDate'] = null;
-    }
-    if (this.expirationDate != null) {
-      json[r'expirationDate'] = this.expirationDate;
-    } else {
-      json[r'expirationDate'] = null;
-    }
+    json[r'idNumber'] = this.idNumber;
+    json[r'givenName'] = this.givenName;
+    json[r'familyName'] = this.familyName;
+    json[r'address'] = this.address;
+    json[r'dateOfBirth'] = this.dateOfBirth;
+    json[r'country'] = this.country;
+    json[r'issueDate'] = this.issueDate;
+    json[r'expirationDate'] = this.expirationDate;
     return json;
   }
 
@@ -182,14 +102,14 @@ class GovernmentIDOptions {
       }());
 
       return GovernmentIDOptions(
-        idNumber: mapValueOfType<bool>(json, r'idNumber'),
-        givenName: mapValueOfType<bool>(json, r'givenName'),
-        familyName: mapValueOfType<bool>(json, r'familyName'),
-        address: mapValueOfType<bool>(json, r'address'),
-        dateOfBirth: mapValueOfType<bool>(json, r'dateOfBirth'),
-        country: mapValueOfType<bool>(json, r'country'),
-        issueDate: mapValueOfType<bool>(json, r'issueDate'),
-        expirationDate: mapValueOfType<bool>(json, r'expirationDate'),
+        idNumber: mapValueOfType<bool>(json, r'idNumber')!,
+        givenName: mapValueOfType<bool>(json, r'givenName')!,
+        familyName: mapValueOfType<bool>(json, r'familyName')!,
+        address: mapValueOfType<bool>(json, r'address')!,
+        dateOfBirth: mapValueOfType<bool>(json, r'dateOfBirth')!,
+        country: mapValueOfType<bool>(json, r'country')!,
+        issueDate: mapValueOfType<bool>(json, r'issueDate')!,
+        expirationDate: mapValueOfType<bool>(json, r'expirationDate')!,
       );
     }
     return null;
@@ -245,5 +165,14 @@ class GovernmentIDOptions {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'idNumber',
+    'givenName',
+    'familyName',
+    'address',
+    'dateOfBirth',
+    'country',
+    'issueDate',
+    'expirationDate',
+  };
 }

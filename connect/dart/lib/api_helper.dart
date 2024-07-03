@@ -65,9 +65,6 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
-  if (value is DebugIdvProviderSelection) {
-    return DebugIdvProviderSelectionTypeTransformer().encode(value).toString();
-  }
   if (value is IDVSessionState) {
     return IDVSessionStateTypeTransformer().encode(value).toString();
   }
@@ -85,9 +82,6 @@ String parameterToString(dynamic value) {
   }
   if (value is VerificationState) {
     return VerificationStateTypeTransformer().encode(value).toString();
-  }
-  if (value is VerificationType) {
-    return VerificationTypeTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

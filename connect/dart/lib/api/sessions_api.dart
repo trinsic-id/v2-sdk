@@ -16,15 +16,16 @@ class SessionsApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/v1/sessions/cancel' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/cancel' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<Response> cancelSessionWithHttpInfo({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<Response> cancelSessionWithHttpInfo(
+    String sessionId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/v1/sessions/cancel';
+    final path = r'/api/v1/sessions/{sessionId}/cancel'
+        .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -32,10 +33,6 @@ class SessionsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (sessionId != null) {
-      queryParams.addAll(_queryParams('', 'sessionId', sessionId));
-    }
 
     const contentTypes = <String>[];
 
@@ -52,12 +49,12 @@ class SessionsApi {
 
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<CancelSessionResponse?> cancelSession({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<CancelSessionResponse?> cancelSession(
+    String sessionId,
+  ) async {
     final response = await cancelSessionWithHttpInfo(
-      sessionId: sessionId,
+      sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -75,7 +72,7 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions/create' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -83,7 +80,7 @@ class SessionsApi {
     CreateSessionRequest? createSessionRequest,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/v1/sessions/create';
+    final path = r'/api/v1/sessions';
 
     // ignore: prefer_final_locals
     Object? postBody = createSessionRequest;
@@ -134,15 +131,16 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/v1/sessions/get' operation and returns the [Response].
+  /// Performs an HTTP 'GET /api/v1/sessions/{sessionId}' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<Response> getSessionWithHttpInfo({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<Response> getSessionWithHttpInfo(
+    String sessionId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/v1/sessions/get';
+    final path =
+        r'/api/v1/sessions/{sessionId}'.replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -150,10 +148,6 @@ class SessionsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (sessionId != null) {
-      queryParams.addAll(_queryParams('', 'sessionId', sessionId));
-    }
 
     const contentTypes = <String>[];
 
@@ -170,12 +164,12 @@ class SessionsApi {
 
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<GetSessionResponseV1?> getSession({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<GetSessionResponseV1?> getSession(
+    String sessionId,
+  ) async {
     final response = await getSessionWithHttpInfo(
-      sessionId: sessionId,
+      sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -193,7 +187,7 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions/list' operation and returns the [Response].
+  /// Performs an HTTP 'GET /api/v1/sessions' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [ListSessionsRequest] listSessionsRequest:
@@ -201,7 +195,7 @@ class SessionsApi {
     ListSessionsRequest? listSessionsRequest,
   }) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/v1/sessions/list';
+    final path = r'/api/v1/sessions';
 
     // ignore: prefer_final_locals
     Object? postBody = listSessionsRequest;
@@ -218,7 +212,7 @@ class SessionsApi {
 
     return apiClient.invokeAPI(
       path,
-      'POST',
+      'GET',
       queryParams,
       postBody,
       headerParams,
@@ -250,5 +244,53 @@ class SessionsApi {
       ) as ListSessionsResponse;
     }
     return null;
+  }
+
+  /// Performs an HTTP 'POST /api/v1/sessions/redact' operation and returns the [Response].
+  /// Parameters:
+  ///
+  /// * [String] sessionId:
+  Future<Response> redactSessionWithHttpInfo({
+    String? sessionId,
+  }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v1/sessions/redact';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (sessionId != null) {
+      queryParams.addAll(_queryParams('', 'sessionId', sessionId));
+    }
+
+    const contentTypes = <String>[];
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Parameters:
+  ///
+  /// * [String] sessionId:
+  Future<void> redactSession({
+    String? sessionId,
+  }) async {
+    final response = await redactSessionWithHttpInfo(
+      sessionId: sessionId,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 }

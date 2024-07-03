@@ -235,14 +235,14 @@ class ApiClient {
           return CreateSessionRequest.fromJson(value);
         case 'CreateSessionResponse':
           return CreateSessionResponse.fromJson(value);
-        case 'DebugIdvProviderSelection':
-          return DebugIdvProviderSelectionTypeTransformer().decode(value);
         case 'FailureMessage':
           return FailureMessage.fromJson(value);
         case 'GetSessionResponseV1':
           return GetSessionResponseV1.fromJson(value);
         case 'GovernmentIDOptions':
           return GovernmentIDOptions.fromJson(value);
+        case 'GovernmentIDOptionsRequest':
+          return GovernmentIDOptionsRequest.fromJson(value);
         case 'IDVSessionState':
           return IDVSessionStateTypeTransformer().decode(value);
         case 'ListSessionsRequest':
@@ -253,8 +253,6 @@ class ApiClient {
           return NormalizedIdentityData.fromJson(value);
         case 'OrderDirection':
           return OrderDirectionTypeTransformer().decode(value);
-        case 'RequestedVerification':
-          return RequestedVerification.fromJson(value);
         case 'Session':
           return Session.fromJson(value);
         case 'SessionFailCode':
@@ -269,8 +267,6 @@ class ApiClient {
           return VerificationFailCodeTypeTransformer().decode(value);
         case 'VerificationState':
           return VerificationStateTypeTransformer().decode(value);
-        case 'VerificationType':
-          return VerificationTypeTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List &&

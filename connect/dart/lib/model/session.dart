@@ -13,29 +13,21 @@ part of openapi.api;
 class Session {
   /// Returns a new [Session] instance.
   Session({
-    this.id,
-    this.clientToken,
-    this.state,
-    this.verifications = const {},
+    required this.id,
+    required this.clientToken,
+    required this.state,
     this.failCode,
+    required this.verification,
     this.resultVp,
-    this.created,
-    this.updated,
+    required this.created,
+    required this.updated,
   });
 
-  String? id;
+  String id;
 
-  String? clientToken;
+  String clientToken;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IDVSessionState? state;
-
-  Map<String, Verification>? verifications;
+  IDVSessionState state;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,23 +37,19 @@ class Session {
   ///
   SessionFailCode? failCode;
 
+  Verification verification;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? resultVp;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? created;
+  int created;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? updated;
+  int updated;
 
   @override
   bool operator ==(Object other) =>
@@ -70,8 +58,8 @@ class Session {
           other.id == id &&
           other.clientToken == clientToken &&
           other.state == state &&
-          _deepEquality.equals(other.verifications, verifications) &&
           other.failCode == failCode &&
+          other.verification == verification &&
           other.resultVp == resultVp &&
           other.created == created &&
           other.updated == updated;
@@ -79,61 +67,37 @@ class Session {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (id == null ? 0 : id!.hashCode) +
-      (clientToken == null ? 0 : clientToken!.hashCode) +
-      (state == null ? 0 : state!.hashCode) +
-      (verifications == null ? 0 : verifications!.hashCode) +
+      (id.hashCode) +
+      (clientToken.hashCode) +
+      (state.hashCode) +
       (failCode == null ? 0 : failCode!.hashCode) +
+      (verification.hashCode) +
       (resultVp == null ? 0 : resultVp!.hashCode) +
-      (created == null ? 0 : created!.hashCode) +
-      (updated == null ? 0 : updated!.hashCode);
+      (created.hashCode) +
+      (updated.hashCode);
 
   @override
   String toString() =>
-      'Session[id=$id, clientToken=$clientToken, state=$state, verifications=$verifications, failCode=$failCode, resultVp=$resultVp, created=$created, updated=$updated]';
+      'Session[id=$id, clientToken=$clientToken, state=$state, failCode=$failCode, verification=$verification, resultVp=$resultVp, created=$created, updated=$updated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.id != null) {
-      json[r'id'] = this.id;
-    } else {
-      json[r'id'] = null;
-    }
-    if (this.clientToken != null) {
-      json[r'clientToken'] = this.clientToken;
-    } else {
-      json[r'clientToken'] = null;
-    }
-    if (this.state != null) {
-      json[r'state'] = this.state;
-    } else {
-      json[r'state'] = null;
-    }
-    if (this.verifications != null) {
-      json[r'verifications'] = this.verifications;
-    } else {
-      json[r'verifications'] = null;
-    }
+    json[r'id'] = this.id;
+    json[r'clientToken'] = this.clientToken;
+    json[r'state'] = this.state;
     if (this.failCode != null) {
       json[r'failCode'] = this.failCode;
     } else {
       json[r'failCode'] = null;
     }
+    json[r'verification'] = this.verification;
     if (this.resultVp != null) {
       json[r'resultVp'] = this.resultVp;
     } else {
       json[r'resultVp'] = null;
     }
-    if (this.created != null) {
-      json[r'created'] = this.created;
-    } else {
-      json[r'created'] = null;
-    }
-    if (this.updated != null) {
-      json[r'updated'] = this.updated;
-    } else {
-      json[r'updated'] = null;
-    }
+    json[r'created'] = this.created;
+    json[r'updated'] = this.updated;
     return json;
   }
 
@@ -158,14 +122,14 @@ class Session {
       }());
 
       return Session(
-        id: mapValueOfType<String>(json, r'id'),
-        clientToken: mapValueOfType<String>(json, r'clientToken'),
-        state: IDVSessionState.fromJson(json[r'state']),
-        verifications: Verification.mapFromJson(json[r'verifications']),
+        id: mapValueOfType<String>(json, r'id')!,
+        clientToken: mapValueOfType<String>(json, r'clientToken')!,
+        state: IDVSessionState.fromJson(json[r'state'])!,
         failCode: SessionFailCode.fromJson(json[r'failCode']),
+        verification: Verification.fromJson(json[r'verification'])!,
         resultVp: mapValueOfType<String>(json, r'resultVp'),
-        created: mapValueOfType<int>(json, r'created'),
-        updated: mapValueOfType<int>(json, r'updated'),
+        created: mapValueOfType<int>(json, r'created')!,
+        updated: mapValueOfType<int>(json, r'updated')!,
       );
     }
     return null;
@@ -221,5 +185,12 @@ class Session {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'id',
+    'clientToken',
+    'state',
+    'verification',
+    'created',
+    'updated',
+  };
 }

@@ -13,16 +13,10 @@ part of openapi.api;
 class GetSessionResponseV1 {
   /// Returns a new [GetSessionResponseV1] instance.
   GetSessionResponseV1({
-    this.session,
+    required this.session,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  Session? session;
+  Session session;
 
   @override
   bool operator ==(Object other) =>
@@ -32,18 +26,14 @@ class GetSessionResponseV1 {
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (session == null ? 0 : session!.hashCode);
+      (session.hashCode);
 
   @override
   String toString() => 'GetSessionResponseV1[session=$session]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.session != null) {
-      json[r'session'] = this.session;
-    } else {
-      json[r'session'] = null;
-    }
+    json[r'session'] = this.session;
     return json;
   }
 
@@ -68,7 +58,7 @@ class GetSessionResponseV1 {
       }());
 
       return GetSessionResponseV1(
-        session: Session.fromJson(json[r'session']),
+        session: Session.fromJson(json[r'session'])!,
       );
     }
     return null;
@@ -124,5 +114,7 @@ class GetSessionResponseV1 {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'session',
+  };
 }

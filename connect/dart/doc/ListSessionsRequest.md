@@ -8,8 +8,8 @@ import 'package:TrinsicConnect/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**orderBy** | [**SessionOrdering**](SessionOrdering.md) |  | 
-**orderDirection** | [**OrderDirection**](OrderDirection.md) |  | 
+**orderBy** | [**SessionOrdering**](SessionOrdering.md) |  | [optional] 
+**orderDirection** | [**OrderDirection**](OrderDirection.md) |  | [optional] 
 **pageSize** | **int** |  | [optional] 
 **page** | **int** |  | [optional] 
 
