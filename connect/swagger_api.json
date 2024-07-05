@@ -328,7 +328,7 @@
         }
       }
     },
-    "/api/v1/sessions/redact": {
+    "/api/v1/sessions/{sessionId}/redact": {
       "post": {
         "tags": [
           "Sessions"
@@ -337,10 +337,9 @@
         "parameters": [
           {
             "name": "sessionId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
-              "maxLength": 100,
-              "minLength": 5,
               "type": "string"
             }
           }
