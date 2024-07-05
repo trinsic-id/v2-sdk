@@ -32,8 +32,7 @@ export function instanceOfSessionFailCode(value: any): boolean {
     for (const key in SessionFailCode) {
         if (Object.prototype.hasOwnProperty.call(SessionFailCode, key)) {
             if (
-                (SessionFailCode as Record<string, SessionFailCode>)[key] ===
-                value
+                SessionFailCode[key as keyof typeof SessionFailCode] === value
             ) {
                 return true;
             }

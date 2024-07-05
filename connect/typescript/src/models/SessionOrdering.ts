@@ -28,8 +28,7 @@ export function instanceOfSessionOrdering(value: any): boolean {
     for (const key in SessionOrdering) {
         if (Object.prototype.hasOwnProperty.call(SessionOrdering, key)) {
             if (
-                (SessionOrdering as Record<string, SessionOrdering>)[key] ===
-                value
+                SessionOrdering[key as keyof typeof SessionOrdering] === value
             ) {
                 return true;
             }

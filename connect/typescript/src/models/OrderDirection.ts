@@ -26,10 +26,7 @@ export type OrderDirection =
 export function instanceOfOrderDirection(value: any): boolean {
     for (const key in OrderDirection) {
         if (Object.prototype.hasOwnProperty.call(OrderDirection, key)) {
-            if (
-                (OrderDirection as Record<string, OrderDirection>)[key] ===
-                value
-            ) {
+            if (OrderDirection[key as keyof typeof OrderDirection] === value) {
                 return true;
             }
         }
