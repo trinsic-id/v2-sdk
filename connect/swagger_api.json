@@ -18,37 +18,50 @@
           "Sessions"
         ],
         "operationId": "ListSessions",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ListSessionsRequest"
-                  }
-                ]
-              }
-            },
-            "text/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ListSessionsRequest"
-                  }
-                ]
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ListSessionsRequest"
-                  }
-                ]
-              }
+        "parameters": [
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SessionOrdering"
+                }
+              ]
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "schema": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/OrderDirection"
+                }
+              ]
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "maximum": 10,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -328,7 +341,7 @@
         }
       }
     },
-    "/api/v1/sessions/redact": {
+    "/api/v1/sessions/{sessionId}/redact": {
       "post": {
         "tags": [
           "Sessions"
@@ -337,10 +350,9 @@
         "parameters": [
           {
             "name": "sessionId",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
-              "maxLength": 100,
-              "minLength": 5,
               "type": "string"
             }
           }
@@ -536,38 +548,6 @@
           "IdvFailed"
         ],
         "type": "string"
-      },
-      "ListSessionsRequest": {
-        "type": "object",
-        "properties": {
-          "orderBy": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SessionOrdering"
-              }
-            ]
-          },
-          "orderDirection": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/OrderDirection"
-              }
-            ]
-          },
-          "pageSize": {
-            "maximum": 10,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          },
-          "page": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
       },
       "ListSessionsResponse": {
         "required": [
