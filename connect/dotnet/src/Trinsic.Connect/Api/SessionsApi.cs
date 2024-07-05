@@ -78,9 +78,12 @@ public interface ISessionsApiSync : IApiAccessor
     /// 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <returns>ListSessionsResponse</returns>
-    ListSessionsResponse ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
+    ListSessionsResponse ListSessions(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?));
 
     /// <summary>
     /// 
@@ -89,16 +92,19 @@ public interface ISessionsApiSync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <returns>ApiResponse of ListSessionsResponse</returns>
-    ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?));
+    ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?));
     /// <summary>
     /// 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <returns></returns>
-    void RedactSession(string? sessionId = default(string?));
+    void RedactSession(string sessionId);
 
     /// <summary>
     /// 
@@ -107,9 +113,9 @@ public interface ISessionsApiSync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <returns>ApiResponse of Object(void)</returns>
-    ApiResponse<object> RedactSessionWithHttpInfo(string? sessionId = default(string?));
+    ApiResponse<object> RedactSessionWithHttpInfo(string sessionId);
     #endregion Synchronous Operations
 }
 
@@ -195,10 +201,13 @@ public interface ISessionsApiAsync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponse</returns>
-    System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -207,10 +216,13 @@ public interface ISessionsApiAsync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
-    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
     /// 
     /// </summary>
@@ -218,10 +230,10 @@ public interface ISessionsApiAsync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of void</returns>
-    System.Threading.Tasks.Task RedactSessionAsync(string? sessionId = default(string?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task RedactSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
     /// 
@@ -230,10 +242,10 @@ public interface ISessionsApiAsync : IApiAccessor
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse</returns>
-    System.Threading.Tasks.Task<ApiResponse<object>> RedactSessionWithHttpInfoAsync(string? sessionId = default(string?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    System.Threading.Tasks.Task<ApiResponse<object>> RedactSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     #endregion Asynchronous Operations
 }
 
@@ -909,11 +921,14 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <returns>ListSessionsResponse</returns>
-    public ListSessionsResponse ListSessions(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
+    public ListSessionsResponse ListSessions(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?))
     {
-        var localVarResponse = ListSessionsWithHttpInfo(listSessionsRequest);
+        var localVarResponse = ListSessionsWithHttpInfo(orderBy, orderDirection, pageSize, page);
         return localVarResponse.Data;
     }
 
@@ -921,16 +936,16 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <returns>ApiResponse of ListSessionsResponse</returns>
-    public Trinsic.Connect.Client.ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?))
+    public Trinsic.Connect.Client.ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?))
     {
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
 
         var _contentTypes = new string[] {
-            "application/json",
-            "text/json",
-            "application/*+json"
         };
 
         // to determine the Accept header
@@ -952,7 +967,25 @@ public partial class SessionsApi : IDisposable, ISessionsApi
             localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        localVarRequestOptions.Data = listSessionsRequest;
+        if (orderBy != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "OrderBy", orderBy));
+        }
+
+        if (orderDirection != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "OrderDirection", orderDirection));
+        }
+
+        if (pageSize != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "PageSize", pageSize));
+        }
+
+        if (page != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "Page", page));
+        }
 
         // authentication (Bearer) required
         // bearer authentication required
@@ -980,12 +1013,15 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponse</returns>
-    public async System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
-        var localVarResponse = await ListSessionsWithHttpInfoAsync(listSessionsRequest, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await ListSessionsWithHttpInfoAsync(orderBy, orderDirection, pageSize, page, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
@@ -993,18 +1029,18 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="listSessionsRequest"> (optional)</param>
+    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderDirection"> (optional)</param>
+    /// <param name="pageSize"> (optional)</param>
+    /// <param name="page"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
-    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(ListSessionsRequest? listSessionsRequest = default(ListSessionsRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
 
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
 
         var _contentTypes = new string[] {
-            "application/json",
-            "text/json",
-            "application/*+json"
         };
 
         // to determine the Accept header
@@ -1026,7 +1062,25 @@ public partial class SessionsApi : IDisposable, ISessionsApi
             localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        localVarRequestOptions.Data = listSessionsRequest;
+        if (orderBy != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "OrderBy", orderBy));
+        }
+
+        if (orderDirection != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "OrderDirection", orderDirection));
+        }
+
+        if (pageSize != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "PageSize", pageSize));
+        }
+
+        if (page != null)
+        {
+            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "Page", page));
+        }
 
         // authentication (Bearer) required
         // bearer authentication required
@@ -1055,9 +1109,9 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <returns></returns>
-    public void RedactSession(string? sessionId = default(string?))
+    public void RedactSession(string sessionId)
     {
         RedactSessionWithHttpInfo(sessionId);
     }
@@ -1066,10 +1120,16 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <returns>ApiResponse of Object(void)</returns>
-    public Trinsic.Connect.Client.ApiResponse<Object> RedactSessionWithHttpInfo(string? sessionId = default(string?))
+    public Trinsic.Connect.Client.ApiResponse<Object> RedactSessionWithHttpInfo(string sessionId)
     {
+        // verify the required parameter 'sessionId' is set
+        if (sessionId == null)
+        {
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->RedactSession");
+        }
+
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
 
         var _contentTypes = new string[] {
@@ -1092,10 +1152,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
             localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        if (sessionId != null)
-        {
-            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "sessionId", sessionId));
-        }
+        localVarRequestOptions.PathParameters.Add("sessionId", Trinsic.Connect.Client.ClientUtils.ParameterToString(sessionId)); // path parameter
 
         // authentication (Bearer) required
         // bearer authentication required
@@ -1105,7 +1162,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Post<object>("/api/v1/sessions/redact", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Post<object>("/api/v1/sessions/{sessionId}/redact", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -1123,10 +1180,10 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of void</returns>
-    public async System.Threading.Tasks.Task RedactSessionAsync(string? sessionId = default(string?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task RedactSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         await RedactSessionWithHttpInfoAsync(sessionId, cancellationToken).ConfigureAwait(false);
     }
@@ -1135,11 +1192,16 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     ///  
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="sessionId"> (optional)</param>
+    /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse</returns>
-    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<Object>> RedactSessionWithHttpInfoAsync(string? sessionId = default(string?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<Object>> RedactSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
+        // verify the required parameter 'sessionId' is set
+        if (sessionId == null)
+        {
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->RedactSession");
+        }
 
         var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
 
@@ -1163,10 +1225,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
             localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
         }
 
-        if (sessionId != null)
-        {
-            localVarRequestOptions.QueryParameters.Add(Trinsic.Connect.Client.ClientUtils.ParameterToMultiMap("", "sessionId", sessionId));
-        }
+        localVarRequestOptions.PathParameters.Add("sessionId", Trinsic.Connect.Client.ClientUtils.ParameterToString(sessionId)); // path parameter
 
         // authentication (Bearer) required
         // bearer authentication required
@@ -1177,7 +1236,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/v1/sessions/redact", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.PostAsync<object>("/api/v1/sessions/{sessionId}/redact", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {

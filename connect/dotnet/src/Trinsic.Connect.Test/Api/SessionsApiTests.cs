@@ -89,8 +89,11 @@ public class SessionsApiTests : IDisposable
     public void ListSessionsTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //ListSessionsRequest? listSessionsRequest = null;
-        //var response = instance.ListSessions(listSessionsRequest);
+        //SessionOrdering? orderBy = null;
+        //OrderDirection? orderDirection = null;
+        //int? pageSize = null;
+        //int? page = null;
+        //var response = instance.ListSessions(orderBy, orderDirection, pageSize, page);
         //Assert.IsType<ListSessionsResponse>(response);
     }
 
@@ -101,7 +104,7 @@ public class SessionsApiTests : IDisposable
     public void RedactSessionTest()
     {
         // TODO uncomment below to test the method and replace null with proper value
-        //string? sessionId = null;
+        //string sessionId = null;
         //instance.RedactSession(sessionId);
     }
 }
