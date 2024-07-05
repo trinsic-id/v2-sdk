@@ -19,8 +19,9 @@ import type {
     CreateSessionResponse,
     FailureMessage,
     GetSessionResponseV1,
-    ListSessionsRequest,
     ListSessionsResponse,
+    OrderDirection,
+    SessionOrdering,
     ValidationResult,
 } from "../models/index";
 import {
@@ -34,10 +35,12 @@ import {
     FailureMessageToJSON,
     GetSessionResponseV1FromJSON,
     GetSessionResponseV1ToJSON,
-    ListSessionsRequestFromJSON,
-    ListSessionsRequestToJSON,
     ListSessionsResponseFromJSON,
     ListSessionsResponseToJSON,
+    OrderDirectionFromJSON,
+    OrderDirectionToJSON,
+    SessionOrderingFromJSON,
+    SessionOrderingToJSON,
     ValidationResultFromJSON,
     ValidationResultToJSON,
 } from "../models/index";
@@ -54,12 +57,15 @@ export interface GetSessionRequest {
     sessionId: string;
 }
 
-export interface ListSessionsOperationRequest {
-    listSessionsRequest?: ListSessionsRequest;
+export interface ListSessionsRequest {
+    orderBy?: SessionOrdering;
+    orderDirection?: OrderDirection;
+    pageSize?: number;
+    page?: number;
 }
 
 export interface RedactSessionRequest {
-    sessionId?: string;
+    sessionId: string;
 }
 
 /**
@@ -232,14 +238,29 @@ export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async listSessionsRaw(
-        requestParameters: ListSessionsOperationRequest,
+        requestParameters: ListSessionsRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<ListSessionsResponse>> {
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        if (requestParameters["orderBy"] != null) {
+            queryParameters["OrderBy"] = requestParameters["orderBy"];
+        }
 
-        headerParameters["Content-Type"] = "application/json";
+        if (requestParameters["orderDirection"] != null) {
+            queryParameters["OrderDirection"] =
+                requestParameters["orderDirection"];
+        }
+
+        if (requestParameters["pageSize"] != null) {
+            queryParameters["PageSize"] = requestParameters["pageSize"];
+        }
+
+        if (requestParameters["page"] != null) {
+            queryParameters["Page"] = requestParameters["page"];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
@@ -255,9 +276,6 @@ export class SessionsApi extends runtime.BaseAPI {
                 method: "GET",
                 headers: headerParameters,
                 query: queryParameters,
-                body: ListSessionsRequestToJSON(
-                    requestParameters["listSessionsRequest"],
-                ),
             },
             initOverrides,
         );
@@ -270,7 +288,7 @@ export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async listSessions(
-        requestParameters: ListSessionsOperationRequest = {},
+        requestParameters: ListSessionsRequest = {},
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<ListSessionsResponse> {
         const response = await this.listSessionsRaw(
@@ -286,11 +304,14 @@ export class SessionsApi extends runtime.BaseAPI {
         requestParameters: RedactSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        if (requestParameters["sessionId"] != null) {
-            queryParameters["sessionId"] = requestParameters["sessionId"];
+        if (requestParameters["sessionId"] == null) {
+            throw new runtime.RequiredError(
+                "sessionId",
+                'Required parameter "sessionId" was null or undefined when calling redactSession().',
+            );
         }
+
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -304,7 +325,10 @@ export class SessionsApi extends runtime.BaseAPI {
         }
         const response = await this.request(
             {
-                path: `/api/v1/sessions/redact`,
+                path: `/api/v1/sessions/{sessionId}/redact`.replace(
+                    `{${"sessionId"}}`,
+                    encodeURIComponent(String(requestParameters["sessionId"])),
+                ),
                 method: "POST",
                 headers: headerParameters,
                 query: queryParameters,
@@ -318,7 +342,7 @@ export class SessionsApi extends runtime.BaseAPI {
     /**
      */
     async redactSession(
-        requestParameters: RedactSessionRequest = {},
+        requestParameters: RedactSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
     ): Promise<void> {
         await this.redactSessionRaw(requestParameters, initOverrides);

@@ -30,8 +30,8 @@ export function instanceOfVerificationFailCode(value: any): boolean {
     for (const key in VerificationFailCode) {
         if (Object.prototype.hasOwnProperty.call(VerificationFailCode, key)) {
             if (
-                (VerificationFailCode as Record<string, VerificationFailCode>)[
-                    key
+                VerificationFailCode[
+                    key as keyof typeof VerificationFailCode
                 ] === value
             ) {
                 return true;
