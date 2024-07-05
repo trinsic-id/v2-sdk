@@ -12,20 +12,43 @@ paths:
   /api/v1/sessions:
     get:
       operationId: ListSessions
-      requestBody:
-        content:
-          application/json:
-            schema:
-              allOf:
-              - $ref: '#/components/schemas/ListSessionsRequest'
-          text/json:
-            schema:
-              allOf:
-              - $ref: '#/components/schemas/ListSessionsRequest'
-          application/*+json:
-            schema:
-              allOf:
-              - $ref: '#/components/schemas/ListSessionsRequest'
+      parameters:
+      - explode: true
+        in: query
+        name: OrderBy
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/SessionOrdering'
+        style: form
+      - explode: true
+        in: query
+        name: OrderDirection
+        required: false
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/OrderDirection'
+        style: form
+      - explode: true
+        in: query
+        name: PageSize
+        required: false
+        schema:
+          format: int32
+          maximum: 10
+          minimum: 1
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Page
+        required: false
+        schema:
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -196,19 +219,17 @@ paths:
           description: Internal Server Error
       tags:
       - Sessions
-  /api/v1/sessions/redact:
+  /api/v1/sessions/{sessionId}/redact:
     post:
       operationId: RedactSession
       parameters:
-      - explode: true
-        in: query
+      - explode: false
+        in: path
         name: sessionId
-        required: false
+        required: true
         schema:
-          maxLength: 100
-          minLength: 5
           type: string
-        style: form
+        style: simple
       responses:
         "200":
           description: OK
@@ -343,31 +364,6 @@ components:
       - IdvSuccess
       - IdvFailed
       type: string
-    ListSessionsRequest:
-      additionalProperties: false
-      example:
-        orderBy: ""
-        orderDirection: ""
-        pageSize: 1
-        page: 1294386359
-      properties:
-        orderBy:
-          allOf:
-          - $ref: '#/components/schemas/SessionOrdering'
-        orderDirection:
-          allOf:
-          - $ref: '#/components/schemas/OrderDirection'
-        pageSize:
-          format: int32
-          maximum: 10
-          minimum: 1
-          type: integer
-        page:
-          format: int32
-          maximum: 2147483647
-          minimum: 1
-          type: integer
-      type: object
     ListSessionsResponse:
       additionalProperties: false
       example:

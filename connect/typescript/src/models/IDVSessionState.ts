@@ -31,8 +31,7 @@ export function instanceOfIDVSessionState(value: any): boolean {
     for (const key in IDVSessionState) {
         if (Object.prototype.hasOwnProperty.call(IDVSessionState, key)) {
             if (
-                (IDVSessionState as Record<string, IDVSessionState>)[key] ===
-                value
+                IDVSessionState[key as keyof typeof IDVSessionState] === value
             ) {
                 return true;
             }

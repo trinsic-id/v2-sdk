@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
 *SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
 *SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
 *SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-*SessionsApi* | [**RedactSession**](docs/SessionsApi.md#redactsession) | **POST** /api/v1/sessions/redact | 
+*SessionsApi* | [**RedactSession**](docs/SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
 
 
 <a id="documentation-for-models"></a>
@@ -157,7 +157,6 @@ Class | Method | HTTP request | Description
  - [Model.GovernmentIDOptions](docs/GovernmentIDOptions.md)
  - [Model.GovernmentIDOptionsRequest](docs/GovernmentIDOptionsRequest.md)
  - [Model.IDVSessionState](docs/IDVSessionState.md)
- - [Model.ListSessionsRequest](docs/ListSessionsRequest.md)
  - [Model.ListSessionsResponse](docs/ListSessionsResponse.md)
  - [Model.NormalizedIdentityData](docs/NormalizedIdentityData.md)
  - [Model.OrderDirection](docs/OrderDirection.md)

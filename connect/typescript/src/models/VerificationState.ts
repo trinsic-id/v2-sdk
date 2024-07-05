@@ -28,9 +28,8 @@ export function instanceOfVerificationState(value: any): boolean {
     for (const key in VerificationState) {
         if (Object.prototype.hasOwnProperty.call(VerificationState, key)) {
             if (
-                (VerificationState as Record<string, VerificationState>)[
-                    key
-                ] === value
+                VerificationState[key as keyof typeof VerificationState] ===
+                value
             ) {
                 return true;
             }

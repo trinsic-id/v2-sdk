@@ -8,7 +8,7 @@ All URIs are relative to *https://connect.trinsic.id*
 | [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions |  |
 | [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} |  |
 | [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions |  |
-| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/redact |  |
+| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact |  |
 
 <a id="cancelsession"></a>
 # **CancelSession**
@@ -306,7 +306,7 @@ catch (ApiException e)
 
 <a id="listsessions"></a>
 # **ListSessions**
-> ListSessionsResponse ListSessions (ListSessionsRequest? listSessionsRequest = null)
+> ListSessionsResponse ListSessions (SessionOrdering? orderBy = null, OrderDirection? orderDirection = null, int? pageSize = null, int? page = null)
 
 
 
@@ -334,11 +334,14 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var listSessionsRequest = new ListSessionsRequest?(); // ListSessionsRequest? |  (optional) 
+            var orderBy = new SessionOrdering?(); // SessionOrdering? |  (optional) 
+            var orderDirection = new OrderDirection?(); // OrderDirection? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
+            var page = 56;  // int? |  (optional) 
 
             try
             {
-                ListSessionsResponse result = apiInstance.ListSessions(listSessionsRequest);
+                ListSessionsResponse result = apiInstance.ListSessions(orderBy, orderDirection, pageSize, page);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -358,7 +361,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<ListSessionsResponse> response = apiInstance.ListSessionsWithHttpInfo(listSessionsRequest);
+    ApiResponse<ListSessionsResponse> response = apiInstance.ListSessionsWithHttpInfo(orderBy, orderDirection, pageSize, page);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -375,7 +378,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **listSessionsRequest** | [**ListSessionsRequest?**](ListSessionsRequest?.md) |  | [optional]  |
+| **orderBy** | [**SessionOrdering?**](SessionOrdering?.md) |  | [optional]  |
+| **orderDirection** | [**OrderDirection?**](OrderDirection?.md) |  | [optional]  |
+| **pageSize** | **int?** |  | [optional]  |
+| **page** | **int?** |  | [optional]  |
 
 ### Return type
 
@@ -387,7 +393,7 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/*+json
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 
@@ -404,7 +410,7 @@ catch (ApiException e)
 
 <a id="redactsession"></a>
 # **RedactSession**
-> void RedactSession (string? sessionId = null)
+> void RedactSession (string sessionId)
 
 
 
@@ -432,7 +438,7 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var sessionId = "sessionId_example";  // string? |  (optional) 
+            var sessionId = "sessionId_example";  // string | 
 
             try
             {
@@ -469,7 +475,7 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **sessionId** | **string?** |  | [optional]  |
+| **sessionId** | **string** |  |  |
 
 ### Return type
 

@@ -8,7 +8,6 @@ export * from "./GetSessionResponseV1";
 export * from "./GovernmentIDOptions";
 export * from "./GovernmentIDOptionsRequest";
 export * from "./IDVSessionState";
-export * from "./ListSessionsRequest";
 export * from "./ListSessionsResponse";
 export * from "./NormalizedIdentityData";
 export * from "./OrderDirection";

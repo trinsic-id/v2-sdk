@@ -190,25 +190,43 @@ class SessionsApi {
   /// Performs an HTTP 'GET /api/v1/sessions' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [ListSessionsRequest] listSessionsRequest:
+  /// * [SessionOrdering] orderBy:
+  ///
+  /// * [OrderDirection] orderDirection:
+  ///
+  /// * [int] pageSize:
+  ///
+  /// * [int] page:
   Future<Response> listSessionsWithHttpInfo({
-    ListSessionsRequest? listSessionsRequest,
+    SessionOrdering? orderBy,
+    OrderDirection? orderDirection,
+    int? pageSize,
+    int? page,
   }) async {
     // ignore: prefer_const_declarations
     final path = r'/api/v1/sessions';
 
     // ignore: prefer_final_locals
-    Object? postBody = listSessionsRequest;
+    Object? postBody;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[
-      'application/json',
-      'text/json',
-      'application/*+json'
-    ];
+    if (orderBy != null) {
+      queryParams.addAll(_queryParams('', 'OrderBy', orderBy));
+    }
+    if (orderDirection != null) {
+      queryParams.addAll(_queryParams('', 'OrderDirection', orderDirection));
+    }
+    if (pageSize != null) {
+      queryParams.addAll(_queryParams('', 'PageSize', pageSize));
+    }
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'Page', page));
+    }
+
+    const contentTypes = <String>[];
 
     return apiClient.invokeAPI(
       path,
@@ -223,12 +241,24 @@ class SessionsApi {
 
   /// Parameters:
   ///
-  /// * [ListSessionsRequest] listSessionsRequest:
+  /// * [SessionOrdering] orderBy:
+  ///
+  /// * [OrderDirection] orderDirection:
+  ///
+  /// * [int] pageSize:
+  ///
+  /// * [int] page:
   Future<ListSessionsResponse?> listSessions({
-    ListSessionsRequest? listSessionsRequest,
+    SessionOrdering? orderBy,
+    OrderDirection? orderDirection,
+    int? pageSize,
+    int? page,
   }) async {
     final response = await listSessionsWithHttpInfo(
-      listSessionsRequest: listSessionsRequest,
+      orderBy: orderBy,
+      orderDirection: orderDirection,
+      pageSize: pageSize,
+      page: page,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -246,15 +276,16 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions/redact' operation and returns the [Response].
+  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/redact' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<Response> redactSessionWithHttpInfo({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<Response> redactSessionWithHttpInfo(
+    String sessionId,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/api/v1/sessions/redact';
+    final path = r'/api/v1/sessions/{sessionId}/redact'
+        .replaceAll('{sessionId}', sessionId);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -262,10 +293,6 @@ class SessionsApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
-
-    if (sessionId != null) {
-      queryParams.addAll(_queryParams('', 'sessionId', sessionId));
-    }
 
     const contentTypes = <String>[];
 
@@ -282,12 +309,12 @@ class SessionsApi {
 
   /// Parameters:
   ///
-  /// * [String] sessionId:
-  Future<void> redactSession({
-    String? sessionId,
-  }) async {
+  /// * [String] sessionId (required):
+  Future<void> redactSession(
+    String sessionId,
+  ) async {
     final response = await redactSessionWithHttpInfo(
-      sessionId: sessionId,
+      sessionId,
     );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

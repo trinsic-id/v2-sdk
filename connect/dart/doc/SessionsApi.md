@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
 [**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
 [**listSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/redact | 
+[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
 
 
 # **cancelSession**
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listSessions**
-> ListSessionsResponse listSessions(listSessionsRequest)
+> ListSessionsResponse listSessions(orderBy, orderDirection, pageSize, page)
 
 
 
@@ -173,10 +173,13 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionsApi();
-final listSessionsRequest = ListSessionsRequest(); // ListSessionsRequest | 
+final orderBy = ; // SessionOrdering | 
+final orderDirection = ; // OrderDirection | 
+final pageSize = 56; // int | 
+final page = 56; // int | 
 
 try {
-    final result = api_instance.listSessions(listSessionsRequest);
+    final result = api_instance.listSessions(orderBy, orderDirection, pageSize, page);
     print(result);
 } catch (e) {
     print('Exception when calling SessionsApi->listSessions: $e\n');
@@ -187,7 +190,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listSessionsRequest** | [**ListSessionsRequest**](ListSessionsRequest.md)|  | [optional] 
+ **orderBy** | [**SessionOrdering**](.md)|  | [optional] 
+ **orderDirection** | [**OrderDirection**](.md)|  | [optional] 
+ **pageSize** | **int**|  | [optional] 
+ **page** | **int**|  | [optional] 
 
 ### Return type
 
@@ -199,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, text/json, application/*+json
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -233,7 +239,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sessionId** | **String**|  | [optional] 
+ **sessionId** | **String**|  | 
 
 ### Return type
 
