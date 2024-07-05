@@ -38,7 +38,6 @@ part 'model/get_session_response_v1.dart';
 part 'model/government_id_options.dart';
 part 'model/government_id_options_request.dart';
 part 'model/idv_session_state.dart';
-part 'model/list_sessions_request.dart';
 part 'model/list_sessions_response.dart';
 part 'model/normalized_identity_data.dart';
 part 'model/order_direction.dart';

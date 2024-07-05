@@ -245,8 +245,6 @@ class ApiClient {
           return GovernmentIDOptionsRequest.fromJson(value);
         case 'IDVSessionState':
           return IDVSessionStateTypeTransformer().decode(value);
-        case 'ListSessionsRequest':
-          return ListSessionsRequest.fromJson(value);
         case 'ListSessionsResponse':
           return ListSessionsResponse.fromJson(value);
         case 'NormalizedIdentityData':

@@ -31,12 +31,12 @@ void main() {
       // TODO
     });
 
-    //Future<ListSessionsResponse> listSessions({ ListSessionsRequest listSessionsRequest }) async
+    //Future<ListSessionsResponse> listSessions({ SessionOrdering orderBy, OrderDirection orderDirection, int pageSize, int page }) async
     test('test listSessions', () async {
       // TODO
     });
 
-    //Future redactSession({ String sessionId }) async
+    //Future redactSession(String sessionId) async
     test('test redactSession', () async {
       // TODO
     });
