@@ -415,10 +415,10 @@
       "CreateSessionRequest": {
         "type": "object",
         "properties": {
-          "governmentIdOptions": {
+          "fields": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/GovernmentIDOptionsRequest"
+                "$ref": "#/components/schemas/DisclosedFieldsRequest"
               }
             ]
           }
@@ -440,35 +440,7 @@
         },
         "additionalProperties": false
       },
-      "FailureMessage": {
-        "required": [
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "GetSessionResponseV1": {
-        "required": [
-          "session"
-        ],
-        "type": "object",
-        "properties": {
-          "session": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Session"
-              }
-            ]
-          }
-        },
-        "additionalProperties": false
-      },
-      "GovernmentIDOptions": {
+      "DisclosedFields": {
         "required": [
           "address",
           "country",
@@ -508,7 +480,7 @@
         },
         "additionalProperties": false
       },
-      "GovernmentIDOptionsRequest": {
+      "DisclosedFieldsRequest": {
         "type": "object",
         "properties": {
           "idNumber": {
@@ -534,6 +506,34 @@
           },
           "expirationDate": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FailureMessage": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetSessionResponseV1": {
+        "required": [
+          "session"
+        ],
+        "type": "object",
+        "properties": {
+          "session": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Session"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -703,7 +703,7 @@
       },
       "Verification": {
         "required": [
-          "governmentIdOptions",
+          "disclosedFields",
           "id",
           "reused",
           "state",
@@ -735,14 +735,14 @@
             "type": "integer",
             "format": "int64"
           },
-          "governmentIdOptions": {
+          "disclosedFields": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/GovernmentIDOptions"
+                "$ref": "#/components/schemas/DisclosedFields"
               }
             ]
           },
-          "normalizedGovernmentIdData": {
+          "normalizedData": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/NormalizedIdentityData"
