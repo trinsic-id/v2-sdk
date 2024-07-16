@@ -14,18 +14,18 @@ using Newtonsoft.Json;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// GovernmentIDOptions
+/// DisclosedFields
 /// </summary>
-[DataContract(Name = "GovernmentIDOptions")]
-public partial class GovernmentIDOptions
+[DataContract(Name = "DisclosedFields")]
+public partial class DisclosedFields
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GovernmentIDOptions" /> class.
+    /// Initializes a new instance of the <see cref="DisclosedFields" /> class.
     /// </summary>
     [JsonConstructorAttribute]
-    protected GovernmentIDOptions() { }
+    protected DisclosedFields() { }
     /// <summary>
-    /// Initializes a new instance of the <see cref="GovernmentIDOptions" /> class.
+    /// Initializes a new instance of the <see cref="DisclosedFields" /> class.
     /// </summary>
     /// <param name="idNumber">idNumber (required).</param>
     /// <param name="givenName">givenName (required).</param>
@@ -35,7 +35,7 @@ public partial class GovernmentIDOptions
     /// <param name="country">country (required).</param>
     /// <param name="issueDate">issueDate (required).</param>
     /// <param name="expirationDate">expirationDate (required).</param>
-    public GovernmentIDOptions(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
+    public DisclosedFields(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
     {
         IdNumber = idNumber;
         GivenName = givenName;
@@ -102,7 +102,7 @@ public partial class GovernmentIDOptions
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class GovernmentIDOptions {\n");
+        sb.Append("class DisclosedFields {\n");
         sb.Append("  IdNumber: ").Append(IdNumber).Append("\n");
         sb.Append("  GivenName: ").Append(GivenName).Append("\n");
         sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");

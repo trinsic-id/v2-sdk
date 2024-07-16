@@ -13,13 +13,13 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// GovernmentIDOptionsRequest
+/// DisclosedFieldsRequest
 /// </summary>
-[DataContract(Name = "GovernmentIDOptionsRequest")]
-public partial class GovernmentIDOptionsRequest
+[DataContract(Name = "DisclosedFieldsRequest")]
+public partial class DisclosedFieldsRequest
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GovernmentIDOptionsRequest" /> class.
+    /// Initializes a new instance of the <see cref="DisclosedFieldsRequest" /> class.
     /// </summary>
     /// <param name="idNumber">idNumber.</param>
     /// <param name="givenName">givenName.</param>
@@ -29,7 +29,7 @@ public partial class GovernmentIDOptionsRequest
     /// <param name="country">country.</param>
     /// <param name="issueDate">issueDate.</param>
     /// <param name="expirationDate">expirationDate.</param>
-    public GovernmentIDOptionsRequest(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
+    public DisclosedFieldsRequest(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
     {
         IdNumber = idNumber;
         GivenName = givenName;
@@ -96,7 +96,7 @@ public partial class GovernmentIDOptionsRequest
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class GovernmentIDOptionsRequest {\n");
+        sb.Append("class DisclosedFieldsRequest {\n");
         sb.Append("  IdNumber: ").Append(IdNumber).Append("\n");
         sb.Append("  GivenName: ").Append(GivenName).Append("\n");
         sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
