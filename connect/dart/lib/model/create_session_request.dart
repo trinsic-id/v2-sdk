@@ -13,7 +13,7 @@ part of openapi.api;
 class CreateSessionRequest {
   /// Returns a new [CreateSessionRequest] instance.
   CreateSessionRequest({
-    this.governmentIdOptions,
+    this.fields,
   });
 
   ///
@@ -22,29 +22,27 @@ class CreateSessionRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  GovernmentIDOptionsRequest? governmentIdOptions;
+  DisclosedFieldsRequest? fields;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CreateSessionRequest &&
-          other.governmentIdOptions == governmentIdOptions;
+      other is CreateSessionRequest && other.fields == fields;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (governmentIdOptions == null ? 0 : governmentIdOptions!.hashCode);
+      (fields == null ? 0 : fields!.hashCode);
 
   @override
-  String toString() =>
-      'CreateSessionRequest[governmentIdOptions=$governmentIdOptions]';
+  String toString() => 'CreateSessionRequest[fields=$fields]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.governmentIdOptions != null) {
-      json[r'governmentIdOptions'] = this.governmentIdOptions;
+    if (this.fields != null) {
+      json[r'fields'] = this.fields;
     } else {
-      json[r'governmentIdOptions'] = null;
+      json[r'fields'] = null;
     }
     return json;
   }
@@ -70,8 +68,7 @@ class CreateSessionRequest {
       }());
 
       return CreateSessionRequest(
-        governmentIdOptions:
-            GovernmentIDOptionsRequest.fromJson(json[r'governmentIdOptions']),
+        fields: DisclosedFieldsRequest.fromJson(json[r'fields']),
       );
     }
     return null;
