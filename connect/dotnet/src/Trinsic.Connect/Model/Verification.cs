@@ -45,17 +45,17 @@ public partial class Verification
     /// <param name="failCode">failCode.</param>
     /// <param name="reused">reused (required).</param>
     /// <param name="updated">updated (required).</param>
-    /// <param name="governmentIdOptions">governmentIdOptions (required).</param>
-    /// <param name="normalizedGovernmentIdData">normalizedGovernmentIdData.</param>
-    public Verification(string id = default(string), VerificationState state = default(VerificationState), VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), long updated = default(long), GovernmentIDOptions governmentIdOptions = default(GovernmentIDOptions), NormalizedIdentityData normalizedGovernmentIdData = default(NormalizedIdentityData))
+    /// <param name="disclosedFields">disclosedFields (required).</param>
+    /// <param name="normalizedData">normalizedData.</param>
+    public Verification(string id = default(string), VerificationState state = default(VerificationState), VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), long updated = default(long), DisclosedFields disclosedFields = default(DisclosedFields), NormalizedIdentityData normalizedData = default(NormalizedIdentityData))
     {
         Id = id ?? throw new ArgumentNullException("id is a required property for Verification and cannot be null");
         State = state;
         Reused = reused;
         Updated = updated;
-        GovernmentIdOptions = governmentIdOptions ?? throw new ArgumentNullException("governmentIdOptions is a required property for Verification and cannot be null");
+        DisclosedFields = disclosedFields ?? throw new ArgumentNullException("disclosedFields is a required property for Verification and cannot be null");
         FailCode = failCode;
-        NormalizedGovernmentIdData = normalizedGovernmentIdData;
+        NormalizedData = normalizedData;
     }
 
     /// <summary>
@@ -77,16 +77,16 @@ public partial class Verification
     public long Updated { get; set; }
 
     /// <summary>
-    /// Gets or Sets GovernmentIdOptions
+    /// Gets or Sets DisclosedFields
     /// </summary>
-    [DataMember(Name = "governmentIdOptions", IsRequired = true, EmitDefaultValue = true)]
-    public GovernmentIDOptions GovernmentIdOptions { get; set; }
+    [DataMember(Name = "disclosedFields", IsRequired = true, EmitDefaultValue = true)]
+    public DisclosedFields DisclosedFields { get; set; }
 
     /// <summary>
-    /// Gets or Sets NormalizedGovernmentIdData
+    /// Gets or Sets NormalizedData
     /// </summary>
-    [DataMember(Name = "normalizedGovernmentIdData", EmitDefaultValue = false)]
-    public NormalizedIdentityData NormalizedGovernmentIdData { get; set; }
+    [DataMember(Name = "normalizedData", EmitDefaultValue = false)]
+    public NormalizedIdentityData NormalizedData { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -101,8 +101,8 @@ public partial class Verification
         sb.Append("  FailCode: ").Append(FailCode).Append("\n");
         sb.Append("  Reused: ").Append(Reused).Append("\n");
         sb.Append("  Updated: ").Append(Updated).Append("\n");
-        sb.Append("  GovernmentIdOptions: ").Append(GovernmentIdOptions).Append("\n");
-        sb.Append("  NormalizedGovernmentIdData: ").Append(NormalizedGovernmentIdData).Append("\n");
+        sb.Append("  DisclosedFields: ").Append(DisclosedFields).Append("\n");
+        sb.Append("  NormalizedData: ").Append(NormalizedData).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }

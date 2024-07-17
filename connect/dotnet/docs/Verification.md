@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **FailCode** | **VerificationFailCode** |  | [optional] 
 **Reused** | **bool** |  | 
 **Updated** | **long** |  | 
-**GovernmentIdOptions** | [**GovernmentIDOptions**](GovernmentIDOptions.md) |  | 
-**NormalizedGovernmentIdData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
+**DisclosedFields** | [**DisclosedFields**](DisclosedFields.md) |  | 
+**NormalizedData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

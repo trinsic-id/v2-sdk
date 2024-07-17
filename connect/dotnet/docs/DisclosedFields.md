@@ -1,4 +1,4 @@
-# Trinsic.Connect.Model.GovernmentIDOptions
+# Trinsic.Connect.Model.DisclosedFields
 
 ## Properties
 
