@@ -41,13 +41,13 @@ void main() {
       // TODO
     });
 
-    // GovernmentIDOptions governmentIdOptions
-    test('to test the property `governmentIdOptions`', () async {
+    // DisclosedFields disclosedFields
+    test('to test the property `disclosedFields`', () async {
       // TODO
     });
 
-    // NormalizedIdentityData normalizedGovernmentIdData
-    test('to test the property `normalizedGovernmentIdData`', () async {
+    // NormalizedIdentityData normalizedData
+    test('to test the property `normalizedData`', () async {
       // TODO
     });
   });

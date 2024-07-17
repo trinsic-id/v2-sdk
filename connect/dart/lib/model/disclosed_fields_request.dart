@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class GovernmentIDOptionsRequest {
-  /// Returns a new [GovernmentIDOptionsRequest] instance.
-  GovernmentIDOptionsRequest({
+class DisclosedFieldsRequest {
+  /// Returns a new [DisclosedFieldsRequest] instance.
+  DisclosedFieldsRequest({
     this.idNumber,
     this.givenName,
     this.familyName,
@@ -90,7 +90,7 @@ class GovernmentIDOptionsRequest {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is GovernmentIDOptionsRequest &&
+      other is DisclosedFieldsRequest &&
           other.idNumber == idNumber &&
           other.givenName == givenName &&
           other.familyName == familyName &&
@@ -114,7 +114,7 @@ class GovernmentIDOptionsRequest {
 
   @override
   String toString() =>
-      'GovernmentIDOptionsRequest[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'DisclosedFieldsRequest[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -161,10 +161,10 @@ class GovernmentIDOptionsRequest {
     return json;
   }
 
-  /// Returns a new [GovernmentIDOptionsRequest] instance and imports its values from
+  /// Returns a new [DisclosedFieldsRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GovernmentIDOptionsRequest? fromJson(dynamic value) {
+  static DisclosedFieldsRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -174,14 +174,14 @@ class GovernmentIDOptionsRequest {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "GovernmentIDOptionsRequest[$key]" is missing from JSON.');
+              'Required key "DisclosedFieldsRequest[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "GovernmentIDOptionsRequest[$key]" has a null value in JSON.');
+              'Required key "DisclosedFieldsRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GovernmentIDOptionsRequest(
+      return DisclosedFieldsRequest(
         idNumber: mapValueOfType<bool>(json, r'idNumber'),
         givenName: mapValueOfType<bool>(json, r'givenName'),
         familyName: mapValueOfType<bool>(json, r'familyName'),
@@ -195,14 +195,14 @@ class GovernmentIDOptionsRequest {
     return null;
   }
 
-  static List<GovernmentIDOptionsRequest> listFromJson(
+  static List<DisclosedFieldsRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <GovernmentIDOptionsRequest>[];
+    final result = <DisclosedFieldsRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GovernmentIDOptionsRequest.fromJson(row);
+        final value = DisclosedFieldsRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -211,12 +211,12 @@ class GovernmentIDOptionsRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GovernmentIDOptionsRequest> mapFromJson(dynamic json) {
-    final map = <String, GovernmentIDOptionsRequest>{};
+  static Map<String, DisclosedFieldsRequest> mapFromJson(dynamic json) {
+    final map = <String, DisclosedFieldsRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GovernmentIDOptionsRequest.fromJson(entry.value);
+        final value = DisclosedFieldsRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -225,17 +225,17 @@ class GovernmentIDOptionsRequest {
     return map;
   }
 
-  // maps a json object with a list of GovernmentIDOptionsRequest-objects as value to a dart map
-  static Map<String, List<GovernmentIDOptionsRequest>> mapListFromJson(
+  // maps a json object with a list of DisclosedFieldsRequest-objects as value to a dart map
+  static Map<String, List<DisclosedFieldsRequest>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<GovernmentIDOptionsRequest>>{};
+    final map = <String, List<DisclosedFieldsRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GovernmentIDOptionsRequest.listFromJson(
+        map[entry.key] = DisclosedFieldsRequest.listFromJson(
           entry.value,
           growable: growable,
         );

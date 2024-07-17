@@ -18,8 +18,8 @@ class Verification {
     this.failCode,
     required this.reused,
     required this.updated,
-    required this.governmentIdOptions,
-    this.normalizedGovernmentIdData,
+    required this.disclosedFields,
+    this.normalizedData,
   });
 
   String id;
@@ -38,7 +38,7 @@ class Verification {
 
   int updated;
 
-  GovernmentIDOptions governmentIdOptions;
+  DisclosedFields disclosedFields;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -46,7 +46,7 @@ class Verification {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  NormalizedIdentityData? normalizedGovernmentIdData;
+  NormalizedIdentityData? normalizedData;
 
   @override
   bool operator ==(Object other) =>
@@ -57,8 +57,8 @@ class Verification {
           other.failCode == failCode &&
           other.reused == reused &&
           other.updated == updated &&
-          other.governmentIdOptions == governmentIdOptions &&
-          other.normalizedGovernmentIdData == normalizedGovernmentIdData;
+          other.disclosedFields == disclosedFields &&
+          other.normalizedData == normalizedData;
 
   @override
   int get hashCode =>
@@ -68,14 +68,12 @@ class Verification {
       (failCode == null ? 0 : failCode!.hashCode) +
       (reused.hashCode) +
       (updated.hashCode) +
-      (governmentIdOptions.hashCode) +
-      (normalizedGovernmentIdData == null
-          ? 0
-          : normalizedGovernmentIdData!.hashCode);
+      (disclosedFields.hashCode) +
+      (normalizedData == null ? 0 : normalizedData!.hashCode);
 
   @override
   String toString() =>
-      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, governmentIdOptions=$governmentIdOptions, normalizedGovernmentIdData=$normalizedGovernmentIdData]';
+      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, disclosedFields=$disclosedFields, normalizedData=$normalizedData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -88,11 +86,11 @@ class Verification {
     }
     json[r'reused'] = this.reused;
     json[r'updated'] = this.updated;
-    json[r'governmentIdOptions'] = this.governmentIdOptions;
-    if (this.normalizedGovernmentIdData != null) {
-      json[r'normalizedGovernmentIdData'] = this.normalizedGovernmentIdData;
+    json[r'disclosedFields'] = this.disclosedFields;
+    if (this.normalizedData != null) {
+      json[r'normalizedData'] = this.normalizedData;
     } else {
-      json[r'normalizedGovernmentIdData'] = null;
+      json[r'normalizedData'] = null;
     }
     return json;
   }
@@ -123,10 +121,9 @@ class Verification {
         failCode: VerificationFailCode.fromJson(json[r'failCode']),
         reused: mapValueOfType<bool>(json, r'reused')!,
         updated: mapValueOfType<int>(json, r'updated')!,
-        governmentIdOptions:
-            GovernmentIDOptions.fromJson(json[r'governmentIdOptions'])!,
-        normalizedGovernmentIdData: NormalizedIdentityData.fromJson(
-            json[r'normalizedGovernmentIdData']),
+        disclosedFields: DisclosedFields.fromJson(json[r'disclosedFields'])!,
+        normalizedData:
+            NormalizedIdentityData.fromJson(json[r'normalizedData']),
       );
     }
     return null;
@@ -187,6 +184,6 @@ class Verification {
     'state',
     'reused',
     'updated',
-    'governmentIdOptions',
+    'disclosedFields',
   };
 }
