@@ -50,7 +50,7 @@ enum VerificationState {
 
   reserved 2;
   reserved "VERIFICATION_STARTED";
-  
+
   // This verification has been successfully completed
   VERIFICATION_SUCCESS = 3;
   // This verification has failed
@@ -129,6 +129,9 @@ message IDVSession {
 
   // The unix timestamp, in seconds, that this IDVSession's `state` was last updated
   fixed64 updated = 8;
+
+  // Whether this session was redacted or not
+  optional bool redacted = 9;
 }
 
 // A Verification that is part of an IDVSession
