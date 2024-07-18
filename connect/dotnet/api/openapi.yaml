@@ -255,6 +255,26 @@ paths:
       - Sessions
 components:
   schemas:
+    Address:
+      additionalProperties: false
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        line3:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+        fullAddress:
+          type: string
+      type: object
     CancelSessionResponse:
       additionalProperties: false
       example:
@@ -268,11 +288,11 @@ components:
       type: object
     CreateSessionRequest:
       example:
-        governmentIdOptions: ""
+        fields: ""
       properties:
-        governmentIdOptions:
+        fields:
           allOf:
-          - $ref: '#/components/schemas/GovernmentIDOptionsRequest'
+          - $ref: '#/components/schemas/DisclosedFieldsRequest'
       type: object
     CreateSessionResponse:
       additionalProperties: false
@@ -285,28 +305,7 @@ components:
       required:
       - session
       type: object
-    FailureMessage:
-      additionalProperties: false
-      example:
-        message: message
-      properties:
-        message:
-          type: string
-      required:
-      - message
-      type: object
-    GetSessionResponseV1:
-      additionalProperties: false
-      example:
-        session: ""
-      properties:
-        session:
-          allOf:
-          - $ref: '#/components/schemas/Session'
-      required:
-      - session
-      type: object
-    GovernmentIDOptions:
+    DisclosedFields:
       additionalProperties: false
       properties:
         idNumber:
@@ -335,7 +334,7 @@ components:
       - idNumber
       - issueDate
       type: object
-    GovernmentIDOptionsRequest:
+    DisclosedFieldsRequest:
       additionalProperties: false
       properties:
         idNumber:
@@ -355,6 +354,43 @@ components:
         expirationDate:
           type: boolean
       type: object
+    DocumentData:
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+        number:
+          type: string
+        issueDate:
+          type: string
+        expirationDate:
+          type: string
+        issuingCountry:
+          type: string
+        portrait:
+          type: string
+      type: object
+    FailureMessage:
+      additionalProperties: false
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+    GetSessionResponseV1:
+      additionalProperties: false
+      example:
+        session: ""
+      properties:
+        session:
+          allOf:
+          - $ref: '#/components/schemas/Session'
+      required:
+      - session
+      type: object
     IDVSessionState:
       enum:
       - IdvCreated
@@ -364,6 +400,18 @@ components:
       - IdvSuccess
       - IdvFailed
       type: string
+    IdentityData:
+      additionalProperties: false
+      properties:
+        originatingIntegrationId:
+          type: string
+        person:
+          allOf:
+          - $ref: '#/components/schemas/PersonData'
+        document:
+          allOf:
+          - $ref: '#/components/schemas/DocumentData'
+      type: object
     ListSessionsResponse:
       additionalProperties: false
       example:
@@ -373,7 +421,6 @@ components:
           failCode: ""
           id: id
           state: ""
-          resultVp: resultVp
           updated: 6
           verification: ""
         - clientToken: clientToken
@@ -381,7 +428,6 @@ components:
           failCode: ""
           id: id
           state: ""
-          resultVp: resultVp
           updated: 6
           verification: ""
         total: 1
@@ -401,31 +447,34 @@ components:
       - sessions
       - total
       type: object
-    NormalizedIdentityData:
-      additionalProperties: false
-      properties:
-        idNumber:
-          type: string
-        givenName:
-          type: string
-        familyName:
-          type: string
-        address:
-          type: string
-        dateOfBirth:
-          type: string
-        country:
-          type: string
-        issueDate:
-          type: string
-        expirationDate:
-          type: string
-      type: object
     OrderDirection:
       enum:
       - Ascending
       - Descending
       type: string
+    PersonData:
+      additionalProperties: false
+      properties:
+        givenName:
+          type: string
+        familyName:
+          type: string
+        middleName:
+          type: string
+        fullName:
+          type: string
+        nationality:
+          type: string
+        gender:
+          type: string
+        phoneNumber:
+          type: string
+        address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+        dateOfBirth:
+          type: string
+      type: object
     Session:
       additionalProperties: false
       example:
@@ -434,7 +483,6 @@ components:
         failCode: ""
         id: id
         state: ""
-        resultVp: resultVp
         updated: 6
         verification: ""
       properties:
@@ -451,8 +499,6 @@ components:
         verification:
           allOf:
           - $ref: '#/components/schemas/Verification'
-        resultVp:
-          type: string
         created:
           format: int64
           type: integer
@@ -517,14 +563,14 @@ components:
         updated:
           format: int64
           type: integer
-        governmentIdOptions:
+        disclosedFields:
           allOf:
-          - $ref: '#/components/schemas/GovernmentIDOptions'
-        normalizedGovernmentIdData:
+          - $ref: '#/components/schemas/DisclosedFields'
+        identityData:
           allOf:
-          - $ref: '#/components/schemas/NormalizedIdentityData'
+          - $ref: '#/components/schemas/IdentityData'
       required:
-      - governmentIdOptions
+      - disclosedFields
       - id
       - reused
       - state

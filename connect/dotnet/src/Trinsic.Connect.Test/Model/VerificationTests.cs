@@ -91,20 +91,20 @@ public class VerificationTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'GovernmentIdOptions'
+    /// Test the property 'DisclosedFields'
     /// </summary>
     [Fact]
-    public void GovernmentIdOptionsTest()
+    public void DisclosedFieldsTest()
     {
-        // TODO unit test for the property 'GovernmentIdOptions'
+        // TODO unit test for the property 'DisclosedFields'
     }
 
     /// <summary>
-    /// Test the property 'NormalizedGovernmentIdData'
+    /// Test the property 'IdentityData'
     /// </summary>
     [Fact]
-    public void NormalizedGovernmentIdDataTest()
+    public void IdentityDataTest()
     {
-        // TODO unit test for the property 'NormalizedGovernmentIdData'
+        // TODO unit test for the property 'IdentityData'
     }
 }

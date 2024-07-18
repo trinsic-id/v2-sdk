@@ -45,10 +45,9 @@ public partial class Session
     /// <param name="state">state (required).</param>
     /// <param name="failCode">failCode.</param>
     /// <param name="verification">verification (required).</param>
-    /// <param name="resultVp">resultVp.</param>
     /// <param name="created">created (required).</param>
     /// <param name="updated">updated (required).</param>
-    public Session(string id = default(string), string clientToken = default(string), IDVSessionState state = default(IDVSessionState), SessionFailCode? failCode = default(SessionFailCode?), Verification verification = default(Verification), string resultVp = default(string), long created = default(long), long updated = default(long))
+    public Session(string id = default(string), string clientToken = default(string), IDVSessionState state = default(IDVSessionState), SessionFailCode? failCode = default(SessionFailCode?), Verification verification = default(Verification), long created = default(long), long updated = default(long))
     {
         Id = id ?? throw new ArgumentNullException("id is a required property for Session and cannot be null");
         ClientToken = clientToken ?? throw new ArgumentNullException("clientToken is a required property for Session and cannot be null");
@@ -57,7 +56,6 @@ public partial class Session
         Created = created;
         Updated = updated;
         FailCode = failCode;
-        ResultVp = resultVp;
     }
 
     /// <summary>
@@ -77,12 +75,6 @@ public partial class Session
     /// </summary>
     [DataMember(Name = "verification", IsRequired = true, EmitDefaultValue = true)]
     public Verification Verification { get; set; }
-
-    /// <summary>
-    /// Gets or Sets ResultVp
-    /// </summary>
-    [DataMember(Name = "resultVp", EmitDefaultValue = false)]
-    public string ResultVp { get; set; }
 
     /// <summary>
     /// Gets or Sets Created
@@ -109,7 +101,6 @@ public partial class Session
         sb.Append("  State: ").Append(State).Append("\n");
         sb.Append("  FailCode: ").Append(FailCode).Append("\n");
         sb.Append("  Verification: ").Append(Verification).Append("\n");
-        sb.Append("  ResultVp: ").Append(ResultVp).Append("\n");
         sb.Append("  Created: ").Append(Created).Append("\n");
         sb.Append("  Updated: ").Append(Updated).Append("\n");
         sb.Append("}\n");
