@@ -9,10 +9,10 @@ src/index.ts
 src/models/CancelSessionResponse.ts
 src/models/CreateSessionRequest.ts
 src/models/CreateSessionResponse.ts
+src/models/DisclosedFields.ts
+src/models/DisclosedFieldsRequest.ts
 src/models/FailureMessage.ts
 src/models/GetSessionResponseV1.ts
-src/models/GovernmentIDOptions.ts
-src/models/GovernmentIDOptionsRequest.ts
 src/models/IDVSessionState.ts
 src/models/ListSessionsResponse.ts
 src/models/NormalizedIdentityData.ts
