@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **failCode** | [**VerificationFailCode**](VerificationFailCode.md) |  | [optional] 
 **reused** | **bool** |  | 
 **updated** | **int** |  | 
-**governmentIdOptions** | [**GovernmentIDOptions**](GovernmentIDOptions.md) |  | 
-**normalizedGovernmentIdData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
+**disclosedFields** | [**DisclosedFields**](DisclosedFields.md) |  | 
+**normalizedData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
