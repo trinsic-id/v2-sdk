@@ -10,26 +10,19 @@
 
 part of openapi.api;
 
-class NormalizedIdentityData {
-  /// Returns a new [NormalizedIdentityData] instance.
-  NormalizedIdentityData({
-    this.idNumber,
+class PersonData {
+  /// Returns a new [PersonData] instance.
+  PersonData({
     this.givenName,
     this.familyName,
+    this.middleName,
+    this.fullName,
+    this.nationality,
+    this.gender,
+    this.phoneNumber,
     this.address,
     this.dateOfBirth,
-    this.country,
-    this.issueDate,
-    this.expirationDate,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? idNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -53,7 +46,47 @@ class NormalizedIdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? address;
+  String? middleName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fullName;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? nationality;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? gender;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? phoneNumber;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Address? address;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -63,66 +96,39 @@ class NormalizedIdentityData {
   ///
   String? dateOfBirth;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? country;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? issueDate;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? expirationDate;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NormalizedIdentityData &&
-          other.idNumber == idNumber &&
+      other is PersonData &&
           other.givenName == givenName &&
           other.familyName == familyName &&
+          other.middleName == middleName &&
+          other.fullName == fullName &&
+          other.nationality == nationality &&
+          other.gender == gender &&
+          other.phoneNumber == phoneNumber &&
           other.address == address &&
-          other.dateOfBirth == dateOfBirth &&
-          other.country == country &&
-          other.issueDate == issueDate &&
-          other.expirationDate == expirationDate;
+          other.dateOfBirth == dateOfBirth;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (idNumber == null ? 0 : idNumber!.hashCode) +
       (givenName == null ? 0 : givenName!.hashCode) +
       (familyName == null ? 0 : familyName!.hashCode) +
+      (middleName == null ? 0 : middleName!.hashCode) +
+      (fullName == null ? 0 : fullName!.hashCode) +
+      (nationality == null ? 0 : nationality!.hashCode) +
+      (gender == null ? 0 : gender!.hashCode) +
+      (phoneNumber == null ? 0 : phoneNumber!.hashCode) +
       (address == null ? 0 : address!.hashCode) +
-      (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
-      (country == null ? 0 : country!.hashCode) +
-      (issueDate == null ? 0 : issueDate!.hashCode) +
-      (expirationDate == null ? 0 : expirationDate!.hashCode);
+      (dateOfBirth == null ? 0 : dateOfBirth!.hashCode);
 
   @override
   String toString() =>
-      'NormalizedIdentityData[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'PersonData[givenName=$givenName, familyName=$familyName, middleName=$middleName, fullName=$fullName, nationality=$nationality, gender=$gender, phoneNumber=$phoneNumber, address=$address, dateOfBirth=$dateOfBirth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.idNumber != null) {
-      json[r'idNumber'] = this.idNumber;
-    } else {
-      json[r'idNumber'] = null;
-    }
     if (this.givenName != null) {
       json[r'givenName'] = this.givenName;
     } else {
@@ -132,6 +138,31 @@ class NormalizedIdentityData {
       json[r'familyName'] = this.familyName;
     } else {
       json[r'familyName'] = null;
+    }
+    if (this.middleName != null) {
+      json[r'middleName'] = this.middleName;
+    } else {
+      json[r'middleName'] = null;
+    }
+    if (this.fullName != null) {
+      json[r'fullName'] = this.fullName;
+    } else {
+      json[r'fullName'] = null;
+    }
+    if (this.nationality != null) {
+      json[r'nationality'] = this.nationality;
+    } else {
+      json[r'nationality'] = null;
+    }
+    if (this.gender != null) {
+      json[r'gender'] = this.gender;
+    } else {
+      json[r'gender'] = null;
+    }
+    if (this.phoneNumber != null) {
+      json[r'phoneNumber'] = this.phoneNumber;
+    } else {
+      json[r'phoneNumber'] = null;
     }
     if (this.address != null) {
       json[r'address'] = this.address;
@@ -143,28 +174,13 @@ class NormalizedIdentityData {
     } else {
       json[r'dateOfBirth'] = null;
     }
-    if (this.country != null) {
-      json[r'country'] = this.country;
-    } else {
-      json[r'country'] = null;
-    }
-    if (this.issueDate != null) {
-      json[r'issueDate'] = this.issueDate;
-    } else {
-      json[r'issueDate'] = null;
-    }
-    if (this.expirationDate != null) {
-      json[r'expirationDate'] = this.expirationDate;
-    } else {
-      json[r'expirationDate'] = null;
-    }
     return json;
   }
 
-  /// Returns a new [NormalizedIdentityData] instance and imports its values from
+  /// Returns a new [PersonData] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static NormalizedIdentityData? fromJson(dynamic value) {
+  static PersonData? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -174,35 +190,36 @@ class NormalizedIdentityData {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "NormalizedIdentityData[$key]" is missing from JSON.');
+              'Required key "PersonData[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "NormalizedIdentityData[$key]" has a null value in JSON.');
+              'Required key "PersonData[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return NormalizedIdentityData(
-        idNumber: mapValueOfType<String>(json, r'idNumber'),
+      return PersonData(
         givenName: mapValueOfType<String>(json, r'givenName'),
         familyName: mapValueOfType<String>(json, r'familyName'),
-        address: mapValueOfType<String>(json, r'address'),
+        middleName: mapValueOfType<String>(json, r'middleName'),
+        fullName: mapValueOfType<String>(json, r'fullName'),
+        nationality: mapValueOfType<String>(json, r'nationality'),
+        gender: mapValueOfType<String>(json, r'gender'),
+        phoneNumber: mapValueOfType<String>(json, r'phoneNumber'),
+        address: Address.fromJson(json[r'address']),
         dateOfBirth: mapValueOfType<String>(json, r'dateOfBirth'),
-        country: mapValueOfType<String>(json, r'country'),
-        issueDate: mapValueOfType<String>(json, r'issueDate'),
-        expirationDate: mapValueOfType<String>(json, r'expirationDate'),
       );
     }
     return null;
   }
 
-  static List<NormalizedIdentityData> listFromJson(
+  static List<PersonData> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <NormalizedIdentityData>[];
+    final result = <PersonData>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = NormalizedIdentityData.fromJson(row);
+        final value = PersonData.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -211,12 +228,12 @@ class NormalizedIdentityData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, NormalizedIdentityData> mapFromJson(dynamic json) {
-    final map = <String, NormalizedIdentityData>{};
+  static Map<String, PersonData> mapFromJson(dynamic json) {
+    final map = <String, PersonData>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = NormalizedIdentityData.fromJson(entry.value);
+        final value = PersonData.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -225,17 +242,17 @@ class NormalizedIdentityData {
     return map;
   }
 
-  // maps a json object with a list of NormalizedIdentityData-objects as value to a dart map
-  static Map<String, List<NormalizedIdentityData>> mapListFromJson(
+  // maps a json object with a list of PersonData-objects as value to a dart map
+  static Map<String, List<PersonData>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<NormalizedIdentityData>>{};
+    final map = <String, List<PersonData>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = NormalizedIdentityData.listFromJson(
+        map[entry.key] = PersonData.listFromJson(
           entry.value,
           growable: growable,
         );

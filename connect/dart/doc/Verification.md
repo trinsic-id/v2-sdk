@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **reused** | **bool** |  | 
 **updated** | **int** |  | 
 **disclosedFields** | [**DisclosedFields**](DisclosedFields.md) |  | 
-**normalizedData** | [**NormalizedIdentityData**](NormalizedIdentityData.md) |  | [optional] 
+**identityData** | [**IdentityData**](IdentityData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

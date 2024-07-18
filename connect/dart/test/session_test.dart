@@ -41,11 +41,6 @@ void main() {
       // TODO
     });
 
-    // String resultVp
-    test('to test the property `resultVp`', () async {
-      // TODO
-    });
-
     // int created
     test('to test the property `created`', () async {
       // TODO

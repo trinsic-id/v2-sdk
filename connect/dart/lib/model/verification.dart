@@ -19,7 +19,7 @@ class Verification {
     required this.reused,
     required this.updated,
     required this.disclosedFields,
-    this.normalizedData,
+    this.identityData,
   });
 
   String id;
@@ -46,7 +46,7 @@ class Verification {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  NormalizedIdentityData? normalizedData;
+  IdentityData? identityData;
 
   @override
   bool operator ==(Object other) =>
@@ -58,7 +58,7 @@ class Verification {
           other.reused == reused &&
           other.updated == updated &&
           other.disclosedFields == disclosedFields &&
-          other.normalizedData == normalizedData;
+          other.identityData == identityData;
 
   @override
   int get hashCode =>
@@ -69,11 +69,11 @@ class Verification {
       (reused.hashCode) +
       (updated.hashCode) +
       (disclosedFields.hashCode) +
-      (normalizedData == null ? 0 : normalizedData!.hashCode);
+      (identityData == null ? 0 : identityData!.hashCode);
 
   @override
   String toString() =>
-      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, disclosedFields=$disclosedFields, normalizedData=$normalizedData]';
+      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, disclosedFields=$disclosedFields, identityData=$identityData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -87,10 +87,10 @@ class Verification {
     json[r'reused'] = this.reused;
     json[r'updated'] = this.updated;
     json[r'disclosedFields'] = this.disclosedFields;
-    if (this.normalizedData != null) {
-      json[r'normalizedData'] = this.normalizedData;
+    if (this.identityData != null) {
+      json[r'identityData'] = this.identityData;
     } else {
-      json[r'normalizedData'] = null;
+      json[r'identityData'] = null;
     }
     return json;
   }
@@ -122,8 +122,7 @@ class Verification {
         reused: mapValueOfType<bool>(json, r'reused')!,
         updated: mapValueOfType<int>(json, r'updated')!,
         disclosedFields: DisclosedFields.fromJson(json[r'disclosedFields'])!,
-        normalizedData:
-            NormalizedIdentityData.fromJson(json[r'normalizedData']),
+        identityData: IdentityData.fromJson(json[r'identityData']),
       );
     }
     return null;

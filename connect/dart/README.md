@@ -74,17 +74,20 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Address](doc//Address.md)
  - [CancelSessionResponse](doc//CancelSessionResponse.md)
  - [CreateSessionRequest](doc//CreateSessionRequest.md)
  - [CreateSessionResponse](doc//CreateSessionResponse.md)
  - [DisclosedFields](doc//DisclosedFields.md)
  - [DisclosedFieldsRequest](doc//DisclosedFieldsRequest.md)
+ - [DocumentData](doc//DocumentData.md)
  - [FailureMessage](doc//FailureMessage.md)
  - [GetSessionResponseV1](doc//GetSessionResponseV1.md)
  - [IDVSessionState](doc//IDVSessionState.md)
+ - [IdentityData](doc//IdentityData.md)
  - [ListSessionsResponse](doc//ListSessionsResponse.md)
- - [NormalizedIdentityData](doc//NormalizedIdentityData.md)
  - [OrderDirection](doc//OrderDirection.md)
+ - [PersonData](doc//PersonData.md)
  - [Session](doc//Session.md)
  - [SessionFailCode](doc//SessionFailCode.md)
  - [SessionOrdering](doc//SessionOrdering.md)

@@ -46,8 +46,8 @@ void main() {
       // TODO
     });
 
-    // NormalizedIdentityData normalizedData
-    test('to test the property `normalizedData`', () async {
+    // IdentityData identityData
+    test('to test the property `identityData`', () async {
       // TODO
     });
   });
