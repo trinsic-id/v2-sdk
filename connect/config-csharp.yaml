@@ -1,6 +1,6 @@
 additionalProperties:
   # https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/csharp.md
-  packageVersion: 0.0.7
+  packageVersion: 0.0.8
   packageName: Trinsic.Connect
   packageTitle: Trinsic Connect SDK
   packageCompany: trinsic.id
