@@ -235,14 +235,14 @@ class ApiClient {
           return CreateSessionRequest.fromJson(value);
         case 'CreateSessionResponse':
           return CreateSessionResponse.fromJson(value);
+        case 'DisclosedFields':
+          return DisclosedFields.fromJson(value);
+        case 'DisclosedFieldsRequest':
+          return DisclosedFieldsRequest.fromJson(value);
         case 'FailureMessage':
           return FailureMessage.fromJson(value);
         case 'GetSessionResponseV1':
           return GetSessionResponseV1.fromJson(value);
-        case 'GovernmentIDOptions':
-          return GovernmentIDOptions.fromJson(value);
-        case 'GovernmentIDOptionsRequest':
-          return GovernmentIDOptionsRequest.fromJson(value);
         case 'IDVSessionState':
           return IDVSessionStateTypeTransformer().decode(value);
         case 'ListSessionsResponse':
