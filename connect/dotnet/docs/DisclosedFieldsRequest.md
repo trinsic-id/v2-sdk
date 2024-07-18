@@ -1,4 +1,4 @@
-# Trinsic.Connect.Model.GovernmentIDOptionsRequest
+# Trinsic.Connect.Model.DisclosedFieldsRequest
 
 ## Properties
 
