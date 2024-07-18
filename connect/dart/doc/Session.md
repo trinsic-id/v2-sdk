@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **state** | [**IDVSessionState**](IDVSessionState.md) |  | 
 **failCode** | [**SessionFailCode**](SessionFailCode.md) |  | [optional] 
 **verification** | [**Verification**](Verification.md) |  | 
-**resultVp** | **String** |  | [optional] 
 **created** | **int** |  | 
 **updated** | **int** |  | 
 

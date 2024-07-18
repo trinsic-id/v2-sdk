@@ -13,13 +13,13 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// NormalizedIdentityData
+/// DisclosedFieldsRequest
 /// </summary>
-[DataContract(Name = "NormalizedIdentityData")]
-public partial class NormalizedIdentityData
+[DataContract(Name = "DisclosedFieldsRequest")]
+public partial class DisclosedFieldsRequest
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="NormalizedIdentityData" /> class.
+    /// Initializes a new instance of the <see cref="DisclosedFieldsRequest" /> class.
     /// </summary>
     /// <param name="idNumber">idNumber.</param>
     /// <param name="givenName">givenName.</param>
@@ -29,7 +29,7 @@ public partial class NormalizedIdentityData
     /// <param name="country">country.</param>
     /// <param name="issueDate">issueDate.</param>
     /// <param name="expirationDate">expirationDate.</param>
-    public NormalizedIdentityData(string idNumber = default(string), string givenName = default(string), string familyName = default(string), string address = default(string), string dateOfBirth = default(string), string country = default(string), string issueDate = default(string), string expirationDate = default(string))
+    public DisclosedFieldsRequest(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
     {
         IdNumber = idNumber;
         GivenName = givenName;
@@ -44,50 +44,50 @@ public partial class NormalizedIdentityData
     /// <summary>
     /// Gets or Sets IdNumber
     /// </summary>
-    [DataMember(Name = "idNumber", EmitDefaultValue = false)]
-    public string IdNumber { get; set; }
+    [DataMember(Name = "idNumber", EmitDefaultValue = true)]
+    public bool IdNumber { get; set; }
 
     /// <summary>
     /// Gets or Sets GivenName
     /// </summary>
-    [DataMember(Name = "givenName", EmitDefaultValue = false)]
-    public string GivenName { get; set; }
+    [DataMember(Name = "givenName", EmitDefaultValue = true)]
+    public bool GivenName { get; set; }
 
     /// <summary>
     /// Gets or Sets FamilyName
     /// </summary>
-    [DataMember(Name = "familyName", EmitDefaultValue = false)]
-    public string FamilyName { get; set; }
+    [DataMember(Name = "familyName", EmitDefaultValue = true)]
+    public bool FamilyName { get; set; }
 
     /// <summary>
     /// Gets or Sets Address
     /// </summary>
-    [DataMember(Name = "address", EmitDefaultValue = false)]
-    public string Address { get; set; }
+    [DataMember(Name = "address", EmitDefaultValue = true)]
+    public bool Address { get; set; }
 
     /// <summary>
     /// Gets or Sets DateOfBirth
     /// </summary>
-    [DataMember(Name = "dateOfBirth", EmitDefaultValue = false)]
-    public string DateOfBirth { get; set; }
+    [DataMember(Name = "dateOfBirth", EmitDefaultValue = true)]
+    public bool DateOfBirth { get; set; }
 
     /// <summary>
     /// Gets or Sets Country
     /// </summary>
-    [DataMember(Name = "country", EmitDefaultValue = false)]
-    public string Country { get; set; }
+    [DataMember(Name = "country", EmitDefaultValue = true)]
+    public bool Country { get; set; }
 
     /// <summary>
     /// Gets or Sets IssueDate
     /// </summary>
-    [DataMember(Name = "issueDate", EmitDefaultValue = false)]
-    public string IssueDate { get; set; }
+    [DataMember(Name = "issueDate", EmitDefaultValue = true)]
+    public bool IssueDate { get; set; }
 
     /// <summary>
     /// Gets or Sets ExpirationDate
     /// </summary>
-    [DataMember(Name = "expirationDate", EmitDefaultValue = false)]
-    public string ExpirationDate { get; set; }
+    [DataMember(Name = "expirationDate", EmitDefaultValue = true)]
+    public bool ExpirationDate { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -96,7 +96,7 @@ public partial class NormalizedIdentityData
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class NormalizedIdentityData {\n");
+        sb.Append("class DisclosedFieldsRequest {\n");
         sb.Append("  IdNumber: ").Append(IdNumber).Append("\n");
         sb.Append("  GivenName: ").Append(GivenName).Append("\n");
         sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");

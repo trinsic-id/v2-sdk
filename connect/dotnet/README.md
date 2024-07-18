@@ -149,17 +149,20 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.Address](docs/Address.md)
  - [Model.CancelSessionResponse](docs/CancelSessionResponse.md)
  - [Model.CreateSessionRequest](docs/CreateSessionRequest.md)
  - [Model.CreateSessionResponse](docs/CreateSessionResponse.md)
+ - [Model.DisclosedFields](docs/DisclosedFields.md)
+ - [Model.DisclosedFieldsRequest](docs/DisclosedFieldsRequest.md)
+ - [Model.DocumentData](docs/DocumentData.md)
  - [Model.FailureMessage](docs/FailureMessage.md)
  - [Model.GetSessionResponseV1](docs/GetSessionResponseV1.md)
- - [Model.GovernmentIDOptions](docs/GovernmentIDOptions.md)
- - [Model.GovernmentIDOptionsRequest](docs/GovernmentIDOptionsRequest.md)
  - [Model.IDVSessionState](docs/IDVSessionState.md)
+ - [Model.IdentityData](docs/IdentityData.md)
  - [Model.ListSessionsResponse](docs/ListSessionsResponse.md)
- - [Model.NormalizedIdentityData](docs/NormalizedIdentityData.md)
  - [Model.OrderDirection](docs/OrderDirection.md)
+ - [Model.PersonData](docs/PersonData.md)
  - [Model.Session](docs/Session.md)
  - [Model.SessionFailCode](docs/SessionFailCode.md)
  - [Model.SessionOrdering](docs/SessionOrdering.md)

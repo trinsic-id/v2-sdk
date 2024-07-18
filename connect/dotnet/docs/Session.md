@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **State** | **IDVSessionState** |  | 
 **FailCode** | **SessionFailCode** |  | [optional] 
 **Verification** | [**Verification**](Verification.md) |  | 
-**ResultVp** | **string** |  | [optional] 
 **Created** | **long** |  | 
 **Updated** | **long** |  | 
 

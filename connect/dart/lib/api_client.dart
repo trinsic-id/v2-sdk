@@ -229,28 +229,34 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'Address':
+          return Address.fromJson(value);
         case 'CancelSessionResponse':
           return CancelSessionResponse.fromJson(value);
         case 'CreateSessionRequest':
           return CreateSessionRequest.fromJson(value);
         case 'CreateSessionResponse':
           return CreateSessionResponse.fromJson(value);
+        case 'DisclosedFields':
+          return DisclosedFields.fromJson(value);
+        case 'DisclosedFieldsRequest':
+          return DisclosedFieldsRequest.fromJson(value);
+        case 'DocumentData':
+          return DocumentData.fromJson(value);
         case 'FailureMessage':
           return FailureMessage.fromJson(value);
         case 'GetSessionResponseV1':
           return GetSessionResponseV1.fromJson(value);
-        case 'GovernmentIDOptions':
-          return GovernmentIDOptions.fromJson(value);
-        case 'GovernmentIDOptionsRequest':
-          return GovernmentIDOptionsRequest.fromJson(value);
         case 'IDVSessionState':
           return IDVSessionStateTypeTransformer().decode(value);
+        case 'IdentityData':
+          return IdentityData.fromJson(value);
         case 'ListSessionsResponse':
           return ListSessionsResponse.fromJson(value);
-        case 'NormalizedIdentityData':
-          return NormalizedIdentityData.fromJson(value);
         case 'OrderDirection':
           return OrderDirectionTypeTransformer().decode(value);
+        case 'PersonData':
+          return PersonData.fromJson(value);
         case 'Session':
           return Session.fromJson(value);
         case 'SessionFailCode':

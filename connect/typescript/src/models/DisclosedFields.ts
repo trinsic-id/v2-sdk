@@ -16,65 +16,65 @@ import { mapValues } from "../runtime";
 /**
  *
  * @export
- * @interface GovernmentIDOptions
+ * @interface DisclosedFields
  */
-export interface GovernmentIDOptions {
+export interface DisclosedFields {
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     idNumber: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     givenName: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     familyName: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     address: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     dateOfBirth: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     country: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     issueDate: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptions
+     * @memberof DisclosedFields
      */
     expirationDate: boolean;
 }
 
 /**
- * Check if a given object implements the GovernmentIDOptions interface.
+ * Check if a given object implements the DisclosedFields interface.
  */
-export function instanceOfGovernmentIDOptions(
+export function instanceOfDisclosedFields(
     value: object,
-): value is GovernmentIDOptions {
+): value is DisclosedFields {
     if (!("idNumber" in value) || value["idNumber"] === undefined) return false;
     if (!("givenName" in value) || value["givenName"] === undefined)
         return false;
@@ -91,14 +91,14 @@ export function instanceOfGovernmentIDOptions(
     return true;
 }
 
-export function GovernmentIDOptionsFromJSON(json: any): GovernmentIDOptions {
-    return GovernmentIDOptionsFromJSONTyped(json, false);
+export function DisclosedFieldsFromJSON(json: any): DisclosedFields {
+    return DisclosedFieldsFromJSONTyped(json, false);
 }
 
-export function GovernmentIDOptionsFromJSONTyped(
+export function DisclosedFieldsFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): GovernmentIDOptions {
+): DisclosedFields {
     if (json == null) {
         return json;
     }
@@ -114,9 +114,7 @@ export function GovernmentIDOptionsFromJSONTyped(
     };
 }
 
-export function GovernmentIDOptionsToJSON(
-    value?: GovernmentIDOptions | null,
-): any {
+export function DisclosedFieldsToJSON(value?: DisclosedFields | null): any {
     if (value == null) {
         return value;
     }

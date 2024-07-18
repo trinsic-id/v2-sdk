@@ -91,15 +91,6 @@ public class SessionTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'ResultVp'
-    /// </summary>
-    [Fact]
-    public void ResultVpTest()
-    {
-        // TODO unit test for the property 'ResultVp'
-    }
-
-    /// <summary>
     /// Test the property 'Created'
     /// </summary>
     [Fact]

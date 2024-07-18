@@ -11,11 +11,11 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for GovernmentIDOptionsRequest
+// tests for DisclosedFieldsRequest
 void main() {
-  // final instance = GovernmentIDOptionsRequest();
+  // final instance = DisclosedFieldsRequest();
 
-  group('test GovernmentIDOptionsRequest', () {
+  group('test DisclosedFieldsRequest', () {
     // bool idNumber
     test('to test the property `idNumber`', () async {
       // TODO

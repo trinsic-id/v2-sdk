@@ -13,24 +13,24 @@
  */
 
 import { mapValues } from "../runtime";
+import type { DisclosedFields } from "./DisclosedFields";
+import {
+    DisclosedFieldsFromJSON,
+    DisclosedFieldsFromJSONTyped,
+    DisclosedFieldsToJSON,
+} from "./DisclosedFields";
 import type { VerificationState } from "./VerificationState";
 import {
     VerificationStateFromJSON,
     VerificationStateFromJSONTyped,
     VerificationStateToJSON,
 } from "./VerificationState";
-import type { GovernmentIDOptions } from "./GovernmentIDOptions";
+import type { IdentityData } from "./IdentityData";
 import {
-    GovernmentIDOptionsFromJSON,
-    GovernmentIDOptionsFromJSONTyped,
-    GovernmentIDOptionsToJSON,
-} from "./GovernmentIDOptions";
-import type { NormalizedIdentityData } from "./NormalizedIdentityData";
-import {
-    NormalizedIdentityDataFromJSON,
-    NormalizedIdentityDataFromJSONTyped,
-    NormalizedIdentityDataToJSON,
-} from "./NormalizedIdentityData";
+    IdentityDataFromJSON,
+    IdentityDataFromJSONTyped,
+    IdentityDataToJSON,
+} from "./IdentityData";
 import type { VerificationFailCode } from "./VerificationFailCode";
 import {
     VerificationFailCodeFromJSON,
@@ -76,16 +76,16 @@ export interface Verification {
     updated: number;
     /**
      *
-     * @type {GovernmentIDOptions}
+     * @type {DisclosedFields}
      * @memberof Verification
      */
-    governmentIdOptions: GovernmentIDOptions;
+    disclosedFields: DisclosedFields;
     /**
      *
-     * @type {NormalizedIdentityData}
+     * @type {IdentityData}
      * @memberof Verification
      */
-    normalizedGovernmentIdData?: NormalizedIdentityData;
+    identityData?: IdentityData;
 }
 
 /**
@@ -96,10 +96,7 @@ export function instanceOfVerification(value: object): value is Verification {
     if (!("state" in value) || value["state"] === undefined) return false;
     if (!("reused" in value) || value["reused"] === undefined) return false;
     if (!("updated" in value) || value["updated"] === undefined) return false;
-    if (
-        !("governmentIdOptions" in value) ||
-        value["governmentIdOptions"] === undefined
-    )
+    if (!("disclosedFields" in value) || value["disclosedFields"] === undefined)
         return false;
     return true;
 }
@@ -124,15 +121,11 @@ export function VerificationFromJSONTyped(
                 : VerificationFailCodeFromJSON(json["failCode"]),
         reused: json["reused"],
         updated: json["updated"],
-        governmentIdOptions: GovernmentIDOptionsFromJSON(
-            json["governmentIdOptions"],
-        ),
-        normalizedGovernmentIdData:
-            json["normalizedGovernmentIdData"] == null
+        disclosedFields: DisclosedFieldsFromJSON(json["disclosedFields"]),
+        identityData:
+            json["identityData"] == null
                 ? undefined
-                : NormalizedIdentityDataFromJSON(
-                      json["normalizedGovernmentIdData"],
-                  ),
+                : IdentityDataFromJSON(json["identityData"]),
     };
 }
 
@@ -146,11 +139,7 @@ export function VerificationToJSON(value?: Verification | null): any {
         failCode: VerificationFailCodeToJSON(value["failCode"]),
         reused: value["reused"],
         updated: value["updated"],
-        governmentIdOptions: GovernmentIDOptionsToJSON(
-            value["governmentIdOptions"],
-        ),
-        normalizedGovernmentIdData: NormalizedIdentityDataToJSON(
-            value["normalizedGovernmentIdData"],
-        ),
+        disclosedFields: DisclosedFieldsToJSON(value["disclosedFields"]),
+        identityData: IdentityDataToJSON(value["identityData"]),
     };
 }

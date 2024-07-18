@@ -16,78 +16,78 @@ import { mapValues } from "../runtime";
 /**
  *
  * @export
- * @interface NormalizedIdentityData
+ * @interface DisclosedFieldsRequest
  */
-export interface NormalizedIdentityData {
+export interface DisclosedFieldsRequest {
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    idNumber?: string;
+    idNumber?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    givenName?: string;
+    givenName?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    familyName?: string;
+    familyName?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    address?: string;
+    address?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    dateOfBirth?: string;
+    dateOfBirth?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    country?: string;
+    country?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    issueDate?: string;
+    issueDate?: boolean;
     /**
      *
-     * @type {string}
-     * @memberof NormalizedIdentityData
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
      */
-    expirationDate?: string;
+    expirationDate?: boolean;
 }
 
 /**
- * Check if a given object implements the NormalizedIdentityData interface.
+ * Check if a given object implements the DisclosedFieldsRequest interface.
  */
-export function instanceOfNormalizedIdentityData(
+export function instanceOfDisclosedFieldsRequest(
     value: object,
-): value is NormalizedIdentityData {
+): value is DisclosedFieldsRequest {
     return true;
 }
 
-export function NormalizedIdentityDataFromJSON(
+export function DisclosedFieldsRequestFromJSON(
     json: any,
-): NormalizedIdentityData {
-    return NormalizedIdentityDataFromJSONTyped(json, false);
+): DisclosedFieldsRequest {
+    return DisclosedFieldsRequestFromJSONTyped(json, false);
 }
 
-export function NormalizedIdentityDataFromJSONTyped(
+export function DisclosedFieldsRequestFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): NormalizedIdentityData {
+): DisclosedFieldsRequest {
     if (json == null) {
         return json;
     }
@@ -105,8 +105,8 @@ export function NormalizedIdentityDataFromJSONTyped(
     };
 }
 
-export function NormalizedIdentityDataToJSON(
-    value?: NormalizedIdentityData | null,
+export function DisclosedFieldsRequestToJSON(
+    value?: DisclosedFieldsRequest | null,
 ): any {
     if (value == null) {
         return value;

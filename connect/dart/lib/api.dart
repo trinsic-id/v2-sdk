@@ -30,17 +30,20 @@ part 'auth/http_bearer_auth.dart';
 
 part 'api/sessions_api.dart';
 
+part 'model/address.dart';
 part 'model/cancel_session_response.dart';
 part 'model/create_session_request.dart';
 part 'model/create_session_response.dart';
+part 'model/disclosed_fields.dart';
+part 'model/disclosed_fields_request.dart';
+part 'model/document_data.dart';
 part 'model/failure_message.dart';
 part 'model/get_session_response_v1.dart';
-part 'model/government_id_options.dart';
-part 'model/government_id_options_request.dart';
 part 'model/idv_session_state.dart';
+part 'model/identity_data.dart';
 part 'model/list_sessions_response.dart';
-part 'model/normalized_identity_data.dart';
 part 'model/order_direction.dart';
+part 'model/person_data.dart';
 part 'model/session.dart';
 part 'model/session_fail_code.dart';
 part 'model/session_ordering.dart';

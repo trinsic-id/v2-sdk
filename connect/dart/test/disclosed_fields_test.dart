@@ -11,47 +11,47 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for NormalizedIdentityData
+// tests for DisclosedFields
 void main() {
-  // final instance = NormalizedIdentityData();
+  // final instance = DisclosedFields();
 
-  group('test NormalizedIdentityData', () {
-    // String idNumber
+  group('test DisclosedFields', () {
+    // bool idNumber
     test('to test the property `idNumber`', () async {
       // TODO
     });
 
-    // String givenName
+    // bool givenName
     test('to test the property `givenName`', () async {
       // TODO
     });
 
-    // String familyName
+    // bool familyName
     test('to test the property `familyName`', () async {
       // TODO
     });
 
-    // String address
+    // bool address
     test('to test the property `address`', () async {
       // TODO
     });
 
-    // String dateOfBirth
+    // bool dateOfBirth
     test('to test the property `dateOfBirth`', () async {
       // TODO
     });
 
-    // String country
+    // bool country
     test('to test the property `country`', () async {
       // TODO
     });
 
-    // String issueDate
+    // bool issueDate
     test('to test the property `issueDate`', () async {
       // TODO
     });
 
-    // String expirationDate
+    // bool expirationDate
     test('to test the property `expirationDate`', () async {
       // TODO
     });

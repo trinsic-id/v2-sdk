@@ -70,12 +70,6 @@ export interface Session {
     verification: Verification;
     /**
      *
-     * @type {string}
-     * @memberof Session
-     */
-    resultVp?: string;
-    /**
-     *
      * @type {number}
      * @memberof Session
      */
@@ -123,7 +117,6 @@ export function SessionFromJSONTyped(
                 ? undefined
                 : SessionFailCodeFromJSON(json["failCode"]),
         verification: VerificationFromJSON(json["verification"]),
-        resultVp: json["resultVp"] == null ? undefined : json["resultVp"],
         created: json["created"],
         updated: json["updated"],
     };
@@ -139,7 +132,6 @@ export function SessionToJSON(value?: Session | null): any {
         state: IDVSessionStateToJSON(value["state"]),
         failCode: SessionFailCodeToJSON(value["failCode"]),
         verification: VerificationToJSON(value["verification"]),
-        resultVp: value["resultVp"],
         created: value["created"],
         updated: value["updated"],
     };

@@ -18,7 +18,6 @@ class Session {
     required this.state,
     this.failCode,
     required this.verification,
-    this.resultVp,
     required this.created,
     required this.updated,
   });
@@ -39,14 +38,6 @@ class Session {
 
   Verification verification;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? resultVp;
-
   int created;
 
   int updated;
@@ -60,7 +51,6 @@ class Session {
           other.state == state &&
           other.failCode == failCode &&
           other.verification == verification &&
-          other.resultVp == resultVp &&
           other.created == created &&
           other.updated == updated;
 
@@ -72,13 +62,12 @@ class Session {
       (state.hashCode) +
       (failCode == null ? 0 : failCode!.hashCode) +
       (verification.hashCode) +
-      (resultVp == null ? 0 : resultVp!.hashCode) +
       (created.hashCode) +
       (updated.hashCode);
 
   @override
   String toString() =>
-      'Session[id=$id, clientToken=$clientToken, state=$state, failCode=$failCode, verification=$verification, resultVp=$resultVp, created=$created, updated=$updated]';
+      'Session[id=$id, clientToken=$clientToken, state=$state, failCode=$failCode, verification=$verification, created=$created, updated=$updated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -91,11 +80,6 @@ class Session {
       json[r'failCode'] = null;
     }
     json[r'verification'] = this.verification;
-    if (this.resultVp != null) {
-      json[r'resultVp'] = this.resultVp;
-    } else {
-      json[r'resultVp'] = null;
-    }
     json[r'created'] = this.created;
     json[r'updated'] = this.updated;
     return json;
@@ -127,7 +111,6 @@ class Session {
         state: IDVSessionState.fromJson(json[r'state'])!,
         failCode: SessionFailCode.fromJson(json[r'failCode']),
         verification: Verification.fromJson(json[r'verification'])!,
-        resultVp: mapValueOfType<String>(json, r'resultVp'),
         created: mapValueOfType<int>(json, r'created')!,
         updated: mapValueOfType<int>(json, r'updated')!,
       );
