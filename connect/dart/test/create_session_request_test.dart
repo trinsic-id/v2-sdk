@@ -16,8 +16,8 @@ void main() {
   // final instance = CreateSessionRequest();
 
   group('test CreateSessionRequest', () {
-    // GovernmentIDOptionsRequest governmentIdOptions
-    test('to test the property `governmentIdOptions`', () async {
+    // DisclosedFieldsRequest fields
+    test('to test the property `fields`', () async {
       // TODO
     });
   });

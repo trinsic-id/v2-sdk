@@ -1,4 +1,4 @@
-# TrinsicConnect.model.GovernmentIDOptions
+# TrinsicConnect.model.DisclosedFields
 
 ## Load the model package
 ```dart
