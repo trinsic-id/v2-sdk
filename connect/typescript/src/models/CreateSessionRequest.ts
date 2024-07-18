@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from "../runtime";
-import type { GovernmentIDOptionsRequest } from "./GovernmentIDOptionsRequest";
+import type { DisclosedFieldsRequest } from "./DisclosedFieldsRequest";
 import {
-    GovernmentIDOptionsRequestFromJSON,
-    GovernmentIDOptionsRequestFromJSONTyped,
-    GovernmentIDOptionsRequestToJSON,
-} from "./GovernmentIDOptionsRequest";
+    DisclosedFieldsRequestFromJSON,
+    DisclosedFieldsRequestFromJSONTyped,
+    DisclosedFieldsRequestToJSON,
+} from "./DisclosedFieldsRequest";
 
 /**
  *
@@ -28,10 +28,10 @@ import {
 export interface CreateSessionRequest {
     /**
      *
-     * @type {GovernmentIDOptionsRequest}
+     * @type {DisclosedFieldsRequest}
      * @memberof CreateSessionRequest
      */
-    governmentIdOptions?: GovernmentIDOptionsRequest;
+    fields?: DisclosedFieldsRequest;
 }
 
 /**
@@ -55,12 +55,10 @@ export function CreateSessionRequestFromJSONTyped(
         return json;
     }
     return {
-        governmentIdOptions:
-            json["governmentIdOptions"] == null
+        fields:
+            json["fields"] == null
                 ? undefined
-                : GovernmentIDOptionsRequestFromJSON(
-                      json["governmentIdOptions"],
-                  ),
+                : DisclosedFieldsRequestFromJSON(json["fields"]),
     };
 }
 
@@ -71,8 +69,6 @@ export function CreateSessionRequestToJSON(
         return value;
     }
     return {
-        governmentIdOptions: GovernmentIDOptionsRequestToJSON(
-            value["governmentIdOptions"],
-        ),
+        fields: DisclosedFieldsRequestToJSON(value["fields"]),
     };
 }

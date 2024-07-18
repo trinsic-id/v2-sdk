@@ -16,78 +16,78 @@ import { mapValues } from "../runtime";
 /**
  *
  * @export
- * @interface GovernmentIDOptionsRequest
+ * @interface DisclosedFieldsRequest
  */
-export interface GovernmentIDOptionsRequest {
+export interface DisclosedFieldsRequest {
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     idNumber?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     givenName?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     familyName?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     address?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     dateOfBirth?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     country?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     issueDate?: boolean;
     /**
      *
      * @type {boolean}
-     * @memberof GovernmentIDOptionsRequest
+     * @memberof DisclosedFieldsRequest
      */
     expirationDate?: boolean;
 }
 
 /**
- * Check if a given object implements the GovernmentIDOptionsRequest interface.
+ * Check if a given object implements the DisclosedFieldsRequest interface.
  */
-export function instanceOfGovernmentIDOptionsRequest(
+export function instanceOfDisclosedFieldsRequest(
     value: object,
-): value is GovernmentIDOptionsRequest {
+): value is DisclosedFieldsRequest {
     return true;
 }
 
-export function GovernmentIDOptionsRequestFromJSON(
+export function DisclosedFieldsRequestFromJSON(
     json: any,
-): GovernmentIDOptionsRequest {
-    return GovernmentIDOptionsRequestFromJSONTyped(json, false);
+): DisclosedFieldsRequest {
+    return DisclosedFieldsRequestFromJSONTyped(json, false);
 }
 
-export function GovernmentIDOptionsRequestFromJSONTyped(
+export function DisclosedFieldsRequestFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): GovernmentIDOptionsRequest {
+): DisclosedFieldsRequest {
     if (json == null) {
         return json;
     }
@@ -105,8 +105,8 @@ export function GovernmentIDOptionsRequestFromJSONTyped(
     };
 }
 
-export function GovernmentIDOptionsRequestToJSON(
-    value?: GovernmentIDOptionsRequest | null,
+export function DisclosedFieldsRequestToJSON(
+    value?: DisclosedFieldsRequest | null,
 ): any {
     if (value == null) {
         return value;
