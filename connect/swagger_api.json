@@ -396,6 +396,36 @@
   },
   "components": {
     "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "line1": {
+            "type": "string"
+          },
+          "line2": {
+            "type": "string"
+          },
+          "line3": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "fullAddress": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "CancelSessionResponse": {
         "required": [
           "session"
@@ -510,6 +540,30 @@
         },
         "additionalProperties": false
       },
+      "DocumentData": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "issueDate": {
+            "type": "string"
+          },
+          "expirationDate": {
+            "type": "string"
+          },
+          "issuingCountry": {
+            "type": "string"
+          },
+          "portrait": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "FailureMessage": {
         "required": [
           "message"
@@ -549,6 +603,29 @@
         ],
         "type": "string"
       },
+      "IdentityData": {
+        "type": "object",
+        "properties": {
+          "originatingIntegrationId": {
+            "type": "string"
+          },
+          "person": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PersonData"
+              }
+            ]
+          },
+          "document": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DocumentData"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "ListSessionsResponse": {
         "required": [
           "more",
@@ -573,42 +650,49 @@
         },
         "additionalProperties": false
       },
-      "NormalizedIdentityData": {
-        "type": "object",
-        "properties": {
-          "idNumber": {
-            "type": "string"
-          },
-          "givenName": {
-            "type": "string"
-          },
-          "familyName": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "issueDate": {
-            "type": "string"
-          },
-          "expirationDate": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "OrderDirection": {
         "enum": [
           "Ascending",
           "Descending"
         ],
         "type": "string"
+      },
+      "PersonData": {
+        "type": "object",
+        "properties": {
+          "givenName": {
+            "type": "string"
+          },
+          "familyName": {
+            "type": "string"
+          },
+          "middleName": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "address": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "dateOfBirth": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "Session": {
         "required": [
@@ -647,9 +731,6 @@
                 "$ref": "#/components/schemas/Verification"
               }
             ]
-          },
-          "resultVp": {
-            "type": "string"
           },
           "created": {
             "type": "integer",
@@ -742,10 +823,10 @@
               }
             ]
           },
-          "normalizedData": {
+          "identityData": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/NormalizedIdentityData"
+                "$ref": "#/components/schemas/IdentityData"
               }
             ]
           }
