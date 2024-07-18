@@ -25,12 +25,12 @@ import {
     VerificationStateFromJSONTyped,
     VerificationStateToJSON,
 } from "./VerificationState";
-import type { NormalizedIdentityData } from "./NormalizedIdentityData";
+import type { IdentityData } from "./IdentityData";
 import {
-    NormalizedIdentityDataFromJSON,
-    NormalizedIdentityDataFromJSONTyped,
-    NormalizedIdentityDataToJSON,
-} from "./NormalizedIdentityData";
+    IdentityDataFromJSON,
+    IdentityDataFromJSONTyped,
+    IdentityDataToJSON,
+} from "./IdentityData";
 import type { VerificationFailCode } from "./VerificationFailCode";
 import {
     VerificationFailCodeFromJSON,
@@ -82,10 +82,10 @@ export interface Verification {
     disclosedFields: DisclosedFields;
     /**
      *
-     * @type {NormalizedIdentityData}
+     * @type {IdentityData}
      * @memberof Verification
      */
-    normalizedData?: NormalizedIdentityData;
+    identityData?: IdentityData;
 }
 
 /**
@@ -122,10 +122,10 @@ export function VerificationFromJSONTyped(
         reused: json["reused"],
         updated: json["updated"],
         disclosedFields: DisclosedFieldsFromJSON(json["disclosedFields"]),
-        normalizedData:
-            json["normalizedData"] == null
+        identityData:
+            json["identityData"] == null
                 ? undefined
-                : NormalizedIdentityDataFromJSON(json["normalizedData"]),
+                : IdentityDataFromJSON(json["identityData"]),
     };
 }
 
@@ -140,6 +140,6 @@ export function VerificationToJSON(value?: Verification | null): any {
         reused: value["reused"],
         updated: value["updated"],
         disclosedFields: DisclosedFieldsToJSON(value["disclosedFields"]),
-        normalizedData: NormalizedIdentityDataToJSON(value["normalizedData"]),
+        identityData: IdentityDataToJSON(value["identityData"]),
     };
 }
