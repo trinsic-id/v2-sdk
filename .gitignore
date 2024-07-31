@@ -411,3 +411,4 @@ samples/grpc-web/coverage/
 web/dist/
 connect/typescript/lib
 connect/typescript/dist
+examples/connect/node/src/SECRET.ts

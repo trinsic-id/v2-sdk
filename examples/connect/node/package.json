@@ -1,0 +1,21 @@
+{
+  "name": "connect-backend-demo",
+  "version": "1.0.0",
+  "description": "Demo of Trinsic Connect backend, also used by flutter and react native demos",
+  "main": "index.ts",
+  "scripts": {
+    "run": "ts-node index.ts"
+  },
+  "author": "",
+  "license": "MIT",
+    "dependencies": {
+        "express": "4.19.2",
+        "@trinsic/connect": "0.0.4"
+    },
+    "devDependencies": {
+        "@types/node": "20.14.2",
+        "@types/express": "4.17.21",
+        "ts-node": "10.9.2",
+        "typescript": "5.4.5"
+    }
+}
