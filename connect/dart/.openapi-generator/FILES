@@ -14,6 +14,7 @@ doc/FailureMessage.md
 doc/GetSessionResponseV1.md
 doc/IDVSessionState.md
 doc/IdentityData.md
+doc/LinkedResources.md
 doc/ListSessionsResponse.md
 doc/OrderDirection.md
 doc/PersonData.md
@@ -47,6 +48,7 @@ lib/model/failure_message.dart
 lib/model/get_session_response_v1.dart
 lib/model/identity_data.dart
 lib/model/idv_session_state.dart
+lib/model/linked_resources.dart
 lib/model/list_sessions_response.dart
 lib/model/order_direction.dart
 lib/model/person_data.dart
@@ -69,6 +71,7 @@ test/failure_message_test.dart
 test/get_session_response_v1_test.dart
 test/identity_data_test.dart
 test/idv_session_state_test.dart
+test/linked_resources_test.dart
 test/list_sessions_response_test.dart
 test/order_direction_test.dart
 test/person_data_test.dart

@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
  - [GetSessionResponseV1](doc//GetSessionResponseV1.md)
  - [IDVSessionState](doc//IDVSessionState.md)
  - [IdentityData](doc//IdentityData.md)
+ - [LinkedResources](doc//LinkedResources.md)
  - [ListSessionsResponse](doc//ListSessionsResponse.md)
  - [OrderDirection](doc//OrderDirection.md)
  - [PersonData](doc//PersonData.md)

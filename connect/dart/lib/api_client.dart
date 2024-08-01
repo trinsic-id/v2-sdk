@@ -251,6 +251,8 @@ class ApiClient {
           return IDVSessionStateTypeTransformer().decode(value);
         case 'IdentityData':
           return IdentityData.fromJson(value);
+        case 'LinkedResources':
+          return LinkedResources.fromJson(value);
         case 'ListSessionsResponse':
           return ListSessionsResponse.fromJson(value);
         case 'OrderDirection':

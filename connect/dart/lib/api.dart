@@ -41,6 +41,7 @@ part 'model/failure_message.dart';
 part 'model/get_session_response_v1.dart';
 part 'model/idv_session_state.dart';
 part 'model/identity_data.dart';
+part 'model/linked_resources.dart';
 part 'model/list_sessions_response.dart';
 part 'model/order_direction.dart';
 part 'model/person_data.dart';

@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **issueDate** | **String** |  | [optional] 
 **expirationDate** | **String** |  | [optional] 
 **issuingCountry** | **String** |  | [optional] 
-**portrait** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
