@@ -557,9 +557,6 @@
           },
           "issuingCountry": {
             "type": "string"
-          },
-          "portrait": {
-            "type": "string"
           }
         },
         "additionalProperties": false
@@ -622,6 +619,31 @@
                 "$ref": "#/components/schemas/DocumentData"
               }
             ]
+          },
+          "linkedResources": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LinkedResources"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinkedResources": {
+        "type": "object",
+        "properties": {
+          "selfie": {
+            "type": "string"
+          },
+          "documentFront": {
+            "type": "string"
+          },
+          "documentBack": {
+            "type": "string"
+          },
+          "documentPortrait": {
+            "type": "string"
           }
         },
         "additionalProperties": false
