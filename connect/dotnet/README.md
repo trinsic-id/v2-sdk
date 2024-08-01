@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
  - [Model.GetSessionResponseV1](docs/GetSessionResponseV1.md)
  - [Model.IDVSessionState](docs/IDVSessionState.md)
  - [Model.IdentityData](docs/IdentityData.md)
+ - [Model.LinkedResources](docs/LinkedResources.md)
  - [Model.ListSessionsResponse](docs/ListSessionsResponse.md)
  - [Model.OrderDirection](docs/OrderDirection.md)
  - [Model.PersonData](docs/PersonData.md)

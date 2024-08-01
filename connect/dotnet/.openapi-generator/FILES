@@ -15,6 +15,7 @@ docs/FailureMessage.md
 docs/GetSessionResponseV1.md
 docs/IDVSessionState.md
 docs/IdentityData.md
+docs/LinkedResources.md
 docs/ListSessionsResponse.md
 docs/OrderDirection.md
 docs/PersonData.md
@@ -39,6 +40,7 @@ src/Trinsic.Connect.Test/Model/FailureMessageTests.cs
 src/Trinsic.Connect.Test/Model/GetSessionResponseV1Tests.cs
 src/Trinsic.Connect.Test/Model/IDVSessionStateTests.cs
 src/Trinsic.Connect.Test/Model/IdentityDataTests.cs
+src/Trinsic.Connect.Test/Model/LinkedResourcesTests.cs
 src/Trinsic.Connect.Test/Model/ListSessionsResponseTests.cs
 src/Trinsic.Connect.Test/Model/OrderDirectionTests.cs
 src/Trinsic.Connect.Test/Model/PersonDataTests.cs
@@ -80,6 +82,7 @@ src/Trinsic.Connect/Model/FailureMessage.cs
 src/Trinsic.Connect/Model/GetSessionResponseV1.cs
 src/Trinsic.Connect/Model/IDVSessionState.cs
 src/Trinsic.Connect/Model/IdentityData.cs
+src/Trinsic.Connect/Model/LinkedResources.cs
 src/Trinsic.Connect/Model/ListSessionsResponse.cs
 src/Trinsic.Connect/Model/OrderDirection.cs
 src/Trinsic.Connect/Model/PersonData.cs

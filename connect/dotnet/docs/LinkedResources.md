@@ -1,14 +1,13 @@
-# Trinsic.Connect.Model.DocumentData
+# Trinsic.Connect.Model.LinkedResources
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | [optional] 
-**Number** | **string** |  | [optional] 
-**IssueDate** | **string** |  | [optional] 
-**ExpirationDate** | **string** |  | [optional] 
-**IssuingCountry** | **string** |  | [optional] 
+**Selfie** | **string** |  | [optional] 
+**DocumentFront** | **string** |  | [optional] 
+**DocumentBack** | **string** |  | [optional] 
+**DocumentPortrait** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

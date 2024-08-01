@@ -71,4 +71,13 @@ public class IdentityDataTests : IDisposable
     {
         // TODO unit test for the property 'Document'
     }
+
+    /// <summary>
+    /// Test the property 'LinkedResources'
+    /// </summary>
+    [Fact]
+    public void LinkedResourcesTest()
+    {
+        // TODO unit test for the property 'LinkedResources'
+    }
 }

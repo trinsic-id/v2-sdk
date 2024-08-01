@@ -367,8 +367,6 @@ components:
           type: string
         issuingCountry:
           type: string
-        portrait:
-          type: string
       type: object
     FailureMessage:
       additionalProperties: false
@@ -411,6 +409,21 @@ components:
         document:
           allOf:
           - $ref: '#/components/schemas/DocumentData'
+        linkedResources:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResources'
+      type: object
+    LinkedResources:
+      additionalProperties: false
+      properties:
+        selfie:
+          type: string
+        documentFront:
+          type: string
+        documentBack:
+          type: string
+        documentPortrait:
+          type: string
       type: object
     ListSessionsResponse:
       additionalProperties: false

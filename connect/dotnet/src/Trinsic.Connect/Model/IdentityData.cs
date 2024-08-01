@@ -24,11 +24,13 @@ public partial class IdentityData
     /// <param name="originatingIntegrationId">originatingIntegrationId.</param>
     /// <param name="person">person.</param>
     /// <param name="document">document.</param>
-    public IdentityData(string originatingIntegrationId = default(string), PersonData person = default(PersonData), DocumentData document = default(DocumentData))
+    /// <param name="linkedResources">linkedResources.</param>
+    public IdentityData(string originatingIntegrationId = default(string), PersonData person = default(PersonData), DocumentData document = default(DocumentData), LinkedResources linkedResources = default(LinkedResources))
     {
         OriginatingIntegrationId = originatingIntegrationId;
         Person = person;
         Document = document;
+        LinkedResources = linkedResources;
     }
 
     /// <summary>
@@ -50,6 +52,12 @@ public partial class IdentityData
     public DocumentData Document { get; set; }
 
     /// <summary>
+    /// Gets or Sets LinkedResources
+    /// </summary>
+    [DataMember(Name = "linkedResources", EmitDefaultValue = false)]
+    public LinkedResources LinkedResources { get; set; }
+
+    /// <summary>
     /// Returns the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>
@@ -60,6 +68,7 @@ public partial class IdentityData
         sb.Append("  OriginatingIntegrationId: ").Append(OriginatingIntegrationId).Append("\n");
         sb.Append("  Person: ").Append(Person).Append("\n");
         sb.Append("  Document: ").Append(Document).Append("\n");
+        sb.Append("  LinkedResources: ").Append(LinkedResources).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }
