@@ -25,6 +25,12 @@ import {
     PersonDataFromJSONTyped,
     PersonDataToJSON,
 } from "./PersonData";
+import type { LinkedResources } from "./LinkedResources";
+import {
+    LinkedResourcesFromJSON,
+    LinkedResourcesFromJSONTyped,
+    LinkedResourcesToJSON,
+} from "./LinkedResources";
 
 /**
  *
@@ -50,6 +56,12 @@ export interface IdentityData {
      * @memberof IdentityData
      */
     document?: DocumentData;
+    /**
+     *
+     * @type {LinkedResources}
+     * @memberof IdentityData
+     */
+    linkedResources?: LinkedResources;
 }
 
 /**
@@ -83,6 +95,10 @@ export function IdentityDataFromJSONTyped(
             json["document"] == null
                 ? undefined
                 : DocumentDataFromJSON(json["document"]),
+        linkedResources:
+            json["linkedResources"] == null
+                ? undefined
+                : LinkedResourcesFromJSON(json["linkedResources"]),
     };
 }
 
@@ -94,5 +110,6 @@ export function IdentityDataToJSON(value?: IdentityData | null): any {
         originatingIntegrationId: value["originatingIntegrationId"],
         person: PersonDataToJSON(value["person"]),
         document: DocumentDataToJSON(value["document"]),
+        linkedResources: LinkedResourcesToJSON(value["linkedResources"]),
     };
 }

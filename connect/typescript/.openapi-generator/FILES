@@ -17,6 +17,7 @@ src/models/FailureMessage.ts
 src/models/GetSessionResponseV1.ts
 src/models/IDVSessionState.ts
 src/models/IdentityData.ts
+src/models/LinkedResources.ts
 src/models/ListSessionsResponse.ts
 src/models/OrderDirection.ts
 src/models/PersonData.ts

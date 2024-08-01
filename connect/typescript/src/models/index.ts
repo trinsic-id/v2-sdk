@@ -11,6 +11,7 @@ export * from "./FailureMessage";
 export * from "./GetSessionResponseV1";
 export * from "./IDVSessionState";
 export * from "./IdentityData";
+export * from "./LinkedResources";
 export * from "./ListSessionsResponse";
 export * from "./OrderDirection";
 export * from "./PersonData";
