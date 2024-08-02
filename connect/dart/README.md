@@ -47,14 +47,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionsApi();
-final sessionId = sessionId_example; // String | 
+final api_instance = AcceptanceApi();
+final createVerificationSessionRequest = CreateVerificationSessionRequest(); // CreateVerificationSessionRequest | 
 
 try {
-    final result = api_instance.cancelSession(sessionId);
+    final result = api_instance.createVerificationSession(createVerificationSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionsApi->cancelSession: $e\n');
+    print('Exception when calling AcceptanceApi->createVerificationSession: $e\n');
 }
 
 ```
@@ -65,6 +65,11 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AcceptanceApi* | [**createVerificationSession**](doc//AcceptanceApi.md#createverificationsession) | **PUT** /api/v1/acceptance/verification-session | 
+*AcceptanceApi* | [**exchangeToken**](doc//AcceptanceApi.md#exchangetoken) | **POST** /api/v1/acceptance/verification-session/{verificationSessionId}/exchange | 
+*AcceptanceApi* | [**getLinkedResource**](doc//AcceptanceApi.md#getlinkedresource) | **GET** /api/v1/acceptance/resource | 
+*AcceptanceApi* | [**listIntegrations**](doc//AcceptanceApi.md#listintegrations) | **GET** /api/v1/acceptance/integrations | 
+*IdentitiesApi* | [**canReuseCredential**](doc//IdentitiesApi.md#canreusecredential) | **POST** /api/v1/identities/credentials/can-reuse | 
 *SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
 *SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
 *SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
@@ -75,16 +80,25 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [Address](doc//Address.md)
+ - [CanReuseCredentialRequest](doc//CanReuseCredentialRequest.md)
+ - [CanReuseCredentialResponse](doc//CanReuseCredentialResponse.md)
  - [CancelSessionResponse](doc//CancelSessionResponse.md)
  - [CreateSessionRequest](doc//CreateSessionRequest.md)
  - [CreateSessionResponse](doc//CreateSessionResponse.md)
+ - [CreateVerificationSessionRequest](doc//CreateVerificationSessionRequest.md)
+ - [CreateVerificationSessionResponse](doc//CreateVerificationSessionResponse.md)
  - [DisclosedFields](doc//DisclosedFields.md)
  - [DisclosedFieldsRequest](doc//DisclosedFieldsRequest.md)
  - [DocumentData](doc//DocumentData.md)
+ - [ExchangeTokenRequest](doc//ExchangeTokenRequest.md)
+ - [ExchangeTokenResponse](doc//ExchangeTokenResponse.md)
  - [FailureMessage](doc//FailureMessage.md)
  - [GetSessionResponseV1](doc//GetSessionResponseV1.md)
  - [IDVSessionState](doc//IDVSessionState.md)
  - [IdentityData](doc//IdentityData.md)
+ - [Integration](doc//Integration.md)
+ - [LinkedResources](doc//LinkedResources.md)
+ - [ListIntegrationsResponse](doc//ListIntegrationsResponse.md)
  - [ListSessionsResponse](doc//ListSessionsResponse.md)
  - [OrderDirection](doc//OrderDirection.md)
  - [PersonData](doc//PersonData.md)
@@ -94,6 +108,7 @@ Class | Method | HTTP request | Description
  - [ValidationResult](doc//ValidationResult.md)
  - [Verification](doc//Verification.md)
  - [VerificationFailCode](doc//VerificationFailCode.md)
+ - [VerificationSessionState](doc//VerificationSessionState.md)
  - [VerificationState](doc//VerificationState.md)
 
 

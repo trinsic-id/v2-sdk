@@ -80,6 +80,9 @@ String parameterToString(dynamic value) {
   if (value is VerificationFailCode) {
     return VerificationFailCodeTypeTransformer().encode(value).toString();
   }
+  if (value is VerificationSessionState) {
+    return VerificationSessionStateTypeTransformer().encode(value).toString();
+  }
   if (value is VerificationState) {
     return VerificationStateTypeTransformer().encode(value).toString();
   }

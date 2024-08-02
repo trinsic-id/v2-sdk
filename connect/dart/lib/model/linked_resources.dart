@@ -10,13 +10,13 @@
 
 part of openapi.api;
 
-class IdentityData {
-  /// Returns a new [IdentityData] instance.
-  IdentityData({
-    this.originatingIntegrationId,
-    this.person,
-    this.document,
-    this.linkedResources,
+class LinkedResources {
+  /// Returns a new [LinkedResources] instance.
+  LinkedResources({
+    this.selfie,
+    this.documentFront,
+    this.documentBack,
+    this.documentPortrait,
   });
 
   ///
@@ -25,7 +25,7 @@ class IdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? originatingIntegrationId;
+  String? selfie;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -33,7 +33,7 @@ class IdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PersonData? person;
+  String? documentFront;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -41,7 +41,7 @@ class IdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DocumentData? document;
+  String? documentBack;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -49,60 +49,58 @@ class IdentityData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  LinkedResources? linkedResources;
+  String? documentPortrait;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IdentityData &&
-          other.originatingIntegrationId == originatingIntegrationId &&
-          other.person == person &&
-          other.document == document &&
-          other.linkedResources == linkedResources;
+      other is LinkedResources &&
+          other.selfie == selfie &&
+          other.documentFront == documentFront &&
+          other.documentBack == documentBack &&
+          other.documentPortrait == documentPortrait;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (originatingIntegrationId == null
-          ? 0
-          : originatingIntegrationId!.hashCode) +
-      (person == null ? 0 : person!.hashCode) +
-      (document == null ? 0 : document!.hashCode) +
-      (linkedResources == null ? 0 : linkedResources!.hashCode);
+      (selfie == null ? 0 : selfie!.hashCode) +
+      (documentFront == null ? 0 : documentFront!.hashCode) +
+      (documentBack == null ? 0 : documentBack!.hashCode) +
+      (documentPortrait == null ? 0 : documentPortrait!.hashCode);
 
   @override
   String toString() =>
-      'IdentityData[originatingIntegrationId=$originatingIntegrationId, person=$person, document=$document, linkedResources=$linkedResources]';
+      'LinkedResources[selfie=$selfie, documentFront=$documentFront, documentBack=$documentBack, documentPortrait=$documentPortrait]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.originatingIntegrationId != null) {
-      json[r'originatingIntegrationId'] = this.originatingIntegrationId;
+    if (this.selfie != null) {
+      json[r'selfie'] = this.selfie;
     } else {
-      json[r'originatingIntegrationId'] = null;
+      json[r'selfie'] = null;
     }
-    if (this.person != null) {
-      json[r'person'] = this.person;
+    if (this.documentFront != null) {
+      json[r'documentFront'] = this.documentFront;
     } else {
-      json[r'person'] = null;
+      json[r'documentFront'] = null;
     }
-    if (this.document != null) {
-      json[r'document'] = this.document;
+    if (this.documentBack != null) {
+      json[r'documentBack'] = this.documentBack;
     } else {
-      json[r'document'] = null;
+      json[r'documentBack'] = null;
     }
-    if (this.linkedResources != null) {
-      json[r'linkedResources'] = this.linkedResources;
+    if (this.documentPortrait != null) {
+      json[r'documentPortrait'] = this.documentPortrait;
     } else {
-      json[r'linkedResources'] = null;
+      json[r'documentPortrait'] = null;
     }
     return json;
   }
 
-  /// Returns a new [IdentityData] instance and imports its values from
+  /// Returns a new [LinkedResources] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static IdentityData? fromJson(dynamic value) {
+  static LinkedResources? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -112,32 +110,31 @@ class IdentityData {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "IdentityData[$key]" is missing from JSON.');
+              'Required key "LinkedResources[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "IdentityData[$key]" has a null value in JSON.');
+              'Required key "LinkedResources[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return IdentityData(
-        originatingIntegrationId:
-            mapValueOfType<String>(json, r'originatingIntegrationId'),
-        person: PersonData.fromJson(json[r'person']),
-        document: DocumentData.fromJson(json[r'document']),
-        linkedResources: LinkedResources.fromJson(json[r'linkedResources']),
+      return LinkedResources(
+        selfie: mapValueOfType<String>(json, r'selfie'),
+        documentFront: mapValueOfType<String>(json, r'documentFront'),
+        documentBack: mapValueOfType<String>(json, r'documentBack'),
+        documentPortrait: mapValueOfType<String>(json, r'documentPortrait'),
       );
     }
     return null;
   }
 
-  static List<IdentityData> listFromJson(
+  static List<LinkedResources> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <IdentityData>[];
+    final result = <LinkedResources>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = IdentityData.fromJson(row);
+        final value = LinkedResources.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -146,12 +143,12 @@ class IdentityData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, IdentityData> mapFromJson(dynamic json) {
-    final map = <String, IdentityData>{};
+  static Map<String, LinkedResources> mapFromJson(dynamic json) {
+    final map = <String, LinkedResources>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = IdentityData.fromJson(entry.value);
+        final value = LinkedResources.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -160,17 +157,17 @@ class IdentityData {
     return map;
   }
 
-  // maps a json object with a list of IdentityData-objects as value to a dart map
-  static Map<String, List<IdentityData>> mapListFromJson(
+  // maps a json object with a list of LinkedResources-objects as value to a dart map
+  static Map<String, List<LinkedResources>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<IdentityData>>{};
+    final map = <String, List<LinkedResources>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = IdentityData.listFromJson(
+        map[entry.key] = LinkedResources.listFromJson(
           entry.value,
           growable: growable,
         );

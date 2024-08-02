@@ -30,5 +30,10 @@ void main() {
     test('to test the property `document`', () async {
       // TODO
     });
+
+    // LinkedResources linkedResources
+    test('to test the property `linkedResources`', () async {
+      // TODO
+    });
   });
 }
