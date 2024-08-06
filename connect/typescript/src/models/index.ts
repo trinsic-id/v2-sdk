@@ -1,16 +1,25 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from "./Address";
+export * from "./CanReuseCredentialRequest";
+export * from "./CanReuseCredentialResponse";
 export * from "./CancelSessionResponse";
 export * from "./CreateSessionRequest";
 export * from "./CreateSessionResponse";
+export * from "./CreateVerificationSessionRequest";
+export * from "./CreateVerificationSessionResponse";
 export * from "./DisclosedFields";
 export * from "./DisclosedFieldsRequest";
 export * from "./DocumentData";
+export * from "./ExchangeTokenRequest";
+export * from "./ExchangeTokenResponse";
 export * from "./FailureMessage";
 export * from "./GetSessionResponseV1";
 export * from "./IDVSessionState";
 export * from "./IdentityData";
+export * from "./Integration";
+export * from "./LinkedResources";
+export * from "./ListIntegrationsResponse";
 export * from "./ListSessionsResponse";
 export * from "./OrderDirection";
 export * from "./PersonData";
@@ -20,4 +29,5 @@ export * from "./SessionOrdering";
 export * from "./ValidationResult";
 export * from "./Verification";
 export * from "./VerificationFailCode";
+export * from "./VerificationSessionState";
 export * from "./VerificationState";
