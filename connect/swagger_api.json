@@ -12,6 +12,396 @@
     }
   ],
   "paths": {
+    "/api/v1/acceptance/integrations": {
+      "get": {
+        "tags": [
+          "Acceptance"
+        ],
+        "operationId": "ListIntegrations",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListIntegrationsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListIntegrationsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListIntegrationsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/acceptance/verification-session": {
+      "put": {
+        "tags": [
+          "Acceptance"
+        ],
+        "operationId": "CreateVerificationSession",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateVerificationSessionRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateVerificationSessionRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateVerificationSessionRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVerificationSessionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVerificationSessionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateVerificationSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/acceptance/verification-session/{verificationSessionId}/exchange": {
+      "post": {
+        "tags": [
+          "Acceptance"
+        ],
+        "operationId": "ExchangeToken",
+        "parameters": [
+          {
+            "name": "verificationSessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeTokenRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeTokenRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeTokenRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeTokenResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeTokenResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeTokenResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/acceptance/resource": {
+      "get": {
+        "tags": [
+          "Acceptance"
+        ],
+        "operationId": "GetLinkedResource",
+        "parameters": [
+          {
+            "name": "resourceToken",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/identities/credentials/can-reuse": {
+      "post": {
+        "tags": [
+          "Identities"
+        ],
+        "operationId": "CanReuseCredential",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CanReuseCredentialRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CanReuseCredentialRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CanReuseCredentialRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CanReuseCredentialResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CanReuseCredentialResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CanReuseCredentialResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/v1/sessions": {
       "get": {
         "tags": [
@@ -426,6 +816,30 @@
         },
         "additionalProperties": false
       },
+      "CanReuseCredentialRequest": {
+        "required": [
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CanReuseCredentialResponse": {
+        "required": [
+          "hasValidCredential"
+        ],
+        "type": "object",
+        "properties": {
+          "hasValidCredential": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "CancelSessionResponse": {
         "required": [
           "session"
@@ -466,6 +880,41 @@
                 "$ref": "#/components/schemas/Session"
               }
             ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateVerificationSessionRequest": {
+        "required": [
+          "integrationId",
+          "redirectUrl"
+        ],
+        "type": "object",
+        "properties": {
+          "integrationId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "redirectUrl": {
+            "minLength": 1,
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateVerificationSessionResponse": {
+        "required": [
+          "launchUrl",
+          "sessionId"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "launchUrl": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -557,9 +1006,52 @@
           },
           "issuingCountry": {
             "type": "string"
-          },
-          "portrait": {
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExchangeTokenRequest": {
+        "required": [
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExchangeTokenResponse": {
+        "required": [
+          "sessionId",
+          "state"
+        ],
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string"
+          },
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VerificationSessionState"
+              }
+            ]
+          },
+          "failCode": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/VerificationFailCode"
+              }
+            ]
+          },
+          "identityData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IdentityData"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -622,6 +1114,66 @@
                 "$ref": "#/components/schemas/DocumentData"
               }
             ]
+          },
+          "linkedResources": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LinkedResources"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integration": {
+        "required": [
+          "id",
+          "logoUrl",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "logoUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LinkedResources": {
+        "type": "object",
+        "properties": {
+          "selfie": {
+            "type": "string"
+          },
+          "documentFront": {
+            "type": "string"
+          },
+          "documentBack": {
+            "type": "string"
+          },
+          "documentPortrait": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ListIntegrationsResponse": {
+        "required": [
+          "integrations"
+        ],
+        "type": "object",
+        "properties": {
+          "integrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Integration"
+            }
           }
         },
         "additionalProperties": false
@@ -840,6 +1392,15 @@
           "VerificationFailInvalidImage",
           "VerificationFailInauthentic",
           "VerificationFailUnsupportedDocument"
+        ],
+        "type": "string"
+      },
+      "VerificationSessionState": {
+        "enum": [
+          "Pending",
+          "Processing",
+          "Success",
+          "Failed"
         ],
         "type": "string"
       },
