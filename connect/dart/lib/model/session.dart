@@ -24,10 +24,13 @@ class Session {
 
   String id;
 
+  /// The Client Token for this session -- passed to your frontend to securely invoke the Connect Widget on your user's device.                Client Tokens are one-time use: once the frontend has been invoked on your user's device, the token is invalid and may no longer be used.  If re-invocation is necessary, you must create a new session.
   String clientToken;
 
+  /// The state of the session
   IDVSessionState state;
 
+  /// If the session is in state `IdvFailed`, this field contains the reason for failure.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,10 +39,13 @@ class Session {
   ///
   SessionFailCode? failCode;
 
+  /// The underlying verification for this Session
   Verification verification;
 
+  /// The unix timestamp, in seconds, when this session was created
   int created;
 
+  /// The unix timestamp, in seconds, when this session's state last changed
   int updated;
 
   @override

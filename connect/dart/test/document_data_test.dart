@@ -40,10 +40,5 @@ void main() {
     test('to test the property `issuingCountry`', () async {
       // TODO
     });
-
-    // String portrait
-    test('to test the property `portrait`', () async {
-      // TODO
-    });
   });
 }

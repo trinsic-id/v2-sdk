@@ -24,6 +24,7 @@ class PersonData {
     this.dateOfBirth,
   });
 
+  /// Given (first) name of the individual
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -32,6 +33,7 @@ class PersonData {
   ///
   String? givenName;
 
+  /// Family (last) name of the individual
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -40,6 +42,7 @@ class PersonData {
   ///
   String? familyName;
 
+  /// Middle name of the individual
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -48,6 +51,7 @@ class PersonData {
   ///
   String? middleName;
 
+  /// The individual's full name as a single string.                Useful for names which do not fit into a \"first middle last\" structure.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -80,6 +84,7 @@ class PersonData {
   ///
   String? phoneNumber;
 
+  /// Address information for an individual
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

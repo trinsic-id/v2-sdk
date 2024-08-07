@@ -16,7 +16,10 @@ class SessionsApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/cancel' operation and returns the [Response].
+  /// Cancel a Session by its ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
@@ -47,6 +50,8 @@ class SessionsApi {
     );
   }
 
+  /// Cancel a Session by its ID
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
@@ -72,7 +77,10 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions' operation and returns the [Response].
+  /// Create a Session to verify a user's identity
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -106,6 +114,8 @@ class SessionsApi {
     );
   }
 
+  /// Create a Session to verify a user's identity
+  ///
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -131,10 +141,14 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/v1/sessions/{sessionId}' operation and returns the [Response].
+  /// Get a Session by its ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
+  ///
   Future<Response> getSessionWithHttpInfo(
     String sessionId,
   ) async {
@@ -162,9 +176,12 @@ class SessionsApi {
     );
   }
 
+  /// Get a Session by its ID
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
+  ///
   Future<GetSessionResponseV1?> getSession(
     String sessionId,
   ) async {
@@ -187,16 +204,22 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/v1/sessions' operation and returns the [Response].
+  /// List Sessions created by your account
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [SessionOrdering] orderBy:
+  ///   The field by which sessions should be ordered
   ///
   /// * [OrderDirection] orderDirection:
   ///
   /// * [int] pageSize:
+  ///   The number of items to return per page -- must be between `1` and `10`
   ///
   /// * [int] page:
+  ///   The page number to return -- starts at `1`
   Future<Response> listSessionsWithHttpInfo({
     SessionOrdering? orderBy,
     OrderDirection? orderDirection,
@@ -239,15 +262,20 @@ class SessionsApi {
     );
   }
 
+  /// List Sessions created by your account
+  ///
   /// Parameters:
   ///
   /// * [SessionOrdering] orderBy:
+  ///   The field by which sessions should be ordered
   ///
   /// * [OrderDirection] orderDirection:
   ///
   /// * [int] pageSize:
+  ///   The number of items to return per page -- must be between `1` and `10`
   ///
   /// * [int] page:
+  ///   The page number to return -- starts at `1`
   Future<ListSessionsResponse?> listSessions({
     SessionOrdering? orderBy,
     OrderDirection? orderDirection,
@@ -276,10 +304,14 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/redact' operation and returns the [Response].
+  /// Redact a Session
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
+  ///
   Future<Response> redactSessionWithHttpInfo(
     String sessionId,
   ) async {
@@ -307,9 +339,12 @@ class SessionsApi {
     );
   }
 
+  /// Redact a Session
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
+  ///
   Future<void> redactSession(
     String sessionId,
   ) async {
