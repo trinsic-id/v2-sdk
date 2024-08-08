@@ -231,18 +231,30 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'Address':
           return Address.fromJson(value);
+        case 'CanReuseCredentialRequest':
+          return CanReuseCredentialRequest.fromJson(value);
+        case 'CanReuseCredentialResponse':
+          return CanReuseCredentialResponse.fromJson(value);
         case 'CancelSessionResponse':
           return CancelSessionResponse.fromJson(value);
         case 'CreateSessionRequest':
           return CreateSessionRequest.fromJson(value);
         case 'CreateSessionResponse':
           return CreateSessionResponse.fromJson(value);
+        case 'CreateVerificationSessionRequest':
+          return CreateVerificationSessionRequest.fromJson(value);
+        case 'CreateVerificationSessionResponse':
+          return CreateVerificationSessionResponse.fromJson(value);
         case 'DisclosedFields':
           return DisclosedFields.fromJson(value);
         case 'DisclosedFieldsRequest':
           return DisclosedFieldsRequest.fromJson(value);
         case 'DocumentData':
           return DocumentData.fromJson(value);
+        case 'ExchangeTokenRequest':
+          return ExchangeTokenRequest.fromJson(value);
+        case 'ExchangeTokenResponse':
+          return ExchangeTokenResponse.fromJson(value);
         case 'FailureMessage':
           return FailureMessage.fromJson(value);
         case 'GetSessionResponseV1':
@@ -251,6 +263,12 @@ class ApiClient {
           return IDVSessionStateTypeTransformer().decode(value);
         case 'IdentityData':
           return IdentityData.fromJson(value);
+        case 'Integration':
+          return Integration.fromJson(value);
+        case 'LinkedResources':
+          return LinkedResources.fromJson(value);
+        case 'ListIntegrationsResponse':
+          return ListIntegrationsResponse.fromJson(value);
         case 'ListSessionsResponse':
           return ListSessionsResponse.fromJson(value);
         case 'OrderDirection':
@@ -269,6 +287,8 @@ class ApiClient {
           return Verification.fromJson(value);
         case 'VerificationFailCode':
           return VerificationFailCodeTypeTransformer().decode(value);
+        case 'VerificationSessionState':
+          return VerificationSessionStateTypeTransformer().decode(value);
         case 'VerificationState':
           return VerificationStateTypeTransformer().decode(value);
         default:

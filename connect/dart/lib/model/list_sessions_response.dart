@@ -20,8 +20,10 @@ class ListSessionsResponse {
 
   List<Session> sessions;
 
+  /// The total number of sessions tied to your account
   int total;
 
+  /// Whether there are additional pages of sessions to retrieve
   bool more;
 
   @override
