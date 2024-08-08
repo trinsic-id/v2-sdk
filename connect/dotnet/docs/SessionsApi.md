@@ -4,17 +4,17 @@ All URIs are relative to *https://connect.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel |  |
-| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions |  |
-| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} |  |
-| [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions |  |
-| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact |  |
+| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID |
+| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user&#39;s identity |
+| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID |
+| [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account |
+| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session |
 
 <a id="cancelsession"></a>
 # **CancelSession**
 > CancelSessionResponse CancelSession (string sessionId)
 
-
+Cancel a Session by its ID
 
 ### Example
 ```csharp
@@ -44,6 +44,7 @@ namespace Example
 
             try
             {
+                // Cancel a Session by its ID
                 CancelSessionResponse result = apiInstance.CancelSession(sessionId);
                 Debug.WriteLine(result);
             }
@@ -64,6 +65,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Cancel a Session by its ID
     ApiResponse<CancelSessionResponse> response = apiInstance.CancelSessionWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -112,7 +114,7 @@ catch (ApiException e)
 # **CreateSession**
 > CreateSessionResponse CreateSession (CreateSessionRequest? createSessionRequest = null)
 
-
+Create a Session to verify a user's identity
 
 ### Example
 ```csharp
@@ -142,6 +144,7 @@ namespace Example
 
             try
             {
+                // Create a Session to verify a user's identity
                 CreateSessionResponse result = apiInstance.CreateSession(createSessionRequest);
                 Debug.WriteLine(result);
             }
@@ -162,6 +165,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Create a Session to verify a user's identity
     ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionWithHttpInfo(createSessionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -210,7 +214,7 @@ catch (ApiException e)
 # **GetSession**
 > GetSessionResponseV1 GetSession (string sessionId)
 
-
+Get a Session by its ID
 
 ### Example
 ```csharp
@@ -240,6 +244,7 @@ namespace Example
 
             try
             {
+                // Get a Session by its ID
                 GetSessionResponseV1 result = apiInstance.GetSession(sessionId);
                 Debug.WriteLine(result);
             }
@@ -260,6 +265,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Get a Session by its ID
     ApiResponse<GetSessionResponseV1> response = apiInstance.GetSessionWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -308,7 +314,7 @@ catch (ApiException e)
 # **ListSessions**
 > ListSessionsResponse ListSessions (SessionOrdering? orderBy = null, OrderDirection? orderDirection = null, int? pageSize = null, int? page = null)
 
-
+List Sessions created by your account
 
 ### Example
 ```csharp
@@ -334,13 +340,14 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var orderBy = new SessionOrdering?(); // SessionOrdering? |  (optional) 
+            var orderBy = new SessionOrdering?(); // SessionOrdering? | The field by which sessions should be ordered (optional) 
             var orderDirection = new OrderDirection?(); // OrderDirection? |  (optional) 
-            var pageSize = 56;  // int? |  (optional) 
-            var page = 56;  // int? |  (optional) 
+            var pageSize = 10;  // int? | The number of items to return per page - - must be between `1` and `10` (optional) 
+            var page = 1;  // int? | The page number to return - - starts at `1` (optional) 
 
             try
             {
+                // List Sessions created by your account
                 ListSessionsResponse result = apiInstance.ListSessions(orderBy, orderDirection, pageSize, page);
                 Debug.WriteLine(result);
             }
@@ -361,6 +368,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // List Sessions created by your account
     ApiResponse<ListSessionsResponse> response = apiInstance.ListSessionsWithHttpInfo(orderBy, orderDirection, pageSize, page);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -378,10 +386,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderBy** | [**SessionOrdering?**](SessionOrdering?.md) |  | [optional]  |
+| **orderBy** | [**SessionOrdering?**](SessionOrdering?.md) | The field by which sessions should be ordered | [optional]  |
 | **orderDirection** | [**OrderDirection?**](OrderDirection?.md) |  | [optional]  |
-| **pageSize** | **int?** |  | [optional]  |
-| **page** | **int?** |  | [optional]  |
+| **pageSize** | **int?** | The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; | [optional]  |
+| **page** | **int?** | The page number to return - - starts at &#x60;1&#x60; | [optional]  |
 
 ### Return type
 
@@ -412,7 +420,7 @@ catch (ApiException e)
 # **RedactSession**
 > void RedactSession (string sessionId)
 
-
+Redact a Session
 
 ### Example
 ```csharp
@@ -442,6 +450,7 @@ namespace Example
 
             try
             {
+                // Redact a Session
                 apiInstance.RedactSession(sessionId);
             }
             catch (ApiException  e)
@@ -461,6 +470,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Redact a Session
     apiInstance.RedactSessionWithHttpInfo(sessionId);
 }
 catch (ApiException e)

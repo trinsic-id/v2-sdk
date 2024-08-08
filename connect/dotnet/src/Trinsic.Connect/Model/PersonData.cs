@@ -13,7 +13,7 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// PersonData
+/// Identity information for the individual being verified
 /// </summary>
 [DataContract(Name = "PersonData")]
 public partial class PersonData
@@ -21,14 +21,14 @@ public partial class PersonData
     /// <summary>
     /// Initializes a new instance of the <see cref="PersonData" /> class.
     /// </summary>
-    /// <param name="givenName">givenName.</param>
-    /// <param name="familyName">familyName.</param>
-    /// <param name="middleName">middleName.</param>
-    /// <param name="fullName">fullName.</param>
+    /// <param name="givenName">Given (first) name of the individual.</param>
+    /// <param name="familyName">Family (last) name of the individual.</param>
+    /// <param name="middleName">Middle name of the individual.</param>
+    /// <param name="fullName">The individual&#39;s full name as a single string.                Useful for names which do not fit into a \&quot;first middle last\&quot; structure..</param>
     /// <param name="nationality">nationality.</param>
     /// <param name="gender">gender.</param>
     /// <param name="phoneNumber">phoneNumber.</param>
-    /// <param name="address">address.</param>
+    /// <param name="address">Address information for an individual.</param>
     /// <param name="dateOfBirth">dateOfBirth.</param>
     public PersonData(string givenName = default(string), string familyName = default(string), string middleName = default(string), string fullName = default(string), string nationality = default(string), string gender = default(string), string phoneNumber = default(string), Address address = default(Address), string dateOfBirth = default(string))
     {
@@ -44,26 +44,34 @@ public partial class PersonData
     }
 
     /// <summary>
-    /// Gets or Sets GivenName
+    /// Given (first) name of the individual
     /// </summary>
+    /// <value>Given (first) name of the individual</value>
+    /// <example>John</example>
     [DataMember(Name = "givenName", EmitDefaultValue = false)]
     public string GivenName { get; set; }
 
     /// <summary>
-    /// Gets or Sets FamilyName
+    /// Family (last) name of the individual
     /// </summary>
+    /// <value>Family (last) name of the individual</value>
+    /// <example>Doe</example>
     [DataMember(Name = "familyName", EmitDefaultValue = false)]
     public string FamilyName { get; set; }
 
     /// <summary>
-    /// Gets or Sets MiddleName
+    /// Middle name of the individual
     /// </summary>
+    /// <value>Middle name of the individual</value>
+    /// <example>Jacob</example>
     [DataMember(Name = "middleName", EmitDefaultValue = false)]
     public string MiddleName { get; set; }
 
     /// <summary>
-    /// Gets or Sets FullName
+    /// The individual&#39;s full name as a single string.                Useful for names which do not fit into a \&quot;first middle last\&quot; structure.
     /// </summary>
+    /// <value>The individual&#39;s full name as a single string.                Useful for names which do not fit into a \&quot;first middle last\&quot; structure.</value>
+    /// <example>John Jacob de Doe</example>
     [DataMember(Name = "fullName", EmitDefaultValue = false)]
     public string FullName { get; set; }
 
@@ -86,8 +94,9 @@ public partial class PersonData
     public string PhoneNumber { get; set; }
 
     /// <summary>
-    /// Gets or Sets Address
+    /// Address information for an individual
     /// </summary>
+    /// <value>Address information for an individual</value>
     [DataMember(Name = "address", EmitDefaultValue = false)]
     public Address Address { get; set; }
 
