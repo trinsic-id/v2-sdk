@@ -16,18 +16,27 @@ void main() {
   // final instance = IdentityData();
 
   group('test IdentityData', () {
+    // The ID of the integration from which this data originated (eg \"yoti\", \"clear\")
     // String originatingIntegrationId
     test('to test the property `originatingIntegrationId`', () async {
       // TODO
     });
 
+    // Identity data of the individual who was verified
     // PersonData person
     test('to test the property `person`', () async {
       // TODO
     });
 
+    // Identity data of the document involved in verification, if relevant
     // DocumentData document
     test('to test the property `document`', () async {
+      // TODO
+    });
+
+    // Access tokens for linked resources (eg document/selfie images)
+    // LinkedResources linkedResources
+    test('to test the property `linkedResources`', () async {
       // TODO
     });
   });

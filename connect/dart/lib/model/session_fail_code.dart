@@ -31,8 +31,8 @@ class SessionFailCode {
   static const sessionFailExpired = SessionFailCode._(r'SessionFailExpired');
   static const sessionFailUserCanceled =
       SessionFailCode._(r'SessionFailUserCanceled');
-  static const sessionFailRpcCanceled =
-      SessionFailCode._(r'SessionFailRpcCanceled');
+  static const sessionFailRpCanceled =
+      SessionFailCode._(r'SessionFailRpCanceled');
 
   /// List of all possible values in this [enum][SessionFailCode].
   static const values = <SessionFailCode>[
@@ -42,7 +42,7 @@ class SessionFailCode {
     sessionFailAuthentication,
     sessionFailExpired,
     sessionFailUserCanceled,
-    sessionFailRpcCanceled,
+    sessionFailRpCanceled,
   ];
 
   static SessionFailCode? fromJson(dynamic value) =>
@@ -98,8 +98,8 @@ class SessionFailCodeTypeTransformer {
           return SessionFailCode.sessionFailExpired;
         case r'SessionFailUserCanceled':
           return SessionFailCode.sessionFailUserCanceled;
-        case r'SessionFailRpcCanceled':
-          return SessionFailCode.sessionFailRpcCanceled;
+        case r'SessionFailRpCanceled':
+          return SessionFailCode.sessionFailRpCanceled;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
