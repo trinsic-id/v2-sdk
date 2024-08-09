@@ -33,13 +33,13 @@ export interface ListSessionsResponse {
      */
     sessions: Array<Session>;
     /**
-     *
+     * The total number of sessions tied to your account
      * @type {number}
      * @memberof ListSessionsResponse
      */
     total: number;
     /**
-     *
+     * Whether there are additional pages of sessions to retrieve
      * @type {boolean}
      * @memberof ListSessionsResponse
      */

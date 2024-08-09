@@ -25,6 +25,12 @@ import {
     PersonDataFromJSONTyped,
     PersonDataToJSON,
 } from "./PersonData";
+import type { LinkedResources } from "./LinkedResources";
+import {
+    LinkedResourcesFromJSON,
+    LinkedResourcesFromJSONTyped,
+    LinkedResourcesToJSON,
+} from "./LinkedResources";
 
 /**
  *
@@ -33,23 +39,29 @@ import {
  */
 export interface IdentityData {
     /**
-     *
+     * The ID of the integration from which this data originated (eg "yoti", "clear")
      * @type {string}
      * @memberof IdentityData
      */
     originatingIntegrationId?: string;
     /**
-     *
+     * Identity data of the individual who was verified
      * @type {PersonData}
      * @memberof IdentityData
      */
     person?: PersonData;
     /**
-     *
+     * Identity data of the document involved in verification, if relevant
      * @type {DocumentData}
      * @memberof IdentityData
      */
     document?: DocumentData;
+    /**
+     * Access tokens for linked resources (eg document/selfie images)
+     * @type {LinkedResources}
+     * @memberof IdentityData
+     */
+    linkedResources?: LinkedResources;
 }
 
 /**
@@ -83,6 +95,10 @@ export function IdentityDataFromJSONTyped(
             json["document"] == null
                 ? undefined
                 : DocumentDataFromJSON(json["document"]),
+        linkedResources:
+            json["linkedResources"] == null
+                ? undefined
+                : LinkedResourcesFromJSON(json["linkedResources"]),
     };
 }
 
@@ -94,5 +110,6 @@ export function IdentityDataToJSON(value?: IdentityData | null): any {
         originatingIntegrationId: value["originatingIntegrationId"],
         person: PersonDataToJSON(value["person"]),
         document: DocumentDataToJSON(value["document"]),
+        linkedResources: LinkedResourcesToJSON(value["linkedResources"]),
     };
 }

@@ -73,6 +73,7 @@ export interface RedactSessionRequest {
  */
 export class SessionsApi extends runtime.BaseAPI {
     /**
+     * Cancel a Session by its ID
      */
     async cancelSessionRaw(
         requestParameters: CancelSessionRequest,
@@ -116,6 +117,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Cancel a Session by its ID
      */
     async cancelSession(
         requestParameters: CancelSessionRequest,
@@ -129,6 +131,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSessionRaw(
         requestParameters: CreateSessionOperationRequest,
@@ -167,6 +170,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSession(
         requestParameters: CreateSessionOperationRequest = {},
@@ -180,6 +184,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get a Session by its ID
      */
     async getSessionRaw(
         requestParameters: GetSessionRequest,
@@ -223,6 +228,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get a Session by its ID
      */
     async getSession(
         requestParameters: GetSessionRequest,
@@ -236,6 +242,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessionsRaw(
         requestParameters: ListSessionsRequest,
@@ -286,6 +293,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessions(
         requestParameters: ListSessionsRequest = {},
@@ -299,6 +307,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session
      */
     async redactSessionRaw(
         requestParameters: RedactSessionRequest,
@@ -340,6 +349,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session
      */
     async redactSession(
         requestParameters: RedactSessionRequest,
