@@ -89,13 +89,4 @@ public class DocumentDataTests : IDisposable
     {
         // TODO unit test for the property 'IssuingCountry'
     }
-
-    /// <summary>
-    /// Test the property 'Portrait'
-    /// </summary>
-    [Fact]
-    public void PortraitTest()
-    {
-        // TODO unit test for the property 'Portrait'
-    }
 }

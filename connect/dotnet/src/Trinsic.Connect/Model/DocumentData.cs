@@ -26,15 +26,13 @@ public partial class DocumentData
     /// <param name="issueDate">issueDate.</param>
     /// <param name="expirationDate">expirationDate.</param>
     /// <param name="issuingCountry">issuingCountry.</param>
-    /// <param name="portrait">portrait.</param>
-    public DocumentData(string type = default(string), string number = default(string), string issueDate = default(string), string expirationDate = default(string), string issuingCountry = default(string), string portrait = default(string))
+    public DocumentData(string type = default(string), string number = default(string), string issueDate = default(string), string expirationDate = default(string), string issuingCountry = default(string))
     {
         Type = type;
         Number = number;
         IssueDate = issueDate;
         ExpirationDate = expirationDate;
         IssuingCountry = issuingCountry;
-        Portrait = portrait;
     }
 
     /// <summary>
@@ -68,12 +66,6 @@ public partial class DocumentData
     public string IssuingCountry { get; set; }
 
     /// <summary>
-    /// Gets or Sets Portrait
-    /// </summary>
-    [DataMember(Name = "portrait", EmitDefaultValue = false)]
-    public string Portrait { get; set; }
-
-    /// <summary>
     /// Returns the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>
@@ -86,7 +78,6 @@ public partial class DocumentData
         sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
         sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
         sb.Append("  IssuingCountry: ").Append(IssuingCountry).Append("\n");
-        sb.Append("  Portrait: ").Append(Portrait).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }
