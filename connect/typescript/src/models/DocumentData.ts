@@ -49,12 +49,6 @@ export interface DocumentData {
      * @memberof DocumentData
      */
     issuingCountry?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DocumentData
-     */
-    portrait?: string;
 }
 
 /**
@@ -83,7 +77,6 @@ export function DocumentDataFromJSONTyped(
             json["expirationDate"] == null ? undefined : json["expirationDate"],
         issuingCountry:
             json["issuingCountry"] == null ? undefined : json["issuingCountry"],
-        portrait: json["portrait"] == null ? undefined : json["portrait"],
     };
 }
 
@@ -97,6 +90,5 @@ export function DocumentDataToJSON(value?: DocumentData | null): any {
         issueDate: value["issueDate"],
         expirationDate: value["expirationDate"],
         issuingCountry: value["issuingCountry"],
-        portrait: value["portrait"],
     };
 }

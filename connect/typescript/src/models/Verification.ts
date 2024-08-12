@@ -39,13 +39,13 @@ import {
 } from "./VerificationFailCode";
 
 /**
- *
+ * A Verification contained within a Session
  * @export
  * @interface Verification
  */
 export interface Verification {
     /**
-     *
+     * The ID of the Verification within the Session
      * @type {string}
      * @memberof Verification
      */
@@ -57,31 +57,31 @@ export interface Verification {
      */
     state: VerificationState;
     /**
-     *
+     * If the Verification is in state `VerificationFailed`, this field contains the reason for failure
      * @type {VerificationFailCode}
      * @memberof Verification
      */
     failCode?: VerificationFailCode;
     /**
-     *
+     * Whether the Verification was completed by reusing a Trinsic Connect identity credential (`true`) or via a fresh verification (`false`)
      * @type {boolean}
      * @memberof Verification
      */
     reused: boolean;
     /**
-     *
+     * The unix timestamp, in seconds, when this Verification's state last changed
      * @type {number}
      * @memberof Verification
      */
     updated: number;
     /**
-     *
+     * The fields that were requested to be disclosed when the Session for this Verification was created
      * @type {DisclosedFields}
      * @memberof Verification
      */
     disclosedFields: DisclosedFields;
     /**
-     *
+     * The results of the Verification. Only present if the Session's `state` is `IdvSuccess`.
      * @type {IdentityData}
      * @memberof Verification
      */

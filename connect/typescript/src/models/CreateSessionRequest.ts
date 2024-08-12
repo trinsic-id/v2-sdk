@@ -27,7 +27,7 @@ import {
  */
 export interface CreateSessionRequest {
     /**
-     *
+     * Specific identity attributes to request. If not provided, all available attributes will be requested.
      * @type {DisclosedFieldsRequest}
      * @memberof CreateSessionRequest
      */
