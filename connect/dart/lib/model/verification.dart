@@ -22,10 +22,12 @@ class Verification {
     this.identityData,
   });
 
+  /// The ID of the Verification within the Session
   String id;
 
   VerificationState state;
 
+  /// If the Verification is in state `VerificationFailed`, this field contains the reason for failure
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,12 +36,16 @@ class Verification {
   ///
   VerificationFailCode? failCode;
 
+  /// Whether the Verification was completed by reusing a Trinsic Connect identity credential (`true`) or via a fresh verification (`false`)
   bool reused;
 
+  /// The unix timestamp, in seconds, when this Verification's state last changed
   int updated;
 
+  /// The fields that were requested to be disclosed when the Session for this Verification was created
   DisclosedFields disclosedFields;
 
+  /// The results of the Verification. Only present if the Session's `state` is `IdvSuccess`.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated

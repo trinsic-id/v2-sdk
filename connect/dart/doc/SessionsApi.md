@@ -9,17 +9,17 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
-[**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
-[**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
-[**listSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
+[**cancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID
+[**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user's identity
+[**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID
+[**listSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account
+[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session
 
 
 # **cancelSession**
 > CancelSessionResponse cancelSession(sessionId)
 
-
+Cancel a Session by its ID
 
 ### Example
 ```dart
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 # **createSession**
 > CreateSessionResponse createSession(createSessionRequest)
 
-
+Create a Session to verify a user's identity
 
 ### Example
 ```dart
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 # **getSession**
 > GetSessionResponseV1 getSession(sessionId)
 
-
+Get a Session by its ID
 
 ### Example
 ```dart
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 # **listSessions**
 > ListSessionsResponse listSessions(orderBy, orderDirection, pageSize, page)
 
-
+List Sessions created by your account
 
 ### Example
 ```dart
@@ -173,10 +173,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionsApi();
-final orderBy = ; // SessionOrdering | 
-final orderDirection = ; // OrderDirection | 
-final pageSize = 56; // int | 
-final page = 56; // int | 
+final orderBy = Created; // SessionOrdering | The field by which sessions should be ordered
+final orderDirection = Descending; // OrderDirection | 
+final pageSize = 10; // int | The number of items to return per page -- must be between `1` and `10`
+final page = 1; // int | The page number to return -- starts at `1`
 
 try {
     final result = api_instance.listSessions(orderBy, orderDirection, pageSize, page);
@@ -190,10 +190,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderBy** | [**SessionOrdering**](.md)|  | [optional] 
+ **orderBy** | [**SessionOrdering**](.md)| The field by which sessions should be ordered | [optional] 
  **orderDirection** | [**OrderDirection**](.md)|  | [optional] 
- **pageSize** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **pageSize** | **int**| The number of items to return per page -- must be between `1` and `10` | [optional] 
+ **page** | **int**| The page number to return -- starts at `1` | [optional] 
 
 ### Return type
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 # **redactSession**
 > redactSession(sessionId)
 
-
+Redact a Session
 
 ### Example
 ```dart
