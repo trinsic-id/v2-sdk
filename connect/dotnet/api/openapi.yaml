@@ -9,41 +9,294 @@ servers:
 security:
 - Bearer: []
 paths:
+  /api/v1/acceptance/integrations:
+    get:
+      operationId: ListIntegrations
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListIntegrationsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListIntegrationsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListIntegrationsResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: List all integrations available for use
+      tags:
+      - Acceptance
+  /api/v1/acceptance/verification-session:
+    put:
+      operationId: CreateVerificationSession
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateVerificationSessionRequest'
+              description: Request to create a VerificationSession for headless (non-widget)
+                verification of a user's identity.
+          text/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateVerificationSessionRequest'
+              description: Request to create a VerificationSession for headless (non-widget)
+                verification of a user's identity.
+          application/*+json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateVerificationSessionRequest'
+              description: Request to create a VerificationSession for headless (non-widget)
+                verification of a user's identity.
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateVerificationSessionResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateVerificationSessionResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateVerificationSessionResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Create a new `VerificationSession` for the given integration.
+      tags:
+      - Acceptance
+  /api/v1/acceptance/verification-session/{verificationSessionId}/exchange:
+    post:
+      operationId: ExchangeToken
+      parameters:
+      - explode: false
+        in: path
+        name: verificationSessionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeTokenRequest'
+          text/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeTokenRequest'
+          application/*+json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeTokenRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ExchangeTokenResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeTokenResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeTokenResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Exchange a token for the results of a `VerificationSession`
+      tags:
+      - Acceptance
+  /api/v1/acceptance/resource:
+    get:
+      operationId: GetLinkedResource
+      parameters:
+      - explode: true
+        in: query
+        name: resourceToken
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: "Exchange a Resource Access Token (from `IdentityData.LinkedResources`)\
+        \ for the raw contents of the linked resource.\r\n            \r\nUse this\
+        \ API to fetch document (front, back, portrait) or other (selfie) images from\
+        \ a verification, if relevant."
+      tags:
+      - Acceptance
+  /api/v1/identities/credentials/can-reuse:
+    post:
+      operationId: CanReuseCredential
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CanReuseCredentialRequest'
+          text/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CanReuseCredentialRequest'
+          application/*+json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CanReuseCredentialRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CanReuseCredentialResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CanReuseCredentialResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CanReuseCredentialResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      tags:
+      - Identities
   /api/v1/sessions:
     get:
       operationId: ListSessions
       parameters:
-      - explode: true
+      - description: The field by which sessions should be ordered
+        example: Created
+        explode: true
         in: query
         name: OrderBy
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/SessionOrdering'
+          example: Created
         style: form
-      - explode: true
+      - example: Descending
+        explode: true
         in: query
         name: OrderDirection
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderDirection'
+          example: Descending
         style: form
-      - explode: true
+      - description: The number of items to return per page -- must be between `1`
+          and `10`
+        example: 10
+        explode: true
         in: query
         name: PageSize
         required: false
         schema:
+          example: 10
           format: int32
           maximum: 10
           minimum: 1
           type: integer
         style: form
-      - explode: true
+      - description: The page number to return -- starts at `1`
+        example: 1
+        explode: true
         in: query
         name: Page
         required: false
         schema:
+          example: 1
           format: int32
           maximum: 2147483647
           minimum: 1
@@ -80,6 +333,7 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: List Sessions created by your account
       tags:
       - Sessions
     post:
@@ -129,13 +383,15 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Create a Session to verify a user's identity
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}:
     get:
       operationId: GetSession
       parameters:
-      - explode: false
+      - description: ""
+        explode: false
         in: path
         name: sessionId
         required: true
@@ -173,6 +429,7 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Get a Session by its ID
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}/cancel:
@@ -217,13 +474,15 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Cancel a Session by its ID
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}/redact:
     post:
       operationId: RedactSession
       parameters:
-      - explode: false
+      - description: ""
+        explode: false
         in: path
         name: sessionId
         required: true
@@ -251,12 +510,14 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Redact a Session
       tags:
       - Sessions
 components:
   schemas:
     Address:
       additionalProperties: false
+      description: Address information for an individual
       properties:
         line1:
           type: string
@@ -273,7 +534,28 @@ components:
         country:
           type: string
         fullAddress:
+          description: The full address as a single string
           type: string
+      type: object
+    CanReuseCredentialRequest:
+      additionalProperties: false
+      example:
+        phoneNumber: phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+      required:
+      - phoneNumber
+      type: object
+    CanReuseCredentialResponse:
+      additionalProperties: false
+      example:
+        hasValidCredential: true
+      properties:
+        hasValidCredential:
+          type: boolean
+      required:
+      - hasValidCredential
       type: object
     CancelSessionResponse:
       additionalProperties: false
@@ -293,6 +575,8 @@ components:
         fields:
           allOf:
           - $ref: '#/components/schemas/DisclosedFieldsRequest'
+          description: "Specific identity attributes to request. If not provided,\
+            \ all available attributes will be requested."
       type: object
     CreateSessionResponse:
       additionalProperties: false
@@ -304,6 +588,50 @@ components:
           - $ref: '#/components/schemas/Session'
       required:
       - session
+      type: object
+    CreateVerificationSessionRequest:
+      additionalProperties: false
+      description: Request to create a VerificationSession for headless (non-widget)
+        verification of a user's identity.
+      example:
+        redirectUrl: https://example.com/connect_callback
+        integrationId: yoti | clear | ...
+      properties:
+        integrationId:
+          description: The ID of the integration to perform
+          example: yoti | clear | ...
+          minLength: 1
+          type: string
+        redirectUrl:
+          description: The URL the user will be returned to after performing the integration.
+          example: https://example.com/connect_callback
+          format: uri
+          minLength: 1
+          type: string
+      required:
+      - integrationId
+      - redirectUrl
+      type: object
+    CreateVerificationSessionResponse:
+      additionalProperties: false
+      example:
+        sessionId: urn:verification:0fce9bb3-d2c9-4f0c-837b-c23a009ae0d0
+        launchUrl: https://connect.trinsic.id/api/verifications/urn:verification:0fce9bb3-d2c9-4f0c-837b-c23a009ae0d0/launch
+      properties:
+        sessionId:
+          description: "The ID of the created VerificationSession.\r\n           \
+            \ \r\nThis should be saved in your system for record-keeping and to retrieve\
+            \ the results of the verification session."
+          example: urn:verification:0fce9bb3-d2c9-4f0c-837b-c23a009ae0d0
+          type: string
+        launchUrl:
+          description: The URL that your user should be sent to in order to perform
+            the verification.
+          example: https://connect.trinsic.id/api/verifications/urn:verification:0fce9bb3-d2c9-4f0c-837b-c23a009ae0d0/launch
+          type: string
+      required:
+      - launchUrl
+      - sessionId
       type: object
     DisclosedFields:
       additionalProperties: false
@@ -367,8 +695,46 @@ components:
           type: string
         issuingCountry:
           type: string
-        portrait:
+      type: object
+    ExchangeTokenRequest:
+      additionalProperties: false
+      example:
+        token: token
+      properties:
+        token:
+          description: The `exchangeToken` provided via the `exchangeToken` query
+            parameter on your return URL
           type: string
+      required:
+      - token
+      type: object
+    ExchangeTokenResponse:
+      additionalProperties: false
+      example:
+        failCode: ""
+        sessionId: sessionId
+        state: ""
+        identityData: ""
+      properties:
+        sessionId:
+          description: The ID of the `VerificationSession` in question
+          type: string
+        state:
+          allOf:
+          - $ref: '#/components/schemas/VerificationSessionState'
+          description: The `VerificationSession`'s current state
+        failCode:
+          allOf:
+          - $ref: '#/components/schemas/VerificationFailCode'
+          description: "If the `VerificationSession` failed, contains the reason why"
+        identityData:
+          allOf:
+          - $ref: '#/components/schemas/IdentityData'
+          description: "The verified identity data, if the `VerificationSession` was\
+            \ successful"
+      required:
+      - sessionId
+      - state
       type: object
     FailureMessage:
       additionalProperties: false
@@ -404,33 +770,107 @@ components:
       additionalProperties: false
       properties:
         originatingIntegrationId:
+          description: "The ID of the integration from which this data originated\
+            \ (eg \"yoti\", \"clear\")"
           type: string
         person:
           allOf:
           - $ref: '#/components/schemas/PersonData'
+          description: Identity data of the individual who was verified
         document:
           allOf:
           - $ref: '#/components/schemas/DocumentData'
+          description: "Identity data of the document involved in verification, if\
+            \ relevant"
+        linkedResources:
+          allOf:
+          - $ref: '#/components/schemas/LinkedResources'
+          description: Access tokens for linked resources (eg document/selfie images)
+      type: object
+    Integration:
+      additionalProperties: false
+      description: An Integration that can be specified when creating a `VerificationSession`
+      example:
+        name: Yoti | CLEAR | ...
+        id: yoti | clear | ...
+        logoUrl: logoUrl
+      properties:
+        id:
+          description: The ID of the integration
+          example: yoti | clear | ...
+          type: string
+        name:
+          description: "The friendly, human-readable name of the integration"
+          example: Yoti | CLEAR | ...
+          type: string
+        logoUrl:
+          description: A URL pointing to the integration's logo
+          type: string
+      required:
+      - id
+      - logoUrl
+      - name
+      type: object
+    LinkedResources:
+      additionalProperties: false
+      description: Access tokens for linked resources (eg document / selfie images)
+      properties:
+        selfie:
+          description: Token to access the selfie image (if relevant) for this verification
+          type: string
+        documentFront:
+          description: Token to access the document front image (if relevant) for
+            this verification
+          type: string
+        documentBack:
+          description: Token to access the document back image (if relevant) for this
+            verification
+          type: string
+        documentPortrait:
+          description: "Token to access the document portrait image (if relevant and\
+            \ available) for this verification.\r\n            \r\nSpecifically, this\
+            \ is a cropped version of the document front image which includes only\
+            \ the portrait on the document."
+          type: string
+      type: object
+    ListIntegrationsResponse:
+      additionalProperties: false
+      example:
+        integrations:
+        - name: Yoti | CLEAR | ...
+          id: yoti | clear | ...
+          logoUrl: logoUrl
+        - name: Yoti | CLEAR | ...
+          id: yoti | clear | ...
+          logoUrl: logoUrl
+      properties:
+        integrations:
+          description: The list of integrations available to your account
+          items:
+            $ref: '#/components/schemas/Integration'
+          type: array
+      required:
+      - integrations
       type: object
     ListSessionsResponse:
       additionalProperties: false
       example:
         sessions:
-        - clientToken: clientToken
-          created: 0
+        - clientToken: cGMDMhC7Wp1Vno4k7mVwp6tPHkbbvjE8LrLKGFZb6yPz4Ngh9hsVxBLoYRbe4hRwrmhLFMSujtD4ZxYC4e3mg5pANFBtiaLvhqUeYRywUWYNqCter4L10gLntdwhym8a5fJfgceC6Eb1moD2njfAZq2pDYHWkZPMBSz7c7ep56gDrtVk9WFAFTDbPmeAbhtoTKbtz
+          created: 1722526411
           failCode: ""
-          id: id
+          id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           state: ""
-          updated: 6
+          updated: 1722526722
           verification: ""
-        - clientToken: clientToken
-          created: 0
+        - clientToken: cGMDMhC7Wp1Vno4k7mVwp6tPHkbbvjE8LrLKGFZb6yPz4Ngh9hsVxBLoYRbe4hRwrmhLFMSujtD4ZxYC4e3mg5pANFBtiaLvhqUeYRywUWYNqCter4L10gLntdwhym8a5fJfgceC6Eb1moD2njfAZq2pDYHWkZPMBSz7c7ep56gDrtVk9WFAFTDbPmeAbhtoTKbtz
+          created: 1722526411
           failCode: ""
-          id: id
+          id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           state: ""
-          updated: 6
+          updated: 1722526722
           verification: ""
-        total: 1
+        total: 101
         more: true
       properties:
         sessions:
@@ -438,9 +878,13 @@ components:
             $ref: '#/components/schemas/Session'
           type: array
         total:
+          description: The total number of sessions tied to your account
+          example: 101
           format: int32
           type: integer
         more:
+          description: Whether there are additional pages of sessions to retrieve
+          example: true
           type: boolean
       required:
       - more
@@ -454,14 +898,25 @@ components:
       type: string
     PersonData:
       additionalProperties: false
+      description: Identity information for the individual being verified
       properties:
         givenName:
+          description: Given (first) name of the individual
+          example: John
           type: string
         familyName:
+          description: Family (last) name of the individual
+          example: Doe
           type: string
         middleName:
+          description: Middle name of the individual
+          example: Jacob
           type: string
         fullName:
+          description: "The individual's full name as a single string.\r\n       \
+            \     \r\nUseful for names which do not fit into a \"first middle last\"\
+            \ structure."
+          example: John Jacob de Doe
           type: string
         nationality:
           type: string
@@ -472,37 +927,54 @@ components:
         address:
           allOf:
           - $ref: '#/components/schemas/Address'
+          description: Address information for an individual
         dateOfBirth:
           type: string
       type: object
     Session:
       additionalProperties: false
       example:
-        clientToken: clientToken
-        created: 0
+        clientToken: cGMDMhC7Wp1Vno4k7mVwp6tPHkbbvjE8LrLKGFZb6yPz4Ngh9hsVxBLoYRbe4hRwrmhLFMSujtD4ZxYC4e3mg5pANFBtiaLvhqUeYRywUWYNqCter4L10gLntdwhym8a5fJfgceC6Eb1moD2njfAZq2pDYHWkZPMBSz7c7ep56gDrtVk9WFAFTDbPmeAbhtoTKbtz
+        created: 1722526411
         failCode: ""
-        id: id
+        id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
         state: ""
-        updated: 6
+        updated: 1722526722
         verification: ""
       properties:
         id:
+          example: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           type: string
         clientToken:
+          description: "The Client Token for this session -- passed to your frontend\
+            \ to securely invoke the Connect Widget on your user's device.\r\n   \
+            \         \r\nClient Tokens are one-time use: once the frontend has been\
+            \ invoked on your user's device, the token is invalid and may no longer\
+            \ be used.\r\nIf re-invocation is necessary, you must create a new session."
+          example: cGMDMhC7Wp1Vno4k7mVwp6tPHkbbvjE8LrLKGFZb6yPz4Ngh9hsVxBLoYRbe4hRwrmhLFMSujtD4ZxYC4e3mg5pANFBtiaLvhqUeYRywUWYNqCter4L10gLntdwhym8a5fJfgceC6Eb1moD2njfAZq2pDYHWkZPMBSz7c7ep56gDrtVk9WFAFTDbPmeAbhtoTKbtz
           type: string
         state:
           allOf:
           - $ref: '#/components/schemas/IDVSessionState'
+          description: The state of the session
         failCode:
           allOf:
           - $ref: '#/components/schemas/SessionFailCode'
+          description: "If the session is in state `IdvFailed`, this field contains\
+            \ the reason for failure."
         verification:
           allOf:
           - $ref: '#/components/schemas/Verification'
+          description: The underlying verification for this Session
         created:
+          description: "The unix timestamp, in seconds, when this session was created"
+          example: 1722526411
           format: int64
           type: integer
         updated:
+          description: "The unix timestamp, in seconds, when this session's state\
+            \ last changed"
+          example: 1722526722
           format: int64
           type: integer
       required:
@@ -521,7 +993,7 @@ components:
       - SessionFailAuthentication
       - SessionFailExpired
       - SessionFailUserCanceled
-      - SessionFailRpcCanceled
+      - SessionFailRpCanceled
       type: string
     SessionOrdering:
       enum:
@@ -549,8 +1021,11 @@ components:
       type: object
     Verification:
       additionalProperties: false
+      description: A Verification contained within a Session
       properties:
         id:
+          description: The ID of the Verification within the Session
+          example: urn:trinsic:idvverification:678c1ff6-2178-49e7-81d2-548afb6f85ec:4823b2fa-4972-44d7-aeac-a754cb04c432
           type: string
         state:
           allOf:
@@ -558,17 +1033,27 @@ components:
         failCode:
           allOf:
           - $ref: '#/components/schemas/VerificationFailCode'
+          description: "If the Verification is in state `VerificationFailed`, this\
+            \ field contains the reason for failure"
         reused:
+          description: Whether the Verification was completed by reusing a Trinsic
+            Connect identity credential (`true`) or via a fresh verification (`false`)
           type: boolean
         updated:
+          description: "The unix timestamp, in seconds, when this Verification's state\
+            \ last changed"
           format: int64
           type: integer
         disclosedFields:
           allOf:
           - $ref: '#/components/schemas/DisclosedFields'
+          description: The fields that were requested to be disclosed when the Session
+            for this Verification was created
         identityData:
           allOf:
           - $ref: '#/components/schemas/IdentityData'
+          description: The results of the Verification. Only present if the Session's
+            `state` is `IdvSuccess`.
       required:
       - disclosedFields
       - id
@@ -583,6 +1068,13 @@ components:
       - VerificationFailInvalidImage
       - VerificationFailInauthentic
       - VerificationFailUnsupportedDocument
+      type: string
+    VerificationSessionState:
+      enum:
+      - Pending
+      - Processing
+      - Success
+      - Failed
       type: string
     VerificationState:
       enum:

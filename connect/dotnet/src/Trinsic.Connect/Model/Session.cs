@@ -22,14 +22,16 @@ public partial class Session
 {
 
     /// <summary>
-    /// Gets or Sets State
+    /// The state of the session
     /// </summary>
+    /// <value>The state of the session</value>
     [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
     public IDVSessionState State { get; set; }
 
     /// <summary>
-    /// Gets or Sets FailCode
+    /// If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure.
     /// </summary>
+    /// <value>If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure.</value>
     [DataMember(Name = "failCode", EmitDefaultValue = false)]
     public SessionFailCode? FailCode { get; set; }
     /// <summary>
@@ -41,12 +43,12 @@ public partial class Session
     /// Initializes a new instance of the <see cref="Session" /> class.
     /// </summary>
     /// <param name="id">id (required).</param>
-    /// <param name="clientToken">clientToken (required).</param>
-    /// <param name="state">state (required).</param>
-    /// <param name="failCode">failCode.</param>
-    /// <param name="verification">verification (required).</param>
-    /// <param name="created">created (required).</param>
-    /// <param name="updated">updated (required).</param>
+    /// <param name="clientToken">The Client Token for this session - - passed to your frontend to securely invoke the Connect Widget on your user&#39;s device.                Client Tokens are one-time use: once the frontend has been invoked on your user&#39;s device, the token is invalid and may no longer be used.  If re-invocation is necessary, you must create a new session. (required).</param>
+    /// <param name="state">The state of the session (required).</param>
+    /// <param name="failCode">If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure..</param>
+    /// <param name="verification">The underlying verification for this Session (required).</param>
+    /// <param name="created">The unix timestamp, in seconds, when this session was created (required).</param>
+    /// <param name="updated">The unix timestamp, in seconds, when this session&#39;s state last changed (required).</param>
     public Session(string id = default(string), string clientToken = default(string), IDVSessionState state = default(IDVSessionState), SessionFailCode? failCode = default(SessionFailCode?), Verification verification = default(Verification), long created = default(long), long updated = default(long))
     {
         Id = id ?? throw new ArgumentNullException("id is a required property for Session and cannot be null");
@@ -61,30 +63,38 @@ public partial class Session
     /// <summary>
     /// Gets or Sets Id
     /// </summary>
+    /// <example>urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec</example>
     [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
     public string Id { get; set; }
 
     /// <summary>
-    /// Gets or Sets ClientToken
+    /// The Client Token for this session - - passed to your frontend to securely invoke the Connect Widget on your user&#39;s device.                Client Tokens are one-time use: once the frontend has been invoked on your user&#39;s device, the token is invalid and may no longer be used.  If re-invocation is necessary, you must create a new session.
     /// </summary>
+    /// <value>The Client Token for this session - - passed to your frontend to securely invoke the Connect Widget on your user&#39;s device.                Client Tokens are one-time use: once the frontend has been invoked on your user&#39;s device, the token is invalid and may no longer be used.  If re-invocation is necessary, you must create a new session.</value>
+    /// <example>cGMDMhC7Wp1Vno4k7mVwp6tPHkbbvjE8LrLKGFZb6yPz4Ngh9hsVxBLoYRbe4hRwrmhLFMSujtD4ZxYC4e3mg5pANFBtiaLvhqUeYRywUWYNqCter4L10gLntdwhym8a5fJfgceC6Eb1moD2njfAZq2pDYHWkZPMBSz7c7ep56gDrtVk9WFAFTDbPmeAbhtoTKbtz</example>
     [DataMember(Name = "clientToken", IsRequired = true, EmitDefaultValue = true)]
     public string ClientToken { get; set; }
 
     /// <summary>
-    /// Gets or Sets Verification
+    /// The underlying verification for this Session
     /// </summary>
+    /// <value>The underlying verification for this Session</value>
     [DataMember(Name = "verification", IsRequired = true, EmitDefaultValue = true)]
     public Verification Verification { get; set; }
 
     /// <summary>
-    /// Gets or Sets Created
+    /// The unix timestamp, in seconds, when this session was created
     /// </summary>
+    /// <value>The unix timestamp, in seconds, when this session was created</value>
+    /// <example>1722526411</example>
     [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
     public long Created { get; set; }
 
     /// <summary>
-    /// Gets or Sets Updated
+    /// The unix timestamp, in seconds, when this session&#39;s state last changed
     /// </summary>
+    /// <value>The unix timestamp, in seconds, when this session&#39;s state last changed</value>
+    /// <example>1722526722</example>
     [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
     public long Updated { get; set; }
 
