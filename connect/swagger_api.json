@@ -12,23 +12,209 @@
     }
   ],
   "paths": {
+    "/api/v1/attachments/fetch": {
+      "get": {
+        "tags": [
+          "Attachments"
+        ],
+        "summary": "Exchange an Attachment Access Key (from `IdentityData.Attachments`) for the raw contents of the linked resource.\r\n            \r\nUse this API to fetch document (front, back, portrait) or other (selfie) images from a verification, if relevant.",
+        "operationId": "GetAttachment",
+        "parameters": [
+          {
+            "name": "attachmentAccessKey",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/network/providers": {
+      "get": {
+        "tags": [
+          "Network"
+        ],
+        "summary": "List all identity providers available for use",
+        "operationId": "ListProviders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProvidersResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProvidersResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListProvidersResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/network/identities/{phoneNumber}": {
+      "get": {
+        "tags": [
+          "Network"
+        ],
+        "summary": "Query the availability of an identity in the Trinsic Network by phone number",
+        "operationId": "IdentityLookup",
+        "parameters": [
+          {
+            "name": "phoneNumber",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityLookupResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityLookupResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityLookupResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/v1/sessions": {
       "get": {
         "tags": [
           "Sessions"
         ],
+        "summary": "List Sessions created by your account",
         "operationId": "ListSessions",
         "parameters": [
           {
             "name": "OrderBy",
             "in": "query",
+            "description": "The field by which sessions should be ordered",
             "schema": {
               "allOf": [
                 {
                   "$ref": "#/components/schemas/SessionOrdering"
                 }
-              ]
-            }
+              ],
+              "example": "Created"
+            },
+            "example": "Created"
           },
           {
             "name": "OrderDirection",
@@ -38,28 +224,36 @@
                 {
                   "$ref": "#/components/schemas/OrderDirection"
                 }
-              ]
-            }
+              ],
+              "example": "Descending"
+            },
+            "example": "Descending"
           },
           {
             "name": "PageSize",
             "in": "query",
+            "description": "The number of items to return per page -- must be between `1` and `10`",
             "schema": {
               "maximum": 10,
               "minimum": 1,
               "type": "integer",
-              "format": "int32"
-            }
+              "format": "int32",
+              "example": 10
+            },
+            "example": 10
           },
           {
             "name": "Page",
             "in": "query",
+            "description": "The page number to return -- starts at `1`",
             "schema": {
               "maximum": 2147483647,
               "minimum": 1,
               "type": "integer",
-              "format": "int32"
-            }
+              "format": "int32",
+              "example": 1
+            },
+            "example": 1
           }
         ],
         "responses": {
@@ -118,6 +312,7 @@
         "tags": [
           "Sessions"
         ],
+        "summary": "Create a Session to verify a user's identity",
         "operationId": "CreateSession",
         "requestBody": {
           "content": {
@@ -208,11 +403,13 @@
         "tags": [
           "Sessions"
         ],
+        "summary": "Get a Session by its ID",
         "operationId": "GetSession",
         "parameters": [
           {
             "name": "sessionId",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -225,17 +422,120 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                  "$ref": "#/components/schemas/GetSessionResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                  "$ref": "#/components/schemas/GetSessionResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSessionResponseV1"
+                  "$ref": "#/components/schemas/GetSessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation Failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ValidationResult"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailureMessage"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/{sessionId}/results": {
+      "post": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "Exchange a Results Access Key for Identity Data",
+        "operationId": "ExchangeResultsKey",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeResultsKeyRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeResultsKeyRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ExchangeResultsKeyRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeResultsKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeResultsKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangeResultsKeyResponse"
                 }
               }
             }
@@ -277,6 +577,7 @@
         "tags": [
           "Sessions"
         ],
+        "summary": "Cancel a Session by its ID",
         "operationId": "CancelSession",
         "parameters": [
           {
@@ -346,6 +647,7 @@
         "tags": [
           "Sessions"
         ],
+        "summary": "Redact a Session, removing all identity data from Trinsic's servers.\r\n            \r\nIdentity data that a user has chosen to save in their passkey-protected wallet will not be deleted.",
         "operationId": "RedactSession",
         "parameters": [
           {
@@ -421,10 +723,35 @@
             "type": "string"
           },
           "fullAddress": {
-            "type": "string"
+            "type": "string",
+            "description": "The full address as a single string"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Address information for an individual"
+      },
+      "Attachments": {
+        "type": "object",
+        "properties": {
+          "selfie": {
+            "type": "string",
+            "description": "Key to access the selfie image (if relevant) for this verification"
+          },
+          "documentFront": {
+            "type": "string",
+            "description": "Key to access the document front image (if relevant) for this verification"
+          },
+          "documentBack": {
+            "type": "string",
+            "description": "Key to access the document back image (if relevant) for this verification"
+          },
+          "documentPortrait": {
+            "type": "string",
+            "description": "Key to access the document portrait image (if relevant and available) for this verification.\r\n            \r\nSpecifically, this is a cropped version of the document front image which includes only the portrait on the document."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Attachment Access Keys for attachments (eg document / selfie images)"
       },
       "CancelSessionResponse": {
         "required": [
@@ -445,12 +772,28 @@
       "CreateSessionRequest": {
         "type": "object",
         "properties": {
-          "fields": {
+          "direct": {
+            "type": "boolean",
+            "description": "Whether to create this Session in Direct mode.\r\n            \r\nDirect mode is used to execute a verification against a specific identity provider.\r\nUsers will not be shown the Connect Widget; therefore, reuse of Connect credentials, selection of an identity provider, and saving a verification for future reuse\r\nare not available to the end user in direct mode.\r\n            \r\nSessions created in direct mode must be created with a `RedirectUrl` specified, and cannot be invoked using the frontend SDK at this time."
+          },
+          "redirectUrl": {
+            "type": "string",
+            "description": "The URL to redirect to after the user has completed the identity verification process.\r\n            \r\nIf `Direct` is set to `true`, this field is required."
+          },
+          "providers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The list of allowed identity providers. If not specified, all available providers will be allowed.\r\n            \r\nIf `Direct` is `true`, this field must be set, and must have only a single entry.\r\nIf `Direct` is not specified or is `false`, this field may have any number of entries."
+          },
+          "disclosedFields": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/DisclosedFieldsRequest"
               }
-            ]
+            ],
+            "description": "Specific identity attributes to request. If not provided, all available attributes will be requested."
           }
         }
       },
@@ -465,7 +808,13 @@
               {
                 "$ref": "#/components/schemas/Session"
               }
-            ]
+            ],
+            "description": "The created Acceptance Session"
+          },
+          "launchUrl": {
+            "type": "string",
+            "description": "The URL that should be used to invoke the Acceptance Session on your user's device.\r\n            \r\nIf the Session was created in `direct` mode, you should redirect your user's browser to this URL. The frontend SDK cannot presently be used to\r\ninvoke direct mode Sessions.\r\n            \r\nIf the Session was not created in `direct` mode, you should pass this URL to your user's frontend and use the frontend SDK to invoke the Session.\r\n            \r\nThis URL is sensitive and as such can only be obtained once. If you need to obtain it again, you will need to create a new Acceptance Session.",
+            "example": "https://connect.trinsic.id/api/session/launch?clientToken=..."
           }
         },
         "additionalProperties": false
@@ -475,11 +824,15 @@
           "address",
           "country",
           "dateOfBirth",
+          "documentBack",
+          "documentFront",
+          "documentPortrait",
           "expirationDate",
           "familyName",
           "givenName",
           "idNumber",
-          "issueDate"
+          "issueDate",
+          "selfie"
         ],
         "type": "object",
         "properties": {
@@ -505,6 +858,18 @@
             "type": "boolean"
           },
           "expirationDate": {
+            "type": "boolean"
+          },
+          "documentFront": {
+            "type": "boolean"
+          },
+          "documentBack": {
+            "type": "boolean"
+          },
+          "documentPortrait": {
+            "type": "boolean"
+          },
+          "selfie": {
             "type": "boolean"
           }
         },
@@ -536,6 +901,18 @@
           },
           "expirationDate": {
             "type": "boolean"
+          },
+          "documentFront": {
+            "type": "boolean"
+          },
+          "documentBack": {
+            "type": "boolean"
+          },
+          "documentPortrait": {
+            "type": "boolean"
+          },
+          "selfie": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -557,9 +934,41 @@
           },
           "issuingCountry": {
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExchangeResultsKeyRequest": {
+        "required": [
+          "resultsAccessKey"
+        ],
+        "type": "object",
+        "properties": {
+          "resultsAccessKey": {
+            "type": "string",
+            "description": "The Results Access Key to exchange"
+          }
+        }
+      },
+      "ExchangeResultsKeyResponse": {
+        "required": [
+          "session"
+        ],
+        "type": "object",
+        "properties": {
+          "session": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Session"
+              }
+            ]
           },
-          "portrait": {
-            "type": "string"
+          "identityData": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IdentityData"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -576,7 +985,7 @@
         },
         "additionalProperties": false
       },
-      "GetSessionResponseV1": {
+      "GetSessionResponse": {
         "required": [
           "session"
         ],
@@ -592,36 +1001,91 @@
         },
         "additionalProperties": false
       },
-      "IDVSessionState": {
-        "enum": [
-          "IdvCreated",
-          "IdvInitiated",
-          "IdvAuthenticating",
-          "IdvInProgress",
-          "IdvSuccess",
-          "IdvFailed"
-        ],
-        "type": "string"
-      },
       "IdentityData": {
         "type": "object",
         "properties": {
-          "originatingIntegrationId": {
-            "type": "string"
+          "originatingProviderId": {
+            "type": "string",
+            "description": "The ID of the integration from which this data originated (eg \"yoti\", \"clear\")"
           },
           "person": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/PersonData"
               }
-            ]
+            ],
+            "description": "Identity data of the individual who was verified"
           },
           "document": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/DocumentData"
               }
-            ]
+            ],
+            "description": "Identity data of the document involved in verification, if relevant"
+          },
+          "attachments": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Attachments"
+              }
+            ],
+            "description": "Access keys for attachments (eg document/selfie images)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IdentityLookupResponse": {
+        "required": [
+          "identityInNetwork"
+        ],
+        "type": "object",
+        "properties": {
+          "identityInNetwork": {
+            "type": "boolean",
+            "description": "Whether the given phone number is known to have an identity in the network."
+          }
+        },
+        "additionalProperties": false
+      },
+      "Integration": {
+        "required": [
+          "id",
+          "logoUrl",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the integration",
+            "example": "yoti | clear | ..."
+          },
+          "name": {
+            "type": "string",
+            "description": "The friendly, human-readable name of the integration",
+            "example": "Yoti | CLEAR | ..."
+          },
+          "logoUrl": {
+            "type": "string",
+            "description": "A URL pointing to the integration's logo"
+          }
+        },
+        "additionalProperties": false,
+        "description": "An Integration that can be specified when creating a `VerificationSession`"
+      },
+      "ListProvidersResponse": {
+        "required": [
+          "integrations"
+        ],
+        "type": "object",
+        "properties": {
+          "integrations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Integration"
+            },
+            "description": "The list of integrations available to your account"
           }
         },
         "additionalProperties": false
@@ -642,10 +1106,14 @@
           },
           "total": {
             "type": "integer",
-            "format": "int32"
+            "description": "The total number of sessions tied to your account",
+            "format": "int32",
+            "example": 101
           },
           "more": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Whether there are additional pages of sessions to retrieve",
+            "example": true
           }
         },
         "additionalProperties": false
@@ -661,16 +1129,24 @@
         "type": "object",
         "properties": {
           "givenName": {
-            "type": "string"
+            "type": "string",
+            "description": "Given (first) name of the individual",
+            "example": "John"
           },
           "familyName": {
-            "type": "string"
+            "type": "string",
+            "description": "Family (last) name of the individual",
+            "example": "Doe"
           },
           "middleName": {
-            "type": "string"
+            "type": "string",
+            "description": "Middle name of the individual",
+            "example": "Jacob"
           },
           "fullName": {
-            "type": "string"
+            "type": "string",
+            "description": "The individual's full name as a single string.\r\n            \r\nUseful for names which do not fit into a \"first middle last\" structure.",
+            "example": "John Jacob de Doe"
           },
           "nationality": {
             "type": "string"
@@ -686,18 +1162,20 @@
               {
                 "$ref": "#/components/schemas/Address"
               }
-            ]
+            ],
+            "description": "Address information for an individual"
           },
           "dateOfBirth": {
             "type": "string"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Identity information for the individual being verified"
       },
       "Session": {
         "required": [
-          "clientToken",
           "created",
+          "disclosedFields",
           "id",
           "state",
           "updated",
@@ -706,39 +1184,52 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
-          },
-          "clientToken": {
-            "type": "string"
+            "type": "string",
+            "example": "urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec"
           },
           "state": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/IDVSessionState"
+                "$ref": "#/components/schemas/SessionState"
               }
-            ]
+            ],
+            "description": "The state of the session"
           },
           "failCode": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/SessionFailCode"
               }
-            ]
+            ],
+            "description": "If the session is in state `IdvFailed`, this field contains the reason for failure."
           },
           "verification": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Verification"
               }
-            ]
+            ],
+            "description": "The underlying verification for this Session"
+          },
+          "disclosedFields": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DisclosedFields"
+              }
+            ],
+            "description": "The fields that were requested to be disclosed when the Session was created"
           },
           "created": {
             "type": "integer",
-            "format": "int64"
+            "description": "The unix timestamp, in seconds, when this session was created",
+            "format": "int64",
+            "example": 1722526411
           },
           "updated": {
             "type": "integer",
-            "format": "int64"
+            "description": "The unix timestamp, in seconds, when this session's state last changed",
+            "format": "int64",
+            "example": 1722526722
           }
         },
         "additionalProperties": false
@@ -751,7 +1242,7 @@
           "SessionFailAuthentication",
           "SessionFailExpired",
           "SessionFailUserCanceled",
-          "SessionFailRpcCanceled"
+          "SessionFailRpCanceled"
         ],
         "type": "string"
       },
@@ -760,6 +1251,17 @@
           "Created",
           "Updated",
           "State"
+        ],
+        "type": "string"
+      },
+      "SessionState": {
+        "enum": [
+          "IdvCreated",
+          "IdvInitiated",
+          "IdvAuthenticating",
+          "IdvInProgress",
+          "IdvSuccess",
+          "IdvFailed"
         ],
         "type": "string"
       },
@@ -783,55 +1285,23 @@
         "additionalProperties": false
       },
       "Verification": {
-        "required": [
-          "disclosedFields",
-          "id",
-          "reused",
-          "state",
-          "updated"
-        ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/VerificationState"
-              }
-            ]
+          "provider": {
+            "type": "string",
+            "description": "The identity provider that was used to perform the Verification, if any"
           },
           "failCode": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/VerificationFailCode"
               }
-            ]
-          },
-          "reused": {
-            "type": "boolean"
-          },
-          "updated": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "disclosedFields": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DisclosedFields"
-              }
-            ]
-          },
-          "identityData": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/IdentityData"
-              }
-            ]
+            ],
+            "description": "If the Verification is in state `VerificationFailed`, this field contains the reason for failure"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "A Verification contained within a Session"
       },
       "VerificationFailCode": {
         "enum": [
@@ -840,14 +1310,6 @@
           "VerificationFailInvalidImage",
           "VerificationFailInauthentic",
           "VerificationFailUnsupportedDocument"
-        ],
-        "type": "string"
-      },
-      "VerificationState": {
-        "enum": [
-          "VerificationPending",
-          "VerificationSuccess",
-          "VerificationFailed"
         ],
         "type": "string"
       }
