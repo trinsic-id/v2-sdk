@@ -67,6 +67,30 @@ export interface DisclosedFields {
      * @memberof DisclosedFields
      */
     expirationDate: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFields
+     */
+    documentFront: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFields
+     */
+    documentBack: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFields
+     */
+    documentPortrait: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFields
+     */
+    selfie: boolean;
 }
 
 /**
@@ -88,6 +112,16 @@ export function instanceOfDisclosedFields(
         return false;
     if (!("expirationDate" in value) || value["expirationDate"] === undefined)
         return false;
+    if (!("documentFront" in value) || value["documentFront"] === undefined)
+        return false;
+    if (!("documentBack" in value) || value["documentBack"] === undefined)
+        return false;
+    if (
+        !("documentPortrait" in value) ||
+        value["documentPortrait"] === undefined
+    )
+        return false;
+    if (!("selfie" in value) || value["selfie"] === undefined) return false;
     return true;
 }
 
@@ -111,6 +145,10 @@ export function DisclosedFieldsFromJSONTyped(
         country: json["country"],
         issueDate: json["issueDate"],
         expirationDate: json["expirationDate"],
+        documentFront: json["documentFront"],
+        documentBack: json["documentBack"],
+        documentPortrait: json["documentPortrait"],
+        selfie: json["selfie"],
     };
 }
 
@@ -127,5 +165,9 @@ export function DisclosedFieldsToJSON(value?: DisclosedFields | null): any {
         country: value["country"],
         issueDate: value["issueDate"],
         expirationDate: value["expirationDate"],
+        documentFront: value["documentFront"],
+        documentBack: value["documentBack"],
+        documentPortrait: value["documentPortrait"],
+        selfie: value["selfie"],
     };
 }

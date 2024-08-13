@@ -16,7 +16,7 @@
  *
  * @export
  */
-export const IDVSessionState = {
+export const SessionState = {
     IdvCreated: "IdvCreated",
     IdvInitiated: "IdvInitiated",
     IdvAuthenticating: "IdvAuthenticating",
@@ -24,15 +24,12 @@ export const IDVSessionState = {
     IdvSuccess: "IdvSuccess",
     IdvFailed: "IdvFailed",
 } as const;
-export type IDVSessionState =
-    (typeof IDVSessionState)[keyof typeof IDVSessionState];
+export type SessionState = (typeof SessionState)[keyof typeof SessionState];
 
-export function instanceOfIDVSessionState(value: any): boolean {
-    for (const key in IDVSessionState) {
-        if (Object.prototype.hasOwnProperty.call(IDVSessionState, key)) {
-            if (
-                IDVSessionState[key as keyof typeof IDVSessionState] === value
-            ) {
+export function instanceOfSessionState(value: any): boolean {
+    for (const key in SessionState) {
+        if (Object.prototype.hasOwnProperty.call(SessionState, key)) {
+            if (SessionState[key as keyof typeof SessionState] === value) {
                 return true;
             }
         }
@@ -40,17 +37,17 @@ export function instanceOfIDVSessionState(value: any): boolean {
     return false;
 }
 
-export function IDVSessionStateFromJSON(json: any): IDVSessionState {
-    return IDVSessionStateFromJSONTyped(json, false);
+export function SessionStateFromJSON(json: any): SessionState {
+    return SessionStateFromJSONTyped(json, false);
 }
 
-export function IDVSessionStateFromJSONTyped(
+export function SessionStateFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): IDVSessionState {
-    return json as IDVSessionState;
+): SessionState {
+    return json as SessionState;
 }
 
-export function IDVSessionStateToJSON(value?: IDVSessionState | null): any {
+export function SessionStateToJSON(value?: SessionState | null): any {
     return value as any;
 }

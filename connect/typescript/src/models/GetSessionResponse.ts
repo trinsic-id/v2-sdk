@@ -23,35 +23,35 @@ import {
 /**
  *
  * @export
- * @interface GetSessionResponseV1
+ * @interface GetSessionResponse
  */
-export interface GetSessionResponseV1 {
+export interface GetSessionResponse {
     /**
      *
      * @type {Session}
-     * @memberof GetSessionResponseV1
+     * @memberof GetSessionResponse
      */
     session: Session;
 }
 
 /**
- * Check if a given object implements the GetSessionResponseV1 interface.
+ * Check if a given object implements the GetSessionResponse interface.
  */
-export function instanceOfGetSessionResponseV1(
+export function instanceOfGetSessionResponse(
     value: object,
-): value is GetSessionResponseV1 {
+): value is GetSessionResponse {
     if (!("session" in value) || value["session"] === undefined) return false;
     return true;
 }
 
-export function GetSessionResponseV1FromJSON(json: any): GetSessionResponseV1 {
-    return GetSessionResponseV1FromJSONTyped(json, false);
+export function GetSessionResponseFromJSON(json: any): GetSessionResponse {
+    return GetSessionResponseFromJSONTyped(json, false);
 }
 
-export function GetSessionResponseV1FromJSONTyped(
+export function GetSessionResponseFromJSONTyped(
     json: any,
     ignoreDiscriminator: boolean,
-): GetSessionResponseV1 {
+): GetSessionResponse {
     if (json == null) {
         return json;
     }
@@ -60,8 +60,8 @@ export function GetSessionResponseV1FromJSONTyped(
     };
 }
 
-export function GetSessionResponseV1ToJSON(
-    value?: GetSessionResponseV1 | null,
+export function GetSessionResponseToJSON(
+    value?: GetSessionResponse | null,
 ): any {
     if (value == null) {
         return value;
