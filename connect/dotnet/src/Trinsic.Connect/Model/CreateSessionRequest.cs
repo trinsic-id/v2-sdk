@@ -23,7 +23,7 @@ public partial class CreateSessionRequest
     /// <summary>
     /// Initializes a new instance of the <see cref="CreateSessionRequest" /> class.
     /// </summary>
-    /// <param name="fields">fields.</param>
+    /// <param name="fields">Specific identity attributes to request. If not provided, all available attributes will be requested..</param>
     public CreateSessionRequest(DisclosedFieldsRequest fields = default(DisclosedFieldsRequest))
     {
         Fields = fields;
@@ -31,8 +31,9 @@ public partial class CreateSessionRequest
     }
 
     /// <summary>
-    /// Gets or Sets Fields
+    /// Specific identity attributes to request. If not provided, all available attributes will be requested.
     /// </summary>
+    /// <value>Specific identity attributes to request. If not provided, all available attributes will be requested.</value>
     [DataMember(Name = "fields", EmitDefaultValue = false)]
     public DisclosedFieldsRequest Fields { get; set; }
 

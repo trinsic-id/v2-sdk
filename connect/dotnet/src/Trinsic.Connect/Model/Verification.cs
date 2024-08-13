@@ -15,21 +15,16 @@ using Newtonsoft.Json;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// Verification
+/// A Verification contained within a Session
 /// </summary>
 [DataContract(Name = "Verification")]
 public partial class Verification
 {
 
     /// <summary>
-    /// Gets or Sets State
+    /// If the Verification is in state &#x60;VerificationFailed&#x60;, this field contains the reason for failure
     /// </summary>
-    [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-    public VerificationState State { get; set; }
-
-    /// <summary>
-    /// Gets or Sets FailCode
-    /// </summary>
+    /// <value>If the Verification is in state &#x60;VerificationFailed&#x60;, this field contains the reason for failure</value>
     [DataMember(Name = "failCode", EmitDefaultValue = false)]
     public VerificationFailCode? FailCode { get; set; }
     /// <summary>
@@ -40,51 +35,36 @@ public partial class Verification
     /// <summary>
     /// Initializes a new instance of the <see cref="Verification" /> class.
     /// </summary>
-    /// <param name="id">id (required).</param>
-    /// <param name="state">state (required).</param>
-    /// <param name="failCode">failCode.</param>
-    /// <param name="reused">reused (required).</param>
-    /// <param name="updated">updated (required).</param>
-    /// <param name="disclosedFields">disclosedFields (required).</param>
-    /// <param name="identityData">identityData.</param>
-    public Verification(string id = default(string), VerificationState state = default(VerificationState), VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), long updated = default(long), DisclosedFields disclosedFields = default(DisclosedFields), IdentityData identityData = default(IdentityData))
+    /// <param name="failCode">If the Verification is in state &#x60;VerificationFailed&#x60;, this field contains the reason for failure.</param>
+    /// <param name="reused">Whether the Verification was completed by reusing a Trinsic Connect identity credential (&#x60;true&#x60;) or via a fresh verification (&#x60;false&#x60;) (required).</param>
+    /// <param name="disclosedFields">The fields that were requested to be disclosed when the Session for this Verification was created (required).</param>
+    /// <param name="identityData">The results of the Verification. Only present if the Session&#39;s &#x60;state&#x60; is &#x60;IdvSuccess&#x60;..</param>
+    public Verification(VerificationFailCode? failCode = default(VerificationFailCode?), bool reused = default(bool), DisclosedFields disclosedFields = default(DisclosedFields), IdentityData identityData = default(IdentityData))
     {
-        Id = id ?? throw new ArgumentNullException("id is a required property for Verification and cannot be null");
-        State = state;
         Reused = reused;
-        Updated = updated;
         DisclosedFields = disclosedFields ?? throw new ArgumentNullException("disclosedFields is a required property for Verification and cannot be null");
         FailCode = failCode;
         IdentityData = identityData;
     }
 
     /// <summary>
-    /// Gets or Sets Id
+    /// Whether the Verification was completed by reusing a Trinsic Connect identity credential (&#x60;true&#x60;) or via a fresh verification (&#x60;false&#x60;)
     /// </summary>
-    [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-    public string Id { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Reused
-    /// </summary>
+    /// <value>Whether the Verification was completed by reusing a Trinsic Connect identity credential (&#x60;true&#x60;) or via a fresh verification (&#x60;false&#x60;)</value>
     [DataMember(Name = "reused", IsRequired = true, EmitDefaultValue = true)]
     public bool Reused { get; set; }
 
     /// <summary>
-    /// Gets or Sets Updated
+    /// The fields that were requested to be disclosed when the Session for this Verification was created
     /// </summary>
-    [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
-    public long Updated { get; set; }
-
-    /// <summary>
-    /// Gets or Sets DisclosedFields
-    /// </summary>
+    /// <value>The fields that were requested to be disclosed when the Session for this Verification was created</value>
     [DataMember(Name = "disclosedFields", IsRequired = true, EmitDefaultValue = true)]
     public DisclosedFields DisclosedFields { get; set; }
 
     /// <summary>
-    /// Gets or Sets IdentityData
+    /// The results of the Verification. Only present if the Session&#39;s &#x60;state&#x60; is &#x60;IdvSuccess&#x60;.
     /// </summary>
+    /// <value>The results of the Verification. Only present if the Session&#39;s &#x60;state&#x60; is &#x60;IdvSuccess&#x60;.</value>
     [DataMember(Name = "identityData", EmitDefaultValue = false)]
     public IdentityData IdentityData { get; set; }
 
@@ -96,11 +76,8 @@ public partial class Verification
     {
         var sb = new StringBuilder();
         sb.Append("class Verification {\n");
-        sb.Append("  Id: ").Append(Id).Append("\n");
-        sb.Append("  State: ").Append(State).Append("\n");
         sb.Append("  FailCode: ").Append(FailCode).Append("\n");
         sb.Append("  Reused: ").Append(Reused).Append("\n");
-        sb.Append("  Updated: ").Append(Updated).Append("\n");
         sb.Append("  DisclosedFields: ").Append(DisclosedFields).Append("\n");
         sb.Append("  IdentityData: ").Append(IdentityData).Append("\n");
         sb.Append("}\n");

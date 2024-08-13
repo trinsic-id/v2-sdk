@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **IssueDate** | **string** |  | [optional] 
 **ExpirationDate** | **string** |  | [optional] 
 **IssuingCountry** | **string** |  | [optional] 
-**Portrait** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,4 @@
-# Trinsic.Connect.Model.VerificationState
+# Trinsic.Connect.Model.VerificationSessionState
 
 ## Properties
 

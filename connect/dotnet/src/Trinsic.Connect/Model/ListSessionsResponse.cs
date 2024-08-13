@@ -30,8 +30,8 @@ public partial class ListSessionsResponse
     /// Initializes a new instance of the <see cref="ListSessionsResponse" /> class.
     /// </summary>
     /// <param name="sessions">sessions (required).</param>
-    /// <param name="total">total (required).</param>
-    /// <param name="more">more (required).</param>
+    /// <param name="total">The total number of sessions tied to your account (required).</param>
+    /// <param name="more">Whether there are additional pages of sessions to retrieve (required).</param>
     public ListSessionsResponse(List<Session> sessions = default(List<Session>), int total = default(int), bool more = default(bool))
     {
         Sessions = sessions ?? throw new ArgumentNullException("sessions is a required property for ListSessionsResponse and cannot be null");
@@ -46,14 +46,18 @@ public partial class ListSessionsResponse
     public List<Session> Sessions { get; set; }
 
     /// <summary>
-    /// Gets or Sets Total
+    /// The total number of sessions tied to your account
     /// </summary>
+    /// <value>The total number of sessions tied to your account</value>
+    /// <example>101</example>
     [DataMember(Name = "total", IsRequired = true, EmitDefaultValue = true)]
     public int Total { get; set; }
 
     /// <summary>
-    /// Gets or Sets More
+    /// Whether there are additional pages of sessions to retrieve
     /// </summary>
+    /// <value>Whether there are additional pages of sessions to retrieve</value>
+    /// <example>true</example>
     [DataMember(Name = "more", IsRequired = true, EmitDefaultValue = true)]
     public bool More { get; set; }
 

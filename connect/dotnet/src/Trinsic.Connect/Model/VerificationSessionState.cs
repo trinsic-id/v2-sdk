@@ -14,26 +14,32 @@ using Newtonsoft.Json.Converters;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// Defines VerificationState
+/// Defines VerificationSessionState
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
-public enum VerificationState
+public enum VerificationSessionState
 {
     /// <summary>
-    /// Enum VerificationPending for value: VerificationPending
+    /// Enum Pending for value: Pending
     /// </summary>
-    [EnumMember(Value = "VerificationPending")]
-    VerificationPending = 1,
+    [EnumMember(Value = "Pending")]
+    Pending = 1,
 
     /// <summary>
-    /// Enum VerificationSuccess for value: VerificationSuccess
+    /// Enum Processing for value: Processing
     /// </summary>
-    [EnumMember(Value = "VerificationSuccess")]
-    VerificationSuccess = 2,
+    [EnumMember(Value = "Processing")]
+    Processing = 2,
 
     /// <summary>
-    /// Enum VerificationFailed for value: VerificationFailed
+    /// Enum Success for value: Success
     /// </summary>
-    [EnumMember(Value = "VerificationFailed")]
-    VerificationFailed = 3
+    [EnumMember(Value = "Success")]
+    Success = 3,
+
+    /// <summary>
+    /// Enum Failed for value: Failed
+    /// </summary>
+    [EnumMember(Value = "Failed")]
+    Failed = 4
 }

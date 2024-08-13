@@ -13,7 +13,7 @@ using System.Text;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// Address
+/// Address information for an individual
 /// </summary>
 [DataContract(Name = "Address")]
 public partial class Address
@@ -28,7 +28,7 @@ public partial class Address
     /// <param name="state">state.</param>
     /// <param name="postalCode">postalCode.</param>
     /// <param name="country">country.</param>
-    /// <param name="fullAddress">fullAddress.</param>
+    /// <param name="fullAddress">The full address as a single string.</param>
     public Address(string line1 = default(string), string line2 = default(string), string line3 = default(string), string city = default(string), string state = default(string), string postalCode = default(string), string country = default(string), string fullAddress = default(string))
     {
         Line1 = line1;
@@ -84,8 +84,9 @@ public partial class Address
     public string Country { get; set; }
 
     /// <summary>
-    /// Gets or Sets FullAddress
+    /// The full address as a single string
     /// </summary>
+    /// <value>The full address as a single string</value>
     [DataMember(Name = "fullAddress", EmitDefaultValue = false)]
     public string FullAddress { get; set; }
 

@@ -46,24 +46,6 @@ public class VerificationTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Id'
-    /// </summary>
-    [Fact]
-    public void IdTest()
-    {
-        // TODO unit test for the property 'Id'
-    }
-
-    /// <summary>
-    /// Test the property 'State'
-    /// </summary>
-    [Fact]
-    public void StateTest()
-    {
-        // TODO unit test for the property 'State'
-    }
-
-    /// <summary>
     /// Test the property 'FailCode'
     /// </summary>
     [Fact]
@@ -79,15 +61,6 @@ public class VerificationTests : IDisposable
     public void ReusedTest()
     {
         // TODO unit test for the property 'Reused'
-    }
-
-    /// <summary>
-    /// Test the property 'Updated'
-    /// </summary>
-    [Fact]
-    public void UpdatedTest()
-    {
-        // TODO unit test for the property 'Updated'
     }
 
     /// <summary>

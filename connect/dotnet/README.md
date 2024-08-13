@@ -112,17 +112,18 @@ namespace Example
             // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
-            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var sessionId = "sessionId_example";  // string | 
+            var apiInstance = new AcceptanceApi(httpClient, config, httpClientHandler);
+            var createVerificationSessionRequest = new CreateVerificationSessionRequest?(); // CreateVerificationSessionRequest? |  (optional) 
 
             try
             {
-                CancelSessionResponse result = apiInstance.CancelSession(sessionId);
+                // Create a new `VerificationSession` for the given integration.
+                CreateVerificationSessionResponse result = apiInstance.CreateVerificationSession(createVerificationSessionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling SessionsApi.CancelSession: " + e.Message );
+                Debug.Print("Exception when calling AcceptanceApi.CreateVerificationSession: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -139,27 +140,44 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionsApi* | [**CancelSession**](docs/SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
-*SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
-*SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
-*SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-*SessionsApi* | [**RedactSession**](docs/SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
+*AcceptanceApi* | [**CreateVerificationSession**](docs/AcceptanceApi.md#createverificationsession) | **PUT** /api/v1/acceptance/verification-session | Create a new `VerificationSession` for the given integration.
+*AcceptanceApi* | [**ExchangeToken**](docs/AcceptanceApi.md#exchangetoken) | **POST** /api/v1/acceptance/verification-session/{verificationSessionId}/exchange | Exchange a token for the results of a `VerificationSession`
+*AcceptanceApi* | [**GetLinkedResource**](docs/AcceptanceApi.md#getlinkedresource) | **GET** /api/v1/acceptance/resource | Exchange a Resource Access Token (from `IdentityData.LinkedResources`) for the raw contents of the linked resource.                Use this API to fetch document (front, back, portrait) or other (selfie) images from a verification, if relevant.
+*AcceptanceApi* | [**ListIntegrations**](docs/AcceptanceApi.md#listintegrations) | **GET** /api/v1/acceptance/integrations | List all integrations available for use
+*IdentitiesApi* | [**CanReuseCredential**](docs/IdentitiesApi.md#canreusecredential) | **POST** /api/v1/identities/credentials/can-reuse | 
+*SessionsApi* | [**CancelSession**](docs/SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID
+*SessionsApi* | [**CreateSession**](docs/SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user's identity
+*SessionsApi* | [**ExchangeIdentityToken**](docs/SessionsApi.md#exchangeidentitytoken) | **POST** /api/v1/sessions/{sessionId}/exchange | Exchange an Identity Exchange Token for Identity Data
+*SessionsApi* | [**GetSession**](docs/SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID
+*SessionsApi* | [**ListSessions**](docs/SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account
+*SessionsApi* | [**RedactSession**](docs/SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
  - [Model.Address](docs/Address.md)
+ - [Model.CanReuseCredentialRequest](docs/CanReuseCredentialRequest.md)
+ - [Model.CanReuseCredentialResponse](docs/CanReuseCredentialResponse.md)
  - [Model.CancelSessionResponse](docs/CancelSessionResponse.md)
  - [Model.CreateSessionRequest](docs/CreateSessionRequest.md)
  - [Model.CreateSessionResponse](docs/CreateSessionResponse.md)
+ - [Model.CreateVerificationSessionRequest](docs/CreateVerificationSessionRequest.md)
+ - [Model.CreateVerificationSessionResponse](docs/CreateVerificationSessionResponse.md)
  - [Model.DisclosedFields](docs/DisclosedFields.md)
  - [Model.DisclosedFieldsRequest](docs/DisclosedFieldsRequest.md)
  - [Model.DocumentData](docs/DocumentData.md)
+ - [Model.ExchangeIdentityTokenRequest](docs/ExchangeIdentityTokenRequest.md)
+ - [Model.ExchangeIdentityTokenResponse](docs/ExchangeIdentityTokenResponse.md)
+ - [Model.ExchangeTokenRequest](docs/ExchangeTokenRequest.md)
+ - [Model.ExchangeTokenResponse](docs/ExchangeTokenResponse.md)
  - [Model.FailureMessage](docs/FailureMessage.md)
  - [Model.GetSessionResponseV1](docs/GetSessionResponseV1.md)
  - [Model.IDVSessionState](docs/IDVSessionState.md)
  - [Model.IdentityData](docs/IdentityData.md)
+ - [Model.Integration](docs/Integration.md)
+ - [Model.LinkedResources](docs/LinkedResources.md)
+ - [Model.ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [Model.ListSessionsResponse](docs/ListSessionsResponse.md)
  - [Model.OrderDirection](docs/OrderDirection.md)
  - [Model.PersonData](docs/PersonData.md)
@@ -169,7 +187,7 @@ Class | Method | HTTP request | Description
  - [Model.ValidationResult](docs/ValidationResult.md)
  - [Model.Verification](docs/Verification.md)
  - [Model.VerificationFailCode](docs/VerificationFailCode.md)
- - [Model.VerificationState](docs/VerificationState.md)
+ - [Model.VerificationSessionState](docs/VerificationSessionState.md)
 
 
 <a id="documentation-for-authorization"></a>
