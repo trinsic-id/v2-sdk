@@ -65,9 +65,6 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
-  if (value is IDVSessionState) {
-    return IDVSessionStateTypeTransformer().encode(value).toString();
-  }
   if (value is OrderDirection) {
     return OrderDirectionTypeTransformer().encode(value).toString();
   }
@@ -77,11 +74,11 @@ String parameterToString(dynamic value) {
   if (value is SessionOrdering) {
     return SessionOrderingTypeTransformer().encode(value).toString();
   }
+  if (value is SessionState) {
+    return SessionStateTypeTransformer().encode(value).toString();
+  }
   if (value is VerificationFailCode) {
     return VerificationFailCodeTypeTransformer().encode(value).toString();
-  }
-  if (value is VerificationState) {
-    return VerificationStateTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }

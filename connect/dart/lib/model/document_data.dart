@@ -18,7 +18,6 @@ class DocumentData {
     this.issueDate,
     this.expirationDate,
     this.issuingCountry,
-    this.portrait,
   });
 
   ///
@@ -61,14 +60,6 @@ class DocumentData {
   ///
   String? issuingCountry;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? portrait;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -77,8 +68,7 @@ class DocumentData {
           other.number == number &&
           other.issueDate == issueDate &&
           other.expirationDate == expirationDate &&
-          other.issuingCountry == issuingCountry &&
-          other.portrait == portrait;
+          other.issuingCountry == issuingCountry;
 
   @override
   int get hashCode =>
@@ -87,12 +77,11 @@ class DocumentData {
       (number == null ? 0 : number!.hashCode) +
       (issueDate == null ? 0 : issueDate!.hashCode) +
       (expirationDate == null ? 0 : expirationDate!.hashCode) +
-      (issuingCountry == null ? 0 : issuingCountry!.hashCode) +
-      (portrait == null ? 0 : portrait!.hashCode);
+      (issuingCountry == null ? 0 : issuingCountry!.hashCode);
 
   @override
   String toString() =>
-      'DocumentData[type=$type, number=$number, issueDate=$issueDate, expirationDate=$expirationDate, issuingCountry=$issuingCountry, portrait=$portrait]';
+      'DocumentData[type=$type, number=$number, issueDate=$issueDate, expirationDate=$expirationDate, issuingCountry=$issuingCountry]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -120,11 +109,6 @@ class DocumentData {
       json[r'issuingCountry'] = this.issuingCountry;
     } else {
       json[r'issuingCountry'] = null;
-    }
-    if (this.portrait != null) {
-      json[r'portrait'] = this.portrait;
-    } else {
-      json[r'portrait'] = null;
     }
     return json;
   }
@@ -155,7 +139,6 @@ class DocumentData {
         issueDate: mapValueOfType<String>(json, r'issueDate'),
         expirationDate: mapValueOfType<String>(json, r'expirationDate'),
         issuingCountry: mapValueOfType<String>(json, r'issuingCountry'),
-        portrait: mapValueOfType<String>(json, r'portrait'),
       );
     }
     return null;

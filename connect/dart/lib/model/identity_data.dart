@@ -13,19 +13,22 @@ part of openapi.api;
 class IdentityData {
   /// Returns a new [IdentityData] instance.
   IdentityData({
-    this.originatingIntegrationId,
+    this.originatingProviderId,
     this.person,
     this.document,
+    this.attachments,
   });
 
+  /// The ID of the integration from which this data originated (eg \"yoti\", \"clear\")
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? originatingIntegrationId;
+  String? originatingProviderId;
 
+  /// Identity data of the individual who was verified
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,6 +37,7 @@ class IdentityData {
   ///
   PersonData? person;
 
+  /// Identity data of the document involved in verification, if relevant
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -42,33 +46,42 @@ class IdentityData {
   ///
   DocumentData? document;
 
+  /// Access keys for attachments (eg document/selfie images)
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  Attachments? attachments;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is IdentityData &&
-          other.originatingIntegrationId == originatingIntegrationId &&
+          other.originatingProviderId == originatingProviderId &&
           other.person == person &&
-          other.document == document;
+          other.document == document &&
+          other.attachments == attachments;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (originatingIntegrationId == null
-          ? 0
-          : originatingIntegrationId!.hashCode) +
+      (originatingProviderId == null ? 0 : originatingProviderId!.hashCode) +
       (person == null ? 0 : person!.hashCode) +
-      (document == null ? 0 : document!.hashCode);
+      (document == null ? 0 : document!.hashCode) +
+      (attachments == null ? 0 : attachments!.hashCode);
 
   @override
   String toString() =>
-      'IdentityData[originatingIntegrationId=$originatingIntegrationId, person=$person, document=$document]';
+      'IdentityData[originatingProviderId=$originatingProviderId, person=$person, document=$document, attachments=$attachments]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.originatingIntegrationId != null) {
-      json[r'originatingIntegrationId'] = this.originatingIntegrationId;
+    if (this.originatingProviderId != null) {
+      json[r'originatingProviderId'] = this.originatingProviderId;
     } else {
-      json[r'originatingIntegrationId'] = null;
+      json[r'originatingProviderId'] = null;
     }
     if (this.person != null) {
       json[r'person'] = this.person;
@@ -79,6 +92,11 @@ class IdentityData {
       json[r'document'] = this.document;
     } else {
       json[r'document'] = null;
+    }
+    if (this.attachments != null) {
+      json[r'attachments'] = this.attachments;
+    } else {
+      json[r'attachments'] = null;
     }
     return json;
   }
@@ -104,10 +122,11 @@ class IdentityData {
       }());
 
       return IdentityData(
-        originatingIntegrationId:
-            mapValueOfType<String>(json, r'originatingIntegrationId'),
+        originatingProviderId:
+            mapValueOfType<String>(json, r'originatingProviderId'),
         person: PersonData.fromJson(json[r'person']),
         document: DocumentData.fromJson(json[r'document']),
+        attachments: Attachments.fromJson(json[r'attachments']),
       );
     }
     return null;

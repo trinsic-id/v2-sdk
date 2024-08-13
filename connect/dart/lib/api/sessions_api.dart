@@ -16,7 +16,10 @@ class SessionsApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/cancel' operation and returns the [Response].
+  /// Cancel a Session by its ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
@@ -47,6 +50,8 @@ class SessionsApi {
     );
   }
 
+  /// Cancel a Session by its ID
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
@@ -72,7 +77,10 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions' operation and returns the [Response].
+  /// Create a Session to verify a user's identity
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -106,6 +114,8 @@ class SessionsApi {
     );
   }
 
+  /// Create a Session to verify a user's identity
+  ///
   /// Parameters:
   ///
   /// * [CreateSessionRequest] createSessionRequest:
@@ -131,10 +141,90 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/v1/sessions/{sessionId}' operation and returns the [Response].
+  /// Exchange a Results Access Key for Identity Data
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
+  ///
+  ///
+  /// * [ExchangeResultsKeyRequest] exchangeResultsKeyRequest:
+  ///
+  Future<Response> exchangeResultsKeyWithHttpInfo(
+    String sessionId, {
+    ExchangeResultsKeyRequest? exchangeResultsKeyRequest,
+  }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/api/v1/sessions/{sessionId}/results'
+        .replaceAll('{sessionId}', sessionId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = exchangeResultsKeyRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[
+      'application/json',
+      'text/json',
+      'application/*+json'
+    ];
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Exchange a Results Access Key for Identity Data
+  ///
+  /// Parameters:
+  ///
+  /// * [String] sessionId (required):
+  ///
+  ///
+  /// * [ExchangeResultsKeyRequest] exchangeResultsKeyRequest:
+  ///
+  Future<ExchangeResultsKeyResponse?> exchangeResultsKey(
+    String sessionId, {
+    ExchangeResultsKeyRequest? exchangeResultsKeyRequest,
+  }) async {
+    final response = await exchangeResultsKeyWithHttpInfo(
+      sessionId,
+      exchangeResultsKeyRequest: exchangeResultsKeyRequest,
+    );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'ExchangeResultsKeyResponse',
+      ) as ExchangeResultsKeyResponse;
+    }
+    return null;
+  }
+
+  /// Get a Session by its ID
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] sessionId (required):
+  ///
   Future<Response> getSessionWithHttpInfo(
     String sessionId,
   ) async {
@@ -162,10 +252,13 @@ class SessionsApi {
     );
   }
 
+  /// Get a Session by its ID
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
-  Future<GetSessionResponseV1?> getSession(
+  ///
+  Future<GetSessionResponse?> getSession(
     String sessionId,
   ) async {
     final response = await getSessionWithHttpInfo(
@@ -181,22 +274,28 @@ class SessionsApi {
         response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(
         await _decodeBodyBytes(response),
-        'GetSessionResponseV1',
-      ) as GetSessionResponseV1;
+        'GetSessionResponse',
+      ) as GetSessionResponse;
     }
     return null;
   }
 
-  /// Performs an HTTP 'GET /api/v1/sessions' operation and returns the [Response].
+  /// List Sessions created by your account
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [SessionOrdering] orderBy:
+  ///   The field by which sessions should be ordered
   ///
   /// * [OrderDirection] orderDirection:
   ///
   /// * [int] pageSize:
+  ///   The number of items to return per page -- must be between `1` and `10`
   ///
   /// * [int] page:
+  ///   The page number to return -- starts at `1`
   Future<Response> listSessionsWithHttpInfo({
     SessionOrdering? orderBy,
     OrderDirection? orderDirection,
@@ -239,15 +338,20 @@ class SessionsApi {
     );
   }
 
+  /// List Sessions created by your account
+  ///
   /// Parameters:
   ///
   /// * [SessionOrdering] orderBy:
+  ///   The field by which sessions should be ordered
   ///
   /// * [OrderDirection] orderDirection:
   ///
   /// * [int] pageSize:
+  ///   The number of items to return per page -- must be between `1` and `10`
   ///
   /// * [int] page:
+  ///   The page number to return -- starts at `1`
   Future<ListSessionsResponse?> listSessions({
     SessionOrdering? orderBy,
     OrderDirection? orderDirection,
@@ -276,7 +380,10 @@ class SessionsApi {
     return null;
   }
 
-  /// Performs an HTTP 'POST /api/v1/sessions/{sessionId}/redact' operation and returns the [Response].
+  /// Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):
@@ -307,6 +414,8 @@ class SessionsApi {
     );
   }
 
+  /// Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
+  ///
   /// Parameters:
   ///
   /// * [String] sessionId (required):

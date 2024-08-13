@@ -14,26 +14,45 @@ class CreateSessionResponse {
   /// Returns a new [CreateSessionResponse] instance.
   CreateSessionResponse({
     required this.session,
+    this.launchUrl,
   });
 
+  /// The created Acceptance Session
   Session session;
+
+  /// The URL that should be used to invoke the Acceptance Session on your user's device.                If the Session was created in `direct` mode, you should redirect your user's browser to this URL. The frontend SDK cannot presently be used to  invoke direct mode Sessions.                If the Session was not created in `direct` mode, you should pass this URL to your user's frontend and use the frontend SDK to invoke the Session.                This URL is sensitive and as such can only be obtained once. If you need to obtain it again, you will need to create a new Acceptance Session.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? launchUrl;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CreateSessionResponse && other.session == session;
+      other is CreateSessionResponse &&
+          other.session == session &&
+          other.launchUrl == launchUrl;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (session.hashCode);
+      (session.hashCode) + (launchUrl == null ? 0 : launchUrl!.hashCode);
 
   @override
-  String toString() => 'CreateSessionResponse[session=$session]';
+  String toString() =>
+      'CreateSessionResponse[session=$session, launchUrl=$launchUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'session'] = this.session;
+    if (this.launchUrl != null) {
+      json[r'launchUrl'] = this.launchUrl;
+    } else {
+      json[r'launchUrl'] = null;
+    }
     return json;
   }
 
@@ -59,6 +78,7 @@ class CreateSessionResponse {
 
       return CreateSessionResponse(
         session: Session.fromJson(json[r'session'])!,
+        launchUrl: mapValueOfType<String>(json, r'launchUrl'),
       );
     }
     return null;

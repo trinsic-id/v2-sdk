@@ -53,4 +53,13 @@ public class CreateSessionResponseTests : IDisposable
     {
         // TODO unit test for the property 'Session'
     }
+
+    /// <summary>
+    /// Test the property 'LaunchUrl'
+    /// </summary>
+    [Fact]
+    public void LaunchUrlTest()
+    {
+        // TODO unit test for the property 'LaunchUrl'
+    }
 }

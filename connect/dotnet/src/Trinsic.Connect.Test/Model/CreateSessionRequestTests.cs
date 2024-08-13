@@ -46,11 +46,38 @@ public class CreateSessionRequestTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Fields'
+    /// Test the property 'Direct'
     /// </summary>
     [Fact]
-    public void FieldsTest()
+    public void DirectTest()
     {
-        // TODO unit test for the property 'Fields'
+        // TODO unit test for the property 'Direct'
+    }
+
+    /// <summary>
+    /// Test the property 'RedirectUrl'
+    /// </summary>
+    [Fact]
+    public void RedirectUrlTest()
+    {
+        // TODO unit test for the property 'RedirectUrl'
+    }
+
+    /// <summary>
+    /// Test the property 'Providers'
+    /// </summary>
+    [Fact]
+    public void ProvidersTest()
+    {
+        // TODO unit test for the property 'Providers'
+    }
+
+    /// <summary>
+    /// Test the property 'DisclosedFields'
+    /// </summary>
+    [Fact]
+    public void DisclosedFieldsTest()
+    {
+        // TODO unit test for the property 'DisclosedFields'
     }
 }

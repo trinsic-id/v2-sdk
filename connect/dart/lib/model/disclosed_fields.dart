@@ -21,6 +21,10 @@ class DisclosedFields {
     required this.country,
     required this.issueDate,
     required this.expirationDate,
+    required this.documentFront,
+    required this.documentBack,
+    required this.documentPortrait,
+    required this.selfie,
   });
 
   bool idNumber;
@@ -39,6 +43,14 @@ class DisclosedFields {
 
   bool expirationDate;
 
+  bool documentFront;
+
+  bool documentBack;
+
+  bool documentPortrait;
+
+  bool selfie;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -50,7 +62,11 @@ class DisclosedFields {
           other.dateOfBirth == dateOfBirth &&
           other.country == country &&
           other.issueDate == issueDate &&
-          other.expirationDate == expirationDate;
+          other.expirationDate == expirationDate &&
+          other.documentFront == documentFront &&
+          other.documentBack == documentBack &&
+          other.documentPortrait == documentPortrait &&
+          other.selfie == selfie;
 
   @override
   int get hashCode =>
@@ -62,11 +78,15 @@ class DisclosedFields {
       (dateOfBirth.hashCode) +
       (country.hashCode) +
       (issueDate.hashCode) +
-      (expirationDate.hashCode);
+      (expirationDate.hashCode) +
+      (documentFront.hashCode) +
+      (documentBack.hashCode) +
+      (documentPortrait.hashCode) +
+      (selfie.hashCode);
 
   @override
   String toString() =>
-      'DisclosedFields[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'DisclosedFields[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate, documentFront=$documentFront, documentBack=$documentBack, documentPortrait=$documentPortrait, selfie=$selfie]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -78,6 +98,10 @@ class DisclosedFields {
     json[r'country'] = this.country;
     json[r'issueDate'] = this.issueDate;
     json[r'expirationDate'] = this.expirationDate;
+    json[r'documentFront'] = this.documentFront;
+    json[r'documentBack'] = this.documentBack;
+    json[r'documentPortrait'] = this.documentPortrait;
+    json[r'selfie'] = this.selfie;
     return json;
   }
 
@@ -110,6 +134,10 @@ class DisclosedFields {
         country: mapValueOfType<bool>(json, r'country')!,
         issueDate: mapValueOfType<bool>(json, r'issueDate')!,
         expirationDate: mapValueOfType<bool>(json, r'expirationDate')!,
+        documentFront: mapValueOfType<bool>(json, r'documentFront')!,
+        documentBack: mapValueOfType<bool>(json, r'documentBack')!,
+        documentPortrait: mapValueOfType<bool>(json, r'documentPortrait')!,
+        selfie: mapValueOfType<bool>(json, r'selfie')!,
       );
     }
     return null;
@@ -174,5 +202,9 @@ class DisclosedFields {
     'country',
     'issueDate',
     'expirationDate',
+    'documentFront',
+    'documentBack',
+    'documentPortrait',
+    'selfie',
   };
 }

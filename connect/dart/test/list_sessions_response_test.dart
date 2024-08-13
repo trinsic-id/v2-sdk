@@ -21,11 +21,13 @@ void main() {
       // TODO
     });
 
+    // The total number of sessions tied to your account
     // int total
     test('to test the property `total`', () async {
       // TODO
     });
 
+    // Whether there are additional pages of sessions to retrieve
     // bool more
     test('to test the property `more`', () async {
       // TODO

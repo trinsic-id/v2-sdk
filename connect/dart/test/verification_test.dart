@@ -16,38 +16,15 @@ void main() {
   // final instance = Verification();
 
   group('test Verification', () {
-    // String id
-    test('to test the property `id`', () async {
+    // The identity provider that was used to perform the Verification, if any
+    // String provider
+    test('to test the property `provider`', () async {
       // TODO
     });
 
-    // VerificationState state
-    test('to test the property `state`', () async {
-      // TODO
-    });
-
+    // If the Verification is in state `VerificationFailed`, this field contains the reason for failure
     // VerificationFailCode failCode
     test('to test the property `failCode`', () async {
-      // TODO
-    });
-
-    // bool reused
-    test('to test the property `reused`', () async {
-      // TODO
-    });
-
-    // int updated
-    test('to test the property `updated`', () async {
-      // TODO
-    });
-
-    // DisclosedFields disclosedFields
-    test('to test the property `disclosedFields`', () async {
-      // TODO
-    });
-
-    // IdentityData identityData
-    test('to test the property `identityData`', () async {
       // TODO
     });
   });

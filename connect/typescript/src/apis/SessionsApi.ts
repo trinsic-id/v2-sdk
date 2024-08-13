@@ -17,8 +17,10 @@ import type {
     CancelSessionResponse,
     CreateSessionRequest,
     CreateSessionResponse,
+    ExchangeResultsKeyRequest,
+    ExchangeResultsKeyResponse,
     FailureMessage,
-    GetSessionResponseV1,
+    GetSessionResponse,
     ListSessionsResponse,
     OrderDirection,
     SessionOrdering,
@@ -31,10 +33,14 @@ import {
     CreateSessionRequestToJSON,
     CreateSessionResponseFromJSON,
     CreateSessionResponseToJSON,
+    ExchangeResultsKeyRequestFromJSON,
+    ExchangeResultsKeyRequestToJSON,
+    ExchangeResultsKeyResponseFromJSON,
+    ExchangeResultsKeyResponseToJSON,
     FailureMessageFromJSON,
     FailureMessageToJSON,
-    GetSessionResponseV1FromJSON,
-    GetSessionResponseV1ToJSON,
+    GetSessionResponseFromJSON,
+    GetSessionResponseToJSON,
     ListSessionsResponseFromJSON,
     ListSessionsResponseToJSON,
     OrderDirectionFromJSON,
@@ -51,6 +57,11 @@ export interface CancelSessionRequest {
 
 export interface CreateSessionOperationRequest {
     createSessionRequest?: CreateSessionRequest;
+}
+
+export interface ExchangeResultsKeyOperationRequest {
+    sessionId: string;
+    exchangeResultsKeyRequest?: ExchangeResultsKeyRequest;
 }
 
 export interface GetSessionRequest {
@@ -73,6 +84,7 @@ export interface RedactSessionRequest {
  */
 export class SessionsApi extends runtime.BaseAPI {
     /**
+     * Cancel a Session by its ID
      */
     async cancelSessionRaw(
         requestParameters: CancelSessionRequest,
@@ -116,6 +128,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Cancel a Session by its ID
      */
     async cancelSession(
         requestParameters: CancelSessionRequest,
@@ -129,6 +142,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSessionRaw(
         requestParameters: CreateSessionOperationRequest,
@@ -167,6 +181,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSession(
         requestParameters: CreateSessionOperationRequest = {},
@@ -180,11 +195,75 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Exchange a Results Access Key for Identity Data
+     */
+    async exchangeResultsKeyRaw(
+        requestParameters: ExchangeResultsKeyOperationRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<runtime.ApiResponse<ExchangeResultsKeyResponse>> {
+        if (requestParameters["sessionId"] == null) {
+            throw new runtime.RequiredError(
+                "sessionId",
+                'Required parameter "sessionId" was null or undefined when calling exchangeResultsKey().',
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters["Content-Type"] = "application/json";
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request(
+            {
+                path: `/api/v1/sessions/{sessionId}/results`.replace(
+                    `{${"sessionId"}}`,
+                    encodeURIComponent(String(requestParameters["sessionId"])),
+                ),
+                method: "POST",
+                headers: headerParameters,
+                query: queryParameters,
+                body: ExchangeResultsKeyRequestToJSON(
+                    requestParameters["exchangeResultsKeyRequest"],
+                ),
+            },
+            initOverrides,
+        );
+
+        return new runtime.JSONApiResponse(response, (jsonValue) =>
+            ExchangeResultsKeyResponseFromJSON(jsonValue),
+        );
+    }
+
+    /**
+     * Exchange a Results Access Key for Identity Data
+     */
+    async exchangeResultsKey(
+        requestParameters: ExchangeResultsKeyOperationRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<ExchangeResultsKeyResponse> {
+        const response = await this.exchangeResultsKeyRaw(
+            requestParameters,
+            initOverrides,
+        );
+        return await response.value();
+    }
+
+    /**
+     * Get a Session by its ID
      */
     async getSessionRaw(
         requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
-    ): Promise<runtime.ApiResponse<GetSessionResponseV1>> {
+    ): Promise<runtime.ApiResponse<GetSessionResponse>> {
         if (requestParameters["sessionId"] == null) {
             throw new runtime.RequiredError(
                 "sessionId",
@@ -218,16 +297,17 @@ export class SessionsApi extends runtime.BaseAPI {
         );
 
         return new runtime.JSONApiResponse(response, (jsonValue) =>
-            GetSessionResponseV1FromJSON(jsonValue),
+            GetSessionResponseFromJSON(jsonValue),
         );
     }
 
     /**
+     * Get a Session by its ID
      */
     async getSession(
         requestParameters: GetSessionRequest,
         initOverrides?: RequestInit | runtime.InitOverrideFunction,
-    ): Promise<GetSessionResponseV1> {
+    ): Promise<GetSessionResponse> {
         const response = await this.getSessionRaw(
             requestParameters,
             initOverrides,
@@ -236,6 +316,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessionsRaw(
         requestParameters: ListSessionsRequest,
@@ -286,6 +367,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessions(
         requestParameters: ListSessionsRequest = {},
@@ -299,6 +381,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session, removing all identity data from Trinsic\'s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
      */
     async redactSessionRaw(
         requestParameters: RedactSessionRequest,
@@ -340,6 +423,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session, removing all identity data from Trinsic\'s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
      */
     async redactSession(
         requestParameters: RedactSessionRequest,

@@ -25,6 +25,12 @@ import {
     PersonDataFromJSONTyped,
     PersonDataToJSON,
 } from "./PersonData";
+import type { Attachments } from "./Attachments";
+import {
+    AttachmentsFromJSON,
+    AttachmentsFromJSONTyped,
+    AttachmentsToJSON,
+} from "./Attachments";
 
 /**
  *
@@ -33,23 +39,29 @@ import {
  */
 export interface IdentityData {
     /**
-     *
+     * The ID of the integration from which this data originated (eg "yoti", "clear")
      * @type {string}
      * @memberof IdentityData
      */
-    originatingIntegrationId?: string;
+    originatingProviderId?: string;
     /**
-     *
+     * Identity data of the individual who was verified
      * @type {PersonData}
      * @memberof IdentityData
      */
     person?: PersonData;
     /**
-     *
+     * Identity data of the document involved in verification, if relevant
      * @type {DocumentData}
      * @memberof IdentityData
      */
     document?: DocumentData;
+    /**
+     * Access keys for attachments (eg document/selfie images)
+     * @type {Attachments}
+     * @memberof IdentityData
+     */
+    attachments?: Attachments;
 }
 
 /**
@@ -71,10 +83,10 @@ export function IdentityDataFromJSONTyped(
         return json;
     }
     return {
-        originatingIntegrationId:
-            json["originatingIntegrationId"] == null
+        originatingProviderId:
+            json["originatingProviderId"] == null
                 ? undefined
-                : json["originatingIntegrationId"],
+                : json["originatingProviderId"],
         person:
             json["person"] == null
                 ? undefined
@@ -83,6 +95,10 @@ export function IdentityDataFromJSONTyped(
             json["document"] == null
                 ? undefined
                 : DocumentDataFromJSON(json["document"]),
+        attachments:
+            json["attachments"] == null
+                ? undefined
+                : AttachmentsFromJSON(json["attachments"]),
     };
 }
 
@@ -91,8 +107,9 @@ export function IdentityDataToJSON(value?: IdentityData | null): any {
         return value;
     }
     return {
-        originatingIntegrationId: value["originatingIntegrationId"],
+        originatingProviderId: value["originatingProviderId"],
         person: PersonDataToJSON(value["person"]),
         document: DocumentDataToJSON(value["document"]),
+        attachments: AttachmentsToJSON(value["attachments"]),
     };
 }

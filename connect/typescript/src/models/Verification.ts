@@ -13,24 +13,6 @@
  */
 
 import { mapValues } from "../runtime";
-import type { DisclosedFields } from "./DisclosedFields";
-import {
-    DisclosedFieldsFromJSON,
-    DisclosedFieldsFromJSONTyped,
-    DisclosedFieldsToJSON,
-} from "./DisclosedFields";
-import type { VerificationState } from "./VerificationState";
-import {
-    VerificationStateFromJSON,
-    VerificationStateFromJSONTyped,
-    VerificationStateToJSON,
-} from "./VerificationState";
-import type { IdentityData } from "./IdentityData";
-import {
-    IdentityDataFromJSON,
-    IdentityDataFromJSONTyped,
-    IdentityDataToJSON,
-} from "./IdentityData";
 import type { VerificationFailCode } from "./VerificationFailCode";
 import {
     VerificationFailCodeFromJSON,
@@ -39,65 +21,29 @@ import {
 } from "./VerificationFailCode";
 
 /**
- *
+ * A Verification contained within a Session
  * @export
  * @interface Verification
  */
 export interface Verification {
     /**
-     *
+     * The identity provider that was used to perform the Verification, if any
      * @type {string}
      * @memberof Verification
      */
-    id: string;
+    provider?: string;
     /**
-     *
-     * @type {VerificationState}
-     * @memberof Verification
-     */
-    state: VerificationState;
-    /**
-     *
+     * If the Verification is in state `VerificationFailed`, this field contains the reason for failure
      * @type {VerificationFailCode}
      * @memberof Verification
      */
     failCode?: VerificationFailCode;
-    /**
-     *
-     * @type {boolean}
-     * @memberof Verification
-     */
-    reused: boolean;
-    /**
-     *
-     * @type {number}
-     * @memberof Verification
-     */
-    updated: number;
-    /**
-     *
-     * @type {DisclosedFields}
-     * @memberof Verification
-     */
-    disclosedFields: DisclosedFields;
-    /**
-     *
-     * @type {IdentityData}
-     * @memberof Verification
-     */
-    identityData?: IdentityData;
 }
 
 /**
  * Check if a given object implements the Verification interface.
  */
 export function instanceOfVerification(value: object): value is Verification {
-    if (!("id" in value) || value["id"] === undefined) return false;
-    if (!("state" in value) || value["state"] === undefined) return false;
-    if (!("reused" in value) || value["reused"] === undefined) return false;
-    if (!("updated" in value) || value["updated"] === undefined) return false;
-    if (!("disclosedFields" in value) || value["disclosedFields"] === undefined)
-        return false;
     return true;
 }
 
@@ -113,19 +59,11 @@ export function VerificationFromJSONTyped(
         return json;
     }
     return {
-        id: json["id"],
-        state: VerificationStateFromJSON(json["state"]),
+        provider: json["provider"] == null ? undefined : json["provider"],
         failCode:
             json["failCode"] == null
                 ? undefined
                 : VerificationFailCodeFromJSON(json["failCode"]),
-        reused: json["reused"],
-        updated: json["updated"],
-        disclosedFields: DisclosedFieldsFromJSON(json["disclosedFields"]),
-        identityData:
-            json["identityData"] == null
-                ? undefined
-                : IdentityDataFromJSON(json["identityData"]),
     };
 }
 
@@ -134,12 +72,7 @@ export function VerificationToJSON(value?: Verification | null): any {
         return value;
     }
     return {
-        id: value["id"],
-        state: VerificationStateToJSON(value["state"]),
+        provider: value["provider"],
         failCode: VerificationFailCodeToJSON(value["failCode"]),
-        reused: value["reused"],
-        updated: value["updated"],
-        disclosedFields: DisclosedFieldsToJSON(value["disclosedFields"]),
-        identityData: IdentityDataToJSON(value["identityData"]),
     };
 }

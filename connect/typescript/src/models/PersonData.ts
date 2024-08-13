@@ -21,31 +21,33 @@ import {
 } from "./Address";
 
 /**
- *
+ * Identity information for the individual being verified
  * @export
  * @interface PersonData
  */
 export interface PersonData {
     /**
-     *
+     * Given (first) name of the individual
      * @type {string}
      * @memberof PersonData
      */
     givenName?: string;
     /**
-     *
+     * Family (last) name of the individual
      * @type {string}
      * @memberof PersonData
      */
     familyName?: string;
     /**
-     *
+     * Middle name of the individual
      * @type {string}
      * @memberof PersonData
      */
     middleName?: string;
     /**
+     * The individual's full name as a single string.
      *
+     * Useful for names which do not fit into a "first middle last" structure.
      * @type {string}
      * @memberof PersonData
      */
@@ -69,7 +71,7 @@ export interface PersonData {
      */
     phoneNumber?: string;
     /**
-     *
+     * Address information for an individual
      * @type {Address}
      * @memberof PersonData
      */

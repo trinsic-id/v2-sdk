@@ -23,7 +23,7 @@ export const SessionFailCode = {
     SessionFailAuthentication: "SessionFailAuthentication",
     SessionFailExpired: "SessionFailExpired",
     SessionFailUserCanceled: "SessionFailUserCanceled",
-    SessionFailRpcCanceled: "SessionFailRpcCanceled",
+    SessionFailRpCanceled: "SessionFailRpCanceled",
 } as const;
 export type SessionFailCode =
     (typeof SessionFailCode)[keyof typeof SessionFailCode];

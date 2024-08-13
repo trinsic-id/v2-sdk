@@ -71,6 +71,19 @@ public class SessionsApiTests : IDisposable
     }
 
     /// <summary>
+    /// Test ExchangeResultsKey
+    /// </summary>
+    [Fact]
+    public void ExchangeResultsKeyTest()
+    {
+        // TODO uncomment below to test the method and replace null with proper value
+        //string sessionId = null;
+        //ExchangeResultsKeyRequest? exchangeResultsKeyRequest = null;
+        //var response = instance.ExchangeResultsKey(sessionId, exchangeResultsKeyRequest);
+        //Assert.IsType<ExchangeResultsKeyResponse>(response);
+    }
+
+    /// <summary>
     /// Test GetSession
     /// </summary>
     [Fact]
@@ -79,7 +92,7 @@ public class SessionsApiTests : IDisposable
         // TODO uncomment below to test the method and replace null with proper value
         //string sessionId = null;
         //var response = instance.GetSession(sessionId);
-        //Assert.IsType<GetSessionResponseV1>(response);
+        //Assert.IsType<GetSessionResponse>(response);
     }
 
     /// <summary>

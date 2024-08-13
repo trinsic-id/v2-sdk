@@ -67,6 +67,30 @@ export interface DisclosedFieldsRequest {
      * @memberof DisclosedFieldsRequest
      */
     expirationDate?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
+     */
+    documentFront?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
+     */
+    documentBack?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
+     */
+    documentPortrait?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof DisclosedFieldsRequest
+     */
+    selfie?: boolean;
 }
 
 /**
@@ -102,6 +126,15 @@ export function DisclosedFieldsRequestFromJSONTyped(
         issueDate: json["issueDate"] == null ? undefined : json["issueDate"],
         expirationDate:
             json["expirationDate"] == null ? undefined : json["expirationDate"],
+        documentFront:
+            json["documentFront"] == null ? undefined : json["documentFront"],
+        documentBack:
+            json["documentBack"] == null ? undefined : json["documentBack"],
+        documentPortrait:
+            json["documentPortrait"] == null
+                ? undefined
+                : json["documentPortrait"],
+        selfie: json["selfie"] == null ? undefined : json["selfie"],
     };
 }
 
@@ -120,5 +153,9 @@ export function DisclosedFieldsRequestToJSON(
         country: value["country"],
         issueDate: value["issueDate"],
         expirationDate: value["expirationDate"],
+        documentFront: value["documentFront"],
+        documentBack: value["documentBack"],
+        documentPortrait: value["documentPortrait"],
+        selfie: value["selfie"],
     };
 }

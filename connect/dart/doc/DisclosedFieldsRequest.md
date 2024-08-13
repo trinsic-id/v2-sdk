@@ -16,6 +16,10 @@ Name | Type | Description | Notes
 **country** | **bool** |  | [optional] 
 **issueDate** | **bool** |  | [optional] 
 **expirationDate** | **bool** |  | [optional] 
+**documentFront** | **bool** |  | [optional] 
+**documentBack** | **bool** |  | [optional] 
+**documentPortrait** | **bool** |  | [optional] 
+**selfie** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -14,20 +14,20 @@ class Session {
   /// Returns a new [Session] instance.
   Session({
     required this.id,
-    required this.clientToken,
     required this.state,
     this.failCode,
     required this.verification,
+    required this.disclosedFields,
     required this.created,
     required this.updated,
   });
 
   String id;
 
-  String clientToken;
+  /// The state of the session
+  SessionState state;
 
-  IDVSessionState state;
-
+  /// If the session is in state `IdvFailed`, this field contains the reason for failure.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,10 +36,16 @@ class Session {
   ///
   SessionFailCode? failCode;
 
+  /// The underlying verification for this Session
   Verification verification;
 
+  /// The fields that were requested to be disclosed when the Session was created
+  DisclosedFields disclosedFields;
+
+  /// The unix timestamp, in seconds, when this session was created
   int created;
 
+  /// The unix timestamp, in seconds, when this session's state last changed
   int updated;
 
   @override
@@ -47,10 +53,10 @@ class Session {
       identical(this, other) ||
       other is Session &&
           other.id == id &&
-          other.clientToken == clientToken &&
           other.state == state &&
           other.failCode == failCode &&
           other.verification == verification &&
+          other.disclosedFields == disclosedFields &&
           other.created == created &&
           other.updated == updated;
 
@@ -58,21 +64,20 @@ class Session {
   int get hashCode =>
       // ignore: unnecessary_parenthesis
       (id.hashCode) +
-      (clientToken.hashCode) +
       (state.hashCode) +
       (failCode == null ? 0 : failCode!.hashCode) +
       (verification.hashCode) +
+      (disclosedFields.hashCode) +
       (created.hashCode) +
       (updated.hashCode);
 
   @override
   String toString() =>
-      'Session[id=$id, clientToken=$clientToken, state=$state, failCode=$failCode, verification=$verification, created=$created, updated=$updated]';
+      'Session[id=$id, state=$state, failCode=$failCode, verification=$verification, disclosedFields=$disclosedFields, created=$created, updated=$updated]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     json[r'id'] = this.id;
-    json[r'clientToken'] = this.clientToken;
     json[r'state'] = this.state;
     if (this.failCode != null) {
       json[r'failCode'] = this.failCode;
@@ -80,6 +85,7 @@ class Session {
       json[r'failCode'] = null;
     }
     json[r'verification'] = this.verification;
+    json[r'disclosedFields'] = this.disclosedFields;
     json[r'created'] = this.created;
     json[r'updated'] = this.updated;
     return json;
@@ -107,10 +113,10 @@ class Session {
 
       return Session(
         id: mapValueOfType<String>(json, r'id')!,
-        clientToken: mapValueOfType<String>(json, r'clientToken')!,
-        state: IDVSessionState.fromJson(json[r'state'])!,
+        state: SessionState.fromJson(json[r'state'])!,
         failCode: SessionFailCode.fromJson(json[r'failCode']),
         verification: Verification.fromJson(json[r'verification'])!,
+        disclosedFields: DisclosedFields.fromJson(json[r'disclosedFields'])!,
         created: mapValueOfType<int>(json, r'created')!,
         updated: mapValueOfType<int>(json, r'updated')!,
       );
@@ -170,9 +176,9 @@ class Session {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
-    'clientToken',
     'state',
     'verification',
+    'disclosedFields',
     'created',
     'updated',
   };

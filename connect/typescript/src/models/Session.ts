@@ -13,6 +13,18 @@
  */
 
 import { mapValues } from "../runtime";
+import type { SessionState } from "./SessionState";
+import {
+    SessionStateFromJSON,
+    SessionStateFromJSONTyped,
+    SessionStateToJSON,
+} from "./SessionState";
+import type { DisclosedFields } from "./DisclosedFields";
+import {
+    DisclosedFieldsFromJSON,
+    DisclosedFieldsFromJSONTyped,
+    DisclosedFieldsToJSON,
+} from "./DisclosedFields";
 import type { SessionFailCode } from "./SessionFailCode";
 import {
     SessionFailCodeFromJSON,
@@ -25,12 +37,6 @@ import {
     VerificationFromJSONTyped,
     VerificationToJSON,
 } from "./Verification";
-import type { IDVSessionState } from "./IDVSessionState";
-import {
-    IDVSessionStateFromJSON,
-    IDVSessionStateFromJSONTyped,
-    IDVSessionStateToJSON,
-} from "./IDVSessionState";
 
 /**
  *
@@ -45,37 +51,37 @@ export interface Session {
      */
     id: string;
     /**
-     *
-     * @type {string}
+     * The state of the session
+     * @type {SessionState}
      * @memberof Session
      */
-    clientToken: string;
+    state: SessionState;
     /**
-     *
-     * @type {IDVSessionState}
-     * @memberof Session
-     */
-    state: IDVSessionState;
-    /**
-     *
+     * If the session is in state `IdvFailed`, this field contains the reason for failure.
      * @type {SessionFailCode}
      * @memberof Session
      */
     failCode?: SessionFailCode;
     /**
-     *
+     * The underlying verification for this Session
      * @type {Verification}
      * @memberof Session
      */
     verification: Verification;
     /**
-     *
+     * The fields that were requested to be disclosed when the Session was created
+     * @type {DisclosedFields}
+     * @memberof Session
+     */
+    disclosedFields: DisclosedFields;
+    /**
+     * The unix timestamp, in seconds, when this session was created
      * @type {number}
      * @memberof Session
      */
     created: number;
     /**
-     *
+     * The unix timestamp, in seconds, when this session's state last changed
      * @type {number}
      * @memberof Session
      */
@@ -87,10 +93,10 @@ export interface Session {
  */
 export function instanceOfSession(value: object): value is Session {
     if (!("id" in value) || value["id"] === undefined) return false;
-    if (!("clientToken" in value) || value["clientToken"] === undefined)
-        return false;
     if (!("state" in value) || value["state"] === undefined) return false;
     if (!("verification" in value) || value["verification"] === undefined)
+        return false;
+    if (!("disclosedFields" in value) || value["disclosedFields"] === undefined)
         return false;
     if (!("created" in value) || value["created"] === undefined) return false;
     if (!("updated" in value) || value["updated"] === undefined) return false;
@@ -110,13 +116,13 @@ export function SessionFromJSONTyped(
     }
     return {
         id: json["id"],
-        clientToken: json["clientToken"],
-        state: IDVSessionStateFromJSON(json["state"]),
+        state: SessionStateFromJSON(json["state"]),
         failCode:
             json["failCode"] == null
                 ? undefined
                 : SessionFailCodeFromJSON(json["failCode"]),
         verification: VerificationFromJSON(json["verification"]),
+        disclosedFields: DisclosedFieldsFromJSON(json["disclosedFields"]),
         created: json["created"],
         updated: json["updated"],
     };
@@ -128,10 +134,10 @@ export function SessionToJSON(value?: Session | null): any {
     }
     return {
         id: value["id"],
-        clientToken: value["clientToken"],
-        state: IDVSessionStateToJSON(value["state"]),
+        state: SessionStateToJSON(value["state"]),
         failCode: SessionFailCodeToJSON(value["failCode"]),
         verification: VerificationToJSON(value["verification"]),
+        disclosedFields: DisclosedFieldsToJSON(value["disclosedFields"]),
         created: value["created"],
         updated: value["updated"],
     };

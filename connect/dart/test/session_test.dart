@@ -21,31 +21,37 @@ void main() {
       // TODO
     });
 
-    // String clientToken
-    test('to test the property `clientToken`', () async {
-      // TODO
-    });
-
-    // IDVSessionState state
+    // The state of the session
+    // SessionState state
     test('to test the property `state`', () async {
       // TODO
     });
 
+    // If the session is in state `IdvFailed`, this field contains the reason for failure.
     // SessionFailCode failCode
     test('to test the property `failCode`', () async {
       // TODO
     });
 
+    // The underlying verification for this Session
     // Verification verification
     test('to test the property `verification`', () async {
       // TODO
     });
 
+    // The fields that were requested to be disclosed when the Session was created
+    // DisclosedFields disclosedFields
+    test('to test the property `disclosedFields`', () async {
+      // TODO
+    });
+
+    // The unix timestamp, in seconds, when this session was created
     // int created
     test('to test the property `created`', () async {
       // TODO
     });
 
+    // The unix timestamp, in seconds, when this session's state last changed
     // int updated
     test('to test the property `updated`', () async {
       // TODO

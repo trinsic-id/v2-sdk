@@ -13,19 +13,20 @@ part of openapi.api;
 class Verification {
   /// Returns a new [Verification] instance.
   Verification({
-    required this.id,
-    required this.state,
+    this.provider,
     this.failCode,
-    required this.reused,
-    required this.updated,
-    required this.disclosedFields,
-    this.identityData,
   });
 
-  String id;
+  /// The identity provider that was used to perform the Verification, if any
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? provider;
 
-  VerificationState state;
-
+  /// If the Verification is in state `VerificationFailed`, this field contains the reason for failure
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,63 +35,33 @@ class Verification {
   ///
   VerificationFailCode? failCode;
 
-  bool reused;
-
-  int updated;
-
-  DisclosedFields disclosedFields;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IdentityData? identityData;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Verification &&
-          other.id == id &&
-          other.state == state &&
-          other.failCode == failCode &&
-          other.reused == reused &&
-          other.updated == updated &&
-          other.disclosedFields == disclosedFields &&
-          other.identityData == identityData;
+          other.provider == provider &&
+          other.failCode == failCode;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (state.hashCode) +
-      (failCode == null ? 0 : failCode!.hashCode) +
-      (reused.hashCode) +
-      (updated.hashCode) +
-      (disclosedFields.hashCode) +
-      (identityData == null ? 0 : identityData!.hashCode);
+      (provider == null ? 0 : provider!.hashCode) +
+      (failCode == null ? 0 : failCode!.hashCode);
 
   @override
-  String toString() =>
-      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, disclosedFields=$disclosedFields, identityData=$identityData]';
+  String toString() => 'Verification[provider=$provider, failCode=$failCode]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'state'] = this.state;
+    if (this.provider != null) {
+      json[r'provider'] = this.provider;
+    } else {
+      json[r'provider'] = null;
+    }
     if (this.failCode != null) {
       json[r'failCode'] = this.failCode;
     } else {
       json[r'failCode'] = null;
-    }
-    json[r'reused'] = this.reused;
-    json[r'updated'] = this.updated;
-    json[r'disclosedFields'] = this.disclosedFields;
-    if (this.identityData != null) {
-      json[r'identityData'] = this.identityData;
-    } else {
-      json[r'identityData'] = null;
     }
     return json;
   }
@@ -116,13 +87,8 @@ class Verification {
       }());
 
       return Verification(
-        id: mapValueOfType<String>(json, r'id')!,
-        state: VerificationState.fromJson(json[r'state'])!,
+        provider: mapValueOfType<String>(json, r'provider'),
         failCode: VerificationFailCode.fromJson(json[r'failCode']),
-        reused: mapValueOfType<bool>(json, r'reused')!,
-        updated: mapValueOfType<int>(json, r'updated')!,
-        disclosedFields: DisclosedFields.fromJson(json[r'disclosedFields'])!,
-        identityData: IdentityData.fromJson(json[r'identityData']),
       );
     }
     return null;
@@ -178,11 +144,5 @@ class Verification {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-    'id',
-    'state',
-    'reused',
-    'updated',
-    'disclosedFields',
-  };
+  static const requiredKeys = <String>{};
 }

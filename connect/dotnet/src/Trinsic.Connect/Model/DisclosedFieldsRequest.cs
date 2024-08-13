@@ -29,7 +29,11 @@ public partial class DisclosedFieldsRequest
     /// <param name="country">country.</param>
     /// <param name="issueDate">issueDate.</param>
     /// <param name="expirationDate">expirationDate.</param>
-    public DisclosedFieldsRequest(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool))
+    /// <param name="documentFront">documentFront.</param>
+    /// <param name="documentBack">documentBack.</param>
+    /// <param name="documentPortrait">documentPortrait.</param>
+    /// <param name="selfie">selfie.</param>
+    public DisclosedFieldsRequest(bool idNumber = default(bool), bool givenName = default(bool), bool familyName = default(bool), bool address = default(bool), bool dateOfBirth = default(bool), bool country = default(bool), bool issueDate = default(bool), bool expirationDate = default(bool), bool documentFront = default(bool), bool documentBack = default(bool), bool documentPortrait = default(bool), bool selfie = default(bool))
     {
         IdNumber = idNumber;
         GivenName = givenName;
@@ -39,6 +43,10 @@ public partial class DisclosedFieldsRequest
         Country = country;
         IssueDate = issueDate;
         ExpirationDate = expirationDate;
+        DocumentFront = documentFront;
+        DocumentBack = documentBack;
+        DocumentPortrait = documentPortrait;
+        Selfie = selfie;
     }
 
     /// <summary>
@@ -90,6 +98,30 @@ public partial class DisclosedFieldsRequest
     public bool ExpirationDate { get; set; }
 
     /// <summary>
+    /// Gets or Sets DocumentFront
+    /// </summary>
+    [DataMember(Name = "documentFront", EmitDefaultValue = true)]
+    public bool DocumentFront { get; set; }
+
+    /// <summary>
+    /// Gets or Sets DocumentBack
+    /// </summary>
+    [DataMember(Name = "documentBack", EmitDefaultValue = true)]
+    public bool DocumentBack { get; set; }
+
+    /// <summary>
+    /// Gets or Sets DocumentPortrait
+    /// </summary>
+    [DataMember(Name = "documentPortrait", EmitDefaultValue = true)]
+    public bool DocumentPortrait { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Selfie
+    /// </summary>
+    [DataMember(Name = "selfie", EmitDefaultValue = true)]
+    public bool Selfie { get; set; }
+
+    /// <summary>
     /// Returns the string presentation of the object
     /// </summary>
     /// <returns>String presentation of the object</returns>
@@ -105,6 +137,10 @@ public partial class DisclosedFieldsRequest
         sb.Append("  Country: ").Append(Country).Append("\n");
         sb.Append("  IssueDate: ").Append(IssueDate).Append("\n");
         sb.Append("  ExpirationDate: ").Append(ExpirationDate).Append("\n");
+        sb.Append("  DocumentFront: ").Append(DocumentFront).Append("\n");
+        sb.Append("  DocumentBack: ").Append(DocumentBack).Append("\n");
+        sb.Append("  DocumentPortrait: ").Append(DocumentPortrait).Append("\n");
+        sb.Append("  Selfie: ").Append(Selfie).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }

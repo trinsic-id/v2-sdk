@@ -116,4 +116,40 @@ public class DisclosedFieldsTests : IDisposable
     {
         // TODO unit test for the property 'ExpirationDate'
     }
+
+    /// <summary>
+    /// Test the property 'DocumentFront'
+    /// </summary>
+    [Fact]
+    public void DocumentFrontTest()
+    {
+        // TODO unit test for the property 'DocumentFront'
+    }
+
+    /// <summary>
+    /// Test the property 'DocumentBack'
+    /// </summary>
+    [Fact]
+    public void DocumentBackTest()
+    {
+        // TODO unit test for the property 'DocumentBack'
+    }
+
+    /// <summary>
+    /// Test the property 'DocumentPortrait'
+    /// </summary>
+    [Fact]
+    public void DocumentPortraitTest()
+    {
+        // TODO unit test for the property 'DocumentPortrait'
+    }
+
+    /// <summary>
+    /// Test the property 'Selfie'
+    /// </summary>
+    [Fact]
+    public void SelfieTest()
+    {
+        // TODO unit test for the property 'Selfie'
+    }
 }

@@ -9,41 +9,174 @@ servers:
 security:
 - Bearer: []
 paths:
+  /api/v1/attachments/fetch:
+    get:
+      operationId: GetAttachment
+      parameters:
+      - explode: true
+        in: query
+        name: attachmentAccessKey
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: "Exchange an Attachment Access Key (from `IdentityData.Attachments`)\
+        \ for the raw contents of the linked resource.\r\n            \r\nUse this\
+        \ API to fetch document (front, back, portrait) or other (selfie) images from\
+        \ a verification, if relevant."
+      tags:
+      - Attachments
+  /api/v1/network/providers:
+    get:
+      operationId: ListProviders
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListProvidersResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProvidersResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListProvidersResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: List all identity providers available for use
+      tags:
+      - Network
+  /api/v1/network/identities/{phoneNumber}:
+    get:
+      operationId: IdentityLookup
+      parameters:
+      - explode: false
+        in: path
+        name: phoneNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IdentityLookupResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityLookupResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IdentityLookupResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Query the availability of an identity in the Trinsic Network by phone
+        number
+      tags:
+      - Network
   /api/v1/sessions:
     get:
       operationId: ListSessions
       parameters:
-      - explode: true
+      - description: The field by which sessions should be ordered
+        example: Created
+        explode: true
         in: query
         name: OrderBy
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/SessionOrdering'
+          example: Created
         style: form
-      - explode: true
+      - example: Descending
+        explode: true
         in: query
         name: OrderDirection
         required: false
         schema:
           allOf:
           - $ref: '#/components/schemas/OrderDirection'
+          example: Descending
         style: form
-      - explode: true
+      - description: The number of items to return per page -- must be between `1`
+          and `10`
+        example: 10
+        explode: true
         in: query
         name: PageSize
         required: false
         schema:
+          example: 10
           format: int32
           maximum: 10
           minimum: 1
           type: integer
         style: form
-      - explode: true
+      - description: The page number to return -- starts at `1`
+        example: 1
+        explode: true
         in: query
         name: Page
         required: false
         schema:
+          example: 1
           format: int32
           maximum: 2147483647
           minimum: 1
@@ -80,6 +213,7 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: List Sessions created by your account
       tags:
       - Sessions
     post:
@@ -129,13 +263,15 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Create a Session to verify a user's identity
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}:
     get:
       operationId: GetSession
       parameters:
-      - explode: false
+      - description: ""
+        explode: false
         in: path
         name: sessionId
         required: true
@@ -147,13 +283,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
+                $ref: '#/components/schemas/GetSessionResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
+                $ref: '#/components/schemas/GetSessionResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/GetSessionResponseV1'
+                $ref: '#/components/schemas/GetSessionResponse'
           description: OK
         "400":
           content:
@@ -173,6 +309,68 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Get a Session by its ID
+      tags:
+      - Sessions
+  /api/v1/sessions/{sessionId}/results:
+    post:
+      operationId: ExchangeResultsKey
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeResultsKeyRequest'
+          text/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeResultsKeyRequest'
+          application/*+json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ExchangeResultsKeyRequest'
+        description: ""
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ExchangeResultsKeyResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeResultsKeyResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeResultsKeyResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ValidationResult'
+                type: array
+          description: Validation Failed
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailureMessage'
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "500":
+          description: Internal Server Error
+      summary: Exchange a Results Access Key for Identity Data
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}/cancel:
@@ -217,6 +415,7 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: Cancel a Session by its ID
       tags:
       - Sessions
   /api/v1/sessions/{sessionId}/redact:
@@ -251,12 +450,16 @@ paths:
           description: Forbidden
         "500":
           description: Internal Server Error
+      summary: "Redact a Session, removing all identity data from Trinsic's servers.\r\
+        \n            \r\nIdentity data that a user has chosen to save in their passkey-protected\
+        \ wallet will not be deleted."
       tags:
       - Sessions
 components:
   schemas:
     Address:
       additionalProperties: false
+      description: Address information for an individual
       properties:
         line1:
           type: string
@@ -273,6 +476,29 @@ components:
         country:
           type: string
         fullAddress:
+          description: The full address as a single string
+          type: string
+      type: object
+    Attachments:
+      additionalProperties: false
+      description: Attachment Access Keys for attachments (eg document / selfie images)
+      properties:
+        selfie:
+          description: Key to access the selfie image (if relevant) for this verification
+          type: string
+        documentFront:
+          description: Key to access the document front image (if relevant) for this
+            verification
+          type: string
+        documentBack:
+          description: Key to access the document back image (if relevant) for this
+            verification
+          type: string
+        documentPortrait:
+          description: "Key to access the document portrait image (if relevant and\
+            \ available) for this verification.\r\n            \r\nSpecifically, this\
+            \ is a cropped version of the document front image which includes only\
+            \ the portrait on the document."
           type: string
       type: object
     CancelSessionResponse:
@@ -288,20 +514,65 @@ components:
       type: object
     CreateSessionRequest:
       example:
-        fields: ""
+        redirectUrl: redirectUrl
+        direct: true
+        providers:
+        - providers
+        - providers
+        disclosedFields: ""
       properties:
-        fields:
+        direct:
+          description: "Whether to create this Session in Direct mode.\r\n       \
+            \     \r\nDirect mode is used to execute a verification against a specific\
+            \ identity provider.\r\nUsers will not be shown the Connect Widget; therefore,\
+            \ reuse of Connect credentials, selection of an identity provider, and\
+            \ saving a verification for future reuse\r\nare not available to the end\
+            \ user in direct mode.\r\n            \r\nSessions created in direct mode\
+            \ must be created with a `RedirectUrl` specified, and cannot be invoked\
+            \ using the frontend SDK at this time."
+          type: boolean
+        redirectUrl:
+          description: "The URL to redirect to after the user has completed the identity\
+            \ verification process.\r\n            \r\nIf `Direct` is set to `true`,\
+            \ this field is required."
+          type: string
+        providers:
+          description: "The list of allowed identity providers. If not specified,\
+            \ all available providers will be allowed.\r\n            \r\nIf `Direct`\
+            \ is `true`, this field must be set, and must have only a single entry.\r\
+            \nIf `Direct` is not specified or is `false`, this field may have any\
+            \ number of entries."
+          items:
+            type: string
+          type: array
+        disclosedFields:
           allOf:
           - $ref: '#/components/schemas/DisclosedFieldsRequest'
+          description: "Specific identity attributes to request. If not provided,\
+            \ all available attributes will be requested."
       type: object
     CreateSessionResponse:
       additionalProperties: false
       example:
         session: ""
+        launchUrl: https://connect.trinsic.id/api/session/launch?clientToken=...
       properties:
         session:
           allOf:
           - $ref: '#/components/schemas/Session'
+          description: The created Acceptance Session
+        launchUrl:
+          description: "The URL that should be used to invoke the Acceptance Session\
+            \ on your user's device.\r\n            \r\nIf the Session was created\
+            \ in `direct` mode, you should redirect your user's browser to this URL.\
+            \ The frontend SDK cannot presently be used to\r\ninvoke direct mode Sessions.\r\
+            \n            \r\nIf the Session was not created in `direct` mode, you\
+            \ should pass this URL to your user's frontend and use the frontend SDK\
+            \ to invoke the Session.\r\n            \r\nThis URL is sensitive and\
+            \ as such can only be obtained once. If you need to obtain it again, you\
+            \ will need to create a new Acceptance Session."
+          example: https://connect.trinsic.id/api/session/launch?clientToken=...
+          type: string
       required:
       - session
       type: object
@@ -324,15 +595,27 @@ components:
           type: boolean
         expirationDate:
           type: boolean
+        documentFront:
+          type: boolean
+        documentBack:
+          type: boolean
+        documentPortrait:
+          type: boolean
+        selfie:
+          type: boolean
       required:
       - address
       - country
       - dateOfBirth
+      - documentBack
+      - documentFront
+      - documentPortrait
       - expirationDate
       - familyName
       - givenName
       - idNumber
       - issueDate
+      - selfie
       type: object
     DisclosedFieldsRequest:
       additionalProperties: false
@@ -353,6 +636,14 @@ components:
           type: boolean
         expirationDate:
           type: boolean
+        documentFront:
+          type: boolean
+        documentBack:
+          type: boolean
+        documentPortrait:
+          type: boolean
+        selfie:
+          type: boolean
       type: object
     DocumentData:
       additionalProperties: false
@@ -367,8 +658,31 @@ components:
           type: string
         issuingCountry:
           type: string
-        portrait:
+      type: object
+    ExchangeResultsKeyRequest:
+      example:
+        resultsAccessKey: resultsAccessKey
+      properties:
+        resultsAccessKey:
+          description: The Results Access Key to exchange
           type: string
+      required:
+      - resultsAccessKey
+      type: object
+    ExchangeResultsKeyResponse:
+      additionalProperties: false
+      example:
+        session: ""
+        identityData: ""
+      properties:
+        session:
+          allOf:
+          - $ref: '#/components/schemas/Session'
+        identityData:
+          allOf:
+          - $ref: '#/components/schemas/IdentityData'
+      required:
+      - session
       type: object
     FailureMessage:
       additionalProperties: false
@@ -380,7 +694,7 @@ components:
       required:
       - message
       type: object
-    GetSessionResponseV1:
+    GetSessionResponse:
       additionalProperties: false
       example:
         session: ""
@@ -391,46 +705,101 @@ components:
       required:
       - session
       type: object
-    IDVSessionState:
-      enum:
-      - IdvCreated
-      - IdvInitiated
-      - IdvAuthenticating
-      - IdvInProgress
-      - IdvSuccess
-      - IdvFailed
-      type: string
     IdentityData:
       additionalProperties: false
       properties:
-        originatingIntegrationId:
+        originatingProviderId:
+          description: "The ID of the integration from which this data originated\
+            \ (eg \"yoti\", \"clear\")"
           type: string
         person:
           allOf:
           - $ref: '#/components/schemas/PersonData'
+          description: Identity data of the individual who was verified
         document:
           allOf:
           - $ref: '#/components/schemas/DocumentData'
+          description: "Identity data of the document involved in verification, if\
+            \ relevant"
+        attachments:
+          allOf:
+          - $ref: '#/components/schemas/Attachments'
+          description: Access keys for attachments (eg document/selfie images)
+      type: object
+    IdentityLookupResponse:
+      additionalProperties: false
+      example:
+        identityInNetwork: true
+      properties:
+        identityInNetwork:
+          description: Whether the given phone number is known to have an identity
+            in the network.
+          type: boolean
+      required:
+      - identityInNetwork
+      type: object
+    Integration:
+      additionalProperties: false
+      description: An Integration that can be specified when creating a `VerificationSession`
+      example:
+        name: Yoti | CLEAR | ...
+        id: yoti | clear | ...
+        logoUrl: logoUrl
+      properties:
+        id:
+          description: The ID of the integration
+          example: yoti | clear | ...
+          type: string
+        name:
+          description: "The friendly, human-readable name of the integration"
+          example: Yoti | CLEAR | ...
+          type: string
+        logoUrl:
+          description: A URL pointing to the integration's logo
+          type: string
+      required:
+      - id
+      - logoUrl
+      - name
+      type: object
+    ListProvidersResponse:
+      additionalProperties: false
+      example:
+        integrations:
+        - name: Yoti | CLEAR | ...
+          id: yoti | clear | ...
+          logoUrl: logoUrl
+        - name: Yoti | CLEAR | ...
+          id: yoti | clear | ...
+          logoUrl: logoUrl
+      properties:
+        integrations:
+          description: The list of integrations available to your account
+          items:
+            $ref: '#/components/schemas/Integration'
+          type: array
+      required:
+      - integrations
       type: object
     ListSessionsResponse:
       additionalProperties: false
       example:
         sessions:
-        - clientToken: clientToken
-          created: 0
+        - created: 1722526411
           failCode: ""
-          id: id
+          id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           state: ""
-          updated: 6
+          updated: 1722526722
           verification: ""
-        - clientToken: clientToken
-          created: 0
+          disclosedFields: ""
+        - created: 1722526411
           failCode: ""
-          id: id
+          id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           state: ""
-          updated: 6
+          updated: 1722526722
           verification: ""
-        total: 1
+          disclosedFields: ""
+        total: 101
         more: true
       properties:
         sessions:
@@ -438,9 +807,13 @@ components:
             $ref: '#/components/schemas/Session'
           type: array
         total:
+          description: The total number of sessions tied to your account
+          example: 101
           format: int32
           type: integer
         more:
+          description: Whether there are additional pages of sessions to retrieve
+          example: true
           type: boolean
       required:
       - more
@@ -454,14 +827,25 @@ components:
       type: string
     PersonData:
       additionalProperties: false
+      description: Identity information for the individual being verified
       properties:
         givenName:
+          description: Given (first) name of the individual
+          example: John
           type: string
         familyName:
+          description: Family (last) name of the individual
+          example: Doe
           type: string
         middleName:
+          description: Middle name of the individual
+          example: Jacob
           type: string
         fullName:
+          description: "The individual's full name as a single string.\r\n       \
+            \     \r\nUseful for names which do not fit into a \"first middle last\"\
+            \ structure."
+          example: John Jacob de Doe
           type: string
         nationality:
           type: string
@@ -472,42 +856,56 @@ components:
         address:
           allOf:
           - $ref: '#/components/schemas/Address'
+          description: Address information for an individual
         dateOfBirth:
           type: string
       type: object
     Session:
       additionalProperties: false
       example:
-        clientToken: clientToken
-        created: 0
+        created: 1722526411
         failCode: ""
-        id: id
+        id: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
         state: ""
-        updated: 6
+        updated: 1722526722
         verification: ""
+        disclosedFields: ""
       properties:
         id:
-          type: string
-        clientToken:
+          example: urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec
           type: string
         state:
           allOf:
-          - $ref: '#/components/schemas/IDVSessionState'
+          - $ref: '#/components/schemas/SessionState'
+          description: The state of the session
         failCode:
           allOf:
           - $ref: '#/components/schemas/SessionFailCode'
+          description: "If the session is in state `IdvFailed`, this field contains\
+            \ the reason for failure."
         verification:
           allOf:
           - $ref: '#/components/schemas/Verification'
+          description: The underlying verification for this Session
+        disclosedFields:
+          allOf:
+          - $ref: '#/components/schemas/DisclosedFields'
+          description: The fields that were requested to be disclosed when the Session
+            was created
         created:
+          description: "The unix timestamp, in seconds, when this session was created"
+          example: 1722526411
           format: int64
           type: integer
         updated:
+          description: "The unix timestamp, in seconds, when this session's state\
+            \ last changed"
+          example: 1722526722
           format: int64
           type: integer
       required:
-      - clientToken
       - created
+      - disclosedFields
       - id
       - state
       - updated
@@ -521,13 +919,22 @@ components:
       - SessionFailAuthentication
       - SessionFailExpired
       - SessionFailUserCanceled
-      - SessionFailRpcCanceled
+      - SessionFailRpCanceled
       type: string
     SessionOrdering:
       enum:
       - Created
       - Updated
       - State
+      type: string
+    SessionState:
+      enum:
+      - IdvCreated
+      - IdvInitiated
+      - IdvAuthenticating
+      - IdvInProgress
+      - IdvSuccess
+      - IdvFailed
       type: string
     ValidationResult:
       additionalProperties: false
@@ -549,32 +956,17 @@ components:
       type: object
     Verification:
       additionalProperties: false
+      description: A Verification contained within a Session
       properties:
-        id:
+        provider:
+          description: "The identity provider that was used to perform the Verification,\
+            \ if any"
           type: string
-        state:
-          allOf:
-          - $ref: '#/components/schemas/VerificationState'
         failCode:
           allOf:
           - $ref: '#/components/schemas/VerificationFailCode'
-        reused:
-          type: boolean
-        updated:
-          format: int64
-          type: integer
-        disclosedFields:
-          allOf:
-          - $ref: '#/components/schemas/DisclosedFields'
-        identityData:
-          allOf:
-          - $ref: '#/components/schemas/IdentityData'
-      required:
-      - disclosedFields
-      - id
-      - reused
-      - state
-      - updated
+          description: "If the Verification is in state `VerificationFailed`, this\
+            \ field contains the reason for failure"
       type: object
     VerificationFailCode:
       enum:
@@ -583,12 +975,6 @@ components:
       - VerificationFailInvalidImage
       - VerificationFailInauthentic
       - VerificationFailUnsupportedDocument
-      type: string
-    VerificationState:
-      enum:
-      - VerificationPending
-      - VerificationSuccess
-      - VerificationFailed
       type: string
   securitySchemes:
     Bearer:

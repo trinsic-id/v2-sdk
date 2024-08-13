@@ -55,5 +55,25 @@ void main() {
     test('to test the property `expirationDate`', () async {
       // TODO
     });
+
+    // bool documentFront
+    test('to test the property `documentFront`', () async {
+      // TODO
+    });
+
+    // bool documentBack
+    test('to test the property `documentBack`', () async {
+      // TODO
+    });
+
+    // bool documentPortrait
+    test('to test the property `documentPortrait`', () async {
+      // TODO
+    });
+
+    // bool selfie
+    test('to test the property `selfie`', () async {
+      // TODO
+    });
   });
 }

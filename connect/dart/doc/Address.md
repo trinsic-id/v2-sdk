@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **state** | **String** |  | [optional] 
 **postalCode** | **String** |  | [optional] 
 **country** | **String** |  | [optional] 
-**fullAddress** | **String** |  | [optional] 
+**fullAddress** | **String** | The full address as a single string | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
