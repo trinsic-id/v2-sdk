@@ -16,6 +16,7 @@ void main() {
   // final instance = CreateSessionRequest();
 
   group('test CreateSessionRequest', () {
+    // Specific identity attributes to request. If not provided, all available attributes will be requested.
     // DisclosedFieldsRequest fields
     test('to test the property `fields`', () async {
       // TODO

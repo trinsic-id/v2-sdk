@@ -13,19 +13,13 @@ part of openapi.api;
 class Verification {
   /// Returns a new [Verification] instance.
   Verification({
-    required this.id,
-    required this.state,
     this.failCode,
     required this.reused,
-    required this.updated,
     required this.disclosedFields,
     this.identityData,
   });
 
-  String id;
-
-  VerificationState state;
-
+  /// If the Verification is in state `VerificationFailed`, this field contains the reason for failure
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -34,12 +28,13 @@ class Verification {
   ///
   VerificationFailCode? failCode;
 
+  /// Whether the Verification was completed by reusing a Trinsic Connect identity credential (`true`) or via a fresh verification (`false`)
   bool reused;
 
-  int updated;
-
+  /// The fields that were requested to be disclosed when the Session for this Verification was created
   DisclosedFields disclosedFields;
 
+  /// The results of the Verification. Only present if the Session's `state` is `IdvSuccess`.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -52,40 +47,31 @@ class Verification {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Verification &&
-          other.id == id &&
-          other.state == state &&
           other.failCode == failCode &&
           other.reused == reused &&
-          other.updated == updated &&
           other.disclosedFields == disclosedFields &&
           other.identityData == identityData;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (id.hashCode) +
-      (state.hashCode) +
       (failCode == null ? 0 : failCode!.hashCode) +
       (reused.hashCode) +
-      (updated.hashCode) +
       (disclosedFields.hashCode) +
       (identityData == null ? 0 : identityData!.hashCode);
 
   @override
   String toString() =>
-      'Verification[id=$id, state=$state, failCode=$failCode, reused=$reused, updated=$updated, disclosedFields=$disclosedFields, identityData=$identityData]';
+      'Verification[failCode=$failCode, reused=$reused, disclosedFields=$disclosedFields, identityData=$identityData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'id'] = this.id;
-    json[r'state'] = this.state;
     if (this.failCode != null) {
       json[r'failCode'] = this.failCode;
     } else {
       json[r'failCode'] = null;
     }
     json[r'reused'] = this.reused;
-    json[r'updated'] = this.updated;
     json[r'disclosedFields'] = this.disclosedFields;
     if (this.identityData != null) {
       json[r'identityData'] = this.identityData;
@@ -116,11 +102,8 @@ class Verification {
       }());
 
       return Verification(
-        id: mapValueOfType<String>(json, r'id')!,
-        state: VerificationState.fromJson(json[r'state'])!,
         failCode: VerificationFailCode.fromJson(json[r'failCode']),
         reused: mapValueOfType<bool>(json, r'reused')!,
-        updated: mapValueOfType<int>(json, r'updated')!,
         disclosedFields: DisclosedFields.fromJson(json[r'disclosedFields'])!,
         identityData: IdentityData.fromJson(json[r'identityData']),
       );
@@ -179,10 +162,7 @@ class Verification {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'id',
-    'state',
     'reused',
-    'updated',
     'disclosedFields',
   };
 }

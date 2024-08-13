@@ -11,7 +11,14 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for VerificationState
+/// tests for IdentitiesApi
 void main() {
-  group('test VerificationState', () {});
+  // final instance = IdentitiesApi();
+
+  group('tests for IdentitiesApi', () {
+    //Future<CanReuseCredentialResponse> canReuseCredential({ CanReuseCredentialRequest canReuseCredentialRequest }) async
+    test('test canReuseCredential', () async {
+      // TODO
+    });
+  });
 }
