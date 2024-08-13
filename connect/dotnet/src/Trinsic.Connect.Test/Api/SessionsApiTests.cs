@@ -71,6 +71,19 @@ public class SessionsApiTests : IDisposable
     }
 
     /// <summary>
+    /// Test ExchangeIdentityToken
+    /// </summary>
+    [Fact]
+    public void ExchangeIdentityTokenTest()
+    {
+        // TODO uncomment below to test the method and replace null with proper value
+        //string sessionId = null;
+        //ExchangeIdentityTokenRequest? exchangeIdentityTokenRequest = null;
+        //var response = instance.ExchangeIdentityToken(sessionId, exchangeIdentityTokenRequest);
+        //Assert.IsType<ExchangeIdentityTokenResponse>(response);
+    }
+
+    /// <summary>
     /// Test GetSession
     /// </summary>
     [Fact]

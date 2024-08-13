@@ -56,8 +56,8 @@ public enum SessionFailCode
     SessionFailUserCanceled = 6,
 
     /// <summary>
-    /// Enum SessionFailRpcCanceled for value: SessionFailRpcCanceled
+    /// Enum SessionFailRpCanceled for value: SessionFailRpCanceled
     /// </summary>
-    [EnumMember(Value = "SessionFailRpcCanceled")]
-    SessionFailRpcCanceled = 7
+    [EnumMember(Value = "SessionFailRpCanceled")]
+    SessionFailRpCanceled = 7
 }

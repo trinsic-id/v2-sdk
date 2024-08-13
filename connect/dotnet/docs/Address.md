@@ -1,4 +1,5 @@
 # Trinsic.Connect.Model.Address
+Address information for an individual
 
 ## Properties
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **State** | **string** |  | [optional] 
 **PostalCode** | **string** |  | [optional] 
 **Country** | **string** |  | [optional] 
-**FullAddress** | **string** |  | [optional] 
+**FullAddress** | **string** | The full address as a single string | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
