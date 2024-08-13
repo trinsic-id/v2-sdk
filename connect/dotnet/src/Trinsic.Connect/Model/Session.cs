@@ -22,14 +22,16 @@ public partial class Session
 {
 
     /// <summary>
-    /// Gets or Sets State
+    /// The state of the session
     /// </summary>
+    /// <value>The state of the session</value>
     [DataMember(Name = "state", IsRequired = true, EmitDefaultValue = true)]
-    public IDVSessionState State { get; set; }
+    public SessionState State { get; set; }
 
     /// <summary>
-    /// Gets or Sets FailCode
+    /// If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure.
     /// </summary>
+    /// <value>If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure.</value>
     [DataMember(Name = "failCode", EmitDefaultValue = false)]
     public SessionFailCode? FailCode { get; set; }
     /// <summary>
@@ -41,18 +43,18 @@ public partial class Session
     /// Initializes a new instance of the <see cref="Session" /> class.
     /// </summary>
     /// <param name="id">id (required).</param>
-    /// <param name="clientToken">clientToken (required).</param>
-    /// <param name="state">state (required).</param>
-    /// <param name="failCode">failCode.</param>
-    /// <param name="verification">verification (required).</param>
-    /// <param name="created">created (required).</param>
-    /// <param name="updated">updated (required).</param>
-    public Session(string id = default(string), string clientToken = default(string), IDVSessionState state = default(IDVSessionState), SessionFailCode? failCode = default(SessionFailCode?), Verification verification = default(Verification), long created = default(long), long updated = default(long))
+    /// <param name="state">The state of the session (required).</param>
+    /// <param name="failCode">If the session is in state &#x60;IdvFailed&#x60;, this field contains the reason for failure..</param>
+    /// <param name="verification">The underlying verification for this Session (required).</param>
+    /// <param name="disclosedFields">The fields that were requested to be disclosed when the Session was created (required).</param>
+    /// <param name="created">The unix timestamp, in seconds, when this session was created (required).</param>
+    /// <param name="updated">The unix timestamp, in seconds, when this session&#39;s state last changed (required).</param>
+    public Session(string id = default(string), SessionState state = default(SessionState), SessionFailCode? failCode = default(SessionFailCode?), Verification verification = default(Verification), DisclosedFields disclosedFields = default(DisclosedFields), long created = default(long), long updated = default(long))
     {
         Id = id ?? throw new ArgumentNullException("id is a required property for Session and cannot be null");
-        ClientToken = clientToken ?? throw new ArgumentNullException("clientToken is a required property for Session and cannot be null");
         State = state;
         Verification = verification ?? throw new ArgumentNullException("verification is a required property for Session and cannot be null");
+        DisclosedFields = disclosedFields ?? throw new ArgumentNullException("disclosedFields is a required property for Session and cannot be null");
         Created = created;
         Updated = updated;
         FailCode = failCode;
@@ -61,30 +63,37 @@ public partial class Session
     /// <summary>
     /// Gets or Sets Id
     /// </summary>
+    /// <example>urn:trinsic:idvsession:678c1ff6-2178-49e7-81d2-548afb6f85ec</example>
     [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
     public string Id { get; set; }
 
     /// <summary>
-    /// Gets or Sets ClientToken
+    /// The underlying verification for this Session
     /// </summary>
-    [DataMember(Name = "clientToken", IsRequired = true, EmitDefaultValue = true)]
-    public string ClientToken { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Verification
-    /// </summary>
+    /// <value>The underlying verification for this Session</value>
     [DataMember(Name = "verification", IsRequired = true, EmitDefaultValue = true)]
     public Verification Verification { get; set; }
 
     /// <summary>
-    /// Gets or Sets Created
+    /// The fields that were requested to be disclosed when the Session was created
     /// </summary>
+    /// <value>The fields that were requested to be disclosed when the Session was created</value>
+    [DataMember(Name = "disclosedFields", IsRequired = true, EmitDefaultValue = true)]
+    public DisclosedFields DisclosedFields { get; set; }
+
+    /// <summary>
+    /// The unix timestamp, in seconds, when this session was created
+    /// </summary>
+    /// <value>The unix timestamp, in seconds, when this session was created</value>
+    /// <example>1722526411</example>
     [DataMember(Name = "created", IsRequired = true, EmitDefaultValue = true)]
     public long Created { get; set; }
 
     /// <summary>
-    /// Gets or Sets Updated
+    /// The unix timestamp, in seconds, when this session&#39;s state last changed
     /// </summary>
+    /// <value>The unix timestamp, in seconds, when this session&#39;s state last changed</value>
+    /// <example>1722526722</example>
     [DataMember(Name = "updated", IsRequired = true, EmitDefaultValue = true)]
     public long Updated { get; set; }
 
@@ -97,10 +106,10 @@ public partial class Session
         var sb = new StringBuilder();
         sb.Append("class Session {\n");
         sb.Append("  Id: ").Append(Id).Append("\n");
-        sb.Append("  ClientToken: ").Append(ClientToken).Append("\n");
         sb.Append("  State: ").Append(State).Append("\n");
         sb.Append("  FailCode: ").Append(FailCode).Append("\n");
         sb.Append("  Verification: ").Append(Verification).Append("\n");
+        sb.Append("  DisclosedFields: ").Append(DisclosedFields).Append("\n");
         sb.Append("  Created: ").Append(Created).Append("\n");
         sb.Append("  Updated: ").Append(Updated).Append("\n");
         sb.Append("}\n");

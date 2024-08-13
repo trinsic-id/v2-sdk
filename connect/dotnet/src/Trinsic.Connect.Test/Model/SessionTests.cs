@@ -55,15 +55,6 @@ public class SessionTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'ClientToken'
-    /// </summary>
-    [Fact]
-    public void ClientTokenTest()
-    {
-        // TODO unit test for the property 'ClientToken'
-    }
-
-    /// <summary>
     /// Test the property 'State'
     /// </summary>
     [Fact]
@@ -88,6 +79,15 @@ public class SessionTests : IDisposable
     public void VerificationTest()
     {
         // TODO unit test for the property 'Verification'
+    }
+
+    /// <summary>
+    /// Test the property 'DisclosedFields'
+    /// </summary>
+    [Fact]
+    public void DisclosedFieldsTest()
+    {
+        // TODO unit test for the property 'DisclosedFields'
     }
 
     /// <summary>

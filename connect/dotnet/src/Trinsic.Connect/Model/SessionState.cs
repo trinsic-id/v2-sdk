@@ -14,10 +14,10 @@ using Newtonsoft.Json.Converters;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// Defines IDVSessionState
+/// Defines SessionState
 /// </summary>
 [JsonConverter(typeof(StringEnumConverter))]
-public enum IDVSessionState
+public enum SessionState
 {
     /// <summary>
     /// Enum IdvCreated for value: IdvCreated

@@ -4,17 +4,18 @@ All URIs are relative to *https://connect.trinsic.id*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel |  |
-| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions |  |
-| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} |  |
-| [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions |  |
-| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact |  |
+| [**CancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID |
+| [**CreateSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user&#39;s identity |
+| [**ExchangeResultsKey**](SessionsApi.md#exchangeresultskey) | **POST** /api/v1/sessions/{sessionId}/results | Exchange a Results Access Key for Identity Data |
+| [**GetSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID |
+| [**ListSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account |
+| [**RedactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted. |
 
 <a id="cancelsession"></a>
 # **CancelSession**
 > CancelSessionResponse CancelSession (string sessionId)
 
-
+Cancel a Session by its ID
 
 ### Example
 ```csharp
@@ -44,6 +45,7 @@ namespace Example
 
             try
             {
+                // Cancel a Session by its ID
                 CancelSessionResponse result = apiInstance.CancelSession(sessionId);
                 Debug.WriteLine(result);
             }
@@ -64,6 +66,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Cancel a Session by its ID
     ApiResponse<CancelSessionResponse> response = apiInstance.CancelSessionWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -112,7 +115,7 @@ catch (ApiException e)
 # **CreateSession**
 > CreateSessionResponse CreateSession (CreateSessionRequest? createSessionRequest = null)
 
-
+Create a Session to verify a user's identity
 
 ### Example
 ```csharp
@@ -142,6 +145,7 @@ namespace Example
 
             try
             {
+                // Create a Session to verify a user's identity
                 CreateSessionResponse result = apiInstance.CreateSession(createSessionRequest);
                 Debug.WriteLine(result);
             }
@@ -162,6 +166,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Create a Session to verify a user's identity
     ApiResponse<CreateSessionResponse> response = apiInstance.CreateSessionWithHttpInfo(createSessionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -206,11 +211,113 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="exchangeresultskey"></a>
+# **ExchangeResultsKey**
+> ExchangeResultsKeyResponse ExchangeResultsKey (string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = null)
+
+Exchange a Results Access Key for Identity Data
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
+using Trinsic.Connect.Api;
+using Trinsic.Connect.Client;
+using Trinsic.Connect.Model;
+
+namespace Example
+{
+    public class ExchangeResultsKeyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://connect.trinsic.id";
+            // Configure Bearer token for authorization: Bearer
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            // create instances of HttpClient, HttpClientHandler to be reused later with different Api classes
+            HttpClient httpClient = new HttpClient();
+            HttpClientHandler httpClientHandler = new HttpClientHandler();
+            var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
+            var sessionId = "sessionId_example";  // string | 
+            var exchangeResultsKeyRequest = new ExchangeResultsKeyRequest?(); // ExchangeResultsKeyRequest? |  (optional) 
+
+            try
+            {
+                // Exchange a Results Access Key for Identity Data
+                ExchangeResultsKeyResponse result = apiInstance.ExchangeResultsKey(sessionId, exchangeResultsKeyRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling SessionsApi.ExchangeResultsKey: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ExchangeResultsKeyWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Exchange a Results Access Key for Identity Data
+    ApiResponse<ExchangeResultsKeyResponse> response = apiInstance.ExchangeResultsKeyWithHttpInfo(sessionId, exchangeResultsKeyRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling SessionsApi.ExchangeResultsKeyWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **sessionId** | **string** |  |  |
+| **exchangeResultsKeyRequest** | [**ExchangeResultsKeyRequest?**](ExchangeResultsKeyRequest?.md) |  | [optional]  |
+
+### Return type
+
+[**ExchangeResultsKeyResponse**](ExchangeResultsKeyResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Validation Failed |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="getsession"></a>
 # **GetSession**
-> GetSessionResponseV1 GetSession (string sessionId)
+> GetSessionResponse GetSession (string sessionId)
 
-
+Get a Session by its ID
 
 ### Example
 ```csharp
@@ -240,7 +347,8 @@ namespace Example
 
             try
             {
-                GetSessionResponseV1 result = apiInstance.GetSession(sessionId);
+                // Get a Session by its ID
+                GetSessionResponse result = apiInstance.GetSession(sessionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -260,7 +368,8 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<GetSessionResponseV1> response = apiInstance.GetSessionWithHttpInfo(sessionId);
+    // Get a Session by its ID
+    ApiResponse<GetSessionResponse> response = apiInstance.GetSessionWithHttpInfo(sessionId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -281,7 +390,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**GetSessionResponseV1**](GetSessionResponseV1.md)
+[**GetSessionResponse**](GetSessionResponse.md)
 
 ### Authorization
 
@@ -308,7 +417,7 @@ catch (ApiException e)
 # **ListSessions**
 > ListSessionsResponse ListSessions (SessionOrdering? orderBy = null, OrderDirection? orderDirection = null, int? pageSize = null, int? page = null)
 
-
+List Sessions created by your account
 
 ### Example
 ```csharp
@@ -334,13 +443,14 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new SessionsApi(httpClient, config, httpClientHandler);
-            var orderBy = new SessionOrdering?(); // SessionOrdering? |  (optional) 
+            var orderBy = new SessionOrdering?(); // SessionOrdering? | The field by which sessions should be ordered (optional) 
             var orderDirection = new OrderDirection?(); // OrderDirection? |  (optional) 
-            var pageSize = 56;  // int? |  (optional) 
-            var page = 56;  // int? |  (optional) 
+            var pageSize = 10;  // int? | The number of items to return per page - - must be between `1` and `10` (optional) 
+            var page = 1;  // int? | The page number to return - - starts at `1` (optional) 
 
             try
             {
+                // List Sessions created by your account
                 ListSessionsResponse result = apiInstance.ListSessions(orderBy, orderDirection, pageSize, page);
                 Debug.WriteLine(result);
             }
@@ -361,6 +471,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // List Sessions created by your account
     ApiResponse<ListSessionsResponse> response = apiInstance.ListSessionsWithHttpInfo(orderBy, orderDirection, pageSize, page);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
@@ -378,10 +489,10 @@ catch (ApiException e)
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| **orderBy** | [**SessionOrdering?**](SessionOrdering?.md) |  | [optional]  |
+| **orderBy** | [**SessionOrdering?**](SessionOrdering?.md) | The field by which sessions should be ordered | [optional]  |
 | **orderDirection** | [**OrderDirection?**](OrderDirection?.md) |  | [optional]  |
-| **pageSize** | **int?** |  | [optional]  |
-| **page** | **int?** |  | [optional]  |
+| **pageSize** | **int?** | The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; | [optional]  |
+| **page** | **int?** | The page number to return - - starts at &#x60;1&#x60; | [optional]  |
 
 ### Return type
 
@@ -412,7 +523,7 @@ catch (ApiException e)
 # **RedactSession**
 > void RedactSession (string sessionId)
 
-
+Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
 
 ### Example
 ```csharp
@@ -442,6 +553,7 @@ namespace Example
 
             try
             {
+                // Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
                 apiInstance.RedactSession(sessionId);
             }
             catch (ApiException  e)
@@ -461,6 +573,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
+    // Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
     apiInstance.RedactSessionWithHttpInfo(sessionId);
 }
 catch (ApiException e)

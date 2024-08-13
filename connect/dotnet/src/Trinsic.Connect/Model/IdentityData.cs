@@ -21,33 +21,45 @@ public partial class IdentityData
     /// <summary>
     /// Initializes a new instance of the <see cref="IdentityData" /> class.
     /// </summary>
-    /// <param name="originatingIntegrationId">originatingIntegrationId.</param>
-    /// <param name="person">person.</param>
-    /// <param name="document">document.</param>
-    public IdentityData(string originatingIntegrationId = default(string), PersonData person = default(PersonData), DocumentData document = default(DocumentData))
+    /// <param name="originatingProviderId">The ID of the integration from which this data originated (eg \&quot;yoti\&quot;, \&quot;clear\&quot;).</param>
+    /// <param name="person">Identity data of the individual who was verified.</param>
+    /// <param name="document">Identity data of the document involved in verification, if relevant.</param>
+    /// <param name="attachments">Access keys for attachments (eg document/selfie images).</param>
+    public IdentityData(string originatingProviderId = default(string), PersonData person = default(PersonData), DocumentData document = default(DocumentData), Attachments attachments = default(Attachments))
     {
-        OriginatingIntegrationId = originatingIntegrationId;
+        OriginatingProviderId = originatingProviderId;
         Person = person;
         Document = document;
+        Attachments = attachments;
     }
 
     /// <summary>
-    /// Gets or Sets OriginatingIntegrationId
+    /// The ID of the integration from which this data originated (eg \&quot;yoti\&quot;, \&quot;clear\&quot;)
     /// </summary>
-    [DataMember(Name = "originatingIntegrationId", EmitDefaultValue = false)]
-    public string OriginatingIntegrationId { get; set; }
+    /// <value>The ID of the integration from which this data originated (eg \&quot;yoti\&quot;, \&quot;clear\&quot;)</value>
+    [DataMember(Name = "originatingProviderId", EmitDefaultValue = false)]
+    public string OriginatingProviderId { get; set; }
 
     /// <summary>
-    /// Gets or Sets Person
+    /// Identity data of the individual who was verified
     /// </summary>
+    /// <value>Identity data of the individual who was verified</value>
     [DataMember(Name = "person", EmitDefaultValue = false)]
     public PersonData Person { get; set; }
 
     /// <summary>
-    /// Gets or Sets Document
+    /// Identity data of the document involved in verification, if relevant
     /// </summary>
+    /// <value>Identity data of the document involved in verification, if relevant</value>
     [DataMember(Name = "document", EmitDefaultValue = false)]
     public DocumentData Document { get; set; }
+
+    /// <summary>
+    /// Access keys for attachments (eg document/selfie images)
+    /// </summary>
+    /// <value>Access keys for attachments (eg document/selfie images)</value>
+    [DataMember(Name = "attachments", EmitDefaultValue = false)]
+    public Attachments Attachments { get; set; }
 
     /// <summary>
     /// Returns the string presentation of the object
@@ -57,9 +69,10 @@ public partial class IdentityData
     {
         var sb = new StringBuilder();
         sb.Append("class IdentityData {\n");
-        sb.Append("  OriginatingIntegrationId: ").Append(OriginatingIntegrationId).Append("\n");
+        sb.Append("  OriginatingProviderId: ").Append(OriginatingProviderId).Append("\n");
         sb.Append("  Person: ").Append(Person).Append("\n");
         sb.Append("  Document: ").Append(Document).Append("\n");
+        sb.Append("  Attachments: ").Append(Attachments).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
     }

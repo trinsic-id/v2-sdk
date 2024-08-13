@@ -21,7 +21,7 @@ public interface ISessionsApiSync : IApiAccessor
 {
     #region Synchronous Operations
     /// <summary>
-    /// 
+    /// Cancel a Session by its ID
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -29,7 +29,7 @@ public interface ISessionsApiSync : IApiAccessor
     CancelSessionResponse CancelSession(string sessionId);
 
     /// <summary>
-    /// 
+    /// Cancel a Session by its ID
     /// </summary>
     /// <remarks>
     /// 
@@ -39,7 +39,7 @@ public interface ISessionsApiSync : IApiAccessor
     /// <returns>ApiResponse of CancelSessionResponse</returns>
     ApiResponse<CancelSessionResponse> CancelSessionWithHttpInfo(string sessionId);
     /// <summary>
-    /// 
+    /// Create a Session to verify a user&#39;s identity
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="createSessionRequest"> (optional)</param>
@@ -47,7 +47,7 @@ public interface ISessionsApiSync : IApiAccessor
     CreateSessionResponse CreateSession(CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
 
     /// <summary>
-    /// 
+    /// Create a Session to verify a user&#39;s identity
     /// </summary>
     /// <remarks>
     /// 
@@ -57,49 +57,69 @@ public interface ISessionsApiSync : IApiAccessor
     /// <returns>ApiResponse of CreateSessionResponse</returns>
     ApiResponse<CreateSessionResponse> CreateSessionWithHttpInfo(CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?));
     /// <summary>
-    /// 
+    /// Exchange a Results Access Key for Identity Data
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
-    /// <returns>GetSessionResponseV1</returns>
-    GetSessionResponseV1 GetSession(string sessionId);
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <returns>ExchangeResultsKeyResponse</returns>
+    ExchangeResultsKeyResponse ExchangeResultsKey(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?));
 
     /// <summary>
-    /// 
+    /// Exchange a Results Access Key for Identity Data
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
-    /// <returns>ApiResponse of GetSessionResponseV1</returns>
-    ApiResponse<GetSessionResponseV1> GetSessionWithHttpInfo(string sessionId);
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <returns>ApiResponse of ExchangeResultsKeyResponse</returns>
+    ApiResponse<ExchangeResultsKeyResponse> ExchangeResultsKeyWithHttpInfo(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?));
     /// <summary>
-    /// 
+    /// Get a Session by its ID
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="sessionId"></param>
+    /// <returns>GetSessionResponse</returns>
+    GetSessionResponse GetSession(string sessionId);
+
+    /// <summary>
+    /// Get a Session by its ID
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <returns>ApiResponse of GetSessionResponse</returns>
+    ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(string sessionId);
+    /// <summary>
+    /// List Sessions created by your account
+    /// </summary>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <returns>ListSessionsResponse</returns>
     ListSessionsResponse ListSessions(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?));
 
     /// <summary>
-    /// 
+    /// List Sessions created by your account
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <returns>ApiResponse of ListSessionsResponse</returns>
     ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?));
     /// <summary>
-    /// 
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -107,7 +127,7 @@ public interface ISessionsApiSync : IApiAccessor
     void RedactSession(string sessionId);
 
     /// <summary>
-    /// 
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
     /// </summary>
     /// <remarks>
     /// 
@@ -126,7 +146,7 @@ public interface ISessionsApiAsync : IApiAccessor
 {
     #region Asynchronous Operations
     /// <summary>
-    /// 
+    /// Cancel a Session by its ID
     /// </summary>
     /// <remarks>
     /// 
@@ -138,7 +158,7 @@ public interface ISessionsApiAsync : IApiAccessor
     System.Threading.Tasks.Task<CancelSessionResponse> CancelSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
-    /// 
+    /// Cancel a Session by its ID
     /// </summary>
     /// <remarks>
     /// 
@@ -149,7 +169,7 @@ public interface ISessionsApiAsync : IApiAccessor
     /// <returns>Task of ApiResponse (CancelSessionResponse)</returns>
     System.Threading.Tasks.Task<ApiResponse<CancelSessionResponse>> CancelSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
-    /// 
+    /// Create a Session to verify a user&#39;s identity
     /// </summary>
     /// <remarks>
     /// 
@@ -161,7 +181,7 @@ public interface ISessionsApiAsync : IApiAccessor
     System.Threading.Tasks.Task<CreateSessionResponse> CreateSessionAsync(CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
-    /// 
+    /// Create a Session to verify a user&#39;s identity
     /// </summary>
     /// <remarks>
     /// 
@@ -172,19 +192,32 @@ public interface ISessionsApiAsync : IApiAccessor
     /// <returns>Task of ApiResponse (CreateSessionResponse)</returns>
     System.Threading.Tasks.Task<ApiResponse<CreateSessionResponse>> CreateSessionWithHttpInfoAsync(CreateSessionRequest? createSessionRequest = default(CreateSessionRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
-    /// 
+    /// Exchange a Results Access Key for Identity Data
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of GetSessionResponseV1</returns>
-    System.Threading.Tasks.Task<GetSessionResponseV1> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <returns>Task of ExchangeResultsKeyResponse</returns>
+    System.Threading.Tasks.Task<ExchangeResultsKeyResponse> ExchangeResultsKeyAsync(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
+    /// Exchange a Results Access Key for Identity Data
+    /// </summary>
+    /// <remarks>
     /// 
+    /// </remarks>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ExchangeResultsKeyResponse)</returns>
+    System.Threading.Tasks.Task<ApiResponse<ExchangeResultsKeyResponse>> ExchangeResultsKeyWithHttpInfoAsync(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <summary>
+    /// Get a Session by its ID
     /// </summary>
     /// <remarks>
     /// 
@@ -192,39 +225,51 @@ public interface ISessionsApiAsync : IApiAccessor
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetSessionResponseV1)</returns>
-    System.Threading.Tasks.Task<ApiResponse<GetSessionResponseV1>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <returns>Task of GetSessionResponse</returns>
+    System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
     /// <summary>
-    /// 
+    /// Get a Session by its ID
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="sessionId"></param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (GetSessionResponse)</returns>
+    System.Threading.Tasks.Task<ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+    /// <summary>
+    /// List Sessions created by your account
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponse</returns>
     System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
-    /// 
+    /// List Sessions created by your account
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
     System.Threading.Tasks.Task<ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
     /// <summary>
-    /// 
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
     /// </summary>
     /// <remarks>
     /// 
@@ -236,7 +281,7 @@ public interface ISessionsApiAsync : IApiAccessor
     System.Threading.Tasks.Task RedactSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     /// <summary>
-    /// 
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
     /// </summary>
     /// <remarks>
     /// 
@@ -470,7 +515,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Cancel a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -482,7 +527,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Cancel a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -544,7 +589,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Cancel a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -557,7 +602,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Cancel a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -621,7 +666,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Create a Session to verify a user&#39;s identity 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="createSessionRequest"> (optional)</param>
@@ -633,7 +678,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Create a Session to verify a user&#39;s identity 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="createSessionRequest"> (optional)</param>
@@ -692,7 +737,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Create a Session to verify a user&#39;s identity 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="createSessionRequest"> (optional)</param>
@@ -705,7 +750,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Create a Session to verify a user&#39;s identity 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="createSessionRequest"> (optional)</param>
@@ -767,24 +812,187 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Exchange a Results Access Key for Identity Data 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
-    /// <returns>GetSessionResponseV1</returns>
-    public GetSessionResponseV1 GetSession(string sessionId)
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <returns>ExchangeResultsKeyResponse</returns>
+    public ExchangeResultsKeyResponse ExchangeResultsKey(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?))
+    {
+        var localVarResponse = ExchangeResultsKeyWithHttpInfo(sessionId, exchangeResultsKeyRequest);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// Exchange a Results Access Key for Identity Data 
+    /// </summary>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <returns>ApiResponse of ExchangeResultsKeyResponse</returns>
+    public Trinsic.Connect.Client.ApiResponse<ExchangeResultsKeyResponse> ExchangeResultsKeyWithHttpInfo(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?))
+    {
+        // verify the required parameter 'sessionId' is set
+        if (sessionId == null)
+        {
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->ExchangeResultsKey");
+        }
+
+        var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
+
+        var _contentTypes = new string[] {
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new string[] {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = Trinsic.Connect.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+        {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        }
+
+        var localVarAccept = Trinsic.Connect.Client.ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null)
+        {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+        }
+
+        localVarRequestOptions.PathParameters.Add("sessionId", Trinsic.Connect.Client.ClientUtils.ParameterToString(sessionId)); // path parameter
+        localVarRequestOptions.Data = exchangeResultsKeyRequest;
+
+        // authentication (Bearer) required
+        // bearer authentication required
+        if (!string.IsNullOrEmpty(Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+        {
+            localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + Configuration.AccessToken);
+        }
+
+        // make the HTTP request
+        var localVarResponse = Client.Post<ExchangeResultsKeyResponse>("/api/v1/sessions/{sessionId}/results", localVarRequestOptions, Configuration);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ExchangeResultsKey", localVarResponse);
+            if (_exception != null)
+            {
+                throw _exception;
+            }
+        }
+
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// Exchange a Results Access Key for Identity Data 
+    /// </summary>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ExchangeResultsKeyResponse</returns>
+    public async System.Threading.Tasks.Task<ExchangeResultsKeyResponse> ExchangeResultsKeyAsync(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    {
+        var localVarResponse = await ExchangeResultsKeyWithHttpInfoAsync(sessionId, exchangeResultsKeyRequest, cancellationToken).ConfigureAwait(false);
+        return localVarResponse.Data;
+    }
+
+    /// <summary>
+    /// Exchange a Results Access Key for Identity Data 
+    /// </summary>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <param name="exchangeResultsKeyRequest"> (optional)</param>
+    /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+    /// <returns>Task of ApiResponse (ExchangeResultsKeyResponse)</returns>
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ExchangeResultsKeyResponse>> ExchangeResultsKeyWithHttpInfoAsync(string sessionId, ExchangeResultsKeyRequest? exchangeResultsKeyRequest = default(ExchangeResultsKeyRequest?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    {
+        // verify the required parameter 'sessionId' is set
+        if (sessionId == null)
+        {
+            throw new Trinsic.Connect.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->ExchangeResultsKey");
+        }
+
+        var localVarRequestOptions = new Trinsic.Connect.Client.RequestOptions();
+
+        var _contentTypes = new string[] {
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+
+        // to determine the Accept header
+        var _accepts = new string[] {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+
+        var localVarContentType = Trinsic.Connect.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+        if (localVarContentType != null)
+        {
+            localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+        }
+
+        var localVarAccept = Trinsic.Connect.Client.ClientUtils.SelectHeaderAccept(_accepts);
+        if (localVarAccept != null)
+        {
+            localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+        }
+
+        localVarRequestOptions.PathParameters.Add("sessionId", Trinsic.Connect.Client.ClientUtils.ParameterToString(sessionId)); // path parameter
+        localVarRequestOptions.Data = exchangeResultsKeyRequest;
+
+        // authentication (Bearer) required
+        // bearer authentication required
+        if (!string.IsNullOrEmpty(Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+        {
+            localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + Configuration.AccessToken);
+        }
+
+        // make the HTTP request
+
+        var localVarResponse = await AsynchronousClient.PostAsync<ExchangeResultsKeyResponse>("/api/v1/sessions/{sessionId}/results", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+
+        if (ExceptionFactory != null)
+        {
+            var _exception = ExceptionFactory("ExchangeResultsKey", localVarResponse);
+            if (_exception != null)
+            {
+                throw _exception;
+            }
+        }
+
+        return localVarResponse;
+    }
+
+    /// <summary>
+    /// Get a Session by its ID 
+    /// </summary>
+    /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+    /// <param name="sessionId"></param>
+    /// <returns>GetSessionResponse</returns>
+    public GetSessionResponse GetSession(string sessionId)
     {
         var localVarResponse = GetSessionWithHttpInfo(sessionId);
         return localVarResponse.Data;
     }
 
     /// <summary>
-    ///  
+    /// Get a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
-    /// <returns>ApiResponse of GetSessionResponseV1</returns>
-    public Trinsic.Connect.Client.ApiResponse<GetSessionResponseV1> GetSessionWithHttpInfo(string sessionId)
+    /// <returns>ApiResponse of GetSessionResponse</returns>
+    public Trinsic.Connect.Client.ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(string sessionId)
     {
         // verify the required parameter 'sessionId' is set
         if (sessionId == null)
@@ -826,7 +1034,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
         }
 
         // make the HTTP request
-        var localVarResponse = Client.Get<GetSessionResponseV1>("/api/v1/sessions/{sessionId}", localVarRequestOptions, Configuration);
+        var localVarResponse = Client.Get<GetSessionResponse>("/api/v1/sessions/{sessionId}", localVarRequestOptions, Configuration);
 
         if (ExceptionFactory != null)
         {
@@ -841,26 +1049,26 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Get a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of GetSessionResponseV1</returns>
-    public async System.Threading.Tasks.Task<GetSessionResponseV1> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    /// <returns>Task of GetSessionResponse</returns>
+    public async System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         var localVarResponse = await GetSessionWithHttpInfoAsync(sessionId, cancellationToken).ConfigureAwait(false);
         return localVarResponse.Data;
     }
 
     /// <summary>
-    ///  
+    /// Get a Session by its ID 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-    /// <returns>Task of ApiResponse (GetSessionResponseV1)</returns>
-    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<GetSessionResponseV1>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+    /// <returns>Task of ApiResponse (GetSessionResponse)</returns>
+    public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
     {
         // verify the required parameter 'sessionId' is set
         if (sessionId == null)
@@ -903,7 +1111,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
 
         // make the HTTP request
 
-        var localVarResponse = await AsynchronousClient.GetAsync<GetSessionResponseV1>("/api/v1/sessions/{sessionId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
+        var localVarResponse = await AsynchronousClient.GetAsync<GetSessionResponse>("/api/v1/sessions/{sessionId}", localVarRequestOptions, Configuration, cancellationToken).ConfigureAwait(false);
 
         if (ExceptionFactory != null)
         {
@@ -918,13 +1126,13 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// List Sessions created by your account 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <returns>ListSessionsResponse</returns>
     public ListSessionsResponse ListSessions(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?))
     {
@@ -933,13 +1141,13 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// List Sessions created by your account 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <returns>ApiResponse of ListSessionsResponse</returns>
     public Trinsic.Connect.Client.ApiResponse<ListSessionsResponse> ListSessionsWithHttpInfo(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?))
     {
@@ -1010,13 +1218,13 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// List Sessions created by your account 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ListSessionsResponse</returns>
     public async System.Threading.Tasks.Task<ListSessionsResponse> ListSessionsAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -1026,13 +1234,13 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// List Sessions created by your account 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
-    /// <param name="orderBy"> (optional)</param>
+    /// <param name="orderBy">The field by which sessions should be ordered (optional)</param>
     /// <param name="orderDirection"> (optional)</param>
-    /// <param name="pageSize"> (optional)</param>
-    /// <param name="page"> (optional)</param>
+    /// <param name="pageSize">The number of items to return per page - - must be between &#x60;1&#x60; and &#x60;10&#x60; (optional)</param>
+    /// <param name="page">The page number to return - - starts at &#x60;1&#x60; (optional)</param>
     /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
     /// <returns>Task of ApiResponse (ListSessionsResponse)</returns>
     public async System.Threading.Tasks.Task<Trinsic.Connect.Client.ApiResponse<ListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionOrdering? orderBy = default(SessionOrdering?), OrderDirection? orderDirection = default(OrderDirection?), int? pageSize = default(int?), int? page = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
@@ -1106,7 +1314,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted. 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -1117,7 +1325,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted. 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -1177,7 +1385,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted. 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>
@@ -1189,7 +1397,7 @@ public partial class SessionsApi : IDisposable, ISessionsApi
     }
 
     /// <summary>
-    ///  
+    /// Redact a Session, removing all identity data from Trinsic&#39;s servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted. 
     /// </summary>
     /// <exception cref="Trinsic.Connect.Client.ApiException">Thrown when fails to make API call</exception>
     /// <param name="sessionId"></param>

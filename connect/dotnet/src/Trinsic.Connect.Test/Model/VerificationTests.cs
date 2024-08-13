@@ -46,21 +46,12 @@ public class VerificationTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'Id'
+    /// Test the property 'Provider'
     /// </summary>
     [Fact]
-    public void IdTest()
+    public void ProviderTest()
     {
-        // TODO unit test for the property 'Id'
-    }
-
-    /// <summary>
-    /// Test the property 'State'
-    /// </summary>
-    [Fact]
-    public void StateTest()
-    {
-        // TODO unit test for the property 'State'
+        // TODO unit test for the property 'Provider'
     }
 
     /// <summary>
@@ -70,41 +61,5 @@ public class VerificationTests : IDisposable
     public void FailCodeTest()
     {
         // TODO unit test for the property 'FailCode'
-    }
-
-    /// <summary>
-    /// Test the property 'Reused'
-    /// </summary>
-    [Fact]
-    public void ReusedTest()
-    {
-        // TODO unit test for the property 'Reused'
-    }
-
-    /// <summary>
-    /// Test the property 'Updated'
-    /// </summary>
-    [Fact]
-    public void UpdatedTest()
-    {
-        // TODO unit test for the property 'Updated'
-    }
-
-    /// <summary>
-    /// Test the property 'DisclosedFields'
-    /// </summary>
-    [Fact]
-    public void DisclosedFieldsTest()
-    {
-        // TODO unit test for the property 'DisclosedFields'
-    }
-
-    /// <summary>
-    /// Test the property 'IdentityData'
-    /// </summary>
-    [Fact]
-    public void IdentityDataTest()
-    {
-        // TODO unit test for the property 'IdentityData'
     }
 }

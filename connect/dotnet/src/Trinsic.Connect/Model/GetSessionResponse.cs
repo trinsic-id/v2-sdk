@@ -15,23 +15,23 @@ using Newtonsoft.Json;
 namespace Trinsic.Connect.Model;
 
 /// <summary>
-/// GetSessionResponseV1
+/// GetSessionResponse
 /// </summary>
-[DataContract(Name = "GetSessionResponseV1")]
-public partial class GetSessionResponseV1
+[DataContract(Name = "GetSessionResponse")]
+public partial class GetSessionResponse
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetSessionResponseV1" /> class.
+    /// Initializes a new instance of the <see cref="GetSessionResponse" /> class.
     /// </summary>
     [JsonConstructorAttribute]
-    protected GetSessionResponseV1() { }
+    protected GetSessionResponse() { }
     /// <summary>
-    /// Initializes a new instance of the <see cref="GetSessionResponseV1" /> class.
+    /// Initializes a new instance of the <see cref="GetSessionResponse" /> class.
     /// </summary>
     /// <param name="session">session (required).</param>
-    public GetSessionResponseV1(Session session = default(Session))
+    public GetSessionResponse(Session session = default(Session))
     {
-        Session = session ?? throw new ArgumentNullException("session is a required property for GetSessionResponseV1 and cannot be null");
+        Session = session ?? throw new ArgumentNullException("session is a required property for GetSessionResponse and cannot be null");
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public partial class GetSessionResponseV1
     public override string ToString()
     {
         var sb = new StringBuilder();
-        sb.Append("class GetSessionResponseV1 {\n");
+        sb.Append("class GetSessionResponse {\n");
         sb.Append("  Session: ").Append(Session).Append("\n");
         sb.Append("}\n");
         return sb.ToString();

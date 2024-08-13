@@ -46,12 +46,12 @@ public class IdentityDataTests : IDisposable
     }
 
     /// <summary>
-    /// Test the property 'OriginatingIntegrationId'
+    /// Test the property 'OriginatingProviderId'
     /// </summary>
     [Fact]
-    public void OriginatingIntegrationIdTest()
+    public void OriginatingProviderIdTest()
     {
-        // TODO unit test for the property 'OriginatingIntegrationId'
+        // TODO unit test for the property 'OriginatingProviderId'
     }
 
     /// <summary>
@@ -70,5 +70,14 @@ public class IdentityDataTests : IDisposable
     public void DocumentTest()
     {
         // TODO unit test for the property 'Document'
+    }
+
+    /// <summary>
+    /// Test the property 'Attachments'
+    /// </summary>
+    [Fact]
+    public void AttachmentsTest()
+    {
+        // TODO unit test for the property 'Attachments'
     }
 }

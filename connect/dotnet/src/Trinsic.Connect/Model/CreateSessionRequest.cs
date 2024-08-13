@@ -23,18 +23,46 @@ public partial class CreateSessionRequest
     /// <summary>
     /// Initializes a new instance of the <see cref="CreateSessionRequest" /> class.
     /// </summary>
-    /// <param name="fields">fields.</param>
-    public CreateSessionRequest(DisclosedFieldsRequest fields = default(DisclosedFieldsRequest))
+    /// <param name="direct">Whether to create this Session in Direct mode.                Direct mode is used to execute a verification against a specific identity provider.  Users will not be shown the Connect Widget; therefore, reuse of Connect credentials, selection of an identity provider, and saving a verification for future reuse  are not available to the end user in direct mode.                Sessions created in direct mode must be created with a &#x60;RedirectUrl&#x60; specified, and cannot be invoked using the frontend SDK at this time..</param>
+    /// <param name="redirectUrl">The URL to redirect to after the user has completed the identity verification process.                If &#x60;Direct&#x60; is set to &#x60;true&#x60;, this field is required..</param>
+    /// <param name="providers">The list of allowed identity providers. If not specified, all available providers will be allowed.                If &#x60;Direct&#x60; is &#x60;true&#x60;, this field must be set, and must have only a single entry.  If &#x60;Direct&#x60; is not specified or is &#x60;false&#x60;, this field may have any number of entries..</param>
+    /// <param name="disclosedFields">Specific identity attributes to request. If not provided, all available attributes will be requested..</param>
+    public CreateSessionRequest(bool direct = default(bool), string redirectUrl = default(string), List<string> providers = default(List<string>), DisclosedFieldsRequest disclosedFields = default(DisclosedFieldsRequest))
     {
-        Fields = fields;
+        Direct = direct;
+        RedirectUrl = redirectUrl;
+        Providers = providers;
+        DisclosedFields = disclosedFields;
         AdditionalProperties = new Dictionary<string, object>();
     }
 
     /// <summary>
-    /// Gets or Sets Fields
+    /// Whether to create this Session in Direct mode.                Direct mode is used to execute a verification against a specific identity provider.  Users will not be shown the Connect Widget; therefore, reuse of Connect credentials, selection of an identity provider, and saving a verification for future reuse  are not available to the end user in direct mode.                Sessions created in direct mode must be created with a &#x60;RedirectUrl&#x60; specified, and cannot be invoked using the frontend SDK at this time.
     /// </summary>
-    [DataMember(Name = "fields", EmitDefaultValue = false)]
-    public DisclosedFieldsRequest Fields { get; set; }
+    /// <value>Whether to create this Session in Direct mode.                Direct mode is used to execute a verification against a specific identity provider.  Users will not be shown the Connect Widget; therefore, reuse of Connect credentials, selection of an identity provider, and saving a verification for future reuse  are not available to the end user in direct mode.                Sessions created in direct mode must be created with a &#x60;RedirectUrl&#x60; specified, and cannot be invoked using the frontend SDK at this time.</value>
+    [DataMember(Name = "direct", EmitDefaultValue = true)]
+    public bool Direct { get; set; }
+
+    /// <summary>
+    /// The URL to redirect to after the user has completed the identity verification process.                If &#x60;Direct&#x60; is set to &#x60;true&#x60;, this field is required.
+    /// </summary>
+    /// <value>The URL to redirect to after the user has completed the identity verification process.                If &#x60;Direct&#x60; is set to &#x60;true&#x60;, this field is required.</value>
+    [DataMember(Name = "redirectUrl", EmitDefaultValue = false)]
+    public string RedirectUrl { get; set; }
+
+    /// <summary>
+    /// The list of allowed identity providers. If not specified, all available providers will be allowed.                If &#x60;Direct&#x60; is &#x60;true&#x60;, this field must be set, and must have only a single entry.  If &#x60;Direct&#x60; is not specified or is &#x60;false&#x60;, this field may have any number of entries.
+    /// </summary>
+    /// <value>The list of allowed identity providers. If not specified, all available providers will be allowed.                If &#x60;Direct&#x60; is &#x60;true&#x60;, this field must be set, and must have only a single entry.  If &#x60;Direct&#x60; is not specified or is &#x60;false&#x60;, this field may have any number of entries.</value>
+    [DataMember(Name = "providers", EmitDefaultValue = false)]
+    public List<string> Providers { get; set; }
+
+    /// <summary>
+    /// Specific identity attributes to request. If not provided, all available attributes will be requested.
+    /// </summary>
+    /// <value>Specific identity attributes to request. If not provided, all available attributes will be requested.</value>
+    [DataMember(Name = "disclosedFields", EmitDefaultValue = false)]
+    public DisclosedFieldsRequest DisclosedFields { get; set; }
 
     /// <summary>
     /// Gets or Sets additional properties
@@ -50,7 +78,10 @@ public partial class CreateSessionRequest
     {
         var sb = new StringBuilder();
         sb.Append("class CreateSessionRequest {\n");
-        sb.Append("  Fields: ").Append(Fields).Append("\n");
+        sb.Append("  Direct: ").Append(Direct).Append("\n");
+        sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+        sb.Append("  Providers: ").Append(Providers).Append("\n");
+        sb.Append("  DisclosedFields: ").Append(DisclosedFields).Append("\n");
         sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
         sb.Append("}\n");
         return sb.ToString();
