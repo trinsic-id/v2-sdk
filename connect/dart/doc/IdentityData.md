@@ -8,9 +8,10 @@ import 'package:TrinsicConnect/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**originatingIntegrationId** | **String** |  | [optional] 
-**person** | [**PersonData**](PersonData.md) |  | [optional] 
-**document** | [**DocumentData**](DocumentData.md) |  | [optional] 
+**originatingIntegrationId** | **String** | The ID of the integration from which this data originated (eg \"yoti\", \"clear\") | [optional] 
+**person** | [**PersonData**](PersonData.md) | Identity data of the individual who was verified | [optional] 
+**document** | [**DocumentData**](DocumentData.md) | Identity data of the document involved in verification, if relevant | [optional] 
+**linkedResources** | [**LinkedResources**](LinkedResources.md) | Access tokens for linked resources (eg document/selfie images) | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

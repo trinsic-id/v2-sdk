@@ -47,14 +47,14 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionsApi();
-final sessionId = sessionId_example; // String | 
+final api_instance = AcceptanceApi();
+final createVerificationSessionRequest = CreateVerificationSessionRequest(); // CreateVerificationSessionRequest | 
 
 try {
-    final result = api_instance.cancelSession(sessionId);
+    final result = api_instance.createVerificationSession(createVerificationSessionRequest);
     print(result);
 } catch (e) {
-    print('Exception when calling SessionsApi->cancelSession: $e\n');
+    print('Exception when calling AcceptanceApi->createVerificationSession: $e\n');
 }
 
 ```
@@ -65,26 +65,43 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
-*SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
-*SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
-*SessionsApi* | [**listSessions**](doc//SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-*SessionsApi* | [**redactSession**](doc//SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
+*AcceptanceApi* | [**createVerificationSession**](doc//AcceptanceApi.md#createverificationsession) | **PUT** /api/v1/acceptance/verification-session | Create a new `VerificationSession` for the given integration.
+*AcceptanceApi* | [**exchangeToken**](doc//AcceptanceApi.md#exchangetoken) | **POST** /api/v1/acceptance/verification-session/{verificationSessionId}/exchange | Exchange a token for the results of a `VerificationSession`
+*AcceptanceApi* | [**getLinkedResource**](doc//AcceptanceApi.md#getlinkedresource) | **GET** /api/v1/acceptance/resource | Exchange a Resource Access Token (from `IdentityData.LinkedResources`) for the raw contents of the linked resource.                Use this API to fetch document (front, back, portrait) or other (selfie) images from a verification, if relevant.
+*AcceptanceApi* | [**listIntegrations**](doc//AcceptanceApi.md#listintegrations) | **GET** /api/v1/acceptance/integrations | List all integrations available for use
+*IdentitiesApi* | [**canReuseCredential**](doc//IdentitiesApi.md#canreusecredential) | **POST** /api/v1/identities/credentials/can-reuse | 
+*SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID
+*SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user's identity
+*SessionsApi* | [**exchangeIdentityToken**](doc//SessionsApi.md#exchangeidentitytoken) | **POST** /api/v1/sessions/{sessionId}/exchange | Exchange an Identity Exchange Token for Identity Data
+*SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID
+*SessionsApi* | [**listSessions**](doc//SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account
+*SessionsApi* | [**redactSession**](doc//SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session
 
 
 ## Documentation For Models
 
  - [Address](doc//Address.md)
+ - [CanReuseCredentialRequest](doc//CanReuseCredentialRequest.md)
+ - [CanReuseCredentialResponse](doc//CanReuseCredentialResponse.md)
  - [CancelSessionResponse](doc//CancelSessionResponse.md)
  - [CreateSessionRequest](doc//CreateSessionRequest.md)
  - [CreateSessionResponse](doc//CreateSessionResponse.md)
+ - [CreateVerificationSessionRequest](doc//CreateVerificationSessionRequest.md)
+ - [CreateVerificationSessionResponse](doc//CreateVerificationSessionResponse.md)
  - [DisclosedFields](doc//DisclosedFields.md)
  - [DisclosedFieldsRequest](doc//DisclosedFieldsRequest.md)
  - [DocumentData](doc//DocumentData.md)
+ - [ExchangeIdentityTokenRequest](doc//ExchangeIdentityTokenRequest.md)
+ - [ExchangeIdentityTokenResponse](doc//ExchangeIdentityTokenResponse.md)
+ - [ExchangeTokenRequest](doc//ExchangeTokenRequest.md)
+ - [ExchangeTokenResponse](doc//ExchangeTokenResponse.md)
  - [FailureMessage](doc//FailureMessage.md)
  - [GetSessionResponseV1](doc//GetSessionResponseV1.md)
  - [IDVSessionState](doc//IDVSessionState.md)
  - [IdentityData](doc//IdentityData.md)
+ - [Integration](doc//Integration.md)
+ - [LinkedResources](doc//LinkedResources.md)
+ - [ListIntegrationsResponse](doc//ListIntegrationsResponse.md)
  - [ListSessionsResponse](doc//ListSessionsResponse.md)
  - [OrderDirection](doc//OrderDirection.md)
  - [PersonData](doc//PersonData.md)
@@ -94,7 +111,7 @@ Class | Method | HTTP request | Description
  - [ValidationResult](doc//ValidationResult.md)
  - [Verification](doc//Verification.md)
  - [VerificationFailCode](doc//VerificationFailCode.md)
- - [VerificationState](doc//VerificationState.md)
+ - [VerificationSessionState](doc//VerificationSessionState.md)
 
 
 ## Documentation For Authorization

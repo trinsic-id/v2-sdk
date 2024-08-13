@@ -28,19 +28,32 @@ part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
+part 'api/acceptance_api.dart';
+part 'api/identities_api.dart';
 part 'api/sessions_api.dart';
 
 part 'model/address.dart';
+part 'model/can_reuse_credential_request.dart';
+part 'model/can_reuse_credential_response.dart';
 part 'model/cancel_session_response.dart';
 part 'model/create_session_request.dart';
 part 'model/create_session_response.dart';
+part 'model/create_verification_session_request.dart';
+part 'model/create_verification_session_response.dart';
 part 'model/disclosed_fields.dart';
 part 'model/disclosed_fields_request.dart';
 part 'model/document_data.dart';
+part 'model/exchange_identity_token_request.dart';
+part 'model/exchange_identity_token_response.dart';
+part 'model/exchange_token_request.dart';
+part 'model/exchange_token_response.dart';
 part 'model/failure_message.dart';
 part 'model/get_session_response_v1.dart';
 part 'model/idv_session_state.dart';
 part 'model/identity_data.dart';
+part 'model/integration.dart';
+part 'model/linked_resources.dart';
+part 'model/list_integrations_response.dart';
 part 'model/list_sessions_response.dart';
 part 'model/order_direction.dart';
 part 'model/person_data.dart';
@@ -50,7 +63,7 @@ part 'model/session_ordering.dart';
 part 'model/validation_result.dart';
 part 'model/verification.dart';
 part 'model/verification_fail_code.dart';
-part 'model/verification_state.dart';
+part 'model/verification_session_state.dart';
 
 /// An [ApiClient] instance that uses the default values obtained from
 /// the OpenAPI specification file.

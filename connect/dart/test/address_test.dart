@@ -51,6 +51,7 @@ void main() {
       // TODO
     });
 
+    // The full address as a single string
     // String fullAddress
     test('to test the property `fullAddress`', () async {
       // TODO
