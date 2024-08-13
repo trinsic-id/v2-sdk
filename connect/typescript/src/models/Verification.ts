@@ -19,12 +19,6 @@ import {
     DisclosedFieldsFromJSONTyped,
     DisclosedFieldsToJSON,
 } from "./DisclosedFields";
-import type { VerificationState } from "./VerificationState";
-import {
-    VerificationStateFromJSON,
-    VerificationStateFromJSONTyped,
-    VerificationStateToJSON,
-} from "./VerificationState";
 import type { IdentityData } from "./IdentityData";
 import {
     IdentityDataFromJSON,
@@ -39,49 +33,31 @@ import {
 } from "./VerificationFailCode";
 
 /**
- *
+ * A Verification contained within a Session
  * @export
  * @interface Verification
  */
 export interface Verification {
     /**
-     *
-     * @type {string}
-     * @memberof Verification
-     */
-    id: string;
-    /**
-     *
-     * @type {VerificationState}
-     * @memberof Verification
-     */
-    state: VerificationState;
-    /**
-     *
+     * If the Verification is in state `VerificationFailed`, this field contains the reason for failure
      * @type {VerificationFailCode}
      * @memberof Verification
      */
     failCode?: VerificationFailCode;
     /**
-     *
+     * Whether the Verification was completed by reusing a Trinsic Connect identity credential (`true`) or via a fresh verification (`false`)
      * @type {boolean}
      * @memberof Verification
      */
     reused: boolean;
     /**
-     *
-     * @type {number}
-     * @memberof Verification
-     */
-    updated: number;
-    /**
-     *
+     * The fields that were requested to be disclosed when the Session for this Verification was created
      * @type {DisclosedFields}
      * @memberof Verification
      */
     disclosedFields: DisclosedFields;
     /**
-     *
+     * The results of the Verification. Only present if the Session's `state` is `IdvSuccess`.
      * @type {IdentityData}
      * @memberof Verification
      */
@@ -92,10 +68,7 @@ export interface Verification {
  * Check if a given object implements the Verification interface.
  */
 export function instanceOfVerification(value: object): value is Verification {
-    if (!("id" in value) || value["id"] === undefined) return false;
-    if (!("state" in value) || value["state"] === undefined) return false;
     if (!("reused" in value) || value["reused"] === undefined) return false;
-    if (!("updated" in value) || value["updated"] === undefined) return false;
     if (!("disclosedFields" in value) || value["disclosedFields"] === undefined)
         return false;
     return true;
@@ -113,14 +86,11 @@ export function VerificationFromJSONTyped(
         return json;
     }
     return {
-        id: json["id"],
-        state: VerificationStateFromJSON(json["state"]),
         failCode:
             json["failCode"] == null
                 ? undefined
                 : VerificationFailCodeFromJSON(json["failCode"]),
         reused: json["reused"],
-        updated: json["updated"],
         disclosedFields: DisclosedFieldsFromJSON(json["disclosedFields"]),
         identityData:
             json["identityData"] == null
@@ -134,11 +104,8 @@ export function VerificationToJSON(value?: Verification | null): any {
         return value;
     }
     return {
-        id: value["id"],
-        state: VerificationStateToJSON(value["state"]),
         failCode: VerificationFailCodeToJSON(value["failCode"]),
         reused: value["reused"],
-        updated: value["updated"],
         disclosedFields: DisclosedFieldsToJSON(value["disclosedFields"]),
         identityData: IdentityDataToJSON(value["identityData"]),
     };

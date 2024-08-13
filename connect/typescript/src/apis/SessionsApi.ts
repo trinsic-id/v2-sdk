@@ -17,6 +17,8 @@ import type {
     CancelSessionResponse,
     CreateSessionRequest,
     CreateSessionResponse,
+    ExchangeIdentityTokenRequest,
+    ExchangeIdentityTokenResponse,
     FailureMessage,
     GetSessionResponseV1,
     ListSessionsResponse,
@@ -31,6 +33,10 @@ import {
     CreateSessionRequestToJSON,
     CreateSessionResponseFromJSON,
     CreateSessionResponseToJSON,
+    ExchangeIdentityTokenRequestFromJSON,
+    ExchangeIdentityTokenRequestToJSON,
+    ExchangeIdentityTokenResponseFromJSON,
+    ExchangeIdentityTokenResponseToJSON,
     FailureMessageFromJSON,
     FailureMessageToJSON,
     GetSessionResponseV1FromJSON,
@@ -53,6 +59,11 @@ export interface CreateSessionOperationRequest {
     createSessionRequest?: CreateSessionRequest;
 }
 
+export interface ExchangeIdentityTokenOperationRequest {
+    sessionId: string;
+    exchangeIdentityTokenRequest?: ExchangeIdentityTokenRequest;
+}
+
 export interface GetSessionRequest {
     sessionId: string;
 }
@@ -73,6 +84,7 @@ export interface RedactSessionRequest {
  */
 export class SessionsApi extends runtime.BaseAPI {
     /**
+     * Cancel a Session by its ID
      */
     async cancelSessionRaw(
         requestParameters: CancelSessionRequest,
@@ -116,6 +128,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Cancel a Session by its ID
      */
     async cancelSession(
         requestParameters: CancelSessionRequest,
@@ -129,6 +142,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSessionRaw(
         requestParameters: CreateSessionOperationRequest,
@@ -167,6 +181,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Create a Session to verify a user\'s identity
      */
     async createSession(
         requestParameters: CreateSessionOperationRequest = {},
@@ -180,6 +195,70 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Exchange an Identity Exchange Token for Identity Data
+     */
+    async exchangeIdentityTokenRaw(
+        requestParameters: ExchangeIdentityTokenOperationRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<runtime.ApiResponse<ExchangeIdentityTokenResponse>> {
+        if (requestParameters["sessionId"] == null) {
+            throw new runtime.RequiredError(
+                "sessionId",
+                'Required parameter "sessionId" was null or undefined when calling exchangeIdentityToken().',
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters["Content-Type"] = "application/json";
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request(
+            {
+                path: `/api/v1/sessions/{sessionId}/exchange`.replace(
+                    `{${"sessionId"}}`,
+                    encodeURIComponent(String(requestParameters["sessionId"])),
+                ),
+                method: "POST",
+                headers: headerParameters,
+                query: queryParameters,
+                body: ExchangeIdentityTokenRequestToJSON(
+                    requestParameters["exchangeIdentityTokenRequest"],
+                ),
+            },
+            initOverrides,
+        );
+
+        return new runtime.JSONApiResponse(response, (jsonValue) =>
+            ExchangeIdentityTokenResponseFromJSON(jsonValue),
+        );
+    }
+
+    /**
+     * Exchange an Identity Exchange Token for Identity Data
+     */
+    async exchangeIdentityToken(
+        requestParameters: ExchangeIdentityTokenOperationRequest,
+        initOverrides?: RequestInit | runtime.InitOverrideFunction,
+    ): Promise<ExchangeIdentityTokenResponse> {
+        const response = await this.exchangeIdentityTokenRaw(
+            requestParameters,
+            initOverrides,
+        );
+        return await response.value();
+    }
+
+    /**
+     * Get a Session by its ID
      */
     async getSessionRaw(
         requestParameters: GetSessionRequest,
@@ -223,6 +302,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get a Session by its ID
      */
     async getSession(
         requestParameters: GetSessionRequest,
@@ -236,6 +316,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessionsRaw(
         requestParameters: ListSessionsRequest,
@@ -286,6 +367,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Sessions created by your account
      */
     async listSessions(
         requestParameters: ListSessionsRequest = {},
@@ -299,6 +381,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session
      */
     async redactSessionRaw(
         requestParameters: RedactSessionRequest,
@@ -340,6 +423,7 @@ export class SessionsApi extends runtime.BaseAPI {
     }
 
     /**
+     * Redact a Session
      */
     async redactSession(
         requestParameters: RedactSessionRequest,

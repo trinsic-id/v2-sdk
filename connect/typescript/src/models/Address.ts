@@ -14,7 +14,7 @@
 
 import { mapValues } from "../runtime";
 /**
- *
+ * Address information for an individual
  * @export
  * @interface Address
  */
@@ -62,7 +62,7 @@ export interface Address {
      */
     country?: string;
     /**
-     *
+     * The full address as a single string
      * @type {string}
      * @memberof Address
      */
