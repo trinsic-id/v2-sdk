@@ -16,21 +16,25 @@ void main() {
   // final instance = PersonData();
 
   group('test PersonData', () {
+    // Given (first) name of the individual
     // String givenName
     test('to test the property `givenName`', () async {
       // TODO
     });
 
+    // Family (last) name of the individual
     // String familyName
     test('to test the property `familyName`', () async {
       // TODO
     });
 
+    // Middle name of the individual
     // String middleName
     test('to test the property `middleName`', () async {
       // TODO
     });
 
+    // The individual's full name as a single string.                Useful for names which do not fit into a \"first middle last\" structure.
     // String fullName
     test('to test the property `fullName`', () async {
       // TODO
@@ -51,6 +55,7 @@ void main() {
       // TODO
     });
 
+    // Address information for an individual
     // Address address
     test('to test the property `address`', () async {
       // TODO

@@ -10,51 +10,39 @@
 
 part of openapi.api;
 
-class ListSessionsResponse {
-  /// Returns a new [ListSessionsResponse] instance.
-  ListSessionsResponse({
-    this.sessions = const [],
-    required this.total,
-    required this.more,
+class ListProvidersResponse {
+  /// Returns a new [ListProvidersResponse] instance.
+  ListProvidersResponse({
+    this.integrations = const [],
   });
 
-  List<Session> sessions;
-
-  /// The total number of sessions tied to your account
-  int total;
-
-  /// Whether there are additional pages of sessions to retrieve
-  bool more;
+  /// The list of integrations available to your account
+  List<Integration> integrations;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ListSessionsResponse &&
-          _deepEquality.equals(other.sessions, sessions) &&
-          other.total == total &&
-          other.more == more;
+      other is ListProvidersResponse &&
+          _deepEquality.equals(other.integrations, integrations);
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (sessions.hashCode) + (total.hashCode) + (more.hashCode);
+      (integrations.hashCode);
 
   @override
-  String toString() =>
-      'ListSessionsResponse[sessions=$sessions, total=$total, more=$more]';
+  String toString() => 'ListProvidersResponse[integrations=$integrations]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'sessions'] = this.sessions;
-    json[r'total'] = this.total;
-    json[r'more'] = this.more;
+    json[r'integrations'] = this.integrations;
     return json;
   }
 
-  /// Returns a new [ListSessionsResponse] instance and imports its values from
+  /// Returns a new [ListProvidersResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ListSessionsResponse? fromJson(dynamic value) {
+  static ListProvidersResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -64,30 +52,28 @@ class ListSessionsResponse {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "ListSessionsResponse[$key]" is missing from JSON.');
+              'Required key "ListProvidersResponse[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "ListSessionsResponse[$key]" has a null value in JSON.');
+              'Required key "ListProvidersResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ListSessionsResponse(
-        sessions: Session.listFromJson(json[r'sessions']),
-        total: mapValueOfType<int>(json, r'total')!,
-        more: mapValueOfType<bool>(json, r'more')!,
+      return ListProvidersResponse(
+        integrations: Integration.listFromJson(json[r'integrations']),
       );
     }
     return null;
   }
 
-  static List<ListSessionsResponse> listFromJson(
+  static List<ListProvidersResponse> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <ListSessionsResponse>[];
+    final result = <ListProvidersResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ListSessionsResponse.fromJson(row);
+        final value = ListProvidersResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -96,12 +82,12 @@ class ListSessionsResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ListSessionsResponse> mapFromJson(dynamic json) {
-    final map = <String, ListSessionsResponse>{};
+  static Map<String, ListProvidersResponse> mapFromJson(dynamic json) {
+    final map = <String, ListProvidersResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ListSessionsResponse.fromJson(entry.value);
+        final value = ListProvidersResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -110,17 +96,17 @@ class ListSessionsResponse {
     return map;
   }
 
-  // maps a json object with a list of ListSessionsResponse-objects as value to a dart map
-  static Map<String, List<ListSessionsResponse>> mapListFromJson(
+  // maps a json object with a list of ListProvidersResponse-objects as value to a dart map
+  static Map<String, List<ListProvidersResponse>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<ListSessionsResponse>>{};
+    final map = <String, List<ListProvidersResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ListSessionsResponse.listFromJson(
+        map[entry.key] = ListProvidersResponse.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -131,8 +117,6 @@ class ListSessionsResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'sessions',
-    'total',
-    'more',
+    'integrations',
   };
 }

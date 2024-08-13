@@ -10,66 +10,54 @@
 
 part of openapi.api;
 
-class Verification {
-  /// Returns a new [Verification] instance.
-  Verification({
-    this.provider,
-    this.failCode,
+class ExchangeResultsKeyResponse {
+  /// Returns a new [ExchangeResultsKeyResponse] instance.
+  ExchangeResultsKeyResponse({
+    required this.session,
+    this.identityData,
   });
 
-  /// The identity provider that was used to perform the Verification, if any
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? provider;
+  Session session;
 
-  /// If the Verification is in state `VerificationFailed`, this field contains the reason for failure
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  VerificationFailCode? failCode;
+  IdentityData? identityData;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Verification &&
-          other.provider == provider &&
-          other.failCode == failCode;
+      other is ExchangeResultsKeyResponse &&
+          other.session == session &&
+          other.identityData == identityData;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (provider == null ? 0 : provider!.hashCode) +
-      (failCode == null ? 0 : failCode!.hashCode);
+      (session.hashCode) + (identityData == null ? 0 : identityData!.hashCode);
 
   @override
-  String toString() => 'Verification[provider=$provider, failCode=$failCode]';
+  String toString() =>
+      'ExchangeResultsKeyResponse[session=$session, identityData=$identityData]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.provider != null) {
-      json[r'provider'] = this.provider;
+    json[r'session'] = this.session;
+    if (this.identityData != null) {
+      json[r'identityData'] = this.identityData;
     } else {
-      json[r'provider'] = null;
-    }
-    if (this.failCode != null) {
-      json[r'failCode'] = this.failCode;
-    } else {
-      json[r'failCode'] = null;
+      json[r'identityData'] = null;
     }
     return json;
   }
 
-  /// Returns a new [Verification] instance and imports its values from
+  /// Returns a new [ExchangeResultsKeyResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static Verification? fromJson(dynamic value) {
+  static ExchangeResultsKeyResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -79,29 +67,29 @@ class Verification {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "Verification[$key]" is missing from JSON.');
+              'Required key "ExchangeResultsKeyResponse[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "Verification[$key]" has a null value in JSON.');
+              'Required key "ExchangeResultsKeyResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return Verification(
-        provider: mapValueOfType<String>(json, r'provider'),
-        failCode: VerificationFailCode.fromJson(json[r'failCode']),
+      return ExchangeResultsKeyResponse(
+        session: Session.fromJson(json[r'session'])!,
+        identityData: IdentityData.fromJson(json[r'identityData']),
       );
     }
     return null;
   }
 
-  static List<Verification> listFromJson(
+  static List<ExchangeResultsKeyResponse> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <Verification>[];
+    final result = <ExchangeResultsKeyResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = Verification.fromJson(row);
+        final value = ExchangeResultsKeyResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -110,12 +98,12 @@ class Verification {
     return result.toList(growable: growable);
   }
 
-  static Map<String, Verification> mapFromJson(dynamic json) {
-    final map = <String, Verification>{};
+  static Map<String, ExchangeResultsKeyResponse> mapFromJson(dynamic json) {
+    final map = <String, ExchangeResultsKeyResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = Verification.fromJson(entry.value);
+        final value = ExchangeResultsKeyResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,17 +112,17 @@ class Verification {
     return map;
   }
 
-  // maps a json object with a list of Verification-objects as value to a dart map
-  static Map<String, List<Verification>> mapListFromJson(
+  // maps a json object with a list of ExchangeResultsKeyResponse-objects as value to a dart map
+  static Map<String, List<ExchangeResultsKeyResponse>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<Verification>>{};
+    final map = <String, List<ExchangeResultsKeyResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = Verification.listFromJson(
+        map[entry.key] = ExchangeResultsKeyResponse.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -144,5 +132,7 @@ class Verification {
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{};
+  static const requiredKeys = <String>{
+    'session',
+  };
 }

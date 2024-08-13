@@ -9,17 +9,18 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
-[**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
-[**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
-[**listSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
+[**cancelSession**](SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID
+[**createSession**](SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user's identity
+[**exchangeResultsKey**](SessionsApi.md#exchangeresultskey) | **POST** /api/v1/sessions/{sessionId}/results | Exchange a Results Access Key for Identity Data
+[**getSession**](SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID
+[**listSessions**](SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account
+[**redactSession**](SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
 
 
 # **cancelSession**
 > CancelSessionResponse cancelSession(sessionId)
 
-
+Cancel a Session by its ID
 
 ### Example
 ```dart
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 # **createSession**
 > CreateSessionResponse createSession(createSessionRequest)
 
-
+Create a Session to verify a user's identity
 
 ### Example
 ```dart
@@ -110,10 +111,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **exchangeResultsKey**
+> ExchangeResultsKeyResponse exchangeResultsKey(sessionId, exchangeResultsKeyRequest)
+
+Exchange a Results Access Key for Identity Data
+
+### Example
+```dart
+import 'package:TrinsicConnect/api.dart';
+// TODO Configure HTTP Bearer authorization: Bearer
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = SessionsApi();
+final sessionId = sessionId_example; // String | 
+final exchangeResultsKeyRequest = ExchangeResultsKeyRequest(); // ExchangeResultsKeyRequest | 
+
+try {
+    final result = api_instance.exchangeResultsKey(sessionId, exchangeResultsKeyRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling SessionsApi->exchangeResultsKey: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sessionId** | **String**|  | 
+ **exchangeResultsKeyRequest** | [**ExchangeResultsKeyRequest**](ExchangeResultsKeyRequest.md)|  | [optional] 
+
+### Return type
+
+[**ExchangeResultsKeyResponse**](ExchangeResultsKeyResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getSession**
-> GetSessionResponseV1 getSession(sessionId)
+> GetSessionResponse getSession(sessionId)
 
-
+Get a Session by its ID
 
 ### Example
 ```dart
@@ -144,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetSessionResponseV1**](GetSessionResponseV1.md)
+[**GetSessionResponse**](GetSessionResponse.md)
 
 ### Authorization
 
@@ -160,7 +210,7 @@ Name | Type | Description  | Notes
 # **listSessions**
 > ListSessionsResponse listSessions(orderBy, orderDirection, pageSize, page)
 
-
+List Sessions created by your account
 
 ### Example
 ```dart
@@ -173,10 +223,10 @@ import 'package:TrinsicConnect/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SessionsApi();
-final orderBy = ; // SessionOrdering | 
-final orderDirection = ; // OrderDirection | 
-final pageSize = 56; // int | 
-final page = 56; // int | 
+final orderBy = Created; // SessionOrdering | The field by which sessions should be ordered
+final orderDirection = Descending; // OrderDirection | 
+final pageSize = 10; // int | The number of items to return per page -- must be between `1` and `10`
+final page = 1; // int | The page number to return -- starts at `1`
 
 try {
     final result = api_instance.listSessions(orderBy, orderDirection, pageSize, page);
@@ -190,10 +240,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orderBy** | [**SessionOrdering**](.md)|  | [optional] 
+ **orderBy** | [**SessionOrdering**](.md)| The field by which sessions should be ordered | [optional] 
  **orderDirection** | [**OrderDirection**](.md)|  | [optional] 
- **pageSize** | **int**|  | [optional] 
- **page** | **int**|  | [optional] 
+ **pageSize** | **int**| The number of items to return per page -- must be between `1` and `10` | [optional] 
+ **page** | **int**| The page number to return -- starts at `1` | [optional] 
 
 ### Return type
 
@@ -213,7 +263,7 @@ Name | Type | Description  | Notes
 # **redactSession**
 > redactSession(sessionId)
 
-
+Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
 
 ### Example
 ```dart

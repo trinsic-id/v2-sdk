@@ -10,51 +10,40 @@
 
 part of openapi.api;
 
-class ListSessionsResponse {
-  /// Returns a new [ListSessionsResponse] instance.
-  ListSessionsResponse({
-    this.sessions = const [],
-    required this.total,
-    required this.more,
+class IdentityLookupResponse {
+  /// Returns a new [IdentityLookupResponse] instance.
+  IdentityLookupResponse({
+    required this.identityInNetwork,
   });
 
-  List<Session> sessions;
-
-  /// The total number of sessions tied to your account
-  int total;
-
-  /// Whether there are additional pages of sessions to retrieve
-  bool more;
+  /// Whether the given phone number is known to have an identity in the network.
+  bool identityInNetwork;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ListSessionsResponse &&
-          _deepEquality.equals(other.sessions, sessions) &&
-          other.total == total &&
-          other.more == more;
+      other is IdentityLookupResponse &&
+          other.identityInNetwork == identityInNetwork;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (sessions.hashCode) + (total.hashCode) + (more.hashCode);
+      (identityInNetwork.hashCode);
 
   @override
   String toString() =>
-      'ListSessionsResponse[sessions=$sessions, total=$total, more=$more]';
+      'IdentityLookupResponse[identityInNetwork=$identityInNetwork]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'sessions'] = this.sessions;
-    json[r'total'] = this.total;
-    json[r'more'] = this.more;
+    json[r'identityInNetwork'] = this.identityInNetwork;
     return json;
   }
 
-  /// Returns a new [ListSessionsResponse] instance and imports its values from
+  /// Returns a new [IdentityLookupResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ListSessionsResponse? fromJson(dynamic value) {
+  static IdentityLookupResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -64,30 +53,28 @@ class ListSessionsResponse {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "ListSessionsResponse[$key]" is missing from JSON.');
+              'Required key "IdentityLookupResponse[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "ListSessionsResponse[$key]" has a null value in JSON.');
+              'Required key "IdentityLookupResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ListSessionsResponse(
-        sessions: Session.listFromJson(json[r'sessions']),
-        total: mapValueOfType<int>(json, r'total')!,
-        more: mapValueOfType<bool>(json, r'more')!,
+      return IdentityLookupResponse(
+        identityInNetwork: mapValueOfType<bool>(json, r'identityInNetwork')!,
       );
     }
     return null;
   }
 
-  static List<ListSessionsResponse> listFromJson(
+  static List<IdentityLookupResponse> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <ListSessionsResponse>[];
+    final result = <IdentityLookupResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ListSessionsResponse.fromJson(row);
+        final value = IdentityLookupResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -96,12 +83,12 @@ class ListSessionsResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ListSessionsResponse> mapFromJson(dynamic json) {
-    final map = <String, ListSessionsResponse>{};
+  static Map<String, IdentityLookupResponse> mapFromJson(dynamic json) {
+    final map = <String, IdentityLookupResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ListSessionsResponse.fromJson(entry.value);
+        final value = IdentityLookupResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -110,17 +97,17 @@ class ListSessionsResponse {
     return map;
   }
 
-  // maps a json object with a list of ListSessionsResponse-objects as value to a dart map
-  static Map<String, List<ListSessionsResponse>> mapListFromJson(
+  // maps a json object with a list of IdentityLookupResponse-objects as value to a dart map
+  static Map<String, List<IdentityLookupResponse>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<ListSessionsResponse>>{};
+    final map = <String, List<IdentityLookupResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ListSessionsResponse.listFromJson(
+        map[entry.key] = IdentityLookupResponse.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -131,8 +118,6 @@ class ListSessionsResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'sessions',
-    'total',
-    'more',
+    'identityInNetwork',
   };
 }

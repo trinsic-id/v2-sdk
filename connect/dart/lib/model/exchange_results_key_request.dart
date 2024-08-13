@@ -10,37 +10,40 @@
 
 part of openapi.api;
 
-class GetSessionResponseV1 {
-  /// Returns a new [GetSessionResponseV1] instance.
-  GetSessionResponseV1({
-    required this.session,
+class ExchangeResultsKeyRequest {
+  /// Returns a new [ExchangeResultsKeyRequest] instance.
+  ExchangeResultsKeyRequest({
+    required this.resultsAccessKey,
   });
 
-  Session session;
+  /// The Results Access Key to exchange
+  String resultsAccessKey;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is GetSessionResponseV1 && other.session == session;
+      other is ExchangeResultsKeyRequest &&
+          other.resultsAccessKey == resultsAccessKey;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (session.hashCode);
+      (resultsAccessKey.hashCode);
 
   @override
-  String toString() => 'GetSessionResponseV1[session=$session]';
+  String toString() =>
+      'ExchangeResultsKeyRequest[resultsAccessKey=$resultsAccessKey]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    json[r'session'] = this.session;
+    json[r'resultsAccessKey'] = this.resultsAccessKey;
     return json;
   }
 
-  /// Returns a new [GetSessionResponseV1] instance and imports its values from
+  /// Returns a new [ExchangeResultsKeyRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static GetSessionResponseV1? fromJson(dynamic value) {
+  static ExchangeResultsKeyRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -50,28 +53,28 @@ class GetSessionResponseV1 {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "GetSessionResponseV1[$key]" is missing from JSON.');
+              'Required key "ExchangeResultsKeyRequest[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "GetSessionResponseV1[$key]" has a null value in JSON.');
+              'Required key "ExchangeResultsKeyRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return GetSessionResponseV1(
-        session: Session.fromJson(json[r'session'])!,
+      return ExchangeResultsKeyRequest(
+        resultsAccessKey: mapValueOfType<String>(json, r'resultsAccessKey')!,
       );
     }
     return null;
   }
 
-  static List<GetSessionResponseV1> listFromJson(
+  static List<ExchangeResultsKeyRequest> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <GetSessionResponseV1>[];
+    final result = <ExchangeResultsKeyRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = GetSessionResponseV1.fromJson(row);
+        final value = ExchangeResultsKeyRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -80,12 +83,12 @@ class GetSessionResponseV1 {
     return result.toList(growable: growable);
   }
 
-  static Map<String, GetSessionResponseV1> mapFromJson(dynamic json) {
-    final map = <String, GetSessionResponseV1>{};
+  static Map<String, ExchangeResultsKeyRequest> mapFromJson(dynamic json) {
+    final map = <String, ExchangeResultsKeyRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = GetSessionResponseV1.fromJson(entry.value);
+        final value = ExchangeResultsKeyRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -94,17 +97,17 @@ class GetSessionResponseV1 {
     return map;
   }
 
-  // maps a json object with a list of GetSessionResponseV1-objects as value to a dart map
-  static Map<String, List<GetSessionResponseV1>> mapListFromJson(
+  // maps a json object with a list of ExchangeResultsKeyRequest-objects as value to a dart map
+  static Map<String, List<ExchangeResultsKeyRequest>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<GetSessionResponseV1>>{};
+    final map = <String, List<ExchangeResultsKeyRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = GetSessionResponseV1.listFromJson(
+        map[entry.key] = ExchangeResultsKeyRequest.listFromJson(
           entry.value,
           growable: growable,
         );
@@ -115,6 +118,6 @@ class GetSessionResponseV1 {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'session',
+    'resultsAccessKey',
   };
 }

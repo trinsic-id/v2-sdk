@@ -10,101 +10,101 @@
 
 part of openapi.api;
 
-class IdentityData {
-  /// Returns a new [IdentityData] instance.
-  IdentityData({
-    this.originatingProviderId,
-    this.person,
-    this.document,
-    this.attachments,
+class Attachments {
+  /// Returns a new [Attachments] instance.
+  Attachments({
+    this.selfie,
+    this.documentFront,
+    this.documentBack,
+    this.documentPortrait,
   });
 
-  /// The ID of the integration from which this data originated (eg \"yoti\", \"clear\")
+  /// Key to access the selfie image (if relevant) for this verification
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? originatingProviderId;
+  String? selfie;
 
-  /// Identity data of the individual who was verified
+  /// Key to access the document front image (if relevant) for this verification
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  PersonData? person;
+  String? documentFront;
 
-  /// Identity data of the document involved in verification, if relevant
+  /// Key to access the document back image (if relevant) for this verification
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DocumentData? document;
+  String? documentBack;
 
-  /// Access keys for attachments (eg document/selfie images)
+  /// Key to access the document portrait image (if relevant and available) for this verification.                Specifically, this is a cropped version of the document front image which includes only the portrait on the document.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Attachments? attachments;
+  String? documentPortrait;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is IdentityData &&
-          other.originatingProviderId == originatingProviderId &&
-          other.person == person &&
-          other.document == document &&
-          other.attachments == attachments;
+      other is Attachments &&
+          other.selfie == selfie &&
+          other.documentFront == documentFront &&
+          other.documentBack == documentBack &&
+          other.documentPortrait == documentPortrait;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (originatingProviderId == null ? 0 : originatingProviderId!.hashCode) +
-      (person == null ? 0 : person!.hashCode) +
-      (document == null ? 0 : document!.hashCode) +
-      (attachments == null ? 0 : attachments!.hashCode);
+      (selfie == null ? 0 : selfie!.hashCode) +
+      (documentFront == null ? 0 : documentFront!.hashCode) +
+      (documentBack == null ? 0 : documentBack!.hashCode) +
+      (documentPortrait == null ? 0 : documentPortrait!.hashCode);
 
   @override
   String toString() =>
-      'IdentityData[originatingProviderId=$originatingProviderId, person=$person, document=$document, attachments=$attachments]';
+      'Attachments[selfie=$selfie, documentFront=$documentFront, documentBack=$documentBack, documentPortrait=$documentPortrait]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.originatingProviderId != null) {
-      json[r'originatingProviderId'] = this.originatingProviderId;
+    if (this.selfie != null) {
+      json[r'selfie'] = this.selfie;
     } else {
-      json[r'originatingProviderId'] = null;
+      json[r'selfie'] = null;
     }
-    if (this.person != null) {
-      json[r'person'] = this.person;
+    if (this.documentFront != null) {
+      json[r'documentFront'] = this.documentFront;
     } else {
-      json[r'person'] = null;
+      json[r'documentFront'] = null;
     }
-    if (this.document != null) {
-      json[r'document'] = this.document;
+    if (this.documentBack != null) {
+      json[r'documentBack'] = this.documentBack;
     } else {
-      json[r'document'] = null;
+      json[r'documentBack'] = null;
     }
-    if (this.attachments != null) {
-      json[r'attachments'] = this.attachments;
+    if (this.documentPortrait != null) {
+      json[r'documentPortrait'] = this.documentPortrait;
     } else {
-      json[r'attachments'] = null;
+      json[r'documentPortrait'] = null;
     }
     return json;
   }
 
-  /// Returns a new [IdentityData] instance and imports its values from
+  /// Returns a new [Attachments] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static IdentityData? fromJson(dynamic value) {
+  static Attachments? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -114,32 +114,31 @@ class IdentityData {
       assert(() {
         requiredKeys.forEach((key) {
           assert(json.containsKey(key),
-              'Required key "IdentityData[$key]" is missing from JSON.');
+              'Required key "Attachments[$key]" is missing from JSON.');
           assert(json[key] != null,
-              'Required key "IdentityData[$key]" has a null value in JSON.');
+              'Required key "Attachments[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return IdentityData(
-        originatingProviderId:
-            mapValueOfType<String>(json, r'originatingProviderId'),
-        person: PersonData.fromJson(json[r'person']),
-        document: DocumentData.fromJson(json[r'document']),
-        attachments: Attachments.fromJson(json[r'attachments']),
+      return Attachments(
+        selfie: mapValueOfType<String>(json, r'selfie'),
+        documentFront: mapValueOfType<String>(json, r'documentFront'),
+        documentBack: mapValueOfType<String>(json, r'documentBack'),
+        documentPortrait: mapValueOfType<String>(json, r'documentPortrait'),
       );
     }
     return null;
   }
 
-  static List<IdentityData> listFromJson(
+  static List<Attachments> listFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final result = <IdentityData>[];
+    final result = <Attachments>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = IdentityData.fromJson(row);
+        final value = Attachments.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -148,12 +147,12 @@ class IdentityData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, IdentityData> mapFromJson(dynamic json) {
-    final map = <String, IdentityData>{};
+  static Map<String, Attachments> mapFromJson(dynamic json) {
+    final map = <String, Attachments>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = IdentityData.fromJson(entry.value);
+        final value = Attachments.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -162,17 +161,17 @@ class IdentityData {
     return map;
   }
 
-  // maps a json object with a list of IdentityData-objects as value to a dart map
-  static Map<String, List<IdentityData>> mapListFromJson(
+  // maps a json object with a list of Attachments-objects as value to a dart map
+  static Map<String, List<Attachments>> mapListFromJson(
     dynamic json, {
     bool growable = false,
   }) {
-    final map = <String, List<IdentityData>>{};
+    final map = <String, List<Attachments>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = IdentityData.listFromJson(
+        map[entry.key] = Attachments.listFromJson(
           entry.value,
           growable: growable,
         );

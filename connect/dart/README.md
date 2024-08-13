@@ -47,14 +47,13 @@ import 'package:TrinsicConnect/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('Bearer').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SessionsApi();
-final sessionId = sessionId_example; // String | 
+final api_instance = AttachmentsApi();
+final attachmentAccessKey = attachmentAccessKey_example; // String | 
 
 try {
-    final result = api_instance.cancelSession(sessionId);
-    print(result);
+    api_instance.getAttachment(attachmentAccessKey);
 } catch (e) {
-    print('Exception when calling SessionsApi->cancelSession: $e\n');
+    print('Exception when calling AttachmentsApi->getAttachment: $e\n');
 }
 
 ```
@@ -65,36 +64,45 @@ All URIs are relative to *https://connect.trinsic.id*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | 
-*SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions | 
-*SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | 
-*SessionsApi* | [**listSessions**](doc//SessionsApi.md#listsessions) | **GET** /api/v1/sessions | 
-*SessionsApi* | [**redactSession**](doc//SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | 
+*AttachmentsApi* | [**getAttachment**](doc//AttachmentsApi.md#getattachment) | **GET** /api/v1/attachments/fetch | Exchange an Attachment Access Key (from `IdentityData.Attachments`) for the raw contents of the linked resource.                Use this API to fetch document (front, back, portrait) or other (selfie) images from a verification, if relevant.
+*NetworkApi* | [**identityLookup**](doc//NetworkApi.md#identitylookup) | **GET** /api/v1/network/identities/{phoneNumber} | Query the availability of an identity in the Trinsic Network by phone number
+*NetworkApi* | [**listProviders**](doc//NetworkApi.md#listproviders) | **GET** /api/v1/network/providers | List all identity providers available for use
+*SessionsApi* | [**cancelSession**](doc//SessionsApi.md#cancelsession) | **POST** /api/v1/sessions/{sessionId}/cancel | Cancel a Session by its ID
+*SessionsApi* | [**createSession**](doc//SessionsApi.md#createsession) | **POST** /api/v1/sessions | Create a Session to verify a user's identity
+*SessionsApi* | [**exchangeResultsKey**](doc//SessionsApi.md#exchangeresultskey) | **POST** /api/v1/sessions/{sessionId}/results | Exchange a Results Access Key for Identity Data
+*SessionsApi* | [**getSession**](doc//SessionsApi.md#getsession) | **GET** /api/v1/sessions/{sessionId} | Get a Session by its ID
+*SessionsApi* | [**listSessions**](doc//SessionsApi.md#listsessions) | **GET** /api/v1/sessions | List Sessions created by your account
+*SessionsApi* | [**redactSession**](doc//SessionsApi.md#redactsession) | **POST** /api/v1/sessions/{sessionId}/redact | Redact a Session, removing all identity data from Trinsic's servers.                Identity data that a user has chosen to save in their passkey-protected wallet will not be deleted.
 
 
 ## Documentation For Models
 
  - [Address](doc//Address.md)
+ - [Attachments](doc//Attachments.md)
  - [CancelSessionResponse](doc//CancelSessionResponse.md)
  - [CreateSessionRequest](doc//CreateSessionRequest.md)
  - [CreateSessionResponse](doc//CreateSessionResponse.md)
  - [DisclosedFields](doc//DisclosedFields.md)
  - [DisclosedFieldsRequest](doc//DisclosedFieldsRequest.md)
  - [DocumentData](doc//DocumentData.md)
+ - [ExchangeResultsKeyRequest](doc//ExchangeResultsKeyRequest.md)
+ - [ExchangeResultsKeyResponse](doc//ExchangeResultsKeyResponse.md)
  - [FailureMessage](doc//FailureMessage.md)
- - [GetSessionResponseV1](doc//GetSessionResponseV1.md)
- - [IDVSessionState](doc//IDVSessionState.md)
+ - [GetSessionResponse](doc//GetSessionResponse.md)
  - [IdentityData](doc//IdentityData.md)
+ - [IdentityLookupResponse](doc//IdentityLookupResponse.md)
+ - [Integration](doc//Integration.md)
+ - [ListProvidersResponse](doc//ListProvidersResponse.md)
  - [ListSessionsResponse](doc//ListSessionsResponse.md)
  - [OrderDirection](doc//OrderDirection.md)
  - [PersonData](doc//PersonData.md)
  - [Session](doc//Session.md)
  - [SessionFailCode](doc//SessionFailCode.md)
  - [SessionOrdering](doc//SessionOrdering.md)
+ - [SessionState](doc//SessionState.md)
  - [ValidationResult](doc//ValidationResult.md)
  - [Verification](doc//Verification.md)
  - [VerificationFailCode](doc//VerificationFailCode.md)
- - [VerificationState](doc//VerificationState.md)
 
 
 ## Documentation For Authorization

@@ -11,7 +11,14 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for VerificationState
+// tests for GetSessionResponse
 void main() {
-  group('test VerificationState', () {});
+  // final instance = GetSessionResponse();
+
+  group('test GetSessionResponse', () {
+    // Session session
+    test('to test the property `session`', () async {
+      // TODO
+    });
+  });
 }

@@ -13,36 +13,80 @@ part of openapi.api;
 class CreateSessionRequest {
   /// Returns a new [CreateSessionRequest] instance.
   CreateSessionRequest({
-    this.fields,
+    this.direct,
+    this.redirectUrl,
+    this.providers = const [],
+    this.disclosedFields,
   });
 
+  /// Whether to create this Session in Direct mode.                Direct mode is used to execute a verification against a specific identity provider.  Users will not be shown the Connect Widget; therefore, reuse of Connect credentials, selection of an identity provider, and saving a verification for future reuse  are not available to the end user in direct mode.                Sessions created in direct mode must be created with a `RedirectUrl` specified, and cannot be invoked using the frontend SDK at this time.
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  DisclosedFieldsRequest? fields;
+  bool? direct;
+
+  /// The URL to redirect to after the user has completed the identity verification process.                If `Direct` is set to `true`, this field is required.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? redirectUrl;
+
+  /// The list of allowed identity providers. If not specified, all available providers will be allowed.                If `Direct` is `true`, this field must be set, and must have only a single entry.  If `Direct` is not specified or is `false`, this field may have any number of entries.
+  List<String> providers;
+
+  /// Specific identity attributes to request. If not provided, all available attributes will be requested.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  DisclosedFieldsRequest? disclosedFields;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CreateSessionRequest && other.fields == fields;
+      other is CreateSessionRequest &&
+          other.direct == direct &&
+          other.redirectUrl == redirectUrl &&
+          _deepEquality.equals(other.providers, providers) &&
+          other.disclosedFields == disclosedFields;
 
   @override
   int get hashCode =>
       // ignore: unnecessary_parenthesis
-      (fields == null ? 0 : fields!.hashCode);
+      (direct == null ? 0 : direct!.hashCode) +
+      (redirectUrl == null ? 0 : redirectUrl!.hashCode) +
+      (providers.hashCode) +
+      (disclosedFields == null ? 0 : disclosedFields!.hashCode);
 
   @override
-  String toString() => 'CreateSessionRequest[fields=$fields]';
+  String toString() =>
+      'CreateSessionRequest[direct=$direct, redirectUrl=$redirectUrl, providers=$providers, disclosedFields=$disclosedFields]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.fields != null) {
-      json[r'fields'] = this.fields;
+    if (this.direct != null) {
+      json[r'direct'] = this.direct;
     } else {
-      json[r'fields'] = null;
+      json[r'direct'] = null;
+    }
+    if (this.redirectUrl != null) {
+      json[r'redirectUrl'] = this.redirectUrl;
+    } else {
+      json[r'redirectUrl'] = null;
+    }
+    json[r'providers'] = this.providers;
+    if (this.disclosedFields != null) {
+      json[r'disclosedFields'] = this.disclosedFields;
+    } else {
+      json[r'disclosedFields'] = null;
     }
     return json;
   }
@@ -68,7 +112,15 @@ class CreateSessionRequest {
       }());
 
       return CreateSessionRequest(
-        fields: DisclosedFieldsRequest.fromJson(json[r'fields']),
+        direct: mapValueOfType<bool>(json, r'direct'),
+        redirectUrl: mapValueOfType<String>(json, r'redirectUrl'),
+        providers: json[r'providers'] is Iterable
+            ? (json[r'providers'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
+            : const [],
+        disclosedFields:
+            DisclosedFieldsRequest.fromJson(json[r'disclosedFields']),
       );
     }
     return null;

@@ -11,7 +11,7 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for IDVSessionState
+// tests for SessionState
 void main() {
-  group('test IDVSessionState', () {});
+  group('test SessionState', () {});
 }

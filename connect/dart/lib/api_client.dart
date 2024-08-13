@@ -231,6 +231,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'Address':
           return Address.fromJson(value);
+        case 'Attachments':
+          return Attachments.fromJson(value);
         case 'CancelSessionResponse':
           return CancelSessionResponse.fromJson(value);
         case 'CreateSessionRequest':
@@ -243,14 +245,22 @@ class ApiClient {
           return DisclosedFieldsRequest.fromJson(value);
         case 'DocumentData':
           return DocumentData.fromJson(value);
+        case 'ExchangeResultsKeyRequest':
+          return ExchangeResultsKeyRequest.fromJson(value);
+        case 'ExchangeResultsKeyResponse':
+          return ExchangeResultsKeyResponse.fromJson(value);
         case 'FailureMessage':
           return FailureMessage.fromJson(value);
-        case 'GetSessionResponseV1':
-          return GetSessionResponseV1.fromJson(value);
-        case 'IDVSessionState':
-          return IDVSessionStateTypeTransformer().decode(value);
+        case 'GetSessionResponse':
+          return GetSessionResponse.fromJson(value);
         case 'IdentityData':
           return IdentityData.fromJson(value);
+        case 'IdentityLookupResponse':
+          return IdentityLookupResponse.fromJson(value);
+        case 'Integration':
+          return Integration.fromJson(value);
+        case 'ListProvidersResponse':
+          return ListProvidersResponse.fromJson(value);
         case 'ListSessionsResponse':
           return ListSessionsResponse.fromJson(value);
         case 'OrderDirection':
@@ -263,14 +273,14 @@ class ApiClient {
           return SessionFailCodeTypeTransformer().decode(value);
         case 'SessionOrdering':
           return SessionOrderingTypeTransformer().decode(value);
+        case 'SessionState':
+          return SessionStateTypeTransformer().decode(value);
         case 'ValidationResult':
           return ValidationResult.fromJson(value);
         case 'Verification':
           return Verification.fromJson(value);
         case 'VerificationFailCode':
           return VerificationFailCodeTypeTransformer().decode(value);
-        case 'VerificationState':
-          return VerificationStateTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List &&

@@ -11,13 +11,14 @@
 import 'package:TrinsicConnect/api.dart';
 import 'package:test/test.dart';
 
-// tests for GetSessionResponseV1
+// tests for ListProvidersResponse
 void main() {
-  // final instance = GetSessionResponseV1();
+  // final instance = ListProvidersResponse();
 
-  group('test GetSessionResponseV1', () {
-    // Session session
-    test('to test the property `session`', () async {
+  group('test ListProvidersResponse', () {
+    // The list of integrations available to your account
+    // List<Integration> integrations (default value: const [])
+    test('to test the property `integrations`', () async {
       // TODO
     });
   });

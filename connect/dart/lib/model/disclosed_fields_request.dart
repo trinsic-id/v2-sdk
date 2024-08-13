@@ -21,6 +21,10 @@ class DisclosedFieldsRequest {
     this.country,
     this.issueDate,
     this.expirationDate,
+    this.documentFront,
+    this.documentBack,
+    this.documentPortrait,
+    this.selfie,
   });
 
   ///
@@ -87,6 +91,38 @@ class DisclosedFieldsRequest {
   ///
   bool? expirationDate;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? documentFront;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? documentBack;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? documentPortrait;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? selfie;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -98,7 +134,11 @@ class DisclosedFieldsRequest {
           other.dateOfBirth == dateOfBirth &&
           other.country == country &&
           other.issueDate == issueDate &&
-          other.expirationDate == expirationDate;
+          other.expirationDate == expirationDate &&
+          other.documentFront == documentFront &&
+          other.documentBack == documentBack &&
+          other.documentPortrait == documentPortrait &&
+          other.selfie == selfie;
 
   @override
   int get hashCode =>
@@ -110,11 +150,15 @@ class DisclosedFieldsRequest {
       (dateOfBirth == null ? 0 : dateOfBirth!.hashCode) +
       (country == null ? 0 : country!.hashCode) +
       (issueDate == null ? 0 : issueDate!.hashCode) +
-      (expirationDate == null ? 0 : expirationDate!.hashCode);
+      (expirationDate == null ? 0 : expirationDate!.hashCode) +
+      (documentFront == null ? 0 : documentFront!.hashCode) +
+      (documentBack == null ? 0 : documentBack!.hashCode) +
+      (documentPortrait == null ? 0 : documentPortrait!.hashCode) +
+      (selfie == null ? 0 : selfie!.hashCode);
 
   @override
   String toString() =>
-      'DisclosedFieldsRequest[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate]';
+      'DisclosedFieldsRequest[idNumber=$idNumber, givenName=$givenName, familyName=$familyName, address=$address, dateOfBirth=$dateOfBirth, country=$country, issueDate=$issueDate, expirationDate=$expirationDate, documentFront=$documentFront, documentBack=$documentBack, documentPortrait=$documentPortrait, selfie=$selfie]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -158,6 +202,26 @@ class DisclosedFieldsRequest {
     } else {
       json[r'expirationDate'] = null;
     }
+    if (this.documentFront != null) {
+      json[r'documentFront'] = this.documentFront;
+    } else {
+      json[r'documentFront'] = null;
+    }
+    if (this.documentBack != null) {
+      json[r'documentBack'] = this.documentBack;
+    } else {
+      json[r'documentBack'] = null;
+    }
+    if (this.documentPortrait != null) {
+      json[r'documentPortrait'] = this.documentPortrait;
+    } else {
+      json[r'documentPortrait'] = null;
+    }
+    if (this.selfie != null) {
+      json[r'selfie'] = this.selfie;
+    } else {
+      json[r'selfie'] = null;
+    }
     return json;
   }
 
@@ -190,6 +254,10 @@ class DisclosedFieldsRequest {
         country: mapValueOfType<bool>(json, r'country'),
         issueDate: mapValueOfType<bool>(json, r'issueDate'),
         expirationDate: mapValueOfType<bool>(json, r'expirationDate'),
+        documentFront: mapValueOfType<bool>(json, r'documentFront'),
+        documentBack: mapValueOfType<bool>(json, r'documentBack'),
+        documentPortrait: mapValueOfType<bool>(json, r'documentPortrait'),
+        selfie: mapValueOfType<bool>(json, r'selfie'),
       );
     }
     return null;
