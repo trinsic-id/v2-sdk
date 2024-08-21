@@ -256,6 +256,18 @@ message GovernmentIDFields {
 
   // Expiration date date of the document
   bool expiration_date = 8;
+
+  // The image of the front of the document
+  bool document_front = 9;
+
+  // The image of the back of the document
+  bool document_back = 10;
+
+  // The image of the holder portrait contained in the document
+  bool document_portrait = 11;
+
+  // The image of the face match selfie
+  bool selfie = 12;
 }
 
 // Response to `CreateIDVSessionRequest`
