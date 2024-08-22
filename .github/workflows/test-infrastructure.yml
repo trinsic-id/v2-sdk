@@ -30,7 +30,7 @@ jobs:
       - name: Install CLI
         run: |
           # Step 1: Download the .deb package using curl with the -L option to follow redirects
-          curl -L -o trinsic_cli.deb https://github.com/trinsic-id/sdk/releases/download/v1.13.0/trinsic_cli_1.13.0_amd64.deb
+          curl -L -o trinsic_cli.deb https://github.com/trinsic-id/sdk-v/releases/download/v1.13.0/trinsic_cli_1.13.0_amd64.deb
           # Step 2: Install the downloaded .deb package using dpkg
           sudo dpkg -i trinsic_cli.deb
 
@@ -45,7 +45,7 @@ jobs:
       # Because called actions run in caller repository, we have to be explicit here.
       - uses: actions/checkout@v3
         with:
-          repository: trinsic-id/sdk
+          repository: trinsic-id/sdk-v
           path: ./sdk
       - uses: actions/cache@v3
         id: npm-cache
