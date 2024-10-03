@@ -13,6 +13,7 @@ using Trinsic.Connect.Client;
 
 namespace Trinsic.Connect.Api;
 
+
 /// <summary>
 /// Represents a collection of functions to interact with the API endpoints
 /// </summary>
